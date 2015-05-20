@@ -1,19 +1,4 @@
-Files in CmsForNerd
-
-(1) This files must be in the contents directory
-
-common-headertag.inc - Contain information for HEAD TAG
-header.inc - not used but need to have. Refer themes directory
-footer.inc - The footer of the website
-right-side.inc - Right  hand side colum
-left-side.inc - Left hand side colum
-
-(2) This files must be in the includes directory
-
-common.inc.php - php functions
-global-control.inc.php - parameter global to all
-
-(3) This directory and files must be in the themes directory
+This directory files must be in this themes directory
 
 CmsForNerd - the directory (folder)
 
@@ -33,7 +18,3 @@ To called you new theme, change the file global-control.inc.php in includes dire
 http://cmsfornerd.harisfazillah.info/
 
 18 November 2007
-
-Move from Sourceforge.org 21 May 2015
-LinuxMalaysia
-

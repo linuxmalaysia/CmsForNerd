@@ -1,0 +1,31 @@
+* Introduction *
+
+http://cmsfornerd.harisfazillah.info/
+
+CmsForNerd is really for nerd. You need to know basic HTML, CSS and PHP to maintain it because it is not like any other content Management Software or CMS. We build CmsForNerd because we want to learn about HTML and how to code in PHP.
+
+CmsForNerd is for a small website, with static contents that not always need to be change. CmsForNerd is not using any database. We want a CMS that it is simple, easy to backup and recovery because we don't want to be worried about any lost of data in database due to hardware failure.
+
+We also build CmsForNerd so it is search engine friendly to Google and Yahoo. You can used HTML Validator add-on for Mozilla Firefox  to validate yout HTML page.
+
+http://users.skynet.be/mgueury/mozilla/
+
+* Installation *
+
+Download the zip or tar ball and expand it inside the public directory of your web server. The web server need to support PHP.
+
+* Configuration *
+
+To create a page in CmsForNerd, it's used two files, one file need to be located at top level of webite with extension PHP (dot PHP .php). Another file located in contents directory (folder) with extension INC (dot INC .inc). Both must begin with the same name and need to follow this specific name format. For example the PHP file with name test.php should has file name test-body.inc in contents directory.
+
+http://www.nvu.com/
+
+The template files of CmsForNerd located in top level of the website and contents directory (folder). You can use NVU to code your HTML. Just copy the content between BODY TAG of your HTML source and put in your INC file. Your INC file should be named as per the PHP file at the top level of your website.
+
+For example if your page name is search.php then the file in the contents directory should be search-body.inc.
+
+Don't forget to copy at the top level of your website the file template.php into the  name as per your file inside contents directory. Your need to edit the PHP file to customize the information HTML TAG as per your page content.
+
+For Web GUI interface, net2ftp a web based FTP client is recommeded to be use.
+
+http://www.net2ftp.org/

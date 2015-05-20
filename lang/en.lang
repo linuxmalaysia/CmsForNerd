@@ -1,0 +1,21 @@
+<?php
+
+// ---------------------------------------------------------------------
+// Not Yet implemented. Concept from xampp
+// ---------------------------------------------------------------------
+
+$TEXT['bio-head']="Biorhythm (Example for PHP+GD)";
+
+$TEXT['bio-by']="by";
+$TEXT['bio-ask']="Please enter your date of birth";
+$TEXT['bio-ok']="OK";
+$TEXT['bio-error1']="Date";
+$TEXT['bio-error2']="is invalid";
+
+$TEXT['bio-birthday']="Birthday";
+$TEXT['bio-today']="Today";
+$TEXT['bio-intellectual']="Intellectual";
+$TEXT['bio-emotional']="Emotional";
+$TEXT['bio-physical']="Physical";
+
+?>

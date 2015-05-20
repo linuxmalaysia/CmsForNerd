@@ -1,0 +1,11 @@
+This files must be in this contents directory
+
+common-headertag.inc - Contain information for HEAD TAG
+header.inc - not used but need to have. Refer themes directory
+footer.inc - The footer of the website
+right-side.inc - Right  hand side colum
+left-side.inc - Left hand side colum
+
+http://cmsfornerd.harisfazillah.info/
+
+18 November 2007

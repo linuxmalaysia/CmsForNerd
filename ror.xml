@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www.rorweb.com/ror.css" type="text/css"?>
+<!-- This is a ROR formatted XML document describing the resources of the 
+  website http://cmsfornerd.harisfazillah.info/. For information about the ROR format, go to www.rorweb.com --> 
+<rdf:RDF xmlns="http://rorweb.com/0.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"> 
+
+<!-- ******************** Main Info ******************** --> 
+<Resource rdf:about="main">
+    <rorinfo>This is a ROR formatted XML document describing the resources of the website http://cmsfornerd.harisfazillah.info/. For information about the ROR format, go to www.rorweb.com</rorinfo>
+    <type>Main</type>
+    <type>Website</type>
+    <title>CmsForNerd A Content Management Software For Nerd</title>
+    <url>http://cmsfornerd.harisfazillah.info/</url>
+    <desc>CmsForNerd is a content management software (CMS) for nerd.</desc>
+    <keywords>CmsForNerd, CMS, HTML, PHP</keywords>
+</Resource>
+
+<!-- ******************** Site Map Info ***************** --> 
+<Resource rdf:about="sitemap">
+    <type>SiteMap</type>
+    <title>Site Map</title>
+    <resourceOf rdf:resource="main"/>
+</Resource>
+
+<Resource>
+    <title>CmsForNerd A Content Management Software For Nerd</title>
+    <url>http://cmsfornerd.harisfazillah.info/</url>
+    <updated>2007-11-18T16:34:22+00:00</updated>
+    <sortOrder>1</sortOrder>
+    <resourceOf rdf:resource="sitemap"/>
+    <desc>CmsForNerd is a content management software (CMS) for nerd.</desc>
+    <keywords>CmsForNerd, CMS, HTML, PHP</keywords>
+</Resource>
+
+<Resource>
+    <title>CmsForNerd A Content Management Software For Nerd</title>
+    <url>http://cmsfornerd.harisfazillah.info/index.php</url>
+    <updated>2007-11-18T16:34:24+00:00</updated>
+    <sortOrder>0,5</sortOrder>
+    <resourceOf rdf:resource="sitemap"/>
+    <desc>CmsForNerd is a content management software (CMS) for nerd.</desc>
+    <keywords>CmsForNerd, CMS, HTML, PHP</keywords>
+</Resource>
+
+<Resource>
+    <title>Installation Of CmsForNerd A Content Management Software For Nerd</title>
+    <url>http://cmsfornerd.harisfazillah.info/installation.php</url>
+    <updated>2007-11-18T16:34:25+00:00</updated>
+    <sortOrder>0,5</sortOrder>
+    <resourceOf rdf:resource="sitemap"/>
+    <desc>Installation guide for CmsForNerd a content management software (CMS) for nerd.</desc>
+    <keywords>CmsForNerd, CMS, HTML, PHP</keywords>
+</Resource>
+
+<Resource>
+    <title>Template Page For CmsForNerd</title>
+    <url>http://cmsfornerd.harisfazillah.info/template.php</url>
+    <updated>2007-11-18T16:34:25+00:00</updated>
+    <sortOrder>0,5</sortOrder>
+    <resourceOf rdf:resource="sitemap"/>
+    <desc>This is a template page for CmsForNerd. A Content Management Software like no others.</desc>
+    <keywords>CmsForNerd, CMS, PHP, CSS, Malaysia, HTML</keywords>
+</Resource>
+
+</rdf:RDF>
+<!-- Created by SOFTplus GSiteCrawler v1.20 rev. 273 - 19/11/2007 0:43:54 http://gsitecrawler.com/ -->

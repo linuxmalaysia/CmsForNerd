@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<rss version="2.0">
+<channel>
+<title>CmsForNerd feed</title>
+<copyright>Copyright (c) 2007 Harisfazillah Jamel. All rights reserved.</copyright>
+<link>http://cmsfornerd.harisfazillah.info/</link>
+<description>harisfazillah.info [cmsfornerd]</description>
+<language>en-us</language> 
+<lastBuildDate>Mon, 19 Nov 2007 00:39:59 GMT</lastBuildDate>
+<ttl>5</ttl> 
+<item>
+ <title>CmsForNerd A Content Management Software For Nerd</title>
+ <link>http://cmsfornerd.harisfazillah.info/</link>
+ <pubDate>2007-11-18T16:34:22+00:00</pubDate>
+ <description>CmsForNerd is a content management software (CMS) for nerd.</description>
+</item>
+<item>
+ <title></title>
+ <link>http://cmsfornerd.harisfazillah.info/images/cmsfornerd.png</link>
+ <pubDate>2007-11-18T15:37:36+00:00</pubDate>
+ <description></description>
+</item>
+<item>
+ <title></title>
+ <link>http://cmsfornerd.harisfazillah.info/images/tidy.png</link>
+ <pubDate>2007-11-18T16:09:14+00:00</pubDate>
+ <description></description>
+</item>
+<item>
+ <title>CmsForNerd A Content Management Software For Nerd</title>
+ <link>http://cmsfornerd.harisfazillah.info/index.php</link>
+ <pubDate>2007-11-18T16:34:24+00:00</pubDate>
+ <description>CmsForNerd is a content management software (CMS) for nerd.</description>
+</item>
+<item>
+ <title>Installation Of CmsForNerd A Content Management Software For Nerd</title>
+ <link>http://cmsfornerd.harisfazillah.info/installation.php</link>
+ <pubDate>2007-11-18T16:34:25+00:00</pubDate>
+ <description>Installation guide for CmsForNerd a content management software (CMS) for nerd.</description>
+</item>
+<item>
+ <title>Template Page For CmsForNerd</title>
+ <link>http://cmsfornerd.harisfazillah.info/template.php</link>
+ <pubDate>2007-11-18T16:34:25+00:00</pubDate>
+ <description>This is a template page for CmsForNerd. A Content Management Software like no others.</description>
+</item>
+
+</channel>
+</rss>
+<!-- Created by SOFTplus GSiteCrawler v1.20 rev. 273 - 19/11/2007 0:39:59 :-) -->

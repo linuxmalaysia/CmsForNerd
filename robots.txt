@@ -1,0 +1,5 @@
+# robots.txt file for http://cmsfornerd.harisfazillah.info/
+
+User-agent: *
+Disallow: /themes/
+Disallow: /includes/
