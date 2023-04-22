@@ -69,18 +69,4 @@ print("</html>");
 
 }
 
-// SQLlite database
-
-function opendatadb() 
-
-{
-
-if(!($db=sqlite_open('contents/contents.db', '0666')))
-	{
-		echo "Error";
-		die();
-	}
-
-}
-
 ?>

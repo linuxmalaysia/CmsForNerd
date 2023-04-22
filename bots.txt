@@ -1,0 +1,7 @@
+Googlebot
+Bingbot
+Yandex
+Baiduspider
+Googlebot-Image
+Googlebot-News
+Googlebot-Video
