@@ -9,8 +9,7 @@
 // License GNU Public License V2
 // Harisfazillah Jamel v 1.1 7 Feb 2006 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
-// For http://cmsfornerd.perempuanmelayu.info/
-// http://cmsfornerd.harisfazillah.info/
+// Harisfazillah Jamel v 2.0 22 April 2023
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local
 // theme or lang overwrite
@@ -23,7 +22,7 @@
 ob_start("ob_gzhandler");
 
 $CONTENT['title']="CmsForNerd A Content Management Software For Nerd";
-$CONTENT['author']="Wanita";
+$CONTENT['author']="LinuxMalaysia";
 $CONTENT['description']="CmsForNerd is a content management software (CMS) for nerd.";
 $CONTENT['keywords']="CmsForNerd, CMS, HTML, PHP";
 
@@ -57,5 +56,29 @@ include("themes/$THEMENAME/pager.php");
 pager();
 
 ob_end_flush();
+
+// Load the dataset
+$dataset = file_get_contents('bots.txt');
+
+// Split the dataset into an array of strings
+$bots = explode("\n", $dataset);
+
+// Check if the request is from a bot
+$isBot = false;
+foreach ($bots as $bot) {
+    if (strpos($_SERVER['HTTP_USER_AGENT'], $bot) !== false) {
+        $isBot = true;
+        break;
+    }
+}
+
+// If the request is from a bot, redirect the user to a different page
+if ($isBot) {
+    header('Location: /bots.php');
+    exit;
+}
+
+// This code will only be executed if the request is not from a bot
+// ...
 
 ?>
