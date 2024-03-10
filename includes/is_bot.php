@@ -1,5 +1,13 @@
 <?php
 
+// is_bot
+// Simple PHP function to detect search engines bots and crawlers
+// it compares the PHP User Agent with a list of common spiders from search engines, more than 200 bots, spiders and crawlers
+// use $_SERVER['HTTP_USER_AGENT'];
+// Using this server variable is not enough to block spambots and other kind of traffic, is just for clearly defined user agents
+// Added 10 Mac 2024
+// https://github.com/fabiomb/is_bot.git
+
 function is_bot($sistema){
  // bots de buscadores
     $bots = array(
