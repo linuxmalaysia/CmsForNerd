@@ -9,7 +9,8 @@
 // License GNU Public License V2
 // Harisfazillah Jamel v 1.1 7 Feb 2006 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
-// For http://cmsfornerd.perempuanmelayu.info/
+// Harisfazillah Jamel v 2.0 22 April 2023
+// Harisfazillah Jamel v 2.1 10 mac 2024
 // http://cmsfornerd.harisfazillah.info/
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local
@@ -21,6 +22,29 @@
 // and with name ???-body.inc
 
 ob_start("ob_gzhandler");
+
+// Check for session timeout and close session on other pages (within the PHP code)
+
+// Option 1: Using session_gc_maxlifetime (uncomment if using this approach)
+// if (!isset($_SESSION['valid_session']) || $_SESSION['valid_session'] !== true) {
+  // Session timed out or doesn't exist, redirect to login
+//   header('Location: index.php');
+//   exit;
+// }
+
+// Option 2: Using session expiration time (uncomment if using this approach)
+if (isset($_SESSION['valid_session']) && $_SESSION['valid_session'] === true) {
+  $elapsed_time = time() - $_SESSION['session_start_time'];
+  $session_timeout = 1800; // 30 minutes
+  
+  if ($elapsed_time > $session_timeout) {
+    // Session timed out, destroy it and redirect
+    session_destroy();
+    header('Location: index.php');
+    exit;
+  }
+}
+
 
 $CONTENT['title']="Sitemap For CmsForNerd A Content Management Software For Nerd";
 $CONTENT['author']="Wanita";
