@@ -85,6 +85,14 @@ if (is_bot()) {
 
 pager();
 
+// Check if the user submitted a logout request (optional)
+if (isset($_GET['logout'])) {
+  // User requested logout, destroy session and redirect
+  session_destroy();
+  header('Location: index.php');
+  exit;
+}
+
 ob_end_flush();
 
 ?>
