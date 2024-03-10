@@ -6,6 +6,7 @@
 // License GNU Public License V2
 // Harisfazillah Jamel v 1.1 7 Feb 2006 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
+// Harisfazillah Jamel v 1.3 10 Mac 2024 Linuxmalaysia @ gmail dot com
 // For http://www.perempuanmelayu.info/
 // For small site without database just pure php html xml code
 // Remember all page call this and please check the local
@@ -25,5 +26,9 @@ include("lang/en.lang");
 $THEMENAME="CmsForNerd";
 
 include("themes/$THEMENAME/theme.php");
+
+// Additional information for indexing (using config variable)
+// Please adjust for your site
+$CONFIG['sitemap_url'] = 'https://yourwebsite.com/sitemap.xml';
 
 ?>
