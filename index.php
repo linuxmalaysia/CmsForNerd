@@ -10,6 +10,7 @@
 // Harisfazillah Jamel v 1.1 7 Feb 2006 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 2.0 22 April 2023
+// Harisfazillah Jamel v 2.1 10 mac 2024
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local
 // theme or lang overwrite
@@ -53,32 +54,27 @@ include("themes/$THEMENAME/pager.php");
 //function define in theme diretory theme.php
 //to change theme.php for page layout
 
+// Include the function to detect bots (assuming it's a valid file)
+require_once('includes/is_bot.php');
+
+// Set content type as plain text
+header('Content-Type: text/plain');
+
+// Check if the request is from a bot using the included function
+if (is_bot()) {
+  echo "This is a page specifically for search engine crawlers.\n";
+  
+  // Additional information for indexing (e.g., sitemap URL)
+  echo "Sitemap: https://yourwebsite.com/sitemap.xml\n";
+  
+  // Log bot visit (assuming you have a logging mechanism)
+  // ... (code to log visit details)
+ // need to exit
+ exit;
+}
+
 pager();
 
 ob_end_flush();
-
-// Load the dataset
-$dataset = file_get_contents('bots.txt');
-
-// Split the dataset into an array of strings
-$bots = explode("\n", $dataset);
-
-// Check if the request is from a bot
-$isBot = false;
-foreach ($bots as $bot) {
-    if (strpos($_SERVER['HTTP_USER_AGENT'], $bot) !== false) {
-        $isBot = true;
-        break;
-    }
-}
-
-// If the request is from a bot, redirect the user to a different page
-if ($isBot) {
-    header('Location: /bots.php');
-    exit;
-}
-
-// This code will only be executed if the request is not from a bot
-// ...
 
 ?>
