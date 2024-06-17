@@ -22,16 +22,6 @@
 
 ob_start("ob_gzhandler");
 
-// Start the session with a timeout of 30 minutes (in seconds)
-session_start();
-session_gc_maxlifetime(1800); // 1800 seconds = 30 minutes
-
-// Set the session creation time (optional for approach 2)
-$_SESSION['session_start_time'] = time(); // Uncomment for approach 2
-
-// Set a session variable to indicate a valid session
-$_SESSION['valid_session'] = true;
-
 $CONTENT['title']="CmsForNerd A Content Management Software For Nerd";
 $CONTENT['author']="LinuxMalaysia";
 $CONTENT['description']="CmsForNerd is a content management software (CMS) for nerd.";
@@ -53,9 +43,19 @@ if (empty($CONTENT['data'])) {
 $CONTENT['data']="empty";
 }
 
-
 include("includes/global-control.inc.php");
 include("includes/common.inc.php");
+
+// Start the session with a timeout of 30 minutes (in seconds)
+session_start();
+session_gc_maxlifetime(1800); // 1800 seconds = 30 minutes
+
+// Set the session creation time (optional for approach 2)
+$_SESSION['session_start_time'] = time(); // Uncomment for approach 2
+
+// Set a session variable to indicate a valid session
+$_SESSION['valid_session'] = true;
+
 
 // Define all the function needed call from theme
 
