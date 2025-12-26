@@ -40,10 +40,16 @@ System files - generally, do not touch these unless you are a developer.
 *   `is_bot.php`: Bot detection logic.
 
 ### 3. Themes (`/themes`)
-To create a custom look:
-1.  Duplicate the `CmsForNerd` folder.
-2.  Edit `theme.php` and `style.css`.
-3.  Update config in `global-control.inc.php` to switch themes.
+To create a custom look, duplicate the `CmsForNerd` folder. A theme consists of:
+*   `pager.php`: The main layout controller (HTML skeleton).
+*   `theme.php`: Configuration (pointers to CSS, etc).
+*   `style.css`: Visual styling.
+*   `header.tpl` / `bodytop.tpl` / `bodyfooter.tpl`: HTML fragments included by `pager.php`.
+
+**To switch themes:**
+1.  Create your new theme folder (e.g., `themes/MyTheme`).
+2.  Open `includes/global-control.inc.php`.
+3.  Change `$THEMENAME = "MyTheme";`.
 
 ---
 
