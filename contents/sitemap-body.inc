@@ -1,6 +1,28 @@
-<p><a href="http://cmsfornerd.harisfazillah.info/" title="CmsForNerd is a content management software (CMS) for nerd.">CmsForNerd A Content Management Software For Nerd</a></p>
-<p><a href="http://cmsfornerd.harisfazillah.info/images/cmsfornerd.png" title=""></a></p>
-<p><a href="http://cmsfornerd.harisfazillah.info/images/tidy.png" title=""></a></p>
-<p><a href="http://cmsfornerd.harisfazillah.info/index.php" title="CmsForNerd is a content management software (CMS) for nerd.">CmsForNerd A Content Management Software For Nerd</a></p>
-<p><a href="http://cmsfornerd.harisfazillah.info/installation.php" title="Installation guide for CmsForNerd a content management software (CMS) for nerd.">Installation Of CmsForNerd A Content Management Software For Nerd</a></p>
-<p><a href="http://cmsfornerd.harisfazillah.info/template.php" title="This is a template page for CmsForNerd. A Content Management Software like no others.">Template Page For CmsForNerd</a></p>
+<!-- Dynamic HTML Sitemap -->
+<?php
+require_once 'includes/sitemap_generator.php';
+$pages = get_site_pages();
+?>
+
+<div class="sitemap-list">
+    <h2>Site Pages</h2>
+    <ul>
+    <?php foreach ($pages as $page): ?>
+        <li>
+            <a href="<?= $page['url'] ?>" title="<?= $page['title'] ?>">
+                <?= $page['title'] ?>
+            </a>
+            <small>(Updated: <?= $page['lastmod'] ?>)</small>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    
+    <hr />
+    
+    <p>
+        <a href="xml-sitemap.php" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Feed-icon.svg" width="16" height="16" alt="XML" />
+            XML Sitemap for Bots
+        </a>
+    </p>
+</div>
