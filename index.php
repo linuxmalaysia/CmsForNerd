@@ -11,6 +11,8 @@
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 2.0 22 April 2023
 // Harisfazillah Jamel v 2.1 10 mac 2024
+// Harisfazillah Jamel v 3.1 27 Dec 2025
+// With the help of Google Gemini
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local
 // theme or lang overwrite
