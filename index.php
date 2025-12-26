@@ -43,8 +43,35 @@ if (empty($CONTENT['data'])) {
 $CONTENT['data']="empty";
 }
 
+// Security Hardening (PHP 8.4)
+// Determine the raw page request
+$rawPage = match(true) {
+    !empty($_SERVER['QUERY_STRING']) => $_SERVER['QUERY_STRING'],
+    default => basename($_SERVER['SCRIPT_NAME'])
+};
+
+// Sanitize: Allow only alphanumeric, hyphen, underscore
+$page = preg_match('/^[a-zA-Z0-9_-]+$/', $rawPage) 
+    ? $rawPage 
+    : 'index.php'; // Fallback to safe default
+
+// Remove extension if present for consistent processing
+$page = pathinfo($page, PATHINFO_FILENAME);
+
+$CONTENT['data'] = $page;
+
 include("includes/global-control.inc.php");
+require_once("includes/CmsContext.php");
 include("includes/common.inc.php");
+
+// Initialize Context
+$ctx = new CmsForNerd\CmsContext(
+    content: $CONTENT,
+    themeName: $THEMENAME,
+    cssPath: $CSSPATH, // Defined in theme.php via global-control
+    dataFile: $DATAFILE,
+    scriptName: $CONTENT['data']
+);
 
 // Start the session with a timeout of 30 minutes (in seconds)
 session_start();
@@ -83,7 +110,7 @@ if (is_bot()) {
  exit;
 }
 
-pager();
+pager($ctx);
 
 // Check if the user submitted a logout request (optional)
 if (isset($_GET['logout'])) {

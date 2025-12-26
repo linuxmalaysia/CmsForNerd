@@ -11,13 +11,11 @@
 // Remember all page call this and please check the local
 // theme or lang overwrite
 
-function pageheader()
+// Call the content from the content object. Check the file type
+
+function pageheader(CmsForNerd\CmsContext $ctx)
 {
 
-// Call the content from the content file. Check the file type
-
-global $CONTENT;
-global $CSSPATH;
 
 
 // XHTML define
@@ -31,27 +29,24 @@ print("<head>");
 include ("contents/common-headertag.inc");
 // end common tags for CmsForNerd
 
-print("<title>".$CONTENT['title']."</title>");
-print("<style type=\"text/css\" media=\"all\">@import \"$CSSPATH\";</style>");
-print("<meta content=\"".$CONTENT['author']."\" name=\"author\" />");
-print("<meta content=\"".$CONTENT['description']."\" name=\"description\" />");
-print("<meta content=\"".$CONTENT['keywords']."\" name=\"keywords\" />");
-print("<meta name=\"Abstract\" content=\"".$CONTENT['description']."\" />");
-print("<meta name=\"head\" content=\"".$CONTENT['description']."\" />");
+print("<title>".$ctx->content['title']."</title>");
+print("<style type=\"text/css\" media=\"all\">@import \"$ctx->cssPath\";</style>");
+print("<meta content=\"".$ctx->content['author']."\" name=\"author\" />");
+print("<meta content=\"".$ctx->content['description']."\" name=\"description\" />");
+print("<meta content=\"".$ctx->content['keywords']."\" name=\"keywords\" />");
+print("<meta name=\"Abstract\" content=\"".$ctx->content['description']."\" />");
+print("<meta name=\"head\" content=\"".$ctx->content['description']."\" />");
 
 print("</head>");
 
 
 }
 
-function pagecontent()
+function pagecontent(CmsForNerd\CmsContext $ctx)
 
 {
 
-global $CONTENT;
-global $DATAFILE;
-
-include ("contents/".$DATAFILE['0']."-body.inc");
+include ("contents/".$ctx->dataFile['0']."-body.inc");
 
 // testing not working. let it be.
 //print($CONTENT['data']);
@@ -61,7 +56,7 @@ include ("contents/".$DATAFILE['0']."-body.inc");
 
 }
 
-function pagetailer()
+function pagetailer(CmsForNerd\CmsContext $ctx)
 
 {
 

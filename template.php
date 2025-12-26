@@ -44,7 +44,17 @@ $CONTENT['data']="empty";
 
 
 include("includes/global-control.inc.php");
+require_once("includes/CmsContext.php");
 include("includes/common.inc.php");
+
+// Initialize Context
+$ctx = new CmsForNerd\CmsContext(
+    content: $CONTENT,
+    themeName: $THEMENAME,
+    cssPath: $CSSPATH,
+    dataFile: $DATAFILE,
+    scriptName: $CONTENT['data']
+);
 
 // Define all the function needed call from theme
 
@@ -53,7 +63,7 @@ include("themes/$THEMENAME/pager.php");
 //function define in theme diretory theme.php
 //to change theme.php for page layout
 
-pager();
+pager($ctx);
 
 ob_end_flush();
 

@@ -28,29 +28,27 @@
 
 // Tipswanita blog template
 
-function pager()
+function pager(CmsForNerd\CmsContext $ctx)
 
 {
 
-global $THEMENAME;
-
-pageheader(); //must have
+pageheader($ctx); //must have
 
 // Just an example for more option in body tag
 // print("<body onload=\"javascript:hasIE_hideAndShow();\">"); //must have
 
 print("<body>"); //must have
 
-include("themes/$THEMENAME/bodytop.tpl");
+include("themes/$ctx->themeName/bodytop.tpl");
 
 
-pagecontent(); //must have
+pagecontent($ctx); //must have
 
 
-include("themes/$THEMENAME/bodyfooter.tpl");
+include("themes/$ctx->themeName/bodyfooter.tpl");
 
 print("</body>"); //must have
 
-pagetailer(); // must have
+pagetailer($ctx); // must have
 
 }
