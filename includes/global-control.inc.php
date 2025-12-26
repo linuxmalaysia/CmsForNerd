@@ -19,11 +19,8 @@
 // Remember all page call this and please check the local
 // theme or lang overwrite
 
-// lang selection
-// To translate just copy into another file
-// and then change below to read it.
 
-include("lang/en.lang");
+
 
 // Global themes selection
 // To change theme just copy into another file
