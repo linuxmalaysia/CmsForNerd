@@ -1,4 +1,9 @@
-<!-- start footer bodyfooter.tpl called by pager.php -->
+<!-- 
+FILE PURPOSE: Theme Lower Layout
+This file defines the lower structure of the page layout:
+1. Closes the #content and #container divs opened in 'bodytop.tpl'.
+2. Displays the #footer area.
+-->
 
 
 </div></div>

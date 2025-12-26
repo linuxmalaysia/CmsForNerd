@@ -1,4 +1,11 @@
-<!-- start of bodytop.tpl called by pager.php -->
+<!-- 
+FILE PURPOSE: Theme Upper Layout
+This file defines the upper structure of the page layout:
+1. Opens the main #container div.
+2. Includes the #top (header) and navigation sidebars (#leftnav, #rightnav).
+3. Opens the #content div where the main page logic will output data.
+NOTE: Several <div> tags opened here are closed in 'bodyfooter.tpl'.
+-->
 
 <!-- This div end at bodyfooter.tpl -->
 <div id="container">
