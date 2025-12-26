@@ -30,7 +30,7 @@
 ob_start("ob_gzhandler");
 
 $CONTENT['title']="Installation Of CmsForNerd A Content Management Software For Nerd";
-$CONTENT['author']="Wanita";
+$CONTENT['author']="CMSForNerd";
 $CONTENT['description']="Installation guide for CmsForNerd a content management software (CMS) for nerd.";
 $CONTENT['keywords']="CmsForNerd, CMS, HTML, PHP";
 

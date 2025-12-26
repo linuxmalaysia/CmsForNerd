@@ -55,7 +55,7 @@ if (isset($_SESSION['valid_session']) && $_SESSION['valid_session'] === true) {
 
 
 $CONTENT['title']="Sitemap For CmsForNerd A Content Management Software For Nerd";
-$CONTENT['author']="Wanita";
+$CONTENT['author']="CMSForNerd";
 $CONTENT['description']="Sitemap for CmsForNerd a content management software (CMS) for nerd.";
 $CONTENT['keywords']="CmsForNerd, CMS, HTML, PHP";
 

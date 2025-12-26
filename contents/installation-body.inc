@@ -1,67 +1,55 @@
-<h3 style="text-align: justify;">Introduction</h3>
-<div style="text-align: justify;"><a
- href="http://cmsfornerd.harisfazillah.info/"><span
- style="font-weight: bold;">CmsForNerd</span></a>
-is really for nerd. You need to know basic HTML, CSS and PHP to
-maintain it because it is not like any other content Management
-Software or CMS. We build <span style="font-weight: bold;">CmsForNerd</span>
-because we want to learn about HTML and how to code in PHP.<br />
-<br />
-<span style="font-weight: bold;">CmsForNerd</span>
-is for a small website, with static contents that not always need to be
-change. <span style="font-weight: bold;">CmsForNerd</span>
-is not using any database. We want a CMS that it is simple, easy to
-backup and recovery because we don't want to be worried about any lost
-of data in database due to hardware failure.<br />
-<br />
-We also build <span style="font-weight: bold;">CmsForNerd</span>
-so it is search engine friendly to Google and Yahoo. You can used <a
- href="http://users.skynet.be/mgueury/mozilla/" target="_blank">HTML
-Validator</a> add-on for Mozilla Firefox &nbsp;to validate
-yout HTML page.<br />
-</div>
-<h3 style="text-align: justify;">Installation</h3>
-<div style="text-align: justify;">Download the zip or tar
-ball and expand it inside the public directory of your web server. The
-web server need to support PHP.<br />
-</div>
-<h3 style="text-align: justify;">Configuration</h3>
-<div style="text-align: justify;">To create a page in <span
- style="font-weight: bold;">CmsForNerd</span>, it's
-used two files, one file need to be located at top level of webite with
-extension PHP (dot PHP <span style="font-weight: bold;">.php</span>).
-Another file located in contents directory (folder) with extension INC
-(dot INC .inc). Both must begin with the same name and need to follow
-this specific name format. For example the PHP file with name <span
- style="font-weight: bold;">test.php</span> should has
-file name <span style="font-weight: bold;">test-body.inc</span>
-in contents directory.<br />
-<br />
-The template files of <a
- href="http://cmsfornerd.harisfazillah.info/"><span
- style="font-weight: bold;">CmsForNerd</span></a>
-located in top level of the website and <span
- style="font-weight: bold;">contents</span> directory
-(folder). You can use <a target="_blank"
- href="http://www.nvu.com/">NVU</a> to code your <span
- style="font-weight: bold;">HTML</span>. Just copy the
-content between <span style="font-weight: bold;">BODY TAG</span>
-of your HTML source and put in your INC file. Your INC file should be
-named as per the PHP file at the top level of your website.<br />
-<br />
-For example if your page name is <span style="font-weight: bold;">search.php</span>
-then the file in the <span style="font-weight: bold;">contents</span>
-directory should be <span style="font-weight: bold;">search-body.inc</span>.
-<br />
-<br />
-Don't forget to copy at the top level of your website the file <span
- style="font-weight: bold;">template.php</span> into
-the&nbsp; name as per your file inside contents directory. Your
-need to edit the PHP file to customize the information HTML TAG as per
-your page content.<br />
-<br />
-For Web GUI interface, <a href="http://www.net2ftp.org/"
- target="_blank">net2ftp</a> a web based FTP client is
-recommeded to be use.<br />
-<br />
-</div>
+<h1>Introduction</h1>
+<p>
+    <strong>CMSForNerd</strong> is a lightweight, flat-file Content Management System geared towards developers and enthusiasts who want full control over their code. 
+    Unlike complex database-driven CMS platforms (like WordPress or Joomla), CMSForNerd stores all content in simple text files. 
+    This makes it incredibly fast, secure, and easy to backup—just copy the files!
+</p>
+<p>
+    We built <strong>CMSForNerd framework</strong> to help users learn the fundamentals of <strong>HTML5, CSS3, and Modern PHP (8.4+)</strong>.
+    It includes built-in security features like Cloudflare Turnstile integration and directory traversal protection.
+</p>
+
+<h3>Requirements</h3>
+<ul>
+    <li>Web Server (Apache, Nginx, or IIS)</li>
+    <li>PHP 8.2 or higher (PHP 8.4 Recommended)</li>
+    <li>No Database required!</li>
+</ul>
+
+<h3>Installation</h3>
+<ol>
+    <li>Download the latest release zip/tarball.</li>
+    <li>Extract the contents to your web server's public directory (e.g., <code>public_html</code> or <code>www</code>).</li>
+    <li>Ensure permissions are set correctly (typically 755 for directories, 644 for files).</li>
+    <li>Open <code>includes/global-control.inc.php</code> to configure your site name and theme.</li>
+</ol>
+
+<h3>How to Create Pages</h3>
+<p>
+    CMSForNerd uses a unique <strong>"Pair Logic"</strong> system. To create a new page (e.g., <em>About Us</em>), you need two files:
+</p>
+<ol>
+    <li>
+        <strong>The Entry Point (`about.php`):</strong> 
+        Copy <code>template.php</code> to the root directory and rename it to <code>about.php</code>.
+    </li>
+    <li>
+        <strong>The Content Body (`contents/about-body.inc`):</strong> 
+        Create a file inside the <code>contents/</code> folder named <code>about-body.inc</code>. 
+        Put your raw HTML content here (just the part inside the <code>&lt;body&gt;</code> tags).
+    </li>
+</ol>
+
+<h3>Recommended Tools</h3>
+<p>Coding and maintaining a flat-file site is easier with the right tools:</p>
+<ul>
+    <li><strong>Code Editor:</strong> <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code (VS Code)</a>, <a href="https://www.sublimetext.com/" target="_blank">Sublime Text</a>, or <a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a>.</li>
+    <li><strong>File Transfer:</strong> <a href="https://filezilla-project.org/" target="_blank">FileZilla</a> or <a href="https://winscp.net/" target="_blank">WinSCP</a> for uploading files.</li>
+    <li><strong>Local Server:</strong> <a href="https://www.apachefriends.org/" target="_blank">XAMPP</a> or <a href="https://laragon.org/" target="_blank">Laragon</a> for testing on your PC.</li>
+</ul>
+
+<h3>Security Features (v3.1)</h3>
+<p>
+    <strong>CMSForNerd v3.1</strong> includes strict input validation and <strong>Cloudflare Turnstile</strong> support. 
+    To enable Bot Protection on your forms, edit <code>includes/turnstile.php</code> and add your API keys.
+</p>

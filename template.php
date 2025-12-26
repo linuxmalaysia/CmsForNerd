@@ -29,7 +29,7 @@
 ob_start("ob_gzhandler");
 
 $CONTENT['title']="Template Page For CmsForNerd";
-$CONTENT['author']="Wanita";
+$CONTENT['author']="CMSForNerd";
 $CONTENT['description']="This is a template page for CmsForNerd. A Content Management Software like no others.";
 $CONTENT['keywords']="CmsForNerd, CMS, PHP, CSS, Malaysia, HTML";
 
