@@ -1,42 +1,65 @@
-Files in CmsForNerd
+# CmsForNerd
+**A Lightweight, Flat-File PHP CMS**
 
-(1) This files must be in the contents directory
+## Overview
+CmsForNerd is a simple, database-free Content Management System designed for speed and simplicity. It uses flat files for content, requiring only PHP to run.
 
-common-headertag.inc - Contain information for HEAD TAG
-header.inc - not used but need to have. Refer themes directory
-footer.inc - The footer of the website
-right-side.inc - Right  hand side colum
-left-side.inc - Left hand side colum
+**Current Version:** 3.1 (27 Dec 2025)  
+**Primary Maintainer:** Harisfazillah Jamel  
+**Assisted By:** Google Gemini (AI-Assisted Refactoring)
 
-(2) This files must be in the includes directory
+---
 
-common.inc.php - php functions
-global-control.inc.php - parameter global to all
+## 🚀 New in Version 3.1 (PHP 8.4 Modernization)
+This project has been heavily modernized to support the latest PHP standards and improve security.
 
-(3) This directory and files must be in the themes directory
+### Key Features
+*   **PHP 8.4 Ready**: Fully upgraded codebase using strict types, readonly classes, and modern syntax (`[]` arrays, match expressions).
+*   **Context Object Pattern**: Replaced legacy global variables with a robust `CmsContext` object for better state management.
+*   **Enhanced Security**:
+    *   **Cloudflare Turnstile**: Integrated invisible bot protection for forms.
+    *   **Bot Detection**: Optimized Regex-based detection to block scrapers effectively.
+    *   **Directory Traversal Protection**: Strict input validation on all entry points.
+*   **Clean Repository**: Removed legacy zip archives, unused scripts, and redundant files.
 
-CmsForNerd - the directory (folder)
+---
 
-Inside this folder should have this  files.
+## 📂 Directory Structure
 
-theme.php - This will call the style.css
-style.css - The CSS file that control the appearance of the website
-pager.php - The control page for the layout
-header.tpl - called by pager.php
-bodytop.tpl - called by pager.php
-bodyfooter.tpl - called by pager.php
+### 1. Content (`/contents`)
+Your actual page content goes here.
+*   `common-headertag.inc`: Metadata for `<head>`.
+*   `footer.inc`: Site footer.
+*   `right-side.inc` / `left-side.inc`: Sidebar columns.
 
-If you want to customize the layout. Copy the contents of this CmsForNerd folder into another name and it should be in themes directory.
+### 2. Core Logic (`/includes`)
+System files - generally, do not touch these unless you are a developer.
+*   `common.inc.php`: Core display functions.
+*   `CmsContext.php`: The main state object (New in v3.1).
+*   `turnstile.php`: Cloudflare security integration.
+*   `is_bot.php`: Bot detection logic.
 
-To called you new theme, change the file global-control.inc.php in includes directory. The parameter $THEMENAME="CmsForNerd"; should change to your theme name.
+### 3. Themes (`/themes`)
+To create a custom look:
+1.  Duplicate the `CmsForNerd` folder.
+2.  Edit `theme.php` and `style.css`.
+3.  Update config in `global-control.inc.php` to switch themes.
 
-http://cmsfornerd.harisfazillah.info/
+---
 
-18 November 2007
-23 May 2021
+## 🔧 Configuration
+Most settings are controlled via `includes/global-control.inc.php`.
 
-Version 2.0 22 April 2023
+To enable **Cloudflare Turnstile**:
+1.  Open `includes/turnstile.php`.
+2.  Add your Secret Key.
+3.  Add the frontend widget to your theme files.
 
-Move from Sourceforge.org 21 May 2015
-LinuxMalaysia
-Harisfazillah Jamel
+---
+
+## Credits
+*   **Original Author:** Harisfazillah Jamel (LinuxMalaysia)
+*   **Refactoring & Modernization:** Google Gemini (2025)
+
+**Links:**
+*   Website: [https://www.linuxmalaysia.com](https://www.linuxmalaysia.com)
