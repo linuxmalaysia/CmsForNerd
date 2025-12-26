@@ -88,6 +88,9 @@ include("themes/$THEMENAME/pager.php");
 //function define in theme diretory theme.php
 //to change theme.php for page layout
 
+// Security: Cloudflare Turnstile Check
+require_once('includes/turnstile.php');
+
 pager($ctx);
 
 ob_end_flush();

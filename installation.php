@@ -9,7 +9,7 @@
 // License GNU Public License V2
 // Harisfazillah Jamel v 1.1 7 Feb 2006 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
-// For http://cmsfornerd.perempuanmelayu.info/
+// For https://www.linuxmalaysia.com
 // http://cmsfornerd.harisfazillah.info/
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local
@@ -63,6 +63,9 @@ include("themes/$THEMENAME/pager.php");
 
 //function define in theme diretory theme.php
 //to change theme.php for page layout
+
+// Security: Cloudflare Turnstile Check
+require_once('includes/turnstile.php');
 
 pager($ctx);
 

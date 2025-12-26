@@ -7,7 +7,7 @@
 // Harisfazillah Jamel v 1.1 7 Feb 2006 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 1.3 10 Mac 2024 Linuxmalaysia @ gmail dot com
-// For http://www.perempuanmelayu.info/
+// For https://www.linuxmalaysia.com
 // For small site without database just pure php html xml code
 // Remember all page call this and please check the local
 // theme or lang overwrite

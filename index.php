@@ -110,6 +110,9 @@ if (is_bot()) {
  exit;
 }
 
+// Security: Cloudflare Turnstile Check (For POST requests)
+require_once('includes/turnstile.php');
+
 pager($ctx);
 
 // Check if the user submitted a logout request (optional)

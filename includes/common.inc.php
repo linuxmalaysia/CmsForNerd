@@ -6,7 +6,7 @@
 // License GNU Public License V2
 // Harisfazillah Jamel v 1.1 7 Feb 2006 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
-// For http://www.perempuanmelayu.info/
+// For https://www.linuxmalaysia.com
 // For small site without database just pure php html xml code
 // Remember all page call this and please check the local
 // theme or lang overwrite
@@ -36,6 +36,9 @@ print("<meta content=\"".$ctx->content['description']."\" name=\"description\" /
 print("<meta content=\"".$ctx->content['keywords']."\" name=\"keywords\" />");
 print("<meta name=\"Abstract\" content=\"".$ctx->content['description']."\" />");
 print("<meta name=\"head\" content=\"".$ctx->content['description']."\" />");
+
+// Cloudflare Turnstile Script
+print('<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>');
 
 print("</head>");
 

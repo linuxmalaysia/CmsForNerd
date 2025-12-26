@@ -8,7 +8,7 @@
 <a href="template.php">CmsForNerd Template</a>
 <a href="http://cmsfornerd.harisfazillah.info/">CmsForNerd Download</a>
 <a href="installation.php">CmsForNerd Installation</a>
-<a href="http://cmsfornerd.perempuanmelayu.info/">CmsForNerd Blog</a>
+<a href="https://www.linuxmalaysia.com">CmsForNerd Blog</a>
 
 </div>
 
