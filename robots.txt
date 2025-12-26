@@ -1,4 +1,4 @@
-# robots.txt file for http://cmsfornerd.harisfazillah.info/
+# robots.txt file for https://www.linuxmalaysia.com/
 
 User-agent: *
 Disallow: /themes/
