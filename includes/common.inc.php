@@ -8,6 +8,12 @@
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 3.1 27 Dec 2025
 // With the help of Google Gemini
+//
+// FILE PURPOSE:
+// Core Display Functions. This file:
+// 1. Defines pageheader(), pagecontent(), and pagetailer().
+// 2. Generates the standard <head> HTML tags.
+// 3. Loads the dynamic content based on the CmsContext.
 // For https://www.linuxmalaysia.com
 // For small site without database just pure php html xml code
 // Remember all page call this and please check the local

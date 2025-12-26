@@ -10,6 +10,11 @@
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 3.1 27 Dec 2025
 // With the help of Google Gemini
+//
+// FILE PURPOSE:
+// Template / Boilerplate. This file:
+// 1. Serves as a skeleton for creating new custom pages.
+// 2. demonstrates how to initialize the CMS Context and load the theme.
 // For https://www.linuxmalaysia.com
 // http://cmsfornerd.harisfazillah.info/
 // For small site without database just pure php html xml code

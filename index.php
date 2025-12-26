@@ -13,6 +13,13 @@
 // Harisfazillah Jamel v 2.1 10 mac 2024
 // Harisfazillah Jamel v 3.1 27 Dec 2025
 // With the help of Google Gemini
+//
+// FILE PURPOSE:
+// Main Entry Point. This file:
+// 1. Sanitizes user input (directory traversal protection).
+// 2. Initializes the CmsContext state object.
+// 3. Routes the request to the correct content file.
+// 4. Initiates the theme rendering system via pager().
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local
 // theme or lang overwrite

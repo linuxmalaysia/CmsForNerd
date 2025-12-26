@@ -9,6 +9,11 @@
 // Harisfazillah Jamel v 1.3 10 Mac 2024 Linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 3.1 27 Dec 2025
 // With the help of Google Gemini
+//
+// FILE PURPOSE:
+// Global Configuration. This file:
+// 1. Sets site-wide settings (Default Theme, Language).
+// 2. Defines the top-level variables used to bootstrap the system.
 // For https://www.linuxmalaysia.com
 // For small site without database just pure php html xml code
 // Remember all page call this and please check the local

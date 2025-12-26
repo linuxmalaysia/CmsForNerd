@@ -13,6 +13,12 @@
 // Harisfazillah Jamel v 2.1 10 mac 2024
 // Harisfazillah Jamel v 3.1 27 Dec 2025
 // With the help of Google Gemini
+//
+// FILE PURPOSE:
+// Sitemap Generator. This file:
+// 1. Scans the 'contents/' directory for valid content files.
+// 2. Generates an XML or HTML list of all available pages.
+// 3. Helps search engines (Google, Bing) index the site structure.
 // http://cmsfornerd.harisfazillah.info/
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local

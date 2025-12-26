@@ -11,6 +11,11 @@
 // Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
 // Harisfazillah Jamel v 3.1 27 Dec 2025
 // With the help of Google Gemini
+//
+// FILE PURPOSE:
+// Installation Guide. This file:
+// 1. Display the installation manual (INSTALL text).
+// 2. Serves as a standalone help page for setting up the CMS.
 // For https://www.linuxmalaysia.com
 // http://cmsfornerd.harisfazillah.info/
 // For small site without database just pure php html xml code
