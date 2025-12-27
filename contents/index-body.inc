@@ -7,7 +7,7 @@
         Unlike "black box" frameworks, CMSForNerd exposes the raw power of PHP 8.4. It empowers you to master the full stack—from PSR-12 compliant architecture to CSS Grid responsive design—without the overhead of a database.
     </p>
     <p>
-        Currently running on: <strong>PHP <?= phpversion() ?></strong>
+        Currently running on: <strong>PHP <?= phpversion() ?></strong> | <a href="lab-manual.php" style="font-weight: bold; color: #d9534f;">🎓 Open Lab Manual</a>
     </p>
 </div>
 

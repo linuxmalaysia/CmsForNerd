@@ -72,6 +72,15 @@
         </p>
     </section>
 
+    <section>
+        <h2>7. Education: The Developer’s Lab Manual</h2>
+        <p>
+            The project was further enhanced with the creation of a comprehensive <strong>Lab Manual</strong>. 
+            This interactive guide provides students with specific exercises in modern architecture, security, 
+            and testing, solidifying the CMS's role as a learning laboratory.
+        </p>
+    </section>
+
     <p class="footer-note">
         <em>"Modernization without loss of simplicity."</em> — Harisfazillah Jamel & Google Gemini, 2025.
     </p>
