@@ -4,6 +4,6 @@ CmsForNerd Main Site <a href="http://cmsfornerd.harisfazillah.info/">http://cmsf
 <br />
 CmsForNerd Blog <a href="https://www.linuxmalaysia.com">https://www.linuxmalaysia.com</a>
 <br />
-CopyRight 2005 2006 2007 Harisfazillah Jamel &reg;
+Copyright &copy; 2005 - 2025 Harisfazillah Jamel
 </p>
 </div>

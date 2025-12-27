@@ -66,6 +66,7 @@ To enable **Cloudflare Turnstile**:
 ## Credits
 *   **Original Author:** Harisfazillah Jamel (LinuxMalaysia)
 *   **Refactoring & Modernization:** Google Gemini (2025)
+*   **Inspiration:** Conceptualized from Drupal and XAMPP architecture.
 
 **Links:**
 *   Website: [https://www.linuxmalaysia.com](https://www.linuxmalaysia.com)
