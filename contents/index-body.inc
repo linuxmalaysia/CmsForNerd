@@ -50,7 +50,7 @@
 <h3>Recommended Stack</h3>
 <p>To get the most out of CMSForNerd, we recommend:</p>
 <ul>
-    <li><strong>Editor:</strong> <a href="https://code.visualstudio.com/" target="_blank">VS Code</a> with PHP Intelephense.</li>
-    <li><strong>Server:</strong> Apache or Nginx with PHP 8.2+.</li>
-    <li><strong>Browser:</strong> Chrome, Firefox, or Edge for testing modern CSS Grid/Flexbox layouts.</li>
+    <li><strong>Editor:</strong> Google Antigravity (Advanced AI Coding).</li>
+    <li><strong>Server:</strong> Nginx Latest with PHP 8.4+.</li>
+    <li><strong>Browser:</strong> Mozilla Firefox for testing strict privacy and modern web standards.</li>
 </ul>
