@@ -70,3 +70,10 @@ To enable **Cloudflare Turnstile**:
 
 **Links:**
 *   Website: [https://www.linuxmalaysia.com](https://www.linuxmalaysia.com)
+
+---
+
+### 🛠️ Maintenance Note
+Remember to run `composer install` if you move the project to a new machine to ensure the autoloader and PHPUnit are ready to go.
+
+*All changes have been committed and pushed to the GitHub repository. It has been a pleasure modernizing this "Radically Simple" CMS with you!*

@@ -48,8 +48,16 @@
     <li><strong>Local Server:</strong> <a href="https://www.apachefriends.org/" target="_blank">XAMPP</a> or <a href="https://laragon.org/" target="_blank">Laragon</a> for testing on your PC.</li>
 </ul>
 
-<h3>Security Features (v3.1)</h3>
-<p>
     <strong>CMSForNerd v3.1</strong> includes strict input validation and <strong>Cloudflare Turnstile</strong> support. 
     To enable Bot Protection on your forms, edit <code>includes/turnstile.php</code> and add your API keys.
 </p>
+
+<h3>Maintenance Note</h3>
+<p>
+    Remember to run <code>composer install</code> if you move the project to a new machine to ensure the autoloader and PHPUnit are ready to go.
+</p>
+
+<p>
+    <em>All changes have been committed and pushed to your GitHub repository. It has been a pleasure modernizing this "Radically Simple" CMS with you!</em>
+</p>
+

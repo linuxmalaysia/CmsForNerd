@@ -29,3 +29,7 @@ Don't forget to copy at the top level of your website the file template.php into
 For Web GUI interface, net2ftp a web based FTP client is recommeded to be use.
 
 http://www.net2ftp.org/
+
+* Maintenance Note *
+
+Remember to run composer install if you move the project to a new machine to ensure the autoloader and PHPUnit are ready to go.
