@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+
 // [BOILERPLATE] template.php - The base foundation for all Nerd-Stack pages.
 //
 // HOW TO USE:
