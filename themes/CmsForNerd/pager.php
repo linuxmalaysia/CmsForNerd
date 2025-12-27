@@ -36,27 +36,29 @@
 
 // Tipswanita blog template
 
+// [STRUCTURE] pager() is the "Architect" function. 
+// It defines the order in which your page pieces are put together.
 function pager(CmsForNerd\CmsContext $ctx)
-
 {
+    // 1. Build the <head> (Titles, Meta tags, CSS)
+    pageheader($ctx); 
 
-pageheader($ctx); //must have
+    // 2. Open the <body> tag. 
+    print("<body>"); 
 
-// Just an example for more option in body tag
-// print("<body onload=\"javascript:hasIE_hideAndShow();\">"); //must have
+    // 3. Load the top part of the theme (Logo, Top Navigation, Sidebars).
+    // This is stored in bodytop.tpl as a template file.
+    include "themes/{$ctx->themeName}/bodytop.tpl";
 
-print("<body>"); //must have
+    // 4. Load the unique content for this specific page (from contents/ directory).
+    pagecontent($ctx); 
 
-include "themes/{$ctx->themeName}/bodytop.tpl";
+    // 5. Load the bottom part of the theme (Footer, Copyright).
+    include "themes/{$ctx->themeName}/bodyfooter.tpl";
 
+    // 6. Close the <body> tag.
+    print("</body>"); 
 
-pagecontent($ctx); //must have
-
-
-include "themes/{$ctx->themeName}/bodyfooter.tpl";
-
-print("</body>"); //must have
-
-pagetailer($ctx); // must have
-
+    // 7. Close the <html> tag and any remaining buffers.
+    pagetailer($ctx); 
 }

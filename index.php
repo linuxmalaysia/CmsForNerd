@@ -29,109 +29,87 @@
 // The contents of the page will be in contents/
 // and with name ???-body.inc
 
+// [PEFORMANCE] output buffering (ob_gzhandler) compresses your page for faster loading.
+// It also prevents "headers already sent" errors when calling session_start() or header().
 ob_start("ob_gzhandler");
+
+// [MODERN PHP] Composer Autoloader - Automatically loads our classes from /includes
 require_once __DIR__ . '/vendor/autoload.php';
 
+// [SEO] Metadata - These help search engines understand what your site is about.
 $CONTENT['title']="CmsForNerd A Content Management Software For Nerd";
 $CONTENT['author']="LinuxMalaysia";
 $CONTENT['description']="CmsForNerd is a content management software (CMS) for nerd.";
 $CONTENT['keywords']="CmsForNerd, CMS, HTML, PHP";
 
-// Ini untuk kalau masukkan ikut web browser
-//$CONTENT['data']=basename($_SERVER['QUERY_STRING']);
-
-//We read the script name
-
+// [ROUTING] determine which file to load
 $CONTENT['data']=basename($_SERVER['SCRIPT_NAME']);
-
-
 $DATAFILE = explode(".",$CONTENT['data']);
 
-
-// Just in case
-if (empty($CONTENT['data'])) {
-$CONTENT['data']="empty";
-}
-
-// Security Hardening (PHP 8.4)
-// Determine the raw page request
+// [SECURITY] Input Sanitization (PHP 8.4 Match Expression)
+// We only allow safe characters to prevent Directory Traversal attacks.
 $rawPage = match(true) {
-    !empty($_SERVER['QUERY_STRING']) => $_SERVER['QUERY_STRING'],
-    default => basename($_SERVER['SCRIPT_NAME'])
+    !empty($_SERVER['QUERY_STRING']) => $_SERVER['QUERY_STRING'], // User-provided query
+    default => basename($_SERVER['SCRIPT_NAME']) // Fallback to current script
 };
 
-// Sanitize: Allow only alphanumeric, hyphen, underscore
+// [SECURITY] We use a dedicated SecurityUtils class to validate names strictly.
 $page = CmsForNerd\SecurityUtils::isValidPageName($rawPage) 
     ? $rawPage 
-    : 'index.php'; // Fallback to safe default
+    : 'index'; // If unsafe, force back to index
 
-// Remove extension if present for consistent processing
+// Remove extension if present to simplify internal lookups
 $page = pathinfo($page, PATHINFO_FILENAME);
-
 $CONTENT['data'] = $page;
 
+// [STRUCTURE] Include global settings and core functions
 include("includes/global-control.inc.php");
 include("includes/common.inc.php");
 
-// Initialize Context
+// [MODERN PHP] CmsContext - An object-oriented way to pass site state.
+// This replaces old 'global $variables' which are harder to track.
 $ctx = new CmsForNerd\CmsContext(
     content: $CONTENT,
     themeName: $THEMENAME,
-    cssPath: $CSSPATH, // Defined in theme.php via global-control
+    cssPath: $CSSPATH,
     dataFile: $DATAFILE,
     scriptName: $CONTENT['data']
 );
 
-// Start the session with a timeout of 30 minutes (in seconds)
-ini_set('session.gc_maxlifetime', '1800');
+// [SECURITY] Session Management - Protects against session hijacking with a timeout.
+ini_set('session.gc_maxlifetime', '1800'); // 30 minutes
 session_start();
-
-// Set the session creation time (optional for approach 2)
-$_SESSION['session_start_time'] = time(); // Uncomment for approach 2
-
-// Set a session variable to indicate a valid session
+$_SESSION['session_start_time'] = time();
 $_SESSION['valid_session'] = true;
 
-
-// Define all the function needed call from theme
-
+// [STRUCTURE] Load the theme's controller
 include "themes/{$ctx->themeName}/pager.php";
 
-//function define in theme diretory theme.php
-//to change theme.php for page layout
-
-// Include the function to detect bots (assuming it's a valid file)
+// [SECURITY/SEO] Bot Detection
+// We handle bots differently to save resources or provide specific indexing signals.
 require_once('includes/is_bot.php');
 
-// Check if the request is from a bot using the included function
 if (is_bot()) {
-  // Set content type as plain text for bots
   header('Content-Type: text/plain');
-  
-  echo "This is a page specifically for search engine crawlers.\n";
-  
-  // Additional information for indexing (e.g., sitemap URL)
-  echo "Sitemap: https://www.linuxmalaysia.com/xml-sitemap.php\n";
-  
-  // Log bot visit (assuming you have a logging mechanism)
-  // ... (code to log visit details)
- // need to exit
- exit;
+  echo "Welcome bot! This is a optimized text view for indexing.\n";
+  echo "Sitemap: https://www.linuxmalaysia.com/sitemap.php\n";
+  exit;
 }
 
-// Security: Cloudflare Turnstile Check (For POST requests)
+// [SECURITY] Cloudflare Turnstile - Invisible bot protection for forms
 require_once('includes/turnstile.php');
 
+// [RENDER] The main function that builds your page!
 pager($ctx);
 
-// Check if the user submitted a logout request (optional)
+// [LOGIC] Optional logout handling
 if (isset($_GET['logout'])) {
-  // User requested logout, destroy session and redirect
   session_destroy();
   header('Location: index.php');
   exit;
 }
 
+// [PERFORMANCE] Release the buffer and send content to the browser
 ob_end_flush();
 
 ?>

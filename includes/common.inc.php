@@ -21,37 +21,36 @@
 
 // Call the content from the content object. Check the file type
 
+// [SEO/HTML5] pageheader() builds the top part of every HTML document.
 function pageheader(CmsForNerd\CmsContext $ctx)
 {
+    // [SEO] The DOCTYPE tells the browser we are using modern HTML5.
+    print("<!DOCTYPE html>\n");
+    print("<html lang=\"en\">");
+    print("<head>");
 
+    // [STRUCTURE] common-headertag.inc contains our CSP and Meta tags (SEO/Security).
+    include ("contents/common-headertag.inc");
 
+    // [SEO] Dynamically set the page title from our content state.
+    print("<title>".$ctx->content['title']."</title>");
 
-// HTML5 define
-print("<!DOCTYPE html>\n");
-print("<html lang=\"en\">");
+    // [THEME] Import the stylesheet chosen in global-control.inc.php.
+    print("<style type=\"text/css\" media=\"all\">@import \"$ctx->cssPath\";</style>");
 
-print("<head>");
+    // [SECURITY] Turnstile script is needed on every page to protect forms from bots.
+    print('<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>');
 
-// start common tags for CmsForNerd
-include ("contents/common-headertag.inc");
-// end common tags for CmsForNerd
-
-print("<title>".$ctx->content['title']."</title>");
-print("<style type=\"text/css\" media=\"all\">@import \"$ctx->cssPath\";</style>");
-
-// Cloudflare Turnstile Script
-print('<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>');
-
-print("</head>");
-
-
+    print("</head>");
 }
 
+// [LOGIC] pagecontent() is the heart of the CMS. It decides which body file to load.
 function pagecontent(CmsForNerd\CmsContext $ctx)
-
 {
-
-include ("contents/".$ctx->dataFile['0']."-body.inc");
+    // [DYNAMIC LOADING] This line combines the filename with "-body.inc".
+    // Example: If the user is on index.php, it loads "contents/index-body.inc".
+    // This allows you to add pages just by creating new files in /contents.
+    include ("contents/".$ctx->dataFile['0']."-body.inc");
 
 // testing not working. let it be.
 //print($CONTENT['data']);
@@ -61,12 +60,10 @@ include ("contents/".$ctx->dataFile['0']."-body.inc");
 
 }
 
+// [STRUCTURE] pagetailer() closes the HTML document.
 function pagetailer(CmsForNerd\CmsContext $ctx)
-
 {
-
-print("</html>");
-
+    print("</html>");
 }
 
 ?>

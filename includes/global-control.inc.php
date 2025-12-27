@@ -22,17 +22,16 @@
 
 
 
-// Global themes selection
-// To change theme just copy into another file
-// and then change below to read it.
-//$THEMENAME="blog";
+// [LOGIC] Configuration File - This centralizes your site's settings.
+// This is where you change the look and feel of your entire site.
 
+// [THEME] Set the active theme folder name.
 $THEMENAME="CmsForNerd";
 
+// [STRUCTURE] Include the theme's specific settings (like CSS paths).
 include("themes/$THEMENAME/theme.php");
 
-// Additional information for indexing (using config variable)
-// Please adjust for your site
-$CONFIG['sitemap_url'] = 'https://yourwebsite.com/sitemap.xml';
+// [SEO] Configuration for your sitemap URL. This is used by bot detectors.
+$CONFIG['sitemap_url'] = 'https://www.linuxmalaysia.com/sitemap.php';
 
 ?>

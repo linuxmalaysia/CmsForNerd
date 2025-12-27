@@ -2,26 +2,22 @@
 declare(strict_types=1);
 
 /**
- * is_bot
- * 
- * Detects search engine bots, crawlers, and spiders using a consolidated Regex pattern.
- * Replaces the legacy 800+ line array method.
- * 
- * @param string|null $userAgent Optional user agent string. Defaults to $_SERVER['HTTP_USER_AGENT'].
- * @return bool True if a bot is detected.
+ * [SEO/PERFORMANCE] is_bot() checks if the visitor is a search engine crawler.
+ * Understanding bots is key for:
+ * 1. SEO: Serving optimized content to Googlebot.
+ * 2. PERFORMANCE: Preventing aggressive crawlers from slowing down your site.
  */
 function is_bot(?string $userAgent = null): bool
 {
-    // Use provided UA or fallback to server variable
+    // [PHP] $_SERVER['HTTP_USER_AGENT'] is a string identify the browser/bot.
     $userAgent = $userAgent ?? $_SERVER['HTTP_USER_AGENT'] ?? '';
     
-    // If empty, we can't detect
     if (empty($userAgent)) {
         return false;
     }
 
-    // Consolidated pattern of common bots
-    // This covers major search engines, social media bots, and common crawler keywords.
+    // [MODERN PHP] We use Regular Expressions (Regex) to find bot names in the User Agent string.
+    // Instead of a giant list, this single pattern is much faster for the server to process.
     $pattern = '/(' .
         'googlebot|bingbot|yandex|baiduspider|twitterbot|facebookexternalhit|rogerbot|linkedinbot|' .
         'embedly|quora link preview|showyoubot|outbrain|pinterest\/0\.|pinterestbot|slackbot|vkShare|' .
@@ -29,9 +25,10 @@ function is_bot(?string $userAgent = null): bool
         'nuzzel|discordbot|google page speed|qwantify|pinterest|wordpress|xing-content|' .
         'telegrambot|mediapartners-google|mj12bot|ahrefsbot|semrushbot|dotbot|' .
         'duckduckbot|ia_archiver|amazonaws\.com|netcraft|coccoc|surdotly|' .
-        'bot|crawl|spider|slurp|search' . // Fallback generic keywords
+        'bot|crawl|spider|slurp|search' . 
         ')/i';
 
+    // preg_match() returns 1 if it finds a match, 0 if not.
     return (bool) preg_match($pattern, $userAgent);
 }
 
