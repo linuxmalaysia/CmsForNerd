@@ -75,6 +75,16 @@
         <p><strong>Concept: "Confidence in Code"</strong>—100% coverage doesn't mean bug-free, but it means everything was tested.</p>
     </section>
 
+    <section class="module exam-module">
+        <h2>🚩 The Final Exam: Break-Fix Challenge</h2>
+        <p>The ultimate test of a modern backend engineer. Repair a broken system to prove your mastery.</p>
+        <div class="exercise">
+            <h3>Challenge: Repair the Laboratory</h3>
+            <p>You must fix 5 deliberate security and logic errors to pass the certification audit.</p>
+            <p><a href="final-exam.php" class="btn">🚀 Start the Final Exam</a></p>
+        </div>
+    </section>
+
     <hr>
 
     <section class="case-study">
