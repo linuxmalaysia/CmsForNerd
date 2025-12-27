@@ -19,7 +19,7 @@
 // 1. Scans the 'contents/' directory for valid content files.
 // 2. Generates an XML or HTML list of all available pages.
 // 3. Helps search engines (Google, Bing) index the site structure.
-// http://cmsfornerd.harisfazillah.info/
+// https://www.linuxmalaysia.com/
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local
 // theme or lang overwrite

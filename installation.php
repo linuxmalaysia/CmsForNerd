@@ -17,7 +17,7 @@
 // 1. Display the installation manual (INSTALL text).
 // 2. Serves as a standalone help page for setting up the CMS.
 // For https://www.linuxmalaysia.com
-// http://cmsfornerd.harisfazillah.info/
+// https://www.linuxmalaysia.com/
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local
 // theme or lang overwrite

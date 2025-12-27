@@ -33,7 +33,7 @@
   <b>cmsfornerd</b>
   </td></tr>
   <tr><td style="padding-left: 5px">
-  <a href="http://groups.google.com/group/cmsfornerd">Visit this group</a>
+  <a href="https://groups.google.com/group/cmsfornerd">Visit this group</a>
   </td></tr>
 </table>
 

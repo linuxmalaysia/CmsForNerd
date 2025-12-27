@@ -10,7 +10,7 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 
 <!-- Security: Content Security Policy (Basic) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://*.ipinfo.io https://pagead2.googlesyndication.com; img-src 'self' data: https: https://www.google.com https://groups.google.com https://www.rorweb.com; font-src 'self' https: data:;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://*.ipinfo.io https://pagead2.googlesyndication.com https://www.google.com; img-src 'self' data: https: https://www.google.com https://groups.google.com https://www.rorweb.com https://*.googlesyndication.com; font-src 'self' https: data:;">
 
 <!-- RSS Feed (If applicable) -->
 <!-- <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="xml-sitemap.php"> -->

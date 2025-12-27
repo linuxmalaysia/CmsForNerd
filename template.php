@@ -16,7 +16,7 @@
 // 1. Serves as a skeleton for creating new custom pages.
 // 2. demonstrates how to initialize the CMS Context and load the theme.
 // For https://www.linuxmalaysia.com
-// http://cmsfornerd.harisfazillah.info/
+// https://www.linuxmalaysia.com/
 // For small site without database just pure php html xml code
 // Remember all page copy this and please check the local
 // theme or lang overwrite

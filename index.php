@@ -111,7 +111,7 @@ if (is_bot()) {
   echo "This is a page specifically for search engine crawlers.\n";
   
   // Additional information for indexing (e.g., sitemap URL)
-  echo "Sitemap: https://yourwebsite.com/sitemap.xml\n";
+  echo "Sitemap: https://www.linuxmalaysia.com/xml-sitemap.php\n";
   
   // Log bot visit (assuming you have a logging mechanism)
   // ... (code to log visit details)
