@@ -92,7 +92,7 @@ sudo chmod -R 755 /var/www/cmsfornerd</code>
             <li><strong>REQUIRED:</strong> Install the <code>php-mbstring</code> extension for full international text support.</li>
             <li><strong>SHOULD:</strong> Enable <code>Xdebug</code> for Module 5 (Code Coverage) testing.</li>
         </ul>
-    </footer
+    </footer>
 
     <nav class="progress-nav">
         <a href="windows-setup.php" class="btn prev">&lt; Previous: Windows Setup</a>
@@ -106,9 +106,9 @@ sudo chmod -R 755 /var/www/cmsfornerd</code>
 .linux-setup .requirement-alert { background: #e8f5e9; border: 1px solid #c8e6c9; color: #2e7d32; padding: 1rem; border-radius: 4px; margin-bottom: 2rem; }
 .linux-setup h2 { color: #333; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; margin-top: 2rem; }
 .linux-setup .os-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
-.linux-setup .os-block { background: #fdfdfd; padding: 1.5rem; border: 1px solid #eee; border-radius: 8px; }
-.linux-setup .terminal-block { background: #1a1a1a; color: #fff; padding: 1rem; font-family: 'Consolas', 'Monaco', monospace; border-radius: 4px; margin: 1rem 0; border-left: 5px solid #2ecc71; overflow-x: auto; }
-.linux-setup .terminal-block code { color: #a2f2a2; white-space: pre; }
+.linux-setup .os-block { background: #fdfdfd; padding: 1.5rem; border: 1px solid #eee; border-radius: 8px; min-width: 0; }
+.linux-setup .terminal-block { background: #1a1a1a; color: #fff; padding: 1rem; font-family: 'Consolas', 'Monaco', monospace; border-radius: 4px; margin: 1rem 0; border-left: 5px solid #2ecc71; overflow-x: auto; max-width: 100%; box-sizing: border-box; }
+.linux-setup .terminal-block code { color: #a2f2a2; white-space: pre-wrap; word-break: break-all; }
 .linux-setup .standards-summary { margin-top: 3rem; background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border: 1px solid #eee; }
 .progress-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding: 2rem 0; border-top: 2px solid #eee; }
 .progress-nav .btn { padding: 1rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold; }

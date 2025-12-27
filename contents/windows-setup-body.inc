@@ -105,7 +105,7 @@
 .setup-guide h2 { color: #333; margin-top: 3rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
 .setup-guide .tool-card { background: #fff; border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 .setup-guide .tool-card h3 { margin-top: 0; color: #0056b3; }
-.setup-guide .terminal-block { background: #1a1a1a; color: #00ff00; padding: 1rem; font-family: 'Consolas', monospace; border-radius: 4px; margin: 1rem 0; overflow-x: auto; }
+.setup-guide .terminal-block { background: #1a1a1a; color: #00ff00; padding: 1rem; font-family: 'Consolas', monospace; border-radius: 4px; margin: 1rem 0; overflow-x: auto; max-width: 100%; box-sizing: border-box; white-space: pre-wrap; word-break: break-all; }
 .setup-guide .phase.reasoning { background: #fffbea; padding: 1.5rem; border-radius: 8px; border: 1px solid #fde68a; }
 .setup-guide .phase.reasoning h2 { border-bottom-color: #fde68a; }
 .setup-guide .guide-footer { background: #f8f9fa; padding: 2rem; border-radius: 8px; text-align: center; margin-top: 4rem; }

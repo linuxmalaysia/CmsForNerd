@@ -143,7 +143,7 @@
 .welcome-kit .stack-table th { background: #f8f9fa; }
 .welcome-kit .command-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
 .welcome-kit .cmd-item { background: #fff; border: 1px solid #ddd; padding: 1rem; border-radius: 4px; }
-.welcome-kit .cmd-item code { display: block; margin-top: 0.5rem; background: #212529; color: #f8f9fa; padding: 0.5rem; border-radius: 4px; }
+.welcome-kit .cmd-item code { display: block; margin-top: 0.5rem; background: #212529; color: #f8f9fa; padding: 0.5rem; border-radius: 4px; white-space: pre-wrap; word-break: break-all; }
 .welcome-kit .standard-list { list-style: none; padding: 0; }
 .welcome-kit .standard-list li { margin-bottom: 0.75rem; }
 .welcome-kit .must { color: #d9534f; font-weight: bold; }
