@@ -35,4 +35,18 @@ class SecurityUtils
         // [RFC 2119] Requirement: MUST be sanitized using preg_replace.
         return preg_replace('/[^a-zA-Z0-9_\-]/', '', $pageName);
     }
+
+    /**
+     * [SECURITY] Escape HTML special characters to prevent XSS.
+     * Requirement: All user-provided strings MUST be escaped before rendering.
+     *
+     * @param string $content
+     * @return string
+     */
+    public static function escapeHtml(string $content): string
+    {
+        // [RFC 2119] Requirement: MUST be escaped using htmlspecialchars().
+        // ENT_QUOTES ensures both single and double quotes are escaped.
+        return htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
+    }
 }

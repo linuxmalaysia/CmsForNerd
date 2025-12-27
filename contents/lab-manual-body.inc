@@ -57,6 +57,7 @@
         <div class="exercise">
             <h3>Exercise: Write a new test</h3>
             <p>Create a test in <code>tests/ThemeIntegrityTest.php</code> that fails if a student accidentally deletes the <code>style.css</code> file.</p>
+            <p><a href="lab-module4.php" class="btn">📝 Open Student Worksheet: Module 4</a></p>
         </div>
         <p><strong>Concept: "Green-Light Thinking"</strong>—if the tests aren't green, the code isn't ready.</p>
     </section>
