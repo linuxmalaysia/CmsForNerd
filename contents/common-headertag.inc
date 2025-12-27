@@ -20,6 +20,10 @@
 <!-- [SEMANTIC WEB] RDF Metadata - Machine-readable site classification for AI and search engines. -->
 <link rel="meta" type="application/rdf+xml" title="Site Metadata" href="labels.rdf">
 
+<!-- [AI/SEO] Schema.org Image for Rich Cards/Previews -->
+<meta itemprop="image" content="<?= $ctx->baseUrl ?>images/cmsfornerd-logo.png">
+<meta itemprop="description" content="<?= htmlspecialchars($CONTENT['description'] ?? 'A modern PHP 8.4+ educational CMS environment.') ?>">
+
 <!-- [AI/SEO] JSON-LD Structured Data - 2025 gold standard for Google, Gemini, and ChatGPT. -->
 <script type="application/ld+json" nonce="<?= $ctx->cspNonce ?>">
 {

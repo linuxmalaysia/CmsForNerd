@@ -23,6 +23,8 @@ This document defines the "Laws of the Project" using the requirement levels des
 1. **JSON-LD:** All pages **MUST** output a valid JSON-LD block to assist AI tools in understanding the curriculum.
 2. **Schema Types:** The `@type` **SHOULD** be "Course" for lab modules and "WebPage" for standard content.
 3. **Dynamic Metadata:** JSON-LD content **MUST** be populated dynamically from `$CONTENT` variables.
+4. **Microdata:** The `<html>` tag **MUST** include `itemscope` and `itemtype` attributes for immediate AI classification.
+5. **Consistency:** The `itemtype` in the `<html>` tag **SHOULD** match the `@type` in JSON-LD to avoid confusing crawlers.
 
 ## Documentation & Educational Requirements
 
