@@ -230,9 +230,24 @@ document.body.appendChild(script);</code></pre>
 .lab-worksheet .terminal-block { background: #000; color: #00ff00; padding: 1rem; font-family: 'Courier New', Courier, monospace; border-radius: 4px; margin: 1rem 0; }
 .lab-worksheet .question-box { background: #d9edf7; border: 1px solid #bce8f1; color: #31708f; padding: 1rem; border-radius: 4px; margin: 2rem 0; }
 .lab-worksheet .standards-summary { margin-top: 3rem; background: #f5f5f5; padding: 1.5rem; border-radius: 8px; }
+.lab-worksheet .concept-box { background: #e7f3ff; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #0066cc; margin: 1.5rem 0; }
+.lab-worksheet .file-study { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; border: 1px solid #dee2e6; }
+.lab-worksheet .file-study h4 { color: #495057; margin-top: 0; }
+.lab-worksheet .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+.lab-worksheet .vulnerable-code { background: #fff; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #dc3545; }
+.lab-worksheet .secure-code { background: #fff; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #28a745; }
+.lab-worksheet .danger { color: #dc3545; font-weight: bold; }
+.lab-worksheet .success { color: #28a745; font-weight: bold; }
+.lab-worksheet .console-output { background: #2d2d2d; color: #f8f8f2; padding: 1rem; border-radius: 4px; margin: 0.5rem 0; }
+.lab-worksheet kbd { background: #333; color: #fff; padding: 0.2rem 0.5rem; border-radius: 3px; font-family: monospace; font-size: 0.9rem; }
+.lab-worksheet .guide-link { display: inline-block; background: #c7254e; color: white; padding: 0.5rem 1rem; text-decoration: none; border-radius: 4px; margin: 1rem 0; }
+.lab-worksheet .guide-link:hover { background: #a02040; }
 .progress-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding: 2rem 0; border-top: 2px solid #eee; }
 .progress-nav .btn { padding: 1rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold; }
 .progress-nav .prev { background: #6c757d; color: #fff; }
 .progress-nav .next { background: #d9534f; color: #fff; }
-@media (max-width: 768px) { .progress-nav { flex-direction: column; gap: 1rem; } }
+@media (max-width: 768px) { 
+    .progress-nav { flex-direction: column; gap: 1rem; } 
+    .lab-worksheet .comparison-grid { grid-template-columns: 1fr; }
+}
 </style>
