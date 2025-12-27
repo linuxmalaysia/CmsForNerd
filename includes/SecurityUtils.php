@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace CmsForNerd;
@@ -12,11 +13,26 @@ class SecurityUtils
     /**
      * [SECURITY] isValidPageName() prevents "Directory Traversal" attacks.
      * All requested page names MUST be validated by this method before use in file paths.
+     *
+     * @param string $page The page name to validate.
+     * @return bool True if the name is valid.
      */
     public static function isValidPageName(string $page): bool
     {
-        // [PHP] preg_match() checks the string against a 'Regular Expression' pattern.
+        // [PHP] we only allow simple letters, numbers, and dashes.
         return (bool) preg_match('/^[a-zA-Z0-9_\-]+$/', $page);
     }
-}
 
+    /**
+     * [SECURITY] Sanitize the page parameter to prevent directory traversal.
+     * Requirement: The 'page' parameter MUST be sanitized using preg_replace.
+     *
+     * @param string $page
+     * @return string
+     */
+    public static function sanitizePage(string $page): string
+    {
+        // [RFC 2119] Requirement: MUST be sanitized using preg_replace.
+        return preg_replace('/[^a-zA-Z0-9_\-]/', '', $page);
+    }
+}

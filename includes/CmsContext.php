@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace CmsForNerd;
@@ -19,4 +20,3 @@ readonly class CmsContext
     ) {
     }
 }
-

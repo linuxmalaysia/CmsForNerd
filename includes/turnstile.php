@@ -19,7 +19,7 @@ function verifyTurnstile(string $token, string $remoteIp): bool
     }
 
     $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-    
+
     // [PHP INTERNALS] cURL SHOULD be used for robust API requests.
     $ch = curl_init($url);
     curl_setopt_array($ch, [
@@ -57,5 +57,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
         die("Security Check Failed: Automated traffic detected (Turnstile).");
     }
 }
-
-?>

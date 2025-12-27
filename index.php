@@ -1,3 +1,7 @@
+<?php
+
+declare(strict_types=1);
+
 // [PEFORMANCE] output buffering (ob_gzhandler) RECOMMENDED to compress pages.
 ob_start("ob_gzhandler");
 
@@ -76,5 +80,3 @@ if (isset($_GET['logout'])) {
 
 // [PERFORMANCE] Release the buffer
 ob_end_flush();
-
-?>
