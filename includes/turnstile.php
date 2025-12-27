@@ -1,25 +1,26 @@
 <?php
+
 declare(strict_types=1);
 
-/**
- * Cloudflare Turnstile Verification for PHP 8.4
- * Integration for CmsForNerd
- */
+// [SECURITY] Cloudflare Turnstile MUST be used to block automated bots.
+// Verification SHOULD be performed for all sensitive POST requests.
 
-// 1. Configuration (Move these to a config file later)
 if (!defined('TURNSTILE_SECRET_KEY')) {
     define('TURNSTILE_SECRET_KEY', 'YOUR_SECRET_KEY_HERE');
 }
 
 /**
- * Verifies the Turnstile Token
+ * [SECURITY] verifyTurnstile() performs a RECOMMENDED "Server-to-Server" check.
  */
-function verifyTurnstile(string $token, string $remoteIp): bool {
-    if (empty($token)) return false;
+function verifyTurnstile(string $token, string $remoteIp): bool
+{
+    if (empty($token)) {
+        return false;
+    }
 
     $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-    
-    // PHP 8.4: Using cURL for a robust POST request
+
+    // [PHP INTERNALS] cURL SHOULD be used for robust API requests.
     $ch = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
@@ -42,23 +43,17 @@ function verifyTurnstile(string $token, string $remoteIp): bool {
     }
 
     $outcome = json_decode($response, true);
-    
-    // PHP 8 logic: check for success property
     return (bool)($outcome['success'] ?? false);
 }
 
-// 2. Global Control Execution
-// Only verify if a POST request is being made (e.g., login or contact form)
-// AND the user is not logged in (optional refinenement, but sticking to basics first)
+// [LOGIC] Automatic Verification MUST be active for POST requests.
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
-    
     $userToken = $_POST['cf-turnstile-response'] ?? '';
     $userIp    = $_SERVER['REMOTE_ADDR'] ?? '';
 
     if (!verifyTurnstile($userToken, $userIp)) {
-        // Modern PHP 8.1+ Enums or Match can be used for error handling
+        // [SECURITY] Failed verification MUST result in a 403 response.
         http_response_code(403);
         die("Security Check Failed: Automated traffic detected (Turnstile).");
     }
 }
-?>

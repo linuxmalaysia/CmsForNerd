@@ -1,28 +1,21 @@
 <?php
 
-// This is the script that give the file name without extension .php
-// and pass it to others.
+declare(strict_types=1);
 
-// CmsForNerd 
-// Idea from drupal and xampp and some codes from them
-// License GNU Public License V2
-// Harisfazillah Jamel v 1.1 7 Feb 2006 linuxmalaysia @ gmail dot com
-// Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
-// For https://www.linuxmalaysia.com
-// http://cmsfornerd.harisfazillah.info/
-// For small site without database just pure php html xml code
-// Remember all page copy this and please check the local
-// theme or lang overwrite
-
-// The only thing need to change is the Title
-
-// The contents of the page will be in contents/
-// and with name ???-body.inc
+// [BOILERPLATE] template.php - The base foundation for all Nerd-Stack pages.
+//
+// HOW TO USE:
+// 1. Copy this file to a new name (e.g., about.php).
+// 2. Create a corresponding content file (e.g., contents/about-body.inc).
+// 3. Customize the metadata in the $CONTENT array below.
+//
+// RFC 2119: You MUST NOT modify the core logic here unless you are a "Theme Engineer".
 
 ob_start("ob_gzhandler");
+require_once __DIR__ . '/vendor/autoload.php';
 
 $CONTENT['title']="Template Page For CmsForNerd";
-$CONTENT['author']="Wanita";
+$CONTENT['author']="CMSForNerd";
 $CONTENT['description']="This is a template page for CmsForNerd. A Content Management Software like no others.";
 $CONTENT['keywords']="CmsForNerd, CMS, PHP, CSS, Malaysia, HTML";
 
@@ -44,7 +37,6 @@ $CONTENT['data']="empty";
 
 
 include("includes/global-control.inc.php");
-require_once("includes/CmsContext.php");
 include("includes/common.inc.php");
 
 // Initialize Context
@@ -58,7 +50,7 @@ $ctx = new CmsForNerd\CmsContext(
 
 // Define all the function needed call from theme
 
-include("themes/$THEMENAME/pager.php");
+include "themes/{$ctx->themeName}/pager.php";
 
 //function define in theme diretory theme.php
 //to change theme.php for page layout

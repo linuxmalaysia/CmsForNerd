@@ -102,14 +102,14 @@
 			
 			.sortup {
 				background-position: right center;
-				background-image: url(http://www.google.com/webmasters/sitemaps/images/sortup.gif);
+				background-image: url(https://www.google.com/webmasters/sitemaps/images/sortup.gif);
 				background-repeat: no-repeat;
 				font-style:italic;
 				white-space:pre; }
 				
 			.sortdown {
 				background-position: right center;
-				background-image: url(http://www.google.com/webmasters/sitemaps/images/sortdown.gif);
+				background-image: url(https://www.google.com/webmasters/sitemaps/images/sortdown.gif);
 				background-repeat: no-repeat;
 				font-style:italic;
 				white-space:pre; }
@@ -302,9 +302,9 @@
         <table class="copyright" id="table_copyright">
           <tr>
             <td>
-              <p>Google Sitemaps: (c) 2005-2006 <a href="http://www.google.com">Google</a> - <a href="https://www.google.com/webmasters/sitemaps/stats">My Sitemaps</a> - <a href="http://www.google.com/webmasters/sitemaps/docs/en/about.html">About</a> - <a href="http://www.google.com/webmasters/sitemaps/docs/en/faq.html">FAQ</a> - <a href="http://groups-beta.google.com/group/google-sitemaps">Discussion</a> - <a href="http://sitemaps.blogspot.com/">Blog</a></p>
-              Google Sitemaps Stylesheets v1.6: (c) 2005-2006 <a href="http://www.baccoubonneville.com">Baccou Bonneville</a> - <a href="http://sourceforge.net/projects/gstoolbox">Project</a> - <a href="http://www.baccoubonneville.com/blogs/index.php/webdesign/2005/08/20/google-sitemaps-stylesheets">Blog</a><br/>
-              Johannes Mueller, SOFTplus <a href="http://gsitecrawler.com">GSiteCrawler</a> - Tobias Kluge, enarion.net <a href="http://enarion.net/google/phpsitemapng">phpSitemapNG</a>
+              <p>Google Sitemaps: (c) 2005-2006 <a href="https://www.google.com">Google</a> - <a href="https://www.google.com/webmasters/sitemaps/stats">My Sitemaps</a> - <a href="https://www.google.com/webmasters/sitemaps/docs/en/about.html">About</a> - <a href="https://www.google.com/webmasters/sitemaps/docs/en/faq.html">FAQ</a> - <a href="https://groups-beta.google.com/group/google-sitemaps">Discussion</a> - <a href="https://sitemaps.blogspot.com/">Blog</a></p>
+              Google Sitemaps Stylesheets v1.6: (c) 2005-2006 <a href="https://www.baccoubonneville.com">Baccou Bonneville</a> - <a href="https://sourceforge.net/projects/gstoolbox">Project</a> - <a href="https://www.baccoubonneville.com/blogs/index.php/webdesign/2005/08/20/google-sitemaps-stylesheets">Blog</a><br/>
+              Johannes Mueller, SOFTplus <a href="https://gsitecrawler.com">GSiteCrawler</a> - Tobias Kluge, enarion.net <a href="https://enarion.net/google/phpsitemapng">phpSitemapNG</a>
             </td>
           </tr>
         </table>
@@ -314,7 +314,7 @@
 
   <!-- siteindexTable template -->
   <xsl:template name="siteindexTable">
-    <h3>This sitemap index file was created by <a href="http://gsitecrawler.com/">SOFTplus GSiteCrawler</a>.</h3>          
+    <h3>This sitemap index file was created by <a href="https://gsitecrawler.com/">SOFTplus GSiteCrawler</a>.</h3>          
     <h2>Number of sitemaps in this Google sitemap index: <xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"></xsl:value-of></h2>          
     <p class="sml">Click on the table headers to change sorting.</p>
     <table border="1" width="100%" class="data" id="table1">
@@ -330,7 +330,7 @@
   
   <!-- sitemapTable template -->  
   <xsl:template name="sitemapTable">
-    <h3>This Google Sitemap file was created by <a href="http://gsitecrawler.com/">SOFTplus GSiteCrawler</a>.</h3>          
+    <h3>This Google Sitemap file was created by <a href="https://gsitecrawler.com/">SOFTplus GSiteCrawler</a>.</h3>          
     <h2>Number of URLs in this Google Sitemap: <xsl:value-of select="count(sitemap:urlset/sitemap:url)"></xsl:value-of></h2>
     <p class="sml">Click on the table headers to change sorting.</p>
     <table border="1" width="100%" class="data" id="table0">
