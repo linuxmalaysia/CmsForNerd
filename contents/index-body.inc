@@ -7,7 +7,7 @@
         Unlike "black box" frameworks, CMSForNerd exposes the raw power of PHP 8.4 and beyond. It empowers you to master the full stack—from PSR-12 compliant architecture to CSS Grid responsive design—without the overhead of a database.
     </p>
     <p>
-        Currently running on: <strong>PHP <?= phpversion() ?></strong> | <a href="lab-manual.php" style="font-weight: bold; color: #d9534f;">🎓 Open Lab Manual</a>
+        Currently running on: <strong>PHP <?= phpversion() ?></strong> | <a href="lab-manual.php" style="font-weight: bold; color: #d9534f;">🎓 Lab Manual</a> | <a href="linux-setup.php" style="color: #2ecc71;">🐧 Linux Setup</a> | <a href="windows-setup.php" style="color: #007bff;">🪟 Windows Setup</a>
     </p>
 </div>
 
@@ -43,8 +43,8 @@
 
 <h3>Getting Started</h3>
 <p>
-    Ready to build? check out the <a href="installation.php">Installation Guide</a> to get set up.
-    Once installed, navigate to <code>/contents</code> to start editing this page!
+    Ready to build? Check out the <a href="installation.php">Installation Guide</a> to get set up. 
+    For laboratory readiness, we provide specialized guides for <a href="windows-setup.php"><strong>Windows 11</strong></a> and <a href="linux-setup.php"><strong>Linux (Debian/Ubuntu/AlmaLinux)</strong></a>.
 </p>
 
 <h3>Recommended Stack</h3>
