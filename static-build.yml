@@ -1,0 +1,47 @@
+name: Bake PHP to Static HTML
+on:
+  push:
+    branches: [ "master" ] # Runs every time you push to master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Start Local PHP Server
+        run: php -S localhost:8000 & # Run in background
+
+      - name: Staticize (Bake) index.php
+        run: |
+          sleep 2 # Wait for server to start
+          curl -s http://localhost:8000/index.php > index.html
+          # Repeat for other pages if necessary, e.g.:
+          # curl -s http://localhost:8000/about.php > about.html
+
+      - name: Upload Static Files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' # Upload the root directory containing index.html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
