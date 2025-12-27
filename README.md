@@ -53,6 +53,14 @@ See the [🤖 AI Development Guide](ai-dev.php) for the "Prompt-to-Product" meth
 
 ---
 
+## 💻 Recommended Stack
+To get the most out of CMSForNerd, we recommend:
+*   **Editor:** Google Antigravity (Advanced AI Coding).
+*   **Server:** Nginx Latest with PHP 8.4+.
+*   **Browser:** Mozilla Firefox for testing strict privacy and modern web standards.
+
+---
+
 ## 🧪 The Laboratory Curriculum
 The CMS includes built-in modules to help you master professional backend engineering:
 1.  **Module 1-2**: Architecture & Standards (PSR-12).
