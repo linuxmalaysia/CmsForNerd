@@ -62,4 +62,3 @@ class SecurityUtils
         return base64_encode(random_bytes(16));
     }
 }
-

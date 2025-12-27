@@ -80,4 +80,3 @@ if (isset($_GET['logout'])) {
 
 // [PERFORMANCE] Release the buffer
 ob_end_flush();
-

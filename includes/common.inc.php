@@ -53,4 +53,3 @@ function pagetailer(CmsForNerd\CmsContext $ctx)
 {
     print("</html>");
 }
-

@@ -55,4 +55,3 @@ function block_datacenter_traffic(string $token): void
         die("Data center traffic blocked.");
     }
 }
-

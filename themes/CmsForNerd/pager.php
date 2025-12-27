@@ -26,4 +26,3 @@ function pager(CmsForNerd\CmsContext $ctx)
     // 7. [REQUIRED] Close the <html> tag and clear buffers.
     pagetailer($ctx);
 }
-

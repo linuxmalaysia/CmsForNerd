@@ -33,4 +33,3 @@ readonly class CmsContext
         $this->cspNonce = $cspNonce ?? SecurityUtils::generateNonce();
     }
 }
-

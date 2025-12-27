@@ -4,4 +4,3 @@
 // CmsForNerd
 
 header("Location:../index.php");
-
