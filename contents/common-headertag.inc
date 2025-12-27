@@ -1,13 +1,16 @@
-    <meta name="Robots" content="index,follow" />
-    <link href="http://cmsfornerd.harisfazillah.info/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-    <link href="http://cmsfornerd.harisfazillah.info/favicon.ico" type="image/x-icon" rel="icon" />
-    <link rel="shortcut icon" href="http://cmsfornerd.harisfazillah.info/favicon.ico" />
-    <link rel="alternate" type="application/rss+xml" title="CmsForNerd SiteMap Feed" href="http://cmsfornerd.harisfazillah.info/rss.xml" />
-    <meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.classify.org/safesurf/" L gen true for "http://cmsfornerd.harisfazillah.info/" r (SS~~000 1))' />
-    <link rel="meta" href="http://cmsfornerd.harisfazillah.info/labels.rdf" type="application/rdf+xml" title="ICRA labels" />
+<!-- Modern SEO & Security Headers -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="<?= htmlspecialchars($CONTENT['description'] ?? 'CMSForNerd - A lightweight, flat-file CMS') ?>">
+<meta name="keywords" content="<?= htmlspecialchars($CONTENT['keywords'] ?? 'CMS, PHP, Flat-file') ?>">
+<meta name="author" content="<?= htmlspecialchars($CONTENT['author'] ?? 'CMSForNerd') ?>">
+<meta name="robots" content="index, follow">
 
-    <link rel="alternate" type="application/rss+xml" title="CmsForNerd ROR Sitemap" href="http://cmsfornerd.harisfazillah.info/ror.xml" />
-    <meta name="Security" content="Public" />
-    <meta name="googlebot" content="archive" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Language" content="EN" />
+<!-- Favicon (Relative Path) -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<!-- Security: Content Security Policy (Basic) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://*.ipinfo.io; img-src 'self' data: https:; font-src 'self' https: data:;">
+
+<!-- RSS Feed (If applicable) -->
+<!-- <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="xml-sitemap.php"> -->
