@@ -132,3 +132,18 @@ Quick notes for working with these files:
 
 ---
 
+## Quick example — add a page + test
+
+Use this minimal checklist when adding a new page so AI agents follow project conventions and CI checks:
+
+1. Create the entrypoint `about.php` (copy an existing page such as `windows-setup.php`) and keep it minimal — load `includes/global-control.inc.php`, `includes/common.inc.php`, create a `CmsContext`, and call `pager($ctx)`.
+2. Add the content partial `contents/about-body.inc` (markup only — avoid business logic). Use `$ctx` for dynamic values and sanitize with `SecurityUtils`.
+3. Add a focused test under `tests/`, for example `tests/AboutPageTest.php` that verifies the partial exists and contains expected text. Keep tests fast and local (bootstrap uses `vendor/autoload.php`).
+4. Run `composer compliance` locally to ensure PSR-12 style and unit tests pass before pushing.
+
+Example minimal test checklist (what to assert):
+- The content file exists: `assertFileExists(__DIR__ . '/../contents/about-body.inc')`
+- The content contains expected header text: `assertStringContainsString('About CMSForNerd', $content)`
+
+When ready, push your branch and open a PR. Include a one-line description and note that you ran `composer compliance` locally.
+

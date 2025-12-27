@@ -3,7 +3,7 @@
         'name' => 'linuxmalaysia/cmsfornerd',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '880a1c7f94a3be8387afaeedb01b8ee77a72fa0f',
+        'reference' => '0903bd7cccd6684a7ad35f345cb12e5a0e88eae1',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'linuxmalaysia/cmsfornerd' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '880a1c7f94a3be8387afaeedb01b8ee77a72fa0f',
+            'reference' => '0903bd7cccd6684a7ad35f345cb12e5a0e88eae1',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
