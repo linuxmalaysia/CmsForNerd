@@ -11,12 +11,22 @@ namespace CmsForNerd;
  */
 readonly class CmsContext
 {
+    public string $baseUrl;
+
     public function __construct(
         public array $content = [],
         public string $themeName = 'CmsForNerd',
         public string $cssPath = '',
         public array $dataFile = [],
         public string $scriptName = '',
+        ?string $baseUrl = null,
     ) {
+        if ($baseUrl === null && isset($_SERVER['HTTP_HOST'])) {
+            $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+            $host = $_SERVER['HTTP_HOST'];
+            $path = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+            $baseUrl = "$protocol://$host$path/";
+        }
+        $this->baseUrl = $baseUrl ?? '';
     }
 }

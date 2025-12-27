@@ -28,6 +28,6 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://*.ipinfo.io https://www.google.com https://fonts.googleapis.com; img-src 'self' data: https: https://www.google.com https://groups.google.com https://www.rorweb.com; font-src 'self' https: data: https://fonts.gstatic.com;">
 
 <!-- RSS Feed & Sitemap Discovery -->
-<link rel="alternate" type="application/rss+xml" title="CmsForNerd SiteMap Feed" href="https://www.linuxmalaysia.com/rss.xml" />
-<link rel="alternate" type="application/rss+xml" title="CmsForNerd ROR Sitemap" href="https://www.linuxmalaysia.com/ror.xml" />
+<link rel="alternate" type="application/rss+xml" title="CmsForNerd SiteMap Feed" href="<?= $ctx->baseUrl ?>rss.xml" />
+<link rel="alternate" type="application/rss+xml" title="CmsForNerd ROR Sitemap" href="<?= $ctx->baseUrl ?>ror.xml" />
 <meta http-equiv="Content-Language" content="EN" />
