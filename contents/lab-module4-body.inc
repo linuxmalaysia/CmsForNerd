@@ -9,8 +9,8 @@
     <section class="objectives">
         <h2>🎯 Learning Objectives</h2>
         <ul>
-            <li>Understand the Arrange-Act-Assert (AAA) pattern.</li>
-            <li>Write a unit test for a core utility.</li>
+            <li>Understand the <strong>Arrange-Act-Assert (AAA)</strong> pattern.</li>
+            <li>Write a unit test for the <code>SecurityUtils</code> class.</li>
             <li>Master the terminal-based test runner.</li>
         </ul>
     </section>
@@ -43,6 +43,9 @@ use CmsForNerd\SecurityUtils;
 
 final class SecurityUtilsTest extends TestCase
 {
+    /**
+     * Requirement: HTML special characters MUST be converted to entities.
+     */
     public function testEscapesHtmlSpecialCharacters(): void
     {
         // 1. Arrange
@@ -81,14 +84,18 @@ final class SecurityUtilsTest extends TestCase
             <li>Run the test again.</li>
             <li><strong>Observe:</strong> Watch how PHPUnit catches your mistake instantly. This is why we test!</li>
         </ol>
+
+        <div class="question-box">
+            <p><strong>Question for the Student:</strong> Why is it better to test small units of code (Unit Testing) before testing the entire website (Integration Testing)?</p>
+        </div>
     </section>
 
     <footer class="standards-summary">
-        <h2>🎓 Summary of RFC 2119 Standards for Testing</h2>
+        <h2>🎓 Summary of RFC 2119 Standards for Module 4</h2>
         <ul>
             <li><strong>MUST:</strong> Every test method name <strong>MUST</strong> start with the word <code>test</code> (e.g., <code>testAddition</code>).</li>
             <li><strong>MUST:</strong> Test classes <strong>MUST</strong> be marked as <code>final</code> to prevent unnecessary inheritance.</li>
-            <li><strong>SHOULD:</strong> You <strong>SHOULD</strong> use <code>assertSame()</code> instead of <code>assertEquals()</code> to check both value and type.</li>
+            <li><strong>SHOULD:</strong> You <strong>SHOULD</strong> use <code>assertSame()</code> instead of <code>assertEquals()</code> to check both value and type (strict comparison).</li>
         </ul>
     </footer>
 </article>
@@ -101,5 +108,6 @@ final class SecurityUtilsTest extends TestCase
 .lab-worksheet .code-block { background: #2d2d2d; color: #ccc; padding: 1rem; border-radius: 4px; overflow-x: auto; margin: 1rem 0; }
 .lab-worksheet .code-block.modern { border-left: 5px solid #5cb85c; }
 .lab-worksheet .terminal-block { background: #000; color: #00ff00; padding: 1rem; font-family: 'Courier New', Courier, monospace; border-radius: 4px; margin: 1rem 0; }
+.lab-worksheet .question-box { background: #d9edf7; border: 1px solid #bce8f1; color: #31708f; padding: 1rem; border-radius: 4px; margin: 2rem 0; }
 .lab-worksheet .standards-summary { margin-top: 3rem; background: #f5f5f5; padding: 1.5rem; border-radius: 8px; }
 </style>
