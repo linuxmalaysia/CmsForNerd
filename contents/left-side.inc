@@ -12,6 +12,7 @@
 <a href="welcome-kit.php">🚀 Student Welcome Kit</a>
 <a href="history.php">Modernization History</a>
 <a href="lab-manual.php">🎓 Lab Manual</a>
+<a href="ai-dev.php">🤖 AI Development</a>
 <a href="final-exam.php">🚩 Final Exam</a>
 <a href="graduation.php">🏁 Graduation</a>
 <a href="https://www.linuxmalaysia.com">CmsForNerd Blog</a>

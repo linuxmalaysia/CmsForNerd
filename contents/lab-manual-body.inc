@@ -84,6 +84,16 @@
         <p><strong>Concept: "Confidence in Code"</strong>—100% coverage doesn't mean bug-free, but it means everything was tested.</p>
     </section>
 
+    <section class="module ai-module">
+        <h2>🤖 Laboratory Module 6: AI-Assisted Workflow</h2>
+        <p>Learn to lead an "AI Agent" as your junior developer. Master the Prompt-to-Product methodology.</p>
+        <div class="exercise">
+            <h3>Exercise: The Agentic Challenge</h3>
+            <p>Use Gemini/Antigravity to create a new page defined by a single sentence. Review the implementation plan and verify the automated build.</p>
+            <p><a href="ai-dev.php" class="btn">🚀 Open AI Dev Guide</a></p>
+        </div>
+    </section>
+
     <section class="module exam-module">
         <h2>🚩 The Final Exam: Break-Fix Challenge</h2>
         <p>The ultimate test of a modern backend engineer. Repair a broken system to prove your mastery.</p>
