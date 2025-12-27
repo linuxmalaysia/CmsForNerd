@@ -102,6 +102,11 @@ public function incrementViews(): void {
             <li><strong>MAY:</strong> Use Property Hooks to replace complex getter methods for better readability.</li>
         </ul>
     </footer>
+
+    <nav class="progress-nav">
+        <a href="welcome-kit.php" class="btn prev">&lt; Back to Welcome Kit</a>
+        <a href="lab-module2.php" class="btn next">Next: Module 2 (Standards) &gt;</a>
+    </nav>
 </article>
 
 <style>
@@ -118,5 +123,9 @@ public function incrementViews(): void {
 .lab-worksheet .terminal-block { background: #000; color: #00ff00; padding: 1rem; font-family: 'Courier New', Courier, monospace; border-radius: 4px; margin: 1rem 0; }
 .lab-worksheet .question-box { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 1rem; border-radius: 4px; margin: 2rem 0; }
 .lab-worksheet .standards-summary { margin-top: 3rem; background: #f5f5f5; padding: 1.5rem; border-radius: 8px; }
-@media (max-width: 768px) { .lab-worksheet .code-compare { grid-template-columns: 1fr; } }
+.progress-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding: 2rem 0; border-top: 2px solid #eee; }
+.progress-nav .btn { padding: 1rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold; }
+.progress-nav .prev { background: #6c757d; color: #fff; }
+.progress-nav .next { background: #007bff; color: #fff; }
+@media (max-width: 768px) { .lab-worksheet .code-compare { grid-template-columns: 1fr; } .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>

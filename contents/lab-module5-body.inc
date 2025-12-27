@@ -83,6 +83,11 @@
             <p class="hint">(Hint: Think about "logic errors"—if your test expects <code>2+2</code> to be <code>5</code> and the code gives <code>5</code>, the test passes, but the logic is wrong).</p>
         </div>
     </footer>
+
+    <nav class="progress-nav">
+        <a href="lab-module4.php" class="btn prev">&lt; Previous: Module 4 (Automated Testing)</a>
+        <a href="final-exam.php" class="btn next">Next: Final Exam (Break-Fix Challenge) &gt;</a>
+    </nav>
 </article>
 
 <style>
@@ -96,4 +101,9 @@
 .lab-worksheet .exercise { background: #fcfcfc; padding: 1.5rem; border: 1px solid #e1e1e1; border-radius: 8px; margin: 1rem 0; }
 .lab-worksheet .question-box { background: #fee7e7; border: 1px solid #fad2d2; color: #9a2020; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
 .lab-worksheet .standards-summary { margin-top: 3rem; background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border: 1px solid #eee; }
+.progress-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding: 2rem 0; border-top: 2px solid #eee; }
+.progress-nav .btn { padding: 1rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold; }
+.progress-nav .prev { background: #6c757d; color: #fff; }
+.progress-nav .next { background: #0275d8; color: #fff; }
+@media (max-width: 768px) { .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>

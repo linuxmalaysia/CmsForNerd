@@ -98,6 +98,11 @@ final class SecurityUtilsTest extends TestCase
             <li><strong>SHOULD:</strong> You <strong>SHOULD</strong> use <code>assertSame()</code> instead of <code>assertEquals()</code> to check both value and type (strict comparison).</li>
         </ul>
     </footer>
+
+    <nav class="progress-nav">
+        <a href="lab-module3.php" class="btn prev">&lt; Previous: Module 3 (Defensive Engineering)</a>
+        <a href="lab-module5.php" class="btn next">Next: Module 5 (Coverage &amp; QA) &gt;</a>
+    </nav>
 </article>
 
 <style>
@@ -110,4 +115,9 @@ final class SecurityUtilsTest extends TestCase
 .lab-worksheet .terminal-block { background: #000; color: #00ff00; padding: 1rem; font-family: 'Courier New', Courier, monospace; border-radius: 4px; margin: 1rem 0; }
 .lab-worksheet .question-box { background: #d9edf7; border: 1px solid #bce8f1; color: #31708f; padding: 1rem; border-radius: 4px; margin: 2rem 0; }
 .lab-worksheet .standards-summary { margin-top: 3rem; background: #f5f5f5; padding: 1.5rem; border-radius: 8px; }
+.progress-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding: 2rem 0; border-top: 2px solid #eee; }
+.progress-nav .btn { padding: 1rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold; }
+.progress-nav .prev { background: #6c757d; color: #fff; }
+.progress-nav .next { background: #5cb85c; color: #fff; }
+@media (max-width: 768px) { .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>

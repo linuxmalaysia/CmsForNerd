@@ -92,6 +92,11 @@ public function testTypeSafety(): void {
             <p><a href="graduation.php" class="btn exam-btn">🏁 Go to Graduation</a></p>
         </div>
     </footer>
+
+    <nav class="progress-nav">
+        <a href="lab-module5.php" class="btn prev">&lt; Previous: Module 5 (Coverage &amp; QA)</a>
+        <a href="graduation.php" class="btn next">Go to Graduation &gt;</a>
+    </nav>
 </article>
 
 <style>
@@ -108,4 +113,9 @@ public function testTypeSafety(): void {
 .final-exam .graduation-cta { background: #fffbeb; border: 2px solid #fde68a; padding: 2rem; border-radius: 8px; text-align: center; margin-top: 4rem; }
 .final-exam .exam-btn { background: #d9534f; color: #fff; text-decoration: none; padding: 1rem 2rem; border-radius: 4px; font-weight: bold; display: inline-block; }
 .final-exam .exam-btn:hover { background: #c9302c; }
+.progress-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding: 2rem 0; border-top: 2px solid #eee; }
+.progress-nav .btn { padding: 1rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold; }
+.progress-nav .prev { background: #6c757d; color: #fff; }
+.progress-nav .next { background: #d9534f; color: #fff; }
+@media (max-width: 768px) { .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>

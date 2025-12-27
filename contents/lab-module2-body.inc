@@ -76,6 +76,11 @@
             <p class="hint">(Hint: Think about accidental whitespace causing "Headers already sent" errors).</p>
         </div>
     </footer>
+
+    <nav class="progress-nav">
+        <a href="lab-module1.php" class="btn prev">&lt; Previous: Module 1 (Architecture)</a>
+        <a href="lab-module3.php" class="btn next">Next: Module 3 (Defensive Engineering) &gt;</a>
+    </nav>
 </article>
 
 <style>
@@ -87,4 +92,9 @@
 .lab-worksheet .terminal-block code { color: #00ff00; }
 .lab-worksheet .question-box { background: #e8f5e9; border: 1px solid #c8e6c9; color: #2e7d32; padding: 1rem; border-radius: 4px; margin: 2rem 0; }
 .lab-worksheet .standards-summary { margin-top: 3rem; background: #f5f5f5; padding: 1.5rem; border-radius: 8px; }
+.progress-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding: 2rem 0; border-top: 2px solid #eee; }
+.progress-nav .btn { padding: 1rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold; }
+.progress-nav .prev { background: #6c757d; color: #fff; }
+.progress-nav .next { background: #6f42c1; color: #fff; }
+@media (max-width: 768px) { .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>
