@@ -1,8 +1,10 @@
-<h1>Welcome to CMSForNerd v3.1</h1>
+<h1>Welcome to CMSForNerd v3.1: The Developer’s Laboratory</h1>
 <div class="intro">
     <p>
-        <strong>CMSForNerd</strong> is a radically simple, database-free Content Management System designed for developers, students, and minimalists. 
-        It empowers you to build fast, secure websites using nothing but standard <strong>HTML, CSS, and PHP</strong>.
+        <strong>CMSForNerd</strong> is a radically simple, database-free Content Management System designed as a live learning environment for developers and students.
+    </p>
+    <p>
+        Unlike "black box" frameworks, CMSForNerd exposes the raw power of PHP 8.4. It empowers you to master the full stack—from PSR-12 compliant architecture to CSS Grid responsive design—without the overhead of a database.
     </p>
     <p>
         Currently running on: <strong>PHP <?= phpversion() ?></strong>
