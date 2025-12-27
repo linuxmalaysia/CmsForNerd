@@ -40,9 +40,9 @@ use Closure;
 final readonly class GlobalState
 {
     /**
-     * @var list<string>
+     * @var non-empty-list<non-empty-string>
      */
-    private const SUPER_GLOBAL_ARRAYS = [
+    private const array SUPER_GLOBAL_ARRAYS = [
         '_ENV',
         '_POST',
         '_GET',
@@ -53,9 +53,9 @@ final readonly class GlobalState
     ];
 
     /**
-     * @var array<string, array<string, true>>
+     * @var non-empty-array<non-empty-string, non-empty-array<non-empty-string, true>>
      */
-    private const DEPRECATED_INI_SETTINGS = [
+    private const array DEPRECATED_INI_SETTINGS = [
         '7.3' => [
             'iconv.input_encoding'       => true,
             'iconv.output_encoding'      => true,
@@ -113,42 +113,6 @@ final readonly class GlobalState
         ],
 
         '8.3' => [
-            'auto_detect_line_endings'     => true,
-            'filter.default'               => true,
-            'iconv.input_encoding'         => true,
-            'iconv.output_encoding'        => true,
-            'iconv.internal_encoding'      => true,
-            'mbstring.http_input'          => true,
-            'mbstring.http_output'         => true,
-            'mbstring.internal_encoding'   => true,
-            'oci8.old_oci_close_semantics' => true,
-        ],
-
-        '8.4' => [
-            'auto_detect_line_endings'     => true,
-            'filter.default'               => true,
-            'iconv.input_encoding'         => true,
-            'iconv.output_encoding'        => true,
-            'iconv.internal_encoding'      => true,
-            'mbstring.http_input'          => true,
-            'mbstring.http_output'         => true,
-            'mbstring.internal_encoding'   => true,
-            'oci8.old_oci_close_semantics' => true,
-        ],
-
-        '8.5' => [
-            'auto_detect_line_endings'     => true,
-            'filter.default'               => true,
-            'iconv.input_encoding'         => true,
-            'iconv.output_encoding'        => true,
-            'iconv.internal_encoding'      => true,
-            'mbstring.http_input'          => true,
-            'mbstring.http_output'         => true,
-            'mbstring.internal_encoding'   => true,
-            'oci8.old_oci_close_semantics' => true,
-        ],
-
-        '8.6' => [
             'auto_detect_line_endings'     => true,
             'filter.default'               => true,
             'iconv.input_encoding'         => true,

@@ -50,39 +50,39 @@ final class JunitXmlLogger
     private DOMElement $root;
 
     /**
-     * @var array<int, DOMElement>
+     * @var DOMElement[]
      */
     private array $testSuites = [];
 
     /**
-     * @var array<int, int>
+     * @var array<int,int>
      */
     private array $testSuiteTests = [0];
 
     /**
-     * @var array<int, int>
+     * @var array<int,int>
      */
     private array $testSuiteAssertions = [0];
 
     /**
-     * @var array<int, int>
+     * @var array<int,int>
      */
     private array $testSuiteErrors = [0];
 
     /**
-     * @var array<int, int>
+     * @var array<int,int>
      */
     private array $testSuiteFailures = [0];
 
     /**
-     * @var array<int, int>
+     * @var array<int,int>
      */
     private array $testSuiteSkipped = [0];
 
     /**
-     * @var array<int, float>
+     * @var array<int,int>
      */
-    private array $testSuiteTimes        = [0.0];
+    private array $testSuiteTimes        = [0];
     private int $testSuiteLevel          = 0;
     private ?DOMElement $currentTestCase = null;
     private ?HRTime $time                = null;
@@ -104,7 +104,7 @@ final class JunitXmlLogger
 
     public function flush(): void
     {
-        $this->printer->print($this->document->saveXML());
+        $this->printer->print($this->document->saveXML() ?: '');
 
         $this->printer->flush();
     }
@@ -131,7 +131,7 @@ final class JunitXmlLogger
         $this->testSuiteErrors[$this->testSuiteLevel]     = 0;
         $this->testSuiteFailures[$this->testSuiteLevel]   = 0;
         $this->testSuiteSkipped[$this->testSuiteLevel]    = 0;
-        $this->testSuiteTimes[$this->testSuiteLevel]      = 0.0;
+        $this->testSuiteTimes[$this->testSuiteLevel]      = 0;
     }
 
     public function testSuiteFinished(): void
@@ -184,8 +184,6 @@ final class JunitXmlLogger
     public function testPreparationStarted(PreparationStarted $event): void
     {
         $this->createTestCase($event);
-
-        $this->preparationFailed = false;
     }
 
     public function testPreparationFailed(): void
@@ -287,13 +285,12 @@ final class JunitXmlLogger
         );
 
         $this->testSuiteTests[$this->testSuiteLevel]++;
-        $this->testSuiteTimes[$this->testSuiteLevel] += $time;
+        $this->testSuiteTimes[$this->testSuiteLevel] += (int) $time;
 
-        $this->currentTestCase   = null;
-        $this->time              = null;
-        $this->preparationFailed = false;
-        $this->prepared          = false;
-        $this->unexpectedOutput  = null;
+        $this->currentTestCase  = null;
+        $this->time             = null;
+        $this->prepared         = false;
+        $this->unexpectedOutput = null;
     }
 
     /**

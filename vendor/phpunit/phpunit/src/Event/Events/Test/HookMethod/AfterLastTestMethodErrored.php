@@ -21,16 +21,16 @@ use PHPUnit\Event\Telemetry;
  *
  * @no-named-arguments Parameter names are not covered by the backward compatibility promise for PHPUnit
  */
-final readonly class AfterLastTestMethodErrored implements Event
+final class AfterLastTestMethodErrored implements Event
 {
-    private Telemetry\Info $telemetryInfo;
+    private readonly Telemetry\Info $telemetryInfo;
 
     /**
      * @var class-string
      */
-    private string $testClassName;
-    private Code\ClassMethod $calledMethod;
-    private Throwable $throwable;
+    private readonly string $testClassName;
+    private readonly Code\ClassMethod $calledMethod;
+    private readonly Throwable $throwable;
 
     /**
      * @param class-string $testClassName

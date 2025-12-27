@@ -135,36 +135,31 @@ final class TestRunner
         }
 
         if ($collectCodeCoverage) {
-            $append           = !$risky && !$incomplete && !$skipped;
-            $linesToBeCovered = [];
-            $linesToBeUsed    = [];
+            $append = !$risky && !$incomplete && !$skipped;
+            $covers = null;
+            $uses   = null;
+
+            if (!$append) {
+                $covers = false;
+            }
 
             if ($append) {
-                try {
-                    $linesToBeCovered = $codeCoverageMetadataApi->linesToBeCovered(
-                        $test::class,
-                        $test->name(),
-                    );
+                $covers = $codeCoverageMetadataApi->coversTargets(
+                    $test::class,
+                    $test->name(),
+                );
 
-                    $linesToBeUsed = $codeCoverageMetadataApi->linesToBeUsed(
-                        $test::class,
-                        $test->name(),
-                    );
-                } catch (InvalidCoversTargetException $cce) {
-                    Facade::emitter()->testTriggeredPhpunitWarning(
-                        $test->valueObjectForEvents(),
-                        $cce->getMessage(),
-                    );
-
-                    $append = false;
-                }
+                $uses = $codeCoverageMetadataApi->usesTargets(
+                    $test::class,
+                    $test->name(),
+                );
             }
 
             try {
                 CodeCoverage::instance()->stop(
                     $append,
-                    $linesToBeCovered,
-                    $linesToBeUsed,
+                    $covers,
+                    $uses,
                 );
             } catch (UnintentionallyCoveredCodeException $cce) {
                 Facade::emitter()->testConsideredRisky(
@@ -214,7 +209,7 @@ final class TestRunner
             Facade::emitter()->testConsideredRisky(
                 $test->valueObjectForEvents(),
                 sprintf(
-                    'Test code or tested code printed unexpected output: %s',
+                    'This test printed output: %s',
                     $test->output(),
                 ),
             );
@@ -235,7 +230,11 @@ final class TestRunner
     private function hasCoverageMetadata(string $className, string $methodName): bool
     {
         foreach (MetadataRegistry::parser()->forClassAndMethod($className, $methodName) as $metadata) {
-            if ($metadata->isCovers()) {
+            if ($metadata->isCoversNamespace()) {
+                return true;
+            }
+
+            if ($metadata->isCoversTrait()) {
                 return true;
             }
 
@@ -243,7 +242,11 @@ final class TestRunner
                 return true;
             }
 
-            if ($metadata->isCoversTrait()) {
+            if ($metadata->isCoversClassesThatExtendClass()) {
+                return true;
+            }
+
+            if ($metadata->isCoversClassesThatImplementInterface()) {
                 return true;
             }
 

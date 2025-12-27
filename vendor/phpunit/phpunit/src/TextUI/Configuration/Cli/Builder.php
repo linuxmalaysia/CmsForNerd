@@ -10,8 +10,6 @@
 namespace PHPUnit\TextUI\CliArguments;
 
 use const DIRECTORY_SEPARATOR;
-use function array_map;
-use function array_merge;
 use function assert;
 use function basename;
 use function explode;
@@ -19,7 +17,6 @@ use function getcwd;
 use function is_file;
 use function is_numeric;
 use function sprintf;
-use function str_contains;
 use function strtolower;
 use PHPUnit\Event\Facade as EventFacade;
 use PHPUnit\Runner\TestSuiteSorter;
@@ -34,14 +31,16 @@ use SebastianBergmann\CliParser\Parser as CliParser;
  */
 final class Builder
 {
-    private const LONG_OPTIONS = [
+    /**
+     * @var non-empty-list<non-empty-string>
+     */
+    private const array LONG_OPTIONS = [
         'atleast-version=',
         'bootstrap=',
         'cache-result',
         'do-not-cache-result',
         'cache-directory=',
         'check-version',
-        'check-php-configuration',
         'colors==',
         'columns=',
         'configuration=',
@@ -58,7 +57,6 @@ final class Builder
         'coverage-xml=',
         'path-coverage',
         'disallow-test-output',
-        'display-all-issues',
         'display-incomplete',
         'display-skipped',
         'display-deprecations',
@@ -101,7 +99,6 @@ final class Builder
         'no-results',
         'order-by=',
         'process-isolation',
-        'do-not-report-useless-tests',
         'dont-report-useless-tests',
         'random-order',
         'random-order-seed=',
@@ -109,25 +106,14 @@ final class Builder
         'reverse-list',
         'static-backup',
         'stderr',
-        'fail-on-all-issues',
         'fail-on-deprecation',
         'fail-on-phpunit-deprecation',
-        'fail-on-phpunit-warning',
         'fail-on-empty-test-suite',
         'fail-on-incomplete',
         'fail-on-notice',
         'fail-on-risky',
         'fail-on-skipped',
         'fail-on-warning',
-        'do-not-fail-on-deprecation',
-        'do-not-fail-on-phpunit-deprecation',
-        'do-not-fail-on-phpunit-warning',
-        'do-not-fail-on-empty-test-suite',
-        'do-not-fail-on-incomplete',
-        'do-not-fail-on-notice',
-        'do-not-fail-on-risky',
-        'do-not-fail-on-skipped',
-        'do-not-fail-on-warning',
         'stop-on-defect',
         'stop-on-deprecation==',
         'stop-on-error',
@@ -154,7 +140,8 @@ final class Builder
         'debug',
         'extension=',
     ];
-    private const SHORT_OPTIONS = 'd:c:h';
+
+    private const string SHORT_OPTIONS = 'd:c:h';
 
     /**
      * @var array<string, non-negative-int>
@@ -189,7 +176,6 @@ final class Builder
         $bootstrap                         = null;
         $cacheDirectory                    = null;
         $cacheResult                       = null;
-        $checkPhpConfiguration             = false;
         $checkVersion                      = false;
         $colors                            = null;
         $columns                           = null;
@@ -209,7 +195,6 @@ final class Builder
         $defaultTimeLimit                  = null;
         $disableCodeCoverageIgnore         = null;
         $disallowTestOutput                = null;
-        $displayAllIssues                  = null;
         $displayIncomplete                 = null;
         $displaySkipped                    = null;
         $displayDeprecations               = null;
@@ -221,25 +206,14 @@ final class Builder
         $excludeGroups                     = null;
         $executionOrder                    = null;
         $executionOrderDefects             = null;
-        $failOnAllIssues                   = null;
         $failOnDeprecation                 = null;
         $failOnPhpunitDeprecation          = null;
-        $failOnPhpunitWarning              = null;
         $failOnEmptyTestSuite              = null;
         $failOnIncomplete                  = null;
         $failOnNotice                      = null;
         $failOnRisky                       = null;
         $failOnSkipped                     = null;
         $failOnWarning                     = null;
-        $doNotFailOnDeprecation            = null;
-        $doNotFailOnPhpunitDeprecation     = null;
-        $doNotFailOnPhpunitWarning         = null;
-        $doNotFailOnEmptyTestSuite         = null;
-        $doNotFailOnIncomplete             = null;
-        $doNotFailOnNotice                 = null;
-        $doNotFailOnRisky                  = null;
-        $doNotFailOnSkipped                = null;
-        $doNotFailOnWarning                = null;
         $stopOnDefect                      = null;
         $stopOnDeprecation                 = null;
         $specificDeprecationToStopOn       = null;
@@ -481,68 +455,44 @@ final class Builder
                     break;
 
                 case '--group':
-                    if (str_contains($option[1], ',')) {
-                        EventFacade::emitter()->testRunnerTriggeredPhpunitWarning(
-                            'Using comma-separated values with --group is deprecated and will no longer work in PHPUnit 12. You can use --group multiple times instead.',
-                        );
-                    }
-
                     if ($groups === null) {
                         $groups = [];
                     }
 
-                    $groups = array_merge($groups, explode(',', $option[1]));
+                    $groups[] = $option[1];
 
                     $optionAllowedMultipleTimes = true;
 
                     break;
 
                 case '--exclude-group':
-                    if (str_contains($option[1], ',')) {
-                        EventFacade::emitter()->testRunnerTriggeredPhpunitWarning(
-                            'Using comma-separated values with --exclude-group is deprecated and will no longer work in PHPUnit 12. You can use --exclude-group multiple times instead.',
-                        );
-                    }
-
                     if ($excludeGroups === null) {
                         $excludeGroups = [];
                     }
 
-                    $excludeGroups = array_merge($excludeGroups, explode(',', $option[1]));
+                    $excludeGroups[] = $option[1];
 
                     $optionAllowedMultipleTimes = true;
 
                     break;
 
                 case '--covers':
-                    if (str_contains($option[1], ',')) {
-                        EventFacade::emitter()->testRunnerTriggeredPhpunitWarning(
-                            'Using comma-separated values with --covers is deprecated and will no longer work in PHPUnit 12. You can use --covers multiple times instead.',
-                        );
-                    }
-
                     if ($testsCovering === null) {
                         $testsCovering = [];
                     }
 
-                    $testsCovering = array_merge($testsCovering, array_map('strtolower', explode(',', $option[1])));
+                    $testsCovering[] = strtolower($option[1]);
 
                     $optionAllowedMultipleTimes = true;
 
                     break;
 
                 case '--uses':
-                    if (str_contains($option[1], ',')) {
-                        EventFacade::emitter()->testRunnerTriggeredPhpunitWarning(
-                            'Using comma-separated values with --uses is deprecated and will no longer work in PHPUnit 12. You can use --uses multiple times instead.',
-                        );
-                    }
-
                     if ($testsUsing === null) {
                         $testsUsing = [];
                     }
 
-                    $testsUsing = array_merge($testsUsing, array_map('strtolower', explode(',', $option[1])));
+                    $testsUsing[] = strtolower($option[1]);
 
                     $optionAllowedMultipleTimes = true;
 
@@ -560,17 +510,11 @@ final class Builder
                     break;
 
                 case '--test-suffix':
-                    if (str_contains($option[1], ',')) {
-                        EventFacade::emitter()->testRunnerTriggeredPhpunitWarning(
-                            'Using comma-separated values with --test-suffix is deprecated and will no longer work in PHPUnit 12. You can use --test-suffix multiple times instead.',
-                        );
-                    }
-
                     if ($testSuffixes === null) {
                         $testSuffixes = [];
                     }
 
-                    $testSuffixes = array_merge($testSuffixes, explode(',', $option[1]));
+                    $testSuffixes[] = $option[1];
 
                     $optionAllowedMultipleTimes = true;
 
@@ -683,206 +627,43 @@ final class Builder
 
                     break;
 
-                case '--fail-on-all-issues':
-                    $failOnAllIssues = true;
-
-                    break;
-
                 case '--fail-on-deprecation':
-                    $this->warnWhenOptionsConflict(
-                        $doNotFailOnDeprecation,
-                        '--fail-on-deprecation',
-                        '--do-not-fail-on-deprecation',
-                    );
-
                     $failOnDeprecation = true;
 
                     break;
 
                 case '--fail-on-phpunit-deprecation':
-                    $this->warnWhenOptionsConflict(
-                        $doNotFailOnPhpunitDeprecation,
-                        '--fail-on-phpunit-deprecation',
-                        '--do-not-fail-on-phpunit-deprecation',
-                    );
-
                     $failOnPhpunitDeprecation = true;
 
                     break;
 
-                case '--fail-on-phpunit-warning':
-                    $this->warnWhenOptionsConflict(
-                        $doNotFailOnPhpunitWarning,
-                        '--fail-on-phpunit-warning',
-                        '--do-not-fail-on-phpunit-warning',
-                    );
-
-                    $failOnPhpunitWarning = true;
-
-                    break;
-
                 case '--fail-on-empty-test-suite':
-                    $this->warnWhenOptionsConflict(
-                        $doNotFailOnEmptyTestSuite,
-                        '--fail-on-empty-test-suite',
-                        '--do-not-fail-on-empty-test-suite',
-                    );
-
                     $failOnEmptyTestSuite = true;
 
                     break;
 
                 case '--fail-on-incomplete':
-                    $this->warnWhenOptionsConflict(
-                        $doNotFailOnIncomplete,
-                        '--fail-on-incomplete',
-                        '--do-not-fail-on-incomplete',
-                    );
-
                     $failOnIncomplete = true;
 
                     break;
 
                 case '--fail-on-notice':
-                    $this->warnWhenOptionsConflict(
-                        $doNotFailOnNotice,
-                        '--fail-on-notice',
-                        '--do-not-fail-on-notice',
-                    );
-
                     $failOnNotice = true;
 
                     break;
 
                 case '--fail-on-risky':
-                    $this->warnWhenOptionsConflict(
-                        $doNotFailOnRisky,
-                        '--fail-on-risky',
-                        '--do-not-fail-on-risky',
-                    );
-
                     $failOnRisky = true;
 
                     break;
 
                 case '--fail-on-skipped':
-                    $this->warnWhenOptionsConflict(
-                        $doNotFailOnSkipped,
-                        '--fail-on-skipped',
-                        '--do-not-fail-on-skipped',
-                    );
-
                     $failOnSkipped = true;
 
                     break;
 
                 case '--fail-on-warning':
-                    $this->warnWhenOptionsConflict(
-                        $doNotFailOnWarning,
-                        '--fail-on-warning',
-                        '--do-not-fail-on-warning',
-                    );
-
                     $failOnWarning = true;
-
-                    break;
-
-                case '--do-not-fail-on-deprecation':
-                    $this->warnWhenOptionsConflict(
-                        $failOnDeprecation,
-                        '--do-not-fail-on-deprecation',
-                        '--fail-on-deprecation',
-                    );
-
-                    $doNotFailOnDeprecation = true;
-
-                    break;
-
-                case '--do-not-fail-on-phpunit-deprecation':
-                    $this->warnWhenOptionsConflict(
-                        $failOnPhpunitDeprecation,
-                        '--do-not-fail-on-phpunit-deprecation',
-                        '--fail-on-phpunit-deprecation',
-                    );
-
-                    $doNotFailOnPhpunitDeprecation = true;
-
-                    break;
-
-                case '--do-not-fail-on-phpunit-warning':
-                    $this->warnWhenOptionsConflict(
-                        $failOnPhpunitWarning,
-                        '--do-not-fail-on-phpunit-warning',
-                        '--fail-on-phpunit-warning',
-                    );
-
-                    $doNotFailOnPhpunitWarning = true;
-
-                    break;
-
-                case '--do-not-fail-on-empty-test-suite':
-                    $this->warnWhenOptionsConflict(
-                        $failOnEmptyTestSuite,
-                        '--do-not-fail-on-empty-test-suite',
-                        '--fail-on-empty-test-suite',
-                    );
-
-                    $doNotFailOnEmptyTestSuite = true;
-
-                    break;
-
-                case '--do-not-fail-on-incomplete':
-                    $this->warnWhenOptionsConflict(
-                        $failOnIncomplete,
-                        '--do-not-fail-on-incomplete',
-                        '--fail-on-incomplete',
-                    );
-
-                    $doNotFailOnIncomplete = true;
-
-                    break;
-
-                case '--do-not-fail-on-notice':
-                    $this->warnWhenOptionsConflict(
-                        $failOnNotice,
-                        '--do-not-fail-on-notice',
-                        '--fail-on-notice',
-                    );
-
-                    $doNotFailOnNotice = true;
-
-                    break;
-
-                case '--do-not-fail-on-risky':
-                    $this->warnWhenOptionsConflict(
-                        $failOnRisky,
-                        '--do-not-fail-on-risky',
-                        '--fail-on-risky',
-                    );
-
-                    $doNotFailOnRisky = true;
-
-                    break;
-
-                case '--do-not-fail-on-skipped':
-                    $this->warnWhenOptionsConflict(
-                        $failOnSkipped,
-                        '--do-not-fail-on-skipped',
-                        '--fail-on-skipped',
-                    );
-
-                    $doNotFailOnSkipped = true;
-
-                    break;
-
-                case '--do-not-fail-on-warning':
-                    $this->warnWhenOptionsConflict(
-                        $failOnWarning,
-                        '--do-not-fail-on-warning',
-                        '--fail-on-warning',
-                    );
-
-                    $doNotFailOnWarning = true;
 
                     break;
 
@@ -1015,7 +796,6 @@ final class Builder
 
                     break;
 
-                case '--do-not-report-useless-tests':
                 case '--dont-report-useless-tests':
                     $reportUselessTests = false;
 
@@ -1038,11 +818,6 @@ final class Builder
 
                 case '--disallow-test-output':
                     $disallowTestOutput = true;
-
-                    break;
-
-                case '--display-all-issues':
-                    $displayAllIssues = true;
 
                     break;
 
@@ -1093,11 +868,6 @@ final class Builder
 
                 case '--reverse-list':
                     $reverseList = true;
-
-                    break;
-
-                case '--check-php-configuration':
-                    $checkPhpConfiguration = true;
 
                     break;
 
@@ -1209,7 +979,6 @@ final class Builder
             $bootstrap,
             $cacheDirectory,
             $cacheResult,
-            $checkPhpConfiguration,
             $checkVersion,
             $colors,
             $columns,
@@ -1232,25 +1001,14 @@ final class Builder
             $excludeGroups,
             $executionOrder,
             $executionOrderDefects,
-            $failOnAllIssues,
             $failOnDeprecation,
             $failOnPhpunitDeprecation,
-            $failOnPhpunitWarning,
             $failOnEmptyTestSuite,
             $failOnIncomplete,
             $failOnNotice,
             $failOnRisky,
             $failOnSkipped,
             $failOnWarning,
-            $doNotFailOnDeprecation,
-            $doNotFailOnPhpunitDeprecation,
-            $doNotFailOnPhpunitWarning,
-            $doNotFailOnEmptyTestSuite,
-            $doNotFailOnIncomplete,
-            $doNotFailOnNotice,
-            $doNotFailOnRisky,
-            $doNotFailOnSkipped,
-            $doNotFailOnWarning,
             $stopOnDefect,
             $stopOnDeprecation,
             $specificDeprecationToStopOn,
@@ -1301,7 +1059,6 @@ final class Builder
             $testSuite,
             $excludeTestSuite,
             $useDefaultConfiguration,
-            $displayAllIssues,
             $displayIncomplete,
             $displaySkipped,
             $displayDeprecations,
@@ -1335,30 +1092,12 @@ final class Builder
         $this->processed[$option]++;
 
         if ($this->processed[$option] === 2) {
-            EventFacade::emitter()->testRunnerTriggeredPhpunitWarning(
+            EventFacade::emitter()->testRunnerTriggeredWarning(
                 sprintf(
                     'Option %s cannot be used more than once',
                     $option,
                 ),
             );
         }
-    }
-
-    /**
-     * @param non-empty-string $option
-     */
-    private function warnWhenOptionsConflict(?bool $current, string $option, string $opposite): void
-    {
-        if ($current === null) {
-            return;
-        }
-
-        EventFacade::emitter()->testRunnerTriggeredPhpunitWarning(
-            sprintf(
-                'Options %s and %s cannot be used together',
-                $option,
-                $opposite,
-            ),
-        );
     }
 }
