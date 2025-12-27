@@ -9,7 +9,7 @@
         <h2>Developer Notes</h2>
         <p>
             This example partial is intentionally simple. Use it to experiment with
-            Copilot prompts and unit tests.
+            Google Gemini, Antigravity, and Copilot prompts and unit tests.
         </p>
     </section>
 </article>

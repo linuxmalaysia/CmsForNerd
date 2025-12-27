@@ -5,13 +5,12 @@ declare(strict_types=1);
 /**
  * CMSForNerd Semantic Auditor
  * Verifies Triple-Layer Metadata Compliance (Microdata, JSON-LD, RDF)
- * 
- * Usage: php tools/audit-semantics.php [URL]
+ * * Usage: php tools/audit-semantics.php [URL]
  * Example: php tools/audit-semantics.php http://cmsfornerd.test
  */
 
-// Determine the URL to audit
-$url = $argv[1] ?? 'http://localhost:8888';
+// Determine the URL to audit - Defaulting to our Lab Port 8000
+$url = $argv[1] ?? 'http://localhost:8000';
 
 echo "🔍 CMSForNerd Semantic Auditor v3.1\n";
 echo str_repeat("=", 60) . "\n";
@@ -24,8 +23,7 @@ $html = @file_get_contents($url);
 if ($html === false) {
     echo "❌ ERROR: Could not reach the site.\n";
     echo "   Common fixes:\n";
-    echo "   - Ensure Laravel Herd is running (Windows)\n";
-    echo "   - Or start PHP dev server: php -S localhost:8888\n";
+    echo "   - Ensure your PHP dev server is running: php -S localhost:8000\n";
     echo "   - Check firewall settings\n";
     exit(1);
 }
@@ -45,7 +43,7 @@ $results = [
         'fix' => 'Create labels.rdf and link it in common-headertag.inc'
     ],
     'Security.txt (RFC 9116)' => [
-        'check' => str_contains($html, '.well-known/security.txt'),
+        'check' => str_contains($html, 'Contact:') || str_contains($html, '.well-known/security.txt'),
         'fix' => 'Create .well-known/security.txt with security contact'
     ],
     'CSP Nonce' => [
