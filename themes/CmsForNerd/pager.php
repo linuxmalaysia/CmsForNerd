@@ -39,6 +39,7 @@
 function pager(CmsForNerd\CmsContext $ctx)
 
 {
+$THEMENAME = $ctx->themeName;
 
 pageheader($ctx); //must have
 

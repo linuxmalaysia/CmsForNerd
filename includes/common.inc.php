@@ -28,8 +28,9 @@ function pageheader(CmsForNerd\CmsContext $ctx)
 
 // XHTML define
 
-print("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n");
-print("<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\">");
+// HTML5 define
+print("<!DOCTYPE html>\n");
+print("<html lang=\"en\">");
 
 print("<head>");
 
@@ -39,11 +40,6 @@ include ("contents/common-headertag.inc");
 
 print("<title>".$ctx->content['title']."</title>");
 print("<style type=\"text/css\" media=\"all\">@import \"$ctx->cssPath\";</style>");
-print("<meta content=\"".$ctx->content['author']."\" name=\"author\" />");
-print("<meta content=\"".$ctx->content['description']."\" name=\"description\" />");
-print("<meta content=\"".$ctx->content['keywords']."\" name=\"keywords\" />");
-print("<meta name=\"Abstract\" content=\"".$ctx->content['description']."\" />");
-print("<meta name=\"head\" content=\"".$ctx->content['description']."\" />");
 
 // Cloudflare Turnstile Script
 print('<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>');

@@ -103,11 +103,11 @@ include("themes/$THEMENAME/pager.php");
 // Include the function to detect bots (assuming it's a valid file)
 require_once('includes/is_bot.php');
 
-// Set content type as plain text
-header('Content-Type: text/plain');
-
 // Check if the request is from a bot using the included function
 if (is_bot()) {
+  // Set content type as plain text for bots
+  header('Content-Type: text/plain');
+  
   echo "This is a page specifically for search engine crawlers.\n";
   
   // Additional information for indexing (e.g., sitemap URL)
