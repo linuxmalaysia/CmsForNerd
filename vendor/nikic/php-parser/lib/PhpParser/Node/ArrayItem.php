@@ -41,3 +41,4 @@ class ArrayItem extends NodeAbstract {
 
 // @deprecated compatibility alias
 class_alias(ArrayItem::class, Expr\ArrayItem::class);
+

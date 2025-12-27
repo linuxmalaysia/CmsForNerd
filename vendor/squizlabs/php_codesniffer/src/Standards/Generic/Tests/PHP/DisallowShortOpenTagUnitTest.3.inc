@@ -18,3 +18,4 @@ Some content <? echo $var; ?> Some longer content to trigger snippet clipping
 // Only recognize closing tag after opener.
 // The test below must be the last test in the file because there must be no PHP close tag after it.
 Some?> content <?
+

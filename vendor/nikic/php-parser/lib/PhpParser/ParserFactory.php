@@ -40,3 +40,4 @@ class ParserFactory {
         return $this->createForVersion(PhpVersion::getHostVersion());
     }
 }
+

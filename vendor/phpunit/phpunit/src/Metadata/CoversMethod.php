@@ -70,3 +70,4 @@ final readonly class CoversMethod extends Metadata
         return $this->className . '::' . $this->methodName;
     }
 }
+

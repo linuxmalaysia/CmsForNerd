@@ -91,3 +91,4 @@ class Manifest {
         return $type->isExtensionFor($application);
     }
 }
+

@@ -18,3 +18,4 @@ interface Event
 
     public function asString(): string;
 }
+

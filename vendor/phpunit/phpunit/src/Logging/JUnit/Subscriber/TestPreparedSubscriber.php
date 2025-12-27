@@ -28,3 +28,4 @@ final readonly class TestPreparedSubscriber extends Subscriber implements Prepar
         $this->logger()->testPrepared();
     }
 }
+

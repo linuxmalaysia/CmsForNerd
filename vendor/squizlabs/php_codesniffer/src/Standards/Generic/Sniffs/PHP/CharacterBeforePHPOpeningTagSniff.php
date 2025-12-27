@@ -84,3 +84,4 @@ class CharacterBeforePHPOpeningTagSniff implements Sniff
 
 
 }//end class
+

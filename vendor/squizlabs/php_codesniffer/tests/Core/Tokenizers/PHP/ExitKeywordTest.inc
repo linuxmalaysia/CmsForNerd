@@ -104,3 +104,4 @@ function exit() {}
 /* testNotDieFunctionDeclaration */
 // Intentional parse error. This is not allowed in PHP, but that's not the concern of the tokenizer. Should still be handled correctly.
 function die() {}
+

@@ -54,3 +54,4 @@
     <li><strong>Server:</strong> Nginx Latest with PHP 8.4+.</li>
     <li><strong>Browser:</strong> Mozilla Firefox for testing strict privacy and modern web standards.</li>
 </ul>
+

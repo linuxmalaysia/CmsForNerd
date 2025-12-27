@@ -60,3 +60,4 @@ final class Callback extends Constraint
         return ($this->callback)($other);
     }
 }
+

@@ -10,3 +10,4 @@ namespace Fixtures\TestStandard\Sniffs\InvalidSniffError;
 final class NoImplementsNoRegisterOrProcessSniff
 {
 }
+

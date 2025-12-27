@@ -77,3 +77,4 @@ abstract readonly class TestSuite
         return false;
     }
 }
+

@@ -55,3 +55,4 @@ final readonly class Skipped implements Event
         );
     }
 }
+

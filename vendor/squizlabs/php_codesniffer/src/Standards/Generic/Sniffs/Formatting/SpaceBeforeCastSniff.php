@@ -71,3 +71,4 @@ class SpaceBeforeCastSniff implements Sniff
 
 
 }//end class
+

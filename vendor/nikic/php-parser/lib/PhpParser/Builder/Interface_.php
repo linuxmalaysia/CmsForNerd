@@ -92,3 +92,4 @@ class Interface_ extends Declaration {
         ], $this->attributes);
     }
 }
+

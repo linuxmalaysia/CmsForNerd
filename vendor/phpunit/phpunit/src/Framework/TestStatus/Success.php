@@ -33,3 +33,4 @@ final readonly class Success extends Known
         return 'success';
     }
 }
+

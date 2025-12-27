@@ -48,3 +48,4 @@ class DiscourageGotoSniff implements Sniff
 
 
 }//end class
+

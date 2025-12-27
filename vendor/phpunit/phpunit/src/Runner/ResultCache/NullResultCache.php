@@ -44,3 +44,4 @@ final readonly class NullResultCache implements ResultCache
     {
     }
 }
+

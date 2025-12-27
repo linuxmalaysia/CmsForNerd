@@ -73,3 +73,4 @@ class DeprecatedFunctionsSniff extends ForbiddenFunctionsSniff
 
 
 }//end class
+

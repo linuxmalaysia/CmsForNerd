@@ -27,3 +27,4 @@ class HaltCompiler extends Stmt {
         return 'Stmt_HaltCompiler';
     }
 }
+

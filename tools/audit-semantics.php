@@ -89,3 +89,4 @@ if ($failed === 0) {
     echo "   This page MUST NOT be deployed until all checks pass.\n\n";
     exit(1);
 }
+

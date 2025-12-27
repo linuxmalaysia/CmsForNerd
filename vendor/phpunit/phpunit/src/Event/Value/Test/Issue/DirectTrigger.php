@@ -29,3 +29,4 @@ final class DirectTrigger extends IssueTrigger
         return 'issue triggered by first-party code calling into third-party code';
     }
 }
+

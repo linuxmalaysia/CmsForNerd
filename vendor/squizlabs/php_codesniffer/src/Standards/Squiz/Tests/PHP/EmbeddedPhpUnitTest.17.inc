@@ -6,3 +6,4 @@
 <!-- The complete tag block will be ignored when it is the last (closed) tag block in a file, even when it would otherwise trigger errors. -->
 <?=
     'too much indent and close tag not on own line'; ?>
+

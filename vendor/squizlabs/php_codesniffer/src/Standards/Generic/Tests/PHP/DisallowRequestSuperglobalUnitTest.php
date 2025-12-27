@@ -54,3 +54,4 @@ final class DisallowRequestSuperglobalUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -84,3 +84,4 @@ if ($foo) {
 $c = match ($a) {
     1 => true,
 };
+

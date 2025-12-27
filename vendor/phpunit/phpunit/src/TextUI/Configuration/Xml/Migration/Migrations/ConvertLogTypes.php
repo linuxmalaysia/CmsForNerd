@@ -53,3 +53,4 @@ final readonly class ConvertLogTypes implements Migration
         }
     }
 }
+

@@ -38,3 +38,4 @@ class BundledComponentCollection implements Countable, IteratorAggregate {
         return new BundledComponentCollectionIterator($this);
     }
 }
+

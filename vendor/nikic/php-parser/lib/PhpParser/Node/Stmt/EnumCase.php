@@ -34,3 +34,4 @@ class EnumCase extends Node\Stmt {
         return 'Stmt_EnumCase';
     }
 }
+

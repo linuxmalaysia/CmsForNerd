@@ -313,3 +313,4 @@ final class Text
         return $color . str_pad((string) $string, $padding) . self::COLOR_RESET . PHP_EOL;
     }
 }
+

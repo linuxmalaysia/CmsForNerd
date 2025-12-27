@@ -96,3 +96,4 @@ final readonly class ListTestSuitesCommand implements Command
         return $buffer;
     }
 }
+

@@ -14,3 +14,4 @@ use LogicException;
 final class IllogicalValuesException extends LogicException implements Exception
 {
 }
+

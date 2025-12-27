@@ -33,3 +33,4 @@ final readonly class Large extends Known
         return 'large';
     }
 }
+

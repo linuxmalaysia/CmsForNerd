@@ -101,3 +101,4 @@ class ObjectMemberCommaSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

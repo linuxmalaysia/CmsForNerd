@@ -18,3 +18,4 @@ interface ExecutionAbortedSubscriber extends Subscriber
 {
     public function notify(ExecutionAborted $event): void;
 }
+

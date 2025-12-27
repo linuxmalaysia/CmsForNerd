@@ -80,3 +80,4 @@ final class Collector
         $this->filteredDeprecations[] = $event->message();
     }
 }
+

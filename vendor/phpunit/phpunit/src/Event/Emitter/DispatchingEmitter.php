@@ -1315,3 +1315,4 @@ final class DispatchingEmitter implements Emitter
         return $info;
     }
 }
+

@@ -63,3 +63,4 @@ final readonly class DirectoryCollection implements Countable, IteratorAggregate
         return $this->count() === 0;
     }
 }
+

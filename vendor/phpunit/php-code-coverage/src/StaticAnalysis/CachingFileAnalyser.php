@@ -182,3 +182,4 @@ final class CachingFileAnalyser implements FileAnalyser
         return $this->directory . DIRECTORY_SEPARATOR . $cacheKey;
     }
 }
+

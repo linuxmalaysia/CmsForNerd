@@ -152,3 +152,4 @@ class ClassMethod extends Node\Stmt implements FunctionLike {
         return 'Stmt_ClassMethod';
     }
 }
+

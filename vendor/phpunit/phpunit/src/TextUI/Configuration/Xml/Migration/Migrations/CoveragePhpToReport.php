@@ -31,3 +31,4 @@ final readonly class CoveragePhpToReport extends LogToReportMigration
         return $php;
     }
 }
+

@@ -431,3 +431,4 @@ final class ResolveSimpleTokenTest extends AbstractTokenizerTestCase
 
 
 }//end class
+

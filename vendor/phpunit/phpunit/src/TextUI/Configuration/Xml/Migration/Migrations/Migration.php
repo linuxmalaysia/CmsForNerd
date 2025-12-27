@@ -20,3 +20,4 @@ interface Migration
 {
     public function migrate(DOMDocument $document): void;
 }
+

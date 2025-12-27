@@ -1402,3 +1402,4 @@ final readonly class Configuration
         return $this->shortenArraysForExportThreshold;
     }
 }
+

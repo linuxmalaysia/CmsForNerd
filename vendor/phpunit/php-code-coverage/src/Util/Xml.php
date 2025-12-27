@@ -51,3 +51,4 @@ final readonly class Xml
         return $buffer;
     }
 }
+

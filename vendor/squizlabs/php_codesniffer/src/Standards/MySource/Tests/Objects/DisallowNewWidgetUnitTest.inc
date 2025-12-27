@@ -4,3 +4,4 @@ Widget::includeWidget('PasswordField');
 $blah = new PasswordFieldWidgetType();
 Widget::getWidget('PasswordField');
 ?>
+

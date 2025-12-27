@@ -31,3 +31,4 @@ class DateIntervalFilter implements TypeFilter
         return $copy;
     }
 }
+

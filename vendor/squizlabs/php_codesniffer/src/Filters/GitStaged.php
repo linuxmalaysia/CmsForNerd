@@ -124,3 +124,4 @@ class GitStaged extends ExactMatch
 
 
 }//end class
+

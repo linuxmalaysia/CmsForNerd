@@ -28,3 +28,4 @@ class Static_ extends Stmt {
         return 'Stmt_Static';
     }
 }
+

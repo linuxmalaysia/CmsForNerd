@@ -4,3 +4,4 @@
 // covers that scenario. This is an intentional parse error.
 // Note that there is (intentionally) no trailing newline at the end of this file.
 $var = true ?
+

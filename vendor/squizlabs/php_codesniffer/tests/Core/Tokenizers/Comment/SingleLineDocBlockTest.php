@@ -215,3 +215,4 @@ final class SingleLineDocBlockTest extends CommentTestCase
 
 
 }//end class
+

@@ -145,3 +145,4 @@ final class UnionType extends Type
         }
     }
 }
+

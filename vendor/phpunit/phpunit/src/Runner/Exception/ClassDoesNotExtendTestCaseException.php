@@ -30,3 +30,4 @@ final class ClassDoesNotExtendTestCaseException extends RuntimeException impleme
         );
     }
 }
+

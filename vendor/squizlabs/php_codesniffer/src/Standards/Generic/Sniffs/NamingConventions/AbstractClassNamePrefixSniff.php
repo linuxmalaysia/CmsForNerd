@@ -58,3 +58,4 @@ class AbstractClassNamePrefixSniff implements Sniff
 
 
 }//end class
+

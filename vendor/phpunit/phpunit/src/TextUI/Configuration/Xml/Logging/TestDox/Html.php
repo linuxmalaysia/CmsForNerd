@@ -32,3 +32,4 @@ final readonly class Html
         return $this->target;
     }
 }
+

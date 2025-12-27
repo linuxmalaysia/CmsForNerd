@@ -18,3 +18,4 @@ use RuntimeException;
 final class NoComparisonFailureException extends RuntimeException implements Exception
 {
 }
+

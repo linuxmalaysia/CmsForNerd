@@ -68,3 +68,4 @@ final readonly class TestFile
         return $this->groups;
     }
 }
+

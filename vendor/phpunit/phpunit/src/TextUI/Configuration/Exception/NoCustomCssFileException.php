@@ -19,3 +19,4 @@ use RuntimeException;
 final class NoCustomCssFileException extends RuntimeException implements Exception
 {
 }
+

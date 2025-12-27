@@ -118,3 +118,4 @@ class AssignThisSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

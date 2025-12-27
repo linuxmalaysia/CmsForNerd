@@ -56,3 +56,4 @@ class DNFTypes {
         $arrow = fn($a): (A&B)|Array => new $a;
     }
 }
+

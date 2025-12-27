@@ -6,3 +6,4 @@ $defined = true;
 if (defined('MINSIZE') === false) {
     $defined = false;
 }
+

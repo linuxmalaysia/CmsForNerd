@@ -21,3 +21,4 @@ final readonly class IgnoreDeprecations extends Metadata
         return true;
     }
 }
+

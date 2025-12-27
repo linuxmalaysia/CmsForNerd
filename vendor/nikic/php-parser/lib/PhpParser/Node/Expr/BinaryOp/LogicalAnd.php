@@ -13,3 +13,4 @@ class LogicalAnd extends BinaryOp {
         return 'Expr_BinaryOp_LogicalAnd';
     }
 }
+

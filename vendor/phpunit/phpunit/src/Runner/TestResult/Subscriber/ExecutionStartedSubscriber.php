@@ -24,3 +24,4 @@ final readonly class ExecutionStartedSubscriber extends Subscriber implements Te
         $this->collector()->executionStarted($event);
     }
 }
+

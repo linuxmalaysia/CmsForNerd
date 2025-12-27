@@ -55,3 +55,4 @@ final readonly class CoversClass extends Metadata
         return $this->className;
     }
 }
+

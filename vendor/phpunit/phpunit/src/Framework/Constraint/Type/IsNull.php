@@ -31,3 +31,4 @@ final class IsNull extends Constraint
         return $other === null;
     }
 }
+

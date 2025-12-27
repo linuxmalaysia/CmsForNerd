@@ -178,3 +178,4 @@ final readonly class GarbageCollectorStatus
         return $this->bufferSize;
     }
 }
+

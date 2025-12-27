@@ -115,3 +115,4 @@ final readonly class IssueFilter
         return true;
     }
 }
+

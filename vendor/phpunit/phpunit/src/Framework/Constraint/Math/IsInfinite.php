@@ -33,3 +33,4 @@ final class IsInfinite extends Constraint
         return is_infinite($other);
     }
 }
+

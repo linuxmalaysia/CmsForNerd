@@ -19,3 +19,4 @@ final class PcovNotAvailableException extends RuntimeException implements Except
         parent::__construct('The PCOV extension is not available');
     }
 }
+

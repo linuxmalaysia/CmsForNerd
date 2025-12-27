@@ -14,3 +14,4 @@ use RuntimeException;
 final class DeadCodeDetectionNotSupportedException extends RuntimeException implements Exception
 {
 }
+

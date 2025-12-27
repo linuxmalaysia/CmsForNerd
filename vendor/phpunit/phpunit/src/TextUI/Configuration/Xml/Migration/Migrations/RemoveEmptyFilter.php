@@ -54,3 +54,4 @@ final readonly class RemoveEmptyFilter implements Migration
         }
     }
 }
+

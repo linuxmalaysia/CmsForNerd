@@ -855,3 +855,4 @@ final readonly class Application
         ErrorHandler::instance()->useDeprecationTriggers($deprecationTriggers);
     }
 }
+

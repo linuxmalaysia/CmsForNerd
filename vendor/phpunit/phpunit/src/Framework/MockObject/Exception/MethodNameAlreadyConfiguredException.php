@@ -21,3 +21,4 @@ final class MethodNameAlreadyConfiguredException extends \PHPUnit\Framework\Exce
         parent::__construct('Method name is already configured');
     }
 }
+

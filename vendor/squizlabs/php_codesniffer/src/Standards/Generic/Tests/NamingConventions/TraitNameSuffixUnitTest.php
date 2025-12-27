@@ -61,3 +61,4 @@ final class TraitNameSuffixUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

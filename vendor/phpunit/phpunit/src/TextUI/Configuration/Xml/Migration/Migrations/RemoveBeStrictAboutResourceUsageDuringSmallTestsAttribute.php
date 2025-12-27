@@ -31,3 +31,4 @@ final readonly class RemoveBeStrictAboutResourceUsageDuringSmallTestsAttribute i
         }
     }
 }
+

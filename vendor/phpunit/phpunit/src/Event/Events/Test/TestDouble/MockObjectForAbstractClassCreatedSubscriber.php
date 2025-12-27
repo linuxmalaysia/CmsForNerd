@@ -18,3 +18,4 @@ interface MockObjectForAbstractClassCreatedSubscriber extends Subscriber
 {
     public function notify(MockObjectForAbstractClassCreated $event): void;
 }
+

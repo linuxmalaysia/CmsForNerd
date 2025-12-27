@@ -89,3 +89,4 @@ class Gitblame extends VersionControl
 
 
 }//end class
+

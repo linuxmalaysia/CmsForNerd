@@ -103,3 +103,4 @@ final readonly class PHP
         return $this->extensions;
     }
 }
+

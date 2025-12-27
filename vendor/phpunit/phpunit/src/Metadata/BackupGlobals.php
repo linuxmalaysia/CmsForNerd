@@ -38,3 +38,4 @@ final readonly class BackupGlobals extends Metadata
         return $this->enabled;
     }
 }
+

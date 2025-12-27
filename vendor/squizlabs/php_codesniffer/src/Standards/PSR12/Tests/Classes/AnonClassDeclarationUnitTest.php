@@ -78,3 +78,4 @@ final class AnonClassDeclarationUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -20,3 +20,4 @@ final class PathExistsButIsNotDirectoryException extends RuntimeException implem
         parent::__construct(sprintf('"%s" exists but is not a directory', $path));
     }
 }
+

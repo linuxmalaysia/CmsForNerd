@@ -8,3 +8,4 @@ class PropertyWithoutModifier
     public static function output() {}
     $var = null;
 }
+

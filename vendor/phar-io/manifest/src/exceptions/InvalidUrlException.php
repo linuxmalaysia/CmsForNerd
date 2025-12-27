@@ -14,3 +14,4 @@ use InvalidArgumentException;
 
 class InvalidUrlException extends InvalidArgumentException implements Exception {
 }
+

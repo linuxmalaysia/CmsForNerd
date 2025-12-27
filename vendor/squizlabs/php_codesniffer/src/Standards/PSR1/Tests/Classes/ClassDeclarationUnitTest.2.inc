@@ -2,3 +2,4 @@
 namespace MyProject;
 
 class Foo {}
+

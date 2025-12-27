@@ -20,3 +20,4 @@ use Attribute;
 final readonly class RunClassInSeparateProcess
 {
 }
+

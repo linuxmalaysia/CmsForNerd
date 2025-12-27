@@ -110,3 +110,4 @@
 .setup-guide .phase.reasoning h2 { border-bottom-color: #fde68a; }
 .setup-guide .guide-footer { background: #f8f9fa; padding: 2rem; border-radius: 8px; text-align: center; margin-top: 4rem; }
 </style>
+

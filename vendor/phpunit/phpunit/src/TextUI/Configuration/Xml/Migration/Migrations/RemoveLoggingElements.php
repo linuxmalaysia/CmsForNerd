@@ -57,3 +57,4 @@ final readonly class RemoveLoggingElements implements Migration
         $node->parentNode->removeChild($node);
     }
 }
+

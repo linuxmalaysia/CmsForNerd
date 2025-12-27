@@ -47,3 +47,4 @@ class FullyQualified extends \PhpParser\Node\Name {
         return 'Name_FullyQualified';
     }
 }
+

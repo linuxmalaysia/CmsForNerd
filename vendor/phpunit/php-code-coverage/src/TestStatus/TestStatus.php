@@ -63,3 +63,4 @@ abstract class TestStatus
 
     abstract public function asString(): string;
 }
+

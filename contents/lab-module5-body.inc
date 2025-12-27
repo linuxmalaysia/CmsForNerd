@@ -107,3 +107,4 @@
 .progress-nav .next { background: #0275d8; color: #fff; }
 @media (max-width: 768px) { .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>
+

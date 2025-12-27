@@ -121,3 +121,4 @@ class Param extends NodeAbstract {
         return (bool) ($this->flags & Modifiers::PRIVATE_SET);
     }
 }
+

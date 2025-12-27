@@ -30,3 +30,4 @@ final class ClassCannotBeFoundException extends RuntimeException implements Exce
         );
     }
 }
+

@@ -344,3 +344,4 @@ switch ( $a ) {
 
 jumpOut:
 doSomething();
+

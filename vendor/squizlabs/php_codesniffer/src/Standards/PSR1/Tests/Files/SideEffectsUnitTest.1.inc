@@ -85,3 +85,4 @@ readonly class Foo {
 }
 
 ?>
+

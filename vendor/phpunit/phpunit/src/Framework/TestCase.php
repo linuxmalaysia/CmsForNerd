@@ -2706,3 +2706,4 @@ abstract class TestCase extends Assert implements Reorderable, SelfDescribing, T
         return MetadataRegistry::parser()->forClass(static::class)->isDisableReturnValueGenerationForTestDoubles()->isEmpty();
     }
 }
+

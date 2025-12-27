@@ -18,3 +18,4 @@ interface MockObjectForTraitCreatedSubscriber extends Subscriber
 {
     public function notify(MockObjectForTraitCreated $event): void;
 }
+

@@ -55,3 +55,4 @@ final class MetadataCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

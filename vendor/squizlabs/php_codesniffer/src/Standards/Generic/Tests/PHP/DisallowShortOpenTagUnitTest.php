@@ -108,3 +108,4 @@ final class DisallowShortOpenTagUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

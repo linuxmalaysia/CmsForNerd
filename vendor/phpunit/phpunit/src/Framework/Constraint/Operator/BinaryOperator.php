@@ -130,3 +130,4 @@ abstract class BinaryOperator extends Operator
         return $prefix . $string;
     }
 }
+

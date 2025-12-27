@@ -18,3 +18,4 @@ interface DataProviderMethodCalledSubscriber extends Subscriber
 {
     public function notify(DataProviderMethodCalled $event): void;
 }
+

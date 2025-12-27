@@ -165,3 +165,4 @@ class DocCommentAlignmentSniff implements Sniff
 
 
 }//end class
+

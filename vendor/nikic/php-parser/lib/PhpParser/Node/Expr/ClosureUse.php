@@ -13,3 +13,4 @@ if (false) {
     class ClosureUse extends \PhpParser\Node\ClosureUse {
     }
 }
+

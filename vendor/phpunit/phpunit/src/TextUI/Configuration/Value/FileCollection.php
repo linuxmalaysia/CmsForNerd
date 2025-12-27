@@ -63,3 +63,4 @@ final readonly class FileCollection implements Countable, IteratorAggregate
         return new FileCollectionIterator($this);
     }
 }
+

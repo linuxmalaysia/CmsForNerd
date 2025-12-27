@@ -3,3 +3,4 @@ namespace PharIo\Version;
 
 class NoPreReleaseSuffixException extends \Exception implements Exception {
 }
+

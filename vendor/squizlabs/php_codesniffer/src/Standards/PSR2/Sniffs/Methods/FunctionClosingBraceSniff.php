@@ -89,3 +89,4 @@ class FunctionClosingBraceSniff implements Sniff
 
 
 }//end class
+

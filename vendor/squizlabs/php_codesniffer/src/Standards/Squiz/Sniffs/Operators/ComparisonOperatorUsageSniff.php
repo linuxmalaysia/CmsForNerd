@@ -233,3 +233,4 @@ class ComparisonOperatorUsageSniff implements Sniff
 
 
 }//end class
+

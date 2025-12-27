@@ -55,3 +55,4 @@ final class MultiLineAssignmentUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

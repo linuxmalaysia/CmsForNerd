@@ -48,3 +48,4 @@ final class IsWritable extends Constraint
         );
     }
 }
+

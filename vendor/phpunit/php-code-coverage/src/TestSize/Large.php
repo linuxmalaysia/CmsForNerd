@@ -29,3 +29,4 @@ final class Large extends Known
         return 'large';
     }
 }
+

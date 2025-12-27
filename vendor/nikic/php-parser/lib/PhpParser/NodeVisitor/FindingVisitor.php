@@ -45,3 +45,4 @@ class FindingVisitor extends NodeVisitorAbstract {
         return null;
     }
 }
+

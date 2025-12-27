@@ -156,3 +156,4 @@ final readonly class Invocation implements SelfDescribing
         return $this->object;
     }
 }
+

@@ -244,3 +244,4 @@ class ForbiddenFunctionsSniff implements Sniff
 
 
 }//end class
+

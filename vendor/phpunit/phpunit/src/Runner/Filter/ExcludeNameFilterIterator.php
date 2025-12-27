@@ -21,3 +21,4 @@ final class ExcludeNameFilterIterator extends NameFilterIterator
         return !$result;
     }
 }
+

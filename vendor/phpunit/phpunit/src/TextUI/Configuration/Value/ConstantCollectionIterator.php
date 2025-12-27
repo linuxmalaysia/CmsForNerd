@@ -55,3 +55,4 @@ final class ConstantCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

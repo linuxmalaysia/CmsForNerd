@@ -69,3 +69,4 @@ if (!\function_exists('PhpParser\defineCompatibilityTokens')) {
 
     defineCompatibilityTokens();
 }
+

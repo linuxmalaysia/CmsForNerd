@@ -29,3 +29,4 @@ final class SelfTrigger extends IssueTrigger
         return 'issue triggered by first-party code calling into first-party code';
     }
 }
+

@@ -31,3 +31,4 @@ class Switch_ extends Node\Stmt {
         return 'Stmt_Switch';
     }
 }
+

@@ -21,3 +21,4 @@ final readonly class Test extends Metadata
         return true;
     }
 }
+

@@ -188,3 +188,4 @@ final class PropertyTypeHandlingSniff implements Sniff
         // Do something.
     }
 }
+

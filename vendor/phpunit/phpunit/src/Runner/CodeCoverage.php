@@ -410,3 +410,4 @@ final class CodeCoverage
         return $this->timer;
     }
 }
+

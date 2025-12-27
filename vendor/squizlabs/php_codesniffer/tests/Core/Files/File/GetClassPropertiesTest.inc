@@ -56,3 +56,4 @@ final /* comment */
     abstract // Intentional parse error, class cannot both be final and abstract.
 
         class AbstractFinal {}
+

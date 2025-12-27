@@ -17,3 +17,4 @@ use RuntimeException;
 final class InvalidSubscriberException extends RuntimeException implements Exception
 {
 }
+

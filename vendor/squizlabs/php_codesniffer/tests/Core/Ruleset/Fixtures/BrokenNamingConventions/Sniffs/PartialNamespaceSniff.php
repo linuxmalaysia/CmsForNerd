@@ -22,3 +22,4 @@ final class PartialNamespaceSniff implements Sniff
         // Do something.
     }
 }
+

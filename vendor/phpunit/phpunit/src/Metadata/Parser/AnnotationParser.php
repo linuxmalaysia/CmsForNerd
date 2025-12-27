@@ -603,3 +603,4 @@ final class AnnotationParser implements Parser
         return $result;
     }
 }
+

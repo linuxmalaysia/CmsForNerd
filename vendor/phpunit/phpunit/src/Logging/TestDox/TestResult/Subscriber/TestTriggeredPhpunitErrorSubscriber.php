@@ -24,3 +24,4 @@ final readonly class TestTriggeredPhpunitErrorSubscriber extends Subscriber impl
         $this->collector()->testTriggeredPhpunitError($event);
     }
 }
+

@@ -55,3 +55,4 @@ final class DuplicatePropertyUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

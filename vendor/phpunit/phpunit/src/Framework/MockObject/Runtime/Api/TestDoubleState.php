@@ -109,3 +109,4 @@ final class TestDoubleState
         return $this->generateReturnValues;
     }
 }
+

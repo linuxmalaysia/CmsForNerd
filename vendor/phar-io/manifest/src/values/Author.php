@@ -55,3 +55,4 @@ class Author {
         return $this->email;
     }
 }
+

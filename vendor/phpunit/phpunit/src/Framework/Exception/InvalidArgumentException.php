@@ -17,3 +17,4 @@ namespace PHPUnit\Framework;
 abstract class InvalidArgumentException extends Exception
 {
 }
+

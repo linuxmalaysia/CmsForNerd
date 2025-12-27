@@ -38,3 +38,4 @@ final readonly class BackupStaticProperties extends Metadata
         return $this->enabled;
     }
 }
+

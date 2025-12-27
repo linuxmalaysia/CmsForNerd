@@ -32,3 +32,4 @@ class FunctionDeclarationSniff extends AbstractPatternSniff
 
 
 }//end class
+

@@ -18,3 +18,4 @@ interface PrintedUnexpectedOutputSubscriber extends Subscriber
 {
     public function notify(PrintedUnexpectedOutput $event): void;
 }
+

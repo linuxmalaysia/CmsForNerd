@@ -51,3 +51,4 @@ final class GlobalFunctionUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

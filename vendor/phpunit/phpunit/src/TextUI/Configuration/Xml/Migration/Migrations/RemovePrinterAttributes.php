@@ -35,3 +35,4 @@ final readonly class RemovePrinterAttributes implements Migration
         }
     }
 }
+

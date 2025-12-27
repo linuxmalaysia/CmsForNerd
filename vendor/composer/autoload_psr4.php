@@ -10,3 +10,4 @@ return array(
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'CmsForNerd\\' => array($baseDir . '/includes'),
 );
+

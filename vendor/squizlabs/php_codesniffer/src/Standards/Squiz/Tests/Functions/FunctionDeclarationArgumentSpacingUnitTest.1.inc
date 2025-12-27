@@ -225,3 +225,4 @@ class AsymVisibilityPropertyPromotionSpacingAfterModifier {
         string $tooMuchSpaceNewLines,
     ) {}
 }
+

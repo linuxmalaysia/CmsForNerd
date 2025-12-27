@@ -39,3 +39,4 @@ final readonly class Crap4j
         return $this->threshold;
     }
 }
+

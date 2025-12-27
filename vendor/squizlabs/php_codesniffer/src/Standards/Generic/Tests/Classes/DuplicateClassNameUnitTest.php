@@ -96,3 +96,4 @@ final class DuplicateClassNameUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

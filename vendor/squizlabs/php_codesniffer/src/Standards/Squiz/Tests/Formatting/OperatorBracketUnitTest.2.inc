@@ -5,3 +5,4 @@
 class ParseErrors {
     const A|(B PARSE_ERROR = null;
 }
+

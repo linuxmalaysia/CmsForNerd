@@ -66,3 +66,4 @@ final readonly class MoveCoverageDirectoriesToSource implements Migration
         $coverage->parentNode->removeChild($coverage);
     }
 }
+

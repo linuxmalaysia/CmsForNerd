@@ -62,3 +62,4 @@ final class ArrayHasKey extends Constraint
         return 'an array ' . $this->toString();
     }
 }
+

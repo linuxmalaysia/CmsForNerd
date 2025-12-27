@@ -52,3 +52,4 @@ class PropertyTypeMatcher implements Matcher
         return $reflectionProperty->getValue($object) instanceof $this->propertyType;
     }
 }
+

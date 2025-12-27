@@ -19,3 +19,4 @@ use RuntimeException;
 final class NoBaselineException extends RuntimeException implements Exception
 {
 }
+

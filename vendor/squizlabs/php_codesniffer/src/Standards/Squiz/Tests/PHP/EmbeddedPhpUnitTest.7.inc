@@ -6,3 +6,4 @@
 <?php
 // Placeholder just to ensure the above is ignored solely because it is the first open tag, not
 // because the conditions related to the _last_ open tag kick in.
+

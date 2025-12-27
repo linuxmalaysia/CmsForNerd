@@ -22,3 +22,4 @@ class ChainableFilter implements Filter
         $this->filter->apply($object, $property, $objectCopier);
     }
 }
+

@@ -106,3 +106,4 @@ final readonly class MigrationBuilder
         return $stack;
     }
 }
+

@@ -363,3 +363,4 @@ class InlineControlStructureSniff implements Sniff
 
 
 }//end class
+

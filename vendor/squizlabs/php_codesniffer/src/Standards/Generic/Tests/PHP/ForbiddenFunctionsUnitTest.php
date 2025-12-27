@@ -58,3 +58,4 @@ final class ForbiddenFunctionsUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

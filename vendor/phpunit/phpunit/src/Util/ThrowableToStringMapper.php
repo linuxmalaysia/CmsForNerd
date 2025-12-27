@@ -50,3 +50,4 @@ final readonly class ThrowableToStringMapper
         return $t::class . ': ' . $t->getMessage() . "\n";
     }
 }
+

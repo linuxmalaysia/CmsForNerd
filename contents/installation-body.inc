@@ -79,3 +79,4 @@ include "themes/{$ctx->themeName}/header.tpl";
     <em>All changes have been committed and pushed to your GitHub repository. It has been a pleasure modernizing this "Radically Simple" CMS using <strong>Google Antigravity</strong>!</em>
 </p>
 
+

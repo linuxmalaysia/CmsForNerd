@@ -126,3 +126,4 @@ class StaticThisUsageSniff extends AbstractScopeSniff
 
 
 }//end class
+

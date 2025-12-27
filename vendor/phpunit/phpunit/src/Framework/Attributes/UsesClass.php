@@ -40,3 +40,4 @@ final readonly class UsesClass
         return $this->className;
     }
 }
+

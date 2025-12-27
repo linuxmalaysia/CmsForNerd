@@ -70,3 +70,4 @@ final class ClassInstantiationUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

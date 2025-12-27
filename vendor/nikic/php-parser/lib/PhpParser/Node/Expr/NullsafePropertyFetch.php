@@ -33,3 +33,4 @@ class NullsafePropertyFetch extends Expr {
         return 'Expr_NullsafePropertyFetch';
     }
 }
+

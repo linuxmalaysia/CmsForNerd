@@ -75,3 +75,4 @@ final class NumericComparator extends ScalarComparator
         return is_float($value) && is_nan($value);
     }
 }
+

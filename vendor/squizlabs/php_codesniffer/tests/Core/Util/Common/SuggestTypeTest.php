@@ -222,3 +222,4 @@ final class SuggestTypeTest extends TestCase
 
 
 }//end class
+

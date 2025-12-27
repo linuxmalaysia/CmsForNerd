@@ -62,3 +62,4 @@ final class HeredocUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

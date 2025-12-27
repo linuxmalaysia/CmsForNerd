@@ -19,3 +19,4 @@ final readonly class TraitMethodUnit extends CodeUnit
         return true;
     }
 }
+

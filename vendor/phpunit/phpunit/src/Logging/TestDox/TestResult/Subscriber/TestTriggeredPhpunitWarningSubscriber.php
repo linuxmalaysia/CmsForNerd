@@ -24,3 +24,4 @@ final readonly class TestTriggeredPhpunitWarningSubscriber extends Subscriber im
         $this->collector()->testTriggeredPhpunitWarning($event);
     }
 }
+

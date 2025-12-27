@@ -6,3 +6,4 @@
 /* testLiveCoding */
 #[ClosedAttribute] #[UnfinishedAttribute
 function hasUnfinishedAttribute() {}
+

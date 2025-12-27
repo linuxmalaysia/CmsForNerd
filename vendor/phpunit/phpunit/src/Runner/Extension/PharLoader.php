@@ -147,3 +147,4 @@ final readonly class PharLoader
         return implode('.', $parts);
     }
 }
+

@@ -31,3 +31,4 @@ class Precedence extends Node\Stmt\TraitUseAdaptation {
         return 'Stmt_TraitUseAdaptation_Precedence';
     }
 }
+

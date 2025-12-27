@@ -47,3 +47,4 @@ class Relative extends \PhpParser\Node\Name {
         return 'Name_Relative';
     }
 }
+

@@ -37,3 +37,4 @@ final readonly class PHPUnit
         return $this->releaseSeries;
     }
 }
+

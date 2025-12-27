@@ -180,3 +180,4 @@ class ScopeClosingBraceSniff implements Sniff
 
 
 }//end class
+

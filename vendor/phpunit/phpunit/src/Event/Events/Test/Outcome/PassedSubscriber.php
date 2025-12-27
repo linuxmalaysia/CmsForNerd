@@ -18,3 +18,4 @@ interface PassedSubscriber extends Subscriber
 {
     public function notify(Passed $event): void;
 }
+

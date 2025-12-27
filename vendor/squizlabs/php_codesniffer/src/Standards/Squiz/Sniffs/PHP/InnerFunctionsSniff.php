@@ -74,3 +74,4 @@ class InnerFunctionsSniff implements Sniff
 
 
 }//end class
+

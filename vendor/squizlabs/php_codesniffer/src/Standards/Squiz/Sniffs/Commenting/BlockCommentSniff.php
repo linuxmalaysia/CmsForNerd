@@ -397,3 +397,4 @@ class BlockCommentSniff implements Sniff
 
 
 }//end class
+

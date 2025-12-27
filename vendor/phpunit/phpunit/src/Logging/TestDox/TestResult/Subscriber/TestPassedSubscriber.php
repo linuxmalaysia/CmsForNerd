@@ -24,3 +24,4 @@ final readonly class TestPassedSubscriber extends Subscriber implements PassedSu
         $this->collector()->testPassed($event);
     }
 }
+

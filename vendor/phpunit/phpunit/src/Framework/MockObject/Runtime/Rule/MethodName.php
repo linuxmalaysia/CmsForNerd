@@ -58,3 +58,4 @@ final readonly class MethodName
         return (bool) $this->constraint->evaluate($methodName, '', true);
     }
 }
+

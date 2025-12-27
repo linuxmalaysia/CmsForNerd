@@ -49,3 +49,4 @@ final class IsList extends Constraint
         return $this->valueToTypeStringFragment($other) . $this->toString();
     }
 }
+

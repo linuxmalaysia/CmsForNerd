@@ -43,3 +43,4 @@ class StaticCall extends CallLike {
         return $this->args;
     }
 }
+

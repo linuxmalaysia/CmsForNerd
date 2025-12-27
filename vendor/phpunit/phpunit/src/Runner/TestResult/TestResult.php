@@ -579,3 +579,4 @@ final readonly class TestResult
         return $this->numberOfIssuesIgnoredByBaseline;
     }
 }
+

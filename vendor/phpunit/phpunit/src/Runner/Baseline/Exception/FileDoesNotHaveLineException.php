@@ -31,3 +31,4 @@ final class FileDoesNotHaveLineException extends RuntimeException implements Exc
         );
     }
 }
+

@@ -150,3 +150,4 @@ class ESLintSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

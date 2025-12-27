@@ -3,3 +3,4 @@
 <?= 'bar'; ?>
 <i>Italic text</i>
 <?= 'baz';
+

@@ -56,3 +56,4 @@ interface FileAnalyser
      */
     public function ignoredLinesFor(string $filename): array;
 }
+

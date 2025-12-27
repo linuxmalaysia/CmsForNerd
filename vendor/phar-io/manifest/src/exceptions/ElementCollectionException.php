@@ -14,3 +14,4 @@ use InvalidArgumentException;
 
 class ElementCollectionException extends InvalidArgumentException implements Exception {
 }
+

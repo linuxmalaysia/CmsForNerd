@@ -126,3 +126,4 @@ class OperatorSpacingSniff extends SquizOperatorSpacingSniff
 
 
 }//end class
+

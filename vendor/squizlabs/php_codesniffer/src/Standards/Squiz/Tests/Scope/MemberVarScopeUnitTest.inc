@@ -89,3 +89,4 @@ class AsymVisibility {
 abstract class PHP84AbstractProperties {
     abstract string $abstract {get;}
 }
+

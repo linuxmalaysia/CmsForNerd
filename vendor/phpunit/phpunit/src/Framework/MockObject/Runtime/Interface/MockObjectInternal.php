@@ -20,3 +20,4 @@ interface MockObjectInternal extends MockObject, StubInternal
 
     public function __phpunit_verify(bool $unsetInvocationMocker = true): void;
 }
+

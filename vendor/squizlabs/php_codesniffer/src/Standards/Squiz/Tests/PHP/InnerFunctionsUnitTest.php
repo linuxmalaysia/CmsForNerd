@@ -56,3 +56,4 @@ final class InnerFunctionsUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -51,3 +51,4 @@ final class DuplicateStyleDefinitionUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

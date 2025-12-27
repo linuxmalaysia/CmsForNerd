@@ -21,3 +21,4 @@ final class IncludeNameFilterIterator extends NameFilterIterator
         return $result;
     }
 }
+

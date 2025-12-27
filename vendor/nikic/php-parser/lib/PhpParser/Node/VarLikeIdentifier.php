@@ -14,3 +14,4 @@ class VarLikeIdentifier extends Identifier {
         return 'VarLikeIdentifier';
     }
 }
+

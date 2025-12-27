@@ -71,3 +71,4 @@ final readonly class XmlConfigurationFileFinder
         return false;
     }
 }
+

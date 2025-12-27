@@ -44,3 +44,4 @@ $a = "tab	 $between  	each	   	word";
 
 /* testInlineSize4 */
 // -	With tabwidth 4, the tab size should be 4.
+

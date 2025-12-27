@@ -18,3 +18,4 @@ interface ConfiguredSubscriber extends Subscriber
 {
     public function notify(Configured $event): void;
 }
+

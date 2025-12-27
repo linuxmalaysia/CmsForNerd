@@ -95,3 +95,4 @@ final class SimpleType extends Type
         };
     }
 }
+

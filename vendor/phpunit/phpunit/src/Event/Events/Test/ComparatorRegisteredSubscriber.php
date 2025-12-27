@@ -18,3 +18,4 @@ interface ComparatorRegisteredSubscriber extends Subscriber
 {
     public function notify(ComparatorRegistered $event): void;
 }
+

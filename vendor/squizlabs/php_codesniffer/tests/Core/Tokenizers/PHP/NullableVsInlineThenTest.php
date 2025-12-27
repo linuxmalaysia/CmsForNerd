@@ -122,3 +122,4 @@ final class NullableVsInlineThenTest extends AbstractTokenizerTestCase
 
 
 }//end class
+

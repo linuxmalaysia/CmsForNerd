@@ -60,3 +60,4 @@ final readonly class DataProvider extends Metadata
         return $this->methodName;
     }
 }
+

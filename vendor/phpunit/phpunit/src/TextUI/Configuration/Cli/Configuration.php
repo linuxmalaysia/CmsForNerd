@@ -2444,3 +2444,4 @@ final readonly class Configuration
         return $this->extensions;
     }
 }
+

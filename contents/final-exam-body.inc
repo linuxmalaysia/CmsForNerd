@@ -119,3 +119,4 @@ public function testTypeSafety(): void {
 .progress-nav .next { background: #d9534f; color: #fff; }
 @media (max-width: 768px) { .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>
+

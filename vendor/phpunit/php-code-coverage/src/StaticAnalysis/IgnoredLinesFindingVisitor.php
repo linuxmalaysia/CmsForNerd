@@ -119,3 +119,4 @@ final class IgnoredLinesFindingVisitor extends NodeVisitorAbstract
         }
     }
 }
+

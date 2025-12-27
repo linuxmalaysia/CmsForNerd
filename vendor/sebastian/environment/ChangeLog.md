@@ -247,3 +247,4 @@ All notable changes in `sebastianbergmann/environment` are documented in this fi
 [3.0.1]: https://github.com/sebastianbergmann/environment/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/sebastianbergmann/environment/compare/2.0...3.0.0
 
+

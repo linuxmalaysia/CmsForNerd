@@ -55,3 +55,4 @@ final readonly class UsesMethod
         return $this->methodName;
     }
 }
+

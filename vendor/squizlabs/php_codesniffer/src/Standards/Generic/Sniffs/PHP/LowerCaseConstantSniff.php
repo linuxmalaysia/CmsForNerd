@@ -248,3 +248,4 @@ class LowerCaseConstantSniff implements Sniff
 
 
 }//end class
+

@@ -24,3 +24,4 @@ class SetNullFilter implements Filter
         $reflectionProperty->setValue($object, null);
     }
 }
+

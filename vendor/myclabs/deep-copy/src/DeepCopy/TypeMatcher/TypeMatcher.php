@@ -27,3 +27,4 @@ class TypeMatcher
         return is_object($element) ? is_a($element, $this->type) : gettype($element) === $this->type;
     }
 }
+

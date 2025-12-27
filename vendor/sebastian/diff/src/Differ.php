@@ -245,3 +245,4 @@ final class Differ
         return [$from, $to, $start, $end];
     }
 }
+

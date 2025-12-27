@@ -211,3 +211,4 @@ $closure = function ($param): array|true {}
 /* testLiveCoding */
 // Intentional parse error. This has to be the last test in the file.
 return function( type|
+

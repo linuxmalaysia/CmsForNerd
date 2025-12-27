@@ -39,3 +39,4 @@ final readonly class SchemaDetector
         return new FailedSchemaDetectionResult;
     }
 }
+

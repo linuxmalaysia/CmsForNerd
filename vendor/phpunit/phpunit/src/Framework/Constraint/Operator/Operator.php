@@ -53,3 +53,4 @@ abstract class Operator extends Constraint
                $this->precedence() <= $constraint->precedence();
     }
 }
+

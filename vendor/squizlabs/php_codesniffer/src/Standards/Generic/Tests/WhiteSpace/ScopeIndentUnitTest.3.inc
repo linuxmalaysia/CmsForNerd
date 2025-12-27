@@ -32,3 +32,4 @@ function test() {
     yield
         from [ 3, 4 ];
 }
+

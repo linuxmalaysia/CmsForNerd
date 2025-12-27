@@ -33,3 +33,4 @@ final readonly class CoverageCrap4jToReport extends LogToReportMigration
         return $crap4j;
     }
 }
+

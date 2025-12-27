@@ -27,3 +27,4 @@ class InlineHTML extends Stmt {
         return 'Stmt_InlineHTML';
     }
 }
+

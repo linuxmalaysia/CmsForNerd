@@ -11,3 +11,4 @@ function func1()
     echo $GLOBALS['var'];
 }
 ?>
+

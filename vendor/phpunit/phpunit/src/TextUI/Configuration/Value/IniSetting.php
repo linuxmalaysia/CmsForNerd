@@ -35,3 +35,4 @@ final readonly class IniSetting
         return $this->value;
     }
 }
+

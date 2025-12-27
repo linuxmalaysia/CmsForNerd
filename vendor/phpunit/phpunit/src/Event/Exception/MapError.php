@@ -17,3 +17,4 @@ use RuntimeException;
 final class MapError extends RuntimeException implements Exception
 {
 }
+

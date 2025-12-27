@@ -24,3 +24,4 @@ final readonly class TestPrintedUnexpectedOutputSubscriber extends Subscriber im
         $this->logger()->testPrintedUnexpectedOutput($event);
     }
 }
+

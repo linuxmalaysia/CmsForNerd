@@ -22,3 +22,4 @@ use Attribute;
 final readonly class IgnorePhpunitDeprecations
 {
 }
+

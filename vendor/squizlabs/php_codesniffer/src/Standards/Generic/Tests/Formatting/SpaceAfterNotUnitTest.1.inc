@@ -84,3 +84,4 @@ if ( ! // phpcs:ignore Standard.Cat.SniffName -- for reasons.
 ) {}
 // phpcs:set Generic.Formatting.SpaceAfterNot ignoreNewlines false
 // phpcs:set Generic.Formatting.SpaceAfterNot spacing 1
+

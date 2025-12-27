@@ -180,3 +180,4 @@ final class CallableType extends Type
         return $method->isPublic() && $method->isStatic();
     }
 }
+

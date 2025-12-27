@@ -36,3 +36,4 @@ final readonly class EventFacadeSealed implements Event
         return 'Event Facade Sealed';
     }
 }
+

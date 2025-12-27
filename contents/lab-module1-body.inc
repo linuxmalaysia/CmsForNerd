@@ -129,3 +129,4 @@ public function incrementViews(): void {
 .progress-nav .next { background: #007bff; color: #fff; }
 @media (max-width: 768px) { .lab-worksheet .code-compare { grid-template-columns: 1fr; } .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>
+

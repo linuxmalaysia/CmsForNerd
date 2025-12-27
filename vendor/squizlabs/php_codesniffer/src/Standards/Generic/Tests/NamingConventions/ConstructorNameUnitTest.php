@@ -71,3 +71,4 @@ final class ConstructorNameUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

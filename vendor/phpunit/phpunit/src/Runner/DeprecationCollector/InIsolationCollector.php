@@ -63,3 +63,4 @@ final class InIsolationCollector
         $this->filteredDeprecations[] = $event->message();
     }
 }
+

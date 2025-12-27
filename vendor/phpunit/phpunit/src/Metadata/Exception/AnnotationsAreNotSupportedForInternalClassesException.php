@@ -33,3 +33,4 @@ final class AnnotationsAreNotSupportedForInternalClassesException extends Runtim
         );
     }
 }
+

@@ -203,3 +203,4 @@ final class IsType extends Constraint
         }
     }
 }
+

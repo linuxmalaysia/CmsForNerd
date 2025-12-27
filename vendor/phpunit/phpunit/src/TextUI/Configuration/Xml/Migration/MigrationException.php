@@ -20,3 +20,4 @@ use RuntimeException;
 final class MigrationException extends RuntimeException implements Exception
 {
 }
+

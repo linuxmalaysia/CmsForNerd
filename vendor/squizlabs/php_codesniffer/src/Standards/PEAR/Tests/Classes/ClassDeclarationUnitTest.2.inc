@@ -9,3 +9,4 @@ if (!class_exists('ClassOpeningBraceTabIndented')) {
 
 // Needs to be last test in the file. Intentional parse error.
 class MyParseError extends Exception
+

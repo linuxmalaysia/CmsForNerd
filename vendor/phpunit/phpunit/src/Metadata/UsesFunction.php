@@ -53,3 +53,4 @@ final readonly class UsesFunction extends Metadata
         return '::' . $this->functionName;
     }
 }
+

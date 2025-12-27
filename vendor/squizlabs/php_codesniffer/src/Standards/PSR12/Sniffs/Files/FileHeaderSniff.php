@@ -427,3 +427,4 @@ class FileHeaderSniff implements Sniff
 
 
 }//end class
+

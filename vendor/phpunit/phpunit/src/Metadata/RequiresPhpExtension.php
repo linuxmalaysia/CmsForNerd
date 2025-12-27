@@ -69,3 +69,4 @@ final readonly class RequiresPhpExtension extends Metadata
         return $this->versionRequirement;
     }
 }
+

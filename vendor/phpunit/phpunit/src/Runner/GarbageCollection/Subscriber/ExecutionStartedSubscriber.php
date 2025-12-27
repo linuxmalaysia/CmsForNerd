@@ -29,3 +29,4 @@ final readonly class ExecutionStartedSubscriber extends Subscriber implements Te
         $this->handler()->executionStarted();
     }
 }
+

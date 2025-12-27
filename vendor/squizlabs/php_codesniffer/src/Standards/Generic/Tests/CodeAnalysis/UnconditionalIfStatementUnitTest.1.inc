@@ -16,3 +16,4 @@ if (file_exists(__FILE__) === true) {
 if (\true) {
 } else if (\FALSE) {
 }
+

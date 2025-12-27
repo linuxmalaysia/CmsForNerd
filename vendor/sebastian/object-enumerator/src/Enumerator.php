@@ -69,3 +69,4 @@ final class Enumerator
         return $objects;
     }
 }
+

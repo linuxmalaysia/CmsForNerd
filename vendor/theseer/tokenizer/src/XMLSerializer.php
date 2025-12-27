@@ -72,3 +72,4 @@ class XMLSerializer {
         return $writer->outputMemory();
     }
 }
+

@@ -53,3 +53,4 @@ final readonly class CoversFunction extends Metadata
         return '::' . $this->functionName;
     }
 }
+

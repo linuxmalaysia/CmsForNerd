@@ -65,3 +65,4 @@ final class DeprecatedFunctionsUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -24,3 +24,4 @@ interface ParametersRule
 
     public function verify(): void;
 }
+

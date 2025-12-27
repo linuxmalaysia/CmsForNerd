@@ -18,3 +18,4 @@ interface PhpNoticeTriggeredSubscriber extends Subscriber
 {
     public function notify(PhpNoticeTriggered $event): void;
 }
+

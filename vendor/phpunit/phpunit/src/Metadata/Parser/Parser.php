@@ -35,3 +35,4 @@ interface Parser
      */
     public function forClassAndMethod(string $className, string $methodName): MetadataCollection;
 }
+

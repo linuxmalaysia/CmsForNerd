@@ -49,3 +49,4 @@ interface PrettyPrinter {
      */
     public function printFormatPreserving(array $stmts, array $origStmts, array $origTokens): string;
 }
+

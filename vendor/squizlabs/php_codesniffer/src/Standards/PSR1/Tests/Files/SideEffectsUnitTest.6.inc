@@ -7,3 +7,4 @@ use const some\foo\{ConstA, ConstB, ConstC};
 
 class Bar {
 }
+

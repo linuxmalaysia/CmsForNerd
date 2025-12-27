@@ -57,3 +57,4 @@ final readonly class ComparatorRegistered implements Event
         );
     }
 }
+

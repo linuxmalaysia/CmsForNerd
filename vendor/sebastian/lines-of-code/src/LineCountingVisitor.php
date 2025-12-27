@@ -90,3 +90,4 @@ final class LineCountingVisitor extends NodeVisitorAbstract
         return $comments;
     }
 }
+

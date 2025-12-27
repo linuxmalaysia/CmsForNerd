@@ -50,3 +50,4 @@ final class CollectingDispatcher implements Dispatcher
         return $events;
     }
 }
+

@@ -51,3 +51,4 @@ final readonly class ExtensionBootstrapCollection implements IteratorAggregate
         return new ExtensionBootstrapCollectionIterator($this);
     }
 }
+

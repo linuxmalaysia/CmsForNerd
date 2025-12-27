@@ -39,3 +39,4 @@ final class HeredocParseErrorTest extends AbstractTokenizerTestCase
 
 
 }//end class
+

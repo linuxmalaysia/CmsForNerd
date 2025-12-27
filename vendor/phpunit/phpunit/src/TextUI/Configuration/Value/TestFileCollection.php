@@ -63,3 +63,4 @@ final readonly class TestFileCollection implements Countable, IteratorAggregate
         return $this->count() === 0;
     }
 }
+

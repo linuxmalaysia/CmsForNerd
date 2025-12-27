@@ -19,3 +19,4 @@ final readonly class InterfaceMethodUnit extends CodeUnit
         return true;
     }
 }
+

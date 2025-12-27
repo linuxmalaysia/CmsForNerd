@@ -105,3 +105,4 @@ class EndFileNewlineSniff implements Sniff
 
 
 }//end class
+

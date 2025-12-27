@@ -38,3 +38,4 @@ class NotEnoughLoopsSniff implements Sniff
         }
     }
 }
+

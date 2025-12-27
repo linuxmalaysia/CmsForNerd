@@ -29,3 +29,4 @@ class ReadonlyFunctionTokenEmulator extends KeywordEmulator {
         return $tokens;
     }
 }
+

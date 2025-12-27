@@ -80,3 +80,4 @@ class Int_ extends Scalar {
 
 // @deprecated compatibility alias
 class_alias(Int_::class, LNumber::class);
+

@@ -89,3 +89,4 @@ final class Counter
         return $visitor->result();
     }
 }
+

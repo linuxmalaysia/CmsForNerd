@@ -12,3 +12,4 @@ When generating or refactoring code for CmsForNerd, you **MUST** follow these ru
 6. **Documentation:** You **MUST** update the `contents/history-body.inc` file whenever you implement a major improvement, security hardening, or architectural refactor.
 
 Run `composer compliance` to verify all standards before submitting your work.
+

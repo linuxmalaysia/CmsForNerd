@@ -45,3 +45,4 @@ final readonly class RequiresOperatingSystemFamily extends Metadata
         return $this->operatingSystemFamily;
     }
 }
+

@@ -61,3 +61,4 @@ final class FixmeUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

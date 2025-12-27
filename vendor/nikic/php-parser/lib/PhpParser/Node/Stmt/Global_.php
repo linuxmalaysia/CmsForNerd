@@ -27,3 +27,4 @@ class Global_ extends Node\Stmt {
         return 'Stmt_Global';
     }
 }
+

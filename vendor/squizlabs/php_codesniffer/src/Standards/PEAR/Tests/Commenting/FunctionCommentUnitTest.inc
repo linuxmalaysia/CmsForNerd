@@ -548,3 +548,4 @@ class HandleBlankLinesBetweenDocblockAndDeclarationWithAttributes
 
     }//end blankLineDetectionB()
 }//end class
+

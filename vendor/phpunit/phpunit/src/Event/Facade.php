@@ -277,3 +277,4 @@ final class Facade
         // @codeCoverageIgnoreEnd
     }
 }
+

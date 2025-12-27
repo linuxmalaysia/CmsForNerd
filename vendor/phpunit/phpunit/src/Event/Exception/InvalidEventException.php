@@ -17,3 +17,4 @@ use RuntimeException;
 final class InvalidEventException extends RuntimeException implements Exception
 {
 }
+

@@ -103,3 +103,4 @@ final readonly class RelativePathCalculator
         return array_merge(array_fill(0, $dotsCount, '..'), array_slice($filenameParts, $i));
     }
 }
+

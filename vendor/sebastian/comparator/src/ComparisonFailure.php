@@ -66,3 +66,4 @@ final class ComparisonFailure extends RuntimeException
         return $this->getMessage() . $this->getDiff();
     }
 }
+

@@ -10,3 +10,4 @@ interface ErrorHandler {
      */
     public function handleError(Error $error): void;
 }
+

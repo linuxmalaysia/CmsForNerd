@@ -13,3 +13,4 @@ function myGenerator() {
     /* testYieldFromMixedTabsSpaces */
     Yield	   	 	From gen2();
 }
+

@@ -91,3 +91,4 @@ final class Facade
         return $this->requiresCodeCoverageCollection;
     }
 }
+

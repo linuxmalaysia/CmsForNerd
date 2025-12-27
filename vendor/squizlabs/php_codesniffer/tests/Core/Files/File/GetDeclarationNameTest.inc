@@ -96,3 +96,4 @@ function &self() {}
 
 /* testFunctionReturnByRefWithReservedKeywordStatic */
 function &static() {}
+

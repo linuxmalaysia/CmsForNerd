@@ -48,3 +48,4 @@ final readonly class Loaded implements Event
         );
     }
 }
+

@@ -64,3 +64,4 @@ function functionName(?string $arg1, ?int &$arg2):
 fn (?\DateTime $arg) : ?\DateTime => $arg;
 
 return (!$a ? [ new class { public function b(): c {} } ] : []);
+

@@ -199,3 +199,4 @@ class LineLengthSniff implements Sniff
 
 
 }//end class
+

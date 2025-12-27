@@ -96,3 +96,4 @@ final class RecurseScopeMapWithNamespaceOperatorTest extends AbstractTokenizerTe
 
 
 }//end class
+

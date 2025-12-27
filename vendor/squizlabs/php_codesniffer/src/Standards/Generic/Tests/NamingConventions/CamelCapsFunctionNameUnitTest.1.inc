@@ -202,3 +202,4 @@ function strictFOrmatDIsabled() {}  // Ok.
 // phpcs:set Generic.NamingConventions.CamelCapsFunctionName strict true
 
 function strictFOrmatIsENabled() {}  // Not ok.
+

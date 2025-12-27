@@ -18,3 +18,4 @@ interface TestStubCreatedSubscriber extends Subscriber
 {
     public function notify(TestStubCreated $event): void;
 }
+

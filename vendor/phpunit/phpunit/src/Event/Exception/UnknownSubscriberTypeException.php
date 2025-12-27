@@ -17,3 +17,4 @@ use RuntimeException;
 final class UnknownSubscriberTypeException extends RuntimeException implements Exception
 {
 }
+

@@ -157,3 +157,4 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 [2.1.1]: https://github.com/sebastianbergmann/php-timer/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/sebastianbergmann/php-timer/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/sebastianbergmann/php-timer/compare/1.0.9...2.0.0
+

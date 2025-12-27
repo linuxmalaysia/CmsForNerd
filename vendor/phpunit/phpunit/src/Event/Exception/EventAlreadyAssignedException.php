@@ -17,3 +17,4 @@ use RuntimeException;
 final class EventAlreadyAssignedException extends RuntimeException implements Exception
 {
 }
+

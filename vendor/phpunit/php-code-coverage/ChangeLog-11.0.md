@@ -107,3 +107,4 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 [11.0.2]: https://github.com/sebastianbergmann/php-code-coverage/compare/11.0.1...11.0.2
 [11.0.1]: https://github.com/sebastianbergmann/php-code-coverage/compare/11.0.0...11.0.1
 [11.0.0]: https://github.com/sebastianbergmann/php-code-coverage/compare/10.1...11.0.0
+

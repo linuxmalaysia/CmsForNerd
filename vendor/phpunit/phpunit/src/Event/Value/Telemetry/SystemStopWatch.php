@@ -27,3 +27,4 @@ final readonly class SystemStopWatch implements StopWatch
         return HRTime::fromSecondsAndNanoseconds(...hrtime());
     }
 }
+

@@ -1230,3 +1230,4 @@ class Standard extends PrettyPrinterAbstract {
         return $result;
     }
 }
+

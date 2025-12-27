@@ -19,3 +19,4 @@ use RuntimeException;
 final class LoggingNotConfiguredException extends RuntimeException implements Exception
 {
 }
+

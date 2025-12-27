@@ -40,3 +40,4 @@ class InvalidDeprecationMessageSniff implements Sniff, DeprecatedSniff
         // Do something.
     }
 }
+

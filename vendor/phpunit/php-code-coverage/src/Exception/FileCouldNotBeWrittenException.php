@@ -14,3 +14,4 @@ use RuntimeException;
 final class FileCouldNotBeWrittenException extends RuntimeException implements Exception
 {
 }
+

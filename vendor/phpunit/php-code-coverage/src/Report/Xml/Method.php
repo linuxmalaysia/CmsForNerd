@@ -56,3 +56,4 @@ final class Method
         $this->contextNode->setAttribute('name', $name);
     }
 }
+

@@ -55,3 +55,4 @@ final readonly class RequiresMethod
         return $this->methodName;
     }
 }
+

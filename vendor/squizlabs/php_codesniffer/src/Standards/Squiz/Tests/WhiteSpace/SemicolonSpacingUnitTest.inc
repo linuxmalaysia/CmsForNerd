@@ -40,3 +40,4 @@ switch ($foo) {
 if ($foo) {
 ;
 }
+

@@ -14,3 +14,4 @@ use RuntimeException;
 final class InvalidCodeUnitException extends RuntimeException implements Exception
 {
 }
+

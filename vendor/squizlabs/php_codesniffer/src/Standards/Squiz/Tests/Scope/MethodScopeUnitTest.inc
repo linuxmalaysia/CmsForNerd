@@ -55,3 +55,4 @@ class UnconventionalSpacing {
     function
     myFunction() {}
 }
+

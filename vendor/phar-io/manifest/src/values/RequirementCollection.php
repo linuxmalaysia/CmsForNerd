@@ -38,3 +38,4 @@ class RequirementCollection implements Countable, IteratorAggregate {
         return new RequirementCollectionIterator($this);
     }
 }
+

@@ -55,3 +55,4 @@ final readonly class UsesTrait extends Metadata
         return $this->traitName;
     }
 }
+

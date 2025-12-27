@@ -13,3 +13,4 @@ class Function_ extends MagicConst {
         return 'Scalar_MagicConst_Function';
     }
 }
+

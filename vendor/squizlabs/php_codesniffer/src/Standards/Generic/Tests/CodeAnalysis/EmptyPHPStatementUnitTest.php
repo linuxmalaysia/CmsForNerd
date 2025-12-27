@@ -108,3 +108,4 @@ final class EmptyPHPStatementUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

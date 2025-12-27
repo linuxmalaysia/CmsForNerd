@@ -40,3 +40,4 @@ final readonly class Group
         return $this->name;
     }
 }
+

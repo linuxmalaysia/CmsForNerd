@@ -107,3 +107,4 @@ abstract class ClassLike extends Node\Stmt {
         return null;
     }
 }
+

@@ -41,3 +41,4 @@ class Collecting implements ErrorHandler {
         $this->errors = [];
     }
 }
+

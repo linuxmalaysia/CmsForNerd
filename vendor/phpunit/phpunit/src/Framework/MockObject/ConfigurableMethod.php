@@ -81,3 +81,4 @@ final readonly class ConfigurableMethod
         return $this->returnType->asString();
     }
 }
+

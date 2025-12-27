@@ -426,3 +426,4 @@ final class TeamCityLogger
         return $buffer;
     }
 }
+

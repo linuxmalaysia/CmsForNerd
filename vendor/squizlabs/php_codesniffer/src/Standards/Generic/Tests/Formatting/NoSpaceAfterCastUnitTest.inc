@@ -49,3 +49,4 @@ $var = b"binary string";
 $var = b'binary string';
 $var = (binary) $string;
 $var = (binary)$string;
+

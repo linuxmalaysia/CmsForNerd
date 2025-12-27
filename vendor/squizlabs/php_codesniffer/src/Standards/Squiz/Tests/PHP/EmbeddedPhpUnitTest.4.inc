@@ -5,3 +5,4 @@ these will always be examined and that the special casing of the first/last PHP 
 <?=   $paragraph1;   ?>
     <?=   $paragraph2 ?>
 <?=   $paragraph3;   ?>
+

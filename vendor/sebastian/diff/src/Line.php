@@ -48,3 +48,4 @@ final class Line
         return $this->type === self::UNCHANGED;
     }
 }
+

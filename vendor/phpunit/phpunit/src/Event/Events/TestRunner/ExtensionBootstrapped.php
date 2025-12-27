@@ -72,3 +72,4 @@ final readonly class ExtensionBootstrapped implements Event
         );
     }
 }
+

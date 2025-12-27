@@ -489,3 +489,4 @@ final readonly class ResultPrinter
         $this->printer->print(PHP_EOL);
     }
 }
+

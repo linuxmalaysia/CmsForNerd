@@ -158,3 +158,4 @@ final class SummaryPrinter
         }
     }
 }
+

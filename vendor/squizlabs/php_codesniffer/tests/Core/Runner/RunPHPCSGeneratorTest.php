@@ -70,3 +70,4 @@ final class RunPHPCSGeneratorTest extends AbstractRunnerTestCase
 
 
 }//end class
+

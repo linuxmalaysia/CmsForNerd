@@ -46,3 +46,4 @@ class ControlSignatureSniff extends AbstractPatternSniff
 
 
 }//end class
+

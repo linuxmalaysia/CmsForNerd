@@ -58,3 +58,4 @@ final class NullsafeTokenEmulator extends TokenEmulator {
         return $tokens;
     }
 }
+

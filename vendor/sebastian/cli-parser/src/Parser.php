@@ -209,3 +209,4 @@ final class Parser
         throw new UnknownOptionException('--' . $option);
     }
 }
+

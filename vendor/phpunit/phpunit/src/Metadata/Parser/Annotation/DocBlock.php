@@ -275,3 +275,4 @@ final class DocBlock
         );
     }
 }
+

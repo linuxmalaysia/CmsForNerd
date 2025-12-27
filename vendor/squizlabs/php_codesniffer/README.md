@@ -151,3 +151,4 @@ The `PATCH` version is incremented when:
 - backwards-compatible bug fixes are made
 
 > NOTE: As PHP_CodeSniffer exists to report and fix issues, most bugs are the result of coding standard errors being incorrectly reported or coding standard errors not being reported when they should be. This means that the messages produced by PHP_CodeSniffer, and the fixes it makes, are likely to be different between PATCH versions.
+

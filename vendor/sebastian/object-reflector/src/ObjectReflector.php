@@ -39,3 +39,4 @@ final class ObjectReflector
         return $properties;
     }
 }
+

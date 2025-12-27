@@ -84,3 +84,4 @@ final class ScopeIndentUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

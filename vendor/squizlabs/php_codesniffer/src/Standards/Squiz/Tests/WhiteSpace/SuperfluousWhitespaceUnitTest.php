@@ -115,3 +115,4 @@ final class SuperfluousWhitespaceUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

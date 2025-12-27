@@ -38,3 +38,4 @@ final readonly class MemoryUsage
         return self::fromBytes($this->bytes - $other->bytes);
     }
 }
+

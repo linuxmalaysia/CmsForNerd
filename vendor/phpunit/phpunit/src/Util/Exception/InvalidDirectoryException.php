@@ -29,3 +29,4 @@ final class InvalidDirectoryException extends RuntimeException implements Except
         );
     }
 }
+

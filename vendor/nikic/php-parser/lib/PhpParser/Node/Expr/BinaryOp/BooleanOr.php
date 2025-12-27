@@ -13,3 +13,4 @@ class BooleanOr extends BinaryOp {
         return 'Expr_BinaryOp_BooleanOr';
     }
 }
+

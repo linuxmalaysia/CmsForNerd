@@ -24,3 +24,4 @@ final readonly class TestSuiteFinishedSubscriber extends Subscriber implements F
         $this->collector()->testSuiteFinished($event);
     }
 }
+

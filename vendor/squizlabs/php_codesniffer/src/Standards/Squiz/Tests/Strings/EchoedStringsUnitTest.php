@@ -58,3 +58,4 @@ final class EchoedStringsUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

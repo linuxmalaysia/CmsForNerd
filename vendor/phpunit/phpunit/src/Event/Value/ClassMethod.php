@@ -52,3 +52,4 @@ final readonly class ClassMethod
         return $this->methodName;
     }
 }
+

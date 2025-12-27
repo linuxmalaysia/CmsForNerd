@@ -19,3 +19,4 @@ use RuntimeException;
 final class InvalidJsonException extends RuntimeException implements Exception
 {
 }
+

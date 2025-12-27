@@ -362,3 +362,4 @@ class LowerCaseTypeSniff implements Sniff
 
 
 }//end class
+

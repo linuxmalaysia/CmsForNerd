@@ -51,3 +51,4 @@ class GlobalKeywordSniff implements Sniff
 
 
 }//end class
+

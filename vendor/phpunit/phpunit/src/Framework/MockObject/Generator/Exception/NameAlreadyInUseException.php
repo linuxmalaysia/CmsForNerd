@@ -31,3 +31,4 @@ final class NameAlreadyInUseException extends \PHPUnit\Framework\Exception imple
         );
     }
 }
+

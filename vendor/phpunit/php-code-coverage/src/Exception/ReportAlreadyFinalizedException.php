@@ -18,3 +18,4 @@ final class ReportAlreadyFinalizedException extends RuntimeException implements 
         parent::__construct('The code coverage report has already been finalized');
     }
 }
+

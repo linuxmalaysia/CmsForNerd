@@ -110,3 +110,4 @@ final readonly class Version
         return $result;
     }
 }
+

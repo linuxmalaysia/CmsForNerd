@@ -64,3 +64,4 @@ final class Colors
         return $this->danger;
     }
 }
+

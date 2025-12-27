@@ -28,3 +28,4 @@ final class GeneratorNotSupportedException extends InvalidArgumentException
         );
     }
 }
+

@@ -33,3 +33,4 @@ final readonly class Notice extends Known
         return 'notice';
     }
 }
+

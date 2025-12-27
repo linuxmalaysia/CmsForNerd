@@ -4,3 +4,4 @@
 // T_INLINE_HTML after the short open tag and before the close tag.
 
 <?<?php
+

@@ -38,3 +38,4 @@ class Interface_ extends ClassLike {
         return 'Stmt_Interface';
     }
 }
+

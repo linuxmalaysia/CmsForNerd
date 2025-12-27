@@ -472,3 +472,4 @@ abstract class PHP84AbstractProperties {
 
     abstract protected bool $abstractProtected { set; }
 }
+

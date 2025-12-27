@@ -25,3 +25,4 @@ abstract class MagicConst extends Scalar {
      */
     abstract public function getName(): string;
 }
+

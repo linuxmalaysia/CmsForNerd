@@ -26,3 +26,4 @@ class BuildMetaData {
         return $this->asString() === $other->asString();
     }
 }
+

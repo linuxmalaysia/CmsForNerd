@@ -28,3 +28,4 @@ final readonly class TestFinishedSubscriber extends Subscriber implements Finish
         $this->logger()->testFinished($event);
     }
 }
+

@@ -296,3 +296,4 @@ final class Dashboard extends Renderer
         return $result;
     }
 }
+

@@ -45,3 +45,4 @@ class testMissingExtendsName implements { /* missing interface name */  } // Int
 // Intentional parse error. Has to be the last test in the file.
 /* testParseError */
 class testParseError implements testInterface
+

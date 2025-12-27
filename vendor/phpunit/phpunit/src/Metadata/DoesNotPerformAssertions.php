@@ -21,3 +21,4 @@ final readonly class DoesNotPerformAssertions extends Metadata
         return true;
     }
 }
+

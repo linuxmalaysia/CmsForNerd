@@ -58,3 +58,4 @@ abstract class KeywordEmulator extends TokenEmulator {
         return $tokens;
     }
 }
+

@@ -24,3 +24,4 @@ final readonly class TestTriggeredPhpunitDeprecationSubscriber extends Subscribe
         $this->collector()->testTriggeredPhpunitDeprecation($event);
     }
 }
+

@@ -15,3 +15,4 @@ namespace PHPUnit\Event;
 interface Exception extends \PHPUnit\Exception
 {
 }
+

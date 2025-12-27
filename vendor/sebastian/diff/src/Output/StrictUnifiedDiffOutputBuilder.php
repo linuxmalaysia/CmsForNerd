@@ -324,3 +324,4 @@ final class StrictUnifiedDiffOutputBuilder implements DiffOutputBuilderInterface
         }
     }
 }
+

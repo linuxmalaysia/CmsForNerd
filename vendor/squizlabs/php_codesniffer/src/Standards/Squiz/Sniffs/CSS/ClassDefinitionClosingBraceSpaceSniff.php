@@ -171,3 +171,4 @@ class ClassDefinitionClosingBraceSpaceSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

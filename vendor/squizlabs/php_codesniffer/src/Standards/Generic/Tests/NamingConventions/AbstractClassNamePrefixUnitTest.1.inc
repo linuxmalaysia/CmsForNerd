@@ -43,3 +43,4 @@ abstract readonly class AbstractReadonlyClassWithPrefixShouldNotTriggerWarning {
 
 abstract readonly class ReadonlyAbstractClassShouldTriggerWarningWhenPrefixIsMissingA {} // Error.
 readonly abstract class ReadonlyAbstractClassShouldTriggerWarningWhenPrefixIsMissingB {} // Error.
+

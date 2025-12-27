@@ -18,3 +18,4 @@ interface ChildProcessStartedSubscriber extends Subscriber
 {
     public function notify(ChildProcessStarted $event): void;
 }
+

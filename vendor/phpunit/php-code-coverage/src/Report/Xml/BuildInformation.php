@@ -79,3 +79,4 @@ final class BuildInformation
         return $node;
     }
 }
+

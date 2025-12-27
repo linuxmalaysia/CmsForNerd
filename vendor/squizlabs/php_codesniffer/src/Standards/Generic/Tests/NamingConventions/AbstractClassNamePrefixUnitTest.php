@@ -65,3 +65,4 @@ final class AbstractClassNamePrefixUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

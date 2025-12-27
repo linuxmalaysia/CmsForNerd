@@ -11,3 +11,4 @@ if ($foo === true):
 else:
     echo 'other';
 endif;
+

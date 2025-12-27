@@ -207,3 +207,4 @@ abstract class AbstractProperties {
     abstract public ?MyType $spacing_correct {get;}
     protected   abstract   $spacing_incorrect { set; }
 }
+

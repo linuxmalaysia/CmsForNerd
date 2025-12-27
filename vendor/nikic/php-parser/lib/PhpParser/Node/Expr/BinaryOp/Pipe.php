@@ -13,3 +13,4 @@ class Pipe extends BinaryOp {
         return 'Expr_BinaryOp_Pipe';
     }
 }
+

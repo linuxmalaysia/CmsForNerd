@@ -10,3 +10,4 @@ namespace Fixtures\StandardWithDocs\Sniffs\Structure;
 use Fixtures\StandardWithDocs\Sniffs\DummySniff;
 
 final class TwoStandardBlocksNoCodeSniff extends DummySniff {}
+

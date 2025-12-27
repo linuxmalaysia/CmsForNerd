@@ -78,3 +78,4 @@ final class ExcludeIterator extends RecursiveFilterIterator
         return $innerIterator;
     }
 }
+

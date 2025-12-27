@@ -1897,3 +1897,4 @@ final class GetMemberPropertiesTest extends AbstractMethodUnitTest
 
 
 }//end class
+

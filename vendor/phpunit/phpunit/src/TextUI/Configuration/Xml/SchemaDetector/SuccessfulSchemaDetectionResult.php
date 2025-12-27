@@ -46,3 +46,4 @@ final readonly class SuccessfulSchemaDetectionResult extends SchemaDetectionResu
         return $this->version;
     }
 }
+

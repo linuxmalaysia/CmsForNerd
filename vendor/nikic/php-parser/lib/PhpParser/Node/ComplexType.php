@@ -11,3 +11,4 @@ use PhpParser\NodeAbstract;
  */
 abstract class ComplexType extends NodeAbstract {
 }
+

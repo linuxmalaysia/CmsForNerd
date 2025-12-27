@@ -204,3 +204,4 @@ final class Console
         return $columns - 1;
     }
 }
+

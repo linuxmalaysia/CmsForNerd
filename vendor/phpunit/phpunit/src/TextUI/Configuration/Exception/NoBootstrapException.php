@@ -19,3 +19,4 @@ use RuntimeException;
 final class NoBootstrapException extends RuntimeException implements Exception
 {
 }
+

@@ -276,3 +276,4 @@ function testFinally()
 if ($something) {
     echo 'hello';
 } else /* comment */ if ($somethingElse) echo 'hi';
+

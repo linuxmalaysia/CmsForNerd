@@ -24,3 +24,4 @@ final readonly class TestTriggeredNoticeSubscriber extends Subscriber implements
         $this->printer()->testTriggeredNotice($event);
     }
 }
+

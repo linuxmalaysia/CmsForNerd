@@ -19,3 +19,4 @@ use RuntimeException;
 final class InvalidOrderException extends RuntimeException implements Exception
 {
 }
+

@@ -1585,3 +1585,4 @@ class ScopeIndentSniff implements Sniff
 
 
 }//end class
+

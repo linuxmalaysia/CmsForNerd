@@ -27,3 +27,4 @@ trait ProxiedCloneMethod
 
     abstract public function __phpunit_state(): TestDoubleState;
 }
+

@@ -178,3 +178,4 @@ class CallTimePassByReferenceSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

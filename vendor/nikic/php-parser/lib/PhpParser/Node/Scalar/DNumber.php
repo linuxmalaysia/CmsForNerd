@@ -13,3 +13,4 @@ if (false) {
     class DNumber extends Float_ {
     }
 }
+

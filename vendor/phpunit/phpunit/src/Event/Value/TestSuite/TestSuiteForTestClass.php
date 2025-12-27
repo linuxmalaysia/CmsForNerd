@@ -60,3 +60,4 @@ final readonly class TestSuiteForTestClass extends TestSuite
         return true;
     }
 }
+

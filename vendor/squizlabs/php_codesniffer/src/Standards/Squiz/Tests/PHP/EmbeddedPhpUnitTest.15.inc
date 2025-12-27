@@ -7,3 +7,4 @@
 <!-- Note: with short open tags, the empty PHP tag set is a parse error. -->
 <?=
 ?>
+

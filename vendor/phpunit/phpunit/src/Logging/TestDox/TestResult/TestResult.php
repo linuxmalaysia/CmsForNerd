@@ -56,3 +56,4 @@ final readonly class TestResult
         return $this->throwable;
     }
 }
+

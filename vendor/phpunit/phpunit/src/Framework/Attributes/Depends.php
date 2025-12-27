@@ -40,3 +40,4 @@ final readonly class Depends
         return $this->methodName;
     }
 }
+

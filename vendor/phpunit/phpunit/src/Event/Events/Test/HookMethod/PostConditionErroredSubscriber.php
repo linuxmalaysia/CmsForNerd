@@ -18,3 +18,4 @@ interface PostConditionErroredSubscriber extends Subscriber
 {
     public function notify(PostConditionErrored $event): void;
 }
+

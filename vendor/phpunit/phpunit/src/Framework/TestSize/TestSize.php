@@ -80,3 +80,4 @@ abstract readonly class TestSize
 
     abstract public function asString(): string;
 }
+

@@ -42,3 +42,4 @@ final readonly class ComparisonFailure
         return $this->diff;
     }
 }
+

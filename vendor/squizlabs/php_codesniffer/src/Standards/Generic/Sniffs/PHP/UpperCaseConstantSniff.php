@@ -55,3 +55,4 @@ class UpperCaseConstantSniff extends LowerCaseConstantSniff
 
 
 }//end class
+

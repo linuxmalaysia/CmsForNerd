@@ -119,3 +119,4 @@ final class OperatorBracketUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

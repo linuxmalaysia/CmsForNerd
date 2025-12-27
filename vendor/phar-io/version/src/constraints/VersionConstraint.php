@@ -14,3 +14,4 @@ interface VersionConstraint {
 
     public function asString(): string;
 }
+

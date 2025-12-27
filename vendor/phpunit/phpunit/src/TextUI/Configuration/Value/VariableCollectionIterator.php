@@ -55,3 +55,4 @@ final class VariableCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

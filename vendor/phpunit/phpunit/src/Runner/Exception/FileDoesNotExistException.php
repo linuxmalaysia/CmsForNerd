@@ -29,3 +29,4 @@ final class FileDoesNotExistException extends RuntimeException implements Except
         );
     }
 }
+

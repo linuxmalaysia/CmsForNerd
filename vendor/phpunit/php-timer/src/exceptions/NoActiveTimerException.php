@@ -14,3 +14,4 @@ use LogicException;
 final class NoActiveTimerException extends LogicException implements Exception
 {
 }
+

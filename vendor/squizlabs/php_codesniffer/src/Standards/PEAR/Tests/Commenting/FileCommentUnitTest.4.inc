@@ -5,3 +5,4 @@
 
 readonly class Foo {
 }
+

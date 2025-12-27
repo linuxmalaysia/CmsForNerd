@@ -45,3 +45,4 @@ final readonly class UsesDefaultClass extends Metadata
         return $this->className;
     }
 }
+

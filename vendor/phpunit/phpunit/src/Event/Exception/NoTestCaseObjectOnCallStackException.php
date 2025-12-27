@@ -24,3 +24,4 @@ final class NoTestCaseObjectOnCallStackException extends RuntimeException implem
         parent::__construct('Cannot find TestCase object on call stack');
     }
 }
+

@@ -89,3 +89,4 @@ final class IsJson extends Constraint
         };
     }
 }
+

@@ -83,3 +83,4 @@ final class DataProviderTestSuite extends TestSuite
         return (new Groups)->size($className, $methodName);
     }
 }
+

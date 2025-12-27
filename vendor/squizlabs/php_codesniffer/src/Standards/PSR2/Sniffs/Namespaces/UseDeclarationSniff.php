@@ -295,3 +295,4 @@ class UseDeclarationSniff implements Sniff
 
 
 }//end class
+

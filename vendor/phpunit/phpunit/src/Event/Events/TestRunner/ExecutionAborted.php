@@ -36,3 +36,4 @@ final readonly class ExecutionAborted implements Event
         return 'Test Runner Execution Aborted';
     }
 }
+

@@ -46,3 +46,4 @@ $filepath = realpath($argv[1]) ?: $argv[1];
 $c = ($argv[1]) ? /* comment */ : "";
 $c = ($argv[1]) ? 
 : "";
+

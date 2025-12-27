@@ -143,3 +143,4 @@ final readonly class TestSuiteBuilder
         return $suite;
     }
 }
+

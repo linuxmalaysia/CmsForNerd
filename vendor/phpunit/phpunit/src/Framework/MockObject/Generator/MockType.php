@@ -21,3 +21,4 @@ interface MockType
      */
     public function generate(): string;
 }
+

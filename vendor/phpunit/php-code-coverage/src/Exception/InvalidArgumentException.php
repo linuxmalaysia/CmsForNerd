@@ -12,3 +12,4 @@ namespace SebastianBergmann\CodeCoverage;
 final class InvalidArgumentException extends \InvalidArgumentException implements Exception
 {
 }
+

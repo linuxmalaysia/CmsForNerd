@@ -508,3 +508,4 @@ $foo = $var // Comment
     ? false // Comment
     : true;
 // phpcs:set Squiz.WhiteSpace.OperatorSpacing ignoreNewlines false
+

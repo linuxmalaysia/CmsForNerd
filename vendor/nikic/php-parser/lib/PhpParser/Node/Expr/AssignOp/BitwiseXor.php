@@ -9,3 +9,4 @@ class BitwiseXor extends AssignOp {
         return 'Expr_AssignOp_BitwiseXor';
     }
 }
+

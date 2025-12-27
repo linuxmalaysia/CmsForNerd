@@ -370,3 +370,4 @@ final class SideEffectsDetector {
         }
     }
 }
+

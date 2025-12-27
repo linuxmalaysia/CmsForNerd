@@ -45,3 +45,4 @@ final readonly class RequiresFunction extends Metadata
         return $this->functionName;
     }
 }
+

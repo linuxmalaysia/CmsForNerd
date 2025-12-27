@@ -17,3 +17,4 @@ use RuntimeException;
 final class SubscriberTypeAlreadyRegisteredException extends RuntimeException implements Exception
 {
 }
+

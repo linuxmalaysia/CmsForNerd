@@ -14,3 +14,4 @@ use RuntimeException;
 
 class ManifestDocumentMapperException extends RuntimeException implements Exception {
 }
+

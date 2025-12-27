@@ -7,3 +7,4 @@ Foo
  <?php
 // Some code
 ?>
+

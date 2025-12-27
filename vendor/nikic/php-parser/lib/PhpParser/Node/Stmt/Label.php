@@ -28,3 +28,4 @@ class Label extends Stmt {
         return 'Stmt_Label';
     }
 }
+

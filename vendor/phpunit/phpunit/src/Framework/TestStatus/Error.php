@@ -33,3 +33,4 @@ final readonly class Error extends Known
         return 'error';
     }
 }
+

@@ -129,3 +129,4 @@ match (true) {
     // Not OK.
     $b && ${$var} || $d => true,
 };
+

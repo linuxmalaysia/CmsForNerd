@@ -40,3 +40,4 @@ final readonly class UsesTrait
         return $this->traitName;
     }
 }
+

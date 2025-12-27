@@ -13,3 +13,4 @@ class Mul extends BinaryOp {
         return 'Expr_BinaryOp_Mul';
     }
 }
+

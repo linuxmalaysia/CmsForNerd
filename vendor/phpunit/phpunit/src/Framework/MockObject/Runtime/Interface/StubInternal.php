@@ -24,3 +24,4 @@ interface StubInternal extends Stub
 
     public function __phpunit_wasGeneratedAsMockObject(): bool;
 }
+

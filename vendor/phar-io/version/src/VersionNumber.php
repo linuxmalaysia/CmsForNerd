@@ -26,3 +26,4 @@ class VersionNumber {
         return $this->value;
     }
 }
+

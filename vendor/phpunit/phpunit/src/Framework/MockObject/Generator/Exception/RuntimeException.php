@@ -17,3 +17,4 @@ namespace PHPUnit\Framework\MockObject\Generator;
 final class RuntimeException extends \PHPUnit\Framework\Exception implements Exception
 {
 }
+

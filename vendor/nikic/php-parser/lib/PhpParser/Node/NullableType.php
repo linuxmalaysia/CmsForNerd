@@ -27,3 +27,4 @@ class NullableType extends ComplexType {
         return 'NullableType';
     }
 }
+

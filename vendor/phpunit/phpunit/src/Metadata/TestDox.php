@@ -45,3 +45,4 @@ final readonly class TestDox extends Metadata
         return $this->text;
     }
 }
+

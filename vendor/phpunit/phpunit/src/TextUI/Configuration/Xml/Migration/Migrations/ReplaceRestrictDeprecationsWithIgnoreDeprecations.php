@@ -49,3 +49,4 @@ final readonly class ReplaceRestrictDeprecationsWithIgnoreDeprecations implement
         $source->setAttribute('ignoreIndirectDeprecations', 'true');
     }
 }
+

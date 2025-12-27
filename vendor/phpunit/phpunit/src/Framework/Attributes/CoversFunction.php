@@ -40,3 +40,4 @@ final readonly class CoversFunction
         return $this->functionName;
     }
 }
+

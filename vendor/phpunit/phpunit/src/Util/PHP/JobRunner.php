@@ -59,3 +59,4 @@ abstract readonly class JobRunner
 
     abstract public function run(Job $job): Result;
 }
+

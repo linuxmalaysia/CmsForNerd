@@ -26,3 +26,4 @@ class AllowedAsDeclaredSniff implements Sniff
         // Do something.
     }
 }
+

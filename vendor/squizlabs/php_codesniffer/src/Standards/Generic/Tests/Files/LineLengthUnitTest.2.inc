@@ -5,3 +5,4 @@ phpcs:set Generic.Files.LineLength absoluteLineLimit 80
 /* This line is fine. This line is fine. */
 /* This line is too long. This line is too long. This line is too looooong. */
 /* This line is too long. This line is too long. This line is too long. This line is too long. */
+

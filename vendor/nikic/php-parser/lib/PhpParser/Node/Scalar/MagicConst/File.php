@@ -13,3 +13,4 @@ class File extends MagicConst {
         return 'Scalar_MagicConst_File';
     }
 }
+

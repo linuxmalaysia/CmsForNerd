@@ -53,3 +53,4 @@ final readonly class ReturnValueMap implements Stub
         return null;
     }
 }
+

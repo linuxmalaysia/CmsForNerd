@@ -133,3 +133,4 @@ final class StringMatchesFormatDescription extends Constraint
         return new Differ(new UnifiedDiffOutputBuilder("--- Expected\n+++ Actual\n"));
     }
 }
+

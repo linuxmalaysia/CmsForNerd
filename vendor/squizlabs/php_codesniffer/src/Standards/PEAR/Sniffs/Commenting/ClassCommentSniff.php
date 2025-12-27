@@ -120,3 +120,4 @@ class ClassCommentSniff extends FileCommentSniff
 
 
 }//end class
+

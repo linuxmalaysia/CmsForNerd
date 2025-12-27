@@ -40,3 +40,4 @@ final class LessThan extends Constraint
         return $this->value > $other;
     }
 }
+

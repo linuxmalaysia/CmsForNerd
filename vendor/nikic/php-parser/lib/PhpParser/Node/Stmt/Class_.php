@@ -92,3 +92,4 @@ class Class_ extends ClassLike {
         return 'Stmt_Class';
     }
 }
+

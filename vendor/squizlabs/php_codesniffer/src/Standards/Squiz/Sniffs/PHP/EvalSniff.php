@@ -46,3 +46,4 @@ class EvalSniff implements Sniff
 
 
 }//end class
+

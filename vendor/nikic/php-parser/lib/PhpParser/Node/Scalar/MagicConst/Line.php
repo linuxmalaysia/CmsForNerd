@@ -13,3 +13,4 @@ class Line extends MagicConst {
         return 'Scalar_MagicConst_Line';
     }
 }
+

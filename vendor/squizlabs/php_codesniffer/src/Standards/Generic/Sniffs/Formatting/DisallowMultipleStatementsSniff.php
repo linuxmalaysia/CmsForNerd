@@ -103,3 +103,4 @@ class DisallowMultipleStatementsSniff implements Sniff
 
 
 }//end class
+

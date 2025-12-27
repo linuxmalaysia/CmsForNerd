@@ -29,3 +29,4 @@ $var = $var[$var[$var]; // Syntax error
 
 $myArray[ /* key start */'key'] = $value;
 $myArray[ /* key start */'key'/* key end */ ] = $value;
+

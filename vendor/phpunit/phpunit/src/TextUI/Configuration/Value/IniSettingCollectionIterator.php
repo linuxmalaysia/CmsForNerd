@@ -55,3 +55,4 @@ final class IniSettingCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

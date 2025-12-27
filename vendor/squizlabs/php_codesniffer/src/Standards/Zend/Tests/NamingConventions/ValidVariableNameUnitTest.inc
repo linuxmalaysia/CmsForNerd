@@ -143,3 +143,4 @@ class AsymVisibility {
     protected private(set) $asymProtectedPrivate  = 'hello';
     private(set) public $_asymPrivatePublic = 'hello';
 }
+

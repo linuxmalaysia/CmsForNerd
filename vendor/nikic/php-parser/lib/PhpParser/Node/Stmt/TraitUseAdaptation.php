@@ -10,3 +10,4 @@ abstract class TraitUseAdaptation extends Node\Stmt {
     /** @var Node\Identifier Method name */
     public Node\Identifier $method;
 }
+

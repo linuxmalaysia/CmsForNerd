@@ -48,3 +48,4 @@ final class UnintentionallyCoveredCodeException extends RuntimeException impleme
         return rtrim($message);
     }
 }
+

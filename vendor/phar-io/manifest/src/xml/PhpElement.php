@@ -25,3 +25,4 @@ class PhpElement extends ManifestElement {
         );
     }
 }
+

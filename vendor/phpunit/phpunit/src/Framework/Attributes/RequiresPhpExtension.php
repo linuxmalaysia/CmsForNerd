@@ -55,3 +55,4 @@ final readonly class RequiresPhpExtension
         return $this->versionRequirement;
     }
 }
+

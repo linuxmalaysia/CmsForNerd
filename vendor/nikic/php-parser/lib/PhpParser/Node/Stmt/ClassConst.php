@@ -75,3 +75,4 @@ class ClassConst extends Node\Stmt {
         return 'Stmt_ClassConst';
     }
 }
+

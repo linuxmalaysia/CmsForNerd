@@ -35,3 +35,4 @@ class DeclareItem extends NodeAbstract {
 
 // @deprecated compatibility alias
 class_alias(DeclareItem::class, Stmt\DeclareDeclare::class);
+

@@ -62,3 +62,4 @@ final readonly class MigrateConfigurationCommand implements Command
         }
     }
 }
+

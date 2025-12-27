@@ -82,3 +82,4 @@ $ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab	=  	$ab;
 $a = $b; // phpcs:ignore Standard.Category.Sniff.ErrorCode1,Standard.Category.Sniff.ErrorCode2 -- for reasons ...
 
 if (($anotherReallyLongVarName === true) {} // This comment makes the line too long.
+

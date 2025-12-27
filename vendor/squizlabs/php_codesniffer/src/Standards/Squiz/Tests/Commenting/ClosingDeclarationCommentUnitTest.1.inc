@@ -122,3 +122,4 @@ trait TestTrait {
 
 trait TestTrait {
 }
+

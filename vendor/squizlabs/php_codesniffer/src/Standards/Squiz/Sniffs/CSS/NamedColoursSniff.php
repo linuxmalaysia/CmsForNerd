@@ -130,3 +130,4 @@ class NamedColoursSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

@@ -55,3 +55,4 @@ final class EventCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

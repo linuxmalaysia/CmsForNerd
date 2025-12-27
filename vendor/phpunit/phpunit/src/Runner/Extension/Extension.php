@@ -18,3 +18,4 @@ interface Extension
 {
     public function bootstrap(Configuration $configuration, Facade $facade, ParameterCollection $parameters): void;
 }
+

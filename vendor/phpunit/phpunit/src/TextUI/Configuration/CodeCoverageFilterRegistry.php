@@ -76,3 +76,4 @@ final class CodeCoverageFilterRegistry
         return $this->configured;
     }
 }
+

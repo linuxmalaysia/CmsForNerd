@@ -120,3 +120,4 @@ final class ESLintUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

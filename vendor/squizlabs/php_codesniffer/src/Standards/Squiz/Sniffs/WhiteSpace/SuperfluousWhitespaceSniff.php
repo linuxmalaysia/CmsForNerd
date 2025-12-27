@@ -263,3 +263,4 @@ class SuperfluousWhitespaceSniff implements Sniff
 
 
 }//end class
+

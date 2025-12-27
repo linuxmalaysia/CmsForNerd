@@ -47,3 +47,4 @@ final class AttributeEmulator extends TokenEmulator {
         return $code;
     }
 }
+

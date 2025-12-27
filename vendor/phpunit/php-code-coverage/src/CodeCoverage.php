@@ -645,3 +645,4 @@ final class CodeCoverage
         return $this->analyser;
     }
 }
+

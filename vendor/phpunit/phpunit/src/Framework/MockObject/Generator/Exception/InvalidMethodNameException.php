@@ -28,3 +28,4 @@ final class InvalidMethodNameException extends \PHPUnit\Framework\Exception impl
         );
     }
 }
+

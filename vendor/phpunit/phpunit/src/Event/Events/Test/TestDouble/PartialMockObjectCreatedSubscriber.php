@@ -18,3 +18,4 @@ interface PartialMockObjectCreatedSubscriber extends Subscriber
 {
     public function notify(PartialMockObjectCreated $event): void;
 }
+

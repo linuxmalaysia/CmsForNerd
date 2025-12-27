@@ -9,3 +9,4 @@ class Mul extends AssignOp {
         return 'Expr_AssignOp_Mul';
     }
 }
+

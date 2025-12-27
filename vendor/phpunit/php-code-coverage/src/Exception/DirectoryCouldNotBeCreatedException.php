@@ -15,3 +15,4 @@ use SebastianBergmann\CodeCoverage\Exception;
 final class DirectoryCouldNotBeCreatedException extends RuntimeException implements Exception
 {
 }
+

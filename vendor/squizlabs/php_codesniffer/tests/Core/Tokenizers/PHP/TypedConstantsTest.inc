@@ -154,3 +154,4 @@ $anonClassWithDNFTypes = new class() extends Something {
     /* testAnonClassConstDNFTypeParentSelfStatic */
     const (parent&self)|static DNF_PARENT = parent::getInstance();
 };
+

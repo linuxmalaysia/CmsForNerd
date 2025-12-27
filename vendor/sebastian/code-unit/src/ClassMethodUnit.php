@@ -19,3 +19,4 @@ final readonly class ClassMethodUnit extends CodeUnit
         return true;
     }
 }
+

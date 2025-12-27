@@ -30,3 +30,4 @@ final class NoMoreReturnValuesConfiguredException extends \PHPUnit\Framework\Exc
         );
     }
 }
+

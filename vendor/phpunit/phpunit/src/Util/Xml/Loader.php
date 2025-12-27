@@ -90,3 +90,4 @@ final readonly class Loader
         return $document;
     }
 }
+

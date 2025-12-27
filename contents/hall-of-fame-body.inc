@@ -39,3 +39,4 @@ $contributors = [
 .nomination-box { margin-top: 3rem; background: #fffbe6; border: 1px solid #ffe58f; padding: 1.5rem; border-radius: 8px; text-align: center; }
 .nomination-box h3 { margin-top: 0; color: #856404; }
 </style>
+

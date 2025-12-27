@@ -396,3 +396,4 @@ final class ExecutableLinesFindingVisitor extends NodeVisitorAbstract
         }
     }
 }
+

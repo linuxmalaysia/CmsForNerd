@@ -178,3 +178,4 @@ final class OperatorSpacingUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

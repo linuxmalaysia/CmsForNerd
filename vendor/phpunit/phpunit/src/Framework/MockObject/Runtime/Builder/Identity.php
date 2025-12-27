@@ -23,3 +23,4 @@ interface Identity
      */
     public function id(string $id): self;
 }
+

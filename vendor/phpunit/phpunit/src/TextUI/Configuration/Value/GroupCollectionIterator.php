@@ -55,3 +55,4 @@ final class GroupCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

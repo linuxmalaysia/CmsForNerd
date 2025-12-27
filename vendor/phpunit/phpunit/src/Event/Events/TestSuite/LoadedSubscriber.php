@@ -18,3 +18,4 @@ interface LoadedSubscriber extends Subscriber
 {
     public function notify(Loaded $event): void;
 }
+

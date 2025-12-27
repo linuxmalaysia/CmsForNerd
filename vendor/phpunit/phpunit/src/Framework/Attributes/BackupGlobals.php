@@ -31,3 +31,4 @@ final readonly class BackupGlobals
         return $this->enabled;
     }
 }
+

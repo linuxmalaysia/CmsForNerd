@@ -31,3 +31,4 @@ final class IsTrue extends Constraint
         return $other === true;
     }
 }
+
