@@ -5,6 +5,7 @@
 CmsForNerd is a database-free Content Management System designed as a live learning laboratory for developers. It focuses on the raw power of PHP 8.4+, modern architecture, and professional security standards.
 
 **Current Version:** 3.1 (27 Dec 2025)  
+**Changelog:** See [CHANGELOG.md](CHANGELOG.md) for recent changes and merge notes.
 **Primary Maintainer:** Harisfazillah Jamel  
 **AI Architect:** Google Gemini & Google Antigravity
 
