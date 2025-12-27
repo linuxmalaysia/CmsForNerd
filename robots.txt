@@ -5,4 +5,5 @@ Allow: /
 Disallow: /themes/
 Disallow: /includes/
 
+Sitemap: https://www.linuxmalaysia.com/sitemap.xml
 Sitemap: https://www.linuxmalaysia.com/sitemap.php
