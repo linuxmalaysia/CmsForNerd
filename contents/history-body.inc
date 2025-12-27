@@ -79,7 +79,7 @@
             This interactive guide provides students with specific exercises in modern architecture, security, 
             and testing, solidifying the CMS's role as a learning laboratory.
         </p>
-        <p><strong>Worksheets:</strong> Added <em>Module 1</em> (Architecture), <em>Module 3</em> (Security), and <em>Module 4</em> (Testing) worksheets.</p>
+        <p><strong>Worksheets:</strong> Added <em>Module 1</em> (Architecture), <em>Module 2</em> (Standards), <em>Module 3</em> (Security), and <em>Module 4</em> (Testing) worksheets.</p>
     </section>
 
     <p class="footer-note">

@@ -27,6 +27,7 @@
     <section class="module">
         <h2>⚖️ Laboratory Module 2: Standards & Compliance</h2>
         <p>Students learn that professional code is defined by its adherence to global standards.</p>
+        <p><a href="lab-module2.php" class="btn">📝 Open Student Worksheet: Module 2</a></p>
         <ul>
             <li><strong>Requirement Level (RFC 2119):</strong> We use <em>MUST</em>, <em>SHOULD</em>, and <em>MAY</em> to define project boundaries.
                 <ul>
