@@ -56,7 +56,8 @@
             <p>Understand how to communicate with security researchers using the <code>security.txt</code> standard.</p>
             <ul>
                 <li><strong>Objective:</strong> Learn to establish a protocol for ethical vulnerability reporting.</li>
-                <li><strong>Exercise:</strong> Verify the machine-readable <code>/.well-known/security.txt</code> file in your browser.</li>
+                <li><strong>Exercise 3.5a:</strong> Verify the machine-readable <code>/.well-known/security.txt</code> file in your browser.</li>
+                <li><strong>Exercise 3.5b (Simulation):</strong> Draft a simulated email for an SQL Injection discovery following the <a href="security-policy.php">Security Policy</a> rules.</li>
             </ul>
         </div>
     </section>
