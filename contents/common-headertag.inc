@@ -17,6 +17,9 @@
 <!-- Favicon - The small icon you see in the browser tab. -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+<!-- [SEMANTIC WEB] RDF Metadata - Machine-readable site classification for AI and search engines. -->
+<link rel="meta" type="application/rdf+xml" title="Site Metadata" href="labels.rdf">
+
 <!-- [UX/SEO] Modern Typography from Google Fonts. 'preconnect' speeds up loading. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

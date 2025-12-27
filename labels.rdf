@@ -1,41 +1,54 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<rdf:RDF
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:dcterms="http://purl.org/dc/terms/"
-  xmlns:label="http://www.w3.org/2004/12/q/contentlabel#"
-  xmlns:icra="http://www.icra.org/rdfs/vocabularyv03#">
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcterms="http://purl.org/dc/terms/"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/">
 
-  <rdf:Description rdf:about="">
-    <dc:creator rdf:resource="http://www.icra.org" />
-    <dcterms:issued>2006-2-10</dcterms:issued>
-    <label:authorityFor>http://www.icra.org/rdfs/vocabularyv03#</label:authorityFor>
+  <!-- Main Site Description -->
+  <rdf:Description rdf:about="https://www.linuxmalaysia.com/">
+    <dc:title>CMSForNerd: The Developer's Laboratory</dc:title>
+    <dc:description>A modern PHP 8.4+ educational Content Management System designed as a live learning laboratory for developers and students. Features PSR-12 compliance, RFC 2119 standards, and AI-native architecture.</dc:description>
+    <dc:creator>Harisfazillah Jamel</dc:creator>
+    <dc:contributor>Google Gemini &amp; Google Antigravity</dc:contributor>
+    <dc:publisher>LinuxMalaysia</dc:publisher>
+    <dc:date>2025-12-27</dc:date>
+    <dc:type>Educational Platform</dc:type>
+    <dc:format>text/html</dc:format>
+    <dc:language>en</dc:language>
+    <dc:rights>GPL-3.0-or-later</dc:rights>
+    <dcterms:license rdf:resource="https://www.gnu.org/licenses/gpl-3.0.html"/>
   </rdf:Description>
 
-  <label:Ruleset>
-    <label:hasHostRestrictions>
-      <label:Hosts>
-        <label:hostRestriction>harisfazillah.info</label:hostRestriction>
-      </label:Hosts>
-    </label:hasHostRestrictions>
-    <label:hasDefaultLabel rdf:resource="#label_1" />
-  </label:Ruleset>
+  <!-- Educational Context -->
+  <rdf:Description rdf:about="https://www.linuxmalaysia.com/lab-manual.php">
+    <dc:title>The Developer's Lab Manual</dc:title>
+    <dc:description>Comprehensive laboratory curriculum covering architecture, standards, security, testing, and AI-assisted development.</dc:description>
+    <dc:subject>PHP 8.4</dc:subject>
+    <dc:subject>PSR-12</dc:subject>
+    <dc:subject>Security Engineering</dc:subject>
+    <dc:subject>AI-Assisted Development</dc:subject>
+  </rdf:Description>
 
-  <label:ContentLabel rdf:ID="label_1">
-    <rdfs:comment>Label for all/most of website</rdfs:comment>
-    <icra:nz>1</icra:nz>
-    <icra:sz>1</icra:sz>
-    <icra:vz>1</icra:vz>
-    <icra:lz>1</icra:lz>
-    <icra:oz>1</icra:oz>
-    <icra:ca>1</icra:ca>
-    <label:hasModifier><icra:xa /></label:hasModifier>
-    <label:hasModifier><icra:xb /></label:hasModifier>
-    <label:hasModifier><icra:xc /></label:hasModifier>
-    <label:hasModifier><icra:xd /></label:hasModifier>
-    <label:hasModifier><icra:xe /></label:hasModifier>
-    <rdfs:label>No nudity; No sexual material; No violence; No potentially offensive language; No potentially harmful activities; User-generated content such as chat rooms and message boards (moderated); This material appears in an artistic context; This material appears in an educational context; This material appears in a medical context; This material appears in a sports context; This material appears in a news context; </rdfs:label>
-  </label:ContentLabel>
+  <!-- Security & Disclosure -->
+  <rdf:Description rdf:about="https://www.linuxmalaysia.com/security-policy.php">
+    <dc:title>Security Policy &amp; Vulnerability Disclosure</dc:title>
+    <dc:description>RFC 9116 compliant security policy for ethical vulnerability reporting.</dc:description>
+    <dc:relation rdf:resource="https://www.linuxmalaysia.com/.well-known/security.txt"/>
+  </rdf:Description>
+
+  <!-- Technical Specifications -->
+  <rdf:Description rdf:about="https://www.linuxmalaysia.com/">
+    <dcterms:requires>PHP 8.4+</dcterms:requires>
+    <dcterms:conformsTo rdf:resource="https://www.php-fig.org/psr/psr-12/"/>
+    <dcterms:conformsTo rdf:resource="https://www.rfc-editor.org/rfc/rfc2119"/>
+    <dcterms:conformsTo rdf:resource="https://www.rfc-editor.org/rfc/rfc9116"/>
+  </rdf:Description>
+
+  <!-- Author Profile -->
+  <foaf:Person rdf:about="https://www.linuxmalaysia.com/">
+    <foaf:name>Harisfazillah Jamel</foaf:name>
+    <foaf:mbox rdf:resource="mailto:linuxmalaysia@songketmail.org"/>
+    <foaf:homepage rdf:resource="https://www.linuxmalaysia.com/"/>
+  </foaf:Person>
 
 </rdf:RDF>
