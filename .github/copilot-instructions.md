@@ -41,3 +41,5 @@ If you're unsure
 - Open a draft PR and request reviewers. Provide a short explanation and the tests you ran.
 
 Thank you for helping keep CmsForNerd secure, simple, and well-tested.
+
+For the full development standards (language, architecture, security, metadata and tools), see `docs/development-standards.md`.
