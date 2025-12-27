@@ -44,7 +44,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Option 2: Using session expiration time (uncomment if using this approach)
 if (isset($_SESSION['valid_session']) && $_SESSION['valid_session'] === true) {
   $elapsed_time = time() - $_SESSION['session_start_time'];
-  $session_timeout = 1800; // 30 minutes
+  $session_timeout = (int)ini_get('session.gc_maxlifetime'); // 30 minutes by default if not changed
   
   if ($elapsed_time > $session_timeout) {
     // Session timed out, destroy it and redirect

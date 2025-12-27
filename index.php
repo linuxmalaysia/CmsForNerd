@@ -83,8 +83,8 @@ $ctx = new CmsForNerd\CmsContext(
 );
 
 // Start the session with a timeout of 30 minutes (in seconds)
+ini_set('session.gc_maxlifetime', '1800');
 session_start();
-session_gc_maxlifetime(1800); // 1800 seconds = 30 minutes
 
 // Set the session creation time (optional for approach 2)
 $_SESSION['session_start_time'] = time(); // Uncomment for approach 2
