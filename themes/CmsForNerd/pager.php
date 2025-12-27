@@ -39,7 +39,6 @@
 function pager(CmsForNerd\CmsContext $ctx)
 
 {
-$THEMENAME = $ctx->themeName;
 
 pageheader($ctx); //must have
 
@@ -48,13 +47,13 @@ pageheader($ctx); //must have
 
 print("<body>"); //must have
 
-include("themes/$ctx->themeName/bodytop.tpl");
+include "themes/{$ctx->themeName}/bodytop.tpl";
 
 
 pagecontent($ctx); //must have
 
 
-include("themes/$ctx->themeName/bodyfooter.tpl");
+include "themes/{$ctx->themeName}/bodyfooter.tpl";
 
 print("</body>"); //must have
 

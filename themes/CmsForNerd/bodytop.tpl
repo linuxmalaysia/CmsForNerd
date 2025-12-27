@@ -12,7 +12,7 @@ NOTE: Several <div> tags opened here are closed in 'bodyfooter.tpl'.
 
 <!-- This is to called the banner at the top of the page -->
 <div id="top">
-<?php include("themes/$THEMENAME/header.tpl"); ?>
+<?php include "themes/{$ctx->themeName}/header.tpl"; ?>
 </div>
 
 <!-- This is to called the left side of the page -->
