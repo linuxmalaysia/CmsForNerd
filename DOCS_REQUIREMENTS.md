@@ -14,3 +14,8 @@ This document defines the "Laws of the Project" using the requirement levels des
 1. **Input:** The `page` parameter **MUST** be sanitized using `preg_replace` to prevent directory traversal.
 2. **Output:** All user-provided strings **MUST** be escaped using `htmlspecialchars()` before being rendered in the theme.
 3. **Sessions:** Sessions **SHOULD** be configured with `cookie_httponly` set to true.
+
+## Documentation & Educational Requirements
+
+1. **Modernization History:** For every major improvement or architectural change, the `contents/history-body.inc` file **MUST** be updated with a summary of the change. This is REQUIRED for training, education, and maintaining a clear project pedigree.
+2. **Teaching Mode:** Comments added to code **SHOULD** explain the *why* (rationale) behind the implementation to serve as a learning resource for others.

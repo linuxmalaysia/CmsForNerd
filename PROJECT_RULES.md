@@ -7,5 +7,6 @@ When generating or refactoring code for CmsForNerd, you **MUST** follow these ru
 3. **Namespace:** All core classes **MUST** reside within the `CmsForNerd\` namespace.
 4. **State:** All shared data **MUST** be accessed via the `CmsContext` object. Code **MUST NOT** use the `global` keyword.
 5. **Logic Requirements:** If a requirement is marked as **SHOULD** in `DOCS_REQUIREMENTS.md`, you may deviate only if you provide a technical justification.
+6. **Documentation:** You **MUST** update the `contents/history-body.inc` file whenever you implement a major improvement, security hardening, or architectural refactor.
 
 Run `composer compliance` to verify all standards before submitting your work.
