@@ -23,7 +23,8 @@
         "compliance": [
             "@check-style",
             "@test"
-        ]
+        ],
+        "audit-metadata": "php tools/audit-semantics.php http://localhost:8888"
     },
     "autoload": {
         "psr-4": {

@@ -25,6 +25,7 @@ This document defines the "Laws of the Project" using the requirement levels des
 3. **Dynamic Metadata:** JSON-LD content **MUST** be populated dynamically from `$CONTENT` variables.
 4. **Microdata:** The `<html>` tag **MUST** include `itemscope` and `itemtype` attributes for immediate AI classification.
 5. **Consistency:** The `itemtype` in the `<html>` tag **SHOULD** match the `@type` in JSON-LD to avoid confusing crawlers.
+6. **Semantic Audit:** All new pages **MUST** pass the `composer audit-metadata` test before deployment.
 
 ## Documentation & Educational Requirements
 
