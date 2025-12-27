@@ -100,3 +100,13 @@
 .modernization-history .footer-note { margin-top: 3rem; text-align: center; color: #666; font-size: 0.9rem; }
 </style>
 
+<!-- Recent changelog entry -->
+<section aria-label="recent-changelog" class="recent-changelog">
+    <h2>Recent updates (2025-12-27)</h2>
+    <ul>
+        <li>Updated documentation and AI guidance: <code>.github/copilot-instructions.md</code>.</li>
+        <li>Added example page and content partial: <code>about.php</code>, <code>contents/about-body.inc</code>.</li>
+        <li>Minor fixes to include files and tests, plus PSR-12/PHPCS auto-fixes.</li>
+        <li>Normalized repository line endings to LF for source files and verified style & tests.</li>
+    </ul>
+</section>

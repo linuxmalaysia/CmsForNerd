@@ -1,5 +1,5 @@
 {
-    "php.validate.executablePath": "",
+    "php.validate.executablePath": "php",
     "php.suggest.basic": false,
     "intelephense.environment.phpVersion": "8.4.0",
     "intelephense.stubs": [
@@ -39,7 +39,10 @@
     },
     "phpcs.enable": true,
     "phpcs.standard": "PSR12",
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+    "git.autofetch": true,
+    "files.eol": "\n",
     "[php]": {
         "editor.formatOnSave": false
     }
