@@ -49,4 +49,16 @@ class SecurityUtils
         // ENT_QUOTES ensures both single and double quotes are escaped.
         return htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
     }
+
+    /**
+     * [SECURITY] Generate a cryptographically secure nonce for CSP.
+     * Nonces MUST be used to prevent inline script XSS attacks.
+     *
+     * @return string Base64-encoded random nonce
+     */
+    public static function generateNonce(): string
+    {
+        // [RFC 2119] Requirement: MUST use cryptographically secure random bytes.
+        return base64_encode(random_bytes(16));
+    }
 }

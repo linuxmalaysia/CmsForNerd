@@ -12,6 +12,7 @@ namespace CmsForNerd;
 readonly class CmsContext
 {
     public string $baseUrl;
+    public string $cspNonce;
 
     public function __construct(
         public array $content = [],
@@ -20,6 +21,7 @@ readonly class CmsContext
         public array $dataFile = [],
         public string $scriptName = '',
         ?string $baseUrl = null,
+        ?string $cspNonce = null,
     ) {
         if ($baseUrl === null && isset($_SERVER['HTTP_HOST'])) {
             $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
@@ -28,5 +30,6 @@ readonly class CmsContext
             $baseUrl = "$protocol://$host$path/";
         }
         $this->baseUrl = $baseUrl ?? '';
+        $this->cspNonce = $cspNonce ?? SecurityUtils::generateNonce();
     }
 }

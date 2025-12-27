@@ -21,7 +21,7 @@
 <link rel="meta" type="application/rdf+xml" title="Site Metadata" href="labels.rdf">
 
 <!-- [AI/SEO] JSON-LD Structured Data - 2025 gold standard for Google, Gemini, and ChatGPT. -->
-<script type="application/ld+json">
+<script type="application/ld+json" nonce="<?= $ctx->cspNonce ?>">
 {
   "@context": "https://schema.org",
   "@type": "<?= (strpos($CONTENT['title'] ?? '', 'Lab') !== false || strpos($CONTENT['title'] ?? '', 'Module') !== false) ? 'Course' : 'WebPage' ?>",
@@ -49,10 +49,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-<!-- [SECURITY] Content Security Policy (CSP). 
-     This is your "Force Field". It tells the browser EXACTLY which domains (like Cloudflare or Google Fonts)
-     are allowed to load scripts or images. If a hacker tries to inject their own script, the CSP will block it. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://*.ipinfo.io https://www.google.com https://fonts.googleapis.com; img-src 'self' data: https: https://www.google.com https://groups.google.com https://www.rorweb.com; font-src 'self' https: data: https://fonts.gstatic.com;">
+<!-- [SECURITY] Content Security Policy (CSP) with Nonce.
+     Instead of 'unsafe-inline' (dangerous), we use a cryptographically random nonce that changes every page load.
+     Only scripts with this exact nonce are allowed to execute, preventing XSS attacks. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-<?= $ctx->cspNonce ?>' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://*.ipinfo.io;">
 
 <!-- RSS Feed & Sitemap Discovery -->
 <link rel="alternate" type="application/rss+xml" title="CmsForNerd SiteMap Feed" href="<?= $ctx->baseUrl ?>rss.xml" />
