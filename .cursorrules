@@ -1,0 +1,46 @@
+# CMSForNerd AI Context
+
+## Development Environment
+- **Operating System:** Windows 11
+- **Terminal:** Google Antigravity (Advanced AI-powered terminal)
+- **Server:** Laravel Herd (PHP 8.4+)
+- **Editor:** Google Antigravity / VS Code with PHP Intelephense
+- **Browser:** Mozilla Firefox (for testing strict privacy and modern web standards)
+
+## Project Standards
+- **Coding Standard:** PSR-12 (enforced via PHP_CodeSniffer)
+- **Documentation:** RFC 2119 terminology (MUST, SHOULD, RECOMMENDED)
+- **Security:** RFC 9116 (security.txt for vulnerability disclosure)
+- **Type Safety:** `declare(strict_types=1);` MUST be present in all PHP files
+
+## Architecture Patterns
+- **Template System:** "Pair Logic" - Each page has an entry point `.php` and content `.inc` file in `contents/` directory
+- **Context Object:** `CmsContext` is used instead of global variables
+- **Security:** All user input MUST be sanitized via `SecurityUtils::sanitizePage()`
+- **Dynamic URLs:** Use `$ctx->baseUrl` for domain portability
+
+## Testing & Compliance
+- **Test Framework:** PHPUnit 11.5+
+- **Compliance Command:** `composer compliance` (runs PHPCS + PHPUnit)
+- **Style Fixing:** `composer fix-style` (auto-fixes PSR-12 violations)
+
+## File Naming Conventions
+- Entry points: `{page-name}.php` (e.g., `index.php`, `lab-manual.php`)
+- Content files: `contents/{page-name}-body.inc` (e.g., `contents/index-body.inc`)
+- Classes: `includes/{ClassName}.php` (e.g., `includes/CmsContext.php`)
+
+## AI Assistant Guidelines
+When generating code for this project:
+1. Always add `declare(strict_types=1);` after the opening PHP tag
+2. Use the "Pair Logic" pattern for new pages
+3. Run `composer compliance` to verify changes
+4. Update `contents/history-body.inc` to document major changes
+5. Ensure all URLs are portable using `$ctx->baseUrl`
+6. Follow the existing code style (4-space indentation, PSR-12 braces)
+
+## Educational Context
+This is a **learning laboratory CMS** designed to teach modern backend engineering. All code should be:
+- Educational (well-commented with RFC 2119 keywords)
+- Secure (defense-in-depth approach)
+- Portable (works on Windows, Linux, Unix, FreeBSD)
+- AI-native (built specifically to be managed by AI agents)

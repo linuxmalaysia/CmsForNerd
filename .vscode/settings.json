@@ -1,0 +1,52 @@
+{
+    "php.validate.executablePath": "C:\\Users\\User\\.config\\herd\\bin\\php.exe",
+    "php.suggest.basic": false,
+    "intelephense.stubs": [
+        "apache",
+        "bcmath",
+        "Core",
+        "ctype",
+        "curl",
+        "date",
+        "dom",
+        "fileinfo",
+        "filter",
+        "gd",
+        "hash",
+        "iconv",
+        "json",
+        "libxml",
+        "mbstring",
+        "mysqli",
+        "mysqlnd",
+        "openssl",
+        "pcre",
+        "PDO",
+        "Phar",
+        "session",
+        "SimpleXML",
+        "standard",
+        "tokenizer",
+        "xml",
+        "xmlreader",
+        "xmlwriter",
+        "zip",
+        "zlib"
+    ],
+    "terminal.integrated.profiles.windows": {
+        "Antigravity": {
+            "path": "pwsh.exe",
+            "icon": "terminal-powershell"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Antigravity",
+    "files.associations": {
+        "*.inc": "php"
+    },
+    "phpcs.enable": true,
+    "phpcs.standard": "PSR12",
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+        "editor.formatOnSave": false
+    }
+}

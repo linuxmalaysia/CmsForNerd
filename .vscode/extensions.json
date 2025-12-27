@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "bmewburn.vscode-intelephense-client",
+        "ikappas.phpcs",
+        "usernamehw.errorlens",
+        "redhat.vscode-xml",
+        "davidanson.vscode-markdownlint"
+    ]
+}
