@@ -64,6 +64,17 @@
         <p><strong>Concept: "Green-Light Thinking"</strong>—if the tests aren't green, the code isn't ready.</p>
     </section>
 
+    <section class="module">
+        <h2>📊 Laboratory Module 5: Test Coverage and QA</h2>
+        <p>Learn to visualize the safety net of your application using Code Coverage reports.</p>
+        <div class="exercise">
+            <h3>Exercise: Generate a Coverage Report</h3>
+            <p>Use Xdebug and PHPUnit to create an interactive HTML report to identify "dark spots" in your code.</p>
+            <p><a href="lab-module5.php" class="btn">📝 Open Student Worksheet: Module 5</a></p>
+        </div>
+        <p><strong>Concept: "Confidence in Code"</strong>—100% coverage doesn't mean bug-free, but it means everything was tested.</p>
+    </section>
+
     <hr>
 
     <section class="case-study">
@@ -74,6 +85,7 @@
             <li><strong>Phase 2:</strong> Standardized the UI with CSS Grid (replacing legacy float-based layouts).</li>
             <li><strong>Phase 3:</strong> Hardened the perimeter with Cloudflare Turnstile and <code>SecurityUtils</code>.</li>
             <li><strong>Phase 4:</strong> Automated the workflow with PHPUnit and <code>PHP_CodeSniffer</code>.</li>
+            <li><strong>Phase 5:</strong> Visualized quality with Code Coverage and the CRAP index.</li>
         </ol>
         <p class="motto"><strong>Educational Motto:</strong> "Modernization without loss of simplicity." — Harisfazillah Jamel & Gemini, 2025.</p>
     </section>
