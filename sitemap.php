@@ -30,6 +30,7 @@
 // and with name ???-body.inc
 
 ob_start("ob_gzhandler");
+require_once __DIR__ . '/vendor/autoload.php';
 
 // Check for session timeout and close session on other pages (within the PHP code)
 
@@ -77,7 +78,6 @@ $CONTENT['data']="empty";
 
 
 include("includes/global-control.inc.php");
-require_once("includes/CmsContext.php");
 include("includes/common.inc.php");
 
 // Initialize Context

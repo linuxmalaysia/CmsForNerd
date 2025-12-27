@@ -27,6 +27,7 @@
 // and with name ???-body.inc
 
 ob_start("ob_gzhandler");
+require_once __DIR__ . '/vendor/autoload.php';
 
 $CONTENT['title']="Template Page For CmsForNerd";
 $CONTENT['author']="CMSForNerd";
@@ -51,7 +52,6 @@ $CONTENT['data']="empty";
 
 
 include("includes/global-control.inc.php");
-require_once("includes/CmsContext.php");
 include("includes/common.inc.php");
 
 // Initialize Context
