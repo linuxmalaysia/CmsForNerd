@@ -26,8 +26,6 @@ function pageheader(CmsForNerd\CmsContext $ctx)
 
 
 
-// XHTML define
-
 // HTML5 define
 print("<!DOCTYPE html>\n");
 print("<html lang=\"en\">");

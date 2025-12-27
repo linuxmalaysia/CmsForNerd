@@ -1,9 +1,9 @@
-<div align="center"> 
+<div style="text-align: center;"> 
 <p>
 CmsForNerd Main Site <a href="https://www.linuxmalaysia.com">https://www.linuxmalaysia.com</a>
-<br />
+<br>
 CmsForNerd Blog <a href="https://www.linuxmalaysia.com">https://www.linuxmalaysia.com</a>
-<br />
+<br>
 Copyright &copy; 2005 - 2025 Harisfazillah Jamel
 </p>
 </div>

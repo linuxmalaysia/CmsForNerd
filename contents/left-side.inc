@@ -14,11 +14,11 @@
 
 </div>
 
-<br />
+<br>
 
 <h3>E-Mail</h3>
  
-<br />			
+<br>			
 
 <h3>Joint Us</h3>
 
@@ -41,7 +41,7 @@
 
 <h3>Get Updates</h3>
 
-<br />
+<br>
 
 
 

@@ -25,7 +25,7 @@ NOTE: Several <div> tags opened here are closed in 'bodyfooter.tpl'.
 <!-- This is to called the right side of the page -->
 <div id="rightnav">
 
-<?php include("contents/right-side.inc"); ?>
+<?php include "contents/right-side.inc"; ?>
 
 </div>
 

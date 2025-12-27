@@ -11,7 +11,7 @@ This file defines the lower structure of the page layout:
 <!-- above are the end of div content inside bodyfooter.tpl -->
 
 <div id="footer">
-<?php include("contents/footer.inc"); ?>
+<?php include "contents/footer.inc"; ?>
 </div>
 
 <!-- this div is need to close unknown div tag -->

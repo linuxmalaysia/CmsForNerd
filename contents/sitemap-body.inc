@@ -17,11 +17,11 @@ $pages = get_site_pages();
     <?php endforeach; ?>
     </ul>
     
-    <hr />
+    <hr>
     
     <p>
         <a href="xml-sitemap.php" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Feed-icon.svg" width="16" height="16" alt="XML" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Feed-icon.svg" width="16" height="16" alt="XML">
             XML Sitemap for Bots
         </a>
     </p>
