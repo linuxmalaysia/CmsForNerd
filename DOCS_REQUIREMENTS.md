@@ -18,6 +18,12 @@ This document defines the "Laws of the Project" using the requirement levels des
 5. **Expiration:** The `Expires` field in `security.txt` **MUST NOT** be set to a date more than one year in the future.
 6. **Response:** The organization **SHOULD** acknowledge vulnerability reports within 72 hours.
 
+## AI Discoverability & Semantic Web
+
+1. **JSON-LD:** All pages **MUST** output a valid JSON-LD block to assist AI tools in understanding the curriculum.
+2. **Schema Types:** The `@type` **SHOULD** be "Course" for lab modules and "WebPage" for standard content.
+3. **Dynamic Metadata:** JSON-LD content **MUST** be populated dynamically from `$CONTENT` variables.
+
 ## Documentation & Educational Requirements
 
 1. **Modernization History:** For every major improvement or architectural change, the `contents/history-body.inc` file **MUST** be updated with a summary of the change.
