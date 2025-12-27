@@ -3,10 +3,10 @@
 <div align="left" class="buttons"> 
 
 <a href="index.php">Home</a>
-<a href="http://cmsfornerd.harisfazillah.info/">CmsForNerd</a>
-<a href="http://cmsfornerd.harisfazillah.info/cmsfornerdv1.zip">Download</a>
+<a href="https://www.linuxmalaysia.com">CmsForNerd</a>
+<a href="https://github.com/LinuxMalaysia/CMSForNerd-Project/archive/refs/heads/master.zip">Download</a>
 <a href="template.php">CmsForNerd Template</a>
-<a href="http://cmsfornerd.harisfazillah.info/">CmsForNerd Download</a>
+<a href="sitemap.php">CmsForNerd Sitemap</a>
 <a href="installation.php">CmsForNerd Installation</a>
 <a href="https://www.linuxmalaysia.com">CmsForNerd Blog</a>
 

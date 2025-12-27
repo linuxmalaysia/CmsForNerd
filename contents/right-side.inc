@@ -20,7 +20,7 @@
 <input type="hidden" name="ie" value="ISO-8859-1"></input>
 <input type="hidden" name="oe" value="ISO-8859-1"></input>
 <input type="hidden" name="safe" value="active"></input>
-<input type="hidden" name="cof" value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;LH:50;LW:500;L:http://cmsfornerd.harisfazillah.info/images/cmsfornerd.png;S:http://cmsfornerd.harisfazillah.info;FORID:1"></input>
+<input type="hidden" name="cof" value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;LH:50;LW:500;L:images/cmsfornerd.png;S:https://www.linuxmalaysia.com;FORID:1"></input>
 <input type="hidden" name="hl" value="en"></input>
 </td></tr></table>
 </form>
@@ -42,13 +42,13 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <br />
 
-<a href="http://users.skynet.be/mgueury/mozilla/">
-  <img src="http://cmsfornerd.harisfazillah.info/images/tidy.png"
-  alt="Validated by HTML Validator (based on Tidy) " height="16" width="39" border="0"/>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/html-validator/" target="_blank">
+  <img src="images/tidy.png"
+  alt="Validated by HTML Validator (based on Tidy)" height="16" width="39" border="0"/>
 </a>
 
 <br />
 
 <!-- ROR BUTTON BEGIN -->
-<a href="http://cmsfornerd.harisfazillah.info/ror.xml"><img src="http://www.rorweb.com/rorinfo.gif" width="80" height="15" border="0" alt="ROR"/></a><br /><br />
+<a href="xml-sitemap.php"><img src="http://www.rorweb.com/rorinfo.gif" width="80" height="15" border="0" alt="ROR"/></a><br /><br />
 <!-- ROR BUTTON END -->
