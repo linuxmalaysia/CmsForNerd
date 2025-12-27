@@ -22,21 +22,16 @@
 
 <h3>Joint Us</h3>
 
-<div style="text-align: center; font-family: Verdana;">
-
-<table style="background-color: #fff; padding: 5px;" cellspacing="0">
-  <tr><td>
-  <b>Google Groups</b>
-  </td></tr>
-  <tr><td style="padding-left: 5px;font-size: 125%">
-  <b>cmsfornerd</b>
-  </td></tr>
-  <tr><td style="padding-left: 5px">
-  <a href="https://groups.google.com/group/cmsfornerd">Visit this group</a>
-  </td></tr>
-</table>
-
-</div>
+<aside class="group-box">
+    <span class="group-title">Community</span>
+    <p style="font-size: 0.8em; color: #666;">Join the <strong>cmsfornerd</strong> discussion group.</p>
+    <a href="https://groups.google.com/group/cmsfornerd" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="btn-google-group">
+       Visit Group
+    </a>
+</aside>
 
 <h3>Get Updates</h3>
 
