@@ -1,81 +1,80 @@
 # CmsForNerd
-**A Lightweight, Flat-File PHP CMS**
+**A Lightweight, Radically Simple, Database-Free PHP Laboratory CMS**
 
-## Overview
-CmsForNerd is a simple, database-free Content Management System designed for speed and simplicity. It uses flat files for content, requiring only PHP to run.
+## 🌟 Overview
+CmsForNerd is a database-free Content Management System designed as a live learning laboratory for developers. It focuses on the raw power of PHP 8.4+, modern architecture, and professional security standards.
 
 **Current Version:** 3.1 (27 Dec 2025)  
 **Primary Maintainer:** Harisfazillah Jamel  
-**Assisted By:** Google Gemini (AI-Assisted Refactoring)
+**AI Architect:** Google Gemini & Google Antigravity
 
 ---
 
-## 🚀 New in Version 3.1 (PHP 8.4+ & PHP 9 Ready)
-This project has been heavily modernized to support the latest PHP standards and improve security.
-
-### Key Features
-*   **PHP 8.4+ Ready**: Fully upgraded codebase using strict types, readonly classes, and modern syntax (`[]` arrays, match expressions).
-*   **Context Object Pattern**: Replaced legacy global variables with a robust `CmsContext` object for better state management.
-*   **Enhanced Security**:
-    *   **Cloudflare Turnstile**: Integrated invisible bot protection for forms.
-    *   **Bot Detection**: Optimized Regex-based detection to block scrapers effectively.
-    *   **Directory Traversal Protection**: Strict input validation on all entry points.
-*   **Deploy Anywhere**: Universally compatible with **Windows, Linux, Unix, and FreeBSD**. Tested for cross-platform path safety and case-sensitive filesystems.
-*   **Clean Repository**: Removed legacy zip archives, unused scripts, and redundant files.
+## 🚀 Key Features (v3.1)
+*   **PHP 8.4+ & PHP 9 Ready**: Optimized for Property Hooks, Class Constants, and Strict Types.
+*   **Context Architecture**: Uses the `CmsContext` object pattern to eliminate legacy global variables.
+*   **Professional Security**:
+    *   **RFC 9116 (security.txt)**: Standardized vulnerability disclosure protocols.
+    *   **Cloudflare Turnstile**: High-security bot protection.
+    *   **Perimeter Defense**: Strict path traversal and input sanitization.
+*   **Cross-Platform Mastery**: Tested and verified for **Windows 11, Debian Linux, and AlmaLinux**.
+*   **AI-Native Workflow**: Built specifically to be managed by AI-agentic code assistants.
 
 ---
 
-## 📂 Directory Structure
+## 🛠️ Installation & Laboratory Setup
 
-### 1. Content (`/contents`)
-Your actual page content goes here.
-*   `common-headertag.inc`: Metadata for `<head>`.
-*   `footer.inc`: Site footer.
-*   `right-side.inc` / `left-side.inc`: Sidebar columns.
+### 🪟 Option 1: Windows 11 (Recommended for Beginners)
+The most efficient setup on Windows uses the "Nerd-Stack":
+1.  **Engine:** Install [Laravel Herd](https://herd.laravel.com) and select **PHP 8.4**.
+2.  **CLI:** Install [Git for Windows](https://git-scm.com) (Enable symbolic links).
+3.  **Terminal:** Use **Google Antigravity** for high-speed CLI output.
+4.  **Action:** Clone the repo into your Herd `sites` folder and run `composer install`.
+5.  **Guide:** See the [Windows Setup Guide](windows-setup.php) for full details.
 
-### 2. Core Logic (`/includes`)
-System files - generally, do not touch these unless you are a developer.
-*   `common.inc.php`: Core display functions.
-*   `CmsContext.php`: The main state object (New in v3.1).
-*   `turnstile.php`: Cloudflare security integration.
-*   `is_bot.php`: Bot detection logic.
-
-### 3. Themes (`/themes`)
-To create a custom look, duplicate the `CmsForNerd` folder. A theme consists of:
-*   `pager.php`: The main layout controller (HTML skeleton).
-*   `theme.php`: Configuration (pointers to CSS, etc).
-*   `style.css`: Visual styling.
-*   `header.tpl` / `bodytop.tpl` / `bodyfooter.tpl`: HTML fragments included by `pager.php`.
-
-**To switch themes:**
-1.  Create your new theme folder (e.g., `themes/MyTheme`).
-2.  Open `includes/global-control.inc.php`.
-3.  Change `$THEMENAME = "MyTheme";`.
+### 🐧 Option 2: Linux (Debian, Ubuntu, AlmaLinux)
+For production-grade testing, use official repositories:
+1.  **Debian/Ubuntu:** Use [Ondřej Surý's PHP PPA](https://deb.sury.org/).
+2.  **AlmaLinux/RHEL:** Use the [Remi Repository](https://rpms.remirepo.net/).
+3.  **Permissions:** Ensure `www-data` or `apache` has read access to the project root.
+4.  **Action:** Install `php8.4-cli`, `php8.4-mbstring`, and `php8.4-xml`.
+5.  **Guide:** See the [Linux Setup Guide](linux-setup.php) for terminal commands.
 
 ---
 
-## 🔧 Configuration
-Most settings are controlled via `includes/global-control.inc.php`.
+## 🤖 AI-Assisted Development
+CMSForNerd v3.1 is designed to be co-authored with AI. We recommend the following synergy:
 
-To enable **Cloudflare Turnstile**:
-1.  Open `includes/turnstile.php`.
-2.  Add your Secret Key.
-3.  Add the frontend widget to your theme files.
+1.  **Google Gemini (The Architect)**: Ask Gemini to plan your logic, refactor legacy functions, or explain complex RFC standards.
+2.  **Google Antigravity (The Agent)**: Use Antigravity to execute file writes, run compliance audits, and manage your Git workflow.
+3.  **Workflow**: Description your desired change in natural language, review the `implementation_plan.md` generated by the AI, and verify with `composer compliance`.
+
+See the [🤖 AI Development Guide](ai-dev.php) for the "Prompt-to-Product" methodology.
+
+---
+
+## 🧪 The Laboratory Curriculum
+The CMS includes built-in modules to help you master professional backend engineering:
+1.  **Module 1-2**: Architecture & Standards (PSR-12).
+2.  **Module 3**: Defensive Engineering (Security & Disclosure).
+3.  **Module 4-5**: Automated Testing & Code Coverage.
+4.  **Module 6**: AI-Assisted Workflows.
+5.  **Final Exam**: The "Break-Fix" mastered challenge.
+
+Start your journey in the [🎓 Lab Manual](lab-manual.php).
+
+---
+
+## ⚖️ Standards (RFC 2119)
+*   **MUST**: Begin all files with `declare(strict_types=1);`.
+*   **MUST NOT**: Use `global` variables.
+*   **SHOULD**: Maintain 90% test coverage for new logic.
 
 ---
 
 ## Credits
-*   **Original Author:** Harisfazillah Jamel (LinuxMalaysia)
-*   **Refactoring & Modernization:** Google Gemini (2025)
-*   **Inspiration:** Conceptualized from Drupal and XAMPP architecture.
-
-**Links:**
+*   **Author:** Harisfazillah Jamel (LinuxMalaysia)
+*   **Assistant:** Google Gemini & Google Antigravity (2025 Refactor)
 *   Website: [https://www.linuxmalaysia.com](https://www.linuxmalaysia.com)
-*   GitHub Repository: [https://github.com/CMSForNerd/CmsForNerd](https://github.com/CMSForNerd/CmsForNerd)
 
----
-
-### 🛠️ Maintenance Note
-Remember to run `composer install` if you move the project to a new machine to ensure the autoloader and PHPUnit are ready to go.
-
-*All changes have been committed and pushed to the GitHub repository. It has been a pleasure modernizing this "Radically Simple" CMS with you!*
+*Modernization without loss of simplicity.*
