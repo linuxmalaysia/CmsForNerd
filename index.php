@@ -60,7 +60,7 @@ $rawPage = match(true) {
 };
 
 // Sanitize: Allow only alphanumeric, hyphen, underscore
-$page = preg_match('/^[a-zA-Z0-9_-]+$/', $rawPage) 
+$page = CmsForNerd\SecurityUtils::isValidPageName($rawPage) 
     ? $rawPage 
     : 'index.php'; // Fallback to safe default
 

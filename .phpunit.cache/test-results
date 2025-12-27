@@ -1,0 +1,1 @@
+{"version":2,"defects":[],"times":{"CmsContextTest::testCanBeCreatedWithDefaultValues":0.003,"CmsContextTest::testCanBeCreatedWithCustomValues":0,"SecurityTest::testPageNameValidation":0,"SecurityTest::testBotDetection":0}}
