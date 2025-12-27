@@ -85,3 +85,48 @@ tell me which release/tag to use and I will update this file accordingly.
 ---
 
 Generated: 2025-12-27
+
+# Changelog: The Great Migration (v1.0 → v3.1)
+
+All notable changes to **CMSForNerd** documenting the journey from PHP 4 (2005) to PHP 8.4 (2025).
+
+---
+
+## [3.1.0] - 2025-12-28 (The "Modern Nerd" Release)
+**"Modernization without loss of simplicity."**
+
+### 🚀 The PHP 8.4 Foundation (Migration from v1.0 / PHP 4)
+- **Engine Upgrade**: Complete refactor from PHP 4/5 functional style to **PHP 8.4** strict object-oriented patterns.
+- **Strict Typing**: Every core file now enforces `declare(strict_types=1);`.
+- **State Management**: Eliminated legacy global variables in favor of an immutable **`CmsContext`** object.
+- **Modern Syntax**: Implemented **Property Hooks**, **Readonly Classes**, and **Constructor Property Promotion**.
+
+### 🛡️ Security Hardening (Anti-Fragility)
+- **RFC 9116**: Integrated `.well-known/security.txt` and a formal Security Policy.
+- **CSP & Nonces**: Implemented Content Security Policy with dynamic nonces to block XSS.
+- **Cloudflare Turnstile**: Added invisible bot protection for all forms.
+- **Input Sanitization**: Introduced `SecurityUtils` to prevent Directory Traversal and SQLi.
+
+### 🤖 AI & Semantic Stack
+- **AI-Ready Architecture**: Structured content for Gemini/LLM consumption via `.github/copilot-instructions.md`.
+- **Triple-Layer Metadata**: Integrated **Microdata (Schema.org)**, **JSON-LD**, and **RDF** into every page.
+- **Static Baking (SSG)**: Developed GitHub Actions (`static-build.yml`) to "bake" PHP into ultra-fast static HTML.
+
+### 🧪 Quality Assurance
+- **PHPUnit 12**: Integrated the latest testing framework using **PHP 8 Attributes** (`#[Test]`) for test discovery.
+- **Semantic Auditor**: Created `tools/audit-semantics.php` to automate compliance checks.
+- **PSR-12**: Enforced universal coding standards via `phpcbf` and `phpcs`.
+
+---
+
+## [2.0.0] - 2025-12-20 (Intermediate Architecture)
+### Added
+- **CSS Grid**: Replaced 2005-era float layouts with modern Responsive Grid systems.
+- **The Developer’s Laboratory**: Rebranding of the project from a "Simple CMS" to an "Educational Lab."
+- **Lab Manual**: Created Modules 1-6 and the "Break-Fix Final Exam" for student training.
+
+---
+
+## [1.0.0] - 2005-01-10 (The Original Foundation)
+- **Initial Release**: A radically simple, flat-file CMS built for PHP 4.
+- **Core Concept**: Paired entry points (`about.php`) with content partials (`about-body.inc`).
