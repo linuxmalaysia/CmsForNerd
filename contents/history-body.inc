@@ -79,7 +79,8 @@
             This interactive guide provides students with specific exercises in modern architecture, security, 
             and testing, solidifying the CMS's role as a learning laboratory.
         </p>
-        <p><strong>Worksheets:</strong> Added <em>Module 1</em> (Architecture), <em>Module 2</em> (Standards), <em>Module 3</em> (Perimeter & Path Traversal), <em>Module 4</em> (Testing), and <em>Module 5</em> (Coverage) worksheets.</p>
+        <p><strong>Educational Tools:</strong> Added <em>The Developer’s Lab Manual</em> with 5 core modules and a <em>Certification System</em>.</p>
+        <p><strong>Worksheets:</strong> Added <em>Modules 1-5</em> and the final <em>Graduation & Certificate</em> page.</p>
     </section>
 
     <p class="footer-note">

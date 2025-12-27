@@ -87,9 +87,22 @@
             <li><strong>Phase 4:</strong> Automated the workflow with PHPUnit and <code>PHP_CodeSniffer</code>.</li>
             <li><strong>Phase 5:</strong> Visualized quality with Code Coverage and the CRAP index.</li>
         </ol>
+        <div class="graduation-cta">
+            <h3>🎓 Ready to Graduate?</h3>
+            <p>If you have completed all 5 modules and passed all compliance audits, you are ready to claim your certificate.</p>
+            <p><a href="graduation.php" class="btn graduation-btn">🏁 Claim Your Certificate of Completion</a></p>
+        </div>
         <p class="motto"><strong>Educational Motto:</strong> "Modernization without loss of simplicity." — Harisfazillah Jamel & Gemini, 2025.</p>
     </section>
 </article>
+
+<style>
+/* ... existing styles ... */
+.graduation-cta { background: #fffbeb; border: 2px solid #fde68a; padding: 2rem; border-radius: 8px; text-align: center; margin: 2rem 0; }
+.graduation-cta h3 { color: #92400e; margin-top: 0; }
+.graduation-btn { background: #10b981; color: #fff; font-size: 1.2rem; padding: 1rem 2rem; }
+.graduation-btn:hover { background: #059669; }
+</style>
 
 <style>
 .lab-manual h1 { color: #004d00; border-bottom: 2px solid #004d00; padding-bottom: 0.5rem; }

@@ -10,6 +10,7 @@
 <a href="installation.php">CmsForNerd Installation</a>
 <a href="history.php">Modernization History</a>
 <a href="lab-manual.php">🎓 Lab Manual</a>
+<a href="graduation.php">🏁 Graduation</a>
 <a href="https://www.linuxmalaysia.com">CmsForNerd Blog</a>
 
 </div>
