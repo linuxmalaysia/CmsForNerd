@@ -13,3 +13,4 @@ class Method extends MagicConst {
         return 'Scalar_MagicConst_Method';
     }
 }
+

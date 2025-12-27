@@ -52,3 +52,4 @@ final class GenericObjectType extends Type
         return true;
     }
 }
+

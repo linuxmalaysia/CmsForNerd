@@ -29,3 +29,4 @@ final class ComparisonMethodDoesNotExistException extends Exception
         );
     }
 }
+

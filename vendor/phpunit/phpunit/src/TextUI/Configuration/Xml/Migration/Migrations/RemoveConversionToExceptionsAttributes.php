@@ -43,3 +43,4 @@ final readonly class RemoveConversionToExceptionsAttributes implements Migration
         }
     }
 }
+

@@ -18,3 +18,4 @@ interface BootstrapFinishedSubscriber extends Subscriber
 {
     public function notify(BootstrapFinished $event): void;
 }
+

@@ -226,3 +226,4 @@ class GitMergeConflictSniff implements Sniff
 
 
 }//end class
+

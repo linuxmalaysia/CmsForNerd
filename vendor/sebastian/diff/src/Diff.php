@@ -82,3 +82,4 @@ final class Diff implements IteratorAggregate
         return new ArrayIterator($this->chunks);
     }
 }
+

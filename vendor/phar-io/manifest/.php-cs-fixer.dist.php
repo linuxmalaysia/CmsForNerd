@@ -221,3 +221,4 @@ return (new PhpCsFixer\Config())
             ->in(__DIR__ . '/tests')
             ->notName('autoload.php')
     );
+

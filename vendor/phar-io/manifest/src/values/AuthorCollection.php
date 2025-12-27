@@ -38,3 +38,4 @@ class AuthorCollection implements Countable, IteratorAggregate {
         return new AuthorCollectionIterator($this);
     }
 }
+

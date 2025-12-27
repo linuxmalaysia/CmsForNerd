@@ -38,3 +38,4 @@ final readonly class PreCondition extends Metadata
         return $this->priority;
     }
 }
+

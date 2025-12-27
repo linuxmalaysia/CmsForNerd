@@ -36,3 +36,4 @@ final readonly class GarbageCollectionDisabled implements Event
         return 'Test Runner Disabled Garbage Collection';
     }
 }
+

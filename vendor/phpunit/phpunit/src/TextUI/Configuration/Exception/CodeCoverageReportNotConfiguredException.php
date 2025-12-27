@@ -19,3 +19,4 @@ use RuntimeException;
 final class CodeCoverageReportNotConfiguredException extends RuntimeException implements Exception
 {
 }
+

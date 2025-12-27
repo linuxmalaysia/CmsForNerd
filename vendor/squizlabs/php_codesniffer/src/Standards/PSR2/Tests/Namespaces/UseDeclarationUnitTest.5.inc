@@ -45,3 +45,4 @@ use Grouped\TrailingCommaWithCommentsAndAnnotations\ {
 };
 
 // phpcs:enable
+

@@ -437,3 +437,4 @@ All notable changes of the PHPUnit 11.5 release series are documented in this fi
 [11.5.2]: https://github.com/sebastianbergmann/phpunit/compare/11.5.1...11.5.2
 [11.5.1]: https://github.com/sebastianbergmann/phpunit/compare/11.5.0...11.5.1
 [11.5.0]: https://github.com/sebastianbergmann/phpunit/compare/11.4.4...11.5.0
+

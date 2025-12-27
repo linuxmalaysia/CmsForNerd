@@ -22,3 +22,4 @@ final class Sniff implements PHPCS_Sniff
         // Do something.
     }
 }
+

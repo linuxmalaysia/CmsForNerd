@@ -18,3 +18,4 @@ interface MockObjectForIntersectionOfInterfacesCreatedSubscriber extends Subscri
 {
     public function notify(MockObjectForIntersectionOfInterfacesCreated $event): void;
 }
+

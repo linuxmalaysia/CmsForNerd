@@ -69,3 +69,4 @@ final class JSHintUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

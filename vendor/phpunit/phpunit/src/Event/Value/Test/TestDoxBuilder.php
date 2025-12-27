@@ -58,3 +58,4 @@ final class TestDoxBuilder
         return self::$namePrettifier;
     }
 }
+

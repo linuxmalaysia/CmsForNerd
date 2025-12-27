@@ -40,3 +40,4 @@ final readonly class RequiresOperatingSystemFamily
         return $this->operatingSystemFamily;
     }
 }
+

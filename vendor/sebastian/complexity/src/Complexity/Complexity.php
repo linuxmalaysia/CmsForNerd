@@ -62,3 +62,4 @@ final readonly class Complexity
         return str_contains($this->name, '::');
     }
 }
+

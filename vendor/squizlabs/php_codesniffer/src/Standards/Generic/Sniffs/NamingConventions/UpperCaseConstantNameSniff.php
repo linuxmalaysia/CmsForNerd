@@ -149,3 +149,4 @@ class UpperCaseConstantNameSniff implements Sniff
 
 
 }//end class
+

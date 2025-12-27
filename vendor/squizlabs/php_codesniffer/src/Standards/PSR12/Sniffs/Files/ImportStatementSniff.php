@@ -75,3 +75,4 @@ class ImportStatementSniff implements Sniff
 
 
 }//end class
+

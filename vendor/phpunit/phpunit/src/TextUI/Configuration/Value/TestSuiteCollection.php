@@ -63,3 +63,4 @@ final readonly class TestSuiteCollection implements Countable, IteratorAggregate
         return $this->count() === 0;
     }
 }
+

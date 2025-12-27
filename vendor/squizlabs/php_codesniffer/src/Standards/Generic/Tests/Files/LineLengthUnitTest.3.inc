@@ -14,3 +14,4 @@ phpcs:set Generic.Files.LineLength absoluteLineLimit 150
             http://symfony.com/doc/current/cookbook/doctrine/dbal.html#registering-custom-mapping-types-in-the-schematool12
             | ...
             */
+

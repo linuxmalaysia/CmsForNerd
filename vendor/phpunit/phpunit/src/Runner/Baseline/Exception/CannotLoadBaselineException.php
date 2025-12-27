@@ -20,3 +20,4 @@ use RuntimeException;
 final class CannotLoadBaselineException extends RuntimeException implements Exception
 {
 }
+

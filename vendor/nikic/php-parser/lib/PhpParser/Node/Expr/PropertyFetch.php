@@ -33,3 +33,4 @@ class PropertyFetch extends Expr {
         return 'Expr_PropertyFetch';
     }
 }
+

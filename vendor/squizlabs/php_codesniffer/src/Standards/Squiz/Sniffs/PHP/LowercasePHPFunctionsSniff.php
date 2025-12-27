@@ -165,3 +165,4 @@ class LowercasePHPFunctionsSniff implements Sniff
 
 
 }//end class
+

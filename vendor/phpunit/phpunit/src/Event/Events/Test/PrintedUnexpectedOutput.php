@@ -59,3 +59,4 @@ final readonly class PrintedUnexpectedOutput implements Event
         );
     }
 }
+

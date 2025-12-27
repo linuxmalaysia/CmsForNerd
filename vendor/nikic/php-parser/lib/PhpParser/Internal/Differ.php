@@ -176,3 +176,4 @@ class Differ {
         return $newDiff;
     }
 }
+

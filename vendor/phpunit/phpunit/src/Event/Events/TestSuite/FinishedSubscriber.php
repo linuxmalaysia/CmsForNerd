@@ -18,3 +18,4 @@ interface FinishedSubscriber extends Subscriber
 {
     public function notify(Finished $event): void;
 }
+

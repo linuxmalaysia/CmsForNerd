@@ -13,3 +13,4 @@ class BitwiseAnd extends BinaryOp {
         return 'Expr_BinaryOp_BitwiseAnd';
     }
 }
+

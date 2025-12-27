@@ -199,3 +199,4 @@ interface // phpcs:ignore Stnd.Cat.SniffName -- just testing
 class CommentsShouldBeIgnoredValid/*comment*/ {}
 interface annotations_should_be_ignored_InvalidName// phpcs:ignore Stnd.Cat.SniffName -- just testing
 {}
+

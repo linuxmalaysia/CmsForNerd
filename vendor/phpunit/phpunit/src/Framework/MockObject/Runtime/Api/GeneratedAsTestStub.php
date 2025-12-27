@@ -21,3 +21,4 @@ trait GeneratedAsTestStub
         return false;
     }
 }
+

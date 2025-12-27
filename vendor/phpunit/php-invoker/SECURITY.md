@@ -28,3 +28,4 @@ If the library is used in a web application, the application developer is respon
 
 Vulnerabilities specific to the use outside a development context will be fixed as applicable, provided that the fix does not have an averse effect on the primary use case for development purposes.
 
+

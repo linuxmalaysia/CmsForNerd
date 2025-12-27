@@ -126,3 +126,4 @@ abstract class UnaryOperator extends Operator
         return $constraint instanceof self || parent::constraintNeedsParentheses($constraint);
     }
 }
+

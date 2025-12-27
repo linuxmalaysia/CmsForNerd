@@ -16,3 +16,4 @@ class Token extends Internal\TokenPolyfill {
         return $this->line + \substr_count($this->text, "\n");
     }
 }
+

@@ -60,3 +60,4 @@ final class InterfaceNameSuffixUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

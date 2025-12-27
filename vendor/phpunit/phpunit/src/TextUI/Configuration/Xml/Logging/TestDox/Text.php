@@ -32,3 +32,4 @@ final readonly class Text
         return $this->target;
     }
 }
+

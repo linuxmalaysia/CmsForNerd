@@ -18,3 +18,4 @@ interface SkippedSubscriber extends Subscriber
 {
     public function notify(Skipped $event): void;
 }
+

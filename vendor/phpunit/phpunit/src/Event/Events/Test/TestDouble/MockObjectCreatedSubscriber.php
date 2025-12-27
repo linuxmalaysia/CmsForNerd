@@ -18,3 +18,4 @@ interface MockObjectCreatedSubscriber extends Subscriber
 {
     public function notify(MockObjectCreated $event): void;
 }
+

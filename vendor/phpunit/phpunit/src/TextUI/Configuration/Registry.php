@@ -113,3 +113,4 @@ final class Registry
         return self::$instance;
     }
 }
+

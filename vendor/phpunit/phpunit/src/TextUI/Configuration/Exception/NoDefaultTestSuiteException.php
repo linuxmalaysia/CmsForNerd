@@ -19,3 +19,4 @@ use RuntimeException;
 final class NoDefaultTestSuiteException extends RuntimeException implements Exception
 {
 }
+

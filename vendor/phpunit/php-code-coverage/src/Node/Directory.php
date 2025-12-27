@@ -371,3 +371,4 @@ final class Directory extends AbstractNode implements IteratorAggregate
         return $this->numTestedFunctions;
     }
 }
+

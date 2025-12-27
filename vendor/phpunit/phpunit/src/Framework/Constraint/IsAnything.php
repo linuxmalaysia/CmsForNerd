@@ -47,3 +47,4 @@ final class IsAnything extends Constraint
         return 0;
     }
 }
+

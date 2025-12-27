@@ -56,3 +56,4 @@ class testMissingExtendsName extends { /* missing classname */ } // Intentional 
 // Intentional parse error. Has to be the last test in the file.
 /* testParseError */
 class testParseError extends testFECNClass
+

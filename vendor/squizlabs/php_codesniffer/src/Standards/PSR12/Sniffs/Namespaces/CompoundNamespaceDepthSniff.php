@@ -78,3 +78,4 @@ class CompoundNamespaceDepthSniff implements Sniff
 
 
 }//end class
+

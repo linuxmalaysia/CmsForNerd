@@ -168,3 +168,4 @@ final readonly class ShellExitCodeCalculator
         return $returnCode;
     }
 }
+

@@ -49,3 +49,4 @@ final class SourceFilter
         return isset($this->map[$path]);
     }
 }
+

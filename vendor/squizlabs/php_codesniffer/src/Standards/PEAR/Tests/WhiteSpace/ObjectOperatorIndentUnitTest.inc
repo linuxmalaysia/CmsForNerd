@@ -151,3 +151,4 @@ $array = [
     $item->one()
             ->two(),
 ];
+

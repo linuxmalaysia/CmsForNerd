@@ -18,3 +18,4 @@ class AnyVersionConstraint implements VersionConstraint {
         return '*';
     }
 }
+

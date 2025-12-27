@@ -4,3 +4,4 @@
 // Live coding/missing curlies should not block the sniff from functioning.
 
 class ClassFileNameLiveCodingPassUnitTest
+

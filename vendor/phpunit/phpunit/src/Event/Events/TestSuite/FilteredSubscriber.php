@@ -18,3 +18,4 @@ interface FilteredSubscriber extends Subscriber
 {
     public function notify(Filtered $event): void;
 }
+

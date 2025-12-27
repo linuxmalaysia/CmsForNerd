@@ -17,3 +17,4 @@ namespace PHPUnit\Framework;
 final class IncompleteTestError extends AssertionFailedError implements IncompleteTest
 {
 }
+

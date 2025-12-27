@@ -60,3 +60,4 @@ final class Selector
         throw new NoCodeCoverageDriverWithPathCoverageSupportAvailableException;
     }
 }
+

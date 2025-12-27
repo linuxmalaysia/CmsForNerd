@@ -29,3 +29,4 @@ final readonly class TestTriggeredPhpWarningSubscriber extends Subscriber implem
         $this->generator()->testTriggeredIssue($event);
     }
 }
+

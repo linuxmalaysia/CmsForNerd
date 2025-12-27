@@ -55,3 +55,4 @@ final readonly class ExcludeStaticPropertyFromBackup
         return $this->propertyName;
     }
 }
+

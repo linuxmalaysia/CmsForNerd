@@ -30,3 +30,4 @@ class License {
         return $this->url;
     }
 }
+

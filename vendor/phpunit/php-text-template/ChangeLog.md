@@ -70,3 +70,4 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 [2.0.2]: https://github.com/sebastianbergmann/php-text-template/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/sebastianbergmann/php-text-template/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sebastianbergmann/php-text-template/compare/1.2.1...2.0.0
+

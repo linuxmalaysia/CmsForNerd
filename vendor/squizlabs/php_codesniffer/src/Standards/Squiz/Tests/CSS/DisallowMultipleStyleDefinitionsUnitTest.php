@@ -57,3 +57,4 @@ final class DisallowMultipleStyleDefinitionsUnitTest extends AbstractSniffUnitTe
 
 
 }//end class
+

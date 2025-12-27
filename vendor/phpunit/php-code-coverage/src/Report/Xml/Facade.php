@@ -271,3 +271,4 @@ final class Facade
         Filesystem::write($filename, Xml::asString($document));
     }
 }
+

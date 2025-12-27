@@ -65,3 +65,4 @@ class Function_ extends FunctionLike {
         ], $this->attributes);
     }
 }
+

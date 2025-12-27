@@ -28,3 +28,4 @@ final readonly class Unknown extends TestSize
         return 'unknown';
     }
 }
+

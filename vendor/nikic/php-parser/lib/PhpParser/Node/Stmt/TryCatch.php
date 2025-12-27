@@ -35,3 +35,4 @@ class TryCatch extends Node\Stmt {
         return 'Stmt_TryCatch';
     }
 }
+

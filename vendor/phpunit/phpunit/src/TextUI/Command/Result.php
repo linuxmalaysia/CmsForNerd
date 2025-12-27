@@ -46,3 +46,4 @@ final readonly class Result
         return $this->shellExitCode;
     }
 }
+

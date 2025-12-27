@@ -335,3 +335,4 @@ final readonly class GlobalState
         return isset(self::DEPRECATED_INI_SETTINGS[PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION][$iniSetting]);
     }
 }
+

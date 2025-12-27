@@ -48,3 +48,4 @@ abstract class Declaration implements PhpParser\Builder {
         return $this;
     }
 }
+

@@ -555,3 +555,4 @@ final class DNFTypesTest extends AbstractTokenizerTestCase
 
 
 }//end class
+

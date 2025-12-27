@@ -114,3 +114,4 @@ class Enum_ extends Declaration {
         ], $this->attributes);
     }
 }
+

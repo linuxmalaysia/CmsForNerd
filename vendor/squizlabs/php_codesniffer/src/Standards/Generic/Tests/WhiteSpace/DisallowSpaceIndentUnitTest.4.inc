@@ -11,3 +11,4 @@ $nowdoc = <<<'END'
         b
         c
     END;
+

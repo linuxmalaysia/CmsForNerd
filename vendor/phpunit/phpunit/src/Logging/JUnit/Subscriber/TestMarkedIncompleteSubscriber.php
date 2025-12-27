@@ -28,3 +28,4 @@ final readonly class TestMarkedIncompleteSubscriber extends Subscriber implement
         $this->logger()->testMarkedIncomplete($event);
     }
 }
+

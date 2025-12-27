@@ -151,3 +151,4 @@ final class FindExtendedClassNameTest extends AbstractMethodUnitTest
 
 
 }//end class
+

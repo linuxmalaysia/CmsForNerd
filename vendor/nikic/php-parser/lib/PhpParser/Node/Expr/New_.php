@@ -38,3 +38,4 @@ class New_ extends CallLike {
         return $this->args;
     }
 }
+

@@ -80,3 +80,4 @@ class CommentAnnotatingVisitor extends NodeVisitorAbstract {
         return null;
     }
 }
+

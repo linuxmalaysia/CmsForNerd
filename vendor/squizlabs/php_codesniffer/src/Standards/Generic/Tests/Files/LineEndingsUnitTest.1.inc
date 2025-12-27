@@ -16,3 +16,4 @@ function foo()
 			ua.name'
 		);
 }
+

@@ -66,3 +66,4 @@ final readonly class AfterLastTestMethodCalled implements Event
         );
     }
 }
+

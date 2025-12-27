@@ -158,3 +158,4 @@ final class StringContains extends Constraint
         );
     }
 }
+

@@ -28,3 +28,4 @@ final readonly class TestSuiteBeforeFirstTestMethodErroredSubscriber extends Sub
         $this->logger()->beforeFirstTestMethodErrored($event);
     }
 }
+

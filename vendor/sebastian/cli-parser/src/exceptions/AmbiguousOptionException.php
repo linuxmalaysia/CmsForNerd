@@ -24,3 +24,4 @@ final class AmbiguousOptionException extends RuntimeException implements Excepti
         );
     }
 }
+

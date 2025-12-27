@@ -68,3 +68,4 @@ final class DiffOnlyOutputBuilder implements DiffOutputBuilderInterface
         return $diff;
     }
 }
+

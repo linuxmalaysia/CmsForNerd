@@ -13,3 +13,4 @@ class BooleanAnd extends BinaryOp {
         return 'Expr_BinaryOp_BooleanAnd';
     }
 }
+

@@ -24,3 +24,4 @@ enum SomeEnum
     use SecondTrait;
     use ThirdTrait;
 }
+

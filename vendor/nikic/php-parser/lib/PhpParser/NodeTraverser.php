@@ -285,3 +285,4 @@ class NodeTraverser implements NodeTraverserInterface {
         }
     }
 }
+

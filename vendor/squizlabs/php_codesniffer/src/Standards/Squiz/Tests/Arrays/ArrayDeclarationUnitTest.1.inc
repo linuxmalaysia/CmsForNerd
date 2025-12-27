@@ -558,3 +558,4 @@ $newlineAfterDoubleArrow = array(
                             '',
                             'height' => '',
                            );
+

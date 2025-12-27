@@ -35,3 +35,4 @@ final readonly class AtLeastVersionCommand implements Command
         return Result::from('', Result::FAILURE);
     }
 }
+

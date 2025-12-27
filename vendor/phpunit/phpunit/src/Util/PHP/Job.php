@@ -143,3 +143,4 @@ final readonly class Job
         return $this->requiresXdebug;
     }
 }
+

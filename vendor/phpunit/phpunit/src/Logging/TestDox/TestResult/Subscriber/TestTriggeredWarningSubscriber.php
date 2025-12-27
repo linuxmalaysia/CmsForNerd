@@ -24,3 +24,4 @@ final readonly class TestTriggeredWarningSubscriber extends Subscriber implement
         $this->collector()->testTriggeredWarning($event);
     }
 }
+

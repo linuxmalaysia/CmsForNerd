@@ -26,3 +26,4 @@ abstract class Bar {
 }
 
 $a = FN($x) => $x;
+

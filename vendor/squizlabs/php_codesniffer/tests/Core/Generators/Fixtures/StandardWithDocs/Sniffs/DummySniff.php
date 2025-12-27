@@ -23,3 +23,4 @@ abstract class DummySniff implements Sniff
         // Do something.
     }
 }
+

@@ -40,3 +40,4 @@ final readonly class DependsOnClassUsingDeepClone
         return $this->className;
     }
 }
+

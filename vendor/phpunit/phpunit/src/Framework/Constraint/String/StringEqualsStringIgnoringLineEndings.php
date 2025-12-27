@@ -55,3 +55,4 @@ final class StringEqualsStringIgnoringLineEndings extends Constraint
         );
     }
 }
+

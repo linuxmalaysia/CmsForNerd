@@ -18,3 +18,4 @@ interface MockObjectFromWsdlCreatedSubscriber extends Subscriber
 {
     public function notify(MockObjectFromWsdlCreated $event): void;
 }
+

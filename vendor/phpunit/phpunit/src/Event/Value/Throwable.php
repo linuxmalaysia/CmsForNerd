@@ -101,3 +101,4 @@ final readonly class Throwable
         return $this->previous;
     }
 }
+

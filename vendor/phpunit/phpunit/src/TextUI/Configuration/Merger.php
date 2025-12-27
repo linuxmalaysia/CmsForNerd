@@ -1007,3 +1007,4 @@ final readonly class Merger
         );
     }
 }
+

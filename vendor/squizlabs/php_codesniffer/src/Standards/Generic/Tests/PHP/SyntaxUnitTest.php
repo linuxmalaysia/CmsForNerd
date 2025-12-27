@@ -168,3 +168,4 @@ final class SyntaxUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

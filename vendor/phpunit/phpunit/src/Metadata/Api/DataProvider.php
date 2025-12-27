@@ -299,3 +299,4 @@ final readonly class DataProvider
         return $data;
     }
 }
+

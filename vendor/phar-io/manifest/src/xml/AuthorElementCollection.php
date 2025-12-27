@@ -17,3 +17,4 @@ class AuthorElementCollection extends ElementCollection {
         );
     }
 }
+

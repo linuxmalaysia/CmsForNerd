@@ -121,3 +121,4 @@ final class Factory
         $comparator->setFactory($this);
     }
 }
+

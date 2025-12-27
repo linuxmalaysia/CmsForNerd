@@ -30,3 +30,4 @@ final class ReturnReference implements Stub
         return $this->reference;
     }
 }
+

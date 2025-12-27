@@ -184,3 +184,4 @@ class SubversionPropertiesSniff implements Sniff
 
 
 }//end class
+

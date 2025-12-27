@@ -272,3 +272,4 @@ class MethodThrowsException {
         throw new Exception();
     }
 }
+

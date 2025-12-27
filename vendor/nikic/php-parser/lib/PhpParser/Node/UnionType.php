@@ -25,3 +25,4 @@ class UnionType extends ComplexType {
         return 'UnionType';
     }
 }
+

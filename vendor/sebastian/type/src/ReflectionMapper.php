@@ -227,3 +227,4 @@ final class ReflectionMapper
         return $reflector->getTentativeReturnType();
     }
 }
+

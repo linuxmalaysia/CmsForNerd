@@ -29,3 +29,4 @@ final readonly class SystemMemoryMeter implements MemoryMeter
         return MemoryUsage::fromBytes(memory_get_peak_usage());
     }
 }
+

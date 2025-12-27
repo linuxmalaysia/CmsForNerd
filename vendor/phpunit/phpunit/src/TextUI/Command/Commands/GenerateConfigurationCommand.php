@@ -120,3 +120,4 @@ final readonly class GenerateConfigurationCommand implements Command
         return trim($buffer);
     }
 }
+

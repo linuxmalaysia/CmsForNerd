@@ -101,3 +101,4 @@ final readonly class Reader
         return $baseline;
     }
 }
+

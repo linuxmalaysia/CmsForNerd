@@ -121,3 +121,4 @@ final class IsIdentical extends Constraint
         return parent::failureDescription($other);
     }
 }
+

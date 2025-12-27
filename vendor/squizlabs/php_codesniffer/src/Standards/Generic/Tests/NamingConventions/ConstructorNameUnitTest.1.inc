@@ -128,3 +128,4 @@ class HierarchyKeywordBeforeColon extends MyParent
         SomeOtherClass::MyParent();
     }
 }
+

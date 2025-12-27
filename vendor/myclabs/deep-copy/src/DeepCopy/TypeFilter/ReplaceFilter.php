@@ -28,3 +28,4 @@ class ReplaceFilter implements TypeFilter
         return call_user_func($this->callback, $element);
     }
 }
+

@@ -10,3 +10,4 @@ namespace Fixtures\StandardWithDocs\Sniffs\Content;
 use Fixtures\StandardWithDocs\Sniffs\DummySniff;
 
 final class DocumentationTitleCaseSniff extends DummySniff {}
+

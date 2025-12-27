@@ -38,3 +38,4 @@ class Catch_ extends Node\Stmt {
         return 'Stmt_Catch';
     }
 }
+

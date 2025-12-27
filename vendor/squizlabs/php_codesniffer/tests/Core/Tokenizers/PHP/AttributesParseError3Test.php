@@ -74,3 +74,4 @@ final class AttributesParseError3Test extends AbstractTokenizerTestCase
 
 
 }//end class
+

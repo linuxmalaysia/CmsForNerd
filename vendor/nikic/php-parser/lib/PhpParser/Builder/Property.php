@@ -221,3 +221,4 @@ class Property implements PhpParser\Builder {
         );
     }
 }
+

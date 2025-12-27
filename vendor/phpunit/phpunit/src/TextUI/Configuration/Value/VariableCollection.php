@@ -58,3 +58,4 @@ final readonly class VariableCollection implements Countable, IteratorAggregate
         return new VariableCollectionIterator($this);
     }
 }
+

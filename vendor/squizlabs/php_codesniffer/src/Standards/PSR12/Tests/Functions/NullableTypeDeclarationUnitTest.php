@@ -70,3 +70,4 @@ final class NullableTypeDeclarationUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

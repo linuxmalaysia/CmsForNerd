@@ -20,3 +20,4 @@ use RuntimeException;
 final class ReflectionException extends RuntimeException implements Exception
 {
 }
+

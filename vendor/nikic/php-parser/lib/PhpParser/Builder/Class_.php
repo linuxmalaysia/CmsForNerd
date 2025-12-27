@@ -149,3 +149,4 @@ class Class_ extends Declaration {
         ], $this->attributes);
     }
 }
+

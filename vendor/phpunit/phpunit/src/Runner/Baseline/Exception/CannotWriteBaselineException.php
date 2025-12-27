@@ -20,3 +20,4 @@ use RuntimeException;
 final class CannotWriteBaselineException extends RuntimeException implements Exception
 {
 }
+

@@ -6,3 +6,4 @@ function foo()
 {
     return 'bar';
 }
+

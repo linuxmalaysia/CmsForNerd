@@ -40,3 +40,4 @@ final readonly class CoversClass
         return $this->className;
     }
 }
+

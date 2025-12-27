@@ -82,3 +82,4 @@ final readonly class BeforeTestMethodErrored implements Event
         );
     }
 }
+

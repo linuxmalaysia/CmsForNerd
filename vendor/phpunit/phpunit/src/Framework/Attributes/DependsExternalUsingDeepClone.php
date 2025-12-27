@@ -55,3 +55,4 @@ final readonly class DependsExternalUsingDeepClone
         return $this->methodName;
     }
 }
+

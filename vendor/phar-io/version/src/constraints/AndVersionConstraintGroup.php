@@ -32,3 +32,4 @@ class AndVersionConstraintGroup extends AbstractVersionConstraint {
         return true;
     }
 }
+

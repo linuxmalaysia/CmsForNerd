@@ -31,3 +31,4 @@ final class IsFalse extends Constraint
         return $other === false;
     }
 }
+

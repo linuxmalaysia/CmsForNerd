@@ -18,3 +18,4 @@ interface PhpWarningTriggeredSubscriber extends Subscriber
 {
     public function notify(PhpWarningTriggered $event): void;
 }
+

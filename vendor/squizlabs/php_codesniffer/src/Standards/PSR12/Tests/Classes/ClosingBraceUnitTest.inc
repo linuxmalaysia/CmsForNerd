@@ -50,3 +50,4 @@ enum Foo4
 {
 
 }//end
+

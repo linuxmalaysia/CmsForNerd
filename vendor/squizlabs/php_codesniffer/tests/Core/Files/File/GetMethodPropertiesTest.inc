@@ -224,3 +224,4 @@ $closure = function () use ($a, &$b, $c, $d, $e, $f, $g): ?array {};
 /* testArrowFunctionLiveCoding */
 // Intentional parse error. This has to be the last test in the file.
 $fn = fn
+

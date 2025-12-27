@@ -29,3 +29,4 @@ final class IndirectTrigger extends IssueTrigger
         return 'issue triggered by third-party code';
     }
 }
+

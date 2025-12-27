@@ -17,3 +17,4 @@ class CloningVisitor extends NodeVisitorAbstract {
         return $node;
     }
 }
+

@@ -102,3 +102,4 @@ final class IsEqual extends Constraint
         );
     }
 }
+

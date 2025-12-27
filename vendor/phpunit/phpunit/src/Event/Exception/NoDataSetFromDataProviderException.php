@@ -18,3 +18,4 @@ use RuntimeException;
 final class NoDataSetFromDataProviderException extends RuntimeException implements Exception
 {
 }
+

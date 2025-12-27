@@ -36,3 +36,4 @@ class FuncCall extends CallLike {
         return $this->args;
     }
 }
+

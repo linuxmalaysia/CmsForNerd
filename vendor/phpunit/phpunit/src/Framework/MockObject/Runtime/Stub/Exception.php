@@ -34,3 +34,4 @@ final readonly class Exception implements Stub
         throw $this->exception;
     }
 }
+

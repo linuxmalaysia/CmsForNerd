@@ -92,3 +92,4 @@ abstract readonly class LogToReportMigration implements Migration
         return $logNode;
     }
 }
+

@@ -21,3 +21,4 @@ trait GeneratedAsMockObject
         return true;
     }
 }
+

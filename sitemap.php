@@ -46,3 +46,4 @@ foreach ($files as $file) {
 }
 
 echo '</urlset>';
+

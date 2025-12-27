@@ -640,3 +640,4 @@ final class ResultPrinter
         );
     }
 }
+

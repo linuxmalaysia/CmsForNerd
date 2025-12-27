@@ -23,3 +23,4 @@ interface SubscribableDispatcher extends Dispatcher
 
     public function registerTracer(Tracer\Tracer $tracer): void;
 }
+

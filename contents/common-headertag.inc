@@ -62,3 +62,4 @@
 <link rel="alternate" type="application/rss+xml" title="CmsForNerd SiteMap Feed" href="<?= $ctx->baseUrl ?>rss.xml" />
 <link rel="alternate" type="application/rss+xml" title="CmsForNerd ROR Sitemap" href="<?= $ctx->baseUrl ?>ror.xml" />
 <meta http-equiv="Content-Language" content="EN" />
+

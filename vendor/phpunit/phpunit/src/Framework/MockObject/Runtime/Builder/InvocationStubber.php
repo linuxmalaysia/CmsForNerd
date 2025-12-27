@@ -61,3 +61,4 @@ interface InvocationStubber
      */
     public function willThrowException(Throwable $exception): self;
 }
+

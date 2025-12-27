@@ -53,3 +53,4 @@ abstract class TraversableContains extends Constraint
         return $this->value;
     }
 }
+

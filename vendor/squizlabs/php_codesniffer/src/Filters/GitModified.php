@@ -122,3 +122,4 @@ class GitModified extends ExactMatch
 
 
 }//end class
+

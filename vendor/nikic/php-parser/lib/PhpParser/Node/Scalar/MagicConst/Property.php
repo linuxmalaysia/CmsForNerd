@@ -13,3 +13,4 @@ class Property extends MagicConst {
         return 'Scalar_MagicConst_Property';
     }
 }
+

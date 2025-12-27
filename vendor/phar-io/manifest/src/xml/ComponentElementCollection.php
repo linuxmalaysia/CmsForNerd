@@ -17,3 +17,4 @@ class ComponentElementCollection extends ElementCollection {
         );
     }
 }
+

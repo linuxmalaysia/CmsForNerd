@@ -488,3 +488,4 @@ function foo(
     $param2
 ) : // comment.
    \Package\Sub\SomeClass   {}
+

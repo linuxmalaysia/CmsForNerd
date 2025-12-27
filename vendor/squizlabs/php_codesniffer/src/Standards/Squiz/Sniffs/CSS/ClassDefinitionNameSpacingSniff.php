@@ -148,3 +148,4 @@ class ClassDefinitionNameSpacingSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

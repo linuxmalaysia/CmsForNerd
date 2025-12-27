@@ -628,3 +628,4 @@ final class Collector
         return implode(':', [$event->file(), $event->line(), $event->message()]);
     }
 }
+

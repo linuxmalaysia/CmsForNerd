@@ -29,3 +29,4 @@ final class InvalidVersionOperatorException extends RuntimeException implements 
         );
     }
 }
+

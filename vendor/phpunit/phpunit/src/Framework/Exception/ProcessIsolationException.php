@@ -17,3 +17,4 @@ namespace PHPUnit\Framework;
 final class ProcessIsolationException extends Exception
 {
 }
+

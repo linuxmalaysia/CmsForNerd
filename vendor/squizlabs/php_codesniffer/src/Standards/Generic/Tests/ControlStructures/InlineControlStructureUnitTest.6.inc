@@ -4,3 +4,4 @@
 if ($bar
 
 function parensDifferentOwner() {}
+

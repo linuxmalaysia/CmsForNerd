@@ -267,3 +267,4 @@ class NameResolver extends NodeVisitorAbstract {
         }
     }
 }
+

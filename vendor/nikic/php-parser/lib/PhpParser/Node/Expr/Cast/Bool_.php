@@ -13,3 +13,4 @@ class Bool_ extends Cast {
         return 'Expr_Cast_Bool';
     }
 }
+

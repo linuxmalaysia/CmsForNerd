@@ -74,3 +74,4 @@ final readonly class DataProviderMethodFinished implements Event
         return $buffer;
     }
 }
+

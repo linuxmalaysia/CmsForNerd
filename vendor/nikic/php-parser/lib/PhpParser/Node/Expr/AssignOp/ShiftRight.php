@@ -9,3 +9,4 @@ class ShiftRight extends AssignOp {
         return 'Expr_AssignOp_ShiftRight';
     }
 }
+

@@ -30,3 +30,4 @@ final class UnknownTraitException extends \PHPUnit\Framework\Exception implement
         );
     }
 }
+

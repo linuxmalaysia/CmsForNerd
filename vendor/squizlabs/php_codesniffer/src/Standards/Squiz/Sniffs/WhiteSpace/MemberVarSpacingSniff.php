@@ -256,3 +256,4 @@ class MemberVarSpacingSniff extends AbstractVariableSniff
 
 
 }//end class
+

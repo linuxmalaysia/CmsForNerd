@@ -53,3 +53,4 @@ class UseItem extends NodeAbstract {
 
 // @deprecated compatibility alias
 class_alias(UseItem::class, Stmt\UseUse::class);
+

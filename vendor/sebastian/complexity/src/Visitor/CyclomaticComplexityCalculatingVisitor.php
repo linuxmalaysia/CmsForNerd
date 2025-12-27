@@ -59,3 +59,4 @@ final class CyclomaticComplexityCalculatingVisitor extends NodeVisitorAbstract
         return $this->cyclomaticComplexity;
     }
 }
+

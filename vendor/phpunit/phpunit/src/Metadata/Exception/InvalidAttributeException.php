@@ -43,3 +43,4 @@ final class InvalidAttributeException extends RuntimeException implements Except
         );
     }
 }
+

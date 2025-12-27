@@ -19,3 +19,4 @@ use Error;
 final class ErrorException extends Error implements Exception
 {
 }
+

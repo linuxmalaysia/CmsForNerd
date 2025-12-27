@@ -30,3 +30,4 @@ final class CannotOpenSocketException extends RuntimeException implements Except
         );
     }
 }
+

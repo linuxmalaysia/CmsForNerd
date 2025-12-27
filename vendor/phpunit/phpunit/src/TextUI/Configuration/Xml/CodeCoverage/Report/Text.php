@@ -46,3 +46,4 @@ final readonly class Text
         return $this->showOnlySummary;
     }
 }
+

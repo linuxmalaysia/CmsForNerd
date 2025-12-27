@@ -45,3 +45,4 @@ final readonly class RequiresOperatingSystem extends Metadata
         return $this->operatingSystem;
     }
 }
+

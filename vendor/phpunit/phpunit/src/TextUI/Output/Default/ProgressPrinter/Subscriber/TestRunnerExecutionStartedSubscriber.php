@@ -24,3 +24,4 @@ final readonly class TestRunnerExecutionStartedSubscriber extends Subscriber imp
         $this->printer()->testRunnerExecutionStarted($event);
     }
 }
+

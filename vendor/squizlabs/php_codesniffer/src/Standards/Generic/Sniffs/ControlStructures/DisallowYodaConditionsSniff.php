@@ -183,3 +183,4 @@ class DisallowYodaConditionsSniff implements Sniff
 
 
 }//end class
+

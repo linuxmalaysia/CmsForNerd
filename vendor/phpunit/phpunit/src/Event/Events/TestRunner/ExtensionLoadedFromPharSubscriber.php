@@ -18,3 +18,4 @@ interface ExtensionLoadedFromPharSubscriber extends Subscriber
 {
     public function notify(ExtensionLoadedFromPhar $event): void;
 }
+

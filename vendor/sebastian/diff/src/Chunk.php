@@ -87,3 +87,4 @@ final class Chunk implements IteratorAggregate
         return new ArrayIterator($this->lines);
     }
 }
+

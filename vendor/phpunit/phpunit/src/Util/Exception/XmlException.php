@@ -20,3 +20,4 @@ use RuntimeException;
 final class XmlException extends RuntimeException implements Exception
 {
 }
+

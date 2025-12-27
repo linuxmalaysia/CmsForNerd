@@ -24,3 +24,4 @@ interface Stub extends Identity
      */
     public function will(BaseStub $stub): Identity;
 }
+

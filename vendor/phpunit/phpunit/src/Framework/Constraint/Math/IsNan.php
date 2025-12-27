@@ -33,3 +33,4 @@ final class IsNan extends Constraint
         return is_nan($other);
     }
 }
+

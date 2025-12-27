@@ -153,3 +153,4 @@ class InlineIfDeclarationSniff implements Sniff
 
 
 }//end class
+

@@ -26,3 +26,4 @@ final class CmsContextTest extends TestCase
         $this->assertSame('MyTheme', $ctx->themeName);
     }
 }
+

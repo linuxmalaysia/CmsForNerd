@@ -130,3 +130,4 @@ final readonly class NoticeTriggered implements Event
         );
     }
 }
+

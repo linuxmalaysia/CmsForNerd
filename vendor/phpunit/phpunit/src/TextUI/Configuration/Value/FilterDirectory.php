@@ -51,3 +51,4 @@ final readonly class FilterDirectory
         return $this->suffix;
     }
 }
+

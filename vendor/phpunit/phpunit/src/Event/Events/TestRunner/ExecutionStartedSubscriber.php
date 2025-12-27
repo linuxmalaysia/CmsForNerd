@@ -18,3 +18,4 @@ interface ExecutionStartedSubscriber extends Subscriber
 {
     public function notify(ExecutionStarted $event): void;
 }
+

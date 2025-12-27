@@ -37,3 +37,4 @@ trait MutableStubApi
         $this->__phpunit_state()->unsetInvocationHandler();
     }
 }
+

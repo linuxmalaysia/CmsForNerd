@@ -28,3 +28,4 @@ final class MatchBuilderNotFoundException extends \PHPUnit\Framework\Exception i
         );
     }
 }
+

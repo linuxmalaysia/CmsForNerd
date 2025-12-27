@@ -58,3 +58,4 @@ final class JobRunnerRegistry
         return self::$runner;
     }
 }
+

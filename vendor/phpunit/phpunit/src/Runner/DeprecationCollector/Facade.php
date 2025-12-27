@@ -93,3 +93,4 @@ final class Facade
         return self::$collector;
     }
 }
+

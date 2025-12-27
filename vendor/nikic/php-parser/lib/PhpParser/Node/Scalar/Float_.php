@@ -76,3 +76,4 @@ class Float_ extends Scalar {
 
 // @deprecated compatibility alias
 class_alias(Float_::class, DNumber::class);
+

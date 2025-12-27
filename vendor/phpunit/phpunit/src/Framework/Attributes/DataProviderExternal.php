@@ -55,3 +55,4 @@ final readonly class DataProviderExternal
         return $this->methodName;
     }
 }
+

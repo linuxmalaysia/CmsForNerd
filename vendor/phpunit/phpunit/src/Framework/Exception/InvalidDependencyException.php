@@ -17,3 +17,4 @@ namespace PHPUnit\Framework;
 final class InvalidDependencyException extends AssertionFailedError implements SkippedTest
 {
 }
+

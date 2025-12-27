@@ -9,3 +9,4 @@ class BitwiseAnd extends AssignOp {
         return 'Expr_AssignOp_BitwiseAnd';
     }
 }
+

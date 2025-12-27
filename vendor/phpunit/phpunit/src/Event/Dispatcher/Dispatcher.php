@@ -21,3 +21,4 @@ interface Dispatcher
      */
     public function dispatch(Event $event): void;
 }
+

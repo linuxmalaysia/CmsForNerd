@@ -12,3 +12,4 @@ interface Matcher
      */
     public function matches($object, $property);
 }
+

@@ -40,3 +40,4 @@ final class MethodNameConstraint extends Constraint
         return strtolower($this->methodName) === strtolower((string) $other);
     }
 }
+

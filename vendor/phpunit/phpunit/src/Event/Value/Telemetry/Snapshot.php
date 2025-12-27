@@ -49,3 +49,4 @@ final readonly class Snapshot
         return $this->garbageCollectorStatus;
     }
 }
+

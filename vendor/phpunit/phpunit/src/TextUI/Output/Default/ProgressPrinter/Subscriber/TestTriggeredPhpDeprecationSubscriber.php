@@ -24,3 +24,4 @@ final readonly class TestTriggeredPhpDeprecationSubscriber extends Subscriber im
         $this->printer()->testTriggeredPhpDeprecation($event);
     }
 }
+

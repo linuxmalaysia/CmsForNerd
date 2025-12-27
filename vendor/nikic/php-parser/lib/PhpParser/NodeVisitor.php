@@ -122,3 +122,4 @@ interface NodeVisitor {
      */
     public function afterTraverse(array $nodes);
 }
+

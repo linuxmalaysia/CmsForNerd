@@ -114,3 +114,4 @@ class Lexer {
         $tokens[] = new Token(0, "\0", $lastToken->getEndLine(), $lastToken->getEndPos());
     }
 }
+

@@ -81,3 +81,4 @@ class Trait_ extends Declaration {
         );
     }
 }
+

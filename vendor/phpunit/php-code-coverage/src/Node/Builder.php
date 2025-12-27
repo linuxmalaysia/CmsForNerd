@@ -267,3 +267,4 @@ final class Builder
         return substr($commonPath, 0, -1);
     }
 }
+

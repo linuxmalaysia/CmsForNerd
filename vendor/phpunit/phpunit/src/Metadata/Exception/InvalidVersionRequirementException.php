@@ -17,3 +17,4 @@ use RuntimeException;
 final class InvalidVersionRequirementException extends RuntimeException implements Exception
 {
 }
+

@@ -11,3 +11,4 @@ class MyClass {}
 namespace /*comment*/ G;
 namespace\functionCall();
 class MyClass {}
+

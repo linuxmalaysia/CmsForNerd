@@ -28,3 +28,4 @@ final class UnknownClassException extends \PHPUnit\Framework\Exception implement
         );
     }
 }
+

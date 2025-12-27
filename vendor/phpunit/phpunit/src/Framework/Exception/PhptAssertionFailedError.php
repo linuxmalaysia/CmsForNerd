@@ -63,3 +63,4 @@ final class PhptAssertionFailedError extends AssertionFailedError
         return $this->diff;
     }
 }
+

@@ -71,3 +71,4 @@ abstract class FunctionLike extends Declaration {
         return $this;
     }
 }
+

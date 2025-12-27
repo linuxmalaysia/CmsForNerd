@@ -104,3 +104,4 @@ final class ArbitraryParenthesesSpacingUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

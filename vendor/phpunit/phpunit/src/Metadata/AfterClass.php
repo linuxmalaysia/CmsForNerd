@@ -38,3 +38,4 @@ final readonly class AfterClass extends Metadata
         return $this->priority;
     }
 }
+

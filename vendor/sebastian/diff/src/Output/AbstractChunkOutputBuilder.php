@@ -50,3 +50,4 @@ abstract class AbstractChunkOutputBuilder implements DiffOutputBuilderInterface
         return $commonChunks;
     }
 }
+

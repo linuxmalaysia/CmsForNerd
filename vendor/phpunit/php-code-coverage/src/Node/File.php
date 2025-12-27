@@ -695,3 +695,4 @@ final class File extends AbstractNode
         return $methodData;
     }
 }
+

@@ -140,3 +140,4 @@ final class ObjectEquals extends Constraint
         return $this->toString();
     }
 }
+

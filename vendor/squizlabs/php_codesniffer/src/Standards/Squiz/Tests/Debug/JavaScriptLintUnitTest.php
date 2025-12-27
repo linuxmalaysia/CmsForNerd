@@ -69,3 +69,4 @@ final class JavaScriptLintUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

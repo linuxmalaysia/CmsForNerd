@@ -10,3 +10,4 @@ namespace Fixtures\StandardWithDocs\Sniffs\Unsupported;
 use Fixtures\StandardWithDocs\Sniffs\DummySniff;
 
 final class UnknownElementSniff extends DummySniff {}
+

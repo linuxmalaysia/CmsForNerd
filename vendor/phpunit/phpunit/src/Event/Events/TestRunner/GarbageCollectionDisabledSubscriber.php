@@ -18,3 +18,4 @@ interface GarbageCollectionDisabledSubscriber extends Subscriber
 {
     public function notify(GarbageCollectionDisabled $event): void;
 }
+

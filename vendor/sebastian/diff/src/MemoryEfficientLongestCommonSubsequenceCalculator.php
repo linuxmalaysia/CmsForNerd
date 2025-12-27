@@ -95,3 +95,4 @@ final class MemoryEfficientLongestCommonSubsequenceCalculator implements Longest
         return $current;
     }
 }
+

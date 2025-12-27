@@ -19,3 +19,4 @@ final class XdebugNotAvailableException extends RuntimeException implements Exce
         parent::__construct('The Xdebug extension is not available');
     }
 }
+

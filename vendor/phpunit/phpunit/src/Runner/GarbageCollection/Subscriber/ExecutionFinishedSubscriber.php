@@ -29,3 +29,4 @@ final readonly class ExecutionFinishedSubscriber extends Subscriber implements T
         $this->handler()->executionFinished();
     }
 }
+

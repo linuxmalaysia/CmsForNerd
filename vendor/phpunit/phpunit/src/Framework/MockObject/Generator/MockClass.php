@@ -67,3 +67,4 @@ final readonly class MockClass implements MockType
         return $this->configurableMethods;
     }
 }
+

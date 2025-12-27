@@ -91,3 +91,4 @@ class UnconditionalIfStatementSniff implements Sniff
 
 
 }//end class
+

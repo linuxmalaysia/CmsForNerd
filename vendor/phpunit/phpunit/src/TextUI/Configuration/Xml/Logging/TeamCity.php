@@ -32,3 +32,4 @@ final readonly class TeamCity
         return $this->target;
     }
 }
+

@@ -163,3 +163,4 @@ final class TypeIntersectionTest extends AbstractTokenizerTestCase
 
 
 }//end class
+

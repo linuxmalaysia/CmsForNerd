@@ -166,3 +166,4 @@ final readonly class DefaultConfiguration extends Configuration
         return true;
     }
 }
+

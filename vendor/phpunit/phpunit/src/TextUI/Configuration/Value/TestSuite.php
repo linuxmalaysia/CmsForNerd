@@ -58,3 +58,4 @@ final readonly class TestSuite
         return $this->exclude;
     }
 }
+

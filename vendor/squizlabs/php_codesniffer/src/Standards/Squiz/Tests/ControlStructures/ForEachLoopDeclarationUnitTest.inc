@@ -34,3 +34,4 @@ foreach ([
           'foobaz' => 'bazzy',
          ] as $key => $value) {
 }
+

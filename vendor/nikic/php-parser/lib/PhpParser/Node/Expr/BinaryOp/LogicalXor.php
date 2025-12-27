@@ -13,3 +13,4 @@ class LogicalXor extends BinaryOp {
         return 'Expr_BinaryOp_LogicalXor';
     }
 }
+

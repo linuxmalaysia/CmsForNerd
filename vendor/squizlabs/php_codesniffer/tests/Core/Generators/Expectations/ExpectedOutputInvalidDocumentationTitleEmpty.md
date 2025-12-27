@@ -23,3 +23,4 @@ The above &quot;documentation&quot; element has an empty title attribute.
   </table>
 
 Documentation generated on *REDACTED* by [PHP_CodeSniffer *VERSION*](https://github.com/PHPCSStandards/PHP_CodeSniffer)
+

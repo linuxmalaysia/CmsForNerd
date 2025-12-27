@@ -42,3 +42,4 @@ class Enum_ extends ClassLike {
         return 'Stmt_Enum';
     }
 }
+

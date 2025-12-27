@@ -72,3 +72,4 @@ final class ValidDefaultValueUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -267,3 +267,4 @@ if($true) {
     enum SomeEnum {}
 
 }
+

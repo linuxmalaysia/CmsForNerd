@@ -9,3 +9,4 @@ class ShiftLeft extends AssignOp {
         return 'Expr_AssignOp_ShiftLeft';
     }
 }
+

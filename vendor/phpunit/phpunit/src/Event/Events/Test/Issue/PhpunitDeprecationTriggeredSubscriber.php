@@ -18,3 +18,4 @@ interface PhpunitDeprecationTriggeredSubscriber extends Subscriber
 {
     public function notify(PhpunitDeprecationTriggered $event): void;
 }
+

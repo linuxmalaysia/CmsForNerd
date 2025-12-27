@@ -15,3 +15,4 @@ namespace SebastianBergmann\Type;
 final class RuntimeException extends \RuntimeException implements Exception
 {
 }
+

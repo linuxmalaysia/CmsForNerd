@@ -19,3 +19,4 @@ use RuntimeException;
 final class Exception extends RuntimeException implements \PHPUnit\Exception
 {
 }
+

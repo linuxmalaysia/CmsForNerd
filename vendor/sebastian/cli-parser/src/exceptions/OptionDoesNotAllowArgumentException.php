@@ -24,3 +24,4 @@ final class OptionDoesNotAllowArgumentException extends RuntimeException impleme
         );
     }
 }
+

@@ -313,3 +313,4 @@ final class CodeCoverage
         return $names;
     }
 }
+

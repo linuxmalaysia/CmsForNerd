@@ -55,3 +55,4 @@ final readonly class RequiresSetting
         return $this->value;
     }
 }
+

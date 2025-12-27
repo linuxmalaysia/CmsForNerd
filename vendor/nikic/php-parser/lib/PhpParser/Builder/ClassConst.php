@@ -148,3 +148,4 @@ class ClassConst implements PhpParser\Builder {
         );
     }
 }
+

@@ -28,3 +28,4 @@ final readonly class TestPreparationFailedSubscriber extends Subscriber implemen
         $this->logger()->testPreparationFailed();
     }
 }
+

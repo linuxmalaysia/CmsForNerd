@@ -15,3 +15,4 @@ class ShallowCopyFilter implements TypeFilter
         return clone $element;
     }
 }
+

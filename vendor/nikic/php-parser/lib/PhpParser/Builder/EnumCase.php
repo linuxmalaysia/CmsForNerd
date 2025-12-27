@@ -84,3 +84,4 @@ class EnumCase implements PhpParser\Builder {
         );
     }
 }
+

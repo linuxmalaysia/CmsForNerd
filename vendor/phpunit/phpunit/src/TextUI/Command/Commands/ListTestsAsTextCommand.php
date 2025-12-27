@@ -63,3 +63,4 @@ final readonly class ListTestsAsTextCommand implements Command
         return Result::from($buffer);
     }
 }
+

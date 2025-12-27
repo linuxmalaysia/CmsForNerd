@@ -79,3 +79,4 @@ class ValidDefaultValueSniff implements Sniff
 
 
 }//end class
+

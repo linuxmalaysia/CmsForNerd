@@ -35,3 +35,4 @@ trait StubApi
         $this->__phpunit_state()->unsetInvocationHandler();
     }
 }
+

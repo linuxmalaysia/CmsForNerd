@@ -17,3 +17,4 @@ namespace PHPUnit\Framework;
 final class SkippedWithMessageException extends AssertionFailedError implements SkippedTest
 {
 }
+

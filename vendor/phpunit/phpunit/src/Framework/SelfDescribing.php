@@ -21,3 +21,4 @@ interface SelfDescribing
      */
     public function toString(): string;
 }
+

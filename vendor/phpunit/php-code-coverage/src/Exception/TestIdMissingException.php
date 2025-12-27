@@ -18,3 +18,4 @@ final class TestIdMissingException extends RuntimeException implements Exception
         parent::__construct('Test ID is missing');
     }
 }
+

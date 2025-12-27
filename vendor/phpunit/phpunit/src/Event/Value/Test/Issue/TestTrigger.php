@@ -29,3 +29,4 @@ final class TestTrigger extends IssueTrigger
         return 'issue triggered by test code';
     }
 }
+

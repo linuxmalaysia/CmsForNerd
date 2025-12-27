@@ -29,3 +29,4 @@ final readonly class PropertyGetHook extends PropertyHook
         );
     }
 }
+

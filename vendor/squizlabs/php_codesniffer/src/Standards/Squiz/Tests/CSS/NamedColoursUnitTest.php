@@ -57,3 +57,4 @@ final class NamedColoursUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

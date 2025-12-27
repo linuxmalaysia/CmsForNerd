@@ -127,3 +127,4 @@ All notable changes in `sebastian/global-state` are documented in this file usin
 [3.0.1]: https://github.com/sebastianbergmann/phpunit/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/sebastianbergmann/phpunit/compare/2.0.0...3.0.0
 
+

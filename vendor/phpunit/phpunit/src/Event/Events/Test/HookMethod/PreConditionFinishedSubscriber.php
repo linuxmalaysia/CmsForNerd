@@ -18,3 +18,4 @@ interface PreConditionFinishedSubscriber extends Subscriber
 {
     public function notify(PreConditionFinished $event): void;
 }
+

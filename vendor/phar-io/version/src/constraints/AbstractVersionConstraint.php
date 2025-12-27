@@ -21,3 +21,4 @@ abstract class AbstractVersionConstraint implements VersionConstraint {
         return $this->originalValue;
     }
 }
+

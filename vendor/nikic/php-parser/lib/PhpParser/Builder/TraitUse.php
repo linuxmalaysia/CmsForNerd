@@ -63,3 +63,4 @@ class TraitUse implements Builder {
         return new Stmt\TraitUse($this->traits, $this->adaptations);
     }
 }
+

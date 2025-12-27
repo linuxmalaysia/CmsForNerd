@@ -28,3 +28,4 @@ final readonly class TestSkippedSubscriber extends Subscriber implements Skipped
         $this->logger()->testSkipped($event);
     }
 }
+

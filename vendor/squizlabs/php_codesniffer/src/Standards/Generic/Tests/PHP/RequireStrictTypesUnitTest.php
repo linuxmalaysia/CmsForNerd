@@ -70,3 +70,4 @@ final class RequireStrictTypesUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

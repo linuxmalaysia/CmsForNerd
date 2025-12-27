@@ -42,3 +42,4 @@ final readonly class Variable
         return $this->force;
     }
 }
+

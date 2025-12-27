@@ -104,3 +104,4 @@ class MultiLineAssignmentSniff implements Sniff
 
 
 }//end class
+

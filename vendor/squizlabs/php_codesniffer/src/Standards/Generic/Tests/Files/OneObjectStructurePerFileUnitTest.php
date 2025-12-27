@@ -57,3 +57,4 @@ final class OneObjectStructurePerFileUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

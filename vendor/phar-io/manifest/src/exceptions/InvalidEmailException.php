@@ -14,3 +14,4 @@ use InvalidArgumentException;
 
 class InvalidEmailException extends InvalidArgumentException implements Exception {
 }
+

@@ -119,3 +119,4 @@ class Property extends Node\Stmt {
         return 'Stmt_Property';
     }
 }
+

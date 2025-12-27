@@ -20,3 +20,4 @@ use RuntimeException;
 final class PhpProcessException extends RuntimeException implements Exception
 {
 }
+

@@ -23,3 +23,4 @@ class RegisterEmptyArraySniff implements Sniff
         // Do something.
     }
 }
+

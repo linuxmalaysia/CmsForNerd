@@ -73,3 +73,4 @@ trait MockObjectApi
         return $this->__phpunit_getInvocationHandler()->expects($matcher);
     }
 }
+

@@ -49,3 +49,4 @@ interface ParametersMatch extends Stub
      */
     public function withAnyParameters(): self;
 }
+

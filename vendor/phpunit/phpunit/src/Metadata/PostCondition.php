@@ -38,3 +38,4 @@ final readonly class PostCondition extends Metadata
         return $this->priority;
     }
 }
+

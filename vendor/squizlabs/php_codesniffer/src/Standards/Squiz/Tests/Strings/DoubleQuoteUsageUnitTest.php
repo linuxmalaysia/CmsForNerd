@@ -65,3 +65,4 @@ final class DoubleQuoteUsageUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

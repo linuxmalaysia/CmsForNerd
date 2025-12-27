@@ -64,3 +64,4 @@ class Foo extends Bar {
         $f = new parent(&$var);
     }
 }
+

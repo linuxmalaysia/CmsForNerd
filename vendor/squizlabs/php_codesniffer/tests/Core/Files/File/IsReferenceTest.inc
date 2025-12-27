@@ -214,3 +214,4 @@ if ($foo) {}
 /* testTokenizerIssue1284PHPCSlt280C */
 if ($foo) {}
 [&$a, $b];
+

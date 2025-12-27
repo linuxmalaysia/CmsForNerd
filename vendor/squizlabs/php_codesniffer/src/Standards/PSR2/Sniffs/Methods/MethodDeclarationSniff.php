@@ -160,3 +160,4 @@ class MethodDeclarationSniff extends AbstractScopeSniff
 
 
 }//end class
+

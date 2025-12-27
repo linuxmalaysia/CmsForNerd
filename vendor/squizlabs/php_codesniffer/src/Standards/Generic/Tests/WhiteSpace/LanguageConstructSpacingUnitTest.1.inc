@@ -105,3 +105,4 @@ $cl = function() use($b) {};
 
 goto MyName;
 goto    MyName;
+

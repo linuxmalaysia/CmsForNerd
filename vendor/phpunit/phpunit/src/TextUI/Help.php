@@ -321,3 +321,4 @@ final class Help
         return $elements;
     }
 }
+

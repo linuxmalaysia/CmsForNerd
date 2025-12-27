@@ -75,3 +75,4 @@ class Yield {
 function myGen() {
     /* testYieldLiveCoding */
     yield
+

@@ -14,3 +14,4 @@ use RuntimeException;
 final class TimeSinceStartOfRequestNotAvailableException extends RuntimeException implements Exception
 {
 }
+

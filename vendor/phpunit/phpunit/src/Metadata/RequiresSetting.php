@@ -60,3 +60,4 @@ final readonly class RequiresSetting extends Metadata
         return $this->value;
     }
 }
+

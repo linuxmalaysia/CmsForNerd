@@ -143,3 +143,4 @@ class TraitUseAdaptation implements Builder {
         }
     }
 }
+

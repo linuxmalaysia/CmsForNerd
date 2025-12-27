@@ -24,3 +24,4 @@ final readonly class TestErroredSubscriber extends Subscriber implements Errored
         $this->handler()->testErrored($event);
     }
 }
+

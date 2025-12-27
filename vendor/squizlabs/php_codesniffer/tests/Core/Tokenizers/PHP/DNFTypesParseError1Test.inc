@@ -15,3 +15,4 @@ class ParseErrors {
     /* testBrokenReturnDNFTypeEndOnOpenParenthesis */
     ) : A|(B {}
 }
+

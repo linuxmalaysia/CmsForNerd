@@ -8,3 +8,4 @@ namespace D {
     class MyClass {}
 }
 ?>
+

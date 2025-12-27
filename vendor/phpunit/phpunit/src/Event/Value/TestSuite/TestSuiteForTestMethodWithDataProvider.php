@@ -76,3 +76,4 @@ final readonly class TestSuiteForTestMethodWithDataProvider extends TestSuite
         return true;
     }
 }
+

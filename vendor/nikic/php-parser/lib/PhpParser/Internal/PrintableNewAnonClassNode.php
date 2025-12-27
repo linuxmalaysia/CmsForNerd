@@ -69,3 +69,4 @@ class PrintableNewAnonClassNode extends Expr {
         return ['attrGroups', 'flags', 'args', 'extends', 'implements', 'stmts'];
     }
 }
+

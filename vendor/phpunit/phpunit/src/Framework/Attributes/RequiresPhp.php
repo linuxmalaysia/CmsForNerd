@@ -40,3 +40,4 @@ final readonly class RequiresPhp
         return $this->versionRequirement;
     }
 }
+

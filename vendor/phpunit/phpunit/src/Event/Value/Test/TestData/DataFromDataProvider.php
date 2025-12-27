@@ -50,3 +50,4 @@ final readonly class DataFromDataProvider extends TestData
         return true;
     }
 }
+

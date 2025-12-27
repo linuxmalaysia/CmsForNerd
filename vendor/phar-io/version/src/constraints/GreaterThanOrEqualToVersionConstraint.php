@@ -24,3 +24,4 @@ class GreaterThanOrEqualToVersionConstraint extends AbstractVersionConstraint {
             || $version->isGreaterThan($this->minimalVersion);
     }
 }
+

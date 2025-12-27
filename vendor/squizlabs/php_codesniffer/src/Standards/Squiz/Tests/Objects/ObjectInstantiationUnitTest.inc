@@ -47,3 +47,4 @@ $a = $b !== null
         default => 5,
     }
     : new Foo;
+

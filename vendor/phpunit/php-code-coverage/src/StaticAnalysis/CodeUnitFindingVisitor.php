@@ -358,3 +358,4 @@ final class CodeUnitFindingVisitor extends NodeVisitorAbstract
         return $node->toString();
     }
 }
+

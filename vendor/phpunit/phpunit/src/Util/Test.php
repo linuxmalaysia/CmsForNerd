@@ -57,3 +57,4 @@ final readonly class Test
         return $metadata->isTest()->isNotEmpty();
     }
 }
+

@@ -20,3 +20,4 @@ use RuntimeException;
 final class CannotFindSchemaException extends RuntimeException implements Exception
 {
 }
+

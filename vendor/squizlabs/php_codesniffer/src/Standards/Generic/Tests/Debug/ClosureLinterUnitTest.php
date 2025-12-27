@@ -72,3 +72,4 @@ final class ClosureLinterUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

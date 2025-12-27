@@ -62,3 +62,4 @@ final class DisallowComparisonAssignmentUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

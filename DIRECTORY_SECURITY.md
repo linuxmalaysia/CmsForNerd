@@ -31,3 +31,4 @@ location ~ ^/(includes|tests|vendor)/ {
 ### Files Created
 - `.htaccess` (8 security layers)
 - `index.html` templates in 5 directories
+

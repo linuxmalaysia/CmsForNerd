@@ -74,3 +74,4 @@ final class UseDeclarationUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

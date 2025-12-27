@@ -36,3 +36,4 @@ final readonly class ExecutionFinished implements Event
         return 'Test Runner Execution Finished';
     }
 }
+

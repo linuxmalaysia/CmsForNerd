@@ -55,3 +55,4 @@ final class ValidLogicalOperatorsUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

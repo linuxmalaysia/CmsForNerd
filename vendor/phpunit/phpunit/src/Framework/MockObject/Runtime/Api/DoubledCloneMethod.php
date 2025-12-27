@@ -25,3 +25,4 @@ trait DoubledCloneMethod
 
     abstract public function __phpunit_state(): TestDoubleState;
 }
+

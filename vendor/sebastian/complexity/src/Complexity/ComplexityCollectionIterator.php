@@ -52,3 +52,4 @@ final class ComplexityCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

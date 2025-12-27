@@ -18,3 +18,4 @@ final class NoCodeCoverageDriverWithPathCoverageSupportAvailableException extend
         parent::__construct('No code coverage driver with path coverage support available');
     }
 }
+

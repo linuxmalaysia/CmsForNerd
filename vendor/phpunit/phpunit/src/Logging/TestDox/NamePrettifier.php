@@ -306,3 +306,4 @@ final class NamePrettifier
         return $value::class;
     }
 }
+

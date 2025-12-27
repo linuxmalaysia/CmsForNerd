@@ -32,3 +32,4 @@ final readonly class Xml
         return $this->target;
     }
 }
+

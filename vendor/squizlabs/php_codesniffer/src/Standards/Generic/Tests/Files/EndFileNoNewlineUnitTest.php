@@ -70,3 +70,4 @@ final class EndFileNoNewlineUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

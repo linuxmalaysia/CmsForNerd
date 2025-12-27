@@ -119,3 +119,4 @@ final readonly class ErrorTriggered implements Event
         );
     }
 }
+

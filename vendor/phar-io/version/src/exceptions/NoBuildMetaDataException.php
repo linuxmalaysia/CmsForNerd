@@ -3,3 +3,4 @@ namespace PharIo\Version;
 
 class NoBuildMetaDataException extends \Exception implements Exception {
 }
+

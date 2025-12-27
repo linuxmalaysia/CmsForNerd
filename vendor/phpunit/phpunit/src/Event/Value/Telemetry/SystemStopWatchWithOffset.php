@@ -44,3 +44,4 @@ final class SystemStopWatchWithOffset implements StopWatch
         return HRTime::fromSecondsAndNanoseconds(...hrtime());
     }
 }
+

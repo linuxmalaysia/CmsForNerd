@@ -45,3 +45,4 @@ final class MockMethodSet
         return array_key_exists(strtolower($methodName), $this->methods);
     }
 }
+

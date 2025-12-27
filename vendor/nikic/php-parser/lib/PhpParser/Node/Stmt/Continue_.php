@@ -27,3 +27,4 @@ class Continue_ extends Node\Stmt {
         return 'Stmt_Continue';
     }
 }
+

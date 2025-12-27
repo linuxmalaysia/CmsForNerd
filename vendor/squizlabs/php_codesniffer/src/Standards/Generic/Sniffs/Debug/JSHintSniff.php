@@ -132,3 +132,4 @@ class JSHintSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

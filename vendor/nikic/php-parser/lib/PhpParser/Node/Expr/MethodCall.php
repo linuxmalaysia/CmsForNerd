@@ -43,3 +43,4 @@ class MethodCall extends CallLike {
         return $this->args;
     }
 }
+

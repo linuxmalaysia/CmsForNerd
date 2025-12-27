@@ -24,3 +24,4 @@ interface NodeTraverserInterface {
      */
     public function traverse(array $nodes): array;
 }
+

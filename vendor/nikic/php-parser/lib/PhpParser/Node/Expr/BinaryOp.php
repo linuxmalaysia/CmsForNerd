@@ -35,3 +35,4 @@ abstract class BinaryOp extends Expr {
      */
     abstract public function getOperatorSigil(): string;
 }
+

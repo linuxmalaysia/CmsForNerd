@@ -3532,3 +3532,4 @@ if (!function_exists('PHPUnit\Framework\onConsecutiveCalls')) {
         return new ConsecutiveCallsStub($arguments);
     }
 }
+

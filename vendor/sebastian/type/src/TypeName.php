@@ -103,3 +103,4 @@ final readonly class TypeName
         return $this->namespaceName !== null;
     }
 }
+

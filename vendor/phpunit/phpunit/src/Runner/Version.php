@@ -70,3 +70,4 @@ final class Version
         return 'PHPUnit ' . self::id() . ' by Sebastian Bergmann and contributors.';
     }
 }
+

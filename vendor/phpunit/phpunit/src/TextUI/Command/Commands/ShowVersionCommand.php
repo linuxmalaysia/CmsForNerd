@@ -21,3 +21,4 @@ final readonly class ShowVersionCommand implements Command
         return Result::from();
     }
 }
+

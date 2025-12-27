@@ -30,3 +30,4 @@ interface ResultCache
 
     public function persist(): void;
 }
+

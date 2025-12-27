@@ -73,3 +73,4 @@ final class DisallowLongArraySyntaxUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

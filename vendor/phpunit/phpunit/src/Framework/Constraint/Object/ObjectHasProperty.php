@@ -78,3 +78,4 @@ final class ObjectHasProperty extends Constraint
         );
     }
 }
+

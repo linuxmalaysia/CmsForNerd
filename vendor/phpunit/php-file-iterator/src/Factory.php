@@ -152,3 +152,4 @@ final class Factory
         // @codeCoverageIgnoreEnd
     }
 }
+

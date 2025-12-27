@@ -260,3 +260,4 @@ final class ArrayDeclarationUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

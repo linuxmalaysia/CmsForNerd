@@ -40,3 +40,4 @@ final class GreaterThan extends Constraint
         return $this->value < $other;
     }
 }
+

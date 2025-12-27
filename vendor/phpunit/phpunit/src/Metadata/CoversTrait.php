@@ -55,3 +55,4 @@ final readonly class CoversTrait extends Metadata
         return $this->traitName;
     }
 }
+

@@ -35,3 +35,4 @@ class Alias extends Node\Stmt\TraitUseAdaptation {
         return 'Stmt_TraitUseAdaptation_Alias';
     }
 }
+

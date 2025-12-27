@@ -24,3 +24,4 @@ interface Stub
      */
     public function invoke(Invocation $invocation): mixed;
 }
+

@@ -132,3 +132,4 @@ final readonly class ComplexityCollection implements Countable, IteratorAggregat
         return new self(array_reverse($items));
     }
 }
+

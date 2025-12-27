@@ -110,3 +110,4 @@ class RequireExplicitBooleanOperatorPrecedenceSniff implements Sniff
 
 
 }//end class
+

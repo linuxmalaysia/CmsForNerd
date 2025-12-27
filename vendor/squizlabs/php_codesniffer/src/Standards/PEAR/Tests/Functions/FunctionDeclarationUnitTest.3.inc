@@ -5,3 +5,4 @@
 // (missing close parenthesis for import use).
 // This must be the only test in this file.
 $closure = function (string $param) use ($var
+

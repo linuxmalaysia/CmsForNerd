@@ -44,3 +44,4 @@ class If_ extends Node\Stmt {
         return 'Stmt_If';
     }
 }
+

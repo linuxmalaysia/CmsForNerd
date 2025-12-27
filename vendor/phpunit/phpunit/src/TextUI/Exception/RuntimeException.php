@@ -17,3 +17,4 @@ namespace PHPUnit\TextUI;
 final class RuntimeException extends \RuntimeException implements Exception
 {
 }
+

@@ -80,3 +80,4 @@ class PreReleaseSuffix {
         $this->valueScore = $this->mapValueToScore($matches[2]);
     }
 }
+

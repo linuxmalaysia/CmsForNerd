@@ -14,3 +14,4 @@ $syntax = Util::getArrayIndex($_REQUEST, 'syntax', '');
 $value  = Util::getArrayIndex($_FILES, $key, $default);
 
 ?>
+

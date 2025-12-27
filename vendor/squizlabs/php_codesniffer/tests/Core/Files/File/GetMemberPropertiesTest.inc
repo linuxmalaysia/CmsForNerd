@@ -425,3 +425,4 @@ abstract class WithAbstractProperties {
     /* testPHP84IllegalAbstractStaticProp */
     public abstract static string $val10 { get; }
 }
+

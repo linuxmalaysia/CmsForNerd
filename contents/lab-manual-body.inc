@@ -178,3 +178,4 @@
 .lab-manual .motto { text-align: center; font-style: italic; font-size: 1.2rem; color: #555; margin-top: 2rem; }
 .lab-manual hr { border: 0; border-top: 2px dashed #ccc; margin: 3rem 0; }
 </style>
+

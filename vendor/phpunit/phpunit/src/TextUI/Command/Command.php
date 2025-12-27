@@ -18,3 +18,4 @@ interface Command
 {
     public function execute(): Result;
 }
+

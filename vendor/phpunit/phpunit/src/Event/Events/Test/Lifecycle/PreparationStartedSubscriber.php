@@ -18,3 +18,4 @@ interface PreparationStartedSubscriber extends Subscriber
 {
     public function notify(PreparationStarted $event): void;
 }
+

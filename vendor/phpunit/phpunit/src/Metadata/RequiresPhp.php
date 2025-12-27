@@ -40,3 +40,4 @@ final readonly class RequiresPhp extends Metadata
         return $this->versionRequirement;
     }
 }
+

@@ -6,3 +6,4 @@
  *
  * @see \PHP_CodeSniffer\Tests\Core\Ruleset\ProcessRulesetAutoloadTest
  */
+

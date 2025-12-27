@@ -18,3 +18,4 @@ interface GarbageCollectorStatusProvider
 {
     public function status(): GarbageCollectorStatus;
 }
+

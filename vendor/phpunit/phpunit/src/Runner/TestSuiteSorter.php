@@ -331,3 +331,4 @@ final class TestSuiteSorter
         return array_merge($newTestOrder, $tests);
     }
 }
+

@@ -92,3 +92,4 @@ class NullableTypeDeclarationSniff implements Sniff
 
 
 }//end class
+

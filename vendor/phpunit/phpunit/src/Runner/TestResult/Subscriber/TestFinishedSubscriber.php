@@ -24,3 +24,4 @@ final readonly class TestFinishedSubscriber extends Subscriber implements Finish
         $this->collector()->testFinished($event);
     }
 }
+

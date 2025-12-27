@@ -49,3 +49,4 @@ $foo = new parent;
 // PHP 8.3: safeguard that the sniff ignores anonymous classes, even when declared as readonly.
 $anon = new readonly class {};
 $anon = new #[MyAttribute] readonly class {};
+

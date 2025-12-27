@@ -31,3 +31,4 @@ final class IncompatibleReturnValueException extends \PHPUnit\Framework\Exceptio
         );
     }
 }
+

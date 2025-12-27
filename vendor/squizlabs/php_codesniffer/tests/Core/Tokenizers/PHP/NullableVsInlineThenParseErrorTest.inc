@@ -7,3 +7,4 @@
 $ternary = true
     # This must be a slash or hash comment and the next line must **NOT** have any indentation for the PHP 8.5 deprecation notice to occur.
 ? //comment.
+

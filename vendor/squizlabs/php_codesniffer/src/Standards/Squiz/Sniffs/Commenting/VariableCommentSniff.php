@@ -201,3 +201,4 @@ class VariableCommentSniff extends AbstractVariableSniff
 
 
 }//end class
+

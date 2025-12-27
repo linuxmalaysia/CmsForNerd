@@ -156,3 +156,4 @@ class ScalarComparator extends Comparator
         return substr($string1, $lastCharIndex1 - strlen($string1) + 1);
     }
 }
+

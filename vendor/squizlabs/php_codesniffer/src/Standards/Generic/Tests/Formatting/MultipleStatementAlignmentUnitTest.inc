@@ -502,3 +502,4 @@ function makeSureThatAssignmentWithinClosureAreStillHandled() {
         return $variables;
     };
 }
+

@@ -9,3 +9,4 @@ class Object_ extends Cast {
         return 'Expr_Cast_Object';
     }
 }
+

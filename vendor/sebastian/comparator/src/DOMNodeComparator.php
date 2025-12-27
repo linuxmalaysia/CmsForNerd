@@ -96,3 +96,4 @@ final class DOMNodeComparator extends ObjectComparator
         return $text;
     }
 }
+

@@ -18,3 +18,4 @@ interface PostConditionCalledSubscriber extends Subscriber
 {
     public function notify(PostConditionCalled $event): void;
 }
+

@@ -32,3 +32,4 @@ final readonly class Cobertura
         return $this->target;
     }
 }
+

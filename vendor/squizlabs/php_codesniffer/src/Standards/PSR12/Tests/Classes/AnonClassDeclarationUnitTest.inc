@@ -94,3 +94,4 @@ $anon = new readonly class {};
 $anon = new readonly    class {};
 $anon = new readonly
         class {};
+

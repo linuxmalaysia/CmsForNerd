@@ -86,3 +86,4 @@ class EchoedStringsSniff implements Sniff
 
 
 }//end class
+

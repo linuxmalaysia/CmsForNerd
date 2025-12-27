@@ -144,3 +144,4 @@ abstract class AbstractClassWithAbstractProp
       */
     abstract $property {get;}
 }
+

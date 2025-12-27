@@ -19,3 +19,4 @@ abstract class Known extends TestStatus
         return true;
     }
 }
+

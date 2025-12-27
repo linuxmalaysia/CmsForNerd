@@ -35,3 +35,4 @@ class Const_ extends Node\Stmt {
         return 'Stmt_Const';
     }
 }
+

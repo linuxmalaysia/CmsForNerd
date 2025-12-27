@@ -44,3 +44,4 @@ final class RegularExpression extends Constraint
         return preg_match($this->pattern, $other) > 0;
     }
 }
+

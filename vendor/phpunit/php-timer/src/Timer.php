@@ -38,3 +38,4 @@ final class Timer
         return Duration::fromNanoseconds((float) hrtime(true) - array_pop($this->startTimes));
     }
 }
+

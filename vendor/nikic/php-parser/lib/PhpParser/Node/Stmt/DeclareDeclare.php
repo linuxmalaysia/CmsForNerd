@@ -15,3 +15,4 @@ if (false) {
     class DeclareDeclare extends DeclareItem {
     }
 }
+

@@ -553,3 +553,4 @@ $newlineAfterDoubleArrow = [
 foreach ($data as [, , $value]) {}
 foreach ($array as $k => [$v1, , $v3]) {}
 foreach ([$a ,$b] as $c) {} // Not a short list. Sniff should handle it.
+

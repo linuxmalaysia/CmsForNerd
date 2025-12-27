@@ -18,3 +18,4 @@ interface EventFacadeSealedSubscriber extends Subscriber
 {
     public function notify(EventFacadeSealed $event): void;
 }
+

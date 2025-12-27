@@ -45,3 +45,4 @@ final class UnknownType extends Type
         return true;
     }
 }
+

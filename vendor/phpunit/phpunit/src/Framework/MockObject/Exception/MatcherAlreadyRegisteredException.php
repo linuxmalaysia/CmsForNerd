@@ -28,3 +28,4 @@ final class MatcherAlreadyRegisteredException extends \PHPUnit\Framework\Excepti
         );
     }
 }
+

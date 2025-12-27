@@ -18,3 +18,4 @@ interface PreparationFailedSubscriber extends Subscriber
 {
     public function notify(PreparationFailed $event): void;
 }
+

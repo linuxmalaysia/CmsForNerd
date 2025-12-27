@@ -140,3 +140,4 @@ class SemicolonSpacingSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

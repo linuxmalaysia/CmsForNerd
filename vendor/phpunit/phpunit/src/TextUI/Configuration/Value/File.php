@@ -37,3 +37,4 @@ final readonly class File
         return $this->path;
     }
 }
+

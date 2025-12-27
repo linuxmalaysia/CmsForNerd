@@ -31,3 +31,4 @@ class Case_ extends Node\Stmt {
         return 'Stmt_Case';
     }
 }
+

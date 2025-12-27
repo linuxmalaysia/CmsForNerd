@@ -96,3 +96,4 @@ class VoidCastEmulator extends TokenEmulator {
         return $tokens;
     }
 }
+

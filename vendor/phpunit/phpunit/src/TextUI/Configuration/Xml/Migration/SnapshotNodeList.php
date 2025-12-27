@@ -57,3 +57,4 @@ final class SnapshotNodeList implements Countable, IteratorAggregate
         return new ArrayIterator($this->nodes);
     }
 }
+

@@ -24,3 +24,4 @@ final readonly class TestRunnerExecutionFinishedSubscriber extends Subscriber im
         $this->logger()->flush();
     }
 }
+

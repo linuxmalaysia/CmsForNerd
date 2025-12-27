@@ -187,3 +187,4 @@ class IndentationSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

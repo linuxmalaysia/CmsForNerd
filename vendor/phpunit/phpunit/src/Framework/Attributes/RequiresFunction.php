@@ -40,3 +40,4 @@ final readonly class RequiresFunction
         return $this->functionName;
     }
 }
+

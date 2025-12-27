@@ -18,3 +18,4 @@ interface PreparedSubscriber extends Subscriber
 {
     public function notify(Prepared $event): void;
 }
+

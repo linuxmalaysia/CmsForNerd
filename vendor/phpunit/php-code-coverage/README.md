@@ -52,3 +52,4 @@ $coverage->stop();
 
 (new HtmlReport)->process($coverage, '/tmp/code-coverage-report');
 ```
+

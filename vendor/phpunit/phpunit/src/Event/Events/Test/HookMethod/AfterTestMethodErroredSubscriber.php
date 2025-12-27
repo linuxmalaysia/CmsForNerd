@@ -18,3 +18,4 @@ interface AfterTestMethodErroredSubscriber extends Subscriber
 {
     public function notify(AfterTestMethodErrored $event): void;
 }
+

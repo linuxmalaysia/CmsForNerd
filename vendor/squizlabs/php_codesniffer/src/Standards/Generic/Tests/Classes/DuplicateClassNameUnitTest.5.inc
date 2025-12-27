@@ -6,3 +6,4 @@ interface YourInterface {}
 namespace D;
 class MyClass {}
 ?>
+

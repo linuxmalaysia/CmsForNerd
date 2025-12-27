@@ -81,3 +81,4 @@ function issue3616() {
         $food === 'cake' => 'This food is a cake',
     };
 }
+

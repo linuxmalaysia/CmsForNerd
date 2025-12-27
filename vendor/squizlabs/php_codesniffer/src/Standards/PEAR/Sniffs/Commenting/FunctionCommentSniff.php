@@ -548,3 +548,4 @@ class FunctionCommentSniff implements Sniff
 
 
 }//end class
+

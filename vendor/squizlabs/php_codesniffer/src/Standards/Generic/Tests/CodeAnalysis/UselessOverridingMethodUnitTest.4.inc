@@ -8,3 +8,4 @@ class FooBar {
         parent::__construct
     }
 }
+

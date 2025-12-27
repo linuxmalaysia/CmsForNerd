@@ -53,3 +53,4 @@ class DisallowRequestSuperglobalSniff implements Sniff
 
 
 }//end class
+

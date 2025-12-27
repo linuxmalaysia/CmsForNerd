@@ -173,3 +173,4 @@ class PhpVersion {
         return $this->id >= 80400;
     }
 }
+

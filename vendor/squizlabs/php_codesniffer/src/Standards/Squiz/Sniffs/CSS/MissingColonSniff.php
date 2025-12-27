@@ -128,3 +128,4 @@ class MissingColonSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

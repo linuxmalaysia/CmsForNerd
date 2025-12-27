@@ -193,3 +193,4 @@ abstract readonly class TestStatus
 
     abstract public function asString(): string;
 }
+

@@ -12,3 +12,4 @@ namespace SebastianBergmann\Complexity;
 final class RuntimeException extends \RuntimeException implements Exception
 {
 }
+

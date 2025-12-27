@@ -138,3 +138,4 @@ final readonly class ListTestsAsXmlCommand implements Command
         );
     }
 }
+

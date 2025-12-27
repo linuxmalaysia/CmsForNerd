@@ -59,3 +59,4 @@ class DisallowShortArraySyntaxSniff implements Sniff
 
 
 }//end class
+

@@ -28,3 +28,4 @@ final class ClassIsFinalException extends \PHPUnit\Framework\Exception implement
         );
     }
 }
+

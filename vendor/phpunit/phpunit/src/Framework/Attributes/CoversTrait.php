@@ -40,3 +40,4 @@ final readonly class CoversTrait
         return $this->traitName;
     }
 }
+

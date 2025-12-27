@@ -24,3 +24,4 @@ final readonly class BeforeTestClassMethodErroredSubscriber extends Subscriber i
         $this->collector()->beforeTestClassMethodErrored($event);
     }
 }
+

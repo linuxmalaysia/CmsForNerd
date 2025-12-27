@@ -24,3 +24,4 @@ final readonly class TestConsideredRiskySubscriber extends Subscriber implements
         $this->printer()->testConsideredRisky();
     }
 }
+

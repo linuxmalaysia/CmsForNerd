@@ -33,3 +33,4 @@ final readonly class CoverageHtmlToReport extends LogToReportMigration
         return $html;
     }
 }
+

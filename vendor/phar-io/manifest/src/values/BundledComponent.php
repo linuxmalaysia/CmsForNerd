@@ -32,3 +32,4 @@ class BundledComponent {
         return $this->version;
     }
 }
+

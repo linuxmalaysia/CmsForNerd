@@ -75,3 +75,4 @@ final class TraversableContainsOnly extends Constraint
         return 'contains only values of type "' . $this->type . '"';
     }
 }
+

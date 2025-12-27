@@ -24,3 +24,4 @@ final readonly class TestTriggeredDeprecationSubscriber extends Subscriber imple
         $this->printer()->testTriggeredDeprecation($event);
     }
 }
+

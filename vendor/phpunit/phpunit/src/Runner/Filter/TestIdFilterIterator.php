@@ -60,3 +60,4 @@ final class TestIdFilterIterator extends RecursiveFilterIterator
         }
     }
 }
+

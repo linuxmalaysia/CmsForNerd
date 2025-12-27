@@ -55,3 +55,4 @@ Non goals are:
 If you are in need of a fully fledged side-effect analysis, use more advanced tools like PHPStan.
 
 Look at the test-suite to get an idea of [supported use-cases](https://github.com/staabm/side-effects-detector/blob/main/tests/SideEffectsDetectorTest.php).
+

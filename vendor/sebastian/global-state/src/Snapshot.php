@@ -445,3 +445,4 @@ final class Snapshot
         return $result;
     }
 }
+

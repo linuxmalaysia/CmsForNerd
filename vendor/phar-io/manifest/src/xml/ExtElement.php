@@ -15,3 +15,4 @@ class ExtElement extends ManifestElement {
         return $this->getAttributeValue('name');
     }
 }
+

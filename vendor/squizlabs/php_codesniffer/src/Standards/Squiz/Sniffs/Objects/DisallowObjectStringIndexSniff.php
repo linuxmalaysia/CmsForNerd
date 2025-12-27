@@ -122,3 +122,4 @@ class DisallowObjectStringIndexSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

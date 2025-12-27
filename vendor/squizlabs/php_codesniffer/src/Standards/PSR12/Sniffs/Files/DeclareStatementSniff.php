@@ -260,3 +260,4 @@ class DeclareStatementSniff implements Sniff
 
 
 }//end class
+

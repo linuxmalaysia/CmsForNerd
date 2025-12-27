@@ -7,3 +7,4 @@ use UnexpectedValueException;
 class CloneException extends UnexpectedValueException
 {
 } 
+

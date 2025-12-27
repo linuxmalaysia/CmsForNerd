@@ -22,3 +22,4 @@ final class InvalidImplementsWithoutImplementSniff
         // Do something.
     }
 }
+

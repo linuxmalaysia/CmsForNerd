@@ -15,3 +15,4 @@ class Application extends Type {
         return true;
     }
 }
+

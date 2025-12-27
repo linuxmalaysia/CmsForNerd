@@ -18,3 +18,4 @@ interface PostConditionFinishedSubscriber extends Subscriber
 {
     public function notify(PostConditionFinished $event): void;
 }
+

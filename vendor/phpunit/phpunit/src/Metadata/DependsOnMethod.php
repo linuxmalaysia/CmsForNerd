@@ -74,3 +74,4 @@ final readonly class DependsOnMethod extends Metadata
         return $this->shallowClone;
     }
 }
+

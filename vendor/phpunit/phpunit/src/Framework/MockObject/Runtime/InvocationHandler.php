@@ -152,3 +152,4 @@ final class InvocationHandler
         $this->matchers[] = $matcher;
     }
 }
+

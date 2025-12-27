@@ -394,3 +394,4 @@ final class IsReferenceTest extends AbstractMethodUnitTest
 
 
 }//end class
+

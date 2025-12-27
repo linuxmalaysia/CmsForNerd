@@ -19,3 +19,4 @@ use RuntimeException;
 final class FilterNotConfiguredException extends RuntimeException implements Exception
 {
 }
+

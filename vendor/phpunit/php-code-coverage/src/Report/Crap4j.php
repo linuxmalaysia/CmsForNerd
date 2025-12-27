@@ -145,3 +145,4 @@ final class Crap4j
         return round($value, 2);
     }
 }
+

@@ -29,3 +29,4 @@ final class Small extends Known
         return 'small';
     }
 }
+

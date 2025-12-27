@@ -123,3 +123,4 @@ function myGenerator() {
     from
 	gen2();
 }
+

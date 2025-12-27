@@ -58,3 +58,4 @@ final class FileExtensionUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

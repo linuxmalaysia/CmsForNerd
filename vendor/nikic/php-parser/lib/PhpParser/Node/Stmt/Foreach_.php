@@ -48,3 +48,4 @@ class Foreach_ extends Node\Stmt {
         return 'Stmt_Foreach';
     }
 }
+

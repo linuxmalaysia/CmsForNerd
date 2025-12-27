@@ -45,3 +45,4 @@ class RequirementCollectionIterator implements Iterator {
         $this->position++;
     }
 }
+

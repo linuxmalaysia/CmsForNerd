@@ -51,3 +51,4 @@ final readonly class MoveAttributesFromFilterWhitelistToCoverage implements Migr
         }
     }
 }
+

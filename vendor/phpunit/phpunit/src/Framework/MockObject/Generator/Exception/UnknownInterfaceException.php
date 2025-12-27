@@ -28,3 +28,4 @@ final class UnknownInterfaceException extends \PHPUnit\Framework\Exception imple
         );
     }
 }
+

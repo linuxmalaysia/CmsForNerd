@@ -25,3 +25,4 @@ final class CannotCloneTestDoubleForReadonlyClassException extends \PHPUnit\Fram
         );
     }
 }
+

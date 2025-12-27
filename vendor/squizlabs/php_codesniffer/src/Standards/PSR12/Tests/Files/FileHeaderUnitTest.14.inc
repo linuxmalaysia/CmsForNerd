@@ -5,3 +5,4 @@
 <?php else : ?>
     <li><a href="/auth/login.php">Sign in</a></li>
 <?php endif; ?>
+

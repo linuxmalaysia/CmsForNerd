@@ -11,3 +11,4 @@ interface TypeFilter
      */
     public function apply($element);
 }
+

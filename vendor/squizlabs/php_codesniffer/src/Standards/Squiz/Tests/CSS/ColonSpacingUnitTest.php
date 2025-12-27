@@ -63,3 +63,4 @@ final class ColonSpacingUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

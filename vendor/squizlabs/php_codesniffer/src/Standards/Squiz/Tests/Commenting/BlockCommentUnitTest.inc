@@ -338,3 +338,4 @@ abstract class AbstractProperties {
      */
     abstract int $prop {get;}
 }
+

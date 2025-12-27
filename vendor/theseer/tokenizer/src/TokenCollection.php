@@ -80,3 +80,4 @@ class TokenCollection implements IteratorAggregate, ArrayAccess, Countable {
         unset($this->tokens[$offset]);
     }
 }
+

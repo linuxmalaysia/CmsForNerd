@@ -30,3 +30,4 @@ class CopyrightInformation {
         return $this->license;
     }
 }
+

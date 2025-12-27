@@ -39,3 +39,4 @@ final class ProcessControlExtensionNotLoadedException extends RuntimeException i
         parent::__construct(implode(PHP_EOL, $message));
     }
 }
+

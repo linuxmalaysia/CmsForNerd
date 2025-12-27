@@ -37,3 +37,4 @@ final readonly class Result
         return $this->stderr;
     }
 }
+

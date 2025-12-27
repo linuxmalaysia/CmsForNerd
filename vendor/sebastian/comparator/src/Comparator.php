@@ -30,3 +30,4 @@ abstract class Comparator
         return $this->factory;
     }
 }
+

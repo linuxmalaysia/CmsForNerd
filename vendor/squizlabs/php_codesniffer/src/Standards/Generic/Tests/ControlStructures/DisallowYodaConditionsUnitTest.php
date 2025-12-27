@@ -97,3 +97,4 @@ final class DisallowYodaConditionsUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

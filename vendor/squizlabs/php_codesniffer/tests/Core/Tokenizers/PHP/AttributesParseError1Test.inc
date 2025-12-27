@@ -6,3 +6,4 @@
 /* testInvalidAttribute */
 #[ThisIsNotAnAttribute
 function invalid_attribute_test() {}
+

@@ -74,3 +74,4 @@ final readonly class PhpunitErrorTriggered implements Event
         );
     }
 }
+

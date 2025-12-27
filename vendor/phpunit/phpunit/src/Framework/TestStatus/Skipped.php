@@ -33,3 +33,4 @@ final readonly class Skipped extends Known
         return 'skipped';
     }
 }
+

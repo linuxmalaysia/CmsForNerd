@@ -13,3 +13,4 @@ if (false) {
     class StaticVar extends \PhpParser\Node\StaticVar {
     }
 }
+

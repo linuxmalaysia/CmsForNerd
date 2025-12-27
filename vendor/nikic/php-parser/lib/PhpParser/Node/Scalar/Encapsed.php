@@ -13,3 +13,4 @@ if (false) {
     class Encapsed extends InterpolatedString {
     }
 }
+

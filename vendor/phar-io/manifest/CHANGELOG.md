@@ -43,3 +43,4 @@ This release now requires PHP 7.2+
 [1.0.3]: https://github.com/phar-io/manifest/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/phar-io/manifest/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/phar-io/manifest/compare/1.0.0...1.0.1
+

@@ -17,3 +17,4 @@ $closure = function () : namespace\Baz {};
 
 /* testArrowFunctionReturnType */
 $fn = fn() : namespace\Baz => new namespace\Baz;
+

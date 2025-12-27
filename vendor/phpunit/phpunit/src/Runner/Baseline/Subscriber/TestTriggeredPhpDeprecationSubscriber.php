@@ -29,3 +29,4 @@ final readonly class TestTriggeredPhpDeprecationSubscriber extends Subscriber im
         $this->generator()->testTriggeredIssue($event);
     }
 }
+

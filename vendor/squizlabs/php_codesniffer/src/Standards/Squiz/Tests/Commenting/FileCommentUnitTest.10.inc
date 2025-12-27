@@ -10,3 +10,4 @@
 
 readonly class Foo {
 }
+

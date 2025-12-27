@@ -59,3 +59,4 @@ final class InlineCommentUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

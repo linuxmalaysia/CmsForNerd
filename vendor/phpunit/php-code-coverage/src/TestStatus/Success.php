@@ -24,3 +24,4 @@ final class Success extends Known
         return 'success';
     }
 }
+

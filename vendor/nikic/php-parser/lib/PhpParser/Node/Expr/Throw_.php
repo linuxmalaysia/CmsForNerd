@@ -27,3 +27,4 @@ class Throw_ extends Node\Expr {
         return 'Expr_Throw';
     }
 }
+

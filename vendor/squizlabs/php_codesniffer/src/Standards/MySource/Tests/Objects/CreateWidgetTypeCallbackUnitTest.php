@@ -60,3 +60,4 @@ final class CreateWidgetTypeCallbackUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

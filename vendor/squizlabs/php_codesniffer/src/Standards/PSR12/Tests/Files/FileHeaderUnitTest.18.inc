@@ -14,3 +14,4 @@ readonly class Example
         echo '123';
     }
 }
+

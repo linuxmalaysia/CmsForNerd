@@ -46,3 +46,4 @@ final readonly class RequiresPhpunitExtension extends Metadata
         return $this->extensionClass;
     }
 }
+

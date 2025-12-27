@@ -24,3 +24,4 @@ final readonly class TestRunnerTriggeredWarningSubscriber extends Subscriber imp
         $this->collector()->testRunnerTriggeredWarning($event);
     }
 }
+

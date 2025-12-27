@@ -19,3 +19,4 @@ namespace PHPUnit\TextUI\XmlConfiguration;
 final readonly class FailedSchemaDetectionResult extends SchemaDetectionResult
 {
 }
+

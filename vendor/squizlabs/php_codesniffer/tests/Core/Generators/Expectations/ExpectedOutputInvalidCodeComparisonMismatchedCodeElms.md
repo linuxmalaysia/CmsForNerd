@@ -23,3 +23,4 @@ This doc has two code elements, one only has a title, one has actual code. Unbal
   </table>
 
 Documentation generated on *REDACTED* by [PHP_CodeSniffer *VERSION*](https://github.com/PHPCSStandards/PHP_CodeSniffer)
+

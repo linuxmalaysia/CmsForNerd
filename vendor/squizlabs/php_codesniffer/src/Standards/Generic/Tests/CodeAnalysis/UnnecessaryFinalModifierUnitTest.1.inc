@@ -76,3 +76,4 @@ class Regular_Class_Regular_Properties {
     protected $protected = 'foo';
     private static bool $private = true;
 }
+

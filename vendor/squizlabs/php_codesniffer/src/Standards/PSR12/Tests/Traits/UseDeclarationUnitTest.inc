@@ -219,3 +219,4 @@ enum SomeEnum2
     use   FirstTrait;
 
 }
+

@@ -71,3 +71,4 @@ final class NodeConnectingVisitor extends NodeVisitorAbstract {
         array_pop($this->stack);
     }
 }
+

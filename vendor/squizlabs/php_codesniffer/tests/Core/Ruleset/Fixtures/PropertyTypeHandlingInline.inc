@@ -29,3 +29,4 @@
 // phpcs:set TestStandard.SetProperty.PropertyTypeHandling expectsOldSchoolEmptyArray[]
 
 echo 'hello!';
+

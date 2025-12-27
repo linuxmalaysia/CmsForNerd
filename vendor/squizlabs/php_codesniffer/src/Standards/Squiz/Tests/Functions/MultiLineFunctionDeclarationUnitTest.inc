@@ -354,3 +354,4 @@ function ParamWithMultiAttributeOnOwnLineWithParamsShouldNotBeSeenAsMultipleFnPa
     string $param,
 ) {
 }
+

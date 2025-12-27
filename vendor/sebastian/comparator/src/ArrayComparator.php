@@ -129,3 +129,4 @@ class ArrayComparator extends Comparator
         return trim(str_replace("\n", "\n    ", $lines));
     }
 }
+

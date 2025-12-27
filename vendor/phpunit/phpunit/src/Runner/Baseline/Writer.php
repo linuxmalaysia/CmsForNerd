@@ -76,3 +76,4 @@ final readonly class Writer
         file_put_contents($baselineFile, $writer->outputMemory());
     }
 }
+

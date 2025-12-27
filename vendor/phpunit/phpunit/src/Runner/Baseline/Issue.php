@@ -145,3 +145,4 @@ final readonly class Issue
         return $hash;
     }
 }
+

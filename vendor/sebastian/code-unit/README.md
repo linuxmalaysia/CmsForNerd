@@ -22,3 +22,4 @@ composer require --dev sebastian/code-unit
 ```
 
 Please note that this is now a [low maintenance project](https://github.com/sebastianbergmann/code-unit/blob/main/.github/CONTRIBUTING.md#low-maintenance-project).
+

@@ -58,3 +58,4 @@ final readonly class ConstantCollection implements Countable, IteratorAggregate
         return new ConstantCollectionIterator($this);
     }
 }
+

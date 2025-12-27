@@ -43,3 +43,4 @@ class Namespace_ extends Declaration {
         return new Stmt\Namespace_($this->name, $this->stmts, $this->attributes);
     }
 }
+

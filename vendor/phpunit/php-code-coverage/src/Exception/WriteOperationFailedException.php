@@ -20,3 +20,4 @@ final class WriteOperationFailedException extends RuntimeException implements Ex
         parent::__construct(sprintf('Cannot write to "%s"', $path));
     }
 }
+

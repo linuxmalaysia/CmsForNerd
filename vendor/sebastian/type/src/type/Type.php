@@ -201,3 +201,4 @@ abstract class Type
 
     abstract public function allowsNull(): bool;
 }
+

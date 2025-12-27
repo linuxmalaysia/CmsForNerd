@@ -105,3 +105,4 @@ final class LongConditionClosingCommentUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

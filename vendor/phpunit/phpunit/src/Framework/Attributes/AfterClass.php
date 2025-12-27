@@ -31,3 +31,4 @@ final readonly class AfterClass
         return $this->priority;
     }
 }
+

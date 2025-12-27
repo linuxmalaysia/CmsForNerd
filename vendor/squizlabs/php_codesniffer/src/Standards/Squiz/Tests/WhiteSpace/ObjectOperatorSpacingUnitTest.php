@@ -71,3 +71,4 @@ final class ObjectOperatorSpacingUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

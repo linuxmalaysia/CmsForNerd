@@ -95,3 +95,4 @@ abstract class IssueTrigger
 
     abstract public function asString(): string;
 }
+

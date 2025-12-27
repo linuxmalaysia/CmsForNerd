@@ -27,3 +27,4 @@ final class SameSize extends Count
         parent::__construct((int) $this->getCountOf($expected));
     }
 }
+

@@ -71,3 +71,4 @@ class LowercaseClassKeywordsSniff implements Sniff
 
 
 }//end class
+

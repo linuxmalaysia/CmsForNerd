@@ -148,3 +148,4 @@ final class FunctionSpacingUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

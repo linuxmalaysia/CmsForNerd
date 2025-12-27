@@ -17,3 +17,4 @@ use RuntimeException;
 final class NoPreviousThrowableException extends RuntimeException implements Exception
 {
 }
+

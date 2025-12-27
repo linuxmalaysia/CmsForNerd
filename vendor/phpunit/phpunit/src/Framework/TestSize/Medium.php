@@ -33,3 +33,4 @@ final readonly class Medium extends Known
         return 'medium';
     }
 }
+

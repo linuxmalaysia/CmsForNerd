@@ -190,3 +190,4 @@ final class GetClassPropertiesTest extends AbstractMethodUnitTest
 
 
 }//end class
+

@@ -8,3 +8,4 @@ namespace AnotherProject;
 
 $foo = 'bar';
 
+

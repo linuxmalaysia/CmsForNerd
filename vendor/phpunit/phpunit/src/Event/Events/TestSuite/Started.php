@@ -49,3 +49,4 @@ final readonly class Started implements Event
         );
     }
 }
+

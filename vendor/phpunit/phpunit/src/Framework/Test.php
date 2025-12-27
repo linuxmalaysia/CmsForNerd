@@ -18,3 +18,4 @@ interface Test extends Countable
 {
     public function run(): void;
 }
+

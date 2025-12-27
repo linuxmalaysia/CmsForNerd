@@ -118,3 +118,4 @@ final class MultiLineFunctionDeclarationUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

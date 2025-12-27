@@ -28,3 +28,4 @@ final readonly class TestPreparationStartedSubscriber extends Subscriber impleme
         $this->logger()->testPreparationStarted($event);
     }
 }
+

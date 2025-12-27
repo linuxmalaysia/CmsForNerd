@@ -544,3 +544,4 @@ class FunctionDeclarationSniff implements Sniff
 
 
 }//end class
+

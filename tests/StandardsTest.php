@@ -88,3 +88,4 @@ class StandardsTest extends TestCase
         $this->assertTrue($checked, "Should have checked at least one file.");
     }
 }
+

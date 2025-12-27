@@ -32,3 +32,4 @@ use Vendor\Package\SomeNamespace\{
 
 // Reset the property to its default value.
 // phpcs:set PSR12.Namespaces.CompoundNamespaceDepth maxDepth 2
+

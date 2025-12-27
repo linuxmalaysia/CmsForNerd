@@ -38,3 +38,4 @@ final readonly class RenameForceCoversAnnotationAttribute implements Migration
         $root->removeAttribute('forceCoversAnnotation');
     }
 }
+

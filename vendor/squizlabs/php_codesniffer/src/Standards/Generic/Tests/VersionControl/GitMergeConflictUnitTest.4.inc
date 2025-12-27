@@ -69,3 +69,4 @@ $a = 1;
 should also be detected.
 EOT;
 >>>>>>> ref/heads/other-branchname
+

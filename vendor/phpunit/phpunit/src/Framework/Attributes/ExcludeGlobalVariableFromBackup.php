@@ -40,3 +40,4 @@ final readonly class ExcludeGlobalVariableFromBackup
         return $this->globalVariableName;
     }
 }
+

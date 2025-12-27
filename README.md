@@ -103,3 +103,4 @@ Start your journey in the [🎓 Lab Manual](lab-manual.php).
 *   Website: [https://www.linuxmalaysia.com](https://www.linuxmalaysia.com)
 
 *Modernization without loss of simplicity.*
+

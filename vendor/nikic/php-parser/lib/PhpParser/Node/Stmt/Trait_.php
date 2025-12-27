@@ -32,3 +32,4 @@ class Trait_ extends ClassLike {
         return 'Stmt_Trait';
     }
 }
+

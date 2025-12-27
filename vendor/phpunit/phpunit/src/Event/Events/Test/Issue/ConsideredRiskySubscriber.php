@@ -18,3 +18,4 @@ interface ConsideredRiskySubscriber extends Subscriber
 {
     public function notify(ConsideredRisky $event): void;
 }
+

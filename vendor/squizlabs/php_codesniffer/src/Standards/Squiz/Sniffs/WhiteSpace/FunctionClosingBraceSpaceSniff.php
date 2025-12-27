@@ -162,3 +162,4 @@ class FunctionClosingBraceSpaceSniff implements Sniff
 
 
 }//end class
+

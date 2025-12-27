@@ -42,3 +42,4 @@ final readonly class Configured implements Event
         return 'Test Runner Configured';
     }
 }
+

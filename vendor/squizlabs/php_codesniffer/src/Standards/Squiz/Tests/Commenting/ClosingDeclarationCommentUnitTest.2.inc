@@ -5,3 +5,4 @@
 // Testing that the sniff is triggered.
 
 class MissingOpeningBracket
+

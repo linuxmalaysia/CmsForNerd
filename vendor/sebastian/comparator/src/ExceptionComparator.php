@@ -42,3 +42,4 @@ final class ExceptionComparator extends ObjectComparator
         return $array;
     }
 }
+

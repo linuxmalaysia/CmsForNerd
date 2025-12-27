@@ -17,3 +17,4 @@ use RuntimeException;
 final class UnknownEventTypeException extends RuntimeException implements Exception
 {
 }
+

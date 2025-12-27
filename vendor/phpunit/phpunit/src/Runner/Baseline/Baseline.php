@@ -59,3 +59,4 @@ final class Baseline
         return $this->issues;
     }
 }
+

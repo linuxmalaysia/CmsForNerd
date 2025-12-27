@@ -39,3 +39,4 @@ class InvalidRemovalVersionSniff implements Sniff, DeprecatedSniff
         // Do something.
     }
 }
+

@@ -14,3 +14,4 @@ use RuntimeException;
 final class StaticAnalysisCacheNotConfiguredException extends RuntimeException implements Exception
 {
 }
+

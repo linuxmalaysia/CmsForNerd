@@ -68,3 +68,4 @@ final readonly class ComparisonFailureBuilder
         return '';
     }
 }
+

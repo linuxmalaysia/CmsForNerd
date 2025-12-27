@@ -30,3 +30,4 @@ final class ClassIsAbstractException extends RuntimeException implements Excepti
         );
     }
 }
+

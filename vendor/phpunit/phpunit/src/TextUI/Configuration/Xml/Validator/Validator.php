@@ -40,3 +40,4 @@ final readonly class Validator
         return ValidationResult::fromArray($errors);
     }
 }
+

@@ -34,3 +34,4 @@ class ClassConstFetch extends Expr {
         return 'Expr_ClassConstFetch';
     }
 }
+

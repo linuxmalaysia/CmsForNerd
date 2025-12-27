@@ -32,3 +32,4 @@ final readonly class CoverageCloverToReport extends LogToReportMigration
         return $clover;
     }
 }
+

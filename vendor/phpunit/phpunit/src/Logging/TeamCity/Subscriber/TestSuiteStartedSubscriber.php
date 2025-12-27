@@ -24,3 +24,4 @@ final readonly class TestSuiteStartedSubscriber extends Subscriber implements St
         $this->logger()->testSuiteStarted($event);
     }
 }
+

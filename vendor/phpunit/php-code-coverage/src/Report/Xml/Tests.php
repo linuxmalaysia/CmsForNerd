@@ -45,3 +45,4 @@ final class Tests
         $node->setAttribute('status', $result['status']);
     }
 }
+

@@ -19,3 +19,4 @@ use RuntimeException;
 final class NoConfigurationFileException extends RuntimeException implements Exception
 {
 }
+

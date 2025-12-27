@@ -30,3 +30,4 @@ final readonly class ReturnArgument implements Stub
         return $invocation->parameters()[$this->argumentIndex] ?? null;
     }
 }
+

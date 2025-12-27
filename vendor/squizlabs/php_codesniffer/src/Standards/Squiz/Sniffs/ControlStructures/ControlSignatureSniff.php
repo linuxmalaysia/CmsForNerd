@@ -335,3 +335,4 @@ class ControlSignatureSniff implements Sniff
 
 
 }//end class
+

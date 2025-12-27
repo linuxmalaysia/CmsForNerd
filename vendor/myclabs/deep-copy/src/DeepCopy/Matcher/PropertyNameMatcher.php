@@ -30,3 +30,4 @@ class PropertyNameMatcher implements Matcher
         return $property == $this->property;
     }
 }
+

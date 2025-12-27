@@ -181,3 +181,4 @@ class EmptyPHPStatementSniff implements Sniff
 
 
 }//end class
+

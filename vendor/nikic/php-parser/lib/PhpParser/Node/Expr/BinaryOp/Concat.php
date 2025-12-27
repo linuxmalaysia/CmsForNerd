@@ -13,3 +13,4 @@ class Concat extends BinaryOp {
         return 'Expr_BinaryOp_Concat';
     }
 }
+

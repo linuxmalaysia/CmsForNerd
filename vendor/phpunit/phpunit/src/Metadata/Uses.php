@@ -45,3 +45,4 @@ final readonly class Uses extends Metadata
         return $this->target;
     }
 }
+

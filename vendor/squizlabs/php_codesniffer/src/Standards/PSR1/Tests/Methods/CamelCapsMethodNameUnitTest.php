@@ -62,3 +62,4 @@ final class CamelCapsMethodNameUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

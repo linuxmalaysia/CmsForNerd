@@ -121,3 +121,4 @@ final class SecurityUtilsTest extends TestCase
 .progress-nav .next { background: #5cb85c; color: #fff; }
 @media (max-width: 768px) { .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>
+

@@ -45,3 +45,4 @@ final class MixedType extends Type
         return true;
     }
 }
+

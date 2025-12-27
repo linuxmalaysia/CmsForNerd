@@ -27,3 +27,4 @@ class Echo_ extends Node\Stmt {
         return 'Stmt_Echo';
     }
 }
+

@@ -24,3 +24,4 @@ final class EnumTokenEmulator extends KeywordEmulator {
             && $tokens[$pos + 2]->id === \T_STRING;
     }
 }
+

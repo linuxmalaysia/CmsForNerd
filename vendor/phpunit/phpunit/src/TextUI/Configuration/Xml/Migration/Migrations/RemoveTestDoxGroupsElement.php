@@ -30,3 +30,4 @@ final readonly class RemoveTestDoxGroupsElement implements Migration
         $node->parentNode->removeChild($node);
     }
 }
+
