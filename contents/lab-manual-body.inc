@@ -12,6 +12,7 @@
         <div class="exercise">
             <h3>Exercise 1.1: Strict Typing</h3>
             <p>Observe how <code>declare(strict_types=1);</code> prevents the CMS from accepting incorrect data types, forcing developers to write predictable code.</p>
+            <p><a href="lab-module1.php" class="btn">📝 Open Student Worksheet: Module 1</a></p>
         </div>
         <div class="exercise">
             <h3>Exercise 1.2: The Context Pattern</h3>
