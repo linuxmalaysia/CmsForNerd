@@ -1,7 +1,9 @@
 # CmsForNerd
-**A Lightweight, Radically Simple, Database-Free PHP Laboratory CMS**
+
+A Lightweight, Radically Simple, Database-Free PHP Laboratory CMS
 
 ## 🌟 Overview
+
 CmsForNerd is a database-free Content Management System designed as a live learning laboratory for developers. It focuses on the raw power of PHP 8.4+, modern architecture, and professional security standards.
 
 **Current Version:** 3.1 (27 Dec 2025)  
@@ -14,93 +16,107 @@ CmsForNerd is a database-free Content Management System designed as a live learn
 ## 🛠️ Tech Stack
 
 ### Development Environment
-*   **IDE:** [Google Antigravity](https://deepmind.google/technologies/gemini/) (AI-native coding) or [VS Code](https://code.visualstudio.com/)
-*   **Terminal:** Google Antigravity Terminal (PowerShell with AI integration)
-*   **Engine:** PHP 8.4+ via [Laravel Herd](https://herd.laravel.com) (Windows) or native package managers (Linux)
-*   **Server:** Nginx Latest (recommended) or Apache 2.4+
-*   **Browser:** [Mozilla Firefox](https://www.mozilla.org/firefox/) (for testing strict privacy and modern web standards)
+
+* **IDE:** [Google Antigravity](https://deepmind.google/technologies/gemini/) (AI-native coding) or [VS Code](https://code.visualstudio.com/)
+* **Terminal:** Google Antigravity Terminal (PowerShell with AI integration)
+* **Engine:** PHP 8.4+ via [Laravel Herd](https://herd.laravel.com) (Windows) or native package managers (Linux)
+* **Server:** Nginx Latest (recommended) or Apache 2.4+
+* **Browser:** [Mozilla Firefox](https://www.mozilla.org/firefox/) (for testing strict privacy and modern web standards)
 
 ### Development Tools
-*   **Package Manager:** Composer 2.7+
-*   **Testing:** PHPUnit 11.5+
-*   **Linting:** PHP_CodeSniffer 3.11+ (PSR-12 enforcement)
-*   **Version Control:** Git with GitHub integration
+
+* **Package Manager:** Composer 2.7+
+* **Testing:** PHPUnit 11.5+
+* **Linting:** PHP_CodeSniffer 3.11+ (PSR-12 enforcement)
+* **Version Control:** Git with GitHub integration
 
 ---
 
 ## 🚀 Key Features (v3.1)
-*   **PHP 8.4+ & PHP 9 Ready**: Optimized for Property Hooks, Class Constants, and Strict Types.
-*   **Context Architecture**: Uses the `CmsContext` object pattern to eliminate legacy global variables.
-*   **Professional Security**:
-    *   **RFC 9116 (security.txt)**: Standardized vulnerability disclosure protocols.
-    *   **Cloudflare Turnstile**: High-security bot protection.
-    *   **Perimeter Defense**: Strict path traversal and input sanitization.
-*   **Cross-Platform Mastery**: Tested and verified for **Windows 11, Debian Linux, and AlmaLinux**.
-*   **AI-Native Workflow**: Built specifically to be managed by AI-agentic code assistants.
+
+* **PHP 8.4+ & PHP 9 Ready**: Optimized for Property Hooks, Class Constants, and Strict Types.
+* **Context Architecture**: Uses the `CmsContext` object pattern to eliminate legacy global variables.
+* **Professional Security**:
+  * **RFC 9116 (security.txt)**: Standardized vulnerability disclosure protocols.
+  * **Cloudflare Turnstile**: High-security bot protection.
+  * **Perimeter Defense**: Strict path traversal and input sanitization.
+* **Cross-Platform Mastery**: Tested and verified for **Windows 11, Debian Linux, and AlmaLinux**.
+* **AI-Native Workflow**: Built specifically to be managed by AI-agentic code assistants.
 
 ---
 
 ## 🛠️ Installation & Laboratory Setup
 
 ### 🪟 Option 1: Windows 11 (Recommended for Beginners)
+
 The most efficient setup on Windows uses the "Nerd-Stack":
-1.  **Engine:** Install [Laravel Herd](https://herd.laravel.com) and select **PHP 8.4**.
-2.  **CLI:** Install [Git for Windows](https://git-scm.com) (Enable symbolic links).
-3.  **Terminal:** Use **Google Antigravity** for high-speed CLI output.
-4.  **Action:** Clone the repo into your Herd `sites` folder and run `composer install`.
-5.  **Guide:** See the [Windows Setup Guide](windows-setup.php) for full details.
+
+1. **Engine:** Install [Laravel Herd](https://herd.laravel.com) and select **PHP 8.4**.
+2. **CLI:** Install [Git for Windows](https://git-scm.com) (Enable symbolic links).
+3. **Terminal:** Use **Google Antigravity** for high-speed CLI output.
+4. **Action:** Clone the repo into your Herd `sites` folder and run `composer install`.
+5. **Guide:** See the [Windows Setup Guide](windows-setup.php) for full details.
 
 ### 🐧 Option 2: Linux (Debian, Ubuntu, AlmaLinux)
+
 For production-grade testing, use official repositories:
-1.  **Debian/Ubuntu:** Use [Ondřej Surý's PHP PPA](https://deb.sury.org/).
-2.  **AlmaLinux/RHEL:** Use the [Remi Repository](https://rpms.remirepo.net/).
-3.  **Permissions:** Ensure `www-data` or `apache` has read access to the project root.
-4.  **Action:** Install `php8.4-cli`, `php8.4-mbstring`, and `php8.4-xml`.
-5.  **Guide:** See the [Linux Setup Guide](linux-setup.php) for terminal commands.
+
+1. **Debian/Ubuntu:** Use [Ondřej Surý's PHP PPA](https://deb.sury.org/).
+2. **AlmaLinux/RHEL:** Use the [Remi Repository](https://rpms.remirepo.net/).
+3. **Permissions:** Ensure `www-data` or `apache` has read access to the project root.
+4. **Action:** Install `php8.4-cli`, `php8.4-mbstring`, and `php8.4-xml`.
+5. **Guide:** See the [Linux Setup Guide](linux-setup.php) for terminal commands.
 
 ---
 
 ## 🤖 AI-Assisted Development
+
 CMSForNerd v3.1 is designed to be co-authored with AI. We recommend the following synergy:
 
-1.  **Google Gemini (The Architect)**: Ask Gemini to plan your logic, refactor legacy functions, or explain complex RFC standards.
-2.  **Google Antigravity (The Agent)**: Use Antigravity to execute file writes, run compliance audits, and manage your Git workflow.
-3.  **Workflow**: Description your desired change in natural language, review the `implementation_plan.md` generated by the AI, and verify with `composer compliance`.
+1. **Google Gemini (The Architect)**: Ask Gemini to plan your logic, refactor legacy functions, or explain complex RFC standards.
+2. **Google Antigravity (The Agent)**: Use Antigravity to execute file writes, run compliance audits, and manage your Git workflow.
+3. **Workflow**: Describe your desired change in natural language, review the `implementation_plan.md` generated by the AI, and verify with `composer compliance`.
 
 See the [🤖 AI Development Guide](ai-dev.php) for the "Prompt-to-Product" methodology.
 
 ---
 
 ## 💻 Recommended Stack
+
 To get the most out of CMSForNerd, we recommend:
-*   **Editor:** Google Antigravity (Advanced AI Coding).
-*   **Server:** Nginx Latest with PHP 8.4+.
-*   **Browser:** Mozilla Firefox for testing strict privacy and modern web standards.
+
+* **Editor:** Google Antigravity (Advanced AI Coding).
+* **Server:** Nginx Latest with PHP 8.4+.
+* **Browser:** Mozilla Firefox for testing strict privacy and modern web standards.
 
 ---
 
 ## 🧪 The Laboratory Curriculum
+
 The CMS includes built-in modules to help you master professional backend engineering:
-1.  **Module 1-2**: Architecture & Standards (PSR-12).
-2.  **Module 3**: Defensive Engineering (Security & Disclosure).
-3.  **Module 4-5**: Automated Testing & Code Coverage.
-4.  **Module 6**: AI-Assisted Workflows.
-5.  **Final Exam**: The "Break-Fix" mastered challenge.
+
+1. **Module 1-2**: Architecture & Standards (PSR-12).
+2. **Module 3**: Defensive Engineering (Security & Disclosure).
+3. **Module 4-5**: Automated Testing & Code Coverage.
+4. **Module 6**: AI-Assisted Workflows.
+5. **Final Exam**: The "Break-Fix" mastered challenge.
 
 Start your journey in the [🎓 Lab Manual](lab-manual.php).
 
 ---
 
 ## ⚖️ Standards (RFC 2119)
-*   **MUST**: Begin all files with `declare(strict_types=1);`.
-*   **MUST NOT**: Use `global` variables.
-*   **SHOULD**: Maintain 90% test coverage for new logic.
+
+* **MUST**: Begin all files with `declare(strict_types=1);`.
+* **MUST NOT**: Use `global` variables.
+* **SHOULD**: Maintain 90% test coverage for new logic.
 
 ---
 
 ## Credits
-*   **Author:** Harisfazillah Jamel (LinuxMalaysia)
-*   **Assistant:** Google Gemini & Google Antigravity (2025 Refactor)
-*   Website: [https://www.linuxmalaysia.com](https://www.linuxmalaysia.com)
+
+* **Author:** Harisfazillah Jamel (LinuxMalaysia)
+* **Assistant:** Google Gemini & Google Antigravity (2025 Refactor)
+* Website: [https://www.linuxmalaysia.com](https://www.linuxmalaysia.com)
 
 *Modernization without loss of simplicity.*
