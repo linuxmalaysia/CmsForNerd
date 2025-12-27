@@ -1,6 +1,6 @@
 <article class="lab-worksheet linux-setup">
     <h1>🐧 Linux Setup Guide: Laboratory Readiness</h1>
-    <p class="subtitle">Ensuring PHP 8.4+ Compatibility on Debian & AlmaLinux</p>
+    <p class="subtitle">Ensuring PHP 8.4+ Compatibility on Debian, Ubuntu LTS & AlmaLinux</p>
 
     <div class="requirement-alert">
         <strong>Requirement:</strong> To complete the laboratory modules, your Linux server <strong>MUST</strong> be running <strong>PHP 8.4</strong> or higher.
@@ -16,14 +16,18 @@
 
     <div class="os-selector">
         <section class="os-block debian">
-            <h2>📦 Option A: Debian (12/Bookworm)</h2>
-            <p>Debian uses the official repository maintained by <strong>Ondřej Surý</strong>, who is the primary PHP maintainer for the Debian project.</p>
+            <h2>📦 Option A: Debian & Ubuntu LTS</h2>
+            <p>
+                For <strong>Debian 12+</strong> and <strong>Ubuntu 24.04 LTS (and above)</strong>, we use the official repository maintained by 
+                <strong>Ondřej Surý</strong>. This is the global standard for modern PHP on Apt-based systems.
+            </p>
             
             <div class="terminal-block">
                 <code># 1. Update system and install dependencies
 sudo apt update && sudo apt install -y lsb-release ca-certificates curl
 
 # 2. Add the official PHP repository GPG key
+# (For Ubuntu, this also enables the official PHP PPA)
 sudo curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
 
 # 3. Add the repository to your sources list
