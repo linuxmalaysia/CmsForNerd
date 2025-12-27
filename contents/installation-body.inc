@@ -48,9 +48,19 @@
     <li><strong>Local Server:</strong> <a href="https://www.apachefriends.org/" target="_blank">XAMPP</a> or <a href="https://laragon.org/" target="_blank">Laragon</a> for testing on your PC.</li>
 </ul>
 
+<h3>Security Features (v3.1)</h3>
+<p>
     <strong>CMSForNerd v3.1</strong> includes strict input validation and <strong>Cloudflare Turnstile</strong> support. 
     To enable Bot Protection on your forms, edit <code>includes/turnstile.php</code> and add your API keys.
 </p>
+
+<h3>Advanced: Theme Development (PHP 8.4)</h3>
+<p>
+    When building themes, we now use the <strong>Context Object</strong> pattern for clean, object-oriented inclusions:
+</p>
+<pre><code>// NEW (PHP 8.4 with Context Object)
+include "themes/{$ctx->themeName}/header.tpl";
+</code></pre>
 
 <h3>Maintenance Note</h3>
 <p>

@@ -91,7 +91,7 @@ $ctx = new CmsForNerd\CmsContext(
 
 // Define all the function needed call from theme
 
-include("themes/$THEMENAME/pager.php");
+include "themes/{$ctx->themeName}/pager.php";
 
 //function define in theme diretory theme.php
 //to change theme.php for page layout
