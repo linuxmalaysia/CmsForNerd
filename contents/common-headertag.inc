@@ -20,6 +20,30 @@
 <!-- [SEMANTIC WEB] RDF Metadata - Machine-readable site classification for AI and search engines. -->
 <link rel="meta" type="application/rdf+xml" title="Site Metadata" href="labels.rdf">
 
+<!-- [AI/SEO] JSON-LD Structured Data - 2025 gold standard for Google, Gemini, and ChatGPT. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "<?= (strpos($CONTENT['title'] ?? '', 'Lab') !== false || strpos($CONTENT['title'] ?? '', 'Module') !== false) ? 'Course' : 'WebPage' ?>",
+  "name": "<?= htmlspecialchars($CONTENT['title'] ?? 'CMSForNerd Laboratory') ?>",
+  "description": "<?= htmlspecialchars($CONTENT['description'] ?? 'A modern PHP 8.4+ educational CMS environment.') ?>",
+  "url": "<?= htmlspecialchars($ctx->baseUrl . ($CONTENT['data'] ?? 'index.php')) ?>",
+  "provider": {
+    "@type": "Organization",
+    "name": "CMSForNerd Academy",
+    "url": "https://www.linuxmalaysia.com",
+    "sameAs": "https://github.com/CMSForNerd/CmsForNerd"
+  },
+  "educationalLevel": "Beginner to Intermediate",
+  "teaches": ["PHP 8.4+", "PSR-12 Standards", "Security Engineering", "AI-Assisted Development"],
+  "competencyRequired": ["PHP 8.4", "VS Code", "Git", "Composer"],
+  "interactivityType": "active",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html"
+}
+</script>
+
 <!-- [UX/SEO] Modern Typography from Google Fonts. 'preconnect' speeds up loading. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
