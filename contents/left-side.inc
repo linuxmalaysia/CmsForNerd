@@ -3,45 +3,46 @@
 <div align="left" class="buttons"> 
 
 <a href="index.php">Home</a>
-<a href="http://cmsfornerd.harisfazillah.info/">CmsForNerd</a>
-<a href="http://cmsfornerd.harisfazillah.info/cmsfornerdv1.zip">Download</a>
-<a href="template.php">CmsForNerd Template</a>
-<a href="http://cmsfornerd.harisfazillah.info/">CmsForNerd Download</a>
+<a href="https://www.linuxmalaysia.com">CmsForNerd</a>
+<a href="https://github.com/CMSForNerd/CmsForNerd/archive/refs/heads/master.zip">Download</a>
+<a href="template.php">🎨 Template Guide</a>
+<a href="sitemap-page.php">CmsForNerd Sitemap</a>
 <a href="installation.php">CmsForNerd Installation</a>
-<a href="http://cmsfornerd.perempuanmelayu.info/">CmsForNerd Blog</a>
+<a href="windows-setup.php">🪟 Windows 11 Setup (Herd)</a>
+<a href="welcome-kit.php">🚀 Student Welcome Kit</a>
+<a href="history.php">Modernization History</a>
+<a href="lab-manual.php">🎓 Lab Manual</a>
+<a href="ai-dev.php">🤖 AI Development</a>
+<a href="final-exam.php">🚩 Final Exam</a>
+<a href="graduation.php">🏁 Graduation</a>
+<a href="https://www.linuxmalaysia.com">CmsForNerd Blog</a>
 
 </div>
 
 </div>
 
-<br />
+<br>
 
 <h3>E-Mail</h3>
  
-<br />			
+<br>			
 
 <h3>Joint Us</h3>
 
-<div style="text-align: center; font-family: Verdana;">
-
-<table style="background-color: #fff; padding: 5px;" cellspacing="0">
-  <tr><td>
-  <img src="http://groups.google.com/groups/img/3nb/groups_bar.gif"
-         height="26" width="132" alt="Google Groups">
-  </td></tr>
-  <tr><td style="padding-left: 5px;font-size: 125%">
-  <b>cmsfornerd</b>
-  </td></tr>
-  <tr><td style="padding-left: 5px">
-  <a href="http://groups.google.com/group/cmsfornerd">Visit this group</a>
-  </td></tr>
-</table>
-
-</div>
+<aside class="group-box">
+    <span class="group-title">Community</span>
+    <p style="font-size: 0.8em; color: #666;">Join the <strong>cmsfornerd</strong> discussion group.</p>
+    <a href="https://groups.google.com/group/cmsfornerd" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="btn-google-group">
+       Visit Group
+    </a>
+</aside>
 
 <h3>Get Updates</h3>
 
-<br />
+<br>
 
 
 

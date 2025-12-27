@@ -1,61 +1,43 @@
 <?php
 
-// This is the script that give the file name without extension .php
-// and pass it to others.
+declare(strict_types=1);
 
-
-// CmsForNerd 
-// Idea from drupal and xampp and some codes from them
-// License GNU Public License V2
-// Harisfazillah Jamel v 1.1 7 Feb 2006 linuxmalaysia @ gmail dot com
-// Harisfazillah Jamel v 1.2 18 November 2007 linuxmalaysia @ gmail dot com
-// For http://cmsfornerd.perempuanmelayu.info/
-// http://cmsfornerd.harisfazillah.info/
-// For small site without database just pure php html xml code
-// Remember all page copy this and please check the local
-// theme or lang overwrite
-
-// The only thing need to change is the Title
-
-// The contents of the page will be in contents/
-// and with name ???-body.inc
-
+// [PEFORMANCE] output buffering (ob_gzhandler) RECOMMENDED to compress pages.
 ob_start("ob_gzhandler");
 
-$CONTENT['title']="Installation Of CmsForNerd A Content Management Software For Nerd";
-$CONTENT['author']="Wanita";
-$CONTENT['description']="Installation guide for CmsForNerd a content management software (CMS) for nerd.";
-$CONTENT['keywords']="CmsForNerd, CMS, HTML, PHP";
+// [MODERN PHP] Composer Autoloader - REQUIRED for modern dependency management.
+require_once __DIR__ . '/vendor/autoload.php';
 
-// Ini untuk kalau masukkan ikut web browser
-//$CONTENT['data']=basename($_SERVER['QUERY_STRING']);
+$CONTENT['title'] = "Installation Of CmsForNerd A Content Management Software For Nerd";
+$CONTENT['author'] = "CMSForNerd";
+$CONTENT['description'] = "Installation guide for CmsForNerd a content management software (CMS) for nerd.";
+$CONTENT['keywords'] = "CmsForNerd, CMS, HTML, PHP";
 
-//We read the script name
+// [ROUTING] determine which file to load
+$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
+$DATAFILE = explode(".", $CONTENT['data']);
 
-$CONTENT['data']=basename($_SERVER['SCRIPT_NAME']);
+// [STRUCTURE] Include global settings and core functions
+include "includes/global-control.inc.php";
+include "includes/common.inc.php";
 
+// [MODERN PHP] CmsContext - State management MUST use this object.
+$ctx = new CmsForNerd\CmsContext(
+    content: $CONTENT,
+    themeName: $THEMENAME,
+    cssPath: $CSSPATH,
+    dataFile: $DATAFILE,
+    scriptName: $CONTENT['data']
+);
 
-$DATAFILE = explode(".",$CONTENT['data']);
+// [STRUCTURE] Load the theme's controller
+include "themes/{$ctx->themeName}/pager.php";
 
+// [SECURITY] Cloudflare Turnstile - Bot protection MUST be verified for POST requests.
+require_once 'includes/turnstile.php';
 
-// Just in case
-if (empty($CONTENT['data'])) {
-$CONTENT['data']="empty";
-}
+// [RENDER] Main entry point MUST call pager().
+pager($ctx);
 
-
-include("includes/global-control.inc.php");
-include("includes/common.inc.php");
-
-// Define all the function needed call from theme
-
-include("themes/$THEMENAME/pager.php");
-
-//function define in theme diretory theme.php
-//to change theme.php for page layout
-
-pager();
-
+// [PERFORMANCE] Release the buffer
 ob_end_flush();
-
-?>
