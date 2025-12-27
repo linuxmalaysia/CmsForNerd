@@ -27,12 +27,12 @@ class SecurityUtils
      * [SECURITY] Sanitize the page parameter to prevent directory traversal.
      * Requirement: The 'page' parameter MUST be sanitized using preg_replace.
      *
-     * @param string $page
+     * @param string $pageName
      * @return string
      */
-    public static function sanitizePage(string $page): string
+    public static function sanitizePageName(string $pageName): string
     {
         // [RFC 2119] Requirement: MUST be sanitized using preg_replace.
-        return preg_replace('/[^a-zA-Z0-9_\-]/', '', $page);
+        return preg_replace('/[^a-zA-Z0-9_\-]/', '', $pageName);
     }
 }

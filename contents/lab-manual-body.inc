@@ -43,6 +43,7 @@
         <div class="lab-box">
             <h3>Lab: The LFI Challenge</h3>
             <p>We intentionally provide a "Safe Loader" in <code>index.php</code>. Students are challenged to attempt a <strong>Directory Traversal</strong> attack to understand why regex sanitization is a <strong>MUST</strong>.</p>
+            <p><a href="lab-module3.php" class="btn">📝 Open Student Worksheet: Module 3</a></p>
         </div>
         <div class="lab-box">
             <h3>Lab: Header Hardening</h3>

@@ -79,6 +79,7 @@
             This interactive guide provides students with specific exercises in modern architecture, security, 
             and testing, solidifying the CMS's role as a learning laboratory.
         </p>
+        <p><strong>Worksheets:</strong> Added <em>Module 3 Worksheet</em> focusing on Path Traversal and Defensive Engineering.</p>
     </section>
 
     <p class="footer-note">
