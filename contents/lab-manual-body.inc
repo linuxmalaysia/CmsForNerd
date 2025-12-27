@@ -100,7 +100,7 @@
         <h2>📝 The History of v3.1: A Modernization Case Study</h2>
         <p>CMSForNerd v3.1 isn't just a version; it's a <strong>Modernization Journey</strong>.</p>
         <ol>
-            <li><strong>Phase 1:</strong> Refactored the 2005 foundation into PHP 8.4+ classes with PHP 9 readiness.</li>
+            <li><strong>Phase 1:</strong> Refactored the 2005 foundation into PHP 8.4+ classes with PHP 9 readiness. See the <a href="template.php">Template Guide</a>.</li>
             <li><strong>Phase 2:</strong> Standardized the UI with CSS Grid (replacing legacy float-based layouts).</li>
             <li><strong>Phase 3:</strong> Hardened the perimeter with Cloudflare Turnstile and <code>SecurityUtils</code>.</li>
             <li><strong>Phase 4:</strong> Automated the workflow with PHPUnit and <code>PHP_CodeSniffer</code>.</li>
