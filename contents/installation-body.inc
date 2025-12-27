@@ -6,7 +6,7 @@
 </p>
 <p>
     We built <strong>CMSForNerd framework</strong> to help users learn the fundamentals of <strong>HTML5, CSS3, and Modern PHP (8.4+)</strong>.
-    It includes built-in security features like Cloudflare Turnstile integration and directory traversal protection.
+    The v3.1 modernization was achieved through <strong>AI-Assisted Coding</strong> using <strong>Google Antigravity</strong>, ensuring a secure and efficient codebase.
 </p>
 
 <h3>Requirements</h3>
@@ -44,8 +44,9 @@
 <p>Coding and maintaining a flat-file site is easier with the right tools:</p>
 <ul>
     <li><strong>Code Editor:</strong> <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code (VS Code)</a>, <a href="https://www.sublimetext.com/" target="_blank">Sublime Text</a>, or <a href="https://notepad-plus-plus.org/" target="_blank">Notepad++</a>.</li>
-    <li><strong>File Transfer:</strong> <a href="https://filezilla-project.org/" target="_blank">FileZilla</a> or <a href="https://winscp.net/" target="_blank">WinSCP</a> for uploading files.</li>
-    <li><strong>Local Server:</strong> <a href="https://www.apachefriends.org/" target="_blank">XAMPP</a> or <a href="https://laragon.org/" target="_blank">Laragon</a> for testing on your PC.</li>
+    <li><strong>File Transfer:</strong> <a href="https://filezilla-project.org/" target="_blank">FileZilla</a> or <a href="https://winscp.net/" target="_blank">WinSCP</a>.</li>
+    <li><strong>Local Server:</strong> <a href="https://herd.laravel.com/" target="_blank">Laravel Herd</a> (Recommended), <a href="https://www.apachefriends.org/" target="_blank">XAMPP</a>, or <a href="https://laragon.org/" target="_blank">Laragon</a>.</li>
+    <li><strong>Debugging:</strong> <a href="https://www.mozilla.org/firefox/developer/" target="_blank">Mozilla Firefox Developer Tools</a> for HTML5 validation and CSS Grid debugging.</li>
 </ul>
 
 <h3>Security Features (v3.1)</h3>
@@ -68,6 +69,6 @@ include "themes/{$ctx->themeName}/header.tpl";
 </p>
 
 <p>
-    <em>All changes have been committed and pushed to your GitHub repository. It has been a pleasure modernizing this "Radically Simple" CMS with you!</em>
+    <em>All changes have been committed and pushed to your GitHub repository. It has been a pleasure modernizing this "Radically Simple" CMS using <strong>Google Antigravity</strong>!</em>
 </p>
 
