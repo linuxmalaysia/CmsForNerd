@@ -17,23 +17,48 @@
 <!-- Favicon - The small icon you see in the browser tab. -->
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+<!-- [SEMANTIC WEB] RDF Metadata - Machine-readable site classification for AI and search engines. -->
+<link rel="meta" type="application/rdf+xml" title="Site Metadata" href="labels.rdf">
+
+<!-- [AI/SEO] Schema.org Image for Rich Cards/Previews -->
+<meta itemprop="image" content="<?= $ctx->baseUrl ?>images/cmsfornerd-logo.png">
+<meta itemprop="description" content="<?= htmlspecialchars($CONTENT['description'] ?? 'A modern PHP 8.4+ educational CMS environment.') ?>">
+
+<!-- [AI/SEO] JSON-LD Structured Data - 2025 gold standard for Google, Gemini, and ChatGPT. -->
+<script type="application/ld+json" nonce="<?= $ctx->cspNonce ?>">
+{
+  "@context": "https://schema.org",
+  "@type": "<?= (strpos($CONTENT['title'] ?? '', 'Lab') !== false || strpos($CONTENT['title'] ?? '', 'Module') !== false) ? 'Course' : 'WebPage' ?>",
+  "name": "<?= htmlspecialchars($CONTENT['title'] ?? 'CMSForNerd Laboratory') ?>",
+  "description": "<?= htmlspecialchars($CONTENT['description'] ?? 'A modern PHP 8.4+ educational CMS environment.') ?>",
+  "url": "<?= htmlspecialchars($ctx->baseUrl . ($CONTENT['data'] ?? 'index.php')) ?>",
+  "provider": {
+    "@type": "Organization",
+    "name": "CMSForNerd Academy",
+    "url": "https://www.linuxmalaysia.com",
+    "sameAs": "https://github.com/CMSForNerd/CmsForNerd"
+  },
+  "educationalLevel": "Beginner to Intermediate",
+  "teaches": ["PHP 8.4+", "PSR-12 Standards", "Security Engineering", "AI-Assisted Development"],
+  "competencyRequired": ["PHP 8.4", "VS Code", "Git", "Composer"],
+  "interactivityType": "active",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "license": "https://www.gnu.org/licenses/gpl-3.0.html"
+}
+</script>
+
 <!-- [UX/SEO] Modern Typography from Google Fonts. 'preconnect' speeds up loading. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-<!-- [SECURITY] Content Security Policy (CSP). 
-     This is your "Force Field". It tells the browser EXACTLY which domains (like Cloudflare or Google Fonts)
-     are allowed to load scripts or images. If a hacker tries to inject their own script, the CSP will block it. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://*.ipinfo.io https://www.google.com https://fonts.googleapis.com; img-src 'self' data: https: https://www.google.com https://groups.google.com https://www.rorweb.com; font-src 'self' https: data: https://fonts.gstatic.com;">
+<!-- [SECURITY] Content Security Policy (CSP) with Nonce.
+     Instead of 'unsafe-inline' (dangerous), we use a cryptographically random nonce that changes every page load.
+     Only scripts with this exact nonce are allowed to execute, preventing XSS attacks. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-<?= $ctx->cspNonce ?>' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://*.ipinfo.io;">
 
-<!-- RSS Feed (If applicable) -->
-<!-- <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="xml-sitemap.php"> -->
-<meta charset="utf-8" />
-<link href="http://cmsfornerd.harisfazillah.info/favicon.ico" type="image/x-icon" rel="shortcut icon" />
-<link href="http://cmsfornerd.harisfazillah.info/favicon.ico" type="image/x-icon" rel="icon" />
-<link rel="shortcut icon" href="http://cmsfornerd.harisfazillah.info/favicon.ico" />
-<link rel="alternate" type="application/rss+xml" title="CmsForNerd SiteMap Feed" href="http://cmsfornerd.harisfazillah.info/rss.xml" />
-<link rel="alternate" type="application/rss+xml" title="CmsForNerd ROR Sitemap" href="http://cmsfornerd.harisfazillah.info/ror.xml" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- RSS Feed & Sitemap Discovery -->
+<link rel="alternate" type="application/rss+xml" title="CmsForNerd SiteMap Feed" href="<?= $ctx->baseUrl ?>rss.xml" />
+<link rel="alternate" type="application/rss+xml" title="CmsForNerd ROR Sitemap" href="<?= $ctx->baseUrl ?>ror.xml" />
 <meta http-equiv="Content-Language" content="EN" />

@@ -10,6 +10,23 @@ CmsForNerd is a database-free Content Management System designed as a live learn
 
 ---
 
+## 🛠️ Tech Stack
+
+### Development Environment
+*   **IDE:** [Google Antigravity](https://deepmind.google/technologies/gemini/) (AI-native coding) or [VS Code](https://code.visualstudio.com/)
+*   **Terminal:** Google Antigravity Terminal (PowerShell with AI integration)
+*   **Engine:** PHP 8.4+ via [Laravel Herd](https://herd.laravel.com) (Windows) or native package managers (Linux)
+*   **Server:** Nginx Latest (recommended) or Apache 2.4+
+*   **Browser:** [Mozilla Firefox](https://www.mozilla.org/firefox/) (for testing strict privacy and modern web standards)
+
+### Development Tools
+*   **Package Manager:** Composer 2.7+
+*   **Testing:** PHPUnit 11.5+
+*   **Linting:** PHP_CodeSniffer 3.11+ (PSR-12 enforcement)
+*   **Version Control:** Git with GitHub integration
+
+---
+
 ## 🚀 Key Features (v3.1)
 *   **PHP 8.4+ & PHP 9 Ready**: Optimized for Property Hooks, Class Constants, and Strict Types.
 *   **Context Architecture**: Uses the `CmsContext` object pattern to eliminate legacy global variables.

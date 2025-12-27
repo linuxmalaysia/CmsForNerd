@@ -37,6 +37,15 @@
             </li>
             <li><strong>PSR-12 Linting:</strong> Use the integrated <code>composer check-style</code> command to identify and fix visual inconsistencies in your code.</li>
         </ul>
+        <div class="exercise">
+            <h3>Exercise 2.3: Semantic Web Metadata</h3>
+            <p>Understand how <strong>RDF</strong> and <strong>JSON-LD</strong> help AI tools categorize your educational content.</p>
+            <ul>
+                <li>View <code>labels.rdf</code> to see Dublin Core metadata (legacy W3C standard).</li>
+                <li>Examine <code>common-headertag.inc</code> to see dynamic JSON-LD generation using Schema.org.</li>
+                <li><strong>Verification:</strong> Use <a href="https://validator.schema.org/" target="_blank">Google's Structured Data Testing Tool</a> to validate your JSON-LD.</li>
+            </ul>
+        </div>
     </section>
 
     <section class="module">
@@ -48,8 +57,14 @@
             <p><a href="lab-module3.php" class="btn">📝 Open Student Worksheet: Module 3</a></p>
         </div>
         <div class="lab-box">
-            <h3>Lab: Header Hardening</h3>
-            <p>Learn to configure the Content Security Policy (CSP) to block malicious scripts, turning the browser into a security ally.</p>
+            <h3>Lab 3.2: CSP Nonces (2025 Best Practice)</h3>
+            <p>Learn to configure the Content Security Policy (CSP) with <strong>cryptographic nonces</strong> instead of dangerous <code>'unsafe-inline'</code> directives.</p>
+            <ul>
+                <li><strong>Concept:</strong> A nonce is a "number used once" - a random token that changes every page load.</li>
+                <li><strong>Implementation:</strong> Review how <code>SecurityUtils::generateNonce()</code> creates cryptographically secure tokens.</li>
+                <li><strong>Exercise:</strong> Inspect the CSP header and find the <code>nonce-XXXXX</code> value. Compare it to the <code>&lt;script nonce=&quot;....&quot;&gt;</code> in your JSON-LD block.</li>
+                <li><strong>Challenge:</strong> Try injecting a script without a nonce using browser DevTools - observe how CSP blocks it.</li>
+            </ul>
         </div>
         <div class="lab-box security-disclosure">
             <h3>Module 3.5: Responsible Disclosure (RFC 9116)</h3>
@@ -88,9 +103,28 @@
         <h2>🤖 Laboratory Module 6: AI-Assisted Workflow</h2>
         <p>Learn to lead an "AI Agent" as your junior developer. Master the Prompt-to-Product methodology.</p>
         <div class="exercise">
-            <h3>Exercise: The Agentic Challenge</h3>
+            <h3>Exercise 6.1: The Agentic Challenge</h3>
             <p>Use Gemini/Antigravity to create a new page defined by a single sentence. Review the implementation plan and verify the automated build.</p>
             <p><a href="ai-dev.php" class="btn">🚀 Open AI Dev Guide</a></p>
+        </div>
+        <div class="exercise">
+            <h3>Exercise 6.2: AI Ethics & Responsible Usage</h3>
+            <p>Study the <strong>Standard Operating Procedure #2025-01</strong> for ethical AI integration.</p>
+            <ul>
+                <li>Read the <a href="ai-sop.php">📜 AI Ethics SOP</a> to understand the "Think First" rule and "Trust but Verify" law.</li>
+                <li><strong>Practice:</strong> Before asking AI for help, attempt problem-solving for 10 minutes using existing documentation.</li>
+                <li><strong>Verification Loop:</strong> Always run <code>composer compliance</code> on AI-generated code before merging.</li>
+            </ul>
+        </div>
+        <div class="exercise">
+            <h3>Exercise 6.3: Cross-Platform Configuration</h3>
+            <p>Learn how to make your project AI-aware and portable across Windows/Linux environments.</p>
+            <ul>
+                <li>Examine <code>.cursorrules</code> - the "AI Configuration File" that teaches ChatGPT/Gemini your project standards.</li>
+                <li>Review <code>.vscode/settings.json</code> - note how it avoids hardcoded paths for cross-platform safety.</li>
+                <li>Check <code>.gitattributes</code> - ensures GitHub recognizes <code>.inc</code> files as PHP.</li>
+                <li><strong>Outcome:</strong> Your project is now "AI-native" and works seamlessly on any development environment.</li>
+            </ul>
         </div>
     </section>
 
@@ -115,6 +149,7 @@
             <li><strong>Phase 3:</strong> Hardened the perimeter with Cloudflare Turnstile and <code>SecurityUtils</code>.</li>
             <li><strong>Phase 4:</strong> Automated the workflow with PHPUnit and <code>PHP_CodeSniffer</code>.</li>
             <li><strong>Phase 5:</strong> Visualized quality with Code Coverage and the CRAP index.</li>
+            <li><strong>Phase 6:</strong> Integrated AI-native configuration (<code>.cursorrules</code>, JSON-LD, CSP nonces) for 2025 standards.</li>
         </ol>
         <div class="graduation-cta">
             <h3>🎓 Ready to Graduate?</h3>

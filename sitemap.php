@@ -10,11 +10,9 @@ use CmsForNerd\CmsContext;
 
 $ctx = new CmsContext();
 
-// [ROUTING] Sitemaps REQUIRE full URLs (e.g., https://example.com/page.php).
-$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
-$host = $_SERVER['HTTP_HOST'];
-$path = dirname($_SERVER['PHP_SELF']);
-$baseUrl = "$protocol://$host" . rtrim($path, '/\\') . '/';
+// [SEO] Sitemaps REQUIRE full URLs (e.g., https://example.com/page.php).
+// The baseUrl is automatically detected by the CmsContext.
+$baseUrl = $ctx->baseUrl;
 
 // [SEO] Sitemaps MUST be served with the correct "Content-Type" (application/xml).
 header("Content-Type: application/xml; charset=utf-8");

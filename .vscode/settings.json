@@ -1,0 +1,46 @@
+{
+    "php.validate.executablePath": "",
+    "php.suggest.basic": false,
+    "intelephense.environment.phpVersion": "8.4.0",
+    "intelephense.stubs": [
+        "apache",
+        "bcmath",
+        "Core",
+        "ctype",
+        "curl",
+        "date",
+        "dom",
+        "fileinfo",
+        "filter",
+        "gd",
+        "hash",
+        "iconv",
+        "json",
+        "libxml",
+        "mbstring",
+        "mysqli",
+        "mysqlnd",
+        "openssl",
+        "pcre",
+        "PDO",
+        "Phar",
+        "session",
+        "SimpleXML",
+        "standard",
+        "tokenizer",
+        "xml",
+        "xmlreader",
+        "xmlwriter",
+        "zip",
+        "zlib"
+    ],
+    "files.associations": {
+        "*.inc": "php"
+    },
+    "phpcs.enable": true,
+    "phpcs.standard": "PSR12",
+    "editor.formatOnSave": false,
+    "[php]": {
+        "editor.formatOnSave": false
+    }
+}

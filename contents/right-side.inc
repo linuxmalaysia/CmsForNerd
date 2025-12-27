@@ -24,8 +24,7 @@
 <br>
 
 
-
-<a href="https://addons.mozilla.org/en-US/firefox/addon/html-validator/" target="_blank">
+<a href="https://github.com/htacg/tidy-html5" target="_blank" rel="noopener noreferrer">
   <img src="images/tidy.png"
   alt="Validated by HTML Validator (based on Tidy)" style="height: 16px; width: 39px; border: 0;">
 </a>

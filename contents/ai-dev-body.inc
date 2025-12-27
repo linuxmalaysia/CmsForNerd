@@ -46,6 +46,53 @@
         </ol>
     </section>
 
+    <section class="semantic-strategy">
+        <h2>🌐 The "Triple Threat" AI Discovery Strategy</h2>
+        <p>CMSForNerd uses <strong>three complementary layers</strong> to ensure AI tools (Gemini, ChatGPT, Perplexity) accurately understand and categorize your content:</p>
+        
+        <div class="threat-grid">
+            <div class="threat-card">
+                <h3>1️⃣ Microdata (Immediate)</h3>
+                <p class="tech-detail">HTML tag attributes</p>
+                <div class="code-snippet">
+                    <code>&lt;html itemscope itemtype="https://schema.org/WebPage"&gt;</code>
+                </div>
+                <p><strong>Why:</strong> AI sees classification on line 1 of your HTML!</p>
+            </div>
+
+            <div class="threat-card">
+                <h3>2️⃣ JSON-LD (Detailed)</h3>
+                <p class="tech-detail">Structured data in &lt;script&gt; tag</p>
+                <div class="code-snippet">
+                    <code>{ "@type": "Course", "provider": {...} }</code>
+                </div>
+                <p><strong>Why:</strong> Google creates Rich Cards/Rich Results from this.</p>
+            </div>
+
+            <div class="threat-card">
+                <h3>3️⃣ RDF (Formal)</h3>
+                <p class="tech-detail">labels.rdf with Dublin Core</p>
+                <div class="code-snippet">
+                    <code>&lt;dc:creator&gt;Harisfazillah Jamel&lt;/dc:creator&gt;</code>
+                </div>
+                <p><strong>Why:</strong> W3C-compliant semantic web relationships.</p>
+            </div>
+        </div>
+
+        <div class="implementation-tip">
+            <h4>💡 For Students: Override Schema Type</h4>
+            <p>When creating new pages, you can specify a more specific Schema.org type:</p>
+            <div class="code-example">
+                <pre><code>&lt;?php
+// In your page entry point (e.g., gallery.php)
+$CONTENT['schemaType'] = 'ImageGallery'; // Instead of generic 'WebPage'
+$CONTENT['lang'] = 'ms'; // Set language to Malay
+?&gt;</code></pre>
+            </div>
+            <p><strong>Result:</strong> AI instantly knows this is a photo gallery in Malay language!</p>
+        </div>
+    </section>
+
     <section class="standards-warning">
         <h2>⚖️ The "Good AI Citizen" Rules</h2>
         <ul>
@@ -56,7 +103,8 @@
     </section>
 
     <nav class="footer-nav">
-        <p>Ready to try it? Description your next module in the chat right now!</p>
+        <p>Ready to try it? Describe your next module in the chat right now!</p>
+        <p><strong>Important:</strong> Read the <a href="ai-sop.php">📜 AI Ethics SOP</a> to ensure responsible AI usage.</p>
         <a href="lab-manual.php" class="btn">Return to Lab Manual</a>
     </nav>
 </article>
