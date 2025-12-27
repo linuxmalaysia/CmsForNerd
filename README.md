@@ -70,6 +70,7 @@ To enable **Cloudflare Turnstile**:
 
 **Links:**
 *   Website: [https://www.linuxmalaysia.com](https://www.linuxmalaysia.com)
+*   GitHub Repository: [https://github.com/CMSForNerd/CmsForNerd](https://github.com/CMSForNerd/CmsForNerd)
 
 ---
 

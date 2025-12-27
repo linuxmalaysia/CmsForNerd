@@ -18,7 +18,7 @@
 
 <h3>Installation</h3>
 <ol>
-    <li>Download the latest release zip/tarball.</li>
+    <li>Download the latest release zip/tarball from our <a href="https://github.com/CMSForNerd/CmsForNerd" target="_blank">GitHub Repository</a>.</li>
     <li>Extract the contents to your web server's public directory (e.g., <code>public_html</code> or <code>www</code>).</li>
     <li>Ensure permissions are set correctly (typically 755 for directories, 644 for files).</li>
     <li>Open <code>includes/global-control.inc.php</code> to configure your site name and theme.</li>
