@@ -1,89 +1,102 @@
 <article class="lab-worksheet">
     <h1>Student Lab Worksheet: Module 3</h1>
-    <p class="subtitle">Topic: Defensive Engineering & Path Traversal</p>
+    <p class="subtitle">Topic: Defensive Engineering & Perimeter Security</p>
 
     <div class="requirement-alert">
-        <strong>Requirement Level:</strong> Students <strong>MUST</strong> complete all steps to achieve "Green-Light" status.
+        <strong>Requirement Level:</strong> Students <strong>MUST</strong> successfully implement a "Level 2" CSP and secure the file loader to achieve "Green-Light" status.
     </div>
 
     <section class="objectives">
         <h2>🎯 Learning Objectives</h2>
         <ul>
-            <li>Understand the "Dot-Dot-Slash" (<code>../</code>) attack vector.</li>
-            <li>Implement an allowlist-based sanitization function.</li>
-            <li>Verify defenses using the Security Testing methodology.</li>
+            <li>Understand <strong>Defense-in-Depth</strong> strategies.</li>
+            <li>Eliminate <strong>Path Traversal</strong> vulnerabilities using allowlist sanitization.</li>
+            <li>Configure a <strong>Content Security Policy (CSP)</strong> to neutralize XSS.</li>
+            <li>Implement <strong>Bot Defense</strong> using Cloudflare Turnstile.</li>
         </ul>
     </section>
 
     <section class="step">
-        <h2>🧪 Step 1: The Vulnerability (The "Before" State)</h2>
-        <p>In legacy versions of CMSForNerd, the code used to load pages like this:</p>
+        <h2>🧱 Step 1: The "Defense-in-Depth" Concept</h2>
+        <p>Security is like an onion. If one layer fails, another must catch the attacker. In CmsForNerd, we use three primary layers:</p>
+        <ol>
+            <li><strong>The Code Layer:</strong> Sanitizing inputs (e.g., using <code>SecurityUtils</code>).</li>
+            <li><strong>The Browser Layer:</strong> Using CSP to tell the browser what scripts to trust.</li>
+            <li><strong>The Network Layer:</strong> Using Turnstile to block automated bots.</li>
+        </ol>
+    </section>
+
+    <section class="step">
+        <h2>🧪 Step 2: Input Hardening (Path Traversal)</h2>
+        <p>In legacy versions of CMSForNerd, the code was vulnerable to <strong>Dot-Dot-Slash (../)</strong> attacks:</p>
         <div class="code-block legacy">
             <pre><code>// VULNERABLE CODE - DO NOT USE
 $page = $_GET['page'];
 include "contents/" . $page . ".php";</code></pre>
         </div>
-        <p>
-            <strong>The Attack:</strong> An attacker uses the URL <code>index.php?page=../../../../etc/passwd</code>. 
-            <strong>The Result:</strong> The server "traverses" up from <code>/contents</code>, into the system root, 
-            and displays the server's private password file.
-        </p>
-    </section>
-
-    <section class="step">
-        <h2>🛠️ Step 2: Implementing the "Bunker" Defense</h2>
-        <p>
-            You will now implement the <code>SecurityUtils</code> method we discussed. 
-            This uses a <strong>Positive Security Model</strong> (Allowing only what is known to be good).
-        </p>
-        <p><strong>Task:</strong> Open <code>includes/SecurityUtils.php</code> and ensure the <code>sanitizePageName</code> method is active.</p>
+        <p><strong>Exercise:</strong> Open <code>includes/SecurityUtils.php</code> and ensure <code>sanitizePageName()</code> is used in <code>index.php</code> to neutralize non-alphanumeric characters.</p>
         <div class="code-block modern">
             <pre><code>public static function sanitizePageName(string $pageName): string
 {
     // MUST: Only allow alphanumeric characters and hyphens.
-    // This effectively 'neutralizes' dots (.) and slashes (/).
     return preg_replace('/[^a-zA-Z0-9\-]/', '', $pageName);
 }</code></pre>
         </div>
     </section>
 
     <section class="step">
-        <h2>🧪 Step 3: The Lab Exercise (Hands-On)</h2>
-        
-        <h3>Exercise 3.1: The "Manual Bypass" Attempt</h3>
-        <ol>
-            <li>Open your browser to your local CMSForNerd installation.</li>
-            <li>Try to "break out" by entering this URL: <code>http://localhost/index.php?page=../index</code></li>
-            <li><strong>Observe:</strong> The CMS should reload the homepage or show a 404. It <strong>MUST NOT</strong> include the file from the parent directory.</li>
-        </ol>
-
-        <h3>Exercise 3.2: Code Analysis</h3>
-        <p>Look at the output of your <code>index.php</code> after the sanitization.</p>
-        <ul>
-            <li><strong>Input:</strong> <code>../../secret</code></li>
-            <li><strong>Sanitized Output:</strong> <code>secret</code></li>
-            <li><strong>Final Path:</strong> <code>contents/secret.php</code> (Which does not exist, triggering a safe 404).</li>
-        </ul>
+        <h2>🧪 Step 3: Neutralizing XSS with CSP</h2>
+        <p>Even if an attacker injects a malicious script, a strong <strong>Content Security Policy</strong> can block its execution.</p>
+        <p><strong>Task:</strong> Open <code>themes/CmsForNerd/bodytop.tpl</code> and locate the CSP meta tag. Update it to <strong>MUST NOT</strong> allow scripts from untrusted domains.</p>
+        <div class="code-block html">
+            <pre><code>&lt;meta http-equiv="Content-Security-Policy" content="
+    default-src 'self'; 
+    script-src 'self' https://challenges.cloudflare.com;
+    style-src 'self' 'unsafe-inline';
+"&gt;</code></pre>
+        </div>
     </section>
 
     <section class="step">
-        <h2>✅ Step 4: Verification (The "Green-Light" Test)</h2>
-        <p>Run the following command in your terminal to prove your defense is working programmatically:</p>
-        <div class="terminal-block">
-            <code>./vendor/bin/phpunit --filter it_prevents_directory_traversal_attacks</code>
-        </div>
+        <h2>🤖 Step 4: Implementing Turnstile (Bot Defense)</h2>
+        <p>We use <strong>Cloudflare Turnstile</strong> to verify "humanness" without frustrating users with traditional CAPTCHAs.</p>
+        <p><strong>Task:</strong> Integrate the Turnstile widget.</p>
+        <ol>
+            <li>Add the API script to your <code>&lt;head&gt;</code>:
+                <div class="code-block html"><code>&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer&gt;&lt;/script&gt;</code></div>
+            </li>
+            <li>Place the widget inside your <code>&lt;form&gt;</code>:
+                <div class="code-block html"><code>&lt;div class="cf-turnstile" data-sitekey="your-site-key"&gt;&lt;/div&gt;</code></div>
+            </li>
+        </ol>
+    </section>
+
+    <section class="step">
+        <h2>✅ Step 5: The "Attack & Defend" Audit</h2>
+        
+        <h3>5.1: Programmatic Defense</h3>
+        <p>Run the test suite to verify Path Traversal protection:</p>
+        <div class="terminal-block"><code>./vendor/bin/phpunit --filter it_prevents_directory_traversal_attacks</code></div>
+
+        <h3>5.2: Perimeter Testing</h3>
+        <ol>
+            <li>Try to inject an external image: <code>&lt;img src="http://evil.com/trap.jpg"&gt;</code>.</li>
+            <li><strong>Result:</strong> Open Browser Console (F12). You <strong>MUST</strong> see a CSP error.</li>
+        </ol>
+
         <div class="question-box">
-            <p><strong>Question for the Student:</strong> Why is <code>preg_replace</code> more secure than simply blocking the string <code>../</code>?</p>
-            <p class="hint">(Hint: Think about "Double Encoding" like <code>%252e%252e%252f</code>).</p>
+            <p><strong>Question for the Student:</strong> Why is a CSP considered a "Fail-Safe" for XSS vulnerabilities?</p>
+            <p class="hint">(Hint: What happens if you forget to use <code>escapeHtml()</code> on a user comment?)</p>
         </div>
     </section>
 
     <footer class="standards-summary">
-        <h2>🎓 Summary of RFC 2119 Standards for this Lab</h2>
+        <h2>🎓 Summary of RFC 2119 Standards for Module 3</h2>
         <ul>
-            <li><strong>MUST:</strong> Use <code>preg_replace</code> to strip non-alphanumeric characters.</li>
-            <li><strong>SHOULD:</strong> Use <code>basename()</code> as a secondary layer of defense.</li>
-            <li><strong>MAY:</strong> Log blocked attack attempts for security monitoring.</li>
+            <li><strong>MUST:</strong> All external assets (scripts/fonts) <strong>MUST</strong> be explicitly allowed in the CSP.</li>
+            <li><strong>MUST:</strong> Use <code>preg_replace</code> to strip non-alphanumeric characters from file paths.</li>
+            <li><strong>SHOULD:</strong> Avoid using <code>'unsafe-inline'</code> in your CSP whenever possible.</li>
+            <li><strong>MUST NOT:</strong> Use the <code>http://</code> protocol for external resources; only <strong>https://</strong> is permitted.</li>
         </ul>
     </footer>
 </article>

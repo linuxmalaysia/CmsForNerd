@@ -10,8 +10,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $CONTENT['title'] = "Lab Worksheet: Module 3 - CmsForNerd v3.1";
 $CONTENT['author'] = "CMSForNerd Team & Google Gemini";
-$CONTENT['description'] = "Student Lab Worksheet for Module 3: Defensive Engineering & Path Traversal. Master allowlist-based sanitization and security testing.";
-$CONTENT['keywords'] = "Security Lab, Module 3, Path Traversal, LFI, Sanitization, PHP 8.4";
+$CONTENT['description'] = "Student Lab Worksheet for Module 3: Defensive Engineering & Perimeter Security. Master Path Traversal defense, CSP configuration, and Bot Defense.";
+$CONTENT['keywords'] = "Security Lab, Module 3, Path Traversal, CSP, Turnstile, Defensive Engineering, PHP 8.4";
 
 $CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
 $DATAFILE = explode(".", $CONTENT['data']);

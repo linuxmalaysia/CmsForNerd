@@ -41,10 +41,10 @@
 
     <section class="module">
         <h2>🛡️ Laboratory Module 3: Defensive Engineering</h2>
-        <p>Security is the "Red Team vs. Blue Team" playground of CMSForNerd.</p>
+        <p>Security is the "Red Team vs. Blue Team" playground of CMSForNerd. Master both input hardening and perimeter defense.</p>
         <div class="lab-box">
-            <h3>Lab: The LFI Challenge</h3>
-            <p>We intentionally provide a "Safe Loader" in <code>index.php</code>. Students are challenged to attempt a <strong>Directory Traversal</strong> attack to understand why regex sanitization is a <strong>MUST</strong>.</p>
+            <h3>Lab: Perimeter & Path Traversal</h3>
+            <p>Students are challenged to implement <strong>Defense-in-Depth</strong> by securing the file loader and configuring a <strong>Content Security Policy (CSP)</strong>.</p>
             <p><a href="lab-module3.php" class="btn">📝 Open Student Worksheet: Module 3</a></p>
         </div>
         <div class="lab-box">
