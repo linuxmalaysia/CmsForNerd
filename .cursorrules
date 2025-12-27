@@ -1,11 +1,13 @@
 # CMSForNerd AI Context
 
 ## Development Environment
-- **Operating System:** Windows 11
-- **Terminal:** Google Antigravity (Advanced AI-powered terminal)
-- **Server:** Laravel Herd (PHP 8.4+)
+- **Operating System:** Cross-platform (Windows 11, Debian, Ubuntu, AlmaLinux, FreeBSD)
+- **Terminal:** Google Antigravity (Windows PowerShell) or Bash (Linux)
+- **Server:** Laravel Herd (Windows) or native PHP-FPM + Nginx (Linux)
 - **Editor:** Google Antigravity / VS Code with PHP Intelephense
 - **Browser:** Mozilla Firefox (for testing strict privacy and modern web standards)
+
+**Path Safety:** All file operations use forward slashes `/` and `DIRECTORY_SEPARATOR` for cross-platform compatibility.
 
 ## Project Standards
 - **Coding Standard:** PSR-12 (enforced via PHP_CodeSniffer)
