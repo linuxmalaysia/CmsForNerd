@@ -33,6 +33,10 @@
         Includes <a href="https://www.cloudflare.com/products/turnstile/" target="_blank">Cloudflare Turnstile</a> integration and directory traversal protection.
     </li>
     <li>
+        <strong>Deploy Anywhere:</strong> 
+        Universally compatible with <strong>Windows, Linux, Unix, and FreeBSD</strong>. Tested for cross-platform path safety.
+    </li>
+    <li>
         <strong>Clean & Fast:</strong> Bloat-free codebase optimized for raw performance.
     </li>
 </ul>

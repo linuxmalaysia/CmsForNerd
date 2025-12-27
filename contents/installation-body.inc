@@ -6,13 +6,14 @@
 </p>
 <p>
     We built <strong>CMSForNerd framework</strong> to help users learn the fundamentals of <strong>HTML5, CSS3, and Modern PHP (8.4+)</strong>.
-    The v3.1 modernization was achieved through <strong>AI-Assisted Coding</strong> using <strong>Google Antigravity</strong>, ensuring a secure and efficient codebase.
+    The v3.1 modernization ensures full <strong>cross-platform compatibility</strong> (Windows, Linux, Unix, FreeBSD) achieved through <strong>AI-Assisted Coding</strong> using <strong>Google Antigravity</strong>.
 </p>
 
 <h3>Requirements</h3>
 <ul>
-    <li>Web Server (Apache, Nginx, or IIS)</li>
+    <li>Web Server (Apache, Nginx, IIS, or LiteSpeed)</li>
     <li>PHP 8.2 or higher (PHP 8.4 Recommended)</li>
+    <li>OS: Windows, Linux, Unix, or FreeBSD (Tested)</li>
     <li>No Database required!</li>
 </ul>
 

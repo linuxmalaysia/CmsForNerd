@@ -20,6 +20,7 @@ This project has been heavily modernized to support the latest PHP standards and
     *   **Cloudflare Turnstile**: Integrated invisible bot protection for forms.
     *   **Bot Detection**: Optimized Regex-based detection to block scrapers effectively.
     *   **Directory Traversal Protection**: Strict input validation on all entry points.
+*   **Deploy Anywhere**: Universally compatible with **Windows, Linux, Unix, and FreeBSD**. Tested for cross-platform path safety and case-sensitive filesystems.
 *   **Clean Repository**: Removed legacy zip archives, unused scripts, and redundant files.
 
 ---
