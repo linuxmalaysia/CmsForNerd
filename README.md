@@ -81,6 +81,43 @@ See the [🤖 AI Development Guide](ai-dev.php) for the "Prompt-to-Product" meth
 
 ---
 
+### VS Code & GitHub Copilot
+
+If you prefer Visual Studio Code, we recommend using it with GitHub Copilot for an interactive AI-assisted workflow. Minimal setup:
+
+1. Install these recommended extensions:
+  - GitHub Copilot
+  - PHP Intelephense (or equivalent PHP language server)
+  - PHP CS Fixer or phpcbf integration (for quick style fixes)
+  - EditorConfig (to respect repository line endings and indentation)
+
+2. Recommended workspace settings (add to `.vscode/settings.json`):
+
+```json
+{
+  "files.eol": "\n",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+  "php.validate.executablePath": "php",
+  "git.autofetch": true
+}
+```
+
+3. Using Copilot effectively:
+  - Use natural language prompts in comments to describe the change, e.g. `// TODO: add unit test for sitemap generator`.
+  - Ask Copilot for small, focused edits (single-file changes or small feature additions). Run tests locally after applying suggestions.
+  - Prefer PRs for multi-file or cross-cutting changes; include a clear test/verification plan in the PR body.
+
+4. Quick commands in VS Code terminal:
+
+```powershell
+composer install
+composer fix-style   # apply phpcbf autofixes
+composer compliance  # run style + tests
+```
+
+Keep Copilot suggestions under review — do not accept edits that change vendor files, remove tests, or disable security checks without human approval.
+
 ## 💻 Recommended Stack
 
 To get the most out of CMSForNerd, we recommend:
