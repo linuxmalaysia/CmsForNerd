@@ -20,9 +20,9 @@ $pages = get_site_pages();
     <hr>
     
     <p>
-        <a href="xml-sitemap.php" target="_blank">
+        <a href="sitemap.php" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Feed-icon.svg" width="16" height="16" alt="XML">
-            XML Sitemap for Bots
+            XML Sitemap for Search Engines
         </a>
     </p>
 </div>

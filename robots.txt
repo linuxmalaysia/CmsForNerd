@@ -1,5 +1,8 @@
 # robots.txt file for https://www.linuxmalaysia.com/
 
 User-agent: *
+Allow: /
 Disallow: /themes/
 Disallow: /includes/
+
+Sitemap: https://www.linuxmalaysia.com/sitemap.php

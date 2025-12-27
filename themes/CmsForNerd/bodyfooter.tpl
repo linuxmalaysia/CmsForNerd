@@ -10,6 +10,10 @@ This file defines the lower structure of the page layout:
 
 <!-- above are the end of div content inside bodyfooter.tpl -->
 
+<div class="sitemap-link">
+    <a href="sitemap.php" target="_blank">Sitemap (XML)</a>
+</div>
+
 <div id="footer">
 <?php include "contents/footer.inc"; ?>
 </div>
