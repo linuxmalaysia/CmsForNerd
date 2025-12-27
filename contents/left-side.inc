@@ -26,7 +26,7 @@
 
 <table style="background-color: #fff; padding: 5px;" cellspacing="0">
   <tr><td>
-  <img src="http://groups.google.com/groups/img/3nb/groups_bar.gif"
+  <img src="https://groups.google.com/groups/img/3nb/groups_bar.gif"
          height="26" width="132" alt="Google Groups">
   </td></tr>
   <tr><td style="padding-left: 5px;font-size: 125%">

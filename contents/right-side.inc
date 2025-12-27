@@ -2,11 +2,11 @@
 
 <!-- Search Google -->
 <center>
-<form method="get" action="http://www.google.com/custom" target="google_window">
+<form method="get" action="https://www.google.com/custom" target="google_window">
 <table style="background-color: #ffffff;">
 <tr><td nowrap="nowrap" valign="top" align="left" height="32">
-<a href="http://www.google.com/">
-<img src="http://www.google.com/logos/Logo_25wht.gif" border="0" alt="Google" style="vertical-align: middle;"></a>
+<a href="https://www.google.com/">
+<img src="https://www.google.com/logos/Logo_25wht.gif" border="0" alt="Google" style="vertical-align: middle;"></a>
 <br>
 <label for="sbi" style="display: none">Enter your search terms</label>
 <input type="text" name="q" size="17" maxlength="255" value="" id="sbi">
@@ -37,7 +37,7 @@ google_ad_width = 160;
 google_ad_height = 600;
 //--></script>
 <script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 
 <a href="https://addons.mozilla.org/en-US/firefox/addon/html-validator/" target="_blank">
@@ -47,5 +47,5 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <br>
 
 <!-- ROR BUTTON BEGIN -->
-<a href="xml-sitemap.php"><img src="http://www.rorweb.com/rorinfo.gif" style="width: 80px; height: 15px; border: 0;" alt="ROR"></a><br><br>
+<a href="xml-sitemap.php"><img src="https://www.rorweb.com/rorinfo.gif" style="width: 80px; height: 15px; border: 0;" alt="ROR"></a><br><br>
 <!-- ROR BUTTON END -->
