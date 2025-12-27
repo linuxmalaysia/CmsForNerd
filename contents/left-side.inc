@@ -5,7 +5,7 @@
 <a href="index.php">Home</a>
 <a href="https://www.linuxmalaysia.com">CmsForNerd</a>
 <a href="https://github.com/CMSForNerd/CmsForNerd/archive/refs/heads/master.zip">Download</a>
-<a href="template.php">CmsForNerd Template</a>
+<a href="template.php">🎨 Template Guide</a>
 <a href="sitemap-page.php">CmsForNerd Sitemap</a>
 <a href="installation.php">CmsForNerd Installation</a>
 <a href="windows-setup.php">🪟 Windows 11 Setup (Herd)</a>
