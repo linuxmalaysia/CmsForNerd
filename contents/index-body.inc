@@ -4,7 +4,7 @@
         <strong>CMSForNerd</strong> is a radically simple, database-free Content Management System designed as a live learning environment for developers and students.
     </p>
     <p>
-        Unlike "black box" frameworks, CMSForNerd exposes the raw power of PHP 8.4. It empowers you to master the full stack—from PSR-12 compliant architecture to CSS Grid responsive design—without the overhead of a database.
+        Unlike "black box" frameworks, CMSForNerd exposes the raw power of PHP 8.4 and beyond. It empowers you to master the full stack—from PSR-12 compliant architecture to CSS Grid responsive design—without the overhead of a database.
     </p>
     <p>
         Currently running on: <strong>PHP <?= phpversion() ?></strong> | <a href="lab-manual.php" style="font-weight: bold; color: #d9534f;">🎓 Open Lab Manual</a>
@@ -26,7 +26,7 @@
 <p>We've modernized the core engine for the AI era:</p>
 <ul class="features-list">
     <li>
-        <strong>PHP 8.4 Ready:</strong> Rebuilt with Strict Types, Readonly Classes, and modern syntax.
+        <strong>PHP 8.4+ & PHP 9 Ready:</strong> Rebuilt with Strict Types, Readonly Classes, and modern syntax.
     </li>
     <li>
         <strong>Security First:</strong> 

@@ -14,7 +14,7 @@
                     <div class="cert-content">
                         <span class="cert-seal">🎓</span>
                         <h2 class="cert-title">Certificate of Completion</h2>
-                        <h3 class="cert-subtitle">PHP 8.4 Modernization Mastery</h3>
+                        <h3 class="cert-subtitle">PHP 8.4+ & PHP 9 Modernization Mastery</h3>
                         
                         <div class="cert-award">
                             <p>Awarded to:</p>
@@ -24,7 +24,7 @@
                         <p class="cert-text">
                             This certificate verifies that the recipient has successfully completed the 
                             <strong>CMSForNerd v3.1 Laboratory Curriculum</strong>. 
-                            The student has demonstrated proficiency in the following "Nerd-Level" competencies:
+                            The student has demonstrated proficiency in the following modern PHP competencies:
                         </p>
 
                         <table class="competency-table">
@@ -32,13 +32,13 @@
                                 <tr>
                                     <th>Module</th>
                                     <th>Competency Achieved</th>
-                                    <th>RFC 2119</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1. Architecture</td>
-                                    <td>Mastered PHP 8.4 Property Hooks & Constructor Promotion.</td>
+                                    <td>Mastered PHP 8.4+ Property Hooks & Constructor Promotion.</td>
                                     <td class="status">VERIFIED</td>
                                 </tr>
                                 <tr>

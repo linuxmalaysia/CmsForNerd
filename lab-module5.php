@@ -11,7 +11,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $CONTENT['title'] = "Lab Worksheet: Module 5 - CmsForNerd v3.1";
 $CONTENT['author'] = "CMSForNerd Team & Google Gemini";
 $CONTENT['description'] = "Student Lab Worksheet for Module 5: Test Coverage and Quality Assurance. Master Code Coverage visualization and CRAP index analysis.";
-$CONTENT['keywords'] = "Coverage Lab, Module 5, PHPUnit, Xdebug, CRAP Index, Quality Assurance";
+$CONTENT['keywords'] = "Coverage Lab, Module 5, PHPUnit, Xdebug, CRAP Index, PHP 9 Ready, Quality Assurance";
 
 $CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
 $DATAFILE = explode(".", $CONTENT['data']);

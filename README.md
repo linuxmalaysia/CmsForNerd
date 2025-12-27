@@ -10,11 +10,11 @@ CmsForNerd is a simple, database-free Content Management System designed for spe
 
 ---
 
-## 🚀 New in Version 3.1 (PHP 8.4 Modernization)
+## 🚀 New in Version 3.1 (PHP 8.4+ & PHP 9 Ready)
 This project has been heavily modernized to support the latest PHP standards and improve security.
 
 ### Key Features
-*   **PHP 8.4 Ready**: Fully upgraded codebase using strict types, readonly classes, and modern syntax (`[]` arrays, match expressions).
+*   **PHP 8.4+ Ready**: Fully upgraded codebase using strict types, readonly classes, and modern syntax (`[]` arrays, match expressions).
 *   **Context Object Pattern**: Replaced legacy global variables with a robust `CmsContext` object for better state management.
 *   **Enhanced Security**:
     *   **Cloudflare Turnstile**: Integrated invisible bot protection for forms.

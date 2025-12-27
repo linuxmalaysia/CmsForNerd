@@ -17,7 +17,7 @@
 
     <section class="step">
         <h2>🛠️ Step 1: The "Manual Eye" Test</h2>
-        <p>Before using tools, students must recognize "messy" code. In PHP 8.4, PSR-12 governs how we structure new features like Enums and Match expressions.</p>
+        <p>Before using tools, students must recognize "messy" code. In PHP 8.4+, PSR-12 governs how we structure new features like Enums and Match expressions.</p>
         <p><strong>Common Violations to spot:</strong></p>
         <ul>
             <li>Opening braces <code>{</code> on the same line as a class or method.</li>

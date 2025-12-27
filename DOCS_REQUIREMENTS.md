@@ -17,5 +17,6 @@ This document defines the "Laws of the Project" using the requirement levels des
 
 ## Documentation & Educational Requirements
 
-1. **Modernization History:** For every major improvement or architectural change, the `contents/history-body.inc` file **MUST** be updated with a summary of the change. This is REQUIRED for training, education, and maintaining a clear project pedigree.
-2. **Teaching Mode:** Comments added to code **SHOULD** explain the *why* (rationale) behind the implementation to serve as a learning resource for others.
+1. **Modernization History:** For every major improvement or architectural change, the `contents/history-body.inc` file **MUST** be updated with a summary of the change.
+2. **PHP Scaling:** Documentation MUST emphasize **PHP 8.4+ and PHP 9 Readiness**. Modern features should be presented as the new standard for longevity.
+3. **Teaching Mode:** Comments added to code **SHOULD** explain the *why* (rationale) behind the implementation to serve as a learning resource for others.

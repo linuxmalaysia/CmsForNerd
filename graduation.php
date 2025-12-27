@@ -8,7 +8,7 @@ declare(strict_types=1);
 ob_start("ob_gzhandler");
 require_once __DIR__ . '/vendor/autoload.php';
 
-$CONTENT['title'] = "Graduation: PHP 8.4 Modernization - CmsForNerd v3.1";
+$CONTENT['title'] = "Graduation: PHP 8.4+ & PHP 9 Modernization - CmsForNerd v3.1";
 $CONTENT['author'] = "CMSForNerd Team & Google Gemini";
 $CONTENT['description'] = "Celebrate your success! Verify your mastery of PHP 8.4 Architecture, Security, Standards, and Testing.";
 $CONTENT['keywords'] = "Graduation, Certificate, PHP 8.4, Modernization, Mastery, CmsForNerd";

@@ -1,6 +1,6 @@
 <article class="lab-worksheet">
     <h1>Student Lab Worksheet: Module 1</h1>
-    <p class="subtitle">Topic: Modern PHP 8.4 Architecture</p>
+    <p class="subtitle">Topic: Modern PHP 8.4+ Architecture & PHP 9 Readiness</p>
 
     <div class="requirement-alert">
         <strong>Requirement Level:</strong> Students <strong>MUST</strong> implement Constructor Promotion and Property Hooks to pass the "Code Elegance" audit.

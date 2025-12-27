@@ -9,7 +9,7 @@
     <section>
         <h2>1. The PHP 8.4 Foundation</h2>
         <p>
-            The entire codebase was refactored to support <strong>PHP 8.4+</strong>. This included embracing modern object-oriented 
+            The entire codebase was refactored to support <strong>PHP 8.4+ and PHP 9</strong>. This included embracing modern object-oriented 
             patterns while maintaining the "Radically Simple" philosophy of the original author.
         </p>
         <ul>

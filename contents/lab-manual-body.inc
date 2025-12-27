@@ -7,8 +7,8 @@
     </p>
 
     <section class="module">
-        <h2>📚 Laboratory Module 1: Modern PHP 8.4 Architecture</h2>
-        <p>In this module, students explore the transition from procedural scripts to modern object-oriented patterns.</p>
+        <h2>📚 Laboratory Module 1: Modern PHP 8.4+ Architecture</h2>
+        <p>In this module, students explore the transition from procedural scripts to modern object-oriented patterns, optimized for PHP 8.4 and ready for PHP 9.</p>
         <div class="exercise">
             <h3>Exercise 1.1: Strict Typing</h3>
             <p>Observe how <code>declare(strict_types=1);</code> prevents the CMS from accepting incorrect data types, forcing developers to write predictable code.</p>
@@ -81,7 +81,7 @@
         <h2>📝 The History of v3.1: A Modernization Case Study</h2>
         <p>CMSForNerd v3.1 isn't just a version; it's a <strong>Modernization Journey</strong>.</p>
         <ol>
-            <li><strong>Phase 1:</strong> Refactored the 2005 foundation into PHP 8.4 classes.</li>
+            <li><strong>Phase 1:</strong> Refactored the 2005 foundation into PHP 8.4+ classes with PHP 9 readiness.</li>
             <li><strong>Phase 2:</strong> Standardized the UI with CSS Grid (replacing legacy float-based layouts).</li>
             <li><strong>Phase 3:</strong> Hardened the perimeter with Cloudflare Turnstile and <code>SecurityUtils</code>.</li>
             <li><strong>Phase 4:</strong> Automated the workflow with PHPUnit and <code>PHP_CodeSniffer</code>.</li>
