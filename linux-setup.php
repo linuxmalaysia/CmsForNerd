@@ -9,25 +9,32 @@
  * REQUIRED: Use CmsContext for layout.
  */
 
-declare(strict_types=1);
+ob_start("ob_gzhandler");
+require_once __DIR__ . '/vendor/autoload.php';
 
-require_once 'includes/CmsContext.php';
-require_once 'includes/common.inc.php';
+$CONTENT['title'] = 'Linux Setup Guide (PHP 8.4+) | CMSForNerd Lab';
+$CONTENT['author'] = "CMSForNerd Team & Google Gemini";
+$CONTENT['description'] = "Ensuring PHP 8.4+ Compatibility on Debian, Ubuntu LTS & AlmaLinux.";
+$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
+$DATAFILE = explode(".", $CONTENT['data']);
+
 require_once 'includes/global-control.inc.php';
+require_once 'includes/common.inc.php';
 
 // [INIT] Initialize CMS Context
 $ctx = new CmsForNerd\CmsContext(
-    dataDir: 'contents',
+    content: $CONTENT,
     themeName: $THEMENAME,
-    pageName: 'linux-setup',
-    dataFile: ['linux-setup'],
-    cssPath: "themes/$THEMENAME/style.css"
+    cssPath: $CSSPATH,
+    dataFile: $DATAFILE,
+    scriptName: $CONTENT['data']
 );
 
-// [SEO] Set Page Meta
-$ctx->content['title'] = 'Linux Setup Guide (PHP 8.4+) | CMSForNerd Lab';
-
-// [RENDER] Standard Pair Logic
-pageheader($ctx);
 include "themes/{$ctx->themeName}/pager.php";
-pagetailer($ctx);
+
+// Security: Cloudflare Turnstile Check
+require_once 'includes/turnstile.php';
+
+pager($ctx);
+
+ob_end_flush();
