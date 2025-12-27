@@ -56,7 +56,8 @@
     </section>
 
     <nav class="footer-nav">
-        <p>Ready to try it? Description your next module in the chat right now!</p>
+        <p>Ready to try it? Describe your next module in the chat right now!</p>
+        <p><strong>Important:</strong> Read the <a href="ai-sop.php">📜 AI Ethics SOP</a> to ensure responsible AI usage.</p>
         <a href="lab-manual.php" class="btn">Return to Lab Manual</a>
     </nav>
 </article>
