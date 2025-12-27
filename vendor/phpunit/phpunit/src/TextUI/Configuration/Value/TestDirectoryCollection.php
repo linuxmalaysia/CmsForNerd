@@ -63,3 +63,4 @@ final readonly class TestDirectoryCollection implements Countable, IteratorAggre
         return $this->count() === 0;
     }
 }
+

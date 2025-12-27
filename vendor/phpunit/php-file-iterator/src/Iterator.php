@@ -111,3 +111,4 @@ final class Iterator extends FilterIterator
         return false;
     }
 }
+

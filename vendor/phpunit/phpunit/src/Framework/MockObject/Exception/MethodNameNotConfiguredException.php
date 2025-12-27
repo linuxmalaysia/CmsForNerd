@@ -21,3 +21,4 @@ final class MethodNameNotConfiguredException extends \PHPUnit\Framework\Exceptio
         parent::__construct('Method name is not configured');
     }
 }
+

@@ -16,3 +16,4 @@ class Example {
 $a = fn(?\DateTime $x) : ?\DateTime => $x;
 
 $b = fn ($b) => $b ? true : false;
+

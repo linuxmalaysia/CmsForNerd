@@ -99,3 +99,4 @@
 .modernization-history .intro { font-style: italic; color: #444; background: #f9fff9; padding: 1rem; border-left: 4px solid #004d00; }
 .modernization-history .footer-note { margin-top: 3rem; text-align: center; color: #666; font-size: 0.9rem; }
 </style>
+

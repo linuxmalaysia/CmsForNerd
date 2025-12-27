@@ -43,3 +43,4 @@ class NullsafeMethodCall extends CallLike {
         return $this->args;
     }
 }
+

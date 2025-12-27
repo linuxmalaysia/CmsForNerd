@@ -151,3 +151,4 @@ class EvalObjectFactorySniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

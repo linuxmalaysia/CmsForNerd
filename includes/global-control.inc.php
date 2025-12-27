@@ -13,3 +13,4 @@ include "themes/$THEMENAME/theme.php";
 
 // [SEO] Configuration for your sitemap URL. This MUST be a full URL.
 $CONFIG['sitemap_url'] = 'https://www.linuxmalaysia.com/sitemap.php';
+

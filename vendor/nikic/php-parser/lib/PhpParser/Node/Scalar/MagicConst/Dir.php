@@ -13,3 +13,4 @@ class Dir extends MagicConst {
         return 'Scalar_MagicConst_Dir';
     }
 }
+

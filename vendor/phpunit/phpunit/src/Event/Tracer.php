@@ -18,3 +18,4 @@ interface Tracer
 {
     public function trace(Event $event): void;
 }
+

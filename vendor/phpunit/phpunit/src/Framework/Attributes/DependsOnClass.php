@@ -40,3 +40,4 @@ final readonly class DependsOnClass
         return $this->className;
     }
 }
+

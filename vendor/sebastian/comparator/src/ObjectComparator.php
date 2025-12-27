@@ -91,3 +91,4 @@ class ObjectComparator extends ArrayComparator
         return (new Exporter)->toArray($object);
     }
 }
+

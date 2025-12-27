@@ -33,3 +33,4 @@ class DoctrineCollectionFilter implements Filter
         $reflectionProperty->setValue($object, $newCollection);
     }
 }
+

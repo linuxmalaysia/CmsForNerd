@@ -123,3 +123,4 @@ class JSLintSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

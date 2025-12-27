@@ -13,3 +13,4 @@ class BitwiseXor extends BinaryOp {
         return 'Expr_BinaryOp_BitwiseXor';
     }
 }
+

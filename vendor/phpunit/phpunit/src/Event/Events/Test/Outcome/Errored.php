@@ -65,3 +65,4 @@ final readonly class Errored implements Event
         );
     }
 }
+

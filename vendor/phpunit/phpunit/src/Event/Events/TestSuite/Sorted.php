@@ -57,3 +57,4 @@ final readonly class Sorted implements Event
         return 'Test Suite Sorted';
     }
 }
+

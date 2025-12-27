@@ -10,3 +10,4 @@ interface Builder {
      */
     public function getNode(): Node;
 }
+

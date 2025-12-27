@@ -79,3 +79,4 @@ final readonly class WarmCodeCoverageCacheCommand implements Command
         return Result::from();
     }
 }
+

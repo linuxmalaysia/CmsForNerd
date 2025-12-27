@@ -40,3 +40,4 @@ final readonly class RequiresOperatingSystem
         return $this->regularExpression;
     }
 }
+

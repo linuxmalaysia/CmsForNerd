@@ -23,3 +23,4 @@ final readonly class IgnorePhpunitDeprecations extends Metadata
         return true;
     }
 }
+

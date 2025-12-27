@@ -14,3 +14,4 @@ use RuntimeException;
 final class BranchAndPathCoverageNotSupportedException extends RuntimeException implements Exception
 {
 }
+

@@ -41,3 +41,4 @@ final readonly class TestDox
         return $this->prettifiedMethodName;
     }
 }
+

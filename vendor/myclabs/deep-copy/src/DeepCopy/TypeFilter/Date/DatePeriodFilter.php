@@ -40,3 +40,4 @@ class DatePeriodFilter implements TypeFilter
         return new DatePeriod($element->getStartDate(), $element->getDateInterval(), $recurrences, $options);
     }
 }
+

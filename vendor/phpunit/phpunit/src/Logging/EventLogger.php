@@ -66,3 +66,4 @@ final readonly class EventLogger implements Tracer
         return $event->telemetryInfo()->asString() . ' ';
     }
 }
+

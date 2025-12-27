@@ -56,3 +56,4 @@ final class LowercaseStyleDefinitionUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

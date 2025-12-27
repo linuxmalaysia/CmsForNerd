@@ -17,3 +17,4 @@ use RuntimeException;
 final class NoVersionRequirementException extends RuntimeException implements Exception
 {
 }
+

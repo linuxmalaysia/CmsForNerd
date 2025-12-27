@@ -53,3 +53,4 @@ class InterfaceNameSuffixSniff implements Sniff
 
 
 }//end class
+

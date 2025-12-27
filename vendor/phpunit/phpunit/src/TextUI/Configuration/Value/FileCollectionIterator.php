@@ -55,3 +55,4 @@ final class FileCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

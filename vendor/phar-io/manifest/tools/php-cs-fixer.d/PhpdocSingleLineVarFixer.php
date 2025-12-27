@@ -70,3 +70,4 @@ class PhpdocSingleLineVarFixer implements FixerInterface {
     }
 
 }
+

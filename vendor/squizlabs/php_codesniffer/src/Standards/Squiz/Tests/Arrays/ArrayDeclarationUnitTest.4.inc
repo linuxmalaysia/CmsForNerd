@@ -6,3 +6,4 @@
 // interfere with the rest of sniff when the `as` keyword is missing.
 
 foreach ([$a , $b])
+

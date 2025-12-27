@@ -33,3 +33,4 @@ final readonly class Deprecation extends Known
         return 'deprecation';
     }
 }
+

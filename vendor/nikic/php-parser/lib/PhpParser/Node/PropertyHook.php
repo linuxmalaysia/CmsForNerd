@@ -103,3 +103,4 @@ class PropertyHook extends NodeAbstract implements FunctionLike {
         return ['attrGroups', 'flags', 'byRef', 'name', 'params', 'body'];
     }
 }
+

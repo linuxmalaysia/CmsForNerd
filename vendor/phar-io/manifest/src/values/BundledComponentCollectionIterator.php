@@ -45,3 +45,4 @@ class BundledComponentCollectionIterator implements Iterator {
         $this->position++;
     }
 }
+

@@ -18,3 +18,4 @@ interface PhpDeprecationTriggeredSubscriber extends Subscriber
 {
     public function notify(PhpDeprecationTriggered $event): void;
 }
+

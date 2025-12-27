@@ -32,3 +32,4 @@ class InterpolatedString extends Scalar {
 
 // @deprecated compatibility alias
 class_alias(InterpolatedString::class, Encapsed::class);
+

@@ -37,3 +37,4 @@ class PropertyMatcher implements Matcher
         return ($object instanceof $this->class) && $property == $this->property;
     }
 }
+

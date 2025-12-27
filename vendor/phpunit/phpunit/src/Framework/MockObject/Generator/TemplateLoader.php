@@ -34,3 +34,4 @@ trait TemplateLoader
         return self::$templates[$filename];
     }
 }
+

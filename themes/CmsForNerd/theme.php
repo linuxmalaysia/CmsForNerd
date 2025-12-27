@@ -6,3 +6,4 @@ declare(strict_types=1);
 // It is REQUIRED to define the CSS path for the current theme.
 
 $CSSPATH = "themes/$THEMENAME/style.css";
+

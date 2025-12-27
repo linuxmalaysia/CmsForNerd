@@ -29,3 +29,4 @@ final readonly class TestTriggeredDeprecationSubscriber extends Subscriber imple
         $this->generator()->testTriggeredIssue($event);
     }
 }
+

@@ -63,3 +63,4 @@ final class Invoker
         return extension_loaded('pcntl') && function_exists('pcntl_signal') && function_exists('pcntl_async_signals') && function_exists('pcntl_alarm');
     }
 }
+

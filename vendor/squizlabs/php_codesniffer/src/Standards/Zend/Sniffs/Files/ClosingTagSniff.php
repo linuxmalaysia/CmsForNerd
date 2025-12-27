@@ -77,3 +77,4 @@ class ClosingTagSniff implements Sniff
 
 
 }//end class
+

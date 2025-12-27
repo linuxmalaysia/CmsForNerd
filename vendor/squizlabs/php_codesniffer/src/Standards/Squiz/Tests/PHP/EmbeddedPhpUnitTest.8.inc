@@ -8,3 +8,4 @@ The below test safeguards that if there is just an unclosed PHP open tag at the 
 the sniff bows out as there is nothing to do.
 -->
 <?php
+

@@ -28,3 +28,4 @@ abstract class TokenEmulator {
         return $code;
     }
 }
+

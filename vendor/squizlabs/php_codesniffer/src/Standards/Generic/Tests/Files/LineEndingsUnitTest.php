@@ -66,3 +66,4 @@ final class LineEndingsUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

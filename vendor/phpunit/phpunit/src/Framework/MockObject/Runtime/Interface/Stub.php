@@ -19,3 +19,4 @@ use PHPUnit\Framework\MockObject\Builder\InvocationStubber;
 interface Stub
 {
 }
+

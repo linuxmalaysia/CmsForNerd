@@ -28,3 +28,4 @@ abstract class Subscriber
         return $this->collector;
     }
 }
+

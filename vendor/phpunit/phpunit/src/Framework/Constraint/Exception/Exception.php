@@ -79,3 +79,4 @@ final class Exception extends Constraint
         );
     }
 }
+

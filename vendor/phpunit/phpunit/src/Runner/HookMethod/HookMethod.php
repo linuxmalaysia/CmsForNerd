@@ -44,3 +44,4 @@ final readonly class HookMethod
         return $this->priority;
     }
 }
+

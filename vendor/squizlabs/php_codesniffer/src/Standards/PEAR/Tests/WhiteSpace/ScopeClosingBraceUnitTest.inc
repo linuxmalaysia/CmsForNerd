@@ -168,3 +168,4 @@ enum Cards
 <?php if ($someConditional) : ?>
 <div class="container">
 </div> <?php endif;
+

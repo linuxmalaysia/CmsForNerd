@@ -33,3 +33,4 @@ final readonly class IntroduceCacheDirectoryAttribute implements Migration
         $root->setAttribute('cacheDirectory', '.phpunit.cache');
     }
 }
+

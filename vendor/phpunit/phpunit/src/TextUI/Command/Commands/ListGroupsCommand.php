@@ -85,3 +85,4 @@ final readonly class ListGroupsCommand implements Command
         return Result::from($buffer);
     }
 }
+

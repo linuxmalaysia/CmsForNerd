@@ -20,3 +20,4 @@ class DoctrineProxyFilter implements Filter
         $object->__load();
     }
 }
+

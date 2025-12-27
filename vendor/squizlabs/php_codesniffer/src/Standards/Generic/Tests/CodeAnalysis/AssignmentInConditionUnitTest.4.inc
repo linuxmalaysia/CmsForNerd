@@ -4,3 +4,4 @@
 for ($i = 0) {
     echo 'foo';
 }
+

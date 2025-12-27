@@ -24,3 +24,4 @@ final readonly class TestTriggeredErrorSubscriber extends Subscriber implements 
         $this->collector()->testTriggeredError($event);
     }
 }
+

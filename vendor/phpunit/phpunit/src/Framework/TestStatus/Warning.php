@@ -33,3 +33,4 @@ final readonly class Warning extends Known
         return 'warning';
     }
 }
+

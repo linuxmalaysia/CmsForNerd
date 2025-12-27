@@ -20,3 +20,4 @@ class DoctrineProxyMatcher implements Matcher
         return $object instanceof Proxy;
     }
 }
+

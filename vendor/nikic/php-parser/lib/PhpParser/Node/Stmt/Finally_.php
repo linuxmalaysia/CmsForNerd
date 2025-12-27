@@ -27,3 +27,4 @@ class Finally_ extends Node\Stmt {
         return 'Stmt_Finally';
     }
 }
+

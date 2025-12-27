@@ -52,3 +52,4 @@ final class LogicalOr extends BinaryOperator
         return false;
     }
 }
+

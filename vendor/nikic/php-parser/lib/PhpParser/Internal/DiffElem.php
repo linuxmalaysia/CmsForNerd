@@ -29,3 +29,4 @@ class DiffElem {
         $this->new = $new;
     }
 }
+

@@ -19,3 +19,4 @@ class LicenseElement extends ManifestElement {
         return $this->getAttributeValue('url');
     }
 }
+

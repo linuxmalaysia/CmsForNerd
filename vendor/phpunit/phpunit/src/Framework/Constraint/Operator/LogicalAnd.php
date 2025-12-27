@@ -52,3 +52,4 @@ final class LogicalAnd extends BinaryOperator
         return [] !== $this->constraints();
     }
 }
+

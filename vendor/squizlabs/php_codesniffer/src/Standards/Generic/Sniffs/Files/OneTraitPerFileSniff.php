@@ -55,3 +55,4 @@ class OneTraitPerFileSniff implements Sniff
 
 
 }//end class
+

@@ -55,3 +55,4 @@ final class ExtensionBootstrapCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

@@ -265,3 +265,4 @@ final class ParsingFileAnalyser implements FileAnalyser
         }
     }
 }
+

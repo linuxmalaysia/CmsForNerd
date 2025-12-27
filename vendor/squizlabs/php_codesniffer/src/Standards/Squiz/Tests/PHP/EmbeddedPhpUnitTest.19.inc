@@ -15,3 +15,4 @@ Note: with short open tags, the empty PHP tag set is a parse error.
 
 </div>
 <p>Some more content after the last PHP tag block.</p>
+

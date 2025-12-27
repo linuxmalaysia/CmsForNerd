@@ -388,3 +388,4 @@ final class TestResultCollector
         );
     }
 }
+

@@ -68,3 +68,4 @@ class ConstantVisibilitySniff implements Sniff
 
 
 }//end class
+

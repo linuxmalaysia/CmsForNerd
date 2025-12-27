@@ -44,3 +44,4 @@ class ImplementsDeprecatedInterfaceSniff implements Sniff, DeprecatedSniff
         // Do something.
     }
 }
+

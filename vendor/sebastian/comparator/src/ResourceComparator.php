@@ -40,3 +40,4 @@ final class ResourceComparator extends Comparator
         }
     }
 }
+

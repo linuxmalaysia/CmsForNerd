@@ -28,3 +28,4 @@ final class PhpDownloader implements Downloader
         return file_get_contents($url);
     }
 }
+

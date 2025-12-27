@@ -23,3 +23,4 @@ final class SoapExtensionNotAvailableException extends \PHPUnit\Framework\Except
         );
     }
 }
+

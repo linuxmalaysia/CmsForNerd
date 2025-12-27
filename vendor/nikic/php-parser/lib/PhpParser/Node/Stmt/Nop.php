@@ -14,3 +14,4 @@ class Nop extends Node\Stmt {
         return 'Stmt_Nop';
     }
 }
+

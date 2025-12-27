@@ -33,3 +33,4 @@ final readonly class Failure extends Known
         return 'failure';
     }
 }
+

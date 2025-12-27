@@ -34,3 +34,4 @@ class ClosureUse extends NodeAbstract {
 
 // @deprecated compatibility alias
 class_alias(ClosureUse::class, Expr\ClosureUse::class);
+

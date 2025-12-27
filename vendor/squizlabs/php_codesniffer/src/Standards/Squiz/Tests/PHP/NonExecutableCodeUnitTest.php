@@ -124,3 +124,4 @@ final class NonExecutableCodeUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

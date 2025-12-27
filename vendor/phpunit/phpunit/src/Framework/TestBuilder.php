@@ -285,3 +285,4 @@ final readonly class TestBuilder
         return (new Requirements)->requirementsNotSatisfiedFor($className, $methodName) === [];
     }
 }
+

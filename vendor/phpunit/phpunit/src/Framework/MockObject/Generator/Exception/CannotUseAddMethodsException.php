@@ -29,3 +29,4 @@ final class CannotUseAddMethodsException extends \PHPUnit\Framework\Exception im
         );
     }
 }
+

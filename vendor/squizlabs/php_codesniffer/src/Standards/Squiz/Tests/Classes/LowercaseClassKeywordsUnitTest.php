@@ -67,3 +67,4 @@ final class LowercaseClassKeywordsUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

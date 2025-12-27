@@ -146,3 +146,4 @@ class LineEndingsSniff implements Sniff
 
 
 }//end class
+

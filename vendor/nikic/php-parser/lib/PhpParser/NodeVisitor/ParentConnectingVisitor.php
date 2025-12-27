@@ -49,3 +49,4 @@ final class ParentConnectingVisitor extends NodeVisitorAbstract {
         array_pop($this->stack);
     }
 }
+

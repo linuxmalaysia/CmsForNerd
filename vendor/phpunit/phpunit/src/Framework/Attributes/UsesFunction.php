@@ -40,3 +40,4 @@ final readonly class UsesFunction
         return $this->functionName;
     }
 }
+

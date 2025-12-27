@@ -55,3 +55,4 @@ final readonly class ResultCacheId
         return $this->id;
     }
 }
+

@@ -32,3 +32,4 @@ final class AnyInvokedCount extends InvocationOrder
         return true;
     }
 }
+

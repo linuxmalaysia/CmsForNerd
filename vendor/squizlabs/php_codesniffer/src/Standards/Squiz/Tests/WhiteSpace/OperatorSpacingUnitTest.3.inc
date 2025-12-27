@@ -4,3 +4,4 @@
 // This has to be the only test in the file.
 
 $a = 10 +
+

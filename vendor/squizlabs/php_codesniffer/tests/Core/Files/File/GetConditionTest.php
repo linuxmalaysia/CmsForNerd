@@ -492,3 +492,4 @@ final class GetConditionTest extends AbstractMethodUnitTest
 
 
 }//end class
+

@@ -41,3 +41,4 @@ getObject()->count
 getObject()->count++;
 ++ getObject()->count;
 ++getObject()->count;
+

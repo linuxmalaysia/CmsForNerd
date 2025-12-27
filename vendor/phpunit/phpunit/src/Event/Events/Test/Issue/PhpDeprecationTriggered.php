@@ -149,3 +149,4 @@ final readonly class PhpDeprecationTriggered implements Event
         );
     }
 }
+

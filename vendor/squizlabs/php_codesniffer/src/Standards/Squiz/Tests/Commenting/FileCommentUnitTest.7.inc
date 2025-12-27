@@ -10,3 +10,4 @@
 #[Attribute]
 class Foo {
 }
+

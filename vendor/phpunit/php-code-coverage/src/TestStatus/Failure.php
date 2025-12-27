@@ -24,3 +24,4 @@ final class Failure extends Known
         return 'failure';
     }
 }
+

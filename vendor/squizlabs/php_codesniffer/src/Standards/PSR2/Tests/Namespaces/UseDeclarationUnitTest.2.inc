@@ -19,3 +19,4 @@ use ArrayObject;
 $foo = 'bar';
 
 ?>
+

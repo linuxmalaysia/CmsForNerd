@@ -18,3 +18,4 @@ interface DeprecationTriggeredSubscriber extends Subscriber
 {
     public function notify(DeprecationTriggered $event): void;
 }
+

@@ -197,3 +197,4 @@ $foobar = functionCallMatchParam(
     }  , // But check the spacing again once the match expression has finished.
     $args
 );
+

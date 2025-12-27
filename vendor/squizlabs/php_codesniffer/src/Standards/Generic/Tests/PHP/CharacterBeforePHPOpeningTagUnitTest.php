@@ -59,3 +59,4 @@ final class CharacterBeforePHPOpeningTagUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -79,3 +79,4 @@ class Function_ extends Node\Stmt implements FunctionLike {
         return 'Stmt_Function';
     }
 }
+

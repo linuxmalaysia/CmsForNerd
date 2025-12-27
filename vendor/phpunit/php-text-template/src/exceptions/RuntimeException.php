@@ -14,3 +14,4 @@ use InvalidArgumentException;
 final class RuntimeException extends InvalidArgumentException implements Exception
 {
 }
+

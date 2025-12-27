@@ -216,3 +216,4 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 [1.1.1]: https://github.com/sebastianbergmann/type/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/sebastianbergmann/type/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/sebastianbergmann/type/compare/ff74aa41746bd8d10e931843ebf37d42da513ede...1.0.0
+

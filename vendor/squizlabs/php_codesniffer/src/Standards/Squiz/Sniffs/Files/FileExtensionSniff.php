@@ -66,3 +66,4 @@ class FileExtensionSniff implements Sniff
 
 
 }//end class
+

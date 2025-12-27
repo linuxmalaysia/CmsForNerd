@@ -917,3 +917,4 @@ abstract readonly class Metadata
         return false;
     }
 }
+

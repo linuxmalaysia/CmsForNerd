@@ -22,3 +22,4 @@ abstract class NodeVisitorAbstract implements NodeVisitor {
         return null;
     }
 }
+

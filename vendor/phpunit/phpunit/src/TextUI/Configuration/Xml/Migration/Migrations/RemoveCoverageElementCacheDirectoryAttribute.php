@@ -32,3 +32,4 @@ final readonly class RemoveCoverageElementCacheDirectoryAttribute implements Mig
         }
     }
 }
+

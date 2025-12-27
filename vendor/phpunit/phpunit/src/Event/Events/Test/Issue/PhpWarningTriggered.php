@@ -130,3 +130,4 @@ final readonly class PhpWarningTriggered implements Event
         );
     }
 }
+

@@ -28,3 +28,4 @@ final readonly class Directory
         return $this->path;
     }
 }
+

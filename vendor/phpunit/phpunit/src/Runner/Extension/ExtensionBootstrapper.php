@@ -95,3 +95,4 @@ final readonly class ExtensionBootstrapper
         );
     }
 }
+

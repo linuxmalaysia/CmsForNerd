@@ -40,3 +40,4 @@ final readonly class Php81GarbageCollectorStatusProvider implements GarbageColle
         );
     }
 }
+

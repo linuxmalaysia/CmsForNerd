@@ -12,3 +12,4 @@ namespace SebastianBergmann\Diff;
 class InvalidArgumentException extends \InvalidArgumentException implements Exception
 {
 }
+

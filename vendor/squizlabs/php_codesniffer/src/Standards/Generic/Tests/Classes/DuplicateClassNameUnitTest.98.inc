@@ -6,3 +6,4 @@
 // Testing against false positives during live coding and invalid class names being stored in the cache.
 
 class
+

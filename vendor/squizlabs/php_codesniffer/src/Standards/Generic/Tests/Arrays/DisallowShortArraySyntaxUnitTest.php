@@ -56,3 +56,4 @@ final class DisallowShortArraySyntaxUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -30,3 +30,4 @@ final readonly class ReturnStub implements Stub
         return $this->value;
     }
 }
+

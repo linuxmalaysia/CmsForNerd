@@ -14,3 +14,4 @@ class Double extends Cast {
         return 'Expr_Cast_Double';
     }
 }
+

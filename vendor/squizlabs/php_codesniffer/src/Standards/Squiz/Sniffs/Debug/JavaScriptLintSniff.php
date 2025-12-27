@@ -126,3 +126,4 @@ class JavaScriptLintSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

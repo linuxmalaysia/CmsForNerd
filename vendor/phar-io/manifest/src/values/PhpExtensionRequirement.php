@@ -22,3 +22,4 @@ class PhpExtensionRequirement implements Requirement {
         return $this->extension;
     }
 }
+

@@ -80,3 +80,4 @@ final readonly class BeforeTestMethodFinished implements Event
         return $buffer;
     }
 }
+

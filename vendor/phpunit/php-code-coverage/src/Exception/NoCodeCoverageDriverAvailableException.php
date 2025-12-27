@@ -18,3 +18,4 @@ final class NoCodeCoverageDriverAvailableException extends RuntimeException impl
         parent::__construct('No code coverage driver available');
     }
 }
+

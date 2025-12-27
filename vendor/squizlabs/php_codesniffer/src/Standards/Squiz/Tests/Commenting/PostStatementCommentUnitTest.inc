@@ -62,3 +62,4 @@ $d = 4; //	@tabInsteadOfSpace
 // Comments that include `@`, but are not recognized as annotations by this sniff.
 $a = 1; // @ = add tag.
 $b = 2; // Some comment. // @username
+

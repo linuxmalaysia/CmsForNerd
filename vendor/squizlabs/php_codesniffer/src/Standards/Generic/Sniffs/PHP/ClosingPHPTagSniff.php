@@ -52,3 +52,4 @@ class ClosingPHPTagSniff implements Sniff
 
 
 }//end class
+

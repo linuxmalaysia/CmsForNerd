@@ -82,3 +82,4 @@ final readonly class PostConditionErrored implements Event
         );
     }
 }
+

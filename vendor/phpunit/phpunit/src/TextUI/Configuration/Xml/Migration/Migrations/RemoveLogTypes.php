@@ -39,3 +39,4 @@ final readonly class RemoveLogTypes implements Migration
         }
     }
 }
+

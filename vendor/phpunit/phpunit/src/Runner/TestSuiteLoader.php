@@ -140,3 +140,4 @@ final class TestSuiteLoader
         return $loadedClasses;
     }
 }
+

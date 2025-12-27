@@ -1586,3 +1586,4 @@ return [
 	'zlib_get_coding_type' => ['hasSideEffects' => false],
 
 ];
+

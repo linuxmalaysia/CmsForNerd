@@ -191,3 +191,4 @@ class ArrayIndentSniff extends AbstractArraySniff
 
 
 }//end class
+

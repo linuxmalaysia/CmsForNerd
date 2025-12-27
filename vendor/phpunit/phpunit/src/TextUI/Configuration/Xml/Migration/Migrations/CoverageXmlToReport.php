@@ -31,3 +31,4 @@ final readonly class CoverageXmlToReport extends LogToReportMigration
         return $xml;
     }
 }
+

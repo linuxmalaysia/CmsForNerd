@@ -74,3 +74,4 @@ final readonly class LoadedFromFileConfiguration extends Configuration
         return true;
     }
 }
+

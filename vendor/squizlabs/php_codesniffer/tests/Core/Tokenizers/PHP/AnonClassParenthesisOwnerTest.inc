@@ -27,3 +27,4 @@ $anonClass = new readonly class() {
 /* testWithParenthesesAndEmptyTokens */
 $anonClass = new class /*comment */
 () {};
+

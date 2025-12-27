@@ -30,3 +30,4 @@ class User
         $this->viewCount++;
     }
 }
+

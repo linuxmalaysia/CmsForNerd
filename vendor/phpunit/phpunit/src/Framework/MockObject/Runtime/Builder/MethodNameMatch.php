@@ -24,3 +24,4 @@ interface MethodNameMatch extends ParametersMatch
      */
     public function method(Constraint|string $constraint): self;
 }
+

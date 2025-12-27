@@ -23,3 +23,4 @@ This doc has two code elements, but only one of them has a title and actual code
   </table>
 
 Documentation generated on *REDACTED* by [PHP_CodeSniffer *VERSION*](https://github.com/PHPCSStandards/PHP_CodeSniffer)
+

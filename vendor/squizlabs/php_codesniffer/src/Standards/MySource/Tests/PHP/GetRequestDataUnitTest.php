@@ -59,3 +59,4 @@ final class GetRequestDataUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

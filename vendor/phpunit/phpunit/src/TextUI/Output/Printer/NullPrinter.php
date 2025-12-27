@@ -24,3 +24,4 @@ final readonly class NullPrinter implements Printer
     {
     }
 }
+

@@ -58,3 +58,4 @@ final readonly class TestCollection implements Countable, IteratorAggregate
         return new TestCollectionIterator($this);
     }
 }
+

@@ -63,3 +63,4 @@ final class ClassDefinitionClosingBraceSpaceUnitTest extends AbstractSniffUnitTe
 
 
 }//end class
+

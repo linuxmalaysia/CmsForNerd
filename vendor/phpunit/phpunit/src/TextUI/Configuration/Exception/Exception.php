@@ -17,3 +17,4 @@ namespace PHPUnit\TextUI\Configuration;
 interface Exception extends \PHPUnit\TextUI\Exception
 {
 }
+

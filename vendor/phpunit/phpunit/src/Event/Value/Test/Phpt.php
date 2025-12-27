@@ -37,3 +37,4 @@ final readonly class Phpt extends Test
         return $this->file();
     }
 }
+

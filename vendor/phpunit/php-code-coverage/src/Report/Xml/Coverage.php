@@ -61,3 +61,4 @@ final class Coverage
         $this->finalized = true;
     }
 }
+

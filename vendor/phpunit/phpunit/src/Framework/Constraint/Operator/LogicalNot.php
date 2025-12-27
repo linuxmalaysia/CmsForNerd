@@ -139,3 +139,4 @@ final class LogicalNot extends UnaryOperator
         return parent::reduce();
     }
 }
+

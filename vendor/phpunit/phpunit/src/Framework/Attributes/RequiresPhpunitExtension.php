@@ -41,3 +41,4 @@ final readonly class RequiresPhpunitExtension
         return $this->extensionClass;
     }
 }
+

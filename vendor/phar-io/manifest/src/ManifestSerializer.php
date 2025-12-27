@@ -170,3 +170,4 @@ class ManifestSerializer {
         $this->xmlWriter->endElement();
     }
 }
+

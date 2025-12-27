@@ -19,3 +19,4 @@ use PHPUnit\Framework\MockObject\Exception as BaseException;
 interface Exception extends BaseException
 {
 }
+

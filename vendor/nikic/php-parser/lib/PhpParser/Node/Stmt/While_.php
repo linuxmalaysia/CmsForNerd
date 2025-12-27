@@ -31,3 +31,4 @@ class While_ extends Node\Stmt {
         return 'Stmt_While';
     }
 }
+

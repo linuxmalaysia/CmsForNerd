@@ -223,3 +223,4 @@ final class Clover
         return $buffer;
     }
 }
+

@@ -38,3 +38,4 @@ final readonly class ComparisonRequirement extends Requirement
         return $this->operator->asString() . ' ' . $this->version;
     }
 }
+

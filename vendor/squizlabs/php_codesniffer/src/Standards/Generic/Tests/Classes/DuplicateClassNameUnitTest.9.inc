@@ -3,3 +3,4 @@ namespace {
 	class MyClass {}
 	trait YourTrait {}
 }
+

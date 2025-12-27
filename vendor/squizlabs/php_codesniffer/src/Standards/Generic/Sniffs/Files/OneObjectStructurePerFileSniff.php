@@ -60,3 +60,4 @@ class OneObjectStructurePerFileSniff implements Sniff
 
 
 }//end class
+

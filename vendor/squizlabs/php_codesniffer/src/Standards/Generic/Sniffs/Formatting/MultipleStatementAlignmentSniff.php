@@ -424,3 +424,4 @@ class MultipleStatementAlignmentSniff implements Sniff
 
 
 }//end class
+

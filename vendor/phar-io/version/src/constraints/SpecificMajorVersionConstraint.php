@@ -23,3 +23,4 @@ class SpecificMajorVersionConstraint extends AbstractVersionConstraint {
         return $version->getMajor()->getValue() === $this->major;
     }
 }
+

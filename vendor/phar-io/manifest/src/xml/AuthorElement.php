@@ -23,3 +23,4 @@ class AuthorElement extends ManifestElement {
         return $this->hasAttribute('email');
     }
 }
+

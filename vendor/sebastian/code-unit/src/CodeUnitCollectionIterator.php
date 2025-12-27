@@ -52,3 +52,4 @@ final class CodeUnitCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

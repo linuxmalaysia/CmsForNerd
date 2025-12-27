@@ -29,3 +29,4 @@ final readonly class TestTriggeredNoticeSubscriber extends Subscriber implements
         $this->generator()->testTriggeredIssue($event);
     }
 }
+

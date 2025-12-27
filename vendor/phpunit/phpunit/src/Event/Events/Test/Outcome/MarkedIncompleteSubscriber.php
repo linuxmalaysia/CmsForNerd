@@ -18,3 +18,4 @@ interface MarkedIncompleteSubscriber extends Subscriber
 {
     public function notify(MarkedIncomplete $event): void;
 }
+

@@ -19,3 +19,4 @@ use RuntimeException;
 final class NoPharExtensionDirectoryException extends RuntimeException implements Exception
 {
 }
+

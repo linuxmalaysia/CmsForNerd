@@ -15,3 +15,4 @@ namespace PHPUnit\Event;
 final class RuntimeException extends \RuntimeException implements Exception
 {
 }
+

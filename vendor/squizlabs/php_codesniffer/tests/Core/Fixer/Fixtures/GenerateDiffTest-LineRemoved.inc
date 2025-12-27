@@ -6,3 +6,4 @@ if ($var) {
 	echo 'This line is tab indented';
     echo 'And this line is not';
 }
+

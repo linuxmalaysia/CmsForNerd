@@ -271,3 +271,4 @@ final class GitModifiedTest extends AbstractFilterTestCase
 
 
 }//end class
+

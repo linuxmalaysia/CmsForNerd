@@ -158,3 +158,4 @@ final class RecurseScopeMapSwitchTokenScopeTest extends AbstractTokenizerTestCas
 
 
 }//end class
+

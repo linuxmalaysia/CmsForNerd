@@ -15,3 +15,4 @@ namespace PHPUnit\Metadata;
 interface Exception extends \PHPUnit\Exception
 {
 }
+

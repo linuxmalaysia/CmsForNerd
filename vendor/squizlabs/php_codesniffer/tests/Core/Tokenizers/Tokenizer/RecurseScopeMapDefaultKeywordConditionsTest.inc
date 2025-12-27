@@ -229,3 +229,4 @@ class Foo {
     /* testMethodDeclaration */
     public function default() {}
 }
+

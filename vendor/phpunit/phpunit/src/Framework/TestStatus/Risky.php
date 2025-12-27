@@ -33,3 +33,4 @@ final readonly class Risky extends Known
         return 'risky';
     }
 }
+

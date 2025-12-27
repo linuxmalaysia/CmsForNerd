@@ -13,3 +13,4 @@ class Identical extends BinaryOp {
         return 'Expr_BinaryOp_Identical';
     }
 }
+

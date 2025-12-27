@@ -18,3 +18,4 @@ interface FailedSubscriber extends Subscriber
 {
     public function notify(Failed $event): void;
 }
+

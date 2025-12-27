@@ -84,3 +84,4 @@ abstract class Node
         return $this->contextNode;
     }
 }
+

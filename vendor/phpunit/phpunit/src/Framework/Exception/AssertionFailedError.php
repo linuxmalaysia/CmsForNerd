@@ -24,3 +24,4 @@ class AssertionFailedError extends Exception implements SelfDescribing
         return $this->getMessage();
     }
 }
+

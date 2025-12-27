@@ -24,3 +24,4 @@ final class Unknown extends TestStatus
         return 'unknown';
     }
 }
+

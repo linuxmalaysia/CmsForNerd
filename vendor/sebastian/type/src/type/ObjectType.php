@@ -68,3 +68,4 @@ final class ObjectType extends Type
         return true;
     }
 }
+

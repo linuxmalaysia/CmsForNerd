@@ -36,3 +36,4 @@ final readonly class GarbageCollectionTriggered implements Event
         return 'Test Runner Triggered Garbage Collection';
     }
 }
+

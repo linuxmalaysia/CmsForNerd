@@ -17,3 +17,4 @@ final class MatchTokenEmulator extends KeywordEmulator {
         return \T_MATCH;
     }
 }
+

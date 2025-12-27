@@ -91,3 +91,4 @@ final class Filter
         return empty($this->files);
     }
 }
+

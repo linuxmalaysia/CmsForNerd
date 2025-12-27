@@ -66,3 +66,4 @@ final readonly class BeforeFirstTestMethodCalled implements Event
         );
     }
 }
+

@@ -32,3 +32,4 @@ class Declare_ extends Node\Stmt {
         return 'Stmt_Declare';
     }
 }
+

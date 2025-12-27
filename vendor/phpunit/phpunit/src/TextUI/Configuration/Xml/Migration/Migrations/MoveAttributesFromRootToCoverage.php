@@ -50,3 +50,4 @@ final readonly class MoveAttributesFromRootToCoverage implements Migration
         }
     }
 }
+

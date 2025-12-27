@@ -29,3 +29,4 @@ final class ComparisonMethodDoesNotDeclareBoolReturnTypeException extends Except
         );
     }
 }
+

@@ -35,3 +35,4 @@ final class ReverseEmulator extends TokenEmulator {
         return $code;
     }
 }
+

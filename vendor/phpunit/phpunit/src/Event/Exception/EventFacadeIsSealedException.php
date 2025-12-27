@@ -17,3 +17,4 @@ use RuntimeException;
 final class EventFacadeIsSealedException extends RuntimeException implements Exception
 {
 }
+

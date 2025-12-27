@@ -18,3 +18,4 @@ interface ErroredSubscriber extends Subscriber
 {
     public function notify(Errored $event): void;
 }
+

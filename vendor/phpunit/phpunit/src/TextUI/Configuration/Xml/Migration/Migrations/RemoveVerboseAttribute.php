@@ -31,3 +31,4 @@ final readonly class RemoveVerboseAttribute implements Migration
         }
     }
 }
+

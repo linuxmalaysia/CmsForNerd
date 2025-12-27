@@ -55,3 +55,4 @@ final class NoSilencedErrorsUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

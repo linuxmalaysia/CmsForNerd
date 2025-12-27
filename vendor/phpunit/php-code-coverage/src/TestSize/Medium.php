@@ -29,3 +29,4 @@ final class Medium extends Known
         return 'medium';
     }
 }
+

@@ -28,3 +28,4 @@ final readonly class IntroduceCoverageElement implements Migration
         );
     }
 }
+

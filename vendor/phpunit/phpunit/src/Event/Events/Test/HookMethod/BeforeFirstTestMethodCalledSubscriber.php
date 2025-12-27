@@ -18,3 +18,4 @@ interface BeforeFirstTestMethodCalledSubscriber extends Subscriber
 {
     public function notify(BeforeFirstTestMethodCalled $event): void;
 }
+

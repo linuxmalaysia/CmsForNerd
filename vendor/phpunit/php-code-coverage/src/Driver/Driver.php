@@ -136,3 +136,4 @@ abstract class Driver
 
     abstract public function stop(): RawCodeCoverageData;
 }
+

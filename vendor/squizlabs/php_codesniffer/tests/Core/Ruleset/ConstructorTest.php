@@ -291,3 +291,4 @@ final class ConstructorTest extends AbstractRulesetTestCase
 
 
 }//end class
+

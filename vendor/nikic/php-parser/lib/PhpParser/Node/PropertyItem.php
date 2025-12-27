@@ -35,3 +35,4 @@ class PropertyItem extends NodeAbstract {
 
 // @deprecated compatibility alias
 class_alias(PropertyItem::class, Stmt\PropertyProperty::class);
+

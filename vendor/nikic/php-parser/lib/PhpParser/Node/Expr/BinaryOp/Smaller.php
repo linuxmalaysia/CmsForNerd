@@ -13,3 +13,4 @@ class Smaller extends BinaryOp {
         return 'Expr_BinaryOp_Smaller';
     }
 }
+

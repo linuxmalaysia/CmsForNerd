@@ -5,3 +5,4 @@
 // Safeguarding that the sniff does not throw a PHP notice for this test.
 
 function liveCoding()
+

@@ -70,3 +70,4 @@ class ManifestElement {
         return $this->element->getElementsByTagNameNS(self::XMLNS, $elementName)->length !== 0;
     }
 }
+

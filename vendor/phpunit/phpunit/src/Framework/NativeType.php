@@ -28,3 +28,4 @@ enum NativeType: string
     case Scalar         = 'scalar';
     case String         = 'string';
 }
+

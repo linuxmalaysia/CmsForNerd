@@ -29,3 +29,4 @@ final class CannotUseOnlyMethodsException extends \PHPUnit\Framework\Exception i
         );
     }
 }
+

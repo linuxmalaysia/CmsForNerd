@@ -27,3 +27,4 @@ class BooleanNot extends Expr {
         return 'Expr_BooleanNot';
     }
 }
+

@@ -9,3 +9,4 @@ class Test {
 		$var = 1;
 	}
 }
+

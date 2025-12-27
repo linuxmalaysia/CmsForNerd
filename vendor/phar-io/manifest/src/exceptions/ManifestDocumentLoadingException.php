@@ -45,3 +45,4 @@ class ManifestDocumentLoadingException extends \Exception implements Exception {
         return $this->libxmlErrors;
     }
 }
+

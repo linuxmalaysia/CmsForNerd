@@ -25,3 +25,4 @@ class VariadicPlaceholder extends NodeAbstract {
         return [];
     }
 }
+

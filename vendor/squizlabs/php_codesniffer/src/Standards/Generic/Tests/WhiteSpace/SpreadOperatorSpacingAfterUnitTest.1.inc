@@ -76,3 +76,4 @@ $map = array_map(strtolower(...), $map);
 $map = array_map(strtolower( ... ), $map);
 
 bar(... /*comment*/$array);
+

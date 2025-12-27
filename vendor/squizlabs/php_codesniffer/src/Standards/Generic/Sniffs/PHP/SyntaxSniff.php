@@ -102,3 +102,4 @@ class SyntaxSniff implements Sniff
 
 
 }//end class
+

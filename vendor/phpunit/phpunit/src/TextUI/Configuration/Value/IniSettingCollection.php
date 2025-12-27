@@ -58,3 +58,4 @@ final readonly class IniSettingCollection implements Countable, IteratorAggregat
         return new IniSettingCollectionIterator($this);
     }
 }
+

@@ -282,3 +282,4 @@ class NameContext {
         return strtolower($ns) . '\\' . $shortName;
     }
 }
+

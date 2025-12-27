@@ -30,3 +30,4 @@ final class ConfigurationException extends InvalidArgumentException
         );
     }
 }
+

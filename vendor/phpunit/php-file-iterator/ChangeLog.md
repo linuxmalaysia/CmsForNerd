@@ -193,3 +193,4 @@ No changes
 [1.4.3]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4.2...1.4.3
 [1.4.2]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4.1...1.4.2
 [1.4.1]: https://github.com/sebastianbergmann/php-file-iterator/compare/1.4.0...1.4.1
+

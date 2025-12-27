@@ -83,3 +83,4 @@ class ObjectInstantiationSniff implements Sniff
 
 
 }//end class
+

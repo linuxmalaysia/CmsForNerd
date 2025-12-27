@@ -19,3 +19,4 @@ use Throwable;
 interface IncompleteTest extends Throwable
 {
 }
+

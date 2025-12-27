@@ -31,3 +31,4 @@ final readonly class BackupStaticProperties
         return $this->enabled;
     }
 }
+

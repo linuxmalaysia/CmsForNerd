@@ -77,3 +77,4 @@ final class IsInstanceOf extends Constraint
         return $this->valueToTypeStringFragment($other) . $this->toString();
     }
 }
+

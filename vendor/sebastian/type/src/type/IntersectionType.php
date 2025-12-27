@@ -132,3 +132,4 @@ final class IntersectionType extends Type
         }
     }
 }
+

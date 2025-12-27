@@ -31,3 +31,4 @@ final readonly class RemoveCacheTokensAttribute implements Migration
         }
     }
 }
+

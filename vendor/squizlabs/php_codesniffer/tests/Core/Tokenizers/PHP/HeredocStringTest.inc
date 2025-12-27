@@ -191,3 +191,4 @@ EOD;
 $heredoc = <<<EOD
 Do ${foo->{"${'a'}"}} Something
 EOD;
+

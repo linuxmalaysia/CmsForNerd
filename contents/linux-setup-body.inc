@@ -116,3 +116,4 @@ sudo chmod -R 755 /var/www/cmsfornerd</code>
 .progress-nav .next { background: #2ecc71; color: #fff; }
 @media (max-width: 900px) { .linux-setup .os-selector { grid-template-columns: 1fr; } .progress-nav { flex-direction: column; gap: 1rem; } }
 </style>
+

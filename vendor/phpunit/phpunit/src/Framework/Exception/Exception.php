@@ -85,3 +85,4 @@ class Exception extends RuntimeException implements \PHPUnit\Exception
         return $this->serializableTrace;
     }
 }
+

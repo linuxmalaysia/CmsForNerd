@@ -574,3 +574,4 @@ final class MockBuilder
         return isset($caller['class']) && $caller['class'] === TestCase::class;
     }
 }
+

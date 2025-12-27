@@ -25,3 +25,4 @@ abstract readonly class Known extends TestSize
 
     abstract public function isGreaterThan(self $other): bool;
 }
+

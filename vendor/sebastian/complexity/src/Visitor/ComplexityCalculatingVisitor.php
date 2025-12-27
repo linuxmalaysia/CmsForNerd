@@ -131,3 +131,4 @@ final class ComplexityCalculatingVisitor extends NodeVisitorAbstract
         return $functionName;
     }
 }
+

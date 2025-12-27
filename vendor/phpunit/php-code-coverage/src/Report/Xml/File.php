@@ -78,3 +78,4 @@ class File
         return $this->dom;
     }
 }
+

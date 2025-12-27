@@ -280,3 +280,4 @@ class TokenStream {
         return $spaces + $tabs * $tabWidth;
     }
 }
+

@@ -27,3 +27,4 @@ final class ReturnSelf implements Stub
         return $invocation->object();
     }
 }
+

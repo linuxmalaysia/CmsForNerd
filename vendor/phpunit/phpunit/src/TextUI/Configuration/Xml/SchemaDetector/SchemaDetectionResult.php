@@ -36,3 +36,4 @@ abstract readonly class SchemaDetectionResult
         throw new XmlException('No supported schema was detected');
     }
 }
+

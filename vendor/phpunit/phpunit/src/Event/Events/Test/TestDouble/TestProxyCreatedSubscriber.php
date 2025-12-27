@@ -18,3 +18,4 @@ interface TestProxyCreatedSubscriber extends Subscriber
 {
     public function notify(TestProxyCreated $event): void;
 }
+

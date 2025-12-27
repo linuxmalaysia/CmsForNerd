@@ -344,3 +344,4 @@ enum BraceNotOnLineByItselfCloseTagError
 } ?>
 
 <?php
+

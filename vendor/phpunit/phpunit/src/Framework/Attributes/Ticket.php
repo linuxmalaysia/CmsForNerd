@@ -40,3 +40,4 @@ final readonly class Ticket
         return $this->text;
     }
 }
+

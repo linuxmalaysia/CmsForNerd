@@ -53,3 +53,4 @@ final readonly class TestResultCollection implements IteratorAggregate
         return new TestResultCollectionIterator($this);
     }
 }
+

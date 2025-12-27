@@ -24,3 +24,4 @@ final readonly class TestTriggeredPhpWarningSubscriber extends Subscriber implem
         $this->collector()->testTriggeredPhpWarning($event);
     }
 }
+

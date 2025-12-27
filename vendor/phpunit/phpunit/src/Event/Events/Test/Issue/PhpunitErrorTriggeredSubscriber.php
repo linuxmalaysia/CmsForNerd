@@ -18,3 +18,4 @@ interface PhpunitErrorTriggeredSubscriber extends Subscriber
 {
     public function notify(PhpunitErrorTriggered $event): void;
 }
+

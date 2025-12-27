@@ -34,3 +34,4 @@ final class ReturnCallback implements Stub
         return call_user_func_array($this->callback, $invocation->parameters());
     }
 }
+

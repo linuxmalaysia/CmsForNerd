@@ -19,3 +19,4 @@ class ComponentElement extends ManifestElement {
         return $this->getAttributeValue('version');
     }
 }
+

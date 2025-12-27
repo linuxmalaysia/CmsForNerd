@@ -61,3 +61,4 @@ final class ByteOrderMarkUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -102,3 +102,4 @@ abstract readonly class Configuration
         return false;
     }
 }
+

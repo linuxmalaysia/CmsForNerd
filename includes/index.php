@@ -6,3 +6,4 @@ declare(strict_types=1);
 // CmsForNerd
 
 header("Location: ../index.php");
+

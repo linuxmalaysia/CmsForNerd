@@ -15,3 +15,4 @@ class Library extends Type {
         return true;
     }
 }
+

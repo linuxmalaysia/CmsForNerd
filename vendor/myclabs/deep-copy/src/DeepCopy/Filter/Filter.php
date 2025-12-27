@@ -16,3 +16,4 @@ interface Filter
      */
     public function apply($object, $property, $objectCopier);
 }
+

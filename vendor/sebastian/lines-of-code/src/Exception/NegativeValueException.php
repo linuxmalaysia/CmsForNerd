@@ -14,3 +14,4 @@ use InvalidArgumentException;
 final class NegativeValueException extends InvalidArgumentException implements Exception
 {
 }
+

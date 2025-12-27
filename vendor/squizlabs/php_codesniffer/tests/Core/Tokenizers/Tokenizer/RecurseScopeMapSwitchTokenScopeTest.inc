@@ -58,3 +58,4 @@ switch((fn(): string => $condition ? 'foo' : 'bar')()) /* testSwitchArrowFunctio
         return 'test';
 /* testSwitchArrowFunctionWithReturnTypeWithinConditionScopeCloser */
 endswitch;
+

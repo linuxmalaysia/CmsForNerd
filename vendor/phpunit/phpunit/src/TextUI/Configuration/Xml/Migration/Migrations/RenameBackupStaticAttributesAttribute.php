@@ -38,3 +38,4 @@ final readonly class RenameBackupStaticAttributesAttribute implements Migration
         $root->removeAttribute('backupStaticAttributes');
     }
 }
+

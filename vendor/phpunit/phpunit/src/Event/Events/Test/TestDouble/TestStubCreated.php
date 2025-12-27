@@ -57,3 +57,4 @@ final readonly class TestStubCreated implements Event
         );
     }
 }
+

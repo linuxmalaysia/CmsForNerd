@@ -40,3 +40,4 @@ final readonly class RequiresPhpunit extends Metadata
         return $this->versionRequirement;
     }
 }
+

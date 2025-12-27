@@ -73,3 +73,4 @@ final readonly class PhpunitWarningTriggered implements Event
         );
     }
 }
+

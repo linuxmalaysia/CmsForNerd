@@ -164,3 +164,4 @@ final readonly class CheckPhpConfigurationCommand implements Command
         ];
     }
 }
+

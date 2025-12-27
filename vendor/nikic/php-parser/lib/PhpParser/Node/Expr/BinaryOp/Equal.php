@@ -13,3 +13,4 @@ class Equal extends BinaryOp {
         return 'Expr_BinaryOp_Equal';
     }
 }
+

@@ -79,3 +79,4 @@ class Spaces {
     * Star indented.
     * Closer indented.
     */
+

@@ -19,3 +19,4 @@ use RuntimeException;
 final class SpecificDeprecationToStopOnNotConfiguredException extends RuntimeException implements Exception
 {
 }
+

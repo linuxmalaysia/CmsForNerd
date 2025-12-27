@@ -24,3 +24,4 @@ final class UnknownOptionException extends RuntimeException implements Exception
         );
     }
 }
+

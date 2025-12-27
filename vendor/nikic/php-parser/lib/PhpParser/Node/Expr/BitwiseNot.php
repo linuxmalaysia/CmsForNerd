@@ -27,3 +27,4 @@ class BitwiseNot extends Expr {
         return 'Expr_BitwiseNot';
     }
 }
+

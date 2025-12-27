@@ -21,3 +21,4 @@ final readonly class CoversNothing extends Metadata
         return true;
     }
 }
+

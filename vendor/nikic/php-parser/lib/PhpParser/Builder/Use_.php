@@ -47,3 +47,4 @@ class Use_ implements Builder {
         ], $this->type);
     }
 }
+

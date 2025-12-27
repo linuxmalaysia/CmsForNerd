@@ -160,3 +160,4 @@
 
 <!-- Load fonts for the certificate -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+

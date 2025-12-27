@@ -593,3 +593,4 @@ final readonly class MetadataCollection implements Countable, IteratorAggregate
         );
     }
 }
+

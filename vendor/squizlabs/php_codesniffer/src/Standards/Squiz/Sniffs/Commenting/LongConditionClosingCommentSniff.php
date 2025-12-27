@@ -216,3 +216,4 @@ class LongConditionClosingCommentSniff implements Sniff
 
 
 }//end class
+

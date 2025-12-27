@@ -27,3 +27,4 @@ final class IncludeGroupFilterIterator extends GroupFilterIterator
         return in_array($id, $groupTests, true);
     }
 }
+

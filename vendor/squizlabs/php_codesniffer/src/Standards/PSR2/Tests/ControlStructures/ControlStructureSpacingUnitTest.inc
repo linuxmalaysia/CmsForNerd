@@ -79,3 +79,4 @@ $r = match ( $x ) {};
 $r = match (  $x  ) {};
 // phpcs:set PSR2.ControlStructures.ControlStructureSpacing requiredSpacesAfterOpen 0
 // phpcs:set PSR2.ControlStructures.ControlStructureSpacing requiredSpacesBeforeClose 0
+

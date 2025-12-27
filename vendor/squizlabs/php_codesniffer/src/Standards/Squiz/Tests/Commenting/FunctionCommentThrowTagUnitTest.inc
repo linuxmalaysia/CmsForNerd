@@ -531,3 +531,4 @@ $anon = new class {
 public function ImproveCommentTolerance() {
     throw /*comment*/ new /*comment*/ Right_Exception('Error');
 }
+

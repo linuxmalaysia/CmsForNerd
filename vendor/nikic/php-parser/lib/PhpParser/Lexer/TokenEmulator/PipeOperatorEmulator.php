@@ -43,3 +43,4 @@ class PipeOperatorEmulator extends TokenEmulator {
         return $tokens;
     }
 }
+

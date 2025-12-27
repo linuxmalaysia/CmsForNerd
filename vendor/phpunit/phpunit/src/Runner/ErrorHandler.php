@@ -422,3 +422,4 @@ final class ErrorHandler
         return $buffer;
     }
 }
+

@@ -38,3 +38,4 @@ final readonly class PreserveGlobalState extends Metadata
         return $this->enabled;
     }
 }
+

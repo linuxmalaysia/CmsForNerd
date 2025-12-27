@@ -255,3 +255,4 @@ class CreateWidgetTypeCallbackSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

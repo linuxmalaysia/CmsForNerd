@@ -8,3 +8,4 @@ echo 'bar';
 <i>Italic text</i>
 <?php
 echo 'baz';
+

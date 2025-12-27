@@ -88,3 +88,4 @@ final readonly class Duration
         return $result;
     }
 }
+

@@ -403,3 +403,4 @@ class SwitchDeclarationSniff implements Sniff
 
 
 }//end class
+

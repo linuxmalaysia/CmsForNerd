@@ -321,3 +321,4 @@ interface Emitter
 
     public function applicationFinished(int $shellExitCode): void;
 }
+

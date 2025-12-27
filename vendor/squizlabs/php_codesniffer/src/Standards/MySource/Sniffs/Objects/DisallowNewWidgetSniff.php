@@ -96,3 +96,4 @@ class DisallowNewWidgetSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

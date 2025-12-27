@@ -40,3 +40,4 @@ final readonly class DataProvider
         return $this->methodName;
     }
 }
+

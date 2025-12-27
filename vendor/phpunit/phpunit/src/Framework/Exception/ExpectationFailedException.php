@@ -37,3 +37,4 @@ final class ExpectationFailedException extends AssertionFailedError
         return $this->comparisonFailure;
     }
 }
+

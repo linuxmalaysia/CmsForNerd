@@ -82,3 +82,4 @@ final class TestSuiteIterator implements RecursiveIterator
         return $this->valid() && $this->current() instanceof TestSuite;
     }
 }
+

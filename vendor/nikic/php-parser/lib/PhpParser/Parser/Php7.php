@@ -2917,3 +2917,4 @@ class Php7 extends \PhpParser\ParserAbstract
         ];
     }
 }
+

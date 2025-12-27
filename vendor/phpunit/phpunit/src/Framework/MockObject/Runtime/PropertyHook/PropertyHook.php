@@ -58,3 +58,4 @@ abstract readonly class PropertyHook
      */
     abstract public function asString(): string;
 }
+

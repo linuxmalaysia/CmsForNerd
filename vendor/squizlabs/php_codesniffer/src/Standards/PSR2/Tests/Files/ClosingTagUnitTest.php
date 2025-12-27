@@ -67,3 +67,4 @@ final class ClosingTagUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

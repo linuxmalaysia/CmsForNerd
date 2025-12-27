@@ -15,3 +15,4 @@ namespace PHPUnit\Event;
 final class InvalidArgumentException extends \InvalidArgumentException implements Exception
 {
 }
+

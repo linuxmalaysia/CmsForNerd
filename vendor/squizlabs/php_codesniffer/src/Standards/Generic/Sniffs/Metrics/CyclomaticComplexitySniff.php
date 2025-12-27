@@ -115,3 +115,4 @@ class CyclomaticComplexitySniff implements Sniff
 
 
 }//end class
+

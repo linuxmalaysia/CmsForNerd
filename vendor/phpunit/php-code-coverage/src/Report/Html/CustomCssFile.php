@@ -48,3 +48,4 @@ final class CustomCssFile
         return $this->path;
     }
 }
+

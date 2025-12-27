@@ -24,3 +24,4 @@ $var = doSomething();
 /* testSingleLineDocblockWithTag3 */
 /** @see Something::Else */
 $var = doSomething();
+

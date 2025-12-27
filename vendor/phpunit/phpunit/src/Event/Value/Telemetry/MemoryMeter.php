@@ -20,3 +20,4 @@ interface MemoryMeter
 
     public function peakMemoryUsage(): MemoryUsage;
 }
+

@@ -143,3 +143,4 @@ final class Issue
                $this->file === $this->triggeringTests[array_keys($this->triggeringTests)[0]]['test']->file();
     }
 }
+

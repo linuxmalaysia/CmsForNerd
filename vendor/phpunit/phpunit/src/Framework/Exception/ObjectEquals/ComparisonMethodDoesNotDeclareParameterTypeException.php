@@ -29,3 +29,4 @@ final class ComparisonMethodDoesNotDeclareParameterTypeException extends Excepti
         );
     }
 }
+

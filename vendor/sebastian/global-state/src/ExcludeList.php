@@ -136,3 +136,4 @@ final class ExcludeList
         return isset($this->staticProperties[$className][$propertyName]);
     }
 }
+

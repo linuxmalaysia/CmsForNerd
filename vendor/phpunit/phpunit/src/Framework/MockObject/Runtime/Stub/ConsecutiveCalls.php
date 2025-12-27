@@ -57,3 +57,4 @@ final class ConsecutiveCalls implements Stub
         return $value;
     }
 }
+

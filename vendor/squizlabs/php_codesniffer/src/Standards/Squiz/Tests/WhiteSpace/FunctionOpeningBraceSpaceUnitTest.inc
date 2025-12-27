@@ -52,3 +52,4 @@ $a = function()
 
 	echo 'Testing a closure';
 };
+

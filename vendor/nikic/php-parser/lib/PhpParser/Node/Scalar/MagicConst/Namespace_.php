@@ -13,3 +13,4 @@ class Namespace_ extends MagicConst {
         return 'Scalar_MagicConst_Namespace';
     }
 }
+

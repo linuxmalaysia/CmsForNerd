@@ -13,3 +13,4 @@ class LogicalOr extends BinaryOp {
         return 'Expr_BinaryOp_LogicalOr';
     }
 }
+

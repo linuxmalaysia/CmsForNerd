@@ -106,3 +106,4 @@ class JsonDecoder {
         throw new \RuntimeException("Unknown node type \"$nodeType\"");
     }
 }
+

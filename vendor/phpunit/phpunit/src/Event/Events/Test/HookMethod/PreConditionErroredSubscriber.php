@@ -18,3 +18,4 @@ interface PreConditionErroredSubscriber extends Subscriber
 {
     public function notify(PreConditionErrored $event): void;
 }
+

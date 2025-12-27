@@ -20,3 +20,4 @@ interface Printer
 
     public function flush(): void;
 }
+

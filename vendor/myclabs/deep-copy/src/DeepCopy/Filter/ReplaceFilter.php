@@ -39,3 +39,4 @@ class ReplaceFilter implements Filter
         $reflectionProperty->setValue($object, $value);
     }
 }
+

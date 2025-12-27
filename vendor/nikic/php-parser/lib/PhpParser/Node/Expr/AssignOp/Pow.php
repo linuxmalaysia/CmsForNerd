@@ -9,3 +9,4 @@ class Pow extends AssignOp {
         return 'Expr_AssignOp_Pow';
     }
 }
+

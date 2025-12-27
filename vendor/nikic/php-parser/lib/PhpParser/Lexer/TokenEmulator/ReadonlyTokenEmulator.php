@@ -29,3 +29,4 @@ final class ReadonlyTokenEmulator extends KeywordEmulator {
                    $tokens[$pos + 2]->text === '(')));
     }
 }
+

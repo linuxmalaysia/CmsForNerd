@@ -72,3 +72,4 @@ final class UnnecessaryHeredocUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -330,3 +330,4 @@ final class InvocationMocker implements InvocationStubber, MethodNameMatch
         }
     }
 }
+

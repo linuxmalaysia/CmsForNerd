@@ -41,3 +41,4 @@ pager($ctx);
 
 // [PERFORMANCE] Release the buffer
 ob_end_flush();
+

@@ -45,3 +45,4 @@ final readonly class Group extends Metadata
         return $this->groupName;
     }
 }
+

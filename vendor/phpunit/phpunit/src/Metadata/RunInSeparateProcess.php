@@ -21,3 +21,4 @@ final readonly class RunInSeparateProcess extends Metadata
         return true;
     }
 }
+

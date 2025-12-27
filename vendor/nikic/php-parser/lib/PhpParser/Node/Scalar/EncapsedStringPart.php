@@ -15,3 +15,4 @@ if (false) {
     class EncapsedStringPart extends InterpolatedStringPart {
     }
 }
+

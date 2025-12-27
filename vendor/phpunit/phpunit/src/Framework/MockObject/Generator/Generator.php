@@ -1283,3 +1283,4 @@ final class Generator
         return $properties;
     }
 }
+

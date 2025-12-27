@@ -74,3 +74,4 @@ final class MethodDeclarationUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

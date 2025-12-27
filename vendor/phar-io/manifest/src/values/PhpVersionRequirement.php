@@ -24,3 +24,4 @@ class PhpVersionRequirement implements Requirement {
         return $this->versionConstraint;
     }
 }
+

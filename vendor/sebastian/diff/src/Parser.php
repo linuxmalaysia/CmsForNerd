@@ -110,3 +110,4 @@ final class Parser
         $diff->setChunks($chunks);
     }
 }
+

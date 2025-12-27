@@ -6,3 +6,4 @@ echo $var;
 ?>
 <?echo $var; ?>
 </div>
+

@@ -459,3 +459,4 @@ final class JunitXmlLogger
         $this->time            = $event->telemetryInfo()->time();
     }
 }
+

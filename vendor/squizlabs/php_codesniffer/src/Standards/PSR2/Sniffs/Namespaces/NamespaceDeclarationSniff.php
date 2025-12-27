@@ -98,3 +98,4 @@ class NamespaceDeclarationSniff implements Sniff
 
 
 }//end class
+

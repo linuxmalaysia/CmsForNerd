@@ -55,3 +55,4 @@ final readonly class UsesClass extends Metadata
         return $this->className;
     }
 }
+

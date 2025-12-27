@@ -14,3 +14,4 @@ final class AboutPageTest extends TestCase
         $this->assertStringContainsString('About CMSForNerd', $content);
     }
 }
+

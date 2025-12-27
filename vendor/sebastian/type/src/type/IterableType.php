@@ -72,3 +72,4 @@ final class IterableType extends Type
         return true;
     }
 }
+

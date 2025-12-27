@@ -31,3 +31,4 @@ final readonly class RemoveNoInteractionAttribute implements Migration
         }
     }
 }
+

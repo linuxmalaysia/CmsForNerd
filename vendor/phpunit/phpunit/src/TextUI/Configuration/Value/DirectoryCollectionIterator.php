@@ -55,3 +55,4 @@ final class DirectoryCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

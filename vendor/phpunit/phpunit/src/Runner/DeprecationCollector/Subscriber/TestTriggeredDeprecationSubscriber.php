@@ -24,3 +24,4 @@ final class TestTriggeredDeprecationSubscriber extends Subscriber implements Dep
         $this->collector()->testTriggeredDeprecation($event);
     }
 }
+

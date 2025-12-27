@@ -37,3 +37,4 @@ class StaticVar extends NodeAbstract {
 
 // @deprecated compatibility alias
 class_alias(StaticVar::class, Stmt\StaticVar::class);
+

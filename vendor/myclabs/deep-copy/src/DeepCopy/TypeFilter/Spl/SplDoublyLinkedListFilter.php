@@ -49,3 +49,4 @@ class SplDoublyLinkedListFilter implements TypeFilter
         return Closure::bind($copy, null, DeepCopy::class);
     }
 }
+

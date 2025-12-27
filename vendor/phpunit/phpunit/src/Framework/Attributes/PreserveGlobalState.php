@@ -31,3 +31,4 @@ final readonly class PreserveGlobalState
         return $this->enabled;
     }
 }
+

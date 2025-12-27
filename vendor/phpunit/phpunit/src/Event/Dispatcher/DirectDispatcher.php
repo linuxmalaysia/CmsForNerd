@@ -138,3 +138,4 @@ final class DirectDispatcher implements SubscribableDispatcher
         return !str_starts_with($t->getFile(), dirname(__DIR__, 2));
     }
 }
+

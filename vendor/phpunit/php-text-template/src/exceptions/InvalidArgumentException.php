@@ -12,3 +12,4 @@ namespace SebastianBergmann\Template;
 final class InvalidArgumentException extends \InvalidArgumentException implements Exception
 {
 }
+

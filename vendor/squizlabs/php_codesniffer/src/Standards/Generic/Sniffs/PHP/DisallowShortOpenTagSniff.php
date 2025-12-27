@@ -168,3 +168,4 @@ class DisallowShortOpenTagSniff implements Sniff
 
 
 }//end class
+

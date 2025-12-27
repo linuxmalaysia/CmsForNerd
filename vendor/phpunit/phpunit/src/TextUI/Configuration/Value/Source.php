@@ -200,3 +200,4 @@ final readonly class Source
         return $this->ignoreIndirectDeprecations;
     }
 }
+

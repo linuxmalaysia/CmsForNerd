@@ -68,3 +68,4 @@ final readonly class ConsideredRisky implements Event
         );
     }
 }
+

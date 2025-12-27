@@ -125,3 +125,4 @@ class ColourDefinitionSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

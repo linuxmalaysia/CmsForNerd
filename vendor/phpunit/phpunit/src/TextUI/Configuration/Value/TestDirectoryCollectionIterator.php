@@ -55,3 +55,4 @@ final class TestDirectoryCollectionIterator implements Iterator
         $this->position++;
     }
 }
+

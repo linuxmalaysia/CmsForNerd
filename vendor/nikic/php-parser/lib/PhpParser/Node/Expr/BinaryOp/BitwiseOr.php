@@ -13,3 +13,4 @@ class BitwiseOr extends BinaryOp {
         return 'Expr_BinaryOp_BitwiseOr';
     }
 }
+

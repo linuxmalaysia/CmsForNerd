@@ -225,3 +225,4 @@ final class GenerateDiffTest extends TestCase
 
 
 }//end class
+

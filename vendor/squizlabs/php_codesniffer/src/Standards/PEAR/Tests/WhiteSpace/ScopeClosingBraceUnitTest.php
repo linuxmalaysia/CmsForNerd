@@ -71,3 +71,4 @@ final class ScopeClosingBraceUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

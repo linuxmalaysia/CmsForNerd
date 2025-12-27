@@ -56,3 +56,4 @@ final class MissingColonUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -138,3 +138,4 @@ final class Groups
         return strtolower(trim($name, '\\'));
     }
 }
+

@@ -228,3 +228,4 @@ class Emulative extends Lexer {
         }
     }
 }
+

@@ -58,3 +58,4 @@ final class DeferringDispatcher implements SubscribableDispatcher
         $this->events = new EventCollection;
     }
 }
+

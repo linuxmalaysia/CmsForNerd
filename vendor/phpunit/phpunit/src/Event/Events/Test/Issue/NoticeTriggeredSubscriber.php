@@ -18,3 +18,4 @@ interface NoticeTriggeredSubscriber extends Subscriber
 {
     public function notify(NoticeTriggered $event): void;
 }
+

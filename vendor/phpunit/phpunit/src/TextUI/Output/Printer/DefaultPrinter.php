@@ -124,3 +124,4 @@ final class DefaultPrinter implements Printer
         }
     }
 }
+

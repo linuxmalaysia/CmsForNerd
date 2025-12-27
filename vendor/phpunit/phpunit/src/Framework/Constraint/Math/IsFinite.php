@@ -33,3 +33,4 @@ final class IsFinite extends Constraint
         return is_finite($other);
     }
 }
+

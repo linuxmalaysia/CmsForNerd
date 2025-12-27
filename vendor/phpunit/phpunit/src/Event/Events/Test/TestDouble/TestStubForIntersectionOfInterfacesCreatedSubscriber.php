@@ -18,3 +18,4 @@ interface TestStubForIntersectionOfInterfacesCreatedSubscriber extends Subscribe
 {
     public function notify(TestStubForIntersectionOfInterfacesCreated $event): void;
 }
+

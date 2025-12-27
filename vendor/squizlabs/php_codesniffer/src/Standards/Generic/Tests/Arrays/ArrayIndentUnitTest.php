@@ -79,3 +79,4 @@ final class ArrayIndentUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -13,3 +13,4 @@ class Trait_ extends MagicConst {
         return 'Scalar_MagicConst_Trait';
     }
 }
+

@@ -61,3 +61,4 @@ final class AssignThisUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

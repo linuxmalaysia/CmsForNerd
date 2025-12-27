@@ -98,3 +98,4 @@ final class Registry
         return $this->methodDocBlocks[$classInHierarchy][$method] = DocBlock::ofMethod($reflection);
     }
 }
+

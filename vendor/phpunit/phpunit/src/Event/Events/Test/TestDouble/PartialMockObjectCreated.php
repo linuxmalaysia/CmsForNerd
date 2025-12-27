@@ -71,3 +71,4 @@ final readonly class PartialMockObjectCreated implements Event
         );
     }
 }
+

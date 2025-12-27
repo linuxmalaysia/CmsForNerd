@@ -17,3 +17,4 @@ class RequiresElement extends ManifestElement {
         );
     }
 }
+

@@ -83,3 +83,4 @@ class Identifier extends NodeAbstract {
         return 'Identifier';
     }
 }
+

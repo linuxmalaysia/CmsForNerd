@@ -15,3 +15,4 @@ class Throwing implements ErrorHandler {
         throw $error;
     }
 }
+

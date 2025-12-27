@@ -71,3 +71,4 @@ final readonly class ListTestFilesCommand implements Command
         return Result::from($buffer);
     }
 }
+

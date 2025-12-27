@@ -48,3 +48,4 @@ final class StringEndsWith extends Constraint
         return str_ends_with((string) $other, $this->suffix);
     }
 }
+

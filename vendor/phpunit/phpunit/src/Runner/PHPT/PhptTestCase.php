@@ -987,3 +987,4 @@ final class PhptTestCase implements Reorderable, SelfDescribing, Test
         return $settings;
     }
 }
+

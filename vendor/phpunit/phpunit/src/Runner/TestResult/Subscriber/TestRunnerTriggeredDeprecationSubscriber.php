@@ -24,3 +24,4 @@ final readonly class TestRunnerTriggeredDeprecationSubscriber extends Subscriber
         $this->collector()->testRunnerTriggeredDeprecation($event);
     }
 }
+

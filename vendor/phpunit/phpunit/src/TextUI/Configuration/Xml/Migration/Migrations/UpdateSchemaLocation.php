@@ -44,3 +44,4 @@ final readonly class UpdateSchemaLocation implements Migration
         );
     }
 }
+

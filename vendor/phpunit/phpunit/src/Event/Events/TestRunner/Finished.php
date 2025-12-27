@@ -36,3 +36,4 @@ final readonly class Finished implements Event
         return 'Test Runner Finished';
     }
 }
+

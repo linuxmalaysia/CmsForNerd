@@ -103,3 +103,4 @@ final class ComparisonOperatorUsageUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

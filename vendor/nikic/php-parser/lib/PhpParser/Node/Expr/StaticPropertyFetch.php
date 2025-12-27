@@ -34,3 +34,4 @@ class StaticPropertyFetch extends Expr {
         return 'Expr_StaticPropertyFetch';
     }
 }
+

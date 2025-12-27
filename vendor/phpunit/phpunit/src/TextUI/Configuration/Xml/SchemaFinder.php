@@ -80,3 +80,4 @@ final readonly class SchemaFinder
         return __DIR__ . '/../../../../';
     }
 }
+

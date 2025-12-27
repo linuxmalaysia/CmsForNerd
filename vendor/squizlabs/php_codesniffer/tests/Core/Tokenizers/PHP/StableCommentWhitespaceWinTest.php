@@ -373,3 +373,4 @@ final class StableCommentWhitespaceWinTest extends AbstractTokenizerTestCase
 
 
 }//end class
+

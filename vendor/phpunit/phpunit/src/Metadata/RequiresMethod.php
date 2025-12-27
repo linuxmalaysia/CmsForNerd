@@ -60,3 +60,4 @@ final readonly class RequiresMethod extends Metadata
         return $this->methodName;
     }
 }
+

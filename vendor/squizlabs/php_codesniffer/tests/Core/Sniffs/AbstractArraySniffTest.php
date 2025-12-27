@@ -295,3 +295,4 @@ final class AbstractArraySniffTest extends AbstractMethodUnitTest
 
 
 }//end class
+

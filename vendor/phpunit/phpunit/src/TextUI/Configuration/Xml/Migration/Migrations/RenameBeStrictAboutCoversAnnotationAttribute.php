@@ -38,3 +38,4 @@ final readonly class RenameBeStrictAboutCoversAnnotationAttribute implements Mig
         $root->removeAttribute('beStrictAboutCoversAnnotation');
     }
 }
+

@@ -152,3 +152,4 @@ final class Parameters implements ParametersRule
         Test::currentTestCase()->addToAssertionCount(1);
     }
 }
+

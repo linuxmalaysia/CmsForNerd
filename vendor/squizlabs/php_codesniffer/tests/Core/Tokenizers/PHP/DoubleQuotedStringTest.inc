@@ -50,3 +50,4 @@
 
 /* testParseError */
 "${foo["${bar
+

@@ -74,3 +74,4 @@ final class ExecutableFileUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -20,3 +20,4 @@ class ExactVersionConstraint extends AbstractVersionConstraint {
         return $this->asString() === $other;
     }
 }
+

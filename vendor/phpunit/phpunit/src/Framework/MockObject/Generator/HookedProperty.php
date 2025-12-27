@@ -57,3 +57,4 @@ final readonly class HookedProperty
         return $this->setHook;
     }
 }
+

@@ -13,3 +13,4 @@ class ShiftRight extends BinaryOp {
         return 'Expr_BinaryOp_ShiftRight';
     }
 }
+

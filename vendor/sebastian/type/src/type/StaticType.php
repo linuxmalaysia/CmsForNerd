@@ -65,3 +65,4 @@ final class StaticType extends Type
         return true;
     }
 }
+

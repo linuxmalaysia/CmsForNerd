@@ -78,3 +78,4 @@ final class InlineIfDeclarationUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

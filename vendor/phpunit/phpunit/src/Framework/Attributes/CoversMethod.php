@@ -55,3 +55,4 @@ final readonly class CoversMethod
         return $this->methodName;
     }
 }
+

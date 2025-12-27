@@ -86,3 +86,4 @@ class VersionConstraintValue {
         $versionString = \substr($versionString, 1);
     }
 }
+

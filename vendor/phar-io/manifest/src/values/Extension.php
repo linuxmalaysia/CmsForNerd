@@ -45,3 +45,4 @@ class Extension extends Type {
         return $this->isExtensionFor($name) && $this->versionConstraint->complies($version);
     }
 }
+

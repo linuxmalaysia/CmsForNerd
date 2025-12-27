@@ -21,3 +21,4 @@ final readonly class WithoutErrorHandler extends Metadata
         return true;
     }
 }
+

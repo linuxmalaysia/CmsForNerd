@@ -48,3 +48,4 @@ final readonly class MockTrait implements MockType
         return $this->mockName;
     }
 }
+

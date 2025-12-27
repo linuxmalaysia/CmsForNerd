@@ -148,3 +148,4 @@ $filtered_results[ $i ]->$row->field = $result;
 $filtered_results[ $i ]->$row->$field = $result;
 $filtered_results[ $i ]->$row[0]->field = $result;
 $filtered_results[ $i ]->$row[$j]->$field = $result;
+

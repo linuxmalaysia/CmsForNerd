@@ -76,3 +76,4 @@ final class UnusedFunctionParameterUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

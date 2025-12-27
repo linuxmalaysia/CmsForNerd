@@ -36,3 +36,4 @@ return \unserialize(<<<'END_OF_COVERAGE_SERIALIZATION'" . PHP_EOL . serialize($c
         return $buffer;
     }
 }
+

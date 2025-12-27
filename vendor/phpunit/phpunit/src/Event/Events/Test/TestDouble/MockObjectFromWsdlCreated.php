@@ -116,3 +116,4 @@ final readonly class MockObjectFromWsdlCreated implements Event
         );
     }
 }
+

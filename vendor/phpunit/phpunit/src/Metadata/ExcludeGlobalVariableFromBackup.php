@@ -45,3 +45,4 @@ final readonly class ExcludeGlobalVariableFromBackup extends Metadata
         return $this->globalVariableName;
     }
 }
+

@@ -271,3 +271,4 @@ final class GitStagedTest extends AbstractFilterTestCase
 
 
 }//end class
+

@@ -60,3 +60,4 @@ final class EventCollection implements Countable, IteratorAggregate
         return new EventCollectionIterator($this);
     }
 }
+

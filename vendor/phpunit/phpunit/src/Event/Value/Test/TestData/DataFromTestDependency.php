@@ -26,3 +26,4 @@ final readonly class DataFromTestDependency extends TestData
         return true;
     }
 }
+

@@ -28,3 +28,4 @@ abstract readonly class Subscriber
         return $this->handler;
     }
 }
+

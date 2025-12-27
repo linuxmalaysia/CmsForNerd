@@ -80,3 +80,4 @@ final readonly class PreConditionFinished implements Event
         return $buffer;
     }
 }
+

@@ -52,3 +52,4 @@ final readonly class MoveWhitelistIncludesToCoverage implements Migration
         }
     }
 }
+

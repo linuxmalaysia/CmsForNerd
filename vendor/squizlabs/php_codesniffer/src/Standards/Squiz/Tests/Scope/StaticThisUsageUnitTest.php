@@ -65,3 +65,4 @@ final class StaticThisUsageUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

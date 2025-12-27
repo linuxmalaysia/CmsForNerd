@@ -37,3 +37,4 @@ function get_site_pages(): array
 
     return $pages;
 }
+

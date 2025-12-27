@@ -19,3 +19,4 @@ use RuntimeException;
 final class InvalidPhptFileException extends RuntimeException implements Exception
 {
 }
+

@@ -31,3 +31,4 @@ final readonly class PreCondition
         return $this->priority;
     }
 }
+

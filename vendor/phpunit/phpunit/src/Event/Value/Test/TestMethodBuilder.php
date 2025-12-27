@@ -81,3 +81,4 @@ final readonly class TestMethodBuilder
         return TestDataCollection::fromArray($testData);
     }
 }
+

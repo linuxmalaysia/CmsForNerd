@@ -48,3 +48,4 @@ final class StringStartsWith extends Constraint
         return str_starts_with((string) $other, $this->prefix);
     }
 }
+

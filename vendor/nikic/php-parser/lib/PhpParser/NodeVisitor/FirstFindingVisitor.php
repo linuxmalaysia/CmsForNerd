@@ -47,3 +47,4 @@ class FirstFindingVisitor extends NodeVisitorAbstract {
         return null;
     }
 }
+

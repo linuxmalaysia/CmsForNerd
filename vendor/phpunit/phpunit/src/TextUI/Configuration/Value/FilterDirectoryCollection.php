@@ -63,3 +63,4 @@ final readonly class FilterDirectoryCollection implements Countable, IteratorAgg
         return new FilterDirectoryCollectionIterator($this);
     }
 }
+

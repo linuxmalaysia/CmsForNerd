@@ -45,3 +45,4 @@ class For_ extends Node\Stmt {
         return 'Stmt_For';
     }
 }
+

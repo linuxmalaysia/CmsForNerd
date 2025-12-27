@@ -22,3 +22,4 @@ interface Parser {
      */
     public function getTokens(): array;
 }
+

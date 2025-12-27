@@ -77,3 +77,4 @@ $ternary = true ? namespace\callMe() : null;
 
 /* testInlineThenWithNamespaceRelativeNameAndDoubleColon */
 $ternary = true ? namespace\ClassName::callMe() : null;
+

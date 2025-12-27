@@ -18,3 +18,4 @@ interface AfterTestMethodCalledSubscriber extends Subscriber
 {
     public function notify(AfterTestMethodCalled $event): void;
 }
+

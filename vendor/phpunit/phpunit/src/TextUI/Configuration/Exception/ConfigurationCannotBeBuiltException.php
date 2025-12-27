@@ -19,3 +19,4 @@ use RuntimeException;
 final class ConfigurationCannotBeBuiltException extends RuntimeException implements Exception
 {
 }
+

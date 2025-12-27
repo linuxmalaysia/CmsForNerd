@@ -13,3 +13,4 @@ as long as it is followed by non-empty inline HTML.
 
 </div>
 <p>Some more content after the last PHP tag block.</p>
+

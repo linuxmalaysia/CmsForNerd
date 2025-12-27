@@ -18,3 +18,4 @@ interface ExtensionBootstrappedSubscriber extends Subscriber
 {
     public function notify(ExtensionBootstrapped $event): void;
 }
+

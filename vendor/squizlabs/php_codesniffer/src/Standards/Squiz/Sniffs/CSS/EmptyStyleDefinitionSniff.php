@@ -101,3 +101,4 @@ class EmptyStyleDefinitionSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

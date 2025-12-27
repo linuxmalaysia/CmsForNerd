@@ -21,3 +21,4 @@ final readonly class DisableReturnValueGenerationForTestDoubles extends Metadata
         return true;
     }
 }
+

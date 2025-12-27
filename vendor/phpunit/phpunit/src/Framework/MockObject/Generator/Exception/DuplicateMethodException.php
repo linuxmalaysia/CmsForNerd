@@ -35,3 +35,4 @@ final class DuplicateMethodException extends \PHPUnit\Framework\Exception implem
         );
     }
 }
+

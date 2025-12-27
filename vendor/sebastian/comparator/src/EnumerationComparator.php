@@ -48,3 +48,4 @@ final class EnumerationComparator extends Comparator
         );
     }
 }
+

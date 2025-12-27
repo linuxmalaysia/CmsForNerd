@@ -45,3 +45,4 @@ class AuthorCollectionIterator implements Iterator {
         $this->position++;
     }
 }
+

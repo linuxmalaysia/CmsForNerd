@@ -19,3 +19,4 @@ use RuntimeException;
 final class NoCacheDirectoryException extends RuntimeException implements Exception
 {
 }
+

@@ -85,3 +85,4 @@ final class Iterator implements RecursiveIterator
         return $this->nodes[$this->position] instanceof Directory;
     }
 }
+

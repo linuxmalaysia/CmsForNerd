@@ -31,3 +31,4 @@ class AssignRef extends Expr {
         return 'Expr_AssignRef';
     }
 }
+

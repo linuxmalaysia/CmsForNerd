@@ -56,3 +56,4 @@ final class ObjectMemberCommaUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -19,3 +19,4 @@ use RuntimeException;
 final class NoCoverageCacheDirectoryException extends RuntimeException implements Exception
 {
 }
+

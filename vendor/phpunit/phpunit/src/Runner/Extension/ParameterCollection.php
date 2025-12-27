@@ -57,3 +57,4 @@ final readonly class ParameterCollection
         return $this->parameters[$name];
     }
 }
+

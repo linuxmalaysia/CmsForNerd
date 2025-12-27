@@ -17,3 +17,4 @@ final class PropertyTokenEmulator extends KeywordEmulator {
         return \T_PROPERTY_C;
     }
 }
+

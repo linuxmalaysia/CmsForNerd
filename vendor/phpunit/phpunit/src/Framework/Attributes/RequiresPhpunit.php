@@ -40,3 +40,4 @@ final readonly class RequiresPhpunit
         return $this->versionRequirement;
     }
 }
+

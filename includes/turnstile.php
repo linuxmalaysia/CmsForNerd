@@ -57,3 +57,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
         die("Security Check Failed: Automated traffic detected (Turnstile).");
     }
 }
+

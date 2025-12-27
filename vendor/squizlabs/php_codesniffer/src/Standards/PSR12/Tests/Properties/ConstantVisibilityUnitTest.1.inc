@@ -20,3 +20,4 @@ enum SomeEnum {
     public const BAR = 'bar';
     const BAZ = 'baz';
 }
+

@@ -55,3 +55,4 @@ final readonly class DependsExternal
         return $this->methodName;
     }
 }
+

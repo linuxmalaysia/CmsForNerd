@@ -94,3 +94,4 @@ include('template.php');
 .template-guide .standards-box { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border: 1px solid #eee; margin-top: 2rem; }
 .template-guide .standards-box h2 { border-bottom-color: #ddd; }
 </style>
+

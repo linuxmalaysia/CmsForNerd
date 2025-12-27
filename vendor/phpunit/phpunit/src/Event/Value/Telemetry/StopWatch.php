@@ -18,3 +18,4 @@ interface StopWatch
 {
     public function current(): HRTime;
 }
+

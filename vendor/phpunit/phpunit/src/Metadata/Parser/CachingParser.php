@@ -98,3 +98,4 @@ final class CachingParser implements Parser
         return $this->classAndMethodCache[$key];
     }
 }
+

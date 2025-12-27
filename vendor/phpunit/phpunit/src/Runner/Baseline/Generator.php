@@ -118,3 +118,4 @@ final readonly class Generator
         return $this->source->ignoreSuppressionOfDeprecations();
     }
 }
+

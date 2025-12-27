@@ -25,3 +25,4 @@ final class Version
         return self::$version;
     }
 }
+

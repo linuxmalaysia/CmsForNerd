@@ -43,3 +43,4 @@ final class TrueType extends Type
         return true;
     }
 }
+

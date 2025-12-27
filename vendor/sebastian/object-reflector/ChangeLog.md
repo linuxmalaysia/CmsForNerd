@@ -78,3 +78,4 @@ All notable changes to `sebastianbergmann/object-reflector` are documented in th
 [2.0.0]: https://github.com/sebastianbergmann/object-reflector/compare/1.1.1...2.0.0
 [1.1.1]: https://github.com/sebastianbergmann/object-reflector/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/sebastianbergmann/object-reflector/compare/1.0.0...1.1.0
+

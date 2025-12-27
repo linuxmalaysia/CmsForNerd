@@ -63,3 +63,4 @@ abstract readonly class Test
      */
     abstract public function name(): string;
 }
+

@@ -102,3 +102,4 @@ final class IsEqualIgnoringCase extends Constraint
         );
     }
 }
+

@@ -169,3 +169,4 @@ class AssignmentInConditionSniff implements Sniff
 
 
 }//end class
+

@@ -125,3 +125,4 @@ final class DocCommentUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

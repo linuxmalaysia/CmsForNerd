@@ -35,3 +35,4 @@ final readonly class Constant
         return $this->value;
     }
 }
+

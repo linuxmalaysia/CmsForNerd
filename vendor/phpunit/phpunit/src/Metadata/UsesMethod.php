@@ -70,3 +70,4 @@ final readonly class UsesMethod extends Metadata
         return $this->className . '::' . $this->methodName;
     }
 }
+

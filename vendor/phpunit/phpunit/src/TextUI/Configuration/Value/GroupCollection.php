@@ -70,3 +70,4 @@ final readonly class GroupCollection implements IteratorAggregate
         return new GroupCollectionIterator($this);
     }
 }
+

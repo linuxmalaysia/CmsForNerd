@@ -314,3 +314,4 @@ class ForLoopDeclarationSniff implements Sniff
 
 
 }//end class
+

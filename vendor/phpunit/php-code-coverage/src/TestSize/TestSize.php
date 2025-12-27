@@ -76,3 +76,4 @@ abstract class TestSize
 
     abstract public function asString(): string;
 }
+

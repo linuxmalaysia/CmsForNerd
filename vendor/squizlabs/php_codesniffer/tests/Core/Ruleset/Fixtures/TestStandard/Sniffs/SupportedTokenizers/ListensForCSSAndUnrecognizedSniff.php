@@ -28,3 +28,4 @@ class ListensForCSSAndUnrecognizedSniff implements Sniff
         // Do something.
     }
 }
+

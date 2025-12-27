@@ -64,3 +64,4 @@ final readonly class TestProxyCreated implements Event
         );
     }
 }
+

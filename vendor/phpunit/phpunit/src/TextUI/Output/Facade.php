@@ -281,3 +281,4 @@ final class Facade
         new UnexpectedOutputPrinter(self::$printer, EventFacade::instance());
     }
 }
+

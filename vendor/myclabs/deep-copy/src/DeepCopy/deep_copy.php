@@ -18,3 +18,4 @@ if (false === function_exists('DeepCopy\deep_copy')) {
         return (new DeepCopy($useCloneMethod))->copy($value);
     }
 }
+

@@ -67,3 +67,4 @@ final class DNFTypesParseError1Test extends AbstractTokenizerTestCase
 
 
 }//end class
+

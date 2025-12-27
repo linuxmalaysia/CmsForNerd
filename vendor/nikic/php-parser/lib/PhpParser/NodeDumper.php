@@ -297,3 +297,4 @@ class NodeDumper {
         return $pos - $lineStartPos;
     }
 }
+

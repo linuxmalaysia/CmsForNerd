@@ -154,3 +154,4 @@ class ClosureLinterSniff implements Sniff, DeprecatedSniff
 
 
 }//end class
+

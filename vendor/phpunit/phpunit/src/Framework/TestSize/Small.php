@@ -33,3 +33,4 @@ final readonly class Small extends Known
         return 'small';
     }
 }
+

@@ -13,3 +13,4 @@ if (false) {
     class ArrayItem extends \PhpParser\Node\ArrayItem {
     }
 }
+

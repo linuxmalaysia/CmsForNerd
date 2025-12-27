@@ -24,3 +24,4 @@ final class RequiredOptionArgumentMissingException extends RuntimeException impl
         );
     }
 }
+

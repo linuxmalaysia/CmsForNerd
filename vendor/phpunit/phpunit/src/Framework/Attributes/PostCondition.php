@@ -31,3 +31,4 @@ final readonly class PostCondition
         return $this->priority;
     }
 }
+

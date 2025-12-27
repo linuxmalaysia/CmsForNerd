@@ -38,3 +38,4 @@ interface FunctionLike extends Node {
      */
     public function getAttrGroups(): array;
 }
+

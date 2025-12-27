@@ -276,3 +276,4 @@ final class ProcessedCodeCoverageData
         }
     }
 }
+

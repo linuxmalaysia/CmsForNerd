@@ -77,3 +77,4 @@ class InlineHTMLSniff implements Sniff
 
 
 }//end class
+

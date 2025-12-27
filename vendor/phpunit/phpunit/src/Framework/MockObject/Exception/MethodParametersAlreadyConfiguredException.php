@@ -21,3 +21,4 @@ final class MethodParametersAlreadyConfiguredException extends \PHPUnit\Framewor
         parent::__construct('Method parameters already configured');
     }
 }
+

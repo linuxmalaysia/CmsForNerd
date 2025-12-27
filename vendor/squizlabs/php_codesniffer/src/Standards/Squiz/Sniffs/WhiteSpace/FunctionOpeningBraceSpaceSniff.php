@@ -96,3 +96,4 @@ class FunctionOpeningBraceSpaceSniff implements Sniff
 
 
 }//end class
+

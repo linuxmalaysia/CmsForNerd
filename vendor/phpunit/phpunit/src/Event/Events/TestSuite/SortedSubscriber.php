@@ -18,3 +18,4 @@ interface SortedSubscriber extends Subscriber
 {
     public function notify(Sorted $event): void;
 }
+

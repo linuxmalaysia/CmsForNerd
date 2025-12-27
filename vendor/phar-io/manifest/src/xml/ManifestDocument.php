@@ -113,3 +113,4 @@ class ManifestDocument {
         return $element;
     }
 }
+

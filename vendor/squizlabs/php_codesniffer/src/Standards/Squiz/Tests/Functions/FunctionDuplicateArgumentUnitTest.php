@@ -55,3 +55,4 @@ final class FunctionDuplicateArgumentUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -635,3 +635,4 @@ final class PhpcsAnnotationsInDocBlockTest extends CommentTestCase
 
 
 }//end class
+

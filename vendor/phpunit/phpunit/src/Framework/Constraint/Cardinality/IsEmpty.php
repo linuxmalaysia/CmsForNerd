@@ -64,3 +64,4 @@ final class IsEmpty extends Constraint
         );
     }
 }
+

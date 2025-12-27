@@ -39,3 +39,4 @@ final readonly class UnexpectedOutputPrinter implements PrintedUnexpectedOutputS
         $this->printer->print($event->output());
     }
 }
+

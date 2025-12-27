@@ -65,3 +65,4 @@ class ClosingBraceSniff implements Sniff
 
 
 }//end class
+

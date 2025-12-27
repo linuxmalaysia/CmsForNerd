@@ -80,3 +80,4 @@ final readonly class PostConditionFinished implements Event
         return $buffer;
     }
 }
+

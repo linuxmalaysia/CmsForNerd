@@ -26,3 +26,4 @@ final class UnknownTrigger extends IssueTrigger
         return 'unknown if issue was triggered in first-party code or third-party code';
     }
 }
+

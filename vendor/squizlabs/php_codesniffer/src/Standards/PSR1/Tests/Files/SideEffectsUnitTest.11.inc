@@ -9,3 +9,4 @@ if (defined('MINSIZE') === false) {
 
 // phpcs:enable PEAR
 define("MAXSIZE", 100);
+

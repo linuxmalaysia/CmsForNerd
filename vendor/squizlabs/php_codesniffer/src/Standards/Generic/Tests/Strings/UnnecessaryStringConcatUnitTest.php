@@ -85,3 +85,4 @@ final class UnnecessaryStringConcatUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

@@ -28,3 +28,4 @@ final readonly class TestFailedSubscriber extends Subscriber implements FailedSu
         $this->logger()->testFailed($event);
     }
 }
+

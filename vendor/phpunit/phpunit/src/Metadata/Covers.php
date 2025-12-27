@@ -45,3 +45,4 @@ final readonly class Covers extends Metadata
         return $this->target;
     }
 }
+

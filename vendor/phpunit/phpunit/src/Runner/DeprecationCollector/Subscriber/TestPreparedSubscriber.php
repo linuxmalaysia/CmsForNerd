@@ -24,3 +24,4 @@ final class TestPreparedSubscriber extends Subscriber implements PreparedSubscri
         $this->collector()->testPrepared();
     }
 }
+

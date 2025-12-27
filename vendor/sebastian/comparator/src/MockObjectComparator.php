@@ -44,3 +44,4 @@ final class MockObjectComparator extends ObjectComparator
         return $array;
     }
 }
+

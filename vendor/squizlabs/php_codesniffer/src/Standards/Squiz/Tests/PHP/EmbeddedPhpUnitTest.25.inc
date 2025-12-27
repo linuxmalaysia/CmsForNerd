@@ -19,3 +19,4 @@
 // This test case file MUST always end with an unclosed open PHP tag (with this comment) to prevent
 // the tests running into the "last PHP closing tag excepted" condition breaking tests.
 // Tests related to that "last PHP closing tag excepted" condition should go in separate files.
+

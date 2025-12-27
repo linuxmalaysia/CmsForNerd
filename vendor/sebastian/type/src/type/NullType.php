@@ -45,3 +45,4 @@ final class NullType extends Type
         return true;
     }
 }
+

@@ -73,3 +73,4 @@ abstract class GroupFilterIterator extends RecursiveFilterIterator
      */
     abstract protected function doAccept(string $id, array $groupTests): bool;
 }
+

@@ -251,3 +251,4 @@ abstract class AbstractNode implements Countable
         $this->pathAsArray[] = $this;
     }
 }
+

@@ -47,3 +47,4 @@ final readonly class Finished implements Event
         );
     }
 }
+

@@ -54,3 +54,4 @@ final readonly class Migrator
         return $xml;
     }
 }
+

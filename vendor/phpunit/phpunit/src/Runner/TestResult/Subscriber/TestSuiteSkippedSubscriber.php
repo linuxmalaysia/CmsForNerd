@@ -24,3 +24,4 @@ final readonly class TestSuiteSkippedSubscriber extends Subscriber implements Sk
         $this->collector()->testSuiteSkipped($event);
     }
 }
+

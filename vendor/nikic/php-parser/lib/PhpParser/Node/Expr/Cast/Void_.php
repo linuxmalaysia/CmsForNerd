@@ -9,3 +9,4 @@ class Void_ extends Cast {
         return 'Expr_Cast_Void';
     }
 }
+

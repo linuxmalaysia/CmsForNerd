@@ -251,3 +251,4 @@ $obj->static((CONST_A&CONST_B)|CONST_C | $var);
 class DNF {
     public /* testStaticIsKeywordPropertyModifierBeforeDNF */ static (DN&F)|null $dnfProp;
 }
+

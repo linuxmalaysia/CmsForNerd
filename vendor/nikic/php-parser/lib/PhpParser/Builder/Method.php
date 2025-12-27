@@ -145,3 +145,4 @@ class Method extends FunctionLike {
         ], $this->attributes);
     }
 }
+

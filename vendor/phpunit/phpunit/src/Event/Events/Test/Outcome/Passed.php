@@ -48,3 +48,4 @@ final readonly class Passed implements Event
         );
     }
 }
+

@@ -64,3 +64,4 @@ final class LogicalXor extends BinaryOperator
         );
     }
 }
+

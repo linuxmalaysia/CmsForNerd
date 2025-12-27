@@ -32,3 +32,4 @@ final class NeverReturningMethodException extends RuntimeException implements Ex
         );
     }
 }
+

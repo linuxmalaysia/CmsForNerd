@@ -255,3 +255,4 @@ final class UnifiedDiffOutputBuilder extends AbstractChunkOutputBuilder
         }
     }
 }
+

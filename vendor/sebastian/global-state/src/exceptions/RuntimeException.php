@@ -12,3 +12,4 @@ namespace SebastianBergmann\GlobalState;
 final class RuntimeException extends \RuntimeException implements Exception
 {
 }
+

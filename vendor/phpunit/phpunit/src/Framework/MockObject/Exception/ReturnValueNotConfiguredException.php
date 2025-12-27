@@ -29,3 +29,4 @@ final class ReturnValueNotConfiguredException extends \PHPUnit\Framework\Excepti
         );
     }
 }
+

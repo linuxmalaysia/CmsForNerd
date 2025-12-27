@@ -59,3 +59,4 @@ class GlobalFunctionSniff implements Sniff
 
 
 }//end class
+

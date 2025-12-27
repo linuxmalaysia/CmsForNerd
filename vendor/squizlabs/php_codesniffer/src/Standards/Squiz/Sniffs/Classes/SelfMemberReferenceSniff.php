@@ -246,3 +246,4 @@ class SelfMemberReferenceSniff extends AbstractScopeSniff
 
 
 }//end class
+

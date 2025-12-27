@@ -46,3 +46,4 @@ final readonly class Php83GarbageCollectorStatusProvider implements GarbageColle
         );
     }
 }
+

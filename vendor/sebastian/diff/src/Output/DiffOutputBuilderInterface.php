@@ -17,3 +17,4 @@ interface DiffOutputBuilderInterface
 {
     public function getDiff(array $diff): string;
 }
+

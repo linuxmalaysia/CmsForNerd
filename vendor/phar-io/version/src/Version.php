@@ -206,3 +206,4 @@ class Version {
         $this->parseVersion($matches);
     }
 }
+

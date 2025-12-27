@@ -31,3 +31,4 @@ class TraitUse extends Node\Stmt {
         return 'Stmt_TraitUse';
     }
 }
+

@@ -77,3 +77,4 @@ final readonly class PlainTextRenderer
         return $result;
     }
 }
+

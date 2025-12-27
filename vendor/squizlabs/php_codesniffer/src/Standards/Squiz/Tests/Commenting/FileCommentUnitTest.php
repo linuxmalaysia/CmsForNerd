@@ -80,3 +80,4 @@ final class FileCommentUnitTest extends AbstractSniffUnitTest
 
 
 }//end class
+

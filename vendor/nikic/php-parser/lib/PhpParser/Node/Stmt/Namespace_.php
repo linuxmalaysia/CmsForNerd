@@ -35,3 +35,4 @@ class Namespace_ extends Node\Stmt {
         return 'Stmt_Namespace';
     }
 }
+

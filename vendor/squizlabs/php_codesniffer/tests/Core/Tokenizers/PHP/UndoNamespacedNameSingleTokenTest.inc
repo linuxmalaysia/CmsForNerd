@@ -198,3 +198,4 @@ $value = \Fully
     \Name
     // comment
     :: function_name();
+

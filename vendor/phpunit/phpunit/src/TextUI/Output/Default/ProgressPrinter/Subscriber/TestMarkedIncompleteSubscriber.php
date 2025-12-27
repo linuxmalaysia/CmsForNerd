@@ -24,3 +24,4 @@ final readonly class TestMarkedIncompleteSubscriber extends Subscriber implement
         $this->printer()->testMarkedIncomplete();
     }
 }
+
