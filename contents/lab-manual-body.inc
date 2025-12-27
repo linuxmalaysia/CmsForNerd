@@ -51,6 +51,14 @@
             <h3>Lab: Header Hardening</h3>
             <p>Learn to configure the Content Security Policy (CSP) to block malicious scripts, turning the browser into a security ally.</p>
         </div>
+        <div class="lab-box security-disclosure">
+            <h3>Module 3.5: Responsible Disclosure (RFC 9116)</h3>
+            <p>Understand how to communicate with security researchers using the <code>security.txt</code> standard.</p>
+            <ul>
+                <li><strong>Objective:</strong> Learn to establish a protocol for ethical vulnerability reporting.</li>
+                <li><strong>Exercise:</strong> Verify the machine-readable <code>/.well-known/security.txt</code> file in your browser.</li>
+            </ul>
+        </div>
     </section>
 
     <section class="module">

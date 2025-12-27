@@ -14,6 +14,9 @@ This document defines the "Laws of the Project" using the requirement levels des
 1. **Input:** The `page` parameter **MUST** be sanitized using `preg_replace` to prevent directory traversal.
 2. **Output:** All user-provided strings **MUST** be escaped using `htmlspecialchars()` before being rendered in the theme.
 3. **Sessions:** Sessions **SHOULD** be configured with `cookie_httponly` set to true.
+4. **Security Disclosure:** The project **MUST** maintain a valid `security.txt` file at the path `/.well-known/security.txt`.
+5. **Expiration:** The `Expires` field in `security.txt` **MUST NOT** be set to a date more than one year in the future.
+6. **Response:** The organization **SHOULD** acknowledge vulnerability reports within 72 hours.
 
 ## Documentation & Educational Requirements
 

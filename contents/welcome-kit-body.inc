@@ -100,6 +100,10 @@
                 <h3>3. Strict Routing</h3>
                 <p>Only include files that exist in the <code>contents/</code> directory.</p>
             </div>
+            <div class="law rfc-law">
+                <h3>4. Be Reachable (RFC 9116)</h3>
+                <p>Maintain your <code>security.txt</code>. It is the "Front Door" for ethical hackers to report bugs safely.</p>
+            </div>
         </div>
     </section>
 

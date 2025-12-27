@@ -1,0 +1,7 @@
+# CMSForNerd Security Policy (RFC 9116)
+Contact: mailto:security@cmsfornerd.test
+Expires: 2026-12-31T23:59:59z
+Encryption: https://cmsfornerd.test/pgp-key.txt
+Acknowledgements: https://cmsfornerd.test/hall-of-fame.php
+Preferred-Languages: en, ms
+Policy: https://cmsfornerd.test/security-policy.php

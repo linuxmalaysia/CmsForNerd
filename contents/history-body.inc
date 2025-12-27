@@ -80,6 +80,7 @@
             and testing, solidifying the CMS's role as a learning laboratory.
         </p>
         <p><strong>Educational Tools:</strong> Added <em>The Developer’s Lab Manual</em>, a <em>Break-Fix Final Exam</em>, a <em>Windows 11 Setup Guide</em>, and a <em>Student Welcome Kit</em>.</p>
+        <p><strong>Standards Adoption:</strong> Integrated <strong>RFC 9116 (security.txt)</strong> to teach Responsible Disclosure protocols.</p>
         <p><strong>Worksheets:</strong> Added <em>Modules 1-5</em>, the <em>Final Exam</em>, and the <em>Onboarding Kit</em>.</p>
     </section>
 
