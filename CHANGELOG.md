@@ -8,7 +8,10 @@ Entries are grouped by date (most recent first).
 
 Summary
 
-- Documentation and AI guidance improvements, a small example page and content partial, minor include/test fixes, and a repository normalization commit were merged.
+- Documentation and AI guidance improvements.
+- Added a small example page and a content partial.
+- Minor include/test fixes were applied.
+- A repository normalization commit (line endings and whitespace) was merged.
 
 Files and artifacts changed
 
@@ -22,7 +25,7 @@ Files and artifacts changed
 
 - `tests/AboutPageTest.php` — small PHPUnit test added/updated to validate the example page and partial.
 
-- `includes/common.inc.php`, `includes/CmsContext.php`, `includes/SecurityUtils.php`, and related `includes/*` — minor fixes and whitespace cleanups (PSR-12 / phpcbf auto-fixes).
+- `includes/*` — minor fixes and whitespace cleanups (PSR-12 / phpcbf auto-fixes).
 
 - Line endings normalization: many `*.php`, `*.inc`, and `*.md` files were converted from CRLF to LF to ensure cross-platform consistency.
 
@@ -38,9 +41,13 @@ Verification performed
 
 Important notes and guidance
 
-- Vendor files: the LF normalization touched some files under `vendor/` (test fixtures etc.). These are harmless but noisy in diffs; if you prefer, we can revert vendor changes to match upstream vendor packages and keep only project source files normalized.
+- Vendor files: the LF normalization touched some files under `vendor/` (test fixtures etc.).
 
-- Reverting vendor normalization (optional): to revert the vendor files changed by the normalization commit while keeping project files normalized, run these commands locally:
+  These changes are harmless but noisy in diffs. If you prefer, we can revert vendor
+  changes to match upstream vendor packages and keep only project source files normalized.
+
+- Reverting vendor normalization (optional): to revert the vendor files changed by the normalization commit
+  while keeping project files normalized, run these commands locally:
 
 ```powershell
 # Reset vendor to the current remote state (safe, non-destructive to your working tree)
@@ -72,7 +79,8 @@ Developer checklist (what was done)
 
 - [x] Normalized line endings for project source files to LF and committed the change.
 
-If you want this entry shortened or moved into a release-specific section (for example, "v3.1.1"), tell me which release/tag to use and I will update this file accordingly.
+If you want this entry shortened or moved into a release-specific section (for example, "v3.1.1"),
+tell me which release/tag to use and I will update this file accordingly.
 
 ---
 

@@ -8,18 +8,18 @@ function pageheader(CmsForNerd\CmsContext $ctx): void
     // [SEO/AI] Determine Schema.org type based on page content
     // Defaults to 'WebPage', but can be overridden by setting $CONTENT['schemaType']
     $schemaType = $ctx->content['schemaType'] ?? 'WebPage';
-    
+
     // [SEO/AI] Determine language (default: English)
     $pageLang = $ctx->content['lang'] ?? 'en';
-    
+
     // [SEO] The DOCTYPE tells the browser we MUST use modern HTML5.
     print("<!DOCTYPE html>\n");
-    
+
     // [RFC 2119] MUST: The HTML tag MUST include itemscope and itemtype (Microdata for AI)
     print('<html lang="' . htmlspecialchars($pageLang, ENT_QUOTES, 'UTF-8') . '" ');
     print('itemscope itemtype="https://schema.org/');
     print(htmlspecialchars($schemaType, ENT_QUOTES, 'UTF-8') . '">' . "\n");
-    
+
     print("<head>\n");
 
     // [STRUCTURE] common-headertag.inc MUST be included for CSP and Meta tags.
