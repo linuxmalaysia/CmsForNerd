@@ -8,7 +8,7 @@ NOTE: Several <div> tags opened here are closed in 'bodyfooter.tpl'.
 -->
 
 <!-- CSP added for extra security as requested -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://*.ipinfo.io https://pagead2.googlesyndication.com https://www.google.com; img-src 'self' data: https: https://www.google.com https://groups.google.com https://www.rorweb.com https://*.googlesyndication.com; font-src 'self' https: data:;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://*.ipinfo.io https://www.google.com https://fonts.googleapis.com; img-src 'self' data: https: https://www.google.com https://groups.google.com https://www.rorweb.com; font-src 'self' https: data: https://fonts.gstatic.com;">
 
 
 <!-- This div end at bodyfooter.tpl -->
