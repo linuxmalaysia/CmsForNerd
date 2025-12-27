@@ -9,6 +9,7 @@
 <a href="sitemap-page.php">CmsForNerd Sitemap</a>
 <a href="installation.php">CmsForNerd Installation</a>
 <a href="windows-setup.php">🪟 Windows 11 Setup (Herd)</a>
+<a href="welcome-kit.php">🚀 Student Welcome Kit</a>
 <a href="history.php">Modernization History</a>
 <a href="lab-manual.php">🎓 Lab Manual</a>
 <a href="final-exam.php">🚩 Final Exam</a>

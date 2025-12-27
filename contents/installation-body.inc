@@ -68,6 +68,12 @@ include "themes/{$ctx->themeName}/header.tpl";
     Remember to run <code>composer install</code> if you move the project to a new machine to ensure the autoloader and PHPUnit are ready to go.
 </p>
 
+<div class="next-steps" style="background: #fff3cd; border: 2px solid #ffeeba; padding: 2rem; border-radius: 8px; margin-top: 3rem; text-align: center;">
+    <h3>✅ Installation Complete?</h3>
+    <p>Your NEXT STEP is to open the <strong>Student Welcome Kit</strong> to get your "Nerd Stack" ready for the laboratory.</p>
+    <p><a href="welcome-kit.php" class="btn" style="background: #856404; color: #fff; padding: 0.8rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: bold;">🚀 Open Student Welcome Kit</a></p>
+</div>
+
 <p>
     <em>All changes have been committed and pushed to your GitHub repository. It has been a pleasure modernizing this "Radically Simple" CMS using <strong>Google Antigravity</strong>!</em>
 </p>
