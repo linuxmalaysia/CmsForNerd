@@ -1,7 +1,18 @@
 # CMSForNerd Security Policy (RFC 9116)
-Contact: mailto:security@cmsfornerd.test
+# Identity verified via Keybase
+
+Contact: https://github.com/harisfazillah/CmsForNerd/issues
+Contact: https://keybase.io/linuxmalaysia
+Contact: https://github.com/harisfazillah
+
+# Link to your PGP Public Key for encrypted reporting
+Encryption: https://keybase.io/linuxmalaysia/pgp_keys.asc
+
 Expires: 2026-12-31T23:59:59z
-Encryption: https://cmsfornerd.test/pgp-key.txt
-Acknowledgements: https://cmsfornerd.test/hall-of-fame.php
 Preferred-Languages: en, ms
-Policy: https://cmsfornerd.test/security-policy.php
+Canonical: https://raw.githubusercontent.com/harisfazillah/CmsForNerd/master/.well-known/security.txt
+
+# [POLICY]
+# Please report vulnerabilities via private message or the issue tracker
+# if a private reporting feature is not yet enabled on this repository.
+
