@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 // Load the helper to scan for internal laboratory pages
-// We use @ to suppress errors if the file hasn't been created yet
 @include_once __DIR__ . '/../includes/nav-helper.inc.php';
 ?>
 
@@ -15,7 +14,18 @@ declare(strict_types=1);
             <?php 
             if (function_exists('get_site_pages')) {
                 foreach (get_site_pages() as $url => $label) {
-                    echo "<a href=\"$url\">$label</a>";
+                    /**
+                     * TYPE DEFENSE: 
+                     * If $label is an array (from sitemap_generator), extract the 'title'.
+                     * If $label is already a string (from nav-helper), use it directly.
+                     */
+                    $displayLabel = is_array($label) ? ($label['title'] ?? $url) : $label;
+                    
+                    // Sanitize output for security
+                    $safeUrl = htmlspecialchars((string)$url);
+                    $safeLabel = htmlspecialchars((string)$displayLabel);
+                    
+                    echo "<a href=\"$safeUrl\">$safeLabel</a>";
                 }
             }
             ?>
