@@ -13,9 +13,9 @@ function get_site_pages(): array {
     $files = scandir(__DIR__ . '/../');
 
     foreach ($files as $file) {
-        // Only include .php files not in our exclude list
-        if (pathinfo($file, PATH_INFO_EXTENSION) === 'php' && !in_array($file, $exclude)) {
-            $name = pathinfo($file, PATH_FILENAME);
+        // CORRECTED CONSTANT: PATHINFO_EXTENSION
+        if (pathinfo($file, PATHINFO_EXTENSION) === 'php' && !in_array($file, $exclude)) {
+            $name = pathinfo($file, PATHINFO_FILENAME);
             $pages[$file] = ucfirst(str_replace(['-', '_'], ' ', $name));
         }
     }
