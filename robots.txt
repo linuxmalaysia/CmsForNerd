@@ -1,9 +1,8 @@
-# robots.txt file for https://www.linuxmalaysia.com/
+# CmsForNerd v3.1 - Public Sitemap Directive
+# We use X-Robots-Tag headers for internal security to prevent disclosure.
 
 User-agent: *
 Allow: /
-Disallow: /themes/
-Disallow: /includes/
 
-Sitemap: https://www.linuxmalaysia.com/sitemap.xml
+# Only expose the high-level sitemap
 Sitemap: https://www.linuxmalaysia.com/sitemap.php
