@@ -2,36 +2,59 @@
 
 declare(strict_types=1);
 
-// [EDUCATIONAL] Lab Worksheet: Module 1 - Modern PHP 8.4+ Architecture.
-// It follows the "Pair Logic" system: Entry point is lab-module1.php, body is contents/lab-module1-body.inc.
+/**
+ * [EDUCATIONAL] Lab Worksheet: Module 1 - Modern PHP 8.4+ Architecture.
+ * Purpose: Master Constructor Promotion, Property Hooks, and Asymmetric Visibility.
+ * Architecture: Pair Logic (lab-module1.php + contents/lab-module1-body.inc)
+ */
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
+// 1. [PERFORMANCE] Enable GZIP
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['title'] = "Lab Worksheet: Module 1 - CmsForNerd v3.1";
-$CONTENT['author'] = "CMSForNerd Team & Google Gemini";
-$CONTENT['description'] = "Student Lab Worksheet for Module 1: Modern PHP 8.4+ Architecture. Master Constructor Promotion, Property Hooks, and Asymmetric Visibility.";
-$CONTENT['keywords'] = "Architecture Lab, Module 1, PHP 8.4+, Property Hooks, Constructor Promotion, Asymmetric Visibility";
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Loads autoloader and global variables ($themeName, $cssPath).
+ * This solves the "Undefined variable" and "TypeError" issues.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+// 3. [SEO] Student Module Metadata
+$content = [
+    'title'       => "Lab Worksheet: Module 1 - CmsForNerd v3.3",
+    'author'      => "CMSForNerd Team & Google Gemini",
+    'description' => "Student Lab Worksheet: Master Constructor Promotion and Property Hooks in PHP 8.4.",
+    'keywords'    => "Architecture Lab, PHP 8.4+, Property Hooks, Constructor Promotion",
+];
 
-include "includes/global-control.inc.php";
-include "includes/common.inc.php";
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
 
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+// 5. [MODERN PHP] Initialize Context Object
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $pageName
 );
 
-include "themes/{$ctx->themeName}/pager.php";
+// 6. [SECURITY] Cloudflare Turnstile Verification
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// Security: Cloudflare Turnstile Check
-require_once 'includes/turnstile.php';
+/**
+ * 7. [RENDER] Theme Execution
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-pager($ctx);
+if (file_exists($pagerPath)) {
+    include_once $pagerPath;
+    pager($ctx);
+} else {
+    die("Fatal Error: Theme pager not found for Module 1.");
+}
 
 ob_end_flush();
