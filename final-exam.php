@@ -2,36 +2,59 @@
 
 declare(strict_types=1);
 
-// [EDUCATIONAL] Final Exam: The Break-Fix Challenge.
-// It follows the "Pair Logic" system: Entry point is final-exam.php, body is contents/final-exam-body.inc.
+/**
+ * [EDUCATIONAL] Final Exam: The Break-Fix Challenge.
+ * Purpose: Certification phase. Students must repair 5 deliberate architectural flaws.
+ * Architecture: Pair Logic (final-exam.php + contents/final-exam-body.inc)
+ */
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
+// 1. [PERFORMANCE] Enable GZIP
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['title'] = "Final Exam: Break-Fix Challenge - CMSForNerd v3.1";
-$CONTENT['author'] = "CMSForNerd Team & Google Gemini";
-$CONTENT['description'] = "The Final Certification Exam for CMSForNerd v3.1. Repair 5 deliberate errors to prove your mastery of modern PHP.";
-$CONTENT['keywords'] = "Final Exam, Certification, PHP 8.4+, Break-Fix, Security, PSR-12, TDD";
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Initializes constants and the autoloader. 
+ * Fixes: $THEMENAME and $CSSPATH undefined errors.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+// 3. [SEO] Student Module Metadata
+$content = [
+    'title'       => "Final Exam: Break-Fix Challenge - CMSForNerd v3.3",
+    'author'      => "CMSForNerd Team & Google Gemini",
+    'description' => "Final Certification Exam. Repair 5 deliberate errors to prove mastery of PHP 8.4+, PSR-12, and TDD.",
+    'keywords'    => "Final Exam, PHP 8.4, Break-Fix, Security Audit, PSR-12, PHP Certification",
+];
 
-include "includes/global-control.inc.php";
-include "includes/common.inc.php";
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
 
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+// 5. [MODERN PHP] Initialize Context Object
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $pageName
 );
 
-include "themes/{$ctx->themeName}/pager.php";
+// 6. [SECURITY] Cloudflare Turnstile Verification
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// Security: Cloudflare Turnstile Check
-require_once 'includes/turnstile.php';
+/**
+ * 7. [RENDER] Theme Execution
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-pager($ctx);
+if (file_exists($pagerPath)) {
+    include_once $pagerPath;
+    pager($ctx);
+} else {
+    die("Fatal Error: Theme engine missing for Final Exam.");
+}
 
 ob_end_flush();
