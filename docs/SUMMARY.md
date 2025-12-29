@@ -1,28 +1,28 @@
-# Table of Contents
+# 📚 CMSForNerd v3.3 Laboratory
 
 * [🏠 Home](../README.md)
-
-## 🎓 Laboratory Modules
-* [Module 1: Front Controller](lab-module1.md)
-* [Module 2: Security](lab-module2.md)
-* [Module 3: Context](lab-module3.md)
-* [Module 4: PHP 8.4](lab-module4.md)
-* [Module 5: Deployment](lab-module5.md)
-
-## 📖 Manuals & Guides
+* [📜 Architecture Requirements (RFC 2119)](../DOCS_REQUIREMENTS.md)
 * [🛠️ Installation Guide](installation.md)
-* [🎨 Template Guide](template-guide.md)
-* [🗺️ Sitemap Guide](sitemap-guide.md)
-* [📜 Lab Manual](lab-manual.md)
-* [🛡️ Security Policy](security-policy.md)
-* [🪟 Windows Setup](windows-setup.md)
-* [🐧 Linux Setup](linux-setup.md)
 
-## 🤖 AI & Development
-* [🤖 AI Development](ai-dev.md)
-* [📜 AI Ethics SOP](ai-sop.md)
-* [🛡️ CSP Nonce Guide](csp-nonce-guide.md)
+## 🎓 The Laboratory Modules
+* [🧪 Module 1: Front Controller & Property Hooks](lab-module1.md)
+* [🛡️ Module 2: PSR-12 & Standard Compliance](lab-module2.md)
+* [📦 Module 3: Context & Defensive Engineering](lab-module3.md)
+* [🤖 Module 4: Automated Testing (PHPUnit 11)](lab-module4.md)
+* [📊 Module 5: Code Coverage & QA](lab-module5.md)
 
-## 🎓 Final Steps
-* [🚩 Final Exam](final-exam.md)
-* [🏁 Graduation](graduation.md)
+## 📖 Technical Manuals
+* [🎨 Template & Theme Guide](template-guide.md)
+* [🗺️ Sitemap Configuration](sitemap-guide.md)
+* [🛡️ CSP & Security Policy](security-policy.md)
+* [🤖 AI Agent Development SOP](ai-sop.md)
+
+## 💻 Environment Setup
+* [🪟 Windows (Herd/Laragon) Setup](windows-setup.md)
+* [🐧 Linux (Ubuntu/Debian) Setup](linux-setup.md)
+* [⚙️ VS Code Debugging](../.vscode/DEBUG.md)
+
+## 🏁 Final Certification
+* [🚩 Final Exam: Break-Fix Challenge](final-exam.md)
+* [🏁 Graduation & Certificate](graduation.md)
+* [🕒 Changelog](../CHANGELOG.md)
