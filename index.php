@@ -3,7 +3,7 @@
 declare(strict_types=1); // [LAB] Enforces strict data typing, preventing "quiet" bugs with integers/strings.
 
 /**
- * CmsForNerd - A flat-file CMS modernized for PHP 8.4
+ * CmsForNerd - A flat-file CMS modernized for PHP 8.4+ and later PHP 9
  *
  * This is the Front Controller. In modern architecture, all requests flow through here
  * to ensure security, configuration, and environment setup are consistent.
