@@ -1,5 +1,5 @@
 # GitBook Configuration for CmsForNerd Laboratory
-root: ./docs
+root: ./
 
 structure:
   readme: README.md
@@ -19,4 +19,3 @@ projects:
 # Redirects and customization
 redirects:
   /lab-manual: /LAB-GUIDE.md
-  
