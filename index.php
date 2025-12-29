@@ -1,82 +1,137 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types=1); // [LAB] Enforces strict data typing, preventing "quiet" bugs with integers/strings.
 
-// [PEFORMANCE] output buffering (ob_gzhandler) RECOMMENDED to compress pages.
-ob_start("ob_gzhandler");
+/**
+ * CmsForNerd - A flat-file CMS modernized for PHP 8.4
+ *
+ * This is the Front Controller. In modern architecture, all requests flow through here
+ * to ensure security, configuration, and environment setup are consistent.
+ *
+ * @package   linuxmalaysia/cmsfornerd
+ * @author    Harisfazillah Jamel <linuxmalaysia@songketmail.org>
+ * @copyright 2005 - 2025 Harisfazillah Jamel
+ * @license   GPL-3.0-or-later
+ * @link      https://www.linuxmalaysia.com/
+ */
 
-// [MODERN PHP] Composer Autoloader - REQUIRED for modern dependency management.
-require_once __DIR__ . '/vendor/autoload.php';
+// [PERFORMANCE] Use Output Buffering to allow header manipulation later in the script
+// and compress data (GZIP) to reduce bandwidth usage in the laboratory.
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-// [SEO] Metadata - These help search engines understand what your site is about.
-$CONTENT['title'] = "CmsForNerd A Content Management Software For Nerd";
-$CONTENT['author'] = "LinuxMalaysia";
-$CONTENT['description'] = "CmsForNerd is a content management software (CMS) for nerd.";
-$CONTENT['keywords'] = "CmsForNerd, CMS, HTML, PHP";
+/**
+ * [LAB] BOOTSTRAP PHASE
+ * We load the "engine" of the CMS. Instead of repeating logic on every page,
+ * we use bootstrap.php to initialize the Autoloader, Security, and Config.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-// [ROUTING] determine which file to load
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+// [LAB] EDUCATIONAL NOTE: At this point, $config, $themeName, and $cssPath 
+// are already defined by bootstrap.php through the get_runtime_config() function.
 
-// [SECURITY] Input Sanitization - MUST be performed to prevent Directory Traversal attacks.
+// [SEO] Metadata - Site-wide defaults. 
+// Students: These are used by the theme to generate <meta> tags.
+$content = [
+    'title'       => "CmsForNerd - A Content Management Software For Nerd",
+    'author'      => "Harisfazillah Jamel",
+    'description' => "CmsForNerd is a lightweight flat-file CMS optimized for PHP 8.4.",
+    'keywords'    => "CmsForNerd, CMS, HTML, PHP, Flat-file, Security",
+];
+
+/**
+ * [LAB] ROUTING & SANITIZATION
+ * Determining what the user wants to see and ensuring the input is safe.
+ */
+$scriptName      = basename($_SERVER['SCRIPT_NAME']);
+$content['data'] = $scriptName;
+$dataFile        = explode(".", $scriptName);
+
+// [SECURITY] Use the 'match' expression (PHP 8.0+) for cleaner sanitization logic.
 $rawPage = match (true) {
     !empty($_SERVER['QUERY_STRING']) => $_SERVER['QUERY_STRING'],
-    default => basename($_SERVER['SCRIPT_NAME'])
+    default                          => $scriptName
 };
 
-// [SECURITY] Page names MUST be validated strictly.
+// [SECURITY] Prevent Directory Traversal by validating the page name against a whitelist.
 $page = CmsForNerd\SecurityUtils::isValidPageName($rawPage)
     ? $rawPage
     : 'index';
 
-// Remove extension if present to simplify internal lookups
-$page = pathinfo($page, PATHINFO_FILENAME);
-$CONTENT['data'] = $page;
+// [LAB] Normalize the page name (removes .php) for internal content lookup.
+$page            = pathinfo($page, PATHINFO_FILENAME);
+$content['data'] = $page;
 
-// [STRUCTURE] Include global settings and core functions
-include "includes/global-control.inc.php";
-include "includes/common.inc.php";
-
-// [MODERN PHP] CmsContext - State management MUST use this object.
+/**
+ * [MODERN PHP] CmsContext Object (State Management)
+ * [LAB] Instead of using Global Variables, we pass a "Context" object.
+ * This is a step toward Dependency Injection, making the code easier to test.
+ */
 $ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $content['data']
 );
 
-// [SECURITY] Session Management - RECOMMENDED to set a reasonable timeout.
-ini_set('session.gc_maxlifetime', '1800'); // 30 minutes
+/**
+ * [SECURITY] Session Management
+ * [LAB] Sessions allow us to store user state across different page loads.
+ */
+ini_set('session.gc_maxlifetime', '1800'); // 30-minute default timeout.
 session_start();
 $_SESSION['session_start_time'] = time();
-$_SESSION['valid_session'] = true;
+$_SESSION['valid_session']      = true;
 
-// [STRUCTURE] Load the theme's controller
-include "themes/{$ctx->themeName}/pager.php";
-
-// [SECURITY/SEO] Bot Detection - SHOULD be used to optimize indexing.
-require_once 'includes/is_bot.php';
-
-if (is_bot()) {
-    header('Content-Type: text/plain');
-    echo "Welcome bot! This is a optimized text view for indexing.\n";
-    echo "Sitemap: https://www.linuxmalaysia.com/sitemap.php\n";
-    exit;
+/**
+ * [STRUCTURE] Theme Controller
+ * [LAB] Decoupling logic from presentation. This loads the "Theme Engine".
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
+if (file_exists($pagerPath)) {
+    include_once $pagerPath;
 }
 
-// [SECURITY] Cloudflare Turnstile - Bot protection MUST be verified for POST requests.
-require_once 'includes/turnstile.php';
+/**
+ * [SECURITY/SEO] Bot Detection
+ * [LAB] Real-world applications often serve different content to search 
+ * engine crawlers to optimize indexing (SEO).
+ */
+if (file_exists(__DIR__ . '/includes/is_bot.php')) {
+    require_once __DIR__ . '/includes/is_bot.php';
+    if (is_bot()) {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "Welcome bot! This is an optimized text view for indexing.\n";
+        echo "Sitemap: " . ($config['sitemap_url'] ?? 'https://www.linuxmalaysia.com/sitemap.php') . "\n";
+        exit;
+    }
+}
 
-// [RENDER] Main entry point MUST call pager().
-pager($ctx);
+// [SECURITY] Integration for Bot protection (e.g., Cloudflare Turnstile).
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// [LOGIC] Optional logout handling
+/**
+ * [RENDER] Page Generation
+ * [LAB] The final step. We call the pager() function from our theme.
+ * By passing $ctx, the theme has everything it needs to render the HTML.
+ */
+if (function_exists('pager')) {
+    pager($ctx);
+}
+
+/**
+ * [LOGIC] Logout Handling
+ * [LAB] Demonstrates how to handle GET requests to destroy a session.
+ */
 if (isset($_GET['logout'])) {
     session_destroy();
     header('Location: index.php');
     exit;
 }
 
-// [PERFORMANCE] Release the buffer
+// [PERFORMANCE] Flush the output buffer, sending the final HTML to the user's browser.
 ob_end_flush();

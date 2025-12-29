@@ -7,6 +7,12 @@ declare(strict_types=1);
  */
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/includes/global-control.inc.php';
+
+// [EXECUTION] This is the side effect, and it's allowed here!
+CmsForNerd\boot_security();
+$CONFIG = CmsForNerd\get_runtime_config();
+
 use CmsForNerd\CmsContext;
 
 // Initialize context to get the detected baseUrl automatically

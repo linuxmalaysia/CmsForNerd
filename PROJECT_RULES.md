@@ -2,13 +2,29 @@
 
 When generating or refactoring code for CmsForNerd, you **MUST** follow these rules:
 
-1.  **PHP 8.4+ & PHP 9 READY:** All code MUST use modern PHP features where appropriate and MUST be forward-compatible with PHP 9 (avoiding deprecated features).
+1. **PHP 8.4+ & PHP 9 READY:** Use modern PHP features (match, constructor property promotion, named arguments) and ensure forward-compatibility with PHP 9 by avoiding deprecated features.
 
-1. **Style:** You **MUST** follow PSR-12 formatting. Use `composer fix-style` to correct any issues.
-2. **Strict Typing:** You **MUST** ensure `declare(strict_types=1);` is present at the top of every PHP file.
-3. **Namespace:** All core classes **MUST** reside within the `CmsForNerd\` namespace.
-4. **State:** All shared data **MUST** be accessed via the `CmsContext` object. Code **MUST NOT** use the `global` keyword.
-5. **Logic Requirements:** If a requirement is marked as **SHOULD** in `DOCS_REQUIREMENTS.md`, you may deviate only if you provide a technical justification.
-6. **Documentation:** You **MUST** update the `contents/history-body.inc` file whenever you implement a major improvement, security hardening, or architectural refactor.
+2. **Front Controller & Bootstrap:**
+   - All root entry points (e.g., `index.php`, `installation.php`) **MUST** include `includes/bootstrap.php`.
+   - Logic execution **MUST** be separated from declarations as per PSR-1.
 
-Run `composer compliance` to verify all standards before submitting your work.
+3. **PSR Compliance:**
+   - **PSR-12:** Strict adherence to coding styles.
+   - **PSR-1:** Files MUST NOT mix function/class declarations with execution logic (side effects), except in root entry points.
+
+4. **Strict Typing:** Every PHP file **MUST** start with `declare(strict_types=1);`.
+
+5. **Namespacing:**
+   - All classes and functions MUST reside in the `CmsForNerd\` namespace.
+   - Use Fully Qualified Class Names (FQCN) like `new \CmsForNerd\CmsContext()` when calling from the global scope.
+
+6. **State Management (The Context Pattern):**
+   - Access all shared data through the `CmsContext` object.
+   - **NEVER** use the `global` keyword.
+   - Use the Null Coalescing Operator (`??`) for all configuration extractions to prevent `TypeError`.
+
+7. **Educational Integrity:**
+   - Add "Laboratory-style" comments to explain "The Why" behind architectural choices.
+   - Maintain and reference `docs/LAB-GUIDE.md` for student-facing modifications.
+
+8. **Verification:** All code must pass `composer lab-check` and `composer compliance`.
