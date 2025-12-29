@@ -2,36 +2,65 @@
 
 declare(strict_types=1);
 
-// [EDUCATIONAL] Student Welcome Kit: The Essential "Cheat Sheet".
-// It follows the "Pair Logic" system: Entry point is welcome-kit.php, body is contents/welcome-kit-body.inc.
+/**
+ * [EDUCATIONAL] Student Welcome Kit - CMSForNerd v3.3
+ * Purpose: Essential reference guide for lab students.
+ * Architecture: Pair Logic (welcome-kit.php + contents/welcome-kit-body.inc)
+ */
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
+// 1. [PERFORMANCE] GZIP Compression
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['title'] = "Student Welcome Kit: Essential Cheat Sheet - CMSForNerd v3.1";
-$CONTENT['author'] = "CMSForNerd Team & Google Gemini";
-$CONTENT['description'] = "The one-stop reference guide for every student entering the CmsForNerd v3.1 Laboratory.";
-$CONTENT['keywords'] = "Welcome Kit, Cheat Sheet, Student Guide, PHP 8.4+, RFC 2119, PSR-12, Security";
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Loads Autoloader, Global Config, and initializes 
+ * $themeName, $cssPath, and $dataFile variables.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+// 3. [SEO] Metadata - Student Kit Specific
+$content = [
+    'title'       => "Student Welcome Kit: Essential Cheat Sheet - CMSForNerd v3.3",
+    'author'      => "CMSForNerd Team & Google Gemini",
+    'description' => "The one-stop reference guide for every student entering the CmsForNerd v3.3 Laboratory.",
+    'keywords'    => "Welcome Kit, Cheat Sheet, Student Guide, PHP 8.4+, RFC 2119, PSR-12, Security",
+];
 
-include "includes/global-control.inc.php";
-include "includes/common.inc.php";
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
 
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+// 5. [MODERN PHP] Initialize Context Object
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $pageName
 );
 
-include "themes/{$ctx->themeName}/pager.php";
+// 6. [SECURITY] Cloudflare Turnstile & Session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// Security: Cloudflare Turnstile Check
-require_once 'includes/turnstile.php';
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-pager($ctx);
+/**
+ * 7. [RENDER] Theme Execution
+ * Loads the pager() from the active theme folder.
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
+if (file_exists($pagerPath)) {
+    include_once $pagerPath;
+    pager($ctx);
+} else {
+    die("Fatal Error: Theme pager missing for welcome-kit.");
+}
+
+// 8. [PERFORMANCE] Output flush
 ob_end_flush();
