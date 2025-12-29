@@ -2,36 +2,61 @@
 
 declare(strict_types=1);
 
-// [EDUCATIONAL] Lab Graduation Page: Certificate of Completion.
-// It follows the "Pair Logic" system: Entry point is graduation.php, body is contents/graduation-body.inc.
+/**
+ * [EDUCATIONAL] Lab Graduation Page: Certificate of Completion.
+ * Purpose: Celebrate student success and provide a verifiable certificate.
+ * Architecture: Pair Logic (graduation.php + contents/graduation-body.inc)
+ */
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
+// 1. [PERFORMANCE] Enable GZIP
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['title'] = "Graduation: PHP 8.4+ & PHP 9 Modernization - CmsForNerd v3.1";
-$CONTENT['author'] = "CMSForNerd Team & Google Gemini";
-$CONTENT['description'] = "Celebrate your success! Verify your mastery of PHP 8.4 Architecture, Security, Standards, and Testing.";
-$CONTENT['keywords'] = "Graduation, Certificate, PHP 8.4, Modernization, Mastery, CmsForNerd";
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Initializes constants and the autoloader. 
+ * Fixes: $THEMENAME and $CSSPATH undefined errors.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+// 3. [SEO] Graduation Metadata
+$content = [
+    'title'       => "Graduation: PHP 8.4+ Mastery - CmsForNerd v3.3",
+    'author'      => "CMSForNerd Team & Google Gemini",
+    'description' => "Official Certificate of Completion for the CmsForNerd Modernization Curriculum.",
+    'keywords'    => "Graduation, Certificate, PHP 8.4, Modern PHP, Software Engineering",
+];
 
-include "includes/global-control.inc.php";
-include "includes/common.inc.php";
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
 
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+// 5. [MODERN PHP] Initialize Context Object
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $pageName
 );
 
-include "themes/{$ctx->themeName}/pager.php";
+// 6. [SECURITY] Cloudflare Turnstile Check
+// We keep this to ensure only "human" students can generate the certificate
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// Security: Cloudflare Turnstile Check
-require_once 'includes/turnstile.php';
+/**
+ * 7. [RENDER] Theme Execution
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-pager($ctx);
+if (file_exists($pagerPath)) {
+    include_once $pagerPath;
+    pager($ctx);
+} else {
+    // Fail-safe for graduation
+    die("Fatal Error: Theme engine missing. Graduation aborted.");
+}
 
 ob_end_flush();
