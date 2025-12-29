@@ -2,64 +2,65 @@
 
 declare(strict_types=1);
 
-// [BOILERPLATE] template.php - The base foundation for all Nerd-Stack pages.
-//
-// HOW TO USE:
-// 1. Copy this file to a new name (e.g., about.php).
-// 2. Create a corresponding content file (e.g., contents/about-body.inc).
-// 3. Customize the metadata in the $CONTENT array below.
-//
-// RFC 2119: You MUST NOT modify the core logic here unless you are a "Theme Engineer".
+/**
+ * [BOILERPLATE] template.php - The base foundation for all Nerd-Stack pages.
+ * * HOW TO USE:
+ * 1. Copy this file to a new name (e.g., about.php).
+ * 2. Create a corresponding content file (e.g., contents/about-body.inc).
+ * 3. Customize the metadata in the $content array below.
+ */
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
-
-$CONTENT['title']="Template Page For CmsForNerd";
-$CONTENT['author']="CMSForNerd";
-$CONTENT['description']="This is a template page for CmsForNerd. A Content Management Software like no others.";
-$CONTENT['keywords']="CmsForNerd, CMS, PHP, CSS, Malaysia, HTML";
-
-// Ini untuk kalau masukkan ikut web browser
-//$CONTENT['data']=basename($_SERVER['QUERY_STRING']);
-
-//We read the script name
-
-$CONTENT['data']=basename($_SERVER['SCRIPT_NAME']);
-
-
-$DATAFILE = explode(".",$CONTENT['data']);
-
-
-// Just in case
-if (empty($CONTENT['data'])) {
-$CONTENT['data']="empty";
+// 1. [PERFORMANCE] Enable GZIP compression
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
 }
 
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * This core file initializes the Autoloader, Global Config, 
+ * and extracts $themeName and $cssPath for us.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-include("includes/global-control.inc.php");
-include("includes/common.inc.php");
+// 3. [SEO] Metadata - Customize these for every new page.
+$content = [
+    'title'       => "Template Page For CmsForNerd",
+    'author'      => "CMSForNerd",
+    'description' => "This is a template page for CmsForNerd. A Content Management Software like no others.",
+    'keywords'    => "CmsForNerd, CMS, PHP, CSS, Malaysia, HTML",
+];
 
-// Initialize Context
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+/**
+ * 4. [LAB] ROUTING LOGIC
+ * Extracts the filename without extension to match the content partial.
+ */
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
+
+// 5. [MODERN PHP] Initialize Context Object
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile, // Provided by bootstrap.php
+    scriptName: $pageName
 );
 
-// Define all the function needed call from theme
+// 6. [SECURITY] Cloudflare Turnstile & Session
+session_start();
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-include "themes/{$ctx->themeName}/pager.php";
+/**
+ * 7. [RENDER] Theme Execution
+ * Loads the pager() function from the active theme.
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-//function define in theme diretory theme.php
-//to change theme.php for page layout
+if (file_exists($pagerPath)) {
+    include_once $pagerPath;
+    pager($ctx);
+}
 
-// Security: Cloudflare Turnstile Check
-require_once('includes/turnstile.php');
-
-pager($ctx);
-
+// 8. [PERFORMANCE] Send output to browser
 ob_end_flush();
-
-?>
