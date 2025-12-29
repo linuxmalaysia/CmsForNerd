@@ -8,11 +8,11 @@ declare(strict_types=1); // [LAB] Enforces strict data typing, preventing "quiet
  * This is the Front Controller. In modern architecture, all requests flow through here
  * to ensure security, configuration, and environment setup are consistent.
  *
- * @package   linuxmalaysia/cmsfornerd
- * @author    Harisfazillah Jamel <linuxmalaysia@songketmail.org>
- * @copyright 2005 - 2025 Harisfazillah Jamel
- * @license   GPL-3.0-or-later
- * @link      https://www.linuxmalaysia.com/
+ * @package    linuxmalaysia/cmsfornerd
+ * @author     Harisfazillah Jamel <linuxmalaysia@songketmail.org>
+ * @copyright  2005 - 2025 Harisfazillah Jamel
+ * @license    GPL-3.0-or-later
+ * @link       https://www.linuxmalaysia.com/
  */
 
 // [PERFORMANCE] Use Output Buffering to allow header manipulation later in the script
@@ -44,36 +44,33 @@ $content = [
  * [LAB] ROUTING & SANITIZATION
  * Determining what the user wants to see and ensuring the input is safe.
  */
-$scriptName      = basename($_SERVER['SCRIPT_NAME']);
-$content['data'] = $scriptName;
-$dataFile        = explode(".", $scriptName);
-
 // [SECURITY] Use the 'match' expression (PHP 8.0+) for cleaner sanitization logic.
 $rawPage = match (true) {
     !empty($_SERVER['QUERY_STRING']) => $_SERVER['QUERY_STRING'],
-    default                          => $scriptName
+    default                          => $scriptName // $scriptName is defined in bootstrap.php
 };
 
 // [SECURITY] Prevent Directory Traversal by validating the page name against a whitelist.
-$page = CmsForNerd\SecurityUtils::isValidPageName($rawPage)
+// [LAB] We use the FQCN (Fully Qualified Class Name) to access SecurityUtils.
+$page = \CmsForNerd\SecurityUtils::isValidPageName($rawPage)
     ? $rawPage
     : 'index';
 
 // [LAB] Normalize the page name (removes .php) for internal content lookup.
-$page            = pathinfo($page, PATHINFO_FILENAME);
-$content['data'] = $page;
+$pageName        = pathinfo($page, PATHINFO_FILENAME);
+$content['data'] = $pageName;
 
 /**
  * [MODERN PHP] CmsContext Object (State Management)
  * [LAB] Instead of using Global Variables, we pass a "Context" object.
  * This is a step toward Dependency Injection, making the code easier to test.
  */
-$ctx = new CmsForNerd\CmsContext(
+$ctx = new \CmsForNerd\CmsContext(
     content:    $content,
     themeName:  $themeName,
     cssPath:    $cssPath,
-    dataFile:   $dataFile,
-    scriptName: $content['data']
+    dataFile:   $dataFile, // Array defined in bootstrap.php
+    scriptName: $pageName
 );
 
 /**

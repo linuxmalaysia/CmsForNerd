@@ -2,11 +2,15 @@
 
 declare(strict_types=1);
 
+/**
+ * CmsForNerd - Common UI Helpers
+ * These functions handle the standard HTML structure for the laboratory CMS.
+ */
+
 // [SEO/HTML5] pageheader() builds the REQUIRED top part of every HTML document.
 function pageheader(CmsForNerd\CmsContext $ctx): void
 {
     // [SEO/AI] Determine Schema.org type based on page content
-    // Defaults to 'WebPage', but can be overridden by setting $CONTENT['schemaType']
     $schemaType = $ctx->content['schemaType'] ?? 'WebPage';
 
     // [SEO/AI] Determine language (default: English)
@@ -41,15 +45,36 @@ function pageheader(CmsForNerd\CmsContext $ctx): void
     print("</head>\n");
 }
 
-// [LOGIC] pagecontent() is the REQUIRED function that decides which body file to load.
-function pagecontent(CmsForNerd\CmsContext $ctx)
+/**
+ * [LOGIC] pagecontent() 
+ * [LAB] Module 1: Automated Content Mapping (Pair Logic).
+ * This function automatically finds the content partial based on the script name.
+ */
+function pagecontent(CmsForNerd\CmsContext $ctx): void
 {
-    // [DYNAMIC LOADING] It is RECOMMENDED to use this "Pair Logic" for content.
-    include "contents/" . $ctx->dataFile['0'] . "-body.inc";
+    // We prioritize scriptName to maintain the 'index' -> 'index-body.inc' convention.
+    $bodyFile = "contents/" . $ctx->scriptName . "-body.inc";
+
+    if (file_exists($bodyFile)) {
+        include $bodyFile;
+    } else {
+        // [LAB] Fallback: If scriptName fails, check dataFile[0] as a secondary fallback.
+        $fallbackFile = "contents/" . ($ctx->dataFile[0] ?? 'index') . "-body.inc";
+        
+        if (file_exists($fallbackFile)) {
+            include $fallbackFile;
+        } else {
+            // [LAB] Educational error message for debugging.
+            echo "<div class='error-box' style='color:red; border:2px dashed red; padding:15px; margin:10px;'>";
+            echo "<strong>[LAB ERROR] Content File Missing:</strong><br>";
+            echo "The system expected a content file at: <code>" . htmlspecialchars($bodyFile) . "</code>";
+            echo "</div>";
+        }
+    }
 }
 
 // [STRUCTURE] pagetailer() MUST be used to close the HTML document.
-function pagetailer(CmsForNerd\CmsContext $ctx)
+function pagetailer(CmsForNerd\CmsContext $ctx): void
 {
     print("</html>");
 }

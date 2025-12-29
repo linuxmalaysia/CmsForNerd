@@ -1,0 +1,22 @@
+# GitBook Configuration for CmsForNerd Laboratory
+root: ./docs
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md
+
+# This tells GitBook which files to ignore when building the docs
+# We ignore the core PHP engine so the documentation stays clean
+projects:
+  - content:
+      ignore:
+        - vendor/*
+        - includes/*
+        - themes/*
+        - contents/*
+        - "*.php"
+
+# Redirects and customization
+redirects:
+  /lab-manual: /LAB-GUIDE.md
+  
