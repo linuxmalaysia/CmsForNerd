@@ -2,42 +2,61 @@
 
 declare(strict_types=1);
 
-// [PEFORMANCE] output buffering (ob_gzhandler) RECOMMENDED to compress pages.
-ob_start("ob_gzhandler");
+/**
+ * CmsForNerd - Installation Page
+ * This file serves as the setup guide and environment check.
+ */
 
-// [MODERN PHP] Composer Autoloader - REQUIRED for modern dependency management.
-require_once __DIR__ . '/vendor/autoload.php';
+// 1. [PERFORMANCE] Output buffering with GZIP compression.
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['title'] = "Installation Of CmsForNerd A Content Management Software For Nerd";
-$CONTENT['author'] = "CMSForNerd";
-$CONTENT['description'] = "Installation guide for CmsForNerd a content management software (CMS) for nerd.";
-$CONTENT['keywords'] = "CmsForNerd, CMS, HTML, PHP";
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * This replaces 'vendor/autoload.php' and manual includes.
+ * It initializes $themeName, $cssPath, and $dataFile correctly.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-// [ROUTING] determine which file to load
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+// 3. [SEO] Page Metadata
+$content = [
+    'title'       => "Installation of CmsForNerd",
+    'author'      => "Harisfazillah Jamel",
+    'description' => "Installation guide for CmsForNerd - a flat-file CMS for learning PHP 8.4.",
+    'keywords'    => "CmsForNerd, CMS, Installation, PHP 8.4, Guide",
+];
 
-// [STRUCTURE] Include global settings and core functions
-include "includes/global-control.inc.php";
-include "includes/common.inc.php";
-
-// [MODERN PHP] CmsContext - State management MUST use this object.
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+/**
+ * 4. [MODERN PHP] CmsContext Object
+ * We use the variables provided by bootstrap.php ($themeName, $cssPath, $dataFile).
+ */
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: pathinfo(basename(__FILE__), PATHINFO_FILENAME)
 );
 
-// [STRUCTURE] Load the theme's controller
-include "themes/{$ctx->themeName}/pager.php";
+/**
+ * 5. [SECURITY] Cloudflare Turnstile integration.
+ */
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// [SECURITY] Cloudflare Turnstile - Bot protection MUST be verified for POST requests.
-require_once 'includes/turnstile.php';
+/**
+ * 6. [RENDER] Main entry point.
+ * Load the theme's pager and execute.
+ */
+session_start();
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-// [RENDER] Main entry point MUST call pager().
-pager($ctx);
+if (file_exists($pagerPath)) {
+    include_once $pagerPath;
+    pager($ctx);
+}
 
-// [PERFORMANCE] Release the buffer
+// 7. [PERFORMANCE] Flush output.
 ob_end_flush();
