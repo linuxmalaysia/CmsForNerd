@@ -1,6 +1,6 @@
 # Table of Contents
 
-* [🏠 Home](README.md)
+* [🏠 Home](../README.md)
 
 ## 🎓 Laboratory Modules
 * [Module 1: Front Controller](lab-module1.md)
@@ -10,8 +10,11 @@
 * [Module 5: Deployment](lab-module5.md)
 
 ## 📖 Manuals & Guides
-* [📜 Lab Manual](docs/LAB-GUIDE.md)
-* [🛡️ Security Policy](SECURITY-POLICY.md)
+* [🛠️ Installation Guide](installation.md)
+* [🎨 Template Guide](template-guide.md)
+* [🗺️ Sitemap Guide](sitemap-guide.md)
+* [📜 Lab Manual](lab-manual.md)
+* [🛡️ Security Policy](security-policy.md)
 * [🪟 Windows Setup](windows-setup.md)
 * [🐧 Linux Setup](linux-setup.md)
 
@@ -22,4 +25,4 @@
 
 ## 🎓 Final Steps
 * [🚩 Final Exam](final-exam.md)
-* [🏁 Graduation](graduation.php)
+* [🏁 Graduation](graduation.md)
