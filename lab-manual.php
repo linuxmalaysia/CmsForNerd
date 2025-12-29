@@ -2,36 +2,59 @@
 
 declare(strict_types=1);
 
-// [EDUCATIONAL] Lab Manual - This page serves as a transparent laboratory for developers.
-// It follows the "Pair Logic" system: Entry point is lab-manual.php, body is contents/lab-manual-body.inc.
+/**
+ * [EDUCATIONAL] Lab Manual - CMSForNerd v3.3
+ * Purpose: Central hub for the laboratory curriculum.
+ * Architecture: Pair Logic (lab-manual.php + contents/lab-manual-body.inc)
+ */
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
+// 1. [PERFORMANCE] GZIP Compression
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['title'] = "The Lab Manual: PHP 8.4+ & PHP 9 Readiness - CmsForNerd v3.1";
-$CONTENT['author'] = "CMSForNerd Team & Google Gemini";
-$CONTENT['description'] = "Welcome to the v3.1 educational suite. This CMS is designed to be a transparent laboratory for learning modern PHP 8.4 and beyond.";
-$CONTENT['keywords'] = "Lab Manual, PHP 8.4+, PHP 9, Education, Architecture, Security, TDD, PSR-12";
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Initializes the environment, Autoloader, and global variables.
+ * Fixes the previous $THEMENAME and $CSSPATH undefined errors.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+// 3. [SEO] Page Metadata
+$content = [
+    'title'       => "The Lab Manual: PHP 8.4+ & PHP 9 Readiness - CmsForNerd v3.3",
+    'author'      => "Harisfazillah Jamel & Gemini",
+    'description' => "Welcome to the v3.3 educational suite. A transparent laboratory for learning modern PHP architecture.",
+    'keywords'    => "Lab Manual, PHP 8.4, Education, Architecture, Security, TDD, PSR-12",
+];
 
-include "includes/global-control.inc.php";
-include "includes/common.inc.php";
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
 
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+// 5. [MODERN PHP] Initialize Context Object
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $pageName
 );
 
-include "themes/{$ctx->themeName}/pager.php";
+// 6. [SECURITY] Standard Security Checks
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// Security: Cloudflare Turnstile Check
-require_once 'includes/turnstile.php';
+/**
+ * 7. [RENDER] Theme Execution
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-pager($ctx);
+if (file_exists($pagerPath)) {
+    include_once $pagerPath;
+    pager($ctx);
+} else {
+    die("Fatal Error: Theme engine not found.");
+}
 
 ob_end_flush();

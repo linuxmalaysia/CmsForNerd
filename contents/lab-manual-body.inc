@@ -1,5 +1,5 @@
 <article class="lab-manual">
-    <h1>🎓 CMSForNerd v3.1: The Developer’s Lab Manual</h1>
+    <h1>🎓 CMSForNerd v3.3: The Developer’s Lab Manual</h1>
     <p class="intro">
         Welcome to the v3.1 educational suite. This CMS is designed to be a <strong>transparent laboratory</strong>. 
         Every line of code is accessible, every architectural choice is documented, and every security feature 
