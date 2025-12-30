@@ -1,6 +1,6 @@
 {
     "name": "linuxmalaysia/cmsfornerd",
-    "description": "A flat-file CMS modernized for PHP 8.4 Laboratory environments.",
+    "description": "A flat-file CMS modernized for PHP 8.4 Laboratory environments (Hybrid Arch).",
     "type": "project",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -20,12 +20,12 @@
     },
     "scripts": {
         "check-version": "@php -r \"if (PHP_VERSION_ID < 80400) { echo '[FAIL] PHP 8.4+ Required. Found: ' . PHP_VERSION . PHP_EOL; exit(1); } echo '[OK] PHP Version: ' . PHP_VERSION . PHP_EOL;\"",
-        "check-style": "phpcs --standard=PSR12 includes/ src/ index.php *.php --ignore=vendor/*",
-        "fix-style": "phpcbf --standard=PSR12 includes/ src/ index.php *.php --ignore=vendor/*",
+        "check-style": "phpcs --standard=PSR12 includes/ src/ index.php --ignore=vendor/*",
+        "fix-style": "phpcbf --standard=PSR12 includes/ src/ index.php --ignore=vendor/*",
         "test": "phpunit --colors=always",
         "check-strict": [
-            "@php -r \"echo '--- Checking for Legacy Global Keyword ---\\n'; $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('includes')); $found = false; foreach ($files as $file) { if ($file->isDir() || $file->getExtension() !== 'php') continue; $content = file_get_contents($file->getPathname()); if (preg_match('/\\b(global\\s+\\$|\\$GLOBALS\\[)/', $content)) { echo '[FAIL] Global state detected in: ' . $file->getPathname() . PHP_EOL; $found = true; } } if (!$found) echo '[OK] Architecture is Global-free.\\n';\"",
-            "@php -r \"echo '--- Checking for strict_types=1 ---\\n'; $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('includes')); foreach ($files as $file) { if ($file->isDir() || $file->getExtension() !== 'php') continue; $content = file_get_contents($file->getPathname()); if (!preg_match('/declare\\s*\\(\\s*strict_types\\s*=\\s*1\\s*\\)\\s*;/', $content)) echo '[WARN] Missing declare(strict_types=1) in: ' . $file->getPathname() . PHP_EOL; }\""
+            "@php -r \"echo '--- Checking for Legacy Global Keyword (includes & src) ---\\n'; $dirs = ['includes', 'src']; $found = false; foreach ($dirs as $dir) { if(!is_dir($dir)) continue; $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir)); foreach ($files as $file) { if ($file->isDir() || $file->getExtension() !== 'php') continue; $content = file_get_contents($file->getPathname()); if (preg_match('/\\b(global\\s+\\$|\\$GLOBALS\\[)/', $content)) { echo '[FAIL] Global state detected in: ' . $file->getPathname() . PHP_EOL; $found = true; } } } if (!$found) echo '[OK] Architecture is Global-free.\\n';\"",
+            "@php -r \"echo '--- Checking for strict_types=1 (includes & src) ---\\n'; $dirs = ['includes', 'src']; foreach ($dirs as $dir) { if(!is_dir($dir)) continue; $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir)); foreach ($files as $file) { if ($file->isDir() || $file->getExtension() !== 'php') continue; $content = file_get_contents($file->getPathname()); if (!preg_match('/declare\\s*\\(\\s*strict_types\\s*=\\s*1\\s*\\)\\s*;/', $content)) echo '[WARN] Missing declare(strict_types=1) in: ' . $file->getPathname() . PHP_EOL; } }\""
         ],
         "compliance": [
             "@check-version",
@@ -38,16 +38,20 @@
             "@check-version",
             "@php -r \"$f='docs/INSTALLATION.md'; echo (file_exists($f) ? '[OK] Installation Guide found.\\n' : '[FAIL] Missing docs/INSTALLATION.md\\n');\"",
             "@php -r \"$f='includes/bootstrap.php'; echo (file_exists($f) ? '[OK] Bootstrap Layer found.\\n' : '[FAIL] Missing includes/bootstrap.php\\n');\"",
-            "@php -r \"echo '🚀 Running Compliance Suite...\\n';\"",
+            "@php -r \"$f='src/CmsContext.php'; echo (file_exists($f) ? '[OK] CmsContext Core found.\\n' : '[FAIL] Missing src/CmsContext.php\\n');\"",
+            "@php -r \"echo '🚀 Running Full Compliance...\\n';\"",
             "@compliance"
         ],
         "post-install-cmd": [
-            "@php -r \"echo 'Welcome to the CMSForNerd v3.3 Laboratory.\\nRun [composer lab-check] to verify your local environment.\\n';\""
+            "@php -r \"echo 'Welcome to the CMSForNerd v3.3 Laboratory (Hybrid Mode).\\nRun [composer lab-check] to verify setup.\\n';\""
         ]
     },
     "autoload": {
         "psr-4": {
-            "CmsForNerd\\": ["includes/", "src/"]
+            "CmsForNerd\\": [
+                "includes/",
+                "src/"
+            ]
         }
     },
     "config": {

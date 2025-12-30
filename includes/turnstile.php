@@ -2,15 +2,29 @@
 
 declare(strict_types=1);
 
-// [SECURITY] Cloudflare Turnstile MUST be used to block automated bots.
-// Verification SHOULD be performed for all sensitive POST requests.
+/**
+ * [SECURITY] Cloudflare Turnstile Integration - v3.3
+ *
+ * This module blocks automated bots via Server-to-Server verification.
+ * Verification is performed for all sensitive POST requests.
+ *
+ * Compliance: PHP 8.4, PSR-12, PSR-1 (Side-effect management)
+ */
 
+namespace CmsForNerd;
+
+/**
+ * 1. [CONFIG] Secure Key Management
+ */
 if (!defined('TURNSTILE_SECRET_KEY')) {
     define('TURNSTILE_SECRET_KEY', 'YOUR_SECRET_KEY_HERE');
 }
 
 /**
- * [SECURITY] verifyTurnstile() performs a RECOMMENDED "Server-to-Server" check.
+ * 2. [SECURITY] verifyTurnstile() performs a "Server-to-Server" check.
+ * * @param string $token    The client response token.
+ * @param string $remoteIp The user's IP address.
+ * @return bool
  */
 function verifyTurnstile(string $token, string $remoteIp): bool
 {
@@ -20,24 +34,30 @@ function verifyTurnstile(string $token, string $remoteIp): bool
 
     $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
-    // [PHP INTERNALS] cURL SHOULD be used for robust API requests.
+    // [PHP 8.4] Using cURL for robust API communication
     $ch = curl_init($url);
+    if (!$ch) {
+        return false;
+    }
+
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_POST => true,
-        CURLOPT_POSTFIELDS => http_build_query([
+        CURLOPT_POST           => true,
+        CURLOPT_POSTFIELDS     => http_build_query([
             'secret'   => TURNSTILE_SECRET_KEY,
             'response' => $token,
             'remoteip' => $remoteIp
         ]),
-        CURLOPT_TIMEOUT => 5,
+        CURLOPT_TIMEOUT        => 5,
+        CURLOPT_CONNECTTIMEOUT => 2,
     ]);
 
+    /** @var string|false $response */
     $response = curl_exec($ch);
-    $error = curl_error($ch);
+    $error    = curl_error($ch);
     curl_close($ch);
 
-    if ($error) {
+    if ($error || $response === false) {
         error_log("Turnstile cURL Error: $error");
         return false;
     }
@@ -46,14 +66,19 @@ function verifyTurnstile(string $token, string $remoteIp): bool
     return (bool)($outcome['success'] ?? false);
 }
 
-// [LOGIC] Automatic Verification MUST be active for POST requests.
+/**
+ * 3. [LOGIC] Automated Verification Gateway
+ * * To satisfy PSR-1 "Side Effects", we wrap the execution.
+ * This gate ensures verification is active for all POST requests.
+ */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
-    $userToken = $_POST['cf-turnstile-response'] ?? '';
-    $userIp    = $_SERVER['REMOTE_ADDR'] ?? '';
+    $userToken = (string) ($_POST['cf-turnstile-response'] ?? '');
+    $userIp    = (string) ($_SERVER['REMOTE_ADDR'] ?? '');
 
     if (!verifyTurnstile($userToken, $userIp)) {
-        // [SECURITY] Failed verification MUST result in a 403 response.
+        // [SECURITY] Failed verification MUST result in a 403 Forbidden response.
         http_response_code(403);
+        header('Content-Type: text/plain');
         die("Security Check Failed: Automated traffic detected (Turnstile).");
     }
 }

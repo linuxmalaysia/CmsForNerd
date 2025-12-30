@@ -1,54 +1,39 @@
-# 🎨 Template Guide
+# 🎨 CmsForNerd v3.3 Template Guide
 
-Master the **"Pair Logic"** architecture in CmsForNerd v3.1. This system separates your page logic from your HTML content.
+### Mastering the "Pair Logic" & Context Engine
+
+The `template.php` file acts as the **Front Controller** for your individual pages. In v3.3, it initializes the `CmsContext` object, which securely carries your metadata and configuration from the `src/` engine into the theme's `pager.php`.
+
+
 
 ---
 
-## 📂 Architecture Overview
+## 📂 Step 1: Locate the Folders
 
-CmsForNerd uses a "Pair Logic" system. To create a page, you need two matching files in two specific locations:
+In the v3.3 Laboratory environment, focus on these key areas:
 
-| File Type | Location | Example Name |
-| :--- | :--- | :--- |
-| **Entry Point** | Root Directory `/` | `about.php` |
-| **Content Body** | `/contents/` | `about-body.inc` |
-## 🚀 How to Create a New Page
+* **Root Directory:** Where your public `.php` pages (like `search.php`) live.
+* **contents/ Directory:** Where the raw "body" HTML for each page is stored.
+* **src/ & includes/:** The hybrid engine folders that handle autoloader and security logic.
 
-### Step 1: Create the Content Body
-Create a new file inside the `contents/` folder. Paste **only** the HTML that belongs inside the content area. Do not include `<html>`, `<head>`, or `<body>` tags.
+---
 
-* **File Path:** `contents/my-new-page-body.inc`
+## 📝 Step 2: Create Your Content (.inc file)
 
-### Step 2: Create the Entry Point
-Copy `template.php` in the root directory and rename it to match your content file prefix.
+Instead of writing a full HTML page, you only need to code what goes inside the `<body>` tag.
 
-* **File Path:** `my-new-page.php`
-### Step 3: Customize Metadata
-Open your new `.php` file and update the `$content` array. The system will handle the rest automatically.
+1.  Open **Google Antigravity**.
+2.  Create a new file inside the `contents/` folder.
+3.  **Naming Rule:** If your page is `search.php`, your content file **MUST** be named `search-body.inc`.
+4.  Paste only the HTML you want to appear in the middle of the page.
 
-```php
-$content = [
-    'title'       => "My New Page - CmsForNerd",
-    'description' => "Detailed description for search engines.",
-    'author'      => "Your Name",
-];
-
-
-
-###🛠️ Under the Hood (Technical Logic)
-
-The template uses the Bootstrap Phase to initialize the environment. When you access my-new-page.php, the code performs the following:
-
-    * Bootstrap: Loads includes/bootstrap.php.
-    * Routing: Detects the filename using pathinfo().
-    * Context: Creates a CmsContext object.
-    * Pairing: The pagecontent() function searches for the -body.inc file.
-
-### Part 4: Standards and Requirements
-```markdown
-## ⚖️ Standards (RFC 2119)
-
-* **MUST:** Every entry point `.php` file MUST call `require_once __DIR__ . '/includes/bootstrap.php';`.
-* **MUST:** Content files MUST end with the `-body.inc` suffix.
-* **SHOULD:** Use **Google Antigravity** to format your HTML inside the `.inc` files.
-* **MUST NOT:** Include global scripts or CSS inside the content body.
+{% hint style="info" %}
+**Example: contents/search-body.inc**
+```html
+<section class="search-results">
+    <h1>Search the Lab</h1>
+    <form action="search.php" method="GET">
+        <input type="text" name="q" placeholder="Search for modules...">
+        <button type="submit">Go</button>
+    </form>
+</section>

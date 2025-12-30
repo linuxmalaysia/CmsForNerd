@@ -3,22 +3,16 @@
 declare(strict_types=1);
 
 /**
- * CmsForNerd - A flat-file CMS modernized for PHP 8.4+ and later PHP 9
+ * CmsForNerd v3.3 - Front Controller
  *
- * This is the Front Controller. In modern architecture, all requests flow through here
- * to ensure security, configuration, and environment setup are consistent.
+ * All requests flow through this central routing engine to ensure security,
+ * configuration, and environment setup are consistent across the laboratory.
  *
  * @package    linuxmalaysia/cmsfornerd
  * @author     Harisfazillah Jamel <linuxmalaysia@songketmail.org>
  * @copyright  2005 - 2025 Harisfazillah Jamel
  * @license    GPL-3.0-or-later
  * @link       https://www.linuxmalaysia.com/
- */
-
-/**
- * [ENTRY POINT] CmsForNerd v3.3 - Front Controller
- * Architecture: Centralized Routing & Context Management.
- * Compliance: PHP 8.4+, PSR-12, RFC 2119.
  */
 
 // 1. [PERFORMANCE] Enable GZIP and Output Buffering
@@ -46,17 +40,18 @@ $content = [
  * v3.3 uses the 'match' expression for strict request handling.
  */
 $rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => $_SERVER['QUERY_STRING'],
+    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
     default                          => 'index'
 };
 
-// [SECURITY] Validate against Path Traversal
-$page = \CmsForNerd\SecurityUtils::isValidPageName($rawPage) ? $rawPage : 'index';
+// [SECURITY] Validate against Path Traversal using the Hybrid SecurityUtils
+$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
+$page = $isValid ? $rawPage : 'index';
 $pageName = pathinfo($page, PATHINFO_FILENAME);
 $content['data'] = $pageName;
 
 /**
- * 5. [MODERN PHP] CmsContext Initialization
+ * 5. [MODERN PHP] CmsContext Initialization (from src/CmsContext.php)
  */
 $ctx = new \CmsForNerd\CmsContext(
     content:    $content,
@@ -90,6 +85,9 @@ $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 if (file_exists($pagerPath)) {
     require_once $pagerPath;
     pager($ctx);
+} else {
+    header('HTTP/1.1 500 Internal Server Error');
+    echo "Fatal Error: Theme pager missing.";
 }
 
 ob_end_flush();

@@ -2,7 +2,10 @@
 
 * [🏠 Home](../README.md)
 * [📜 Architecture Requirements (RFC 2119)](../DOCS_REQUIREMENTS.md)
-* [🛠️ Installation Guide](installation.md)
+* [📜 Project History](HISTORY.md)
+* [🌟 Hall of Fame](hall-of-fame.md)
+* [🛠️ Installation Guide](INSTALLATION.md)
+* [🏁 Welcome Kit](welcome-kit.md)
 
 ## 🎓 The Laboratory Modules
 * [🧪 Module 1: Front Controller & Property Hooks](lab-module1.md)
@@ -12,10 +15,17 @@
 * [📊 Module 5: Code Coverage & QA](lab-module5.md)
 
 ## 📖 Technical Manuals
+* [📘 Lab Manual](lab-manual.md)
+* [📂 Lab Guide (Structure)](LAB-GUIDE.md)
 * [🎨 Template & Theme Guide](template-guide.md)
 * [🗺️ Sitemap Configuration](sitemap-guide.md)
-* [🛡️ CSP & Security Policy](security-policy.md)
+* [🛡️ Security Policy](security-policy.md)
+* [🔒 CSP & Nonce Management](csp-nonce.md)
+
+## 🤖 AI Agent & Development
 * [🤖 AI Agent Development SOP](ai-sop.md)
+* [💻 AI Dev Workflow](ai-dev.md)
+* [🔄 AI State Synchronization](AI-STATE-SYNC.md)
 
 ## 💻 Environment Setup
 * [🪟 Windows (Herd/Laragon) Setup](windows-setup.md)
@@ -24,5 +34,9 @@
 
 ## 🏁 Final Certification
 * [🚩 Final Exam: Break-Fix Challenge](final-exam.md)
-* [🏁 Graduation & Certificate](graduation.md)
+* [🔑 Exam Answer Key](exam-answers.md)
+* [🎓 Graduation & Certificate](graduation.md)
+
+---
 * [🕒 Changelog](../CHANGELOG.md)
+* [📜 License](../LICENSE.md)

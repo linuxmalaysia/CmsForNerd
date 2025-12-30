@@ -46,7 +46,7 @@ function pageheader(CmsForNerd\CmsContext $ctx): void
 }
 
 /**
- * [LOGIC] pagecontent() 
+ * [LOGIC] pagecontent()
  * [LAB] Module 1: Automated Content Mapping (Pair Logic).
  * This function automatically finds the content partial based on the script name.
  */
@@ -60,7 +60,7 @@ function pagecontent(CmsForNerd\CmsContext $ctx): void
     } else {
         // [LAB] Fallback: If scriptName fails, check dataFile[0] as a secondary fallback.
         $fallbackFile = "contents/" . ($ctx->dataFile[0] ?? 'index') . "-body.inc";
-        
+
         if (file_exists($fallbackFile)) {
             include $fallbackFile;
         } else {
