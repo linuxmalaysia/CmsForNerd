@@ -1,40 +1,67 @@
 <?php
 
-/**
- * [ENTRY POINT] CSP Nonce Implementation Guide
- * This page provides comprehensive documentation on implementing Content Security Policy nonces.
- * REQUIRED: Pair Logic with contents/csp-nonce-guide-body.inc.
- */
-
 declare(strict_types=1);
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
+/**
+ * [ENTRY POINT] CSP Nonce Implementation Guide
+ * Purpose: Documentation for XSS protection using cryptographically secure nonces.
+ * Architecture: Pair Logic (csp-nonce-guide.php + contents/csp-nonce-guide-body.inc)
+ * Compliance: PHP 8.4+, PSR-12, RFC 2119
+ */
 
-$CONTENT['title'] = "CSP Nonce Implementation Guide | CMSForNerd Security";
-$CONTENT['author'] = "CMSForNerd Security Team";
-$CONTENT['description'] = "Complete guide to implementing Content Security Policy nonces for XSS protection in PHP 8.4.";
-$CONTENT['keywords'] = "CSP, nonce, XSS, security, PHP 8.4, Content Security Policy";
+// 1. [PERFORMANCE] Enable GZIP Compression
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Fixes the Undefined variable $THEMENAME and $CSSPATH errors by properly
+ * loading the laboratory's global state from bootstrap.php.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-require_once 'includes/global-control.inc.php';
-require_once 'includes/common.inc.php';
+// 3. [SEO/AI] Expanded Security Metadata
+$content = [
+    'title'       => "CSP Nonce Implementation Guide | CMSForNerd Security",
+    'author'      => "CMSForNerd Security Team",
+    'description' => "Comprehensive guide to implementing Content Security Policy nonces for XSS protection in PHP 8.4.",
+    'keywords'    => "CSP, nonce, XSS, security, PHP 8.4, Content Security Policy, SecurityUtils",
+    'schemaType'  => "TechArticle",
+    'category'    => "Cybersecurity Laboratory"
+];
 
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
+
+/**
+ * 5. [MODERN PHP] Initialize Context Object
+ * Includes $cspNonce generation via SecurityUtils (called within CmsContext).
+ */
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $pageName
 );
 
-include "themes/{$ctx->themeName}/pager.php";
+// 6. [SECURITY] Cloudflare Turnstile Check
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// Security: Cloudflare Turnstile Check
-require_once 'includes/turnstile.php';
+/**
+ * 7. [RENDER] Theme Execution
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-pager($ctx);
+if (file_exists($pagerPath)) {
+    require_once $pagerPath;
+    pager($ctx);
+} else {
+    http_response_code(500);
+    die("Fatal Error: Theme engine missing for Security Guide.");
+}
 
 ob_end_flush();
