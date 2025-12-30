@@ -1,56 +1,82 @@
-<h1>Welcome to CMSForNerd v3.1: The Developer’s Laboratory</h1>
-<div class="intro">
-    <p>
-        <strong>CMSForNerd</strong> is a radically simple, database-free Content Management System designed as a live learning environment for developers and students.
-    </p>
-    <p>
-        Unlike "black box" frameworks, CMSForNerd exposes the raw power of PHP 8.4 and beyond. It empowers you to master the full stack—from PSR-12 compliant architecture to CSS Grid responsive design—without the overhead of a database.
-    </p>
-    <p>
-        Currently running on: <strong>PHP <?= phpversion() ?></strong> | <a href="lab-manual.php" style="font-weight: bold; color: #d9534f;">🎓 Lab Manual</a> | <a href="linux-setup.php" style="color: #2ecc71;">🐧 Linux Setup</a> | <a href="windows-setup.php" style="color: #007bff;">🪟 Windows Setup</a>
-    </p>
-</div>
+<article class="lab-home">
+    <header class="hero-section">
+        <h1>Welcome to CMSForNerd v3.3: The Developer’s Laboratory</h1>
+        <div class="runtime-badge">
+            Currently running on: <strong>PHP <?= phpversion() ?></strong>
+        </div>
+    </header>
 
-<h3>Why "For Nerd"?</h3>
-<p>
-    Modern CMSs often hide the code behind complex dashboards and databases. 
-    <strong>CMSForNerd</strong> puts the code back in your hands:
-</p>
-<ul>
-    <li><strong>No Database:</strong> Zero SQL setup. Easy backups (just zip the folder!).</li>
-    <li><strong>Absolute Control:</strong> You edit the raw files. No "magic" plugins slowing you down.</li>
-    <li><strong>Educational:</strong> The perfect platform to learn how the web actually works (HTTP, PHP Includes, HTML Structure).</li>
-</ul>
+    <div class="intro-box">
+        <p>
+            <strong>CMSForNerd</strong> is a radically simple, database-free Content Management System designed as a live learning environment. 
+            Unlike "black box" frameworks, it exposes the raw power of PHP 8.4 to help you master the full stack.
+        </p>
+        <div class="quick-links">
+            <a href="lab-manual.php" class="btn lab-btn">🎓 Lab Manual</a>
+            <a href="linux-setup.php" class="btn linux-btn">🐧 Linux Setup</a>
+            <a href="windows-setup.php" class="btn win-btn">🪟 Windows Setup</a>
+        </div>
+    </div>
 
-<h3>🚀 New in Version 3.1 (2025)</h3>
-<p>We've modernized the core engine for the AI era:</p>
-<ul class="features-list">
-    <li>
-        <strong>PHP 8.4+ & PHP 9 Ready:</strong> Rebuilt with Strict Types, Readonly Classes, and modern syntax.
-    </li>
-    <li>
-        <strong>Security First:</strong> 
-        Includes <a href="https://www.cloudflare.com/products/turnstile/" target="_blank">Cloudflare Turnstile</a> integration and directory traversal protection.
-    </li>
-    <li>
-        <strong>Deploy Anywhere:</strong> 
-        Universally compatible with <strong>Windows, Linux, Unix, and FreeBSD</strong>. Tested for cross-platform path safety.
-    </li>
-    <li>
-        <strong>Clean & Fast:</strong> Bloat-free codebase optimized for raw performance.
-    </li>
-</ul>
+    <section class="grid-features">
+        <div class="feature-card">
+            <h3>Why "For Nerd"?</h3>
+            <ul>
+                <li><strong>No Database:</strong> Zero SQL overhead. Backups are just ZIP files.</li>
+                <li><strong>Absolute Control:</strong> No "magic" plugins. You edit the logic directly.</li>
+                <li><strong>Educational:</strong> Learn HTTP headers, PHP includes, and strict typing.</li>
+            </ul>
+        </div>
 
-<h3>Getting Started</h3>
-<p>
-    Ready to build? Check out the <a href="installation.php">Installation Guide</a> to get set up. 
-    For laboratory readiness, we provide specialized guides for <a href="windows-setup.php"><strong>Windows 11</strong></a> and <a href="linux-setup.php"><strong>Linux (Debian/Ubuntu/AlmaLinux)</strong></a>.
-</p>
+        <div class="feature-card">
+            <h3>🚀 v3.3 Evolution (2025)</h3>
+            <ul>
+                <li><strong>PHP 9 Ready:</strong> Built with Property Hooks and Constructor Promotion.</li>
+                <li><strong>Security First:</strong> Integrated Cloudflare Turnstile & Path Sanitization.</li>
+                <li><strong>Cross-Platform:</strong> Tested on Linux (Debian/Alma), Windows 11, and FreeBSD.</li>
+            </ul>
+        </div>
+    </section>
 
-<h3>Recommended Stack</h3>
-<p>To get the most out of CMSForNerd, we recommend:</p>
-<ul>
-    <li><strong>Editor:</strong> Google Antigravity (Advanced AI Coding).</li>
-    <li><strong>Server:</strong> Nginx Latest with PHP 8.4+.</li>
-    <li><strong>Browser:</strong> Mozilla Firefox for testing strict privacy and modern web standards.</li>
-</ul>
+    <section class="stack-recommendation">
+        <h3>Recommended Laboratory Stack</h3>
+        <p>For the optimal "Nerd" experience, we recommend:</p>
+        <table class="stack-table">
+            <tr>
+                <td><strong>Editor</strong></td>
+                <td>Google Antigravity (AI Optimized)</td>
+            </tr>
+            <tr>
+                <td><strong>Server</strong></td>
+                <td>Nginx 1.2x with PHP 8.4-FPM</td>
+            </tr>
+            <tr>
+                <td><strong>Browser</strong></td>
+                <td>Mozilla Firefox (Strict Privacy Mode)</td>
+            </tr>
+        </table>
+    </section>
+</article>
+
+<style>
+    .lab-home { max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+    .hero-section h1 { color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 10px; }
+    .runtime-badge { background: #f8f9fa; display: inline-block; padding: 5px 15px; border-radius: 20px; border: 1px solid #ddd; margin-bottom: 20px; }
+    
+    .intro-box { background: #eef2f7; padding: 25px; border-radius: 12px; border-left: 6px solid #3498db; margin-bottom: 40px; }
+    .quick-links { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+    
+    .btn { padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; color: white; transition: 0.3s; }
+    .lab-btn { background: #d9534f; }
+    .linux-btn { background: #2ecc71; }
+    .win-btn { background: #0078d4; }
+    .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+
+    .grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+    .feature-card { background: white; border: 1px solid #eee; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .feature-card h3 { color: #2980b9; margin-top: 0; }
+
+    .stack-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    .stack-table td { padding: 12px; border: 1px solid #eee; }
+    .stack-table tr td:first-child { background: #fdfdfd; width: 30%; }
+</style>

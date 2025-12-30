@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1); // [LAB] Enforces strict data typing, preventing "quiet" bugs with integers/strings.
+declare(strict_types=1);
 
 /**
  * CmsForNerd - A flat-file CMS modernized for PHP 8.4+ and later PHP 9
@@ -15,120 +15,81 @@ declare(strict_types=1); // [LAB] Enforces strict data typing, preventing "quiet
  * @link       https://www.linuxmalaysia.com/
  */
 
-// [PERFORMANCE] Use Output Buffering to allow header manipulation later in the script
-// and compress data (GZIP) to reduce bandwidth usage in the laboratory.
+/**
+ * [ENTRY POINT] CmsForNerd v3.3 - Front Controller
+ * Architecture: Centralized Routing & Context Management.
+ * Compliance: PHP 8.4+, PSR-12, RFC 2119.
+ */
+
+// 1. [PERFORMANCE] Enable GZIP and Output Buffering
 if (!ob_start("ob_gzhandler")) {
     ob_start();
 }
 
 /**
- * [LAB] BOOTSTRAP PHASE
- * We load the "engine" of the CMS. Instead of repeating logic on every page,
- * we use bootstrap.php to initialize the Autoloader, Security, and Config.
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Initializes the Autoloader, Environment, and Global Configuration.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
-// [LAB] EDUCATIONAL NOTE: At this point, $config, $themeName, and $cssPath 
-// are already defined by bootstrap.php through the get_runtime_config() function.
-
-// [SEO] Metadata - Site-wide defaults. 
-// Students: These are used by the theme to generate <meta> tags.
+// 3. [SEO/AI] Default Landing Metadata
 $content = [
-    'title'       => "CmsForNerd - A Content Management Software For Nerd",
+    'title'       => "CmsForNerd v3.3 | The Developer’s Laboratory",
     'author'      => "Harisfazillah Jamel",
-    'description' => "CmsForNerd is a lightweight flat-file CMS optimized for PHP 8.4.",
-    'keywords'    => "CmsForNerd, CMS, HTML, PHP, Flat-file, Security",
+    'description' => "A lightweight flat-file CMS modernized for PHP 8.4+ and PHP 9 readiness.",
+    'keywords'    => "PHP 8.4, Flat-file CMS, Security Laboratory, PSR-12, Education",
+    'schemaType'  => "WebApplication"
 ];
 
 /**
- * [LAB] ROUTING & SANITIZATION
- * Determining what the user wants to see and ensuring the input is safe.
+ * 4. [LAB] ROUTING & SANITIZATION
+ * v3.3 uses the 'match' expression for strict request handling.
  */
-// [SECURITY] Use the 'match' expression (PHP 8.0+) for cleaner sanitization logic.
 $rawPage = match (true) {
     !empty($_SERVER['QUERY_STRING']) => $_SERVER['QUERY_STRING'],
-    default                          => $scriptName // $scriptName is defined in bootstrap.php
+    default                          => 'index'
 };
 
-// [SECURITY] Prevent Directory Traversal by validating the page name against a whitelist.
-// [LAB] We use the FQCN (Fully Qualified Class Name) to access SecurityUtils.
-$page = \CmsForNerd\SecurityUtils::isValidPageName($rawPage)
-    ? $rawPage
-    : 'index';
-
-// [LAB] Normalize the page name (removes .php) for internal content lookup.
-$pageName        = pathinfo($page, PATHINFO_FILENAME);
+// [SECURITY] Validate against Path Traversal
+$page = \CmsForNerd\SecurityUtils::isValidPageName($rawPage) ? $rawPage : 'index';
+$pageName = pathinfo($page, PATHINFO_FILENAME);
 $content['data'] = $pageName;
 
 /**
- * [MODERN PHP] CmsContext Object (State Management)
- * [LAB] Instead of using Global Variables, we pass a "Context" object.
- * This is a step toward Dependency Injection, making the code easier to test.
+ * 5. [MODERN PHP] CmsContext Initialization
  */
 $ctx = new \CmsForNerd\CmsContext(
     content:    $content,
     themeName:  $themeName,
     cssPath:    $cssPath,
-    dataFile:   $dataFile, // Array defined in bootstrap.php
+    dataFile:   $dataFile,
     scriptName: $pageName
 );
 
 /**
- * [SECURITY] Session Management
- * [LAB] Sessions allow us to store user state across different page loads.
+ * 6. [SECURITY] Session & Bot Hardening
  */
-ini_set('session.gc_maxlifetime', '1800'); // 30-minute default timeout.
-session_start();
-$_SESSION['session_start_time'] = time();
-$_SESSION['valid_session']      = true;
-
-/**
- * [STRUCTURE] Theme Controller
- * [LAB] Decoupling logic from presentation. This loads the "Theme Engine".
- */
-$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
-if (file_exists($pagerPath)) {
-    include_once $pagerPath;
-}
-
-/**
- * [SECURITY/SEO] Bot Detection
- * [LAB] Real-world applications often serve different content to search 
- * engine crawlers to optimize indexing (SEO).
- */
-if (file_exists(__DIR__ . '/includes/is_bot.php')) {
-    require_once __DIR__ . '/includes/is_bot.php';
-    if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "Welcome bot! This is an optimized text view for indexing.\n";
-        echo "Sitemap: " . ($config['sitemap_url'] ?? 'https://www.linuxmalaysia.com/sitemap.php') . "\n";
-        exit;
-    }
-}
-
-// [SECURITY] Integration for Bot protection (e.g., Cloudflare Turnstile).
 if (file_exists(__DIR__ . '/includes/turnstile.php')) {
     require_once __DIR__ . '/includes/turnstile.php';
 }
 
+// SEO Optimized view for Search Crawlers
+if (file_exists(__DIR__ . '/includes/is_bot.php')) {
+    require_once __DIR__ . '/includes/is_bot.php';
+    if (is_bot()) {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "CmsForNerd v3.3 - Text Mode\nSitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
+        exit;
+    }
+}
+
 /**
- * [RENDER] Page Generation
- * [LAB] The final step. We call the pager() function from our theme.
- * By passing $ctx, the theme has everything it needs to render the HTML.
+ * 7. [RENDER] Theme Dispatcher
  */
-if (function_exists('pager')) {
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
+if (file_exists($pagerPath)) {
+    require_once $pagerPath;
     pager($ctx);
 }
 
-/**
- * [LOGIC] Logout Handling
- * [LAB] Demonstrates how to handle GET requests to destroy a session.
- */
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header('Location: index.php');
-    exit;
-}
-
-// [PERFORMANCE] Flush the output buffer, sending the final HTML to the user's browser.
 ob_end_flush();
