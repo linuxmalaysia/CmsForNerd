@@ -1,6 +1,6 @@
 {
     "name": "linuxmalaysia/cmsfornerd",
-    "description": "A flat-file CMS modernized for PHP 8.4",
+    "description": "A flat-file CMS modernized for PHP 8.4 Laboratory environments.",
     "type": "project",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -15,38 +15,39 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^11.5",
-        "squizlabs/php_codesniffer": "^3.11"
+        "squizlabs/php_codesniffer": "^3.11",
+        "roave/security-advisories": "dev-latest"
     },
     "scripts": {
-        "check-style": "phpcs --standard=PSR12 includes/",
-        "fix-style": "phpcbf --standard=PSR12 includes/",
-        "test": "phpunit",
+        "check-version": "@php -r \"if (PHP_VERSION_ID < 80400) { echo '[FAIL] PHP 8.4+ Required. Found: ' . PHP_VERSION . PHP_EOL; exit(1); } echo '[OK] PHP Version: ' . PHP_VERSION . PHP_EOL;\"",
+        "check-style": "phpcs --standard=PSR12 includes/ src/ index.php *.php --ignore=vendor/*",
+        "fix-style": "phpcbf --standard=PSR12 includes/ src/ index.php *.php --ignore=vendor/*",
+        "test": "phpunit --colors=always",
         "check-strict": [
-            "php -r \"$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('includes')); $found = false; foreach ($files as $file) { if ($file->isDir()) continue; $content = file_get_contents($file->getPathname()); if (str_contains($content, 'global $')) { echo '[FAIL] Global keyword found in ' . $file->getPathname() . PHP_EOL; $found = true; } } if (!$found) echo '[OK] No global keyword found.' . PHP_EOL;\"",
-            "php -r \"$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('includes')); foreach ($files as $file) { if ($file->isDir()) continue; $content = file_get_contents($file->getPathname()); if (!preg_match('/declare\\s*\\(\\s*strict_types\\s*=\\s*1\\s*\\)\\s*;/', $content)) echo '[WARN] Missing strict_types in ' . $file->getPathname() . PHP_EOL; }\""
+            "@php -r \"echo '--- Checking for Legacy Global Keyword ---\\n'; $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('includes')); $found = false; foreach ($files as $file) { if ($file->isDir() || $file->getExtension() !== 'php') continue; $content = file_get_contents($file->getPathname()); if (preg_match('/\\b(global\\s+\\$|\\$GLOBALS\\[)/', $content)) { echo '[FAIL] Global state detected in: ' . $file->getPathname() . PHP_EOL; $found = true; } } if (!$found) echo '[OK] Architecture is Global-free.\\n';\"",
+            "@php -r \"echo '--- Checking for strict_types=1 ---\\n'; $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('includes')); foreach ($files as $file) { if ($file->isDir() || $file->getExtension() !== 'php') continue; $content = file_get_contents($file->getPathname()); if (!preg_match('/declare\\s*\\(\\s*strict_types\\s*=\\s*1\\s*\\)\\s*;/', $content)) echo '[WARN] Missing declare(strict_types=1) in: ' . $file->getPathname() . PHP_EOL; }\""
         ],
         "compliance": [
+            "@check-version",
             "@check-style",
             "@check-strict",
             "@test"
         ],
-        "audit-metadata": "php tools/audit-semantics.php http://localhost:8888",
         "lab-check": [
-            "php -r \"echo 'Checking Laboratory Environment...\\n';\"",
-            "php -r \"$f='docs/LAB-GUIDE.md'; echo (file_exists($f) ? '[OK] Lab Guide found.\\n' : '[FAIL] Missing docs/LAB-GUIDE.md\\n');\"",
-            "php -r \"$f='includes/bootstrap.php'; echo (file_exists($f) ? '[OK] Bootstrap found.\\n' : '[FAIL] Missing includes/bootstrap.php\\n');\"",
-            "php -r \"echo 'Running Laboratory Strictness Check...\\n';\"",
-            "@check-strict",
-            "php -r \"echo 'Running PSR-12 Compliance Check...\\n';\"",
-            "@check-style"
+            "@php -r \"echo '🧪 Validating Laboratory Readiness...\\n';\"",
+            "@check-version",
+            "@php -r \"$f='docs/INSTALLATION.md'; echo (file_exists($f) ? '[OK] Installation Guide found.\\n' : '[FAIL] Missing docs/INSTALLATION.md\\n');\"",
+            "@php -r \"$f='includes/bootstrap.php'; echo (file_exists($f) ? '[OK] Bootstrap Layer found.\\n' : '[FAIL] Missing includes/bootstrap.php\\n');\"",
+            "@php -r \"echo '🚀 Running Compliance Suite...\\n';\"",
+            "@compliance"
         ],
         "post-install-cmd": [
-            "php -r \"echo 'Welcome to the CmsForNerd Laboratory.\\nRun [composer lab-check] to verify your setup.\\n';\""
+            "@php -r \"echo 'Welcome to the CMSForNerd v3.3 Laboratory.\\nRun [composer lab-check] to verify your local environment.\\n';\""
         ]
     },
     "autoload": {
         "psr-4": {
-            "CmsForNerd\\": "includes/"
+            "CmsForNerd\\": ["includes/", "src/"]
         }
     },
     "config": {

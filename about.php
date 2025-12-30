@@ -1,49 +1,38 @@
 <?php
 
-declare(strict_types=1); // [LAB] Enforces strict data typing for PHP 8.4.
+declare(strict_types=1);
 
 /**
- * CmsForNerd - About Page
- * [LAB] Module 1: Demonstrating the Front Controller pattern and Context Injection.
+ * [ENTRY POINT] About CMSForNerd
+ * Role: Mission statement and project philosophy.
+ * Architecture: Pair Logic (about.php + contents/about-body.inc)
  */
 
-// [PERFORMANCE] Output buffering with GZIP compression.
+// 1. [PERFORMANCE] Enable GZIP Compression
 if (!ob_start("ob_gzhandler")) {
     ob_start();
 }
 
 /**
- * [LAB] BOOTSTRAP PHASE
- * Loads the Autoloader, Security, and Configuration.
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Loading bootstrap.php ensures the v3.3 runtime is active.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
-// Example Copilot-friendly prompts (preserved for students):
-// TODO-COPILOT: "Create a simple about page that includes the contents/about-body.inc
-// file and uses the site's header and footer partials. Keep markup semantic."
-// TODO-COPILOT: "Add a unit test that asserts the about page includes the phrase
-// 'CmsForNerd' and that the contents/about-body.inc file exists."
-
-/**
- * [SEO] Page-specific metadata.
- */
+// 3. [SEO/AI] Metadata
 $content = [
-    'title'       => "About CmsForNerd",
-    'author'      => "Harisfazillah Jamel",
-    'description' => "Learn about the architecture and history of the CmsForNerd project.",
-    'keywords'    => "About, Architecture, PHP 8.4, Flat-file CMS",
+    'title'       => "About CMSForNerd | The Human-AI Project",
+    'author'      => "CMSForNerd Team & Google Gemini",
+    'description' => "Discover the philosophy behind CMSForNerd: A project dedicated to educational empowerment through radical simplicity.",
+    'keywords'    => "Open Source, Philosophy, PHP 8.4, Education, LinuxMalaysia, Google Gemini",
+    'schemaType'  => "AboutPage"
 ];
 
-/**
- * [LAB] DATA MAPPING
- * Determine the filename for content lookup (e.g., 'about').
- */
-$pageName        = pathinfo(basename($_SERVER['SCRIPT_NAME']), PATHINFO_FILENAME);
-$content['data'] = $pageName;
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
 
 /**
- * [MODERN PHP] CmsContext Object
- * [LAB] We pass the state to the theme via this object instead of global variables.
+ * 5. [MODERN PHP] Initialize Context Object
  */
 $ctx = new \CmsForNerd\CmsContext(
     content:    $content,
@@ -53,29 +42,19 @@ $ctx = new \CmsForNerd\CmsContext(
     scriptName: $pageName
 );
 
-/**
- * [SECURITY] Session Initialization
- */
-session_start();
-
-/**
- * [STRUCTURE] Theme Controller
- * Instead of calling pageheader() and pagetailer() manually, 
- * we delegate the entire rendering to the theme's pager.
- */
-$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
-if (file_exists($pagerPath)) {
-    include_once $pagerPath;
+// 6. [SECURITY] Cloudflare Turnstile Check
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
 }
 
 /**
- * [RENDER] Page Generation
- * The theme will automatically include 'contents/about-body.inc' 
- * based on the 'scriptName' provided in the context.
+ * 7. [RENDER] Theme Execution
  */
-if (function_exists('pager')) {
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
+
+if (file_exists($pagerPath)) {
+    require_once $pagerPath;
     pager($ctx);
 }
 
-// [PERFORMANCE] Flush output.
 ob_end_flush();
