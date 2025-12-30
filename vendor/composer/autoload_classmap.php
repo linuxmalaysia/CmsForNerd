@@ -6,7 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CmsForNerd\\CmsContext' => $baseDir . '/includes/CmsContext.php',
+    'CmsForNerd\\CmsContext' => $baseDir . '/src/CmsContext.php',
     'CmsForNerd\\SecurityUtils' => $baseDir . '/includes/SecurityUtils.php',
     'CmsForNerd\\User' => $baseDir . '/includes/User.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',

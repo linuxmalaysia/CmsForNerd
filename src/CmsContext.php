@@ -12,11 +12,12 @@ namespace CmsForNerd;
 readonly class CmsContext
 {
     /**
-     * @param array $content   Site metadata (title, author, etc.)
+     * @param array $content    Site metadata (title, author, etc.)
      * @param string $themeName The active folder in /themes/
      * @param string $cssPath   The path to the main stylesheet
      * @param array $dataFile   The exploded path info of the current request
      * @param string $scriptName The normalized name of the current page
+     * @param string $cspNonce  A cryptographically secure random string for security
      */
     public function __construct(
         public array $content,
@@ -24,6 +25,7 @@ readonly class CmsContext
         public string $cssPath,
         public array $dataFile,
         public string $scriptName,
+        public string $cspNonce = '', // Added this line with default
     ) {
     }
 }

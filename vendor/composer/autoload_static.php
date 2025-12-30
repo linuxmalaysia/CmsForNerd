@@ -43,7 +43,7 @@ class ComposerStaticInit866f4e346686e7d3bf1913bc9de27798
     );
 
     public static $classMap = array (
-        'CmsForNerd\\CmsContext' => __DIR__ . '/../..' . '/includes/CmsContext.php',
+        'CmsForNerd\\CmsContext' => __DIR__ . '/../..' . '/src/CmsContext.php',
         'CmsForNerd\\SecurityUtils' => __DIR__ . '/../..' . '/includes/SecurityUtils.php',
         'CmsForNerd\\User' => __DIR__ . '/../..' . '/includes/User.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
