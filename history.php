@@ -2,36 +2,59 @@
 
 declare(strict_types=1);
 
-// [HISTORY] Modernization Log - This page documents the v3.1 journey.
-// It follows the "Pair Logic" system: Entry point is history.php, body is contents/history-body.inc.
+/**
+ * [ENTRY POINT] Modernization History
+ * Role: Chronological log of the CMSForNerd v3.1 - v3.3 evolution.
+ * Architecture: Pair Logic (history.php + contents/history-body.inc)
+ */
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
+// 1. [PERFORMANCE] Output Buffering
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['title'] = "Modernization History of CmsForNerd v3.1";
-$CONTENT['author'] = "CMSForNerd Team & Google Gemini";
-$CONTENT['description'] = "A detailed log of the architectural and security improvements made to CmsForNerd in late 2025.";
-$CONTENT['keywords'] = "Modernization, History, PHP 8.4, PSR-12, RFC 2119, Security";
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Ensures $themeName and $cssPath are initialized for the context.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+// 3. [SEO/AI] History Metadata
+$content = [
+    'title'       => "Modernization History | CMSForNerd v3.3 Evolution",
+    'author'      => "CMSForNerd Team & Google Gemini",
+    'description' => "Tracking the journey of CMSForNerd from a 2005 legacy core to a 2025 PHP 8.4 powerhouse.",
+    'keywords'    => "Changelog, PHP 8.4, PHP 9 Readiness, Architecture, History, Open Source",
+    'schemaType'  => "ArchiveComponent"
+];
 
-include "includes/global-control.inc.php";
-include "includes/common.inc.php";
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
 
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+/**
+ * 5. [MODERN PHP] Initialize Context Object
+ */
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $pageName
 );
 
-include "themes/{$ctx->themeName}/pager.php";
+// 6. [SECURITY] Cloudflare Turnstile Check
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// Security: Cloudflare Turnstile Check
-require_once 'includes/turnstile.php';
+/**
+ * 7. [RENDER] Theme Execution
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-pager($ctx);
+if (file_exists($pagerPath)) {
+    require_once $pagerPath;
+    pager($ctx);
+}
 
 ob_end_flush();

@@ -1,3 +1,62 @@
+<article class="modernization-history"> <header class="history-header"> <h1>Modernization History: The Journey to v3.3</h1> <p class="intro"> Starting in late 2025, CMSForNerd underwent a radical transformation. This log tracks the shift from a 20-year-old legacy codebase to a modern, AI-synergized developer's laboratory. </p> </header>
+<div class="timeline">
+    <section class="version-block v33">
+        <div class="version-tag">v3.3</div>
+        <h2>The "Bootstrap" Milestone (Current)</h2>
+        <p><strong>Focus:</strong> Performance, Stability, and Runtime Global-Safe Initialization.</p>
+        <ul>
+            <li><strong>Centralized Bootstrap:</strong> Introduced <code>includes/bootstrap.php</code> to fix scope issues in the <code>CmsContext</code>.</li>
+            <li><strong>GZIP Optimization:</strong> Standardized <code>ob_gzhandler</code> across all entry points for 70% faster data delivery.</li>
+            <li><strong>Instructor Resources:</strong> Finalized the <em>Official Answer Key</em> and <em>Hall of Fame</em> with full v3.3 logic.</li>
+            <li><strong>PHP 9 Readiness:</strong> Full audit of strict types to ensure compatibility with PHP 9's upcoming engine changes.</li>
+        </ul>
+    </section>
+
+    <section class="version-block v32">
+        <div class="version-tag">v3.2</div>
+        <h2>The "Laboratory" Expansion</h2>
+        <p><strong>Focus:</strong> Educational tooling and cross-platform reliability.</p>
+        <ul>
+            <li><strong>Cross-Platform Setup:</strong> Created specialized guides for <em>Windows 11 (Herd)</em> and <em>Linux (AlmaLinux/Debian)</em>.</li>
+            <li><strong>Security Policy:</strong> Implemented <code>security.txt</code> (RFC 9116) and a formal Responsible Disclosure protocol.</li>
+            <li><strong>AI Synergy:</strong> Integrated <em>Google Antigravity</em> instructions for AI-assisted coding workflows.</li>
+        </ul>
+    </section>
+
+    <section class="version-block v31">
+        <div class="version-tag">v3.1</div>
+        <h2>The Architectural Rebirth</h2>
+        <p><strong>Focus:</strong> Refactoring the 2005 core into modern PHP 8.4.</p>
+        <ul>
+            <li><strong>Object-Oriented Core:</strong> Replaced global state with the <code>CmsContext</code> object and Readonly properties.</li>
+            <li><strong>Security Hardening:</strong> Added <em>Path Traversal</em> protection and <em>Cloudflare Turnstile</em>.</li>
+            <li><strong>PSR-12 Compliance:</strong> First automated style-check integration using PHPCS.</li>
+            <li><strong>PHP 8.4 Hooks:</strong> Introduced Property Hooks to replace legacy Getters/Setters.</li>
+        </ul>
+    </section>
+</div>
+
+<footer class="history-footer">
+    <p><em>"Refining the past to secure the future."</em> — LinuxMalaysia & Google Gemini</p>
+</footer>
+</article>
+
+<style> :root { --v33-color: #2ecc71; --v32-color: #3498db; --v31-color: #9b59b6; --bg-gray: #f9f9f9; } .modernization-history { max-width: 900px; margin: 0 auto; line-height: 1.8; } .history-header { text-align: center; margin-bottom: 50px; } .history-header h1 { color: #2c3e50; font-size: 2.4rem; border-bottom: 3px solid var(--v33-color); display: inline-block; } .intro { background: var(--bg-gray); padding: 20px; border-left: 5px solid #ccc; font-style: italic; }
+.timeline { position: relative; padding: 20px 0; }
+.version-block { margin-bottom: 40px; padding: 25px; border-radius: 12px; background: #fff; border: 1px solid #eee; position: relative; }
+.version-tag { position: absolute; top: -15px; right: 20px; padding: 5px 15px; border-radius: 20px; color: white; font-weight: bold; font-size: 0.9rem; }
+
+.v33 { border-left: 6px solid var(--v33-color); } .v33 .version-tag { background: var(--v33-color); }
+.v32 { border-left: 6px solid var(--v32-color); } .v32 .version-tag { background: var(--v32-color); }
+.v31 { border-left: 6px solid var(--v31-color); } .v31 .version-tag { background: var(--v31-color); }
+
+.version-block h2 { margin-top: 0; color: #2c3e50; }
+.version-block ul { padding-left: 1.5rem; }
+.version-block li { margin-bottom: 8px; }
+
+.history-footer { text-align: center; margin-top: 60px; color: #7f8c8d; font-size: 0.95rem; border-top: 1px solid #eee; padding-top: 20px; }
+</style>
+
 <article class="modernization-history">
     <h1>Modernization History: The v3.1 Journey</h1>
     <p class="intro">
