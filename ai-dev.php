@@ -1,39 +1,59 @@
 <?php
 
-/**
- * [ENTRY POINT] AI-Assisted Development Guide
- * This page teaches students how to use Gemini and Antigravity for CMS development.
- * REQUIRED: Pair Logic with contents/ai-dev-body.inc.
- */
-
 declare(strict_types=1);
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
+/**
+ * [ENTRY POINT] AI-Assisted Development Guide
+ * Purpose: Teaches the "Architect vs. Agent" synergy using Gemini and Antigravity.
+ * Architecture: Pair Logic (ai-dev.php + contents/ai-dev-body.inc)
+ */
 
-$CONTENT['title'] = "AI-Assisted Development | CMSForNerd laboratory";
-$CONTENT['author'] = "CMSForNerd Team & Google Gemini";
-$CONTENT['description'] = "Master the synergy between Google Gemini AI and Google Antigravity to build, refactor, and modernize your CMS.";
+// 1. [PERFORMANCE] Enable GZIP
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Fixes: $THEMENAME and $CSSPATH undefined errors.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-require_once 'includes/global-control.inc.php';
-require_once 'includes/common.inc.php';
+// 3. [SEO] AI Development Metadata
+$content = [
+    'title'       => "AI-Assisted Development | CMSForNerd v3.3",
+    'author'      => "CMSForNerd Team & Google Gemini",
+    'description' => "Master the synergy between Google Gemini AI and Google Antigravity to build, refactor, and modernize your CMS.",
+    'keywords'    => "AI Development, Google Gemini, Google Antigravity, Agentic Workflow, PHP 8.4 AI",
+];
 
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
+
+// 5. [MODERN PHP] Initialize Context Object
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $pageName
 );
 
-include "themes/{$ctx->themeName}/pager.php";
+// 6. [SECURITY] Cloudflare Turnstile Check
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// Security: Cloudflare Turnstile Check
-require_once 'includes/turnstile.php';
+/**
+ * 7. [RENDER] Theme Execution
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-pager($ctx);
+if (file_exists($pagerPath)) {
+    include_once $pagerPath;
+    pager($ctx);
+} else {
+    die("Fatal Error: Theme engine missing for AI Dev Guide.");
+}
 
 ob_end_flush();
