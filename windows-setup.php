@@ -2,36 +2,64 @@
 
 declare(strict_types=1);
 
-// [EDUCATIONAL] Windows 11 Setup Guide: The Future-Proof Toolchain.
-// It follows the "Pair Logic" system: Entry point is windows-setup.php, body is contents/windows-setup-body.inc.
+/**
+ * [ENTRY POINT] Windows 11 Setup Guide
+ * Purpose: Technical walkthrough for local development environment setup.
+ * Architecture: Pair Logic (windows-setup.php + contents/windows-setup-body.inc)
+ * Compliance: PHP 8.4+, PSR-12, RFC 2119
+ */
 
-ob_start("ob_gzhandler");
-require_once __DIR__ . '/vendor/autoload.php';
+// 1. [PERFORMANCE] Enable GZIP Compression
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
 
-$CONTENT['title'] = "Windows 11 Setup Guide: PHP 8.4+ & PHP 9 Ready - CMSForNerd v3.1";
-$CONTENT['author'] = "CMSForNerd Team & Google Gemini";
-$CONTENT['description'] = "Learn how to set up a professional, future-proof PHP 8.4 development environment on Windows 11 for CMSForNerd.";
-$CONTENT['keywords'] = "Windows 11, Setup Guide, PHP 8.4, PHP 9, Laravel Herd, Git, Antigravity, Composer";
+/**
+ * 2. [LAB] BOOTSTRAP PHASE
+ * Loading bootstrap.php ensures $themeName and $cssPath are defined,
+ * preventing Fatal Errors during CmsContext instantiation.
+ */
+require_once __DIR__ . '/includes/bootstrap.php';
 
-$CONTENT['data'] = basename($_SERVER['SCRIPT_NAME']);
-$DATAFILE = explode(".", $CONTENT['data']);
+// 3. [SEO/AI] Setup Metadata
+$content = [
+    'title'       => "Windows 11 Setup Guide: PHP 8.4+ & 9 Ready | CMSForNerd",
+    'author'      => "CMSForNerd Team & Google Gemini",
+    'description' => "Step-by-step guide to setting up Laravel Herd, Git, and Antigravity for PHP 8.4 development on Windows 11.",
+    'keywords'    => "Windows 11, PHP 8.4, PHP 9, Laravel Herd, Git for Windows, Antigravity Terminal, Composer",
+    'schemaType'  => "HowTo"
+];
 
-include "includes/global-control.inc.php";
-include "includes/common.inc.php";
+// 4. [LAB] ROUTING LOGIC
+$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
 
-$ctx = new CmsForNerd\CmsContext(
-    content: $CONTENT,
-    themeName: $THEMENAME,
-    cssPath: $CSSPATH,
-    dataFile: $DATAFILE,
-    scriptName: $CONTENT['data']
+/**
+ * 5. [MODERN PHP] Initialize Context Object
+ */
+$ctx = new \CmsForNerd\CmsContext(
+    content:    $content,
+    themeName:  $themeName,
+    cssPath:    $cssPath,
+    dataFile:   $dataFile,
+    scriptName: $pageName
 );
 
-include "themes/{$ctx->themeName}/pager.php";
+// 6. [SECURITY] Cloudflare Turnstile Check
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
 
-// Security: Cloudflare Turnstile Check
-require_once 'includes/turnstile.php';
+/**
+ * 7. [RENDER] Theme Execution
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 
-pager($ctx);
+if (file_exists($pagerPath)) {
+    require_once $pagerPath;
+    pager($ctx);
+} else {
+    http_response_code(500);
+    die("Fatal Error: Theme engine missing for Windows Setup.");
+}
 
 ob_end_flush();
