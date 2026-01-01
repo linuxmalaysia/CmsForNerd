@@ -24,7 +24,7 @@
 * **Package Manager:** Composer 2.8+
 * **Testing & QA:** PHPUnit 11.5+ and PHP_CodeSniffer 3.11+ (PSR-12)
 * **Browser:** Mozilla Firefox (For strict CSP and network auditing)
-
+* **Tooling:** [setup-lab.sh](tools/setup-lab.sh) for Linux/macOS, [setup-lab.ps1](tools/setup-lab.ps1) for Windows
 
 
 ---
@@ -77,7 +77,39 @@ Start your journey in the [🎓 Lab Manual](docs/lab-manual.md).
 * **SHOULD**: Use `readonly` properties for Context data to prevent state mutation.
 * **MUST**: Follow the "Pair Logic" naming convention (`page.php` + `contents/page-body.inc`).
 
+---
 
+### 🛠️ Laboratory Automation Tools
+
+To simplify the setup process for students and developers, we have provided automation scripts in the `tools/` directory. These scripts verify your environment and install the necessary "Nerd-Stack" components.
+
+#### 🐧 For Linux & macOS
+
+If you are on a Unix-like system, run the shell script:
+
+```bash
+chmod +x tools/setup-lab.sh
+./tools/setup-lab.sh
+
+```
+
+#### 🪟 For Windows 11
+
+If you are using Windows (with Laravel Herd or Laragon), run the PowerShell script:
+
+```powershell
+.\tools\setup-lab.ps1
+
+```
+
+#### What these tools do:
+
+* **PHP 8.4 Check:** Ensures your CLI version is up to date.
+* **Composer Audit:** Verifies Composer is installed and accessible.
+* **Dependency Injection:** Automatically runs `composer install`.
+* **Compliance Check:** Runs `composer lab-check` to ensure the "Zero-Debt" standard is met.
+
+---
 
 ---
 
