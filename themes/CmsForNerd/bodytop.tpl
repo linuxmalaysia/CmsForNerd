@@ -1,46 +1,72 @@
 <!-- 
-FILE PURPOSE: Theme Upper Layout
-This file defines the upper structure of the page layout:
-1. Opens the main #container div.
-2. Includes the #top (header) and navigation sidebars (#leftnav, #rightnav).
-3. Opens the #content div where the main page logic will output data.
-NOTE: Several <div> tags opened here are closed in 'bodyfooter.tpl'.
+==========================================================================
+FILE: themes/lab_v3/bodytop.tpl
+ROLE: Layout Opener (The "Upper Bun")
+==========================================================================
+
+EDUCATIONAL NOTE:
+This file is an HTML fragment. It contains "unclosed" <div> tags.
+This is intentional in procedural PHP templating. 
+We open the structural containers here, inject content in the middle,
+and close them in 'bodyfooter.tpl'.
 -->
 
-<!-- CSP added for extra security as requested -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://*.ipinfo.io https://www.google.com https://fonts.googleapis.com; img-src 'self' data: https: https://www.google.com https://groups.google.com https://www.rorweb.com; font-src 'self' https: data: https://fonts.gstatic.com;">
+<!-- 
+[SECURITY - CSP HEADER]
+We define Content Security Policy here to prevent XSS.
+- default-src 'self': Only allow scripts/styles from our own domain.
+- unsafe-inline: Permitted here for training, but usually restricted in Prod.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:;">
 
-
-<!-- This div end at bodyfooter.tpl -->
+<!-- 
+[CONTAINER START] 
+This div wraps the entire 3-column grid defined in style.css 
+-->
 <div id="container">
 
-<!-- This is to called the banner at the top of the page -->
-<div id="top">
-<?php include "themes/{$ctx->themeName}/header.tpl"; ?>
-</div>
+    <!-- 
+    [GRID AREA: HEADER] 
+    Loads the banner component.
+    -->
+    <div id="top">
+        <?php include "themes/{$ctx->themeName}/header.tpl"; ?>
+    </div>
 
-<!-- This is to called the left side of the page -->
-<div id="leftnav">
+    <!-- 
+    [GRID AREA: LEFT NAV] 
+    Dynamic include checking. We check if the file exists before including
+    to prevent fatal PHP errors if a module is missing.
+    -->
+    <div id="leftnav">
+        <?php 
+        if(file_exists("contents/left-side.inc")) {
+            include("contents/left-side.inc"); 
+        } else {
+            // Fallback for empty labs
+            echo "<h3>Menu</h3><p><em>Nav module not loaded.</em></p>";
+        }
+        ?>
+    </div>
 
-<?php include("contents/left-side.inc"); ?>
+    <!-- 
+    [GRID AREA: RIGHT NAV] 
+    Usually reserves for widgets, stats, or ads.
+    -->
+    <div id="rightnav">
+        <?php 
+        if(file_exists("contents/right-side.inc")) {
+            include("contents/right-side.inc"); 
+        } else {
+             echo "<h3>Info</h3><p><em>Widget module not loaded.</em></p>";
+        }
+        ?>
+    </div>
 
-</div>
-
-<!-- This is to called the right side of the page -->
-<div id="rightnav">
-
-<?php include "contents/right-side.inc"; ?>
-
-</div>
-
-
-<!-- The start of content function the div need to be here for it to work -->
-
-<!-- This div end at bodyfooter.tpl -->
-<div id="content">
-
-<div class="content-body">
-
-
-<!-- end of file bodytop.tpl -->
-
+    <!-- 
+    [GRID AREA: MAIN CONTENT - START] 
+    IMPORTANT: We open these divs but DO NOT close them here.
+    The 'pagecontent()' function will output data immediately after this line.
+    -->
+    <div id="content">
+        <div class="content-body">

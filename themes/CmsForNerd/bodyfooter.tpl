@@ -1,26 +1,37 @@
 <!-- 
-FILE PURPOSE: Theme Lower Layout
-This file defines the lower structure of the page layout:
-1. Closes the #content and #container divs opened in 'bodytop.tpl'.
-2. Displays the #footer area.
+==========================================================================
+FILE: themes/lab_v3/bodyfooter.tpl
+ROLE: Layout Closer (The "Lower Bun")
+==========================================================================
+
+EDUCATIONAL NOTE:
+This file closes the tags opened in 'bodytop.tpl'. 
+If you miss a closing </div> here, the entire layout grid will break.
 -->
 
+        </div> <!-- [CLOSE] .content-body -->
+    </div> <!-- [CLOSE] #content (End of Main Grid Area) -->
 
-</div></div>
+    <!-- 
+    [GRID AREA: FOOTER] 
+    -->
+    <div id="footer">
+        <!-- Include global footer links (e.g., Privacy, Terms) -->
+        <?php include "contents/footer.inc"; ?>
+        
+        <div class="sitemap-link" style="margin-top:10px;">
+            <a href="sitemap.php" target="_blank">[XML Sitemap]</a>
+        </div>
+        
+        <!-- 
+        [PERFORMANCE METRICS] 
+        Visible metrics help developers optimize code.
+        memory_get_usage() shows real-time RAM footprint of this request.
+        -->
+        <div style="margin-top: 5px; font-size: 0.7em; opacity: 0.5;">
+            Rendered: <?= date('Y-m-d H:i:s') ?> | 
+            MEM: <?= round(memory_get_usage()/1024, 2) ?> KB
+        </div>
+    </div>
 
-<!-- above are the end of div content inside bodyfooter.tpl -->
-
-<div class="sitemap-link">
-    <a href="sitemap.php" target="_blank">Sitemap (XML)</a>
-</div>
-
-<div id="footer">
-<?php include "contents/footer.inc"; ?>
-</div>
-
-<!-- this div is need to close unknown div tag -->
-
-</div>
-
-<!-- end footer bodyfooter.tpl -->
-
+</div> <!-- [CLOSE] #container (End of CSS Grid) -->

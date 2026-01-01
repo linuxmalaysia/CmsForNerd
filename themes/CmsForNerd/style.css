@@ -1,326 +1,232 @@
-/*
- * CMSForNerd Theme Stylesheet
- * Refactored for modern standards
- * Original Source: http://css.maxdesign.com.au/floatutorial/tutorial0916.htm
+/* * ==========================================================================
+ * THEME: Lab_v3 (CMSForNerd v3.4)
+ * FILE: themes/lab_v3/style.css
+ * AUTHOR: Harisfazillah Jamel
+ * PURPOSE: 
+ * This stylesheet demonstrates "Zero-Debt" CSS architecture.
+ * It avoids heavy frameworks (like Bootstrap) in favor of native
+ * CSS Grid and CSS Variables for a lightweight, maintainable codebase.
+ * ==========================================================================
  */
 
-/* -------------------------------------------------------------------------- */
-/*                                 Base Styles                                */
-/* -------------------------------------------------------------------------- */
+/* * [1. CONFIGURATION LAYER] 
+ * We use CSS Variables (:root) to define the "API" of our theme.
+ * Changing these values ripples through the entire site immediately.
+ * This teaches students to separate "Design Tokens" from "Layout Logic".
+ */
+:root {
+    /* -- PALETTE: High Contrast "Sterile Lab" Aesthetic -- */
+    --lab-bg: #f1f5f9;       /* Slate 100: Reduces eye strain compared to pure white */
+    --lab-card: #ffffff;     /* White: Used for active content areas */
+    --lab-text: #0f172a;     /* Slate 900: Softer than pure black (#000) */
+    --lab-muted: #64748b;    /* Slate 500: For metadata and non-critical info */
+    --lab-border: #cbd5e1;   /* Slate 300: Subtle boundaries for structure */
+    
+    /* -- BRANDING -- */
+    --lab-primary: #0f172a;  /* Navy: Represents "Security/Core" */
+    --lab-highlight: #0ea5e9;/* Sky Blue: Represents "Action/Data" */
+    
+    /* -- TYPOGRAPHY STACK -- */
+    /* Use System UI fonts for zero-latency rendering (no external downloads) */
+    --f-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* Monospace for code/data tables - critical for "Nerd" context */
+    --f-mono: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
+}
 
+/* * [2. RESET & BASE] 
+ * Minimal reset to ensure consistent rendering across browsers.
+ */
 body {
-  color: #000;
-  background-color: #fff;
-  line-height: 1.5;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  /* Set default font family inferred from usage */
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    font-family: var(--f-sans);
+    background-color: var(--lab-bg);
+    color: var(--lab-text);
+    line-height: 1.6; /* Improves readability for long technical docs */
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 0.5em;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-}
-
-h1 {
-  font-size: 1.3em;
-  padding: 0;
-  margin: 0;
-}
-
-h2 {
-  font-size: 1.2em;
-  color: #000;
-  margin: 0 0 6px 0;
-  padding: 3px 6px;
-  /* Modern CSS3 Gradient replacing bgtop.gif */
-  background: linear-gradient(to bottom, #eeeeee, #cccccc);
-}
-
-h3 {
-  font-size: 12px;
-  text-transform: uppercase;
-  margin-left: 3px;
-  margin-right: -3px;
-  color: #006699;
-  line-height: 15px;
-  text-align: justify;
-  border-bottom: 1px outset #ccc;
-}
-
-h4,
-h5,
-h6 {
-  font-size: 1.1em;
-}
-
-p {
-  margin-top: 0.5em;
-  margin-bottom: 0.9em;
-}
-
-/* -------------------------------------------------------------------------- */
-/*                                    Links                                   */
-/* -------------------------------------------------------------------------- */
-
-a {
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:link {
-  color: #003399;
-  background-color: transparent;
-}
-
-a:visited {
-  color: #0066cc;
-  background-color: transparent;
-}
-
-a:hover {
-  color: #660000;
-  /* #600 expanded */
-  text-decoration: underline;
-  background-color: transparent;
-}
-
-/* Potential typo in original: 'h3a'. Preserved content but formatted. */
-h3a {
-  font-family: "Century Gothic", sans-serif;
-  font-weight: bold;
-  margin-left: 0;
-  background-color: #fff;
-  color: #fff;
-  font-size: 10px;
-  text-align: center;
-}
-
-/* -------------------------------------------------------------------------- */
-/*                                   Layout                                   */
-/* -------------------------------------------------------------------------- */
-
+/* * [3. ARCHITECTURAL GRID] 
+ * This is the core of the CMSForNerd layout engine.
+ * We use CSS Grid to strictly enforce the 3-column legacy structure.
+ */
 #container {
-  display: grid;
-  width: 95%;
-  max-width: 1200px;
-  margin: 10px auto;
-  background-color: #fff;
-  color: #000;
-  line-height: 1.3;
-  /* Grid Definition for Desktop: Left Sidebar (200px), Main Content (Flexible), Right Sidebar (200px) */
-  grid-template-columns: 200px 1fr 200px;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "header header header"
-    "left   main   right"
-    "footer footer footer";
-  gap: 10px;
+    display: grid;
+    
+    /* Constraint: Max width ensures lines don't become too long to read */
+    width: 98%;
+    max-width: 1400px;
+    margin: 0 auto; /* Centers the grid */
+    min-height: 100vh; /* Forces footer to bottom on short pages */
+    
+    /* * GRID DEFINITION:
+     * Column 1: 220px (Fixed Sidebar)
+     * Column 2: 1fr   (Flexible Content Area - takes remaining space)
+     * Column 3: 220px (Fixed Sidebar)
+     */
+    grid-template-columns: 220px 1fr 220px;
+    
+    /* Rows: Header (auto height) / Main Content (fills space) / Footer (auto) */
+    grid-template-rows: auto 1fr auto;
+    
+    /* NAMED AREAS: This visualizes the layout map in code */
+    grid-template-areas:
+        "header header header"
+        "left   main   right"
+        "footer footer footer";
+        
+    gap: 15px; /* Consistent gutter between all panels */
+    padding-top: 10px;
 }
 
+/* * [4. HEADER COMPONENT] 
+ * Maps to #top div in bodytop.tpl
+ */
 #top {
-  grid-area: header;
-  padding: 0;
-  background-color: #fff;
+    grid-area: header; /* Places this element in the top row */
+    background-color: var(--lab-primary);
+    color: #fff;
+    padding: 0;
+    
+    /* Visual Flair: The "Lab" accent bar */
+    border-bottom: 4px solid var(--lab-highlight);
+    border-radius: 4px;
 }
 
-#top1,
-#top2 {
-  padding: 0;
-  background-color: #fff;
+/* Legacy Table Support: Ensures old .header-table classes don't break the layout */
+#top table.header-table { width: 100%; border-collapse: collapse; }
+#top td { padding: 10px 20px; vertical-align: middle; }
+#top h1 { 
+    color: #fff; 
+    font-family: var(--f-mono); /* Monospace header feels technical */
+    font-size: 1.5rem; 
+    letter-spacing: -1px; 
 }
 
-#top h1 {
-  padding: 0;
-  margin: 0;
+/* * [5. NAVIGATION SIDEBARS] 
+ * Shared styles for Left (#leftnav) and Right (#rightnav) columns.
+ */
+#leftnav { grid-area: left; }
+#rightnav { grid-area: right; }
+
+#leftnav, #rightnav {
+    background: var(--lab-card);
+    border: 1px solid var(--lab-border);
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 0.9rem; /* Slightly smaller text for utilities */
 }
 
-#leftnav {
-  grid-area: left;
-  margin: 0;
-  padding: 0;
-  vertical-align: top;
+/* Section Headers in Sidebars */
+#leftnav h3, #rightnav h3 {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--lab-muted);
+    border-bottom: 2px solid var(--lab-border);
+    padding-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
 }
 
-#rightnav {
-  grid-area: right;
-  margin: 0;
-  padding: 0;
-  vertical-align: top;
+/* Interactive Links */
+#leftnav a, #rightnav a {
+    display: block;
+    color: var(--lab-text);
+    text-decoration: none;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--lab-border); /* Dashed line suggests "tear-off" data */
+    transition: color 0.2s, padding-left 0.2s; /* Smooth hover effect */
 }
 
-#leftnav p,
-#rightnav p {
-  margin: 0 0 1em;
+#leftnav a:hover, #rightnav a:hover {
+    color: var(--lab-highlight);
+    padding-left: 5px; /* Micro-interaction: Link moves slightly right */
+    border-bottom-style: solid;
 }
 
+/* * [6. MAIN CONTENT "SPECIMEN" AREA] 
+ * This is where the dynamic page data (Slave Pair) is injected.
+ */
 #content {
-  grid-area: main;
-  margin: 0;
-  padding: 0.5em;
-  border-left: 1px dotted #000;
-  border-right: 1px dotted #000;
-}
-
-#content h2 {
-  margin: 0 0 0.5em;
+    grid-area: main;
+    background: var(--lab-card);
+    border: 1px solid var(--lab-border);
+    padding: 30px;
+    border-radius: 4px;
+    position: relative; /* Context for absolute positioning if needed */
 }
 
 .content-body {
-  font-size: 11px;
-  margin-left: 3px;
-  margin-right: 3px;
-  color: #000;
-  line-height: 15px;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  text-align: justify;
-  min-height: 600px;
-  /* Modern approach: min-height instead of fixed height */
+    font-size: 1rem;
+    color: var(--lab-text);
 }
 
+/* Content Typography */
+.content-body h1 {
+    font-size: 1.75rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--lab-primary); /* Strong underline */
+}
+
+.content-body h2 {
+    font-size: 1.25rem;
+    border-left: 4px solid var(--lab-highlight); /* Left border accent */
+    padding-left: 10px;
+    margin-top: 25px;
+}
+
+/* Inline Code Styling */
+.content-body code {
+    background: var(--lab-bg);
+    padding: 2px 6px;
+    font-family: var(--f-mono);
+    border-radius: 4px;
+    font-size: 0.9em;
+    border: 1px solid var(--lab-border);
+    color: #d63384; /* Pinkish hue for code distinction */
+}
+
+/* * [7. FOOTER] 
+ */
 #footer {
-  grid-area: footer;
-  clear: both;
-  margin: 0;
-  padding: 8px 0 10px;
-  color: #000;
-  background-color: #faafba;
-  text-align: center;
-  line-height: 15px;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: 10px;
+    grid-area: footer;
+    text-align: center;
+    padding: 20px;
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    color: var(--lab-muted);
+    border-top: 1px solid var(--lab-border);
 }
 
-/* -------------------------------------------------------------------------- */
-/*                             Responsive Design                              */
-/* -------------------------------------------------------------------------- */
-
-@media (max-width: 768px) {
-  #container {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "header"
-      "main"
-      "left"
-      "right"
-      "footer";
-    width: 100%;
-    margin: 0;
-  }
-
-  #content {
-    border: none;
-    /* Remove borders on mobile for cleaner look */
-    border-bottom: 1px dotted #ccc;
-  }
-
-  #leftnav,
-  #rightnav {
-    border-bottom: 1px dotted #ccc;
-    padding-bottom: 1em;
-  }
-}
-
-/* -------------------------------------------------------------------------- */
-/*                               Components                                   */
-/* -------------------------------------------------------------------------- */
-
-/* Navigation Buttons */
-.buttonscontainer {
-  width: 100px;
-}
-
-.buttons a {
-  color: #000033;
-  background-color: transparent;
-  padding: 2px 2px 2px 3px;
-  display: block;
-  border-left: 5px solid #fdce7d;
-  font: 12px 'Inter', system-ui, -apple-system, sans-serif;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: left;
-  margin-top: 1px;
-}
-
-.buttons a:hover {
-  border-left: 5px solid #000033;
-  color: #ff9933;
-  text-decoration: none;
-}
-
-/* Header Table Layout */
-table.header {
-  text-align: center;
-  width: 100%;
-}
-
-td.header {
-  width: 100px;
-  text-align: right;
-  vertical-align: middle;
-}
-
-img.header {
-  border: 0;
-  width: 100px;
-  height: 50px;
-  /* float: center; - Invalid property, removed/ignored in modern CSS */
-}
-
-td.header2 {
-  text-align: left;
-  vertical-align: middle;
-}
-
-td.header3 {
-  text-align: center;
-  vertical-align: middle;
-}
-
-div.header {
-  text-align: center;
-}
-
-/* -------------------------------------------------------------------------- */
-/*                          Modern Google Group Button                        */
-/* -------------------------------------------------------------------------- */
-
-.group-box {
-  background: #f4f4f4;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  text-align: center;
-  margin: 10px 0;
-}
-
-.group-title {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.btn-google-group {
-  display: inline-block;
-  background-color: #2e7d32;
-  /* Nerd Green */
-  color: #ffffff !important;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 0.9em;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.btn-google-group:hover {
-  background-color: #1b5e20;
+/* * [8. RESPONSIVE ADAPTATION] 
+ * Mobile-First adjustment.
+ * When screen width is below 800px, the grid collapses into a single column.
+ */
+@media (max-width: 800px) {
+    #container {
+        display: flex; /* Switch to Flexbox for linear stacking */
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        gap: 0;
+    }
+    
+    /* Remove borders/radius for full-width mobile feel */
+    #top { border-radius: 0; }
+    
+    #leftnav, #rightnav, #content {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid var(--lab-border);
+    }
+    
+    /* * ORDER RE-ARRANGEMENT 
+     * On mobile, users want content first, navigation second.
+     */
+    #content { order: 2; }   /* Main content moves up */
+    #leftnav { order: 3; }   /* Menu moves down */
+    #rightnav { order: 4; }  /* Widgets move down */
+    #footer { order: 5; }
 }
