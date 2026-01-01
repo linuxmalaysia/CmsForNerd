@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 /**
- * CmsForNerd v3.3 - Front Controller
+ * CmsForNerd v3.4 - Front Controller
  *
  * All requests flow through this central routing engine to ensure security,
  * configuration, and environment setup are consistent across the laboratory.
  *
- * @package    linuxmalaysia/cmsfornerd
- * @author     Harisfazillah Jamel <linuxmalaysia@songketmail.org>
- * @copyright  2005 - 2025 Harisfazillah Jamel
- * @license    GPL-3.0-or-later
- * @link       https://www.linuxmalaysia.com/
+ * @package      linuxmalaysia/cmsfornerd
+ * @author       Harisfazillah Jamel <linuxmalaysia@songketmail.org>
+ * @copyright    2005 - 2025 Harisfazillah Jamel
+ * @license      GPL-3.0-or-later
+ * @link         https://www.linuxmalaysia.com/
  */
 
 // 1. [PERFORMANCE] Enable GZIP and Output Buffering
@@ -28,7 +28,7 @@ require_once __DIR__ . '/includes/bootstrap.php';
 
 // 3. [SEO/AI] Default Landing Metadata
 $content = [
-    'title'       => "CmsForNerd v3.3 | The Developer’s Laboratory",
+    'title'       => "CmsForNerd v3.4 | The Developer’s Laboratory",
     'author'      => "Harisfazillah Jamel",
     'description' => "A lightweight flat-file CMS modernized for PHP 8.4+ and PHP 9 readiness.",
     'keywords'    => "PHP 8.4, Flat-file CMS, Security Laboratory, PSR-12, Education",
@@ -37,7 +37,7 @@ $content = [
 
 /**
  * 4. [LAB] ROUTING & SANITIZATION
- * v3.3 uses the 'match' expression for strict request handling.
+ * v3.4 uses the 'match' expression for strict request handling.
  */
 $rawPage = match (true) {
     !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
@@ -51,14 +51,13 @@ $pageName = pathinfo($page, PATHINFO_FILENAME);
 $content['data'] = $pageName;
 
 /**
- * 5. [MODERN PHP] CmsContext Initialization (from src/CmsContext.php)
+ * 5. [MODERN PHP] CmsContext Initialization (Factory Method)
+ * v3.4 Upgrade: We use createCmsContext() to ensure the object is correctly 
+ * populated with the CSP Nonce and global configuration.
  */
-$ctx = new \CmsForNerd\CmsContext(
-    content:    $content,
-    themeName:  $themeName,
-    cssPath:    $cssPath,
-    dataFile:   $dataFile,
-    scriptName: $pageName
+$ctx = createCmsContext(
+    content: $content, 
+    pageName: $pageName
 );
 
 /**
@@ -73,7 +72,7 @@ if (file_exists(__DIR__ . '/includes/is_bot.php')) {
     require_once __DIR__ . '/includes/is_bot.php';
     if (is_bot()) {
         header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.3 - Text Mode\nSitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
+        echo "CmsForNerd v3.4 - Text Mode\nSitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
         exit;
     }
 }

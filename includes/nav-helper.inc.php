@@ -8,10 +8,12 @@ declare(strict_types=1);
  */
 
 if (!function_exists('get_site_pages')) {
+    /**
+     * @return array<string, string> Key is the filename, Value is the Pretty Label.
+     */
     function get_site_pages(): array
     {
         $pages = [];
-        // Added sitemap-page.php to the exclusion list
         $exclude = [
             'template.php',
             'index.php',
@@ -20,12 +22,17 @@ if (!function_exists('get_site_pages')) {
             'sitemap.php'
         ];
 
-        // Scan the root directory
+        // [SECURITY] Scan the root directory. scandir() returns false on failure.
         $files = scandir(__DIR__ . '/../');
+
+        // [LAB v3.4] Level 8 check: Ensure $files is an array before processing.
+        if (!is_array($files)) {
+            return [];
+        }
 
         foreach ($files as $file) {
             // Use the corrected constant: PATHINFO_EXTENSION
-            if (pathinfo($file, PATHINFO_EXTENSION) === 'php' && !in_array($file, $exclude)) {
+            if (pathinfo($file, PATHINFO_EXTENSION) === 'php' && !in_array($file, $exclude, true)) {
                 $name = pathinfo($file, PATHINFO_FILENAME);
 
                 // Convert filename to a pretty label (e.g., 'about-us' to 'About Us')
