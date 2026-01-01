@@ -1,0 +1,232 @@
+/* * ==========================================================================
+ * THEME: Lab_v3 (CMSForNerd v3.4)
+ * FILE: themes/lab_v3/style.css
+ * AUTHOR: Harisfazillah Jamel
+ * PURPOSE: 
+ * This stylesheet demonstrates "Zero-Debt" CSS architecture.
+ * It avoids heavy frameworks (like Bootstrap) in favor of native
+ * CSS Grid and CSS Variables for a lightweight, maintainable codebase.
+ * ==========================================================================
+ */
+
+/* * [1. CONFIGURATION LAYER] 
+ * We use CSS Variables (:root) to define the "API" of our theme.
+ * Changing these values ripples through the entire site immediately.
+ * This teaches students to separate "Design Tokens" from "Layout Logic".
+ */
+:root {
+    /* -- PALETTE: High Contrast "Sterile Lab" Aesthetic -- */
+    --lab-bg: #f1f5f9;       /* Slate 100: Reduces eye strain compared to pure white */
+    --lab-card: #ffffff;     /* White: Used for active content areas */
+    --lab-text: #0f172a;     /* Slate 900: Softer than pure black (#000) */
+    --lab-muted: #64748b;    /* Slate 500: For metadata and non-critical info */
+    --lab-border: #cbd5e1;   /* Slate 300: Subtle boundaries for structure */
+    
+    /* -- BRANDING -- */
+    --lab-primary: #0f172a;  /* Navy: Represents "Security/Core" */
+    --lab-highlight: #0ea5e9;/* Sky Blue: Represents "Action/Data" */
+    
+    /* -- TYPOGRAPHY STACK -- */
+    /* Use System UI fonts for zero-latency rendering (no external downloads) */
+    --f-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* Monospace for code/data tables - critical for "Nerd" context */
+    --f-mono: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace;
+}
+
+/* * [2. RESET & BASE] 
+ * Minimal reset to ensure consistent rendering across browsers.
+ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--f-sans);
+    background-color: var(--lab-bg);
+    color: var(--lab-text);
+    line-height: 1.6; /* Improves readability for long technical docs */
+}
+
+/* * [3. ARCHITECTURAL GRID] 
+ * This is the core of the CMSForNerd layout engine.
+ * We use CSS Grid to strictly enforce the 3-column legacy structure.
+ */
+#container {
+    display: grid;
+    
+    /* Constraint: Max width ensures lines don't become too long to read */
+    width: 98%;
+    max-width: 1400px;
+    margin: 0 auto; /* Centers the grid */
+    min-height: 100vh; /* Forces footer to bottom on short pages */
+    
+    /* * GRID DEFINITION:
+     * Column 1: 220px (Fixed Sidebar)
+     * Column 2: 1fr   (Flexible Content Area - takes remaining space)
+     * Column 3: 220px (Fixed Sidebar)
+     */
+    grid-template-columns: 220px 1fr 220px;
+    
+    /* Rows: Header (auto height) / Main Content (fills space) / Footer (auto) */
+    grid-template-rows: auto 1fr auto;
+    
+    /* NAMED AREAS: This visualizes the layout map in code */
+    grid-template-areas:
+        "header header header"
+        "left   main   right"
+        "footer footer footer";
+        
+    gap: 15px; /* Consistent gutter between all panels */
+    padding-top: 10px;
+}
+
+/* * [4. HEADER COMPONENT] 
+ * Maps to #top div in bodytop.tpl
+ */
+#top {
+    grid-area: header; /* Places this element in the top row */
+    background-color: var(--lab-primary);
+    color: #fff;
+    padding: 0;
+    
+    /* Visual Flair: The "Lab" accent bar */
+    border-bottom: 4px solid var(--lab-highlight);
+    border-radius: 4px;
+}
+
+/* Legacy Table Support: Ensures old .header-table classes don't break the layout */
+#top table.header-table { width: 100%; border-collapse: collapse; }
+#top td { padding: 10px 20px; vertical-align: middle; }
+#top h1 { 
+    color: #fff; 
+    font-family: var(--f-mono); /* Monospace header feels technical */
+    font-size: 1.5rem; 
+    letter-spacing: -1px; 
+}
+
+/* * [5. NAVIGATION SIDEBARS] 
+ * Shared styles for Left (#leftnav) and Right (#rightnav) columns.
+ */
+#leftnav { grid-area: left; }
+#rightnav { grid-area: right; }
+
+#leftnav, #rightnav {
+    background: var(--lab-card);
+    border: 1px solid var(--lab-border);
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 0.9rem; /* Slightly smaller text for utilities */
+}
+
+/* Section Headers in Sidebars */
+#leftnav h3, #rightnav h3 {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--lab-muted);
+    border-bottom: 2px solid var(--lab-border);
+    padding-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Interactive Links */
+#leftnav a, #rightnav a {
+    display: block;
+    color: var(--lab-text);
+    text-decoration: none;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--lab-border); /* Dashed line suggests "tear-off" data */
+    transition: color 0.2s, padding-left 0.2s; /* Smooth hover effect */
+}
+
+#leftnav a:hover, #rightnav a:hover {
+    color: var(--lab-highlight);
+    padding-left: 5px; /* Micro-interaction: Link moves slightly right */
+    border-bottom-style: solid;
+}
+
+/* * [6. MAIN CONTENT "SPECIMEN" AREA] 
+ * This is where the dynamic page data (Slave Pair) is injected.
+ */
+#content {
+    grid-area: main;
+    background: var(--lab-card);
+    border: 1px solid var(--lab-border);
+    padding: 30px;
+    border-radius: 4px;
+    position: relative; /* Context for absolute positioning if needed */
+}
+
+.content-body {
+    font-size: 1rem;
+    color: var(--lab-text);
+}
+
+/* Content Typography */
+.content-body h1 {
+    font-size: 1.75rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--lab-primary); /* Strong underline */
+}
+
+.content-body h2 {
+    font-size: 1.25rem;
+    border-left: 4px solid var(--lab-highlight); /* Left border accent */
+    padding-left: 10px;
+    margin-top: 25px;
+}
+
+/* Inline Code Styling */
+.content-body code {
+    background: var(--lab-bg);
+    padding: 2px 6px;
+    font-family: var(--f-mono);
+    border-radius: 4px;
+    font-size: 0.9em;
+    border: 1px solid var(--lab-border);
+    color: #d63384; /* Pinkish hue for code distinction */
+}
+
+/* * [7. FOOTER] 
+ */
+#footer {
+    grid-area: footer;
+    text-align: center;
+    padding: 20px;
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    color: var(--lab-muted);
+    border-top: 1px solid var(--lab-border);
+}
+
+/* * [8. RESPONSIVE ADAPTATION] 
+ * Mobile-First adjustment.
+ * When screen width is below 800px, the grid collapses into a single column.
+ */
+@media (max-width: 800px) {
+    #container {
+        display: flex; /* Switch to Flexbox for linear stacking */
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        gap: 0;
+    }
+    
+    /* Remove borders/radius for full-width mobile feel */
+    #top { border-radius: 0; }
+    
+    #leftnav, #rightnav, #content {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid var(--lab-border);
+    }
+    
+    /* * ORDER RE-ARRANGEMENT 
+     * On mobile, users want content first, navigation second.
+     */
+    #content { order: 2; }   /* Main content moves up */
+    #leftnav { order: 3; }   /* Menu moves down */
+    #rightnav { order: 4; }  /* Widgets move down */
+    #footer { order: 5; }
+}
