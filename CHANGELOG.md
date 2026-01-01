@@ -1,8 +1,38 @@
 # CHANGELOG
 
 All notable changes to this project are documented in this file.
-
 Entries are grouped by date (most recent first).
+
+---
+
+## [3.4.0] - 2026-01-01 (The "Zero-Debt" Milestone)
+**"Engineering Excellence & Static Analysis."**
+
+### 🏗️ Architecture & Core Logic
+- **Context Factory**: Refactored `CmsContext` instantiation into a central factory method `createCmsContext()` in `bootstrap.php` to ensure consistent state across the engine.
+- **Immutable State**: Upgraded `CmsContext` to a `readonly` class to prevent runtime state corruption.
+- **Installation v3.4**: Redesigned `installation.php` and `contents/installation-body.inc` to focus on professional deployment (Composer, PHPStan, and Server Hardening).
+
+### 🛡️ Security & Quality Control
+- **PHPStan Level 8**: Integrated **Static Analysis** as a mandatory requirement. Configured `phpstan.neon` to enforce strict type-safety and null-checks.
+- **Zero-Debt Enforcement**: Added `composer analyze` and `composer lab-check` scripts to automate logic audits.
+- **CSP Evolution**: Finalized the Nonce-tracking engine for Content Security Policy, ensuring all laboratory themes are XSS-resistant by default.
+- **Strict Compliance**: All core files now pass the "Zero-Global" check.
+
+---
+
+## [3.3.0] - 2025-12-30 (The Developer's Laboratory)
+**"Refining the Nerd Experience."**
+
+### 🚀 PHP 8.4 Deep Integration
+- **Property Hooks**: Integrated PHP 8.4 property hooks for dynamic metadata handling within the `CmsContext`.
+- **Constructor Promotion**: Refactored core classes to use constructor property promotion for reduced boilerplate.
+- **Runtime Badge**: Added dynamic PHP version detection and badges to the Home and Installation pages.
+
+### 🐧 Environment Optimization
+- **Cross-Platform Parity**: Improved setup logic for Windows (Herd) and Linux (Nginx/FPM) environments.
+- **Laboratory Manual**: Expanded the "Nerd-Stack" recommendation table, including Google Antigravity and Firefox Developer Edition.
+- **Badge System**: Introduced status badges for Strict Mode and Static Analysis readiness.
 
 ## 2025-12-27 — merged updates
 
@@ -92,7 +122,18 @@ All notable changes to **CMSForNerd** documenting the journey from PHP 4 (2005) 
 
 ---
 
+## [3.1.1] - 2025-12-27 (Merged Updates)
+
+### Summary
+- Documentation and AI guidance improvements.
+- Added example page `about.php` and partial `contents/about-body.inc`.
+- Line endings normalization (CRLF to LF) for repository consistency.
+
+---
+
 ## [3.1.0] - 2025-12-28 (The "Modern Nerd" Release)
+**"Modernization without loss of simplicity."**
+
 **"Modernization without loss of simplicity."**
 
 ### 🚀 The PHP 8.4 Foundation (Migration from v1.0 / PHP 4)
@@ -120,13 +161,10 @@ All notable changes to **CMSForNerd** documenting the journey from PHP 4 (2005) 
 ---
 
 ## [2.0.0] - 2025-12-20 (Intermediate Architecture)
-### Added
-- **CSS Grid**: Replaced 2005-era float layouts with modern Responsive Grid systems.
-- **The Developer’s Laboratory**: Rebranding of the project from a "Simple CMS" to an "Educational Lab."
-- **Lab Manual**: Created Modules 1-6 and the "Break-Fix Final Exam" for student training.
+- **CSS Grid**: Replaced 2005-era float layouts.
+- **Lab Manual**: Created initial training modules for students.
 
 ---
 
 ## [1.0.0] - 2005-01-10 (The Original Foundation)
 - **Initial Release**: A radically simple, flat-file CMS built for PHP 4.
-- **Core Concept**: Paired entry points (`about.php`) with content partials (`about-body.inc`).

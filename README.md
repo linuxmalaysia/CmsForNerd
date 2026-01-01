@@ -1,9 +1,9 @@
-# 🚀 CmsForNerd v3.3 (2025 Edition)
+# 🚀 CmsForNerd v3.4 (2026 Laboratory Edition)
 
-**CmsForNerd** is a Lightweight, Radically Simple, Database-Free PHP Laboratory CMS designed as a live learning environment for modern developers.
+**CmsForNerd** is a Lightweight, Radically Simple, Database-Free PHP Laboratory CMS designed as a live learning environment for modern developers. Version 3.4 marks the transition to **Zero-Debt Engineering** and **Security-First** flat-file architecture.
 
-**Current Version:** 3.3 (Bumping from 3.1 - Dec 2025)  
-**Changelog:** See [CHANGELOG.md](CHANGELOG.md) for merge notes.  
+**Current Version:** 3.4 (Bumping from 3.3 - Jan 2026)  
+**Changelog:** See [CHANGELOG.md](CHANGELOG.md) for v3.4 Zero-Error Milestone notes.  
 **Primary Maintainer:** Harisfazillah Jamel  
 **AI Architect:** Google Gemini & Google Antigravity
 
@@ -12,66 +12,78 @@
 ## 🛠️ Tech Stack & Development Environment
 
 ### Core Engine
-* **Language:** PHP 8.4+ (Optimized for Property Hooks & Strict Types)
-* **Architecture:** "Pair Logic" (CmsContext Object Pattern)
+* **Language:** PHP 8.4+ (Enforced Strict Types & Constructor Property Promotion)
+* **Architecture:** "Pair Logic" (Immutable **CmsContext** Factory Pattern)
+* **Security:** Native Content Security Policy (CSP) with Nonce-tracking
 * **Server:** Nginx Latest (Recommended) or Apache 2.4+
-* **OS:** Windows 11 (Herd), Debian, or AlmaLinux
+* **OS:** Windows 11 (Herd), Debian, AlmaLinux, or FreeBSD
 
 ### Professional Tooling
 * **IDE:** [Google Antigravity](https://deepmind.google/technologies/gemini/) (AI-native) or VS Code
-* **Package Manager:** Composer 2.7+
+* **Static Analysis:** **PHPStan Level 8** (The Laboratory Gold Standard)
+* **Package Manager:** Composer 2.8+
 * **Testing & QA:** PHPUnit 11.5+ and PHP_CodeSniffer 3.11+ (PSR-12)
-* **Browser:** Mozilla Firefox (For strict standard testing)
+* **Browser:** Mozilla Firefox (For strict CSP and network auditing)
+
+
+
+---
 
 ## 🚀 Installation & Laboratory Setup
 
 ### 🪟 Option 1: Windows 11 (Nerd-Stack)
 1. Install [Laravel Herd](https://herd.laravel.com) and select **PHP 8.4**.
 2. Clone the repo into your Herd `sites` folder.
-3. Run `composer install` in **Google Antigravity Terminal**.
-4. See the [Windows Setup Guide](docs/windows-setup.md) for full details.
+3. Run `composer install` to initialize the Autoloader and Tooling.
+4. Run `composer analyze` to verify the "Zero-Error" state.
 
 ### 🐧 Option 2: Linux (Debian/AlmaLinux)
-1. Use [Ondřej Surý's PPA](https://deb.sury.org/) (Debian) or [Remi Repo](https://rpms.remirepo.net/) (RHEL).
-2. Install `php8.4-cli`, `php8.4-mbstring`, and `php8.4-xml`.
-3. See the [Linux Setup Guide](docs/linux-setup.md).
+1. Use [Ondřej Surý's PPA](https://deb.sury.org/) or [Remi Repo](https://rpms.remirepo.net/).
+2. Install `php8.4-cli`, `php8.4-mbstring`, `php8.4-xml`, and `php8.4-zip`.
+3. Follow the [Linux Setup Guide](docs/linux-setup.md).
 
 ---
 
 ## 🤖 AI-Assisted Development
-CMSForNerd v3.3 is designed to be co-authored with AI Agents:
+CMSForNerd v3.4 is designed to be co-authored with AI Agents:
 
-1. **Google Gemini (The Architect)**: Use for planning logic and RFC refactoring.
-2. **Google Antigravity (The Agent)**: Use for file writes, audits, and Git management.
-3. **Workflow**: Describe changes in natural language → Review `implementation_plan.md` → Verify with `composer compliance`.
+1. **Google Gemini (The Architect)**: Use for planning immutable logic and Level 8 PHPDoc refactoring.
+2. **Google Antigravity (The Agent)**: Use for secure file writes, static analysis audits, and Git management.
+3. **Workflow**: Describe changes → Review `implementation_plan.md` → Verify with `composer lab-check`.
 
-> **VS Code Tip:** If using VS Code, ensure **EditorConfig** and **PHP Intelephense** are installed to respect the `.vscode/settings.json` provided in this repo.
+> **v3.4 Security Tip:** Always use `$ctx->cspNonce` for inline scripts to comply with the Laboratory's Content Security Policy.
 
-## 🧪 The Laboratory Curriculum
+---
+
+## 🧪 The Laboratory Curriculum (Updated v3.4)
 
 Master backend engineering through our built-in modules:
-1. **Module 1-2**: Architecture & PSR-12 Standards.
-2. **Module 3**: Defensive Engineering & RFC 9116.
-3. **Module 4-5**: Automated Testing & Coverage.
-4. **Module 6**: AI-Agentic Workflows.
-5. **Final Exam**: The "Break-Fix" Challenge.
+1. **Module 1-2**: Architecture, PSR-12, & PSR-4 Autoloading.
+2. **Module 3**: **Static Analysis Mastery** (Eliminating "Undefined" errors with PHPStan).
+3. **Module 4**: Defensive Engineering, Path Sanitization, & CSP Security.
+4. **Module 5**: Automated Testing & Logic Coverage.
+5. **Module 6**: AI-Agentic Workflows & Pair Logic.
+6. **Final Exam**: The "Zero-Error" Challenge (Passing Level 8 with a custom module).
 
 Start your journey in the [🎓 Lab Manual](docs/lab-manual.md).
 
 ---
 
-## ⚖️ Standards (RFC 2119)
+## ⚖️ Standards (RFC 2119 & v3.4 Engineering)
 
 * **MUST**: Begin all files with `declare(strict_types=1);`.
-* **MUST NOT**: Use `global` variables; use the `CmsContext` object.
-* **SHOULD**: Maintain 90% test coverage for new logic.
-* **MUST**: Follow the "Pair Logic" naming convention (`page.php` + `page-body.inc`).
+* **MUST NOT**: Use `global` variables; use the `createCmsContext()` factory.
+* **REQUIRED**: All new code **MUST** pass `composer analyze` (PHPStan Level 8).
+* **SHOULD**: Use `readonly` properties for Context data to prevent state mutation.
+* **MUST**: Follow the "Pair Logic" naming convention (`page.php` + `contents/page-body.inc`).
+
+
 
 ---
 
 ### Credits
 * **Author:** Harisfazillah Jamel (LinuxMalaysia)
-* **Assistant:** Google Gemini & Google Antigravity (2025 Refactor)
+* **Assistant:** Google Gemini & Google Antigravity (v3.4 "Zero-Debt" Refactor)
 * **Website:** [linuxmalaysia.com](https://www.linuxmalaysia.com)
 
-*Modernization without loss of simplicity.*
+*Modernization without loss of simplicity. Security without the bloat.*
