@@ -1,1 +1,0 @@
-{"version":2,"defects":{"CmsForNerd\\Tests\\StandardsTest::testIndentationIsFourSpaces":7,"CmsForNerd\\Tests\\StandardsTest::testBracePlacement":5},"times":{"CmsForNerd\\Tests\\StandardsTest::testStrictTypesPresence":0.003,"CmsForNerd\\Tests\\StandardsTest::testIndentationIsFourSpaces":0.001,"CmsForNerd\\Tests\\StandardsTest::testBracePlacement":0}}
