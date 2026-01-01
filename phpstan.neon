@@ -1,0 +1,43 @@
+# CMSForNerd v3.4 - Static Analysis Configuration
+# Matching Composer Script: composer analyze
+
+parameters:
+    # Level 8: Enforces strict types, null checks, and iterable value types.
+    level: 8
+
+    # The paths that PHPStan will scan for errors.
+    paths:
+        - src
+        - includes
+        - index.php
+        - template.php
+        - installation.php
+
+    # We exclude the vendor directory to avoid checking third-party code.
+    excludePaths:
+        - vendor/*
+
+    # Laboratory Bootstrap: Tells PHPStan about our global functions/constants.
+    bootstrapFiles:
+        - includes/bootstrap.php
+
+    # Scan the themes directory so PHPStan understands the pager() function exists.
+    scanDirectories:
+        - themes
+
+    # [SECURITY & ARCHITECTURE]
+    # We ignore specific patterns that are part of our intentional Laboratory design.
+    ignoreErrors:
+        # 1. Allow the global keyword ONLY in the bootstrap factory.
+        -
+            message: '#Global variable \$[a-zA-Z0-9_]+ is forbidden#'
+            path: includes/bootstrap.php
+
+        # 2. Prevent errors regarding dynamic theme inclusion.
+        -
+            message: '#Variable \$ctx might not be defined.#'
+            path: themes/*
+
+    # Helpful for debugging types during the "Nerd Training" phase.
+    checkMissingIterableValueType: true
+    checkGenericClassInNonGenericObjectType: false
