@@ -1,0 +1,31 @@
+# .editorconfig for CmsForNerd v3.4 Laboratory
+# Enforces PSR-12 and Zero-Debt Architectural Standards
+
+root = true
+
+[*]
+# Rule 2 & 3: Encoding and Indentation (PSR-12)
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.php]
+# Rule 3: PSR-12 Specifics for PHP
+# Braces and visibility rules are handled by the IDE/PHPCS, 
+# but we enforce the indentation and character limits here.
+max_line_length = 120
+
+[*.{css,js}]
+# Rule 9: Zero-Debt UI Standards
+indent_size = 2
+
+[*.{inc,html}]
+# Rule 5: Slave Pair Fragments
+indent_size = 4
+
+[*.md]
+# Rule 10: Educational Documentation
+trim_trailing_whitespace = false
