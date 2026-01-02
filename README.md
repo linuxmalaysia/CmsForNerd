@@ -109,7 +109,9 @@ If you are using Windows (with Laravel Herd or Laragon), run the PowerShell scri
 * **Dependency Injection:** Automatically runs `composer install`.
 * **Compliance Check:** Runs `composer lab-check` to ensure the "Zero-Debt" standard is met.
 
----
+#### 🌐 Web Environment Check
+After setting up the CLI, verify your web server configuration by visiting the sanity check in your browser:
+`http://localhost/tools/sanity-check.php`
 
 ---
 
