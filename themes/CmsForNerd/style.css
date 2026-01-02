@@ -1,37 +1,46 @@
-/* * ==========================================================================
+/**
+ * ==========================================================================
  * THEME: Lab_v3 (CMSForNerd v3.4)
- * FILE: themes/lab_v3/style.css
- * AUTHOR: Harisfazilled Jamel
- * PURPOSE: 
- * This stylesheet demonstrates "Zero-Debt" CSS architecture.
- * It avoids heavy frameworks in favor of native CSS Grid and Variables.
+ * FILE: themes/CmsForNerd/style.css
+ * AUTHOR: Harisfazillah Jamel
+ * * PHILOSOPHY: "Zero-Debt" Architecture
+ * This stylesheet serves as a training tool to demonstrate how to build
+ * high-end professional UIs using native CSS features (Grid, Flex, Variables)
+ * without the overhead of external frameworks.
  * ==========================================================================
  */
 
-/* * [1. CONFIGURATION LAYER - DESIGN TOKENS] 
+/**
+ * [1. CONFIGURATION LAYER - DESIGN TOKENS] 
  * We use the :root pseudo-class to define CSS Variables. 
- * This acts as a single source of truth for the entire theme's aesthetic.
- * Changing a value here updates the entire UI consistently.
+ * Educational Note: This implements a "Single Source of Truth." If you change 
+ * the --lab-highlight here, every purple element in the CMS updates instantly.
  */
 :root {
     /* -- PALETTE: High Contrast "Sterile Lab" Aesthetic -- */
-    --lab-bg: #f1f5f9;       /* Slate 100: Reduces eye strain */
-    --lab-card: #ffffff;     /* White: Main content backgrounds */
-    --lab-text: #0f172a;     /* Slate 900: High readability */
-    --lab-muted: #64748b;    /* Slate 500: Metadata and secondary text */
-    --lab-border: #cbd5e1;   /* Slate 300: Subtle structural boundaries */
+    --lab-bg: #f8f9fa;        /* Sterile laboratory floor (Slate 50) */
+    --lab-surface: #ffffff;   /* Clean white work surfaces */
+    --lab-text: #1e293b;      /* Sharp slate for maximum readability */
+    --lab-muted: #64748b;     /* Slate 500: Metadata and non-critical info */
+    --lab-border: #e2e8f0;    /* Subtle structural boundaries */
     
-    /* -- BRANDING -- */
-    --lab-primary: #0f172a;  /* Navy: Symbolizes core infrastructure */
-    --lab-highlight: #8e44ad;/* Purple: Represents laboratory accents */
+    /* -- BRANDING & ACCENTS -- */
+    --lab-primary: #0f172a;   /* Navy: Infrastructure and Header */
+    --lab-highlight: #8e44ad; /* Purple: "Nerd-Stack" Laboratory Accent */
+    --lab-success: #27ae60;   /* Green: Compliance and Passed Tests */
     
     /* -- TYPOGRAPHY -- */
     --f-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --f-mono: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+    --f-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+
+    /* -- MEASUREMENTS -- */
+    --radius: 4px;            /* Precise, sharp corners */
+    --gap: 15px;              /* Standard laboratory gutter */
 }
 
-/* * [2. BASE STYLES] 
- * Minimal defaults to ensure a clean slate across different browsers.
+/**
+ * [2. BASE STYLES] 
+ * Resetting defaults to ensure a consistent cross-browser experience.
  */
 body {
     margin: 0;
@@ -39,60 +48,63 @@ body {
     font-family: var(--f-sans);
     background-color: var(--lab-bg);
     color: var(--lab-text);
-    line-height: 1.6; /* Optimal for technical documentation */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* * [3. ARCHITECTURAL GRID] 
- * The #container uses CSS Grid to define the 3-column legacy CMS structure.
- * This replaces old <table> based layouts with modern, performant code.
+/**
+ * [3. ARCHITECTURAL GRID] 
+ * Use CSS Grid for the 3-column "Master Pair" structure.
+ * Educational Note: grid-template-areas allows us to name zones, 
+ * making the layout self-documenting.
  */
 #container {
     display: grid;
     width: 98%;
     max-width: 1400px;
     margin: 0 auto;
-    min-height: 100vh; /* Ensures footer stays at the bottom of the screen */
+    min-height: 100vh;
     
-    /* Grid Definition: 220px Sidebars with a flexible middle column */
+    /* Grid Definition: Sidebar (220px) | Content (Flexible) | Sidebar (220px) */
     grid-template-columns: 220px 1fr 220px;
-    grid-template-rows: auto 1fr auto; /* Header and Footer size to content */
+    grid-template-rows: auto 1fr auto; 
     
-    /* Grid Areas: Mapping the HTML elements to the grid positions */
     grid-template-areas:
         "header header header"
         "left   main   right"
         "footer footer footer";
-    gap: 15px; /* Gutters between all panels */
+    gap: var(--gap);
     padding-top: 10px;
 }
 
-/* * [4. HEADER COMPONENT] 
- * Styled to look like a terminal or laboratory instrument panel.
+/**
+ * [4. HEADER COMPONENT] 
+ * The "Instrument Panel" of the CMS.
  */
 #top {
     grid-area: header;
     background-color: var(--lab-primary);
-    color: #fff;
+    color: #ffffff;
     padding: 0;
     border-bottom: 4px solid var(--lab-highlight);
-    border-radius: 4px;
+    border-radius: var(--radius);
 }
 
-/* * [5. NAVIGATION SIDEBARS] 
- * Shared styles for the left and right utility columns.
+/**
+ * [5. NAVIGATION SIDEBARS] 
  */
 #leftnav { grid-area: left; }
 #rightnav { grid-area: right; }
 
 #leftnav, #rightnav {
-    background: var(--lab-card);
+    background: var(--lab-surface);
     border: 1px solid var(--lab-border);
     padding: 15px;
-    border-radius: 4px;
+    border-radius: var(--radius);
     font-size: 0.9rem;
 }
 
-/* Sidebar Section Headers */
+/* Sidebar Titles: Technical Documentation style */
 #leftnav h3, #rightnav h3 {
     font-family: var(--f-mono);
     font-size: 0.7rem;
@@ -105,90 +117,98 @@ body {
     letter-spacing: 1px;
 }
 
-/* Sidebar Links */
+/* Sidebar Links: Subtle hover interactions */
 #leftnav a, #rightnav a {
     display: block;
     color: var(--lab-text);
     text-decoration: none;
-    padding: 6px 0;
+    padding: 8px 0;
     border-bottom: 1px dashed var(--lab-border);
     transition: all 0.2s ease;
 }
 
 #leftnav a:hover, #rightnav a:hover {
     color: var(--lab-highlight);
-    padding-left: 5px; /* Subtle movement feedback */
+    background-color: #f3f0ff; /* Light purple tint */
+    padding-left: 8px;
     border-bottom-style: solid;
 }
 
-/* * [6. MAIN CONTENT SPECIMEN AREA] 
- * The central focus of the Lab theme where page data is rendered.
+/**
+ * [6. MAIN CONTENT "SPECIMEN" AREA] 
+ * Where the -body.inc fragments are rendered.
  */
 #content {
     grid-area: main;
-    background: var(--lab-card);
+    background: var(--lab-surface);
     border: 1px solid var(--lab-border);
-    padding: 30px;
-    border-radius: 4px;
-    position: relative;
+    padding: 35px;
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
+/* Typography Refinement for Content Body */
 .content-body {
-    font-size: 1rem;
+    max-width: 75ch; /* Educational Note: Prevents lines from becoming too long for the eye */
+    margin: 0 auto;
+    font-size: 1.05rem;
     color: var(--lab-text);
 }
 
-/* * [7. FOOTER & INLINE OVERRIDES] 
- * [Inference] The .lab-footer-wrap often contains inline styles from the PHP
- * templates. We use !important to enforce the Lab theme colors here.
+.content-body h1, .content-body h2 {
+    color: var(--lab-primary);
+    border-bottom: 1px solid var(--lab-border);
+    padding-bottom: 10px;
+}
+
+/**
+ * [7. FOOTER & INLINE DEBT OVERRIDES] 
+ * Educational Note: !important is used here specifically to sanitize 
+ * legacy inline styles and ensure the "Sterile Lab" look remains enforced.
  */
 #footer {
     grid-area: footer;
-    clear: both;
-    margin: 0px;
-    padding: 0px;
+    margin-top: 20px;
+    padding: 20px 0;
     color: var(--lab-muted);
     background-color: var(--lab-bg) !important;
     text-align: center;
-    line-height: 1.6;
     font-family: var(--f-mono);
     font-size: 0.75rem;
 }
 
-/* Overriding the hardcoded background often found in common-footer fragments */
 .lab-footer-wrap {
     background-color: var(--lab-bg) !important;
     border-top: 1px solid var(--lab-border) !important;
 }
 
-#footer a {
-    color: var(--lab-highlight);
-    text-decoration: none;
-}
-
-/* * [8. RESPONSIVE MOBILE ADAPTIVITY] 
- * Below 800px, the grid collapses into a single-column stacked layout.
+/**
+ * [8. RESPONSIVE BRIDGE] 
+ * Collapses the 3-column grid into a mobile-first stacked view.
+ * Educational Note: We change the 'grid-template-areas' and 'grid-template-columns' 
+ * to reorder content without touching the PHP/HTML source.
  */
-@media (max-width: 800px) {
+@media (max-width: 992px) {
     #container {
-        display: flex; 
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "left"
+            "right"
+            "footer";
         width: 100%;
-        margin: 0;
+        padding: 0;
         gap: 0;
     }
     
-    /* Remove borders for a cleaner full-width mobile experience */
-    #top { border-radius: 0; }
-    #leftnav, #rightnav, #content {
+    #top, #content, #leftnav, #rightnav {
         border-radius: 0;
         border: none;
         border-bottom: 1px solid var(--lab-border);
     }
-    
-    /* Re-order elements so content appears first on mobile screens */
-    #content { order: 2; }
-    #leftnav { order: 3; }
-    #rightnav { order: 4; }
-    #footer { order: 5; }
+
+    #content {
+        padding: 20px;
+    }
 }
