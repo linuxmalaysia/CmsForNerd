@@ -1,48 +1,56 @@
 <?php
+/**
+ * ==========================================================================
+ * FILE: contents/footer.inc
+ * ROLE: Global Footer Content & Navigation
+ * VERSION: 3.9 (Fixing Red Background Inheritance)
+ * ==========================================================================
+ * [Inference] Explicitly setting background color to the lab variable 
+ * to override any unintended inheritance from the parent #footer container.
+ */
+
 declare(strict_types=1);
 
 // Load the helper to scan for internal laboratory pages
 @include_once __DIR__ . '/../includes/nav-helper.inc.php';
 ?>
 
-<div style="text-align: center; padding: 20px; border-top: 1px solid #eee;"> 
+<div class="lab-footer-wrap" style="text-align: center; padding: 40px 20px; border-top: 1px solid var(--lab-border, #e2e8f0); background-color: var(--lab-bg, #f1f5f9); color: var(--lab-text, #1e293b);"> 
     
-    <nav style="margin-bottom: 20px;">
-        <p><strong>Laboratory Modules:</strong></p>
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px;">
-            <a href="index.php">Home</a>
+    <nav style="margin-bottom: 25px;">
+        <p style="font-family: 'SF Mono', 'Cascadia Code', 'Source Code Pro', monospace; font-size: 0.7rem; text-transform: uppercase; color: #64748b; letter-spacing: 2px; margin-bottom: 15px; opacity: 0.8;">
+            <strong>&lt; Laboratory_Modules /&gt;</strong>
+        </p>
+        
+        <div style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 10px;">
+            <a href="index.php" style="color: var(--lab-highlight, #8e44ad); text-decoration: none; font-weight: 700;">Home</a>
+            
             <?php 
             if (function_exists('get_site_pages')) {
                 foreach (get_site_pages() as $url => $label) {
-                    /**
-                     * TYPE DEFENSE: 
-                     * If $label is an array (from sitemap_generator), extract the 'title'.
-                     * If $label is already a string (from nav-helper), use it directly.
-                     */
                     $displayLabel = is_array($label) ? ($label['title'] ?? $url) : $label;
-                    
-                    // Sanitize output for security
                     $safeUrl = htmlspecialchars((string)$url);
                     $safeLabel = htmlspecialchars((string)$displayLabel);
                     
-                    echo "<a href=\"$safeUrl\">$safeLabel</a>";
+                    echo "<a href=\"$safeUrl\" style=\"color: inherit; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 2px;\">$safeLabel</a>";
                 }
             }
             ?>
         </div>
     </nav>
 
-    <hr style="width: 50%; border: 0; border-top: 1px solid #ddd; margin: 20px auto;">
+    <hr style="width: 60px; border: 0; border-top: 3px solid var(--lab-highlight, #8e44ad); margin: 25px auto; opacity: 0.6;">
 
-    <p>
-        CmsForNerd Main Site: <a href="https://www.linuxmalaysia.com">https://www.linuxmalaysia.com</a>
+    <div style="font-size: 0.85rem; line-height: 1.8;">
+        <span style="opacity: 0.7;">CmsForNerd Infrastructure:</span> 
+        <a href="https://www.linuxmalaysia.com" style="color: var(--lab-highlight, #8e44ad); text-decoration: none; font-weight: 600;">linuxmalaysia.com</a>
         <br>
-        CmsForNerd Blog: <a href="https://www.linuxmalaysia.com">https://www.linuxmalaysia.com</a>
-        <br>
-        Copyright &copy; 2005 - <?= date("Y") ?> Harisfazillah Jamel
-    </p>
+        <span style="font-family: 'SF Mono', monospace; font-size: 0.8rem;">
+            Copyright &copy; 2005 - <?= date("Y") ?> Harisfazillah Jamel
+        </span>
+    </div>
     
-    <p style="font-size: 0.8rem; color: #666;">
-        Standard: <strong>RFC 9116 Compliant</strong> | Environment: <strong>PHP 8.4</strong>
-    </p>
+    <div style="font-family: 'SF Mono', monospace; font-size: 0.65rem; color: #94a3b8; margin-top: 30px; letter-spacing: 0.5px;">
+        [ REL: 3.4.0 ] | [ STD: RFC_9116 ] | [ ENV: PHP_8.4 ]
+    </div>
 </div>
