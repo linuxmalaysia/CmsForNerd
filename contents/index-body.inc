@@ -69,7 +69,7 @@
     </section>
 
     <section class="stack-recommendation">
-        <h3>Laboratory Environmental Requirements</h3>
+        <h3>Optimized Learning Stack</h3>
         <table class="stack-table">
             <tr>
                 <td><strong>Runtime</strong></td>
@@ -85,13 +85,14 @@
             </tr>
             <tr>
                 <td><strong>Dev Tools</strong></td>
-                <td>Composer, Git, PHPStan, VS Code (Intelephense)</td>
+                <td>Composer, Git, PHPStan, VS Code, <strong>Google Antigravity</strong></td>
             </tr>
         </table>
     </section>
 </article>
 
 <style>
+    /* CSS maintained as per previous refinement for consistency */
     .lab-home { max-width: 1000px; margin: 0 auto; line-height: 1.6; font-family: var(--f-sans, sans-serif); }
     .hero-section h1 { color: #2c3e50; border-bottom: 4px solid #8e44ad; padding-bottom: 10px; margin-bottom: 10px; }
     
