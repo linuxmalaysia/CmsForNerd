@@ -4,7 +4,7 @@
 
     <div class="intro-box">
         <p>
-            The <code>template.php</code> file acts as the <strong>Front Controller</strong>. In v3.4, it initializes the immutable <code>CmsContext</code> object, ensuring that metadata and security nonces are carried safely into the theme engine.
+            The <code>template.php</code> file acts as the <strong>Master Controller</strong>. In v3.4, you don't need to write new PHP logic for every page. You simply <strong>duplicate</strong> the template and pair it with a content fragment.
         </p>
     </div>
 
@@ -12,19 +12,19 @@
         <h2>📂 Step 1: Locate the Folders</h2>
         <p>Focus on these key areas in the Laboratory environment:</p>
         <ul>
-            <li><strong>Root Directory:</strong> Public <code>.php</code> entry points (e.g., <code>about.php</code>).</li>
+            <li><strong>Root Directory:</strong> Public <code>.php</code> entry points (e.g., <code>index.php</code>, <code>about.php</code>).</li>
             <li><strong>contents/ Directory:</strong> Raw "body" fragments (<code>-body.inc</code> files).</li>
-            <li><strong>src/ & includes/:</strong> The core engine and security utility classes.</li>
+            <li><strong>src/ & includes/:</strong> The core engine, security utilities, and bootstrap logic.</li>
         </ul>
     </section>
 
     <section class="guide-step">
         <h2>📝 Step 2: Create Your Content (.inc file)</h2>
-        <p>Code only the internal HTML structure for your page.</p>
+        <p>Code only the internal HTML structure for your page body.</p>
         <ol>
             <li>Create a new file inside <code>contents/</code>.</li>
-            <li><strong>Naming Rule:</strong> Match your entry point name (e.g., <code>contact-body.inc</code>).</li>
-            <li>Use semantic HTML5 tags for better SEO and accessibility.</li>
+            <li><strong>Naming Rule:</strong> It must end in <code>-body.inc</code> (e.g., <code>contact-body.inc</code>).</li>
+            <li>Use semantic HTML5 tags for structure. Do not include <code>&lt;html&gt;</code> or <code>&lt;body&gt;</code> tags here.</li>
         </ol>
         <div class="code-example">
             <h3>Example: <code>contents/contact-body.inc</code></h3>
@@ -37,39 +37,54 @@
 
     <section class="guide-step">
         <h2>🚀 Step 3: Create Your Page (.php file)</h2>
-        <p>Leverage the v3.4 boilerplate to instantiate the page.</p>
-        <div class="code-example">
-            <h3>Example: <code>contact.php</code></h3>
-            <pre><code>&lt;?php
-declare(strict_types=1);
+        <p>In CMSForNerd, you never write new engine code. You simply <strong>copy, rename, and adjust metadata</strong>.</p>
+        
+        <div class="instruction-box">
+            <ol>
+                <li><strong>Copy:</strong> Duplicate <code>template.php</code> in the root folder.</li>
+                <li><strong>Rename:</strong> Change the copy to match your content (e.g., <code>contact.php</code>).</li>
+                <li><strong>Adjust:</strong> Update only the <code>$content</code> array metadata.</li>
+            </ol>
+        </div>
 
+        <div class="code-example">
+            <h3>Metadata Adjustment in <code>contact.php</code>:</h3>
+            <pre><code>/**
+ * 3. [SEO] Metadata - CUSTOMIZE THESE FOR EVERY NEW PAGE
+ */
 $content = [
-    'title'       => "Contact - CmsForNerd",
-    'description' => "Secure contact entry point."
+    'title'       => "Contact Us | CmsForNerd",
+    'author'      => "Harisfazillah Jamel",
+    'description' => "Get in touch with the laboratory team.",
+    'keywords'    => "Contact, PHP 8.4, CmsForNerd",
 ];
 
-require_once __DIR__ . '/includes/bootstrap.php';
-// The Factory handles the rest!
-require_once __DIR__ . '/template.php';
-?&gt;</code></pre>
+/**
+ * 4. [LAB] ROUTING LOGIC (Body-Partial Rule)
+ * DO NOT MODIFY: This automatically finds 'contact-body.inc'
+ */
+$baseName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
+$pageName = "{$baseName}-body";
+$content['data'] = $pageName;</code></pre>
         </div>
+        <p><em>The rest of the file (GZIP, Security, and Theme Execution) remains exactly as copied.</em></p>
     </section>
 
     <section class="guide-step security-check">
         <h2>🛡️ Step 4: Verify Safety & Compliance</h2>
-        <p>Before moving to production, you <strong>MUST</strong> perform these three checks to ensure the page is "Laboratory Safe":</p>
+        <p>Before moving to production, perform these three laboratory checks:</p>
         <div class="check-grid">
             <div class="check-item">
                 <h3>1. Static Analysis</h3>
-                <p>Run <code>vendor/bin/phpstan analyze</code>. Your new page must show 0 errors at Level 8.</p>
+                <p>Run <code>composer analyze</code>. Your new page must show 0 errors at PHPStan Level 8.</p>
             </div>
             <div class="check-item">
                 <h3>2. CSP Nonce Verification</h3>
-                <p>If you use <code>&lt;script&gt;</code>, you must use <code>$ctx->cspNonce</code> to prevent XSS blocking.</p>
+                <p>If you add inline <code>&lt;script&gt;</code>, you must use <code>$ctx->cspNonce</code> to pass the security policy.</p>
             </div>
             <div class="check-item">
                 <h3>3. Sanitization</h3>
-                <p>Ensure your page name contains no special characters using <code>SecurityUtils::isValidPageName()</code>.</p>
+                <p>Ensure your page name is valid and safe using <code>SecurityUtils::isValidPageName()</code>.</p>
             </div>
         </div>
     </section>
@@ -77,9 +92,9 @@ require_once __DIR__ . '/template.php';
     <section class="standards-box">
         <h2>⚖️ Laboratory Standards (v3.4 Update)</h2>
         <ul>
-            <li><strong>MUST:</strong> Use <code>declare(strict_types=1);</code> in all new <code>.php</code> files.</li>
-            <li><strong>MUST NOT:</strong> Use <code>$_GET</code> or <code>$_POST</code> directly; use the <code>SecurityUtils</code> filters.</li>
-            <li><strong>REQUIRED:</strong> Ensure <code>CmsContext</code> is the only object passing data to your theme.</li>
+            <li><strong>MUST:</strong> Keep <code>declare(strict_types=1);</code> at the top of all <code>.php</code> files.</li>
+            <li><strong>MUST NOT:</strong> Modify the Routing Logic or Theme Execution blocks in copied files.</li>
+            <li><strong>REQUIRED:</strong> Use the <code>$ctx</code> object to access any page data within your theme.</li>
         </ul>
     </section>
 </article>
@@ -88,6 +103,7 @@ require_once __DIR__ . '/template.php';
 .template-guide h1 { color: #8e44ad; border-bottom: 2px solid #8e44ad; padding-bottom: 0.5rem; }
 .template-guide .subtitle { font-size: 1.2rem; color: #666; font-weight: bold; margin-bottom: 2rem; }
 .template-guide .intro-box { background: #f3e5f5; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #8e44ad; margin-bottom: 2rem; }
+.template-guide .instruction-box { background: #fff; padding: 1rem; border: 1px dashed #8e44ad; border-radius: 8px; margin-bottom: 1rem; }
 .template-guide .guide-step { margin-bottom: 3rem; }
 .template-guide h2 { color: #333; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
 .template-guide .code-example { background: #1a1a1a; color: #fff; padding: 1rem; border-radius: 8px; margin: 1rem 0; }
