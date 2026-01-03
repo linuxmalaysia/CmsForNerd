@@ -3,74 +3,93 @@
 declare(strict_types=1);
 
 /**
- * [ENTRY POINT] Installation Guide - v3.4 Laboratory Standard
- * Purpose: Technical instructions for deploying the CMSForNerd core.
- * Architecture: Factory Pattern + Context Injection
- * Compliance: PHP 8.4+, PSR-12, PHPStan Level 8
+ * CmsForNerd v3.5 - Page Controller (installation.php)
+ * * ROLE: Technical instructions for deploying the CMSForNerd core.
+ * This file is synchronized with the master template.php logic to ensure
+ * total architectural consistency across the entire CMS.
+ *
+ * @package     linuxmalaysia/cmsfornerd
+ * @author      Harisfazillah Jamel <linuxmalaysia@songketmail.org>
+ * @copyright   2005 - 2026 Harisfazillah Jamel
+ * @license     GPL-3.0-or-later
  */
 
-// 1. [PERFORMANCE] Enable GZIP Compression for technical documentation
+// 1. [PERFORMANCE] Enable GZIP and Output Buffering
 if (!ob_start("ob_gzhandler")) {
     ob_start();
 }
 
 /**
  * 2. [LAB] BOOTSTRAP PHASE
- * Loading includes/bootstrap.php initializes the environment, generates 
- * the security nonce, and prepares the runtime configuration.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
-// 3. [SEO/AI] Deployment Metadata
-/** @var array<string, string> $content */
+/**
+ * 3. [SEO/AI] Page Metadata
+ */
 $content = [
-    'title'       => "Installation Guide | CMSForNerd v3.4 Laboratory",
+    'title'       => "Installation Guide | CMSForNerd v3.5 Laboratory",
     'author'      => "CMSForNerd Team & Gemini AI",
-    'description' => "Official deployment steps for CMSForNerd v3.4. Learn how to install the flat-file core on modern PHP 8.4 environments.",
+    'description' => "Official deployment steps for CMSForNerd v3.5. Learn how to install the flat-file core on modern PHP 8.4 environments.",
     'keywords'    => "Installation, Deployment, PHP 8.4, Composer, Git, Flat-file CMS Setup",
     'schemaType'  => "HowTo"
 ];
 
-// 4. [LAB] ROUTING LOGIC
-// We normalize the page name to ensure the engine loads 'installation-body.inc'
-$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
+/**
+ * 4. [LAB] ROUTING & SANITIZATION
+ */
+$rawPage = match (true) {
+    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
+    default                          => pathinfo(basename(__FILE__), PATHINFO_FILENAME)
+};
 
 /**
- * 5. [MODERN PHP] Context Factory Injection
- * Instead of manual instantiation, we use the factory from bootstrap.php.
- * This ensures all global state (CSS, DataFiles, Nonces) is injected correctly.
+ * [SECURITY] Path Traversal Prevention
  */
-$ctx = createCmsContext($content, $pageName);
+$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
+$page = $isValid ? $rawPage : 'index';
+$pageName = pathinfo($page, PATHINFO_FILENAME);
 
-// 6. [SECURITY] Cloudflare Turnstile Check
-// Optional security layer for installation forms or validation
+$content['data'] = $pageName;
+
+/**
+ * 5. [MODERN PHP] CmsContext Initialization (Factory Method)
+ */
+$ctx = createCmsContext(
+    content: $content,
+    pageName: $pageName
+);
+
+/**
+ * 6. [SECURITY] Session & Bot Hardening
+ */
 if (file_exists(__DIR__ . '/includes/turnstile.php')) {
     require_once __DIR__ . '/includes/turnstile.php';
 }
 
 /**
- * 7. [RENDER] Theme Execution
- * The $ctx object is passed to the pager function, following the "Zero-Global" 
- * philosophy of the v3.4 Laboratory.
+ * [LAB] BOT DETECTION
+ */
+if (file_exists(__DIR__ . '/includes/is_bot.php')) {
+    require_once __DIR__ . '/includes/is_bot.php';
+    if (is_bot()) {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
+        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
+        exit;
+    }
+}
+
+/**
+ * 7. [RENDER] Theme Dispatcher
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
-
 if (file_exists($pagerPath)) {
     require_once $pagerPath;
-    
-    // PHPStan Level 8: We check if the function exists before calling
-    if (function_exists('pager')) {
-        pager($ctx);
-    } else {
-        http_response_code(500);
-        die("Fatal Error: Theme engine 'pager' function not found.");
-    }
+    pager($ctx);
 } else {
-    http_response_code(500);
-    die("Fatal Error: Theme engine missing for Installation Guide.");
+    header('HTTP/1.1 500 Internal Server Error');
+    echo "Fatal Error: Theme engine missing in /themes/{$ctx->themeName}/";
 }
 
-// Flush the GZIP buffer to the browser
-if (ob_get_level() > 0) {
-    ob_end_flush();
-}
+ob_end_flush();
