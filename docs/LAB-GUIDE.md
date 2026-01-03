@@ -1,4 +1,4 @@
-# 🎓 CmsForNerd Laboratory Guide (v3.1)
+# 🎓 CMSForNerd Laboratory Guide (v3.5)
 
 Welcome to the CmsForNerd Developer Laboratory. This guide helps you understand modern PHP 8.4 architecture through hands-on exercises.
 
@@ -50,7 +50,7 @@ We use the `CmsContext` object to carry data across the application. This is a D
 **Objective:** Master variable scope within function-based inclusions.
 
 ### Background
-Our `theme.php` is included inside a function. It can only see variables passed to it or defined in that function's scope.
+Our active theme's `pager.php` is included based on the context. It can only see variables passed to it or defined in its scope.
 
 * **Task:** Change `$themeName` in `global-control.inc.php` to a name that does not exist.
 * **Observation:** Notice how the Null Coalescing Operator (`??`) in `bootstrap.php` provides a fallback to keep the site running.
