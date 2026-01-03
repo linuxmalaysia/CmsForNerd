@@ -22,4 +22,4 @@ The system scans the `contents/` folder for files ending in `-body.inc`. It then
 ## 🚀 SEO Best Practices
 CmsForNerd v3.5 generates two types of sitemaps:
 1. **HTML Sitemap:** For user navigation (this page).
-2. **XML Sitemap:** Located at `sitemap.xml` for Google Search Console and Bing Webmaster Tools.
+2. **XML Sitemap:** Located at `sitemap.php` for Google Search Console and Bing Webmaster Tools.
