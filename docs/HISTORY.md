@@ -4,82 +4,47 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ## Strategic Phases
 
-### Phase 1: The PHP 8.4 Engine (v3.1)
-* Implementation of **Strict Typing**.
-* Migration from Global variables to **CmsContext**.
-* Introduction of **Property Hooks**.
+### Phase 5: Modernization Mastery (v3.5)
+* **Documentation Sync**: 100% alignment of `docs/` with `contents/` logic.
+* **Factory Pattern**: Refactored context initialization to `createCmsContext()`.
+* **Standardization**: Batch synchronization of all page controllers to v3.5 baseline.
 
-### Phase 2: Laboratory Tooling (v3.2)
-* Standardization of Windows and Linux deployment.
-* Security Policy and Vulnerability Disclosure protocols.
-* Creation of the Student Lab Manual.
+### Phase 4: The Semantic Alignment (v3.4)
+* **AI Readiness**: Modernized metadata layer with JSON-LD and Schema.org.
+* **Theme Correction**: Standardized theme paths to `themes/CmsForNerd`.
+* **Security Auditor**: Introduction of semantic audit tools for students.
 
 ### Phase 3: Runtime Stability (v3.3)
-* Consolidation of the **Bootstrap Sequence**.
-* Standardized entry points for all specialized pages (Answer Key, Hall of Fame).
-* Output buffering and performance tuning.
+* **Centralized Bootstrap**: Introduction of `includes/bootstrap.php`.
+* **Performance**: Standardized GZIP compression and output buffering.
 
-# Modernization History: The v3.1 Journey
+### Phase 2: Laboratory Tooling (v3.2)
+* **Cross-Platform**: Created specialized guides for Windows and Linux.
+* **Responsible Disclosure**: Implemented `security.txt` and Security Policy.
 
-In late 2025, a landmark project was undertaken to bring **CMSForNerd** from its roots in 2005 into the modern PHP era. This document records the steps, standards, and improvements that transformed a classic flat-file CMS into a high-performance, standards-compliant, and secure teaching tool.
-
----
-
-## 1. The PHP 8.4 Foundation
-The entire codebase was refactored to support **PHP 8.4+ and PHP 9**. This included embracing modern object-oriented patterns while maintaining the "Radically Simple" philosophy of the original author.
-
-* **Strict Types**: Every core file now starts with `declare(strict_types=1);`.
-* **State Management**: Replaced hundreds of global variables with an immutable `CmsContext` object.
-* **Modern Classes**: Implemented `readonly` classes and Constructor Property Promotion.
-
-
-
-## 2. Standards & Compliance (PSR-12 & RFC 2119)
-To ensure the codebase is professional and easy to maintain, we adopted global standards for style and requirements.
-
-* **PSR-12 Style**: Standardized indentation (4 spaces), brace placement, and naming conventions.
-* **RFC 2119 Maturity**: Codified architectural "Laws of the Project" using **MUST**, **SHOULD**, and **RECOMMENDED** terminology.
-* **Automated Audits**: Integrated `php_codesniffer` and custom composer compliance workflows.
-
-## 3. Security Hardening
-Modern web threats require modern defenses. CMSForNerd v3.1 is now a bunker of security best practices.
-
-* **Cloudflare Turnstile**: Integrated invisible bot protection for all forms.
-* **Zero Directory Traversal**: Implemented strict `SecurityUtils` for sanitizing every request.
-* **Content Security Policy (CSP)**: Hardened headers to block XSS and unauthorized script execution.
-* **Bot Defense**: High-speed Regex-based detection to protect resources from aggressive scrapers.
-
-## 4. Design Evolution (CSS Grid)
-We replaced the legacy float-based layouts from the mid-2000s with a fluid, responsive **CSS Grid** system. The site now feels premium on 4K monitors and mobile phones alike.
-
-## 5. Automated Testing Suite
-For the first time in its history, CMSForNerd features a comprehensive test suite powered by **PHPUnit 12**.
-
-* **Logic Tests**: Verifies core routing and context integrity.
-* **Security Tests**: Ensures input sanitization and bot detection never fail.
-* **Standards Tests**: Programmatically enforces PSR-12 and strict typing.
-
-
-
-## 6. Rebranding: The Developer’s Laboratory
-In late December 2025, the homepage was updated to reflect the project's core mission: serving as a **Developer’s Laboratory**. This shift emphasizes educational empowerment over simple content management.
-
-## 7. Education: The Developer’s Lab Manual
-The project was enhanced with a comprehensive Lab Manual, providing students with exercises in modern architecture, security, and testing.
-
-* **Educational Tools**: Added the Lab Manual, Break-Fix Final Exam, Windows 11 Setup Guide, and Student Welcome Kit.
-* **Standards Adoption**: Integrated **RFC 9116 (security.txt)** and established a formal Security Policy.
-* **Worksheets**: Added Modules 1-6 and the Onboarding Kit.
-* **AI Synergy**: Established the AI-Assisted Development workflow using **Google Gemini** and **Antigravity**.
+### Phase 1: The PHP 8.4 Engine (v3.1)
+* **Strict Typing**: Forced predictable code logic.
+* **CmsContext**: Migration from Global variables to the Context Pattern.
 
 ---
 
-> "Modernization without loss of simplicity." — *Harisfazillah Jamel & Google Gemini, 2025.*
+## The v3.5 Journey: A Case Study
+
+In 2026, **CMSForNerd v3.5** represents the pinnacle of "Radically Simple" engineering. This version finalizes the transition into a fully synchronized, AI-native developer's laboratory.
+
+### 1. The PHP 8.4/9 foundation
+Refactored the 2005 foundation into PHP 8.4+ classes with PHP 9 readiness.
+* **Strict Types**: Every file uses `declare(strict_types=1);`.
+* **State Management**: Zero global variable usage.
+
+### 2. Standards & Compliance
+* **PSR-12**: Automated linting and formatting.
+* **RFC 2119**: Clear requirement levels for students.
+
+### 3. Security Hardening
+* **Bunker Posture**: CSP Nonces, Cloudflare Turnstile, and Path Traversal prevention.
+* **RFC 9116**: Proper vulnerability disclosure protocols.
 
 ---
 
-### Recent Updates (2025-12-27)
-* **Documentation**: Updated AI guidance in `.github/copilot-instructions.md`.
-* **Examples**: Added `about.php` and `contents/about-body.inc`.
-* **Maintenance**: Applied PSR-12/PHPCS auto-fixes and normalized line endings to **LF**.
-* **Verification**: All style and compliance tests passed.
+> "Modernization without loss of simplicity." — *Harisfazillah Jamel & Google Gemini, 2026.*
