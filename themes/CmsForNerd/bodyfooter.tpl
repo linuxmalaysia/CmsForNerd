@@ -1,6 +1,6 @@
 <!-- 
 ==========================================================================
-FILE: themes/lab_v3/bodyfooter.tpl
+FILE: themes/CmsForNerd/bodyfooter.tpl
 ROLE: Layout Closer (The "Lower Bun")
 ==========================================================================
 
