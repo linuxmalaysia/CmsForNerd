@@ -1,8 +1,9 @@
-# 🤖 AI-Assisted Development: Gemini + Antigravity
+# 🏢 AI-Assisted Implementation Guide (v3.5)
+Gemini + Antigravity
 
 > **The Modern Workflow:** From "Prompt to Production"
 
-In the modern era of backend development, you are no longer coding alone. **CMSForNerd v3.3** uses a high-speed synergy between **Google Gemini** (The Architect) and **Google Antigravity** (The Agent).
+In the modern era of backend development, you are no longer coding alone. **CMSForNerd v3.5** uses a high-speed synergy between **Google Gemini** (The Architect) and **Google Antigravity** (The Agent).
 
 ---
 
@@ -29,7 +30,7 @@ To ensure AI search engines (like Perplexity or ChatGPT) understand your content
 $CONTENT['schemaType'] = 'SoftwareApplication';
 $CONTENT['lang'] = 'ms'; // For Malay content
 ```
-##⚖️ AI Ethics & Rules
+##🛡️ Security Policy (v3.5)
 
     MUST: Ask the AI to verify strict_types=1 on every new file.
 
