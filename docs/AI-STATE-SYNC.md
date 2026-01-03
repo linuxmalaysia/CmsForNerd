@@ -1,27 +1,29 @@
-# CmsForNerd Project State Sync (v3.1.3)
+# CmsForNerd Project State Sync (v3.5)
 
 ## 🎯 Current Mission
-We are refactoring a legacy flat-file CMS into a **Modern PHP 8.4 Laboratory Environment**. The goal is to teach students PSR standards, Dependency Injection, and Front Controller patterns.
+We are maintaining a **Modern PHP 8.4 Laboratory Environment**. The core engine is fully refactored, and we are now focused on documentation synchronization, AI agent discovery, and architectural finalization.
 
 ## 🏗️ Architectural Decisions (MUST BE MAINTAINED)
 1. **Bootstrap Pattern:** Every root `.php` file is a Front Controller. It MUST NOT load library files directly. It MUST load `includes/bootstrap.php`.
 2. **Namespace:** Everything core is under `namespace CmsForNerd;`.
-3. **Context Pattern:** Shared state is passed via the `CmsContext` object. No `global` keywords allowed.
-4. **PSR Compliance:** - **PSR-12:** Formatting (use `composer fix-style`).
-   - **PSR-1:** Separation of concerns. Files in `includes/` declare symbols; root files execute logic.
-5. **Strict Typing:** `declare(strict_types=1);` is mandatory at the top of ALL files.
+3. **Context Pattern:** Shared state is passed via the `CmsContext` object. Initialize via `createCmsContext()` factory.
+4. **PSR Compliance:** 
+   - **PSR-12:** Formatting enforced via `composer fix-style`.
+   - **PSR-1:** Separation of concerns (Logic vs. Symbols).
+5. **Strict Typing:** `declare(strict_types=1);` is mandatory at the top of ALL PHP files.
+6. **Pair Logic:** Every public page MUST consist of a `.php` controller and a `contents/*-body.inc` fragment.
 
 ## 🚦 Completed Refactors
-- [x] `includes/bootstrap.php` created as the central engine.
-- [x] `CmsContext.php` refactored to a namespaced class.
-- [x] `composer.json` updated with `lab-check`, `check-strict`, and PSR-4 autoloading.
-- [x] `PROJECT_RULES.md` and `.cursorrules` updated for AI Agent guidance.
-- [x] `docs/LAB-GUIDE.md` created for student curriculum.
+- [x] `includes/bootstrap.php` centralized engine initialization.
+- [x] `CmsContext.php` namespaced with Property Hooks (PHP 8.4).
+- [x] **v3.4 Sync:** JSON-LD 2.0 and Theme normalization completed.
+- [x] **v3.5 Milestone:** Sitemap "Pair Logic" refactor, dynamic RSS 2.0 (`rss.php`), and ROR XML (`ror.php`) implemented.
+- [x] **AI Synergy:** Synchronized instructions for Google Gemini, Copilot, and Cursor.
 
 ## 🚧 Work In Progress
-- **Refactoring Root Entry Points:** We have identified 24 root `.php` files (index, about, installation, sitemap, etc.) that need to be converted to the "Modern Front Controller" template.
-- **Side-Effect Cleanup:** `includes/turnstile.php` and others need to be split to satisfy PSR-1 warnings.
+- **Documentation Finalization:** Syncing `docs/` with the latest v3.5 code examples.
+- **GitBook Deployment:** Ensuring all markdown files reflect the "Laboratory" aesthetic.
 
 ## 🧪 Verification Commands
 - `composer lab-check`: Verifies environment and strictness.
-- `composer compliance`: Verifies PSR-12 and Unit Tests.
+- `composer compliance`: Verifies PSR-12, Static Analysis (Level 8), and Unit Tests.
