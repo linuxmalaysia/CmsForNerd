@@ -3,24 +3,30 @@
 declare(strict_types=1);
 
 /**
- * CmsForNerd - Sitemap Page
- * Purpose: Scans content and displays the site structure.
- * Rebuilt for PHP 8.4 Standards.
+ * CmsForNerd v3.5 - Page Controller (sitemap-page.php)
+ * * ROLE: HTML Sitemap Viewer.
+ * This file is synchronized with the master template.php logic to ensure
+ * total architectural consistency across the entire CMS.
+ *
+ * @package     linuxmalaysia/cmsfornerd
+ * @author      Harisfazillah Jamel <linuxmalaysia@songketmail.org>
+ * @copyright   2005 - 2026 Harisfazillah Jamel
+ * @license     GPL-3.0-or-later
  */
 
-// 1. [PERFORMANCE] Enable GZIP compression
+// 1. [PERFORMANCE] Enable GZIP and Output Buffering
 if (!ob_start("ob_gzhandler")) {
     ob_start();
 }
 
 /**
  * 2. [LAB] BOOTSTRAP PHASE
- * This core file initializes the Autoloader and global variables
- * like $themeName, $cssPath, and $dataFile.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
-// 3. [SEO] Page Metadata
+/**
+ * 3. [SEO/AI] Page Metadata
+ */
 $content = [
     'title'       => "Sitemap For CmsForNerd",
     'author'      => "Harisfazillah Jamel",
@@ -29,52 +35,60 @@ $content = [
 ];
 
 /**
- * 4. [SECURITY] Session Management
- * Modern check for session expiration.
+ * 4. [LAB] ROUTING & SANITIZATION
  */
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-if (isset($_SESSION['valid_session']) && $_SESSION['valid_session'] === true) {
-    $elapsed_time = time() - ($_SESSION['session_start_time'] ?? time());
-    $session_timeout = (int)ini_get('session.gc_maxlifetime');
-    
-    if ($elapsed_time > $session_timeout) {
-        session_destroy();
-        header('Location: index.php');
-        exit;
-    }
-}
+$rawPage = match (true) {
+    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
+    default                          => pathinfo(basename(__FILE__), PATHINFO_FILENAME)
+};
 
 /**
- * 5. [MODERN PHP] CmsContext Object
- * scriptName uses pathinfo to match the "sitemap-page-body.inc" naming convention.
+ * [SECURITY] Path Traversal Prevention
  */
-$ctx = new \CmsForNerd\CmsContext(
-    content:    $content,
-    themeName:  $themeName,
-    cssPath:    $cssPath,
-    dataFile:   $dataFile,
-    scriptName: pathinfo(basename(__FILE__), PATHINFO_FILENAME)
+$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
+$page = $isValid ? $rawPage : 'index';
+$pageName = pathinfo($page, PATHINFO_FILENAME);
+
+$content['data'] = $pageName;
+
+/**
+ * 5. [MODERN PHP] CmsContext Initialization (Factory Method)
+ */
+$ctx = createCmsContext(
+    content: $content,
+    pageName: $pageName
 );
 
 /**
- * 6. [SECURITY] Cloudflare Turnstile integration.
+ * 6. [SECURITY] Session & Bot Hardening
  */
 if (file_exists(__DIR__ . '/includes/turnstile.php')) {
     require_once __DIR__ . '/includes/turnstile.php';
 }
 
 /**
- * 7. [RENDER] Theme Execution
+ * [LAB] BOT DETECTION
  */
-$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
-
-if (file_exists($pagerPath)) {
-    include_once $pagerPath;
-    pager($ctx);
+if (file_exists(__DIR__ . '/includes/is_bot.php')) {
+    require_once __DIR__ . '/includes/is_bot.php';
+    if (is_bot()) {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
+        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
+        exit;
+    }
 }
 
-// 8. [PERFORMANCE] Flush output.
+/**
+ * 7. [RENDER] Theme Dispatcher
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
+if (file_exists($pagerPath)) {
+    require_once $pagerPath;
+    pager($ctx);
+} else {
+    header('HTTP/1.1 500 Internal Server Error');
+    echo "Fatal Error: Theme engine missing in /themes/{$ctx->themeName}/";
+}
+
 ob_end_flush();
