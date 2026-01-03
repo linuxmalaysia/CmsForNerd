@@ -1,22 +1,24 @@
-# 📜 SOP: Ethical AI Integration
+# 📜 SOP: Responsible AI Usage in the Lab (v3.5)
 
-Standard Operating Procedure for the CMSForNerd v3.3 Laboratory.
+Standard Operating Procedure for the CMSForNerd v3.5 Laboratory.
 
-## Objective
-To utilize AI agents (Gemini, Antigravity) as **tutors and executors** while ensuring that students maintain complete ownership of the logic and security.
+## 🎯 Objective
+To leverage AI agents (Gemini, Antigravity) to accelerate learning while maintaining individual coding integrity and **RFC 2119** compliance within the PHP 8.4 environment.
 
-## The Rules of Engagement
+## 🏛️ The Rules of Engagement
 
-### 1. Verification Loop
-All AI-generated code must be audited using the built-in laboratory tools:
-1. **Linting:** `composer fix-style`
-2. **Testing:** `composer test`
-3. **Audit:** `composer compliance`
+### 1. The "Think First" Rule
+* **MUST:** Students **MUST** attempt to solve structural problems using the `SecurityUtils` or `CmsContext` source code for 10 minutes before prompting an AI.
 
-### 2. Prohibited Actions
+### 2. Verification & Auditing (Trust but Verify)
+AI-generated code **MUST NOT** be merged until it passes the compliance suite:
+1. **Style:** `composer fix-style` (PSR-12 Check).
+2. **Logic:** `composer test` (Unit/Security Logic Check).
+3. **Audit:** `composer compliance` (Final "Green Bar" Status).
+
+### 3. Prohibited Actions
 * **DO NOT** copy-paste code you cannot explain line-by-line during lab reviews.
-* **DO NOT** ignore AI security warnings.
-* **DO NOT** use AI to bypass the logic-heavy sections of the Final Exam.
+* **DO NOT** use AI to bypass the logic-heavy "Break-Fix" challenges in the Final Exam.
 
-## Learning Outcome
-Mastering this SOP prepares you for a professional environment where AI collaboration is the standard, ensuring you remain the **Architect** of the system.
+## 🎓 Learning Outcome
+Mastering this SOP prepares you for a professional environment where AI collaboration is the standard, ensuring you remain the **Architect** of the system, not just a prompter.
