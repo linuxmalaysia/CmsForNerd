@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- [SEO] Descriptions used by Google. htmlspecialchars() prevents XSS attacks if text contains code. -->
-<meta name="description" content="<?= htmlspecialchars($CONTENT['description'] ?? 'CMSForNerd - A lightweight, flat-file CMS') ?>">
+<meta name="description" content="<?= htmlspecialchars($ctx->content['description'] ?? 'CMSForNerd - A lightweight, flat-file CMS') ?>">
 
 <!-- [SEO] Keywords for older search engines (though less important now, still good practice). -->
-<meta name="keywords" content="<?= htmlspecialchars($CONTENT['keywords'] ?? 'CMS, PHP, Flat-file') ?>">
+<meta name="keywords" content="<?= htmlspecialchars($ctx->content['keywords'] ?? 'CMS, PHP, Flat-file') ?>">
 
 <!-- [SEO] Author and Robot instructions. 'index, follow' tells Google to list this page and follow its links. -->
-<meta name="author" content="<?= htmlspecialchars($CONTENT['author'] ?? 'CMSForNerd') ?>">
+<meta name="author" content="<?= htmlspecialchars($ctx->content['author'] ?? 'CMSForNerd') ?>">
 <meta name="robots" content="index, follow">
 
 <!-- Favicon - The small icon you see in the browser tab. -->
@@ -22,16 +22,16 @@
 
 <!-- [AI/SEO] Schema.org Image for Rich Cards/Previews -->
 <meta itemprop="image" content="<?= $ctx->baseUrl ?>images/cmsfornerd-logo.png">
-<meta itemprop="description" content="<?= htmlspecialchars($CONTENT['description'] ?? 'A modern PHP 8.4+ educational CMS environment.') ?>">
+<meta itemprop="description" content="<?= htmlspecialchars($ctx->content['description'] ?? 'A modern PHP 8.4+ educational CMS environment.') ?>">
 
 <!-- [AI/SEO] JSON-LD Structured Data - 2025 gold standard for Google, Gemini, and ChatGPT. -->
 <script type="application/ld+json" nonce="<?= $ctx->cspNonce ?>">
 {
   "@context": "https://schema.org",
-  "@type": "<?= (strpos($CONTENT['title'] ?? '', 'Lab') !== false || strpos($CONTENT['title'] ?? '', 'Module') !== false) ? 'Course' : 'WebPage' ?>",
-  "name": "<?= htmlspecialchars($CONTENT['title'] ?? 'CMSForNerd Laboratory') ?>",
-  "description": "<?= htmlspecialchars($CONTENT['description'] ?? 'A modern PHP 8.4+ educational CMS environment.') ?>",
-  "url": "<?= htmlspecialchars($ctx->baseUrl . ($CONTENT['data'] ?? 'index.php')) ?>",
+  "@type": "<?= (strpos($ctx->content['title'] ?? '', 'Lab') !== false || strpos($ctx->content['title'] ?? '', 'Module') !== false) ? 'Course' : 'WebPage' ?>",
+  "name": "<?= htmlspecialchars($ctx->content['title'] ?? 'CMSForNerd Laboratory') ?>",
+  "description": "<?= htmlspecialchars($ctx->content['description'] ?? 'A modern PHP 8.4+ educational CMS environment.') ?>",
+  "url": "<?= htmlspecialchars($ctx->baseUrl . ($ctx->content['data'] ?? 'index.php')) ?>",
   "provider": {
     "@type": "Organization",
     "name": "CMSForNerd Academy",
