@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * CmsForNerd - Centralized Bootstrap (Laboratory Engine v3.4)
+ * CmsForNerd - Centralized Bootstrap (Laboratory Engine v3.5)
  * Compliance: PHP 8.4+, PSR-12, PHPStan Level 8
  * * SECURITY NOTE: This file manages error suppression and path abstraction
  * to prevent Information Disclosure (CWE-200).
@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 // 1. [LAB] ERROR MANAGEMENT & PATH PROTECTION
 // In Laboratory mode, we hide absolute system paths from the browser.
-ini_set('display_errors', '0'); 
+ini_set('display_errors', '0');
 ini_set('log_errors', '1');
 error_reporting(E_ALL);
 
@@ -31,14 +31,15 @@ $nonce = bin2hex(random_bytes(16));
 
 /**
  * 5. [LAB] GLOBAL CONTEXT FACTORY
- * Encapsulates CmsContext creation. This prevents "Undefined Variable" notices 
+ * Encapsulates CmsContext creation. This prevents "Undefined Variable" notices
  * and ensures immutable state management throughout the page lifecycle.
  *
- * @param array<string, mixed> $content 
+ * @param array<string, mixed> $content
  * @param string $pageName
  * @return \CmsForNerd\CmsContext
  */
-function createCmsContext(array $content, string $pageName): \CmsForNerd\CmsContext {
+function createCmsContext(array $content, string $pageName): \CmsForNerd\CmsContext
+{
     global $themeName, $cssPath, $dataFile, $nonce;
 
     // Use null-coalescing to ensure no uninitialized property access
