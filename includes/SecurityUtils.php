@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CmsForNerd;
 
 /**
- * [SECURITY] SecurityUtils - v3.4 Laboratory Standard.
+ * [SECURITY] SecurityUtils - v3.5 Laboratory Standard.
  * * This class provides defensive programming utilities to protect the CMS core.
  * It combines path validation, XSS prevention, and CSP nonce generation.
  * * Compliance: PHP 8.4+, PSR-12, PHPStan Level 8.
@@ -33,7 +33,7 @@ final class SecurityUtils
      */
     public static function sanitizePageName(string $pageName): string
     {
-        // preg_replace can return string, array, or null. 
+        // preg_replace can return string, array, or null.
         // We force a string return to satisfy strict type declarations.
         $sanitized = preg_replace('/[^a-zA-Z0-9_\-]/', '', $pageName);
         return (string) ($sanitized ?? '');
