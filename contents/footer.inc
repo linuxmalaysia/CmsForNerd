@@ -1,11 +1,12 @@
 <?php
+
 /**
  * ==========================================================================
  * FILE: contents/footer.inc
  * ROLE: Global Footer Content & Navigation
  * VERSION: 3.9 (Fixing Red Background Inheritance)
  * ==========================================================================
- * [Inference] Explicitly setting background color to the lab variable 
+ * [Inference] Explicitly setting background color to the lab variable
  * to override any unintended inheritance from the parent #footer container.
  */
 
@@ -25,13 +26,13 @@ declare(strict_types=1);
         <div style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 10px;">
             <a href="index.php" style="color: var(--lab-highlight, #8e44ad); text-decoration: none; font-weight: 700;">Home</a>
             
-            <?php 
+            <?php
             if (function_exists('get_site_pages')) {
                 foreach (get_site_pages() as $url => $label) {
                     $displayLabel = is_array($label) ? ($label['title'] ?? $url) : $label;
                     $safeUrl = htmlspecialchars((string)$url);
                     $safeLabel = htmlspecialchars((string)$displayLabel);
-                    
+
                     echo "<a href=\"$safeUrl\" style=\"color: inherit; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 2px;\">$safeLabel</a>";
                 }
             }
@@ -51,6 +52,6 @@ declare(strict_types=1);
     </div>
     
     <div style="font-family: 'SF Mono', monospace; font-size: 0.65rem; color: #94a3b8; margin-top: 30px; letter-spacing: 0.5px;">
-        [ REL: 3.4.0 ] | [ STD: RFC_9116 ] | [ ENV: PHP_8.4 ]
+        [ REL: 3.5.0 ] | [ STD: RFC_9116 ] | [ ENV: PHP_8.4 ]
     </div>
 </div>
