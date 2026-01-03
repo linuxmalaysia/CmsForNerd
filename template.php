@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * CmsForNerd v3.4 - Master Template Boilerplate
+ * CmsForNerd v3.5 - Master Template Boilerplate
  * * This file serves as the "Master Controller" for the Lab v3 architecture.
  * INSTRUCTIONS FOR STUDENTS:
  * 1. Copy this file to create a new page (e.g., about.php).
@@ -17,7 +17,7 @@ declare(strict_types=1);
  */
 
 // 1. [PERFORMANCE] Enable GZIP and Output Buffering
-// ob_gzhandler compresses the HTML before sending it to the browser, 
+// ob_gzhandler compresses the HTML before sending it to the browser,
 // significantly reducing bandwidth and improving load speed for students.
 if (!ob_start("ob_gzhandler")) {
     ob_start();
@@ -35,7 +35,7 @@ require_once __DIR__ . '/includes/bootstrap.php';
  * v3.4 includes schemaType to help AI crawlers (ChatGPT/Gemini) understand the page.
  */
 $content = [
-    'title'       => "New Lab Specimen | CmsForNerd v3.4",
+    'title'       => "New Lab Specimen | CmsForNerd v3.5",
     'author'      => "Harisfazillah Jamel",
     'description' => "A lightweight flat-file CMS modernized for PHP 8.4+ and PHP 9 readiness.",
     'keywords'    => "PHP 8.4, Flat-file CMS, Security Laboratory, PSR-12, Education",
@@ -44,7 +44,7 @@ $content = [
 
 /**
  * 4. [LAB] ROUTING & SANITIZATION
- * v3.4 uses the 'match' expression—a modern, strict alternative to 'switch'.
+ * v3.5 uses the 'match' expression—a modern, strict alternative to 'switch'.
  * It ensures that we handle the query string or default to 'index' cleanly.
  */
 $rawPage = match (true) {
@@ -54,7 +54,7 @@ $rawPage = match (true) {
 
 /**
  * [SECURITY] Path Traversal Prevention
- * We use SecurityUtils to ensure a student or attacker cannot inject 
+ * We use SecurityUtils to ensure a student or attacker cannot inject
  * strings like "../etc/passwd" to access sensitive system files.
  */
 $isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
@@ -66,11 +66,11 @@ $content['data'] = $pageName;
 
 /**
  * 5. [MODERN PHP] CmsContext Initialization (Factory Method)
- * Instead of passing loose variables, we bundle everything into an 
+ * Instead of passing loose variables, we bundle everything into an
  * immutable CmsContext object for type-safe rendering.
  */
 $ctx = createCmsContext(
-    content: $content, 
+    content: $content,
     pageName: $pageName
 );
 
@@ -91,7 +91,7 @@ if (file_exists(__DIR__ . '/includes/is_bot.php')) {
     require_once __DIR__ . '/includes/is_bot.php';
     if (is_bot()) {
         header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.4 - Laboratory Text Mode\n";
+        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
         echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
         exit;
     }
