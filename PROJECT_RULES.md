@@ -1,6 +1,6 @@
 # # CMSForNerd Project Rules (For AI Agents)
 
-When generating or refactoring code for **CmsForNerd v3.4** and above, you **MUST** follow these rules:
+When generating or refactoring code for **CmsForNerd v3.5** and above, you **MUST** follow these rules:
 
 ### 1. The "Baseline Sync" Protocol
 
