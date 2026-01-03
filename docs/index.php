@@ -1,22 +1,22 @@
 <?php
+
 /**
  * ==========================================================================
- * FILE: themes/CmsForNerdNew/index.php
  * ROLE: Directory Privacy & Security Gateway
- * VERSION: 3.4 (Strict Mode)
+ * VERSION: 3.5 (Strict Mode)
  * ==========================================================================
- * * [SECURITY] 
- * This file prevents "Directory Listing" and direct browser access to 
- * theme assets. In a "Zero-Debt" workflow, we do not want users or 
+ * * [SECURITY]
+ * This file prevents "Directory Listing" and direct browser access to
+ * theme assets. In a "Zero-Debt" workflow, we do not want users or
  * bots to map out the folder structure of the CMS.
  *
  * [PERFORMANCE]
- * We use a 403 response instead of a 302 redirect. This terminates 
- * the request faster and signals to search engines that they should 
+ * We use a 403 response instead of a 302 redirect. This terminates
+ * the request faster and signals to search engines that they should
  * not index this specific path.
  *
  * [REUSABILITY]
- * This code is path-agnostic. You can copy it to any subdirectory 
+ * This code is path-agnostic. You can copy it to any subdirectory
  * within CMSForNerd to protect sensitive logic or template files.
  */
 
