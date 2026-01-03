@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Sitemap Generator Helper
  * * Scans the root directory for public PHP pages and generates metadata.
- * [LAB v3.4] Updated with strict return type shapes and defensive 
+ * [LAB v3.4] Updated with strict return type shapes and defensive
  * handling for system functions (glob, filemtime).
  */
 
@@ -16,39 +16,52 @@ function get_site_pages(): array
 {
     /** @var array<int, array{file: string, url: string, lastmod: string, title: string}> $pages */
     $pages = [];
-    $exclude = ['xml-sitemap.php', 'sitemap.xml.php', 'index.php'];
-
-    // Scan for all .php files in the root directory
-    $files = glob(__DIR__ . '/../' . '*.php');
-
-    // [SECURITY] glob() returns FALSE on error. Level 8 requires handling this.
-    if ($files === false) {
+    $fragmentDir = __DIR__ . '/../contents/';
+    
+    // [SECURITY] Verification of directory existence
+    if (!is_dir($fragmentDir)) {
         return [];
     }
 
-    foreach ($files as $file) {
-        $filename = basename($file);
+    /**
+     * [ARCHITECTURE] PAIR LOGIC SCAN
+     * Instead of scanning for every PHP file, we scan the 'contents/' directory
+     * for Slave Fragments and verify their Master Controllers (.php) exist.
+     */
+    $fragments = glob($fragmentDir . '*-body.inc');
+    
+    if ($fragments === false) {
+        return [];
+    }
 
-        // Skip hidden files, system files, or the excluded list
-        if (in_array($filename, $exclude, true) || str_starts_with($filename, '.')) {
+    foreach ($fragments as $file) {
+        $slug = str_replace('-body.inc', '', basename($file));
+
+        /**
+         * [SECURITY] RULE #8 COMPLIANCE
+         * Skip internal system fragments and error pages.
+         */
+        $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
+        if (in_array($slug, $exclude, true)) {
             continue;
         }
 
-        /** * [SECURITY] filemtime() returns FALSE on failure. 
-         * We fallback to the current time to satisfy the 'int' requirement of date().
-         */
-        $mtimeResult = filemtime($file);
-        $lastModTimestamp = ($mtimeResult === false) ? time() : $mtimeResult;
+        $masterFile = __DIR__ . '/../' . $slug . '.php';
 
-        // Pretty Title (Capitalized filename without extension, replacing dashes with spaces)
-        $title = ucfirst(str_replace(['.php', '-'], ['', ' '], $filename));
+        if (file_exists($masterFile)) {
+            $mTime = max(filemtime($masterFile), filemtime($file));
+            $lastModTimestamp = ($mTime === false) ? time() : $mTime;
 
-        $pages[] = [
-            'file'    => $filename,
-            'url'     => htmlspecialchars($filename, ENT_QUOTES, 'UTF-8'),
-            'lastmod' => date('Y-m-d', $lastModTimestamp),
-            'title'   => $title
-        ];
+            // Pretty Title (Capitalized filename, replacing dashes with spaces)
+            $title = ucfirst(str_replace('-', ' ', $slug));
+
+            $pages[] = [
+                'file'    => "$slug.php",
+                'url'     => htmlspecialchars("$slug.php", ENT_QUOTES, 'UTF-8'),
+                'lastmod' => date('Y-m-d', $lastModTimestamp),
+                'title'   => $title
+            ];
+        }
     }
 
     return $pages;
