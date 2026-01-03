@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * CmsForNerd v3.4 - Primary Front Controller (index.php)
+ * CmsForNerd v3.5 - Primary Front Controller (index.php)
  * * ROLE: The main entrance to the Laboratory.
  * This file is synchronized with the master template.php logic to ensure
  * total architectural consistency across the entire CMS.
@@ -32,11 +32,11 @@ require_once __DIR__ . '/includes/bootstrap.php';
  * for the root index to signify the CMS environment to search engines.
  */
 $content = [
-    'title'       => "CmsForNerd v3.4 | The Developer’s Laboratory",
+    'title'       => "CmsForNerd v3.5 | The Developer’s Laboratory",
     'author'      => "Harisfazillah Jamel",
     'description' => "A lightweight flat-file CMS modernized for PHP 8.4+ and strict security standards.",
     'keywords'    => "PHP 8.4, Flat-file CMS, Security Laboratory, Zero-Debt CSS, PSR-12",
-    'schemaType'  => "WebApplication" 
+    'schemaType'  => "WebApplication"
 ];
 
 /**
@@ -66,7 +66,7 @@ $content['data'] = $pageName;
  * Creates the immutable $ctx object that carries our data into the theme.
  */
 $ctx = createCmsContext(
-    content: $content, 
+    content: $content,
     pageName: $pageName
 );
 
@@ -81,7 +81,7 @@ if (file_exists(__DIR__ . '/includes/is_bot.php')) {
     require_once __DIR__ . '/includes/is_bot.php';
     if (is_bot()) {
         header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.4 - Laboratory Text Mode\n";
+        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
         echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
         exit;
     }
