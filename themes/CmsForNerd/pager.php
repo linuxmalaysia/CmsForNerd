@@ -1,7 +1,8 @@
 <?php
+
 /**
  * ==========================================================================
- * FILE: themes/lab_v3/pager.php
+ * FILE: themes/CmsForNerd/pager.php
  * ROLE: The "Master Pair" / Layout Controller
  * ==========================================================================
  * * EDUCATIONAL NOTE:
@@ -13,13 +14,15 @@
  * (CSS/JS) are managed in ONE place, rather than scattered across 100 files.
  */
 
-declare(strict_types=1); // PHP 8.4 Best Practice: Enforce strict type checking.
+declare(strict_types=1);
+
+// PHP 8.4 Best Practice: Enforce strict type checking.
 
 // [STRUCTURE] The pager() function MUST define the layout hierarchy.
 // @param CmsContext $ctx - The immutable context object containing current state.
 function pager(CmsForNerd\CmsContext $ctx)
 {
-    // 1. [HEAD CONSTRUCTION] 
+    // 1. [HEAD CONSTRUCTION]
     // This function (defined in core) generates the <head> block,
     // including <title>, <meta> tags, and the <link> to our style.css.
     pageheader($ctx);
@@ -37,7 +40,7 @@ function pager(CmsForNerd\CmsContext $ctx)
 
     // 4. [CONTENT INJECTION]
     // This is the critical "Pair Logic" moment.
-    // pagecontent() calls the specific page logic (e.g., contents/home/page-body.inc).
+    // pagecontent() calls the specific page logic (e.g., contents/index-body.inc).
     // The output of that file flows directly into the open #content div.
     pagecontent($ctx);
 
