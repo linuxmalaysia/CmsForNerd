@@ -19,6 +19,7 @@ We are maintaining a **Modern PHP 8.4 Laboratory Environment**. The core engine 
 - [x] **v3.4 Sync:** JSON-LD 2.0 and Theme normalization completed.
 - [x] **v3.5 Milestone:** Sitemap "Pair Logic" refactor, dynamic RSS 2.0 (`rss.php`), and ROR XML (`ror.php`) implemented.
 - [x] **AI Synergy:** Synchronized instructions for Google Gemini, Copilot, and Cursor.
+- [x] **Nerd Lab Protocol:** Codified the persistent "State of Mind" workflow in `.agent/workflows/nerd-lab-protocol.md`.
 
 ## 🚧 Work In Progress
 - **Documentation Finalization:** Syncing `docs/` with the latest v3.5 code examples.
