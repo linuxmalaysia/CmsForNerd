@@ -1,11 +1,12 @@
 <?php
+
 /**
  * ==========================================================================
  * FILE: themes/CmsForNerdNew/index.php
  * ROLE: Directory Privacy & Security Gateway (PHP Layer)
  * VERSION: 3.4 (Strict Mode)
  * ==========================================================================
- * * [SECURITY] 
+ * * [SECURITY]
  * This file prevents "Directory Listing" by terminating the request at the
  * server level before any folder contents are indexed or displayed.
  *
@@ -20,8 +21,8 @@
 
 declare(strict_types=1);
 
-// 1. [HEADER] Send 403 Forbidden. 
-// This is more professional than a 302 redirect because it accurately 
+// 1. [HEADER] Send 403 Forbidden.
+// This is more professional than a 302 redirect because it accurately
 // describes the security state of the request.
 header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
 
