@@ -1,39 +1,32 @@
-# 🏢 AI-Assisted Implementation Guide (v3.5)
+# 🤖 AI-Assisted Development (v3.5)
 Gemini + Antigravity
 
 > **The Modern Workflow:** From "Prompt to Production"
 
-In the modern era of backend development, you are no longer coding alone. **CMSForNerd v3.5** uses a high-speed synergy between **Google Gemini** (The Architect) and **Google Antigravity** (The Agent).
+In the modern era of backend engineering, you are no longer coding in isolation. **CMSForNerd v3.5** was architected using a high-speed synergy between **Google Gemini** (The Architect) and **Google Antigravity** (The Agent).
 
 ---
 
 ## 🧠 Layer 1: Google Gemini (The Architect)
-Gemini acts as your strategist. You use it for:
-* **Logic Planning:** Designing class hierarchies and property hooks.
-* **RFC Compliance:** Checking if your code adheres to **RFC 2119**.
-* **Audit Analysis:** Paste an error, and Gemini finds the root cause.
+Gemini acts as your strategist and theorist. Use it for:
+* **Logic & Design:** Planning class hierarchies, Property Hooks, and CmsContext state.
+* **RFC Compliance:** Validating your implementation against **RFC 2119** and **PSR-12**.
+* **Mental Modeling:** Explaining the "Why" behind architectural choices.
 
 ## 🚀 Layer 2: Google Antigravity (The Agent)
-Antigravity is the executioner. It handles:
-* **File I/O:** Writing the `.php` and `.inc` files to your site.
-* **Compliance:** Running `./vendor/bin/phpcs` and `./vendor/bin/phpunit`.
-* **Deployment:** Staging and pushing code to GitHub once verified.
-## 🌐 The "Triple Threat" Discovery Strategy
-To ensure AI search engines (like Perplexity or ChatGPT) understand your content, CMSForNerd uses three layers:
+Antigravity is the executioner. It handles the physical operations:
+* **File Operations:** Writing `.php` controllers and `.inc` fragments to disk.
+* **Terminal Control:** Running `composer compliance` and `phpunit`.
+* **Git Mastery:** Handling staging and commits once code is verified.
 
-1.  **Microdata (Immediate):** HTML attributes for instant classification.
-2.  **JSON-LD (Detailed):** Structured data for Google Search Rich Cards.
+## 🌐 The "Triple Threat" Discovery Strategy
+To ensure AI search engines (like Perplexity or ChatGPT) accurately categorize your CMS content, we use three layers:
+
+1.  **Microdata (Immediate):** HTML attributes for instant tag-based classification.
+2.  **JSON-LD (Detailed):** Structured scripting for Google Search Rich Cards.
 3.  **RDF (Formal):** Dublin Core standards for semantic web relationships.
 
-**Student Tip:** You can override a page's identity in the entry point:
-```php
-$CONTENT['schemaType'] = 'SoftwareApplication';
-$CONTENT['lang'] = 'ms'; // For Malay content
-```
-##🛡️ Security Policy (v3.5)
-
-    MUST: Ask the AI to verify strict_types=1 on every new file.
-
-    MUST NOT: Bypass composer compliance. If the AI writes code that fails the audit, the code is rejected.
-
-    SHOULD: Ask Gemini why a specific pattern was used to learn the theory behind the code.
+## ⚖️ The "Good AI Citizen" Rules
+* **MUST:** Verify `declare(strict_types=1);` exists on every AI-generated file.
+* **MUST NOT:** Bypass `composer compliance`. If the AI writes code that fails the audit, it IS REJECTED.
+* **SHOULD:** Ask Gemini to generate a Unit Test for every new logic block it writes.
