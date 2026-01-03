@@ -3,64 +3,92 @@
 declare(strict_types=1);
 
 /**
- * [EDUCATIONAL] Student Welcome Kit - CMSForNerd v3.3
- * Purpose: Essential reference guide for lab students.
- * Architecture: Pair Logic (welcome-kit.php + contents/welcome-kit-body.inc)
+ * CmsForNerd v3.5 - Page Controller (welcome-kit.php)
+ * * ROLE: Student Welcome Kit - Essential reference guide for lab students.
+ * This file is synchronized with the master template.php logic to ensure
+ * total architectural consistency across the entire CMS.
+ *
+ * @package     linuxmalaysia/cmsfornerd
+ * @author      Harisfazillah Jamel <linuxmalaysia@songketmail.org>
+ * @copyright   2005 - 2026 Harisfazillah Jamel
+ * @license     GPL-3.0-or-later
  */
 
-// 1. [PERFORMANCE] GZIP Compression
+// 1. [PERFORMANCE] Enable GZIP and Output Buffering
 if (!ob_start("ob_gzhandler")) {
     ob_start();
 }
 
 /**
  * 2. [LAB] BOOTSTRAP PHASE
- * Loads Autoloader, Global Config, and initializes 
- * $themeName, $cssPath, and $dataFile variables.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
-// 3. [SEO] Metadata - Student Kit Specific
+/**
+ * 3. [SEO/AI] Page Metadata
+ */
 $content = [
-    'title'       => "Student Welcome Kit: Essential Cheat Sheet - CMSForNerd v3.3",
+    'title'       => "Student Welcome Kit: Essential Cheat Sheet - CMSForNerd v3.5",
     'author'      => "CMSForNerd Team & Google Gemini",
-    'description' => "The one-stop reference guide for every student entering the CmsForNerd v3.3 Laboratory.",
+    'description' => "The one-stop reference guide for every student entering the CmsForNerd v3.5 Laboratory.",
     'keywords'    => "Welcome Kit, Cheat Sheet, Student Guide, PHP 8.4+, RFC 2119, PSR-12, Security",
 ];
 
-// 4. [LAB] ROUTING LOGIC
-$pageName = pathinfo(basename(__FILE__), PATHINFO_FILENAME);
+/**
+ * 4. [LAB] ROUTING & SANITIZATION
+ */
+$rawPage = match (true) {
+    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
+    default                          => pathinfo(basename(__FILE__), PATHINFO_FILENAME)
+};
 
-// 5. [MODERN PHP] Initialize Context Object
-$ctx = new \CmsForNerd\CmsContext(
-    content:    $content,
-    themeName:  $themeName,
-    cssPath:    $cssPath,
-    dataFile:   $dataFile,
-    scriptName: $pageName
+/**
+ * [SECURITY] Path Traversal Prevention
+ */
+$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
+$page = $isValid ? $rawPage : 'index';
+$pageName = pathinfo($page, PATHINFO_FILENAME);
+
+$content['data'] = $pageName;
+
+/**
+ * 5. [MODERN PHP] CmsContext Initialization (Factory Method)
+ */
+$ctx = createCmsContext(
+    content: $content,
+    pageName: $pageName
 );
 
-// 6. [SECURITY] Cloudflare Turnstile & Session
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
+/**
+ * 6. [SECURITY] Session & Bot Hardening
+ */
 if (file_exists(__DIR__ . '/includes/turnstile.php')) {
     require_once __DIR__ . '/includes/turnstile.php';
 }
 
 /**
- * 7. [RENDER] Theme Execution
- * Loads the pager() from the active theme folder.
+ * [LAB] BOT DETECTION
  */
-$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
-
-if (file_exists($pagerPath)) {
-    include_once $pagerPath;
-    pager($ctx);
-} else {
-    die("Fatal Error: Theme pager missing for welcome-kit.");
+if (file_exists(__DIR__ . '/includes/is_bot.php')) {
+    require_once __DIR__ . '/includes/is_bot.php';
+    if (is_bot()) {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
+        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
+        exit;
+    }
 }
 
-// 8. [PERFORMANCE] Output flush
+/**
+ * 7. [RENDER] Theme Dispatcher
+ */
+$pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
+if (file_exists($pagerPath)) {
+    require_once $pagerPath;
+    pager($ctx);
+} else {
+    header('HTTP/1.1 500 Internal Server Error');
+    echo "Fatal Error: Theme engine missing in /themes/{$ctx->themeName}/";
+}
+
 ob_end_flush();
