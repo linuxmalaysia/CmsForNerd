@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CmsForNerd;
 
 /**
- * [CORE] CmsContext - The State Machine for v3.4
+ * [CORE] CmsContext - The State Machine for v3.5
  * This object carries all global state through the theme engine.
  * Requirement: MUST be immutable (readonly).
  * * Compliance: PHP 8.4+, PSR-12, PHPStan Level 8
