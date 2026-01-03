@@ -1,4 +1,4 @@
-# CMSForNerd v3.4 - Static Analysis Configuration
+# CMSForNerd v3.5 - Static Analysis Configuration
 # Matching Composer Script: composer analyze
 
 parameters:
@@ -11,7 +11,27 @@ parameters:
         - includes
         - index.php
         - template.php
+        - about.php
+        - ai-dev.php
+        - ai-sop.php
+        - csp-nonce-guide.php
+        - exam-answers.php
+        - final-exam.php
+        - graduation.php
+        - hall-of-fame.php
+        - history.php
         - installation.php
+        - lab-manual.php
+        - lab-module1.php
+        - lab-module2.php
+        - lab-module3.php
+        - lab-module4.php
+        - lab-module5.php
+        - linux-setup.php
+        - security-policy.php
+        - sitemap-page.php
+        - welcome-kit.php
+        - windows-setup.php
 
     # We exclude the vendor directory to avoid checking third-party code.
     excludePaths:
