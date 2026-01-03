@@ -1,6 +1,6 @@
 /**
  * ==========================================================================
- * THEME: Lab_v3 (CMSForNerd v3.4)
+ * THEME: Lab_v3 (CMSForNerd v3.5)
  * FILE: themes/CmsForNerd/style.css
  * AUTHOR: Harisfazillah Jamel
  * * PHILOSOPHY: "Zero-Debt" Architecture
@@ -11,9 +11,9 @@
  */
 
 /**
- * [1. CONFIGURATION LAYER - DESIGN TOKENS] 
- * We use the :root pseudo-class to define CSS Variables. 
- * Educational Note: This implements a "Single Source of Truth." If you change 
+ * [1. CONFIGURATION LAYER - DESIGN TOKENS]
+ * We use the :root pseudo-class to define CSS Variables.
+ * Educational Note: This implements a "Single Source of Truth." If you change
  * the --lab-highlight here, every purple element in the CMS updates instantly.
  */
 :root {
@@ -23,12 +23,12 @@
     --lab-text: #1e293b;      /* Sharp slate for maximum readability */
     --lab-muted: #64748b;     /* Slate 500: Metadata and non-critical info */
     --lab-border: #e2e8f0;    /* Subtle structural boundaries */
-    
+
     /* -- BRANDING & ACCENTS -- */
     --lab-primary: #0f172a;   /* Navy: Infrastructure and Header */
     --lab-highlight: #8e44ad; /* Purple: "Nerd-Stack" Laboratory Accent */
     --lab-success: #27ae60;   /* Green: Compliance and Passed Tests */
-    
+
     /* -- TYPOGRAPHY -- */
     --f-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --f-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
@@ -39,7 +39,7 @@
 }
 
 /**
- * [2. BASE STYLES] 
+ * [2. BASE STYLES]
  * Resetting defaults to ensure a consistent cross-browser experience.
  */
 body {
@@ -53,9 +53,9 @@ body {
 }
 
 /**
- * [3. ARCHITECTURAL GRID] 
+ * [3. ARCHITECTURAL GRID]
  * Use CSS Grid for the 3-column "Master Pair" structure.
- * Educational Note: grid-template-areas allows us to name zones, 
+ * Educational Note: grid-template-areas allows us to name zones,
  * making the layout self-documenting.
  */
 #container {
@@ -64,11 +64,11 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     min-height: 100vh;
-    
+
     /* Grid Definition: Sidebar (220px) | Content (Flexible) | Sidebar (220px) */
     grid-template-columns: 220px 1fr 220px;
-    grid-template-rows: auto 1fr auto; 
-    
+    grid-template-rows: auto 1fr auto;
+
     grid-template-areas:
         "header header header"
         "left   main   right"
@@ -78,7 +78,7 @@ body {
 }
 
 /**
- * [4. HEADER COMPONENT] 
+ * [4. HEADER COMPONENT]
  * The "Instrument Panel" of the CMS.
  */
 #top {
@@ -91,7 +91,7 @@ body {
 }
 
 /**
- * [5. NAVIGATION SIDEBARS] 
+ * [5. NAVIGATION SIDEBARS]
  */
 #leftnav { grid-area: left; }
 #rightnav { grid-area: right; }
@@ -135,7 +135,7 @@ body {
 }
 
 /**
- * [6. MAIN CONTENT "SPECIMEN" AREA] 
+ * [6. MAIN CONTENT "SPECIMEN" AREA]
  * Where the -body.inc fragments are rendered.
  */
 #content {
@@ -162,8 +162,8 @@ body {
 }
 
 /**
- * [7. FOOTER & INLINE DEBT OVERRIDES] 
- * Educational Note: !important is used here specifically to sanitize 
+ * [7. FOOTER & INLINE DEBT OVERRIDES]
+ * Educational Note: !important is used here specifically to sanitize
  * legacy inline styles and ensure the "Sterile Lab" look remains enforced.
  */
 #footer {
@@ -183,9 +183,9 @@ body {
 }
 
 /**
- * [8. RESPONSIVE BRIDGE] 
+ * [8. RESPONSIVE BRIDGE]
  * Collapses the 3-column grid into a mobile-first stacked view.
- * Educational Note: We change the 'grid-template-areas' and 'grid-template-columns' 
+ * Educational Note: We change the 'grid-template-areas' and 'grid-template-columns'
  * to reorder content without touching the PHP/HTML source.
  */
 @media (max-width: 992px) {
@@ -201,7 +201,7 @@ body {
         padding: 0;
         gap: 0;
     }
-    
+
     #top, #content, #leftnav, #rightnav {
         border-radius: 0;
         border: none;
