@@ -35,7 +35,7 @@ require_once __DIR__ . '/includes/turnstile.php';
             <button type="submit">Test POST Security</button>
         </form>
 
-        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+        <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
             <div class="status">
                 <strong>[PASS]</strong> If you see this, the Turnstile server-to-server check was successful!
             </div>
