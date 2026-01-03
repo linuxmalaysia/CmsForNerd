@@ -25,7 +25,7 @@ if (!function_exists('get_site_pages')) {
         // [SECURITY] Scan the root directory. scandir() returns false on failure.
         $files = scandir(__DIR__ . '/../');
 
-        // [LAB v3.4] Level 8 check: Ensure $files is an array before processing.
+        // [LAB v3.5] Level 8 check: Ensure $files is an array before processing.
         if (!is_array($files)) {
             return [];
         }
