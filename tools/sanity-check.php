@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 /**
- * CMSForNerd v3.4 - Web Environment Sanity Check (Secure Version)
+ * CMSForNerd v3.5 - Web Environment Sanity Check (Secure Version)
  * Verifies Web Server configuration without exposing system paths.
  */
 
@@ -14,7 +15,7 @@ $requirements = [
     'writable'    => is_writable('../contents/'),
 ];
 
-$title = "🧪 CMSForNerd v3.4 Sanity Check";
+$title = "🧪 CMSForNerd v3.5 Sanity Check";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,9 +69,9 @@ $title = "🧪 CMSForNerd v3.4 Sanity Check";
             </li>
         </ul>
 
-        <?php if (!in_array(false, $requirements, true)): ?>
-            <p style="color: #155724; font-weight: bold; text-align: center;">✅ Your Web Server is fully optimized for the v3.4 Laboratory!</p>
-        <?php else: ?>
+        <?php if (!in_array(false, $requirements, true)) : ?>
+            <p style="color: #155724; font-weight: bold; text-align: center;">✅ Your Web Server is fully optimized for the v3.5 Laboratory!</p>
+        <?php else : ?>
             <p style="color: #721c24; font-weight: bold; text-align: center;">❌ Fix the red items above before proceeding.</p>
         <?php endif; ?>
         
