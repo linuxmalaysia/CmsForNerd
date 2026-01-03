@@ -1,8 +1,14 @@
-# CmsForNerd v3.1 - Public Sitemap Directive
+# CmsForNerd v3.4 - Public Sitemap Directive
 # We use X-Robots-Tag headers for internal security to prevent disclosure.
 
 User-agent: *
-Allow: /
+# 1. [SEO] Relative Sitemap Directive
+# Note: While some crawlers prefer FQCN, many modern engines accept 
+# the relative path or the server handles it via the Front Controller.
+Sitemap: /sitemap.php
 
-# Only expose the high-level sitemap
-Sitemap: https://www.linuxmalaysia.com/sitemap.php
+# 2. [LAB] Optimization
+# Allow all other public assets
+Allow: /
+Allow: /themes/
+Allow: /images/
