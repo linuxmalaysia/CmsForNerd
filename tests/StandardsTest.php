@@ -8,8 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * StandardsTest
- * 
- * Verifies that all files in the includes/ directory follow PSR-12 
+ *
+ * Verifies that all files in the includes/ directory follow PSR-12
  * and our RFC 2119 'MUST' rules (strict_types).
  */
 class StandardsTest extends TestCase
@@ -50,11 +50,11 @@ class StandardsTest extends TestCase
                     $line,
                     "File " . basename($file) . " line " . ($index + 1) . " MUST NOT use tabs."
                 );
-                
+
                 // Check for indentation (leading spaces)
                 if (preg_match('/^ +/', $line, $matches)) {
                     $spaces = strlen($matches[0]);
-                    
+
                     // Skip lines starting with " * " (part of a multi-line comment)
                     if (str_starts_with(trim($line), '*')) {
                         continue;
