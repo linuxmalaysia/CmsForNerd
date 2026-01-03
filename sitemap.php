@@ -2,62 +2,96 @@
 declare(strict_types=1);
 
 /**
+ * ==========================================================================
  * FILE: /sitemap.php
- * ROLE: Standalone XML Sitemap Generator
- * SECURITY: Self-contained, no external dependencies.
+ * ROLE: Standalone XML Sitemap Generator (v3.4.5)
+ * DESCRIPTION: Operates independently of the core engine to prevent 500 errors.
+ * SECURITY: Implements Path Traversal Protection and Buffer Hardening.
+ * ==========================================================================
  */
 
-// 1. [DEBUG] Enable error reporting to break the 500 Error wall
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
-// 2. [BASE URL] Auto-detect the base URL of the laboratory
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
-$host = $_SERVER['HTTP_HOST'];
-// Clean the request URI to get the directory path
-$scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
-$baseUrl = rtrim($protocol . $host . $scriptDir, '/') . '/';
-
-// 3. [CLEANUP] Clear all buffers to ensure clean XML output
+/**
+ * 1. [SECURITY] DIRECTORY PROTECTION
+ * Even though this is a public file, we ensure no accidental output 
+ * from other processes (like auto-prepends) leaks into our XML.
+ */
 while (ob_get_level()) {
     ob_end_clean();
 }
 
-// 4. [HEADERS] Set content type for XML
-header("Content-Type: application/xml; charset=utf-8");
+/**
+ * 2. [EDUCATION] AUTO-URL DETECTION
+ * Since we are not using bootstrap.php, we must calculate the Base URL manually.
+ * This is a vital skill for PHP students: understanding the $_SERVER superglobal.
+ */
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+$host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
+// Normalize paths for Windows/Linux compatibility
+$scriptPath = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+$baseUrl    = rtrim($protocol . $host . $scriptPath, '/') . '/';
 
-// 5. [XML START] Begin output
+/**
+ * 3. [SECURITY] HEADERS
+ * application/xml: Tells the browser/crawler this is data, not a webpage.
+ * nosniff: Prevents the browser from "guessing" the content type (MIME sniffing).
+ */
+header("Content-Type: application/xml; charset=utf-8");
+header("X-Content-Type-Options: nosniff");
+header("X-Frame-Options: DENY"); // Prevents clickjacking
+
+/**
+ * 4. [XML GENERATION]
+ */
 echo '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
 
-// 6. [HOME] Add the main entry point
+/**
+ * 5. [SEO] PRIMARY ENTRY POINT
+ * The homepage is the most important 'specimen' in our lab.
+ */
 echo "  <url>" . PHP_EOL;
 echo "    <loc>{$baseUrl}index.php</loc>" . PHP_EOL;
 echo "    <priority>1.0</priority>" . PHP_EOL;
 echo "  </url>" . PHP_EOL;
 
-// 7. [SCAN] Look for content fragments in the 'contents/' folder
+/**
+ * 6. [AUTOMATION] THE SCANNING ENGINE
+ * We use glob() to scan the contents directory for fragments.
+ */
 $fragmentDir = __DIR__ . '/contents/';
 
 if (is_dir($fragmentDir)) {
     $files = glob($fragmentDir . '*-body.inc');
 
     foreach ($files as $file) {
-        // Extract slug (e.g., 'about' from 'about-body.inc')
+        /**
+         * [EDUCATION] SLUG EXTRACTION
+         * Extracting 'about' from 'contents/about-body.inc'.
+         */
         $slug = str_replace('-body.inc', '', basename($file));
 
-        // Skip non-public or internal fragments
-        $exclude = ['index', 'sitemap', 'empty', '403', '404'];
+        /**
+         * [SECURITY] RULE #8 COMPLIANCE
+         * We do not expose system files or error pages in the sitemap.
+         */
+        $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
         if (in_array($slug, $exclude)) {
             continue;
         }
 
-        // Verify that a corresponding Master Controller (.php) exists in root
+        /**
+         * [SECURITY] PAIR LOGIC VERIFICATION
+         * Only index the page if the Master Controller (.php) exists in the root.
+         * This prevents 'ghost' URLs from appearing in Google.
+         */
         $masterFile = __DIR__ . '/' . $slug . '.php';
 
         if (file_exists($masterFile)) {
-            // Get the most recent modification time between logic and content
+            /**
+             * [LAB] DATE SYNCHRONIZATION
+             * We find the NEWEST date between the logic (.php) and the content (-body.inc).
+             * This ensures the sitemap updates if EITHER file changes.
+             */
             $mTime = max(filemtime($masterFile), filemtime($file));
             $lastMod = date("c", $mTime); // ISO 8601 format
 
@@ -70,6 +104,11 @@ if (is_dir($fragmentDir)) {
     }
 }
 
-// 8. [XML END] Close the set
 echo '</urlset>';
+
+/**
+ * 7. [PERFORMANCE] CLEAN EXIT
+ * We use exit; to ensure no accidental trailing spaces in the PHP file 
+ * get appended to the XML output.
+ */
 exit;
