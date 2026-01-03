@@ -1,6 +1,6 @@
 <!-- 
 ==========================================================================
-FILE: themes/lab_v3/bodytop.tpl
+FILE: themes/CmsForNerd/bodytop.tpl
 ROLE: Layout Opener (The "Upper Bun")
 ==========================================================================
 
