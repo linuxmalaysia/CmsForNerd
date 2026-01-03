@@ -31,5 +31,7 @@
 
 ## 🏛️ Project Records
 * [Modernization History](HISTORY.md)
+* [AI Ethics SOP](ai-sop.md)
+* [Project State Sync](AI-STATE-SYNC.md)
 * [Security Policy](security-policy.md)
 * [Sitemap](SITEMAP.md)
