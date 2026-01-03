@@ -7,7 +7,7 @@ $pages = get_site_pages();
 <div class="sitemap-list">
     <h2>Site Pages</h2>
     <ul>
-    <?php foreach ($pages as $page): ?>
+    <?php foreach ($pages as $page) : ?>
         <li>
             <a href="<?= $page['url'] ?>" title="<?= $page['title'] ?>">
                 <?= $page['title'] ?>
