@@ -8,7 +8,7 @@ declare(strict_types=1);
  * It inherits the $themeName variable from that function.
  *
  * @package linuxmalaysia/cmsfornerd
- * @version 3.1.3
+ * @version 3.5.0
  */
 
 // [SECURITY] Prevent direct access if not called through the bootstrap function
@@ -23,12 +23,12 @@ $CSSPATH = "themes/$themeName/style.css";
 
 // [METADATA] Theme Information
 // Useful for future updates or identifying the environment version.
-$THEME_VERSION = "3.1.3";
+$THEME_VERSION = "3.5.0";
 $THEME_AUTHOR  = "Harisfazillah Jamel";
 $THEME_NAME    = "CmsForNerd Laboratory";
 
 /**
  * [EXTENSIBILITY] Additional Theme Logic
- * You can define theme-specific constants or configurations here 
+ * You can define theme-specific constants or configurations here
  * without polluting the global namespace.
  */
