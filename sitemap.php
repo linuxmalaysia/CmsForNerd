@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 /**
  * ==========================================================================
  * FILE: /sitemap.php
- * ROLE: Standalone XML Sitemap Generator (v3.4.6)
- * DESCRIPTION: Operates independently of the core engine to prevent 
+ * ROLE: Standalone XML Sitemap Generator (v3.5)
+ * DESCRIPTION: Operates independently of the core engine to prevent
  * HTML/XML header conflicts and 500 errors.
  * SECURITY: Implements Buffer Hardening, Strict CSP, and Pair Logic.
  * ==========================================================================
@@ -13,7 +14,7 @@ declare(strict_types=1);
 
 /**
  * 1. [SECURITY] OUTPUT BUFFER HARDENING
- * Clears any buffers to prevent server-level HTML injection or 
+ * Clears any buffers to prevent server-level HTML injection or
  * auto-prepended code from corrupting the XML structure.
  */
 while (ob_get_level()) {
@@ -47,7 +48,7 @@ header("Content-Security-Policy: default-src 'none'; style-src 'self';");
 
 /**
  * [SECURITY] CACHE CONTROL
- * Ensures search engines and browsers always fetch the latest version 
+ * Ensures search engines and browsers always fetch the latest version
  * from the server rather than relying on an outdated cached copy.
  */
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
@@ -90,7 +91,7 @@ if (is_dir($fragmentDir)) {
          * Prevent sensitive system files or error pages from being indexed.
          */
         $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
-        if (in_array($slug, $exclude)) {
+        if (in_array($slug, $exclude, true)) {
             continue;
         }
 
@@ -103,7 +104,7 @@ if (is_dir($fragmentDir)) {
         if (file_exists($masterFile)) {
             /**
              * [LAB] DATE SYNCHRONIZATION
-             * We find the NEWEST modification date between the logic (.php) 
+             * We find the NEWEST modification date between the logic (.php)
              * and the content (-body.inc) for SEO accuracy.
              */
             $mTime = max(filemtime($masterFile), filemtime($file));
