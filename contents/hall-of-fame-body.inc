@@ -1,17 +1,19 @@
 <?php
+
 /**
  * Nerd Hall of Fame Body
- * Featuring the Architects of the v3.3 Refactor.
+ * Featuring the Architects of the v3.5 Modernization.
  */
+
 $contributors = [
     [
-        'name' => 'LinuxMalaysia', 
-        'date' => '2025-12-30', 
-        'fix'  => 'Project Lead & v3.3 Architecture'
+        'name' => 'LinuxMalaysia',
+        'date' => '2026-01-04',
+        'fix'  => 'Project Lead & v3.5 Architecture'
     ],
     [
-        'name' => 'Google Gemini', 
-        'date' => '2025-12-30', 
+        'name' => 'Google Gemini',
+        'date' => '2026-01-04',
         'fix'  => 'Modernization Engine & AI Thought Partner'
     ]
 ];
@@ -24,7 +26,7 @@ $contributors = [
     </header>
 
     <div class="contributor-grid">
-        <?php foreach($contributors as $c): ?>
+        <?php foreach ($contributors as $c) : ?>
             <section class="contributor-card">
                 <div class="card-content">
                     <span class="name"><?= htmlspecialchars($c['name']) ?></span>
