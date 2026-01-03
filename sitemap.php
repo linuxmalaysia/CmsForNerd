@@ -4,16 +4,17 @@ declare(strict_types=1);
 /**
  * ==========================================================================
  * FILE: /sitemap.php
- * ROLE: Standalone XML Sitemap Generator (v3.4.5)
- * DESCRIPTION: Operates independently of the core engine to prevent 500 errors.
- * SECURITY: Implements Path Traversal Protection and Buffer Hardening.
+ * ROLE: Standalone XML Sitemap Generator (v3.4.6)
+ * DESCRIPTION: Operates independently of the core engine to prevent 
+ * HTML/XML header conflicts and 500 errors.
+ * SECURITY: Implements Buffer Hardening, Strict CSP, and Pair Logic.
  * ==========================================================================
  */
 
 /**
- * 1. [SECURITY] DIRECTORY PROTECTION
- * Even though this is a public file, we ensure no accidental output 
- * from other processes (like auto-prepends) leaks into our XML.
+ * 1. [SECURITY] OUTPUT BUFFER HARDENING
+ * Clears any buffers to prevent server-level HTML injection or 
+ * auto-prepended code from corrupting the XML structure.
  */
 while (ob_get_level()) {
     ob_end_clean();
@@ -21,33 +22,46 @@ while (ob_get_level()) {
 
 /**
  * 2. [EDUCATION] AUTO-URL DETECTION
- * Since we are not using bootstrap.php, we must calculate the Base URL manually.
- * This is a vital skill for PHP students: understanding the $_SERVER superglobal.
+ * Manually calculates the Base URL to ensure compatibility across
+ * localhost, development domains (.test), and production servers.
  */
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
 $host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
-// Normalize paths for Windows/Linux compatibility
-$scriptPath = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
-$baseUrl    = rtrim($protocol . $host . $scriptPath, '/') . '/';
+$dirPath  = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+$baseUrl  = rtrim($protocol . $host . $dirPath, '/') . '/';
 
 /**
- * 3. [SECURITY] HEADERS
- * application/xml: Tells the browser/crawler this is data, not a webpage.
- * nosniff: Prevents the browser from "guessing" the content type (MIME sniffing).
+ * 3. [SECURITY] HARDENED HEADERS
+ * We apply strict headers to ensure the browser treats this as pure data.
  */
 header("Content-Type: application/xml; charset=utf-8");
-header("X-Content-Type-Options: nosniff");
-header("X-Frame-Options: DENY"); // Prevents clickjacking
+header("X-Content-Type-Options: nosniff"); // Prevents MIME-type sniffing
+header("X-Frame-Options: DENY");           // Prevents clickjacking
 
 /**
- * 4. [XML GENERATION]
+ * [SECURITY] RESTRICTIVE CSP
+ * Since this is XML, we disable all external resources (scripts, styles, etc.)
+ * to prevent any form of XSS or injection.
+ */
+header("Content-Security-Policy: default-src 'none'; style-src 'self';");
+
+/**
+ * [SECURITY] CACHE CONTROL
+ * Ensures search engines and browsers always fetch the latest version 
+ * from the server rather than relying on an outdated cached copy.
+ */
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+
+/**
+ * 4. [XML START]
  */
 echo '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
 
 /**
  * 5. [SEO] PRIMARY ENTRY POINT
- * The homepage is the most important 'specimen' in our lab.
+ * The root index.php is the first 'specimen' to be indexed.
  */
 echo "  <url>" . PHP_EOL;
 echo "    <loc>{$baseUrl}index.php</loc>" . PHP_EOL;
@@ -56,23 +70,24 @@ echo "  </url>" . PHP_EOL;
 
 /**
  * 6. [AUTOMATION] THE SCANNING ENGINE
- * We use glob() to scan the contents directory for fragments.
+ * Scans the laboratory contents directory for valid page pairs.
  */
 $fragmentDir = __DIR__ . '/contents/';
 
 if (is_dir($fragmentDir)) {
-    $files = glob($fragmentDir . '*-body.inc');
+    // Look for all Slave Fragments
+    $fragments = glob($fragmentDir . '*-body.inc');
 
-    foreach ($files as $file) {
+    foreach ($fragments as $file) {
         /**
          * [EDUCATION] SLUG EXTRACTION
-         * Extracting 'about' from 'contents/about-body.inc'.
+         * Extracting the page name (e.g., 'about') from 'about-body.inc'.
          */
         $slug = str_replace('-body.inc', '', basename($file));
 
         /**
          * [SECURITY] RULE #8 COMPLIANCE
-         * We do not expose system files or error pages in the sitemap.
+         * Prevent sensitive system files or error pages from being indexed.
          */
         $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
         if (in_array($slug, $exclude)) {
@@ -82,33 +97,33 @@ if (is_dir($fragmentDir)) {
         /**
          * [SECURITY] PAIR LOGIC VERIFICATION
          * Only index the page if the Master Controller (.php) exists in the root.
-         * This prevents 'ghost' URLs from appearing in Google.
          */
         $masterFile = __DIR__ . '/' . $slug . '.php';
 
         if (file_exists($masterFile)) {
             /**
              * [LAB] DATE SYNCHRONIZATION
-             * We find the NEWEST date between the logic (.php) and the content (-body.inc).
-             * This ensures the sitemap updates if EITHER file changes.
+             * We find the NEWEST modification date between the logic (.php) 
+             * and the content (-body.inc) for SEO accuracy.
              */
             $mTime = max(filemtime($masterFile), filemtime($file));
-            $lastMod = date("c", $mTime); // ISO 8601 format
+            $isoDate = date("c", $mTime); // ISO 8601 format
 
             echo "  <url>" . PHP_EOL;
             echo "    <loc>{$baseUrl}{$slug}.php</loc>" . PHP_EOL;
-            echo "    <lastmod>{$lastMod}</lastmod>" . PHP_EOL;
+            echo "    <lastmod>{$isoDate}</lastmod>" . PHP_EOL;
             echo "    <priority>0.8</priority>" . PHP_EOL;
             echo "  </url>" . PHP_EOL;
         }
     }
 }
 
+// 7. [XML END]
 echo '</urlset>';
 
 /**
- * 7. [PERFORMANCE] CLEAN EXIT
- * We use exit; to ensure no accidental trailing spaces in the PHP file 
- * get appended to the XML output.
+ * [PERFORMANCE] CLEAN EXIT
+ * Terminates script execution to ensure no accidental trailing spaces
+ * in the file are appended to the XML stream.
  */
 exit;
