@@ -1,6 +1,6 @@
-# 🗺️ Sitemap Guide
+# 🗺️ Sitemap & Discovery (v3.5)
 
-The Sitemap in **CmsForNerd v3.1** serves as the navigational backbone for both human visitors and search engine crawlers. It automatically reflects the state of your flat-file laboratory.
+The Sitemap in **CmsForNerd v3.5** serves as the navigational backbone for both human visitors and search engine crawlers. It automatically reflects the state of your flat-file laboratory.
 
 ---
 
