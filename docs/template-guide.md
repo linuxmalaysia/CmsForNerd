@@ -1,8 +1,8 @@
-# 🎨 CmsForNerd v3.4 Laboratory Guide
+# 🎨 CmsForNerd v3.5 Laboratory Guide
 
 ### Mastering the "Pair Logic" & Context Engine
 
-The `template.php` file acts as the **Master Controller**. In v3.4, you don't need to write new PHP logic for every page. You simply duplicate the template and pair it with a content fragment.
+The `template.php` file acts as the **Master Controller**. In v3.5, you don't need to write new PHP logic for every page. You simply duplicate the template and pair it with a content fragment.
 
 ---
 
@@ -45,7 +45,6 @@ declare(strict_types=1);
 
 /**
  * 1. [PERFORMANCE] Enable GZIP
- * Check: Is output buffering starting correctly? 
  * This reduces bandwidth for mobile lab students.
  */
 if (!ob_start("ob_gzhandler")) { 
@@ -54,17 +53,15 @@ if (!ob_start("ob_gzhandler")) {
 
 /**
  * 2. [LAB] BOOTSTRAP PHASE
- * Check: Ensure the path to bootstrap.php is correct.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
 /**
  * 3. [SEO/AI] Metadata
- * Check: Update 'title', 'description', and 'schemaType'.
  * AI Crawlers use 'schemaType' to categorize your laboratory data.
  */
 $content = [
-    'title'       => "Service Lab | CmsForNerd v3.4",
+    'title'       => "Service Lab | CmsForNerd v3.5",
     'author'      => "Harisfaz Jamal",
     'description' => "Lab description here.",
     'keywords'    => "PHP 8.4, Lab, CMS",
@@ -73,7 +70,7 @@ $content = [
 
 /**
  * 4. [LAB] ROUTING & SANITIZATION
- * Check: The 'match' expression automatically detects the filename.
+ * The 'match' expression automatically detects the filename.
  * SecurityUtils::isValidPageName() prevents Path Traversal attacks.
  */
 $rawPage = match (true) {
@@ -84,27 +81,39 @@ $rawPage = match (true) {
 $isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
 $page = $isValid ? $rawPage : 'index';
 $pageName = pathinfo($page, PATHINFO_FILENAME);
-
-// Check: This 'data' key must match your .inc filename (without the -body.inc part)
 $content['data'] = $pageName;
 
 /**
- * 5. [MODERN PHP] CmsContext Initialization
- * Check: We use named arguments for clarity. 
- * This object is the "Single Source of Truth" for the theme.
+ * 5. [MODERN PHP] CmsContext Initialization (Factory Method)
+ * Bundles all state into an immutable object for the theme.
  */
 $ctx = createCmsContext(content: $content, pageName: $pageName);
 
 /**
+ * 6. [SECURITY] Session & Bot Hardening
+ * Integrates Turnstile and Lite-Mode Bot Detection.
+ */
+if (file_exists(__DIR__ . '/includes/turnstile.php')) {
+    require_once __DIR__ . '/includes/turnstile.php';
+}
+
+if (file_exists(__DIR__ . '/includes/is_bot.php')) {
+    require_once __DIR__ . '/includes/is_bot.php';
+    if (is_bot()) {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
+        exit;
+    }
+}
+
+/**
  * 7. [RENDER] Theme Dispatcher
- * Check: Does themes/[your-theme]/pager.php exist?
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 if (file_exists($pagerPath)) {
     require_once $pagerPath;
     pager($ctx);
 }
-
 ```
 
 ---
@@ -119,10 +128,8 @@ Before moving to production, perform these three laboratory checks:
 
 ---
 
-## ⚖️ Laboratory Standards (v3.4 Update)
+## ⚖️ Laboratory Standards (v3.5 Update)
 
 * **MUST**: Keep `declare(strict_types=1);` at the top of all .php files.
 * **MUST NOT**: Modify the Routing Logic or Theme Execution blocks in copied files.
 * **REQUIRED**: Use the `$ctx` object to access any page data within your theme.
-
----
