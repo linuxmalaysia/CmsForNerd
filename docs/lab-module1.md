@@ -1,6 +1,8 @@
-# 🧪 Lab Module 1: Modern Architecture (v3.3)
+# 🧪 Lab Module 1: Modern Architecture (v3.5)
 
 > **Topic:** Modern PHP 8.4+ Architecture & PHP 9 Readiness
+
+---
 
 ## 🎯 Learning Objectives
 1. Eliminate boilerplate using **Constructor Property Promotion**.
@@ -9,11 +11,32 @@
 
 ---
 
-## 🛠️ Step 1: Constructor Property Promotion
-Refactor the `User` class to reduce boilerplate. PHP 8.4 allows you to declare properties directly in the constructor signature.
+## ⚠️ Requirement Level
+Students **MUST** implement Constructor Promotion and Property Hooks to pass the "Code Elegance" audit.
 
+---
+
+## 🛠️ Step 1: Constructor Property Promotion
+
+In legacy PHP, you had to declare a property, define it in the constructor, and then assign it. In PHP 8.4, we do all three in one line.
+
+**Task:** Refactor the `User` class in `includes/User.php`.
+
+### Old Way (Legacy)
 ```php
-// Modern Way (PHP 8.4)
+final class User {
+    public readonly string $username;
+    public string $role;
+    
+    public function __construct(string $username, string $role = 'student') {
+        $this->username = $username;
+        $this->role = $role;
+    }
+}
+```
+
+### New Way (PHP 8.4)
+```php
 final class User {
     public function __construct(
         public readonly string $username,
@@ -21,39 +44,71 @@ final class User {
     ) {}
 }
 ```
-#### Part 2: Property Hooks and Asymmetric Visibility
-```markdown
+
+---
+
 ## 🧪 Step 2: Implementing Property Hooks
-Property hooks allow you to intercept the "Get" or "Set" action. Use this in your `CmsContext` to automate data validation.
+
+Property hooks allow you to intercept the "Get" or "Set" action. This is perfect for data that needs to be formatted or validated on the fly.
+
+**Exercise 1.1: The Auto-Title Hook**
+Update your `CmsContext` to automatically capitalize page titles when they are accessed.
 
 ```php
 public string $pageTitle {
+    // The 'get' hook acts like a virtual getter
     get => ucfirst($this->pageTitle);
+    
+    // The 'set' hook can sanitize data before it hits the property
     set => $this->pageTitle = trim($value);
 }
 ```
 
-##🔐 Step 3: Asymmetric Visibility
+---
 
-Set a property to be Publicly Readable but Privately Writable using public private(set). This ensures that internal logic can update a state (like a view counter) while preventing external tampering.
-✅ Step 4: Verification
+## 🔐 Step 3: Asymmetric Visibility
 
-Run your compliance tool in the terminal: composer check-style
+This allows a property to be **Publicly Readable** but **Privately Writable**.
 
-Question: If a property is marked as readonly, can it also have a set hook? (Hint: Think about why 'Readonly' and 'Setting a value' might conflict).
+**Exercise 1.2: The Counter Challenge**
+1. Create a property called `$viewCount`.
+2. Set its visibility to `public private(set)`.
+3. **The Test:** Try to change the count from `index.php` (it should fail). Only internal logic can update it.
+
+```php
+public private(set) int $viewCount = 0;
+
+public function incrementViews(): void {
+    $this->viewCount++; // This works!
+}
+```
 
 ---
 
-### 🚀 Git Commands to Push to GitHub
+## ✅ Step 4: Verification (The "Architect" Audit)
 
-Run these in your **Antigravity Terminal** to sync everything we've done (Sitemap, README, Welcome-Kit, Lab-Manual, and Module 1):
+Run your compliance tool to ensure your new architecture follows PSR-12:
+`composer check-style`
+
+**Question for the Student:** If a property is marked as `readonly`, can it also have a `set` hook?  
+*(Hint: Think about why 'Readonly' and 'Setting a value' might conflict).*
+
+---
+
+## 🎓 RFC 2119 Standards Summary
+* **MUST:** Use `readonly` for any data that should never change.
+* **SHOULD:** Use Constructor Promotion for all Data Transfer Objects (DTOs).
+* **MAY:** Use Property Hooks to replace complex getter methods.
+
+---
+
+### 🚀 Git Commands
+Run these in your **Antigravity Terminal** to sync your progress:
 
 ```bash
-# 1. Stage all your refactored PHP files and new Markdown docs
 git add .
-
-# 2. Create a versioned commit message
-git commit -m "Build v3.3: Refactored Module 1, Lab Manual, and finalized GitBook summary"
-
-# 3. Push to your repository
+git commit -m "Build v3.5: Completed Module 1 (Modern Architecture)"
 git push origin master
+```
+
+[Next: Module 2 (Standards)](lab-module2.md)
