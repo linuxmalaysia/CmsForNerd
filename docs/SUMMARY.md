@@ -1,42 +1,35 @@
-# 📚 CMSForNerd v3.3 Laboratory
+# Summary
+# CMSForNerd Laboratory (v3.5)
 
-* [🏠 Home](../README.md)
-* [📜 Architecture Requirements (RFC 2119)](../DOCS_REQUIREMENTS.md)
-* [📜 Project History](HISTORY.md)
-* [🌟 Hall of Fame](hall-of-fame.md)
-* [🛠️ Installation Guide](INSTALLATION.md)
-* [🏁 Welcome Kit](welcome-kit.md)
+* [Introduction](README.md)
+* [Student Welcome Kit](welcome-kit.md)
 
-## 🎓 The Laboratory Modules
-* [🧪 Module 1: Front Controller & Property Hooks](lab-module1.md)
-* [🛡️ Module 2: PSR-12 & Standard Compliance](lab-module2.md)
-* [📦 Module 3: Context & Defensive Engineering](lab-module3.md)
-* [🤖 Module 4: Automated Testing (PHPUnit 11)](lab-module4.md)
-* [📊 Module 5: Code Coverage & QA](lab-module5.md)
+## 📘 The Manuals
+* [Installation Guide](INSTALLATION.md)
+* [Template Guide](template-guide.md)
+* [Lab Manual](lab-manual.md)
+* [Sitemap & SEO Guide](sitemap-guide.md)
+* [AI-Assisted Dev Guide](ai-dev.md)
 
-## 📖 Technical Manuals
-* [📘 Lab Manual](lab-manual.md)
-* [📂 Lab Guide (Structure)](LAB-GUIDE.md)
-* [🎨 Template & Theme Guide](template-guide.md)
-* [🗺️ Sitemap Configuration](sitemap-guide.md)
-* [🛡️ Security Policy](security-policy.md)
-* [🔒 CSP & Nonce Management](csp-nonce.md)
+## 🧪 Laboratory Modules
+* [Module 1: Modern Architecture](lab-module1.md)
+* [Module 2: Standards (PSR-12)](lab-module2.md)
+* [Module 3: Defensive Engineering](lab-module3.md)
+* [Module 4: Automated Testing](lab-module4.md)
+* [Module 5: Coverage & QA](lab-module5.md)
 
-## 🤖 AI Agent & Development
-* [🤖 AI Agent Development SOP](ai-sop.md)
-* [💻 AI Dev Workflow](ai-dev.md)
-* [🔄 AI State Synchronization](AI-STATE-SYNC.md)
+## 🐧 Environment Setup
+* [Linux Environment](linux-setup.md)
+* [Windows Environment](windows-setup.md)
 
-## 💻 Environment Setup
-* [🪟 Windows (Herd/Laragon) Setup](windows-setup.md)
-* [🐧 Linux (Ubuntu/Debian) Setup](linux-setup.md)
-* [⚙️ VS Code Debugging](../.vscode/DEBUG.md)
-
-## 🏁 Final Certification
-* [🚩 Final Exam: Break-Fix Challenge](final-exam.md)
-* [🔑 Exam Answer Key](exam-answers.md)
-* [🎓 Graduation & Certificate](graduation.md)
+## 🎓 Graduation
+* [Final Exam Challenge](final-exam.md)
+* [Claim Your Certificate](graduation.md)
+* [Hall of Fame](hall-of-fame.md)
 
 ---
-* [🕒 Changelog](../CHANGELOG.md)
-* [📜 License](../LICENSE.md)
+
+## 🏛️ Project Records
+* [Modernization History](HISTORY.md)
+* [Security Policy](security-policy.md)
+* [Sitemap](SITEMAP.md)
