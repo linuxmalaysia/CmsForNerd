@@ -1,14 +1,36 @@
-<article class="modernization-history"> <header class="history-header"> <h1>Modernization History: The Journey to v3.3</h1> <p class="intro"> Starting in late 2025, CMSForNerd underwent a radical transformation. This log tracks the shift from a 20-year-old legacy codebase to a modern, AI-synergized developer's laboratory. </p> </header>
+<article class="modernization-history"> <header class="history-header"> <h1>Modernization History: The Journey to v3.5</h1> <p class="intro"> Starting in late 2025, CMSForNerd underwent a radical transformation. This log tracks the shift from a 20-year-old legacy codebase to a modern, AI-synergized developer's laboratory. </p> </header>
 <div class="timeline">
+    <section class="version-block v35">
+        <div class="version-tag">v3.5</div>
+        <h2>Modernization Mastery (Current)</h2>
+        <p><strong>Focus:</strong> Documentation Synchronization and Architectural Finalization.</p>
+        <ul>
+            <li><strong>GitBook Synchronization:</strong> Full alignment of <code>docs/</code> with <code>contents/</code> logic.</li>
+            <li><strong>Factory Pattern:</strong> Refactored context initialization to <code>createCmsContext()</code> factory.</li>
+            <li><strong>Bot detection+:</strong> Enhanced <code>is_bot.php</code> with version-aware text-mode responses.</li>
+            <li><strong>Audit Completion:</strong> 100% pass rate for PHPStan Level 8 and PSR-12 across all controllers.</li>
+        </ul>
+    </section>
+
+    <section class="version-block v34">
+        <div class="version-tag">v3.4</div>
+        <h2>The Semantic Alignment</h2>
+        <p><strong>Focus:</strong> AI Readiness and Metadata standardization.</p>
+        <ul>
+            <li><strong>JSON-LD 2.0:</strong> Modernized metadata layer in <code>common-headertag.inc</code> using the <code>CmsContext</code> object.</li>
+            <li><strong>Theme Modernization:</strong> Corrected theme path references from <code>lab_v3</code> to the standardized <code>CmsForNerd</code> theme.</li>
+            <li><strong>Controller Sync:</strong> Synchronized 21 page controllers to the v3.4 template baseline.</li>
+        </ul>
+    </section>
+
     <section class="version-block v33">
         <div class="version-tag">v3.3</div>
-        <h2>The "Bootstrap" Milestone (Current)</h2>
+        <h2>The "Bootstrap" Milestone</h2>
         <p><strong>Focus:</strong> Performance, Stability, and Runtime Global-Safe Initialization.</p>
         <ul>
             <li><strong>Centralized Bootstrap:</strong> Introduced <code>includes/bootstrap.php</code> to fix scope issues in the <code>CmsContext</code>.</li>
             <li><strong>GZIP Optimization:</strong> Standardized <code>ob_gzhandler</code> across all entry points for 70% faster data delivery.</li>
             <li><strong>Instructor Resources:</strong> Finalized the <em>Official Answer Key</em> and <em>Hall of Fame</em> with full v3.3 logic.</li>
-            <li><strong>PHP 9 Readiness:</strong> Full audit of strict types to ensure compatibility with PHP 9's upcoming engine changes.</li>
         </ul>
     </section>
 
@@ -41,11 +63,13 @@
 </footer>
 </article>
 
-<style> :root { --v33-color: #2ecc71; --v32-color: #3498db; --v31-color: #9b59b6; --bg-gray: #f9f9f9; } .modernization-history { max-width: 900px; margin: 0 auto; line-height: 1.8; } .history-header { text-align: center; margin-bottom: 50px; } .history-header h1 { color: #2c3e50; font-size: 2.4rem; border-bottom: 3px solid var(--v33-color); display: inline-block; } .intro { background: var(--bg-gray); padding: 20px; border-left: 5px solid #ccc; font-style: italic; }
+<style> :root { --v35-color: #e67e22; --v34-color: #f1c40f; --v33-color: #2ecc71; --v32-color: #3498db; --v31-color: #9b59b6; --bg-gray: #f9f9f9; } .modernization-history { max-width: 900px; margin: 0 auto; line-height: 1.8; } .history-header { text-align: center; margin-bottom: 50px; } .history-header h1 { color: #2c3e50; font-size: 2.4rem; border-bottom: 3px solid var(--v33-color); display: inline-block; } .intro { background: var(--bg-gray); padding: 20px; border-left: 5px solid #ccc; font-style: italic; }
 .timeline { position: relative; padding: 20px 0; }
 .version-block { margin-bottom: 40px; padding: 25px; border-radius: 12px; background: #fff; border: 1px solid #eee; position: relative; }
 .version-tag { position: absolute; top: -15px; right: 20px; padding: 5px 15px; border-radius: 20px; color: white; font-weight: bold; font-size: 0.9rem; }
 
+.v35 { border-left: 6px solid var(--v35-color); } .v35 .version-tag { background: var(--v35-color); }
+.v34 { border-left: 6px solid var(--v34-color); } .v34 .version-tag { background: var(--v34-color); }
 .v33 { border-left: 6px solid var(--v33-color); } .v33 .version-tag { background: var(--v33-color); }
 .v32 { border-left: 6px solid var(--v32-color); } .v32 .version-tag { background: var(--v32-color); }
 .v31 { border-left: 6px solid var(--v31-color); } .v31 .version-tag { background: var(--v31-color); }
