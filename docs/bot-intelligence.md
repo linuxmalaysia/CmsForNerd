@@ -2,42 +2,53 @@
 
 To maintain a "Zero-Error" laboratory, we use a hybrid bot detection system. This ensures that legitimate crawlers (Google, Bing, Apple) are recognized even if their User-Agents are stripped, while keeping performance lean.
 
-## 1. How IPs are Populated
+## 1. Executive Summary (The 5 W's)
 
-The project uses a local database located at [data/trusted-bots.json](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/data/trusted-bots.json). This file is populated in two ways:
+*   **What**: A defense-in-depth module combining User-Agent regex with IP-based CIDR verification.
+*   **Why**: To distinguish between legitimate search engines (SEO) and malicious scrapers/spam bots. Malicious bots often spoof User-Agents, but they cannot spoof their IP source in the same way.
+*   **Where**: Located in [includes/is_bot.php](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/includes/is_bot.php).
+*   **When**: 
+    *   Triggered whenever metadata or performance layers need to decide if they are serving a human or a crawler.
+    *   Used in `block_datacenter_traffic()` to allow legitimate bots to pass while blocking institutional scrapers.
+*   **How**: It uses a "Fast-Path" for localhost, followed by a RegEx UA check, and finally a "Trust-but-Verify" IP lookup against a local JSON database.
+
+## 2. Implementation: How it Works
+
+The logic flow in [is_bot.php](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/includes/is_bot.php) is designed for maximum speed:
+
+1.  **Fast Path**: If the IP is `127.0.0.1`, it immediately returns `false` (Not a bot).
+2.  **Context-Aware Cache**: It stores the result of the last detection. If the IP and User-Agent haven't changed since the last call, it returns the cached result (0ms overhead).
+3.  **Pattern Match**: It checks the `HTTP_USER_AGENT` against known strings like `googlebot` or `bingbot`.
+4.  **CIDR Verification**: If the UA matches, it verifies the IP against [data/trusted-bots.json](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/data/trusted-bots.json).
+
+## 3. Data Management
+
+The project uses a local database for verified ranges. This ensures we don't make external API calls on every request.
 
 ### Automated Update
-The `update_trusted_bot_ips()` function in [is_bot.php](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/includes/is_bot.php) connects to the following official endpoints:
-- **Google**: `https://developers.google.com/search/apis/ipranges/googlebot.json`
-- **Bing**: `https://www.bing.com/toolbox/bingbot.json`
-- **Apple**: Official HT204683 documentation prefixes.
+Run the following command to sync with official Google/Bing endpoints:
+```bash
+composer update-bots
+```
+This executes `update_trusted_bot_ips()` which fetches live CIDR blocks from:
+*   **Google**: [googlebot.json](https://developers.google.com/search/apis/ipranges/googlebot.json)
+*   **Bing**: [bingbot.json](https://www.bing.com/toolbox/bingbot.json)
 
-### Manual Update
-Developers can manually add IP ranges or override classifications by editing `data/trusted-bots.json`.
-
-**JSON Format Example:**
+### Manual Overrides
+Developers can manually add IP ranges to `data/trusted-bots.json`.
 ```json
 {
-  "updated": "2026-01-04T12:00:00+08:00",
-  "bots": [
-    {
-      "name": "Google",
-      "prefixes": ["66.249.64.0/19", "2001:4860:4801::/48"]
-    },
-    {
-      "name": "Manual-Override",
-      "prefixes": ["192.168.1.100/32"]
-    }
-  ]
+  "name": "Custom-Bot",
+  "prefixes": ["1.2.3.4/32"]
 }
 ```
 
-## 2. Performance Safeguards
+## 4. Performance Safeguards
 
-1. **Localhost Exclusion**: Requests from `127.0.0.1` or `::1` bypass all checks immediately.
-2. **Static Result Cache**: The result of `is_bot()` is stored in a static variable. Subsequent calls in the same request cost 0ms.
-3. **Lazy Loading**: The IP list is ONLY loaded from disk if the User-Agent matches a "potential bot" pattern, or if a security threshold is triggered.
+1.  **Lazy Loading**: The IP list is ONLY loaded from disk if a potential bot is detected via User-Agent.
+2.  **Static Result Cache**: Optimized for multiple calls within a single execution cycle.
+3.  **Localhost Exclusion**: Zero latency during local development.
 
-## 3. Maintenance
+## 5. Maintenance
 
-Regularly run `composer update-bots` (if implemented) or manually trigger the update function to keep the CIDR ranges current.
+Regularly run `composer update-bots` to keep the CIDR ranges current. This is critical as search engine IP ranges can change periodically.

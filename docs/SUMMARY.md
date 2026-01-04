@@ -11,6 +11,7 @@
 * [Sitemap & SEO Guide](sitemap-guide.md)
 * [Directory Security Guide](directory-security.md)
 * [Bot Intelligence Guide](bot-intelligence.md)
+* [Turnstile Protection Guide](turnstile-protection.md)
 * [AI-Assisted Dev Guide](ai-dev.md)
 
 ## 🧪 Laboratory Modules

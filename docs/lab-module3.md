@@ -68,15 +68,36 @@ document.body.appendChild(script);
 
 ---
 
-## 🤖 Layer 4: Implementing Turnstile (Bot Defense)
+---
 
-We use **Cloudflare Turnstile** to verify "humanness" without CAPTCHAs.
+## 🤖 Layer 4: Hybrid Bot Intelligence & Turnstile
 
-**Task:** Integrate the Turnstile widget into a form:
-```html
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-<div class="cf-turnstile" data-sitekey="your-site-key"></div>
-```
+To defend against automated threats, we use two complimentary systems: **Hybrid Bot Intelligence** (for identifying good bots) and **Cloudflare Turnstile** (for blocking bad bots).
+
+### 4.1 Hybrid Bot Intelligence (`is_bot.php`)
+This system ensures that legitimate search crawlers are served optimized content even if security thresholds are high.
+
+*   **Logic**: It uses a "Pattern-Match" on the User-Agent, followed by a "CIDR Verification" of the IP source.
+*   **Exercise**: Run `composer update-bots` to synchronize your local bot database with official Google/Bing endpoints.
+*   **Code Verification**:
+    ```php
+    if (is_bot()) {
+        // Legitimate crawler detected
+    }
+    ```
+
+### 4.2 Cloudflare Turnstile Verification
+Turnstile guards our **POST** routes. It is a non-intrusive challenge that proves a visitor is human before allowing data submission.
+
+*   **Integration**:
+    *   **Frontend**: Include the Turnstile widget in your `<form>`.
+    *   **Backend**: `includes/turnstile.php` captures the token and verifies it server-to-server.
+*   **Logic**:
+    ```php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
+        // Automatically verified in includes/turnstile.php
+    }
+    ```
 
 ---
 

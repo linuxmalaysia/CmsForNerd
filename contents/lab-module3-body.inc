@@ -171,9 +171,38 @@ document.body.appendChild(script);</code></pre>
     </section>
 
     <section class="step">
-        <h2>🤖 Step 4: Implementing Turnstile (Bot Defense)</h2>
-        <p>We use <strong>Cloudflare Turnstile</strong> to verify "humanness" without frustrating users with traditional CAPTCHAs.</p>
-        <p><strong>Task:</strong> Integrate the Turnstile widget.</p>
+        <h2>🤖 Step 4: Hybrid Security - Bot Intel & Turnstile</h2>
+        <p>In v3.5, we implement a <strong>Hybrid Security</strong> approach to handle automated traffic. We distinguish between "Good Bots" (Search Engines) and "Bad Bots" (Spammers).</p>
+        
+        <div class="comparison-grid">
+            <div class="vulnerable-code" style="border-left-color: #007bff;">
+                <h4>🔍 Good Bots: Bot Intelligence</h4>
+                <p>Ensures SEO crawlers are recognized and served correctly.</p>
+                <ul>
+                    <li><strong>Location:</strong> <code>includes/is_bot.php</code></li>
+                    <li><strong>Trigger:</strong> Active on every request (GET/POST).</li>
+                    <li><strong>Command:</strong> Run <code>composer update-bots</code> to sync verified IP ranges.</li>
+                </ul>
+            </div>
+
+            <div class="secure-code" style="border-left-color: #dc3545;">
+                <h4>🛑 Bad Bots: Turnstile</h4>
+                <p>Blocks automated form submissions and brute-force attacks.</p>
+                <ul>
+                    <li><strong>Location:</strong> <code>includes/turnstile.php</code></li>
+                    <li><strong>Trigger:</strong> Automatically active on all <strong>POST</strong> requests.</li>
+                    <li><strong>Integration:</strong> Requires a widget in your forms.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>📋 Task 4.1: Synchronize Bot Intelligence</h3>
+        <p>Open your terminal and run the following command to populate your "Trust Database":</p>
+        <div class="terminal-block"><code>composer update-bots</code></div>
+        <p>This fetches the latest verified IP addresses for Google and Bing from their official endpoints.</p>
+
+        <h3>📋 Task 4.2: Integrate the Turnstile Widget</h3>
+        <p>Add the following code to any form to enable human verification:</p>
         <ol>
             <li>Add the API script to your <code>&lt;head&gt;</code>:
                 <div class="code-block html"><code>&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer&gt;&lt;/script&gt;</code></div>
