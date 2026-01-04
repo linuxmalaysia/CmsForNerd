@@ -3,57 +3,127 @@
 /**
  * ==========================================================================
  * FILE: themes/CmsForNerd/pager.php
- * ROLE: The "Master Pair" / Layout Controller
+ * ROLE: The "Master Pair" / Layout Controller (Dual-View Edition)
+ * VERSION: 3.5.8 (Interactive Sidebar & Tap Fix)
  * ==========================================================================
- * * EDUCATIONAL NOTE:
- * In CMSForNerd's "Pair Logic", this function acts as the chassis of the car.
- * It provides the structure (Head, Body, Footer), while the individual
- * page scripts (the "Slave Pair") provide the engine and interior (Content).
- *
- * This separation ensures that security policies (CSP) and global assets
- * (CSS/JS) are managed in ONE place, rather than scattered across 100 files.
  */
 
 declare(strict_types=1);
 
-// PHP 8.4 Best Practice: Enforce strict type checking.
-
-// [STRUCTURE] The pager() function MUST define the layout hierarchy.
-// @param CmsContext $ctx - The immutable context object containing current state.
-function pager(CmsForNerd\CmsContext $ctx)
+/**
+ * [STRUCTURE] The main entry point for the theme.
+ * @param CmsForNerd\CmsContext $ctx - The immutable context object.
+ */
+function pager(CmsForNerd\CmsContext $ctx): void
 {
-    // 1. [HEAD CONSTRUCTION]
-    // This function (defined in core) generates the <head> block,
-    // including <title>, <meta> tags, and the <link> to our style.css.
+    $viewMode = $_GET['view'] ?? 'standard';
+
+    if ($viewMode === 'amp') {
+        renderAmpLayout($ctx);
+    } else {
+        renderStandardLayout($ctx);
+    }
+}
+
+/**
+ * [LABORATORY METHOD] renderStandardLayout
+ */
+function renderStandardLayout(CmsForNerd\CmsContext $ctx): void
+{
     pageheader($ctx);
-
-    // 2. [BODY START]
-    // We explicitly open the body tag here.
     print("<body>");
-
-    // 3. [LAYOUT INITIALIZATION]
-    // We include 'bodytop.tpl'. In our 3-column architecture, this file
-    // is responsible for opening the main #container div and setting up
-    // the Header, Left Nav, and Right Nav areas.
-    // NOTE: It leaves the #content div OPEN for injection.
     include "themes/{$ctx->themeName}/bodytop.tpl";
-
-    // 4. [CONTENT INJECTION]
-    // This is the critical "Pair Logic" moment.
-    // pagecontent() calls the specific page logic (e.g., contents/index-body.inc).
-    // The output of that file flows directly into the open #content div.
     pagecontent($ctx);
-
-    // 5. [LAYOUT CLOSURE]
-    // We include 'bodyfooter.tpl'. This file is responsible for
-    // closing the #content div, closing the #container div, and
-    // rendering the footer.
     include "themes/{$ctx->themeName}/bodyfooter.tpl";
-
-    // 6. [BODY END]
     print("</body>");
-
-    // 7. [CLEANUP]
-    // Closes <html> and flushes output buffers.
     pagetailer($ctx);
+}
+
+/**
+ * [LABORATORY METHOD] renderAmpLayout
+ */
+function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
+{
+    $actualFile = basename($_SERVER['SCRIPT_NAME'], '.php');
+    
+    if ($ctx->scriptName !== $actualFile) {
+        $ctx = new \CmsForNerd\CmsContext(
+            content:    $ctx->content,
+            themeName:  $ctx->themeName,
+            cssPath:    $ctx->cssPath,
+            dataFile:   $ctx->dataFile,
+            scriptName: $actualFile,
+            cspNonce:   $ctx->cspNonce
+        );
+    }
+
+    ?>
+    <!doctype html>
+    <html ⚡ lang="en">
+    <head>
+        <?php pageheader_amp($ctx); ?>
+        <style amp-custom>
+            /* Critical fix for Sidebar interaction */
+            amp-sidebar { z-index: 99999 !important; }
+            .hamburger-btn { 
+                background: none; 
+                border: none; 
+                font-size: 1.8rem; 
+                cursor: pointer; 
+                padding: 10px; 
+                margin-right: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #8e44ad;
+            }
+        </style>
+    </head>
+    <body>
+        <?php include "themes/{$ctx->themeName}/amp-sidebar.tpl"; ?>
+
+        <header class="amp-header" style="background:#f8f9fa; padding:10px 15px; border-bottom:1px solid #ddd; display: flex; align-items: center;">
+            
+            <button class="hamburger-btn" 
+                    on="tap:sidebar.toggle" 
+                    role="button" 
+                    tabindex="0" 
+                    aria-label="Open Navigation">☰</button>
+            
+            <a href="index.php?view=amp" style="text-decoration:none; color:#8e44ad; font-weight:bold; flex-grow: 1;">
+               🏠 Laboratory Home
+            </a>
+            
+            <span style="font-family:monospace; font-size:0.7rem; color:#666;">
+               [ AMP ]
+            </span>
+        </header>
+
+        <main style="padding:20px;">
+            <?php 
+            ob_start();
+            pagecontent($ctx);
+            $rawHtml = (string) ob_get_clean();
+            
+            // Transform images for AMP
+            $cleanHtml = str_replace(
+                '<img', 
+                '<amp-img width="600" height="400" layout="responsive"', 
+                $rawHtml
+            ); 
+            
+            // Remove illegal body styles
+            $cleanHtml = preg_replace('/<style\b[^>]*>(.*?)<\/style>/is', '', $cleanHtml);
+
+            echo $cleanHtml; 
+            ?>
+        </main>
+
+        <footer style="text-align:center; padding:30px; border-top:1px solid #eee; font-size:0.8rem; color:#888;">
+            <p>&copy; <?= date('Y') ?> CmsForNerd v3.5 Laboratory</p>
+            <p><a href="<?= htmlspecialchars($ctx->scriptName) ?>.php">Switch to Standard Desktop View</a></p>
+        </footer>
+    </body>
+    </html>
+    <?php
 }
