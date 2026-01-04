@@ -11,63 +11,57 @@ When generating or refactoring code for **CmsForNerd v3.5** and above, you **MUS
 ### 2. PSR-1: Basic Coding Standards
 
 * **Side Effects (Section 2.3):** A file SHOULD either declare symbols (classes, functions, constants) or execute logic with side effects (outputting HTML, including files), but **SHOULD NOT do both**.
-* *Exception:* Root entry points (e.g., `index.php`) are permitted to execute logic as they are the front controllers.
-
-
-* **Naming Conventions:**
-* Class names MUST be declared in `StudlyCaps`.
-* Class constants MUST be in all caps with underscore separators (`CORE_VERSION`).
-* Method names MUST be declared in `camelCase`.
-
-
+* *Exception:* Root entry points (e.g., `index.php`) and theme pagers are permitted to execute logic as front controllers/renderers.
+* **Naming Conventions:** Class names in `StudlyCaps`, constants in `ALL_UPPER`, and methods in `camelCase`.
 * **Encoding:** All files MUST be saved in **UTF-8 without BOM**.
 
 ### 3. PSR-12: Extended Coding Style
 
 * **Indentation:** Use **4 spaces** for each indent level. **Tabs MUST NOT** be used.
-* **Braces:** * Opening braces for classes and methods MUST go on the **next line**.
-* Opening braces for control structures (`if`, `foreach`, `match`) MUST go on the **same line**.
-
-
-* **Visibility:** MUST be declared on all properties and methods (`public`, `private`, `protected`).
-* **Line Length:** Soft limit is **120 characters**; lines SHOULD be 80 characters or less.
+* **Braces:** Opening braces for classes/methods on the **next line**. Opening braces for control structures (`if`, `match`) on the **same line**.
+* **Visibility:** MUST be declared on all properties and methods.
 
 ### 4. PHP 8.4+ & PHP 9 READY
 
-* Use modern PHP features: `match` expressions, constructor property promotion, and named arguments.
-* **Strict Typing:** Every PHP file **MUST** start with `declare(strict_types=1);` immediately after the opening `<?php` tag.
-* Ensure forward-compatibility with **PHP 9** by avoiding all deprecated features.
+* **Strict Typing:** Every PHP file **MUST** start with `declare(strict_types=1);` immediately after the opening tag.
+* **Modern Features:** Prioritize `match` expressions, constructor property promotion, and named arguments.
+* **Deprecation Watch:** Avoid any features marked for removal in PHP 9 (e.g., implicit nullable types).
 
 ### 5. Architectural Structure: "The Pair Logic"
 
-* **Master Pair:** The `.php` file (e.g., `index.php`, `about.php`) acts as the Controller.
-* **Slave Pair:** The `-body.inc` file in the `contents/` directory acts as the UI fragment.
-* All logic execution in the Master MUST be separated from declarations as per Rule #2.
+* **Master Pair:** The `.php` file acts as the Controller.
+* **Slave Pair:** The `-body.inc` file in `contents/` acts as the UI fragment.
+* **Content Parity (AMP Rule):** One fragment MUST serve all views. Never create separate content files for mobile/AMP. Use the Pager to transform the fragment dynamically.
 
-### 6. Front Controller & Bootstrapping
+### 6. Dual-View Routing & AMP
+
+* **The Pager Dispatcher:** The theme's `pager.php` MUST handle view switching via the `view` parameter.
+* **AMP Compliance:** AMP views MUST use `pageheader_amp()` from `nav-helper.inc.php` to ensure strict boilerplate validation.
+* **Transformation:** Use output buffering (`ob_start`) in the Pager to convert standard tags to AMP tags (e.g., `<img>` to `<amp-img>`) to maintain fragment reuse.
+
+### 7. Front Controller & Bootstrapping
 
 * All entry points **MUST** include `includes/bootstrap.php`.
 * **Performance:** Implement GZIP compression using `ob_start("ob_gzhandler");`.
 * **Bot Hardening:** Use `is_bot.php` checks to serve text-mode content to crawlers.
 
-### 7. State Management: The Context Pattern
+### 8. State Management: The Context Pattern
 
 * Use the **CmsContext** object for all shared data. **NEVER** use the `global` keyword.
-* Initialize via the `createCmsContext()` factory method to ensure **CSP Nonce** and configuration safety.
-* Use Null Coalescing (`??`) for configuration extractions to prevent `TypeError`.
+* Initialize via `createCmsContext()` factory to ensure **CSP Nonce** and configuration safety.
 
-### 8. Security & Gateways
+### 9. Security & Gateways
 
 * **Path Protection:** Validate all routing inputs via `\CmsForNerd\SecurityUtils::isValidPageName()`.
-* **The "Silent Sentry":** Every directory (Core, Themes, Contents) **MUST** contain an `index.php` or `index.html` file that returns a **403 Forbidden** header.
-* **Namespacing:** All logic MUST reside in the `\CmsForNerd\` namespace. Use FQCN for global scope calls.
+* **The "Silent Sentry":** Every directory MUST contain an `index.php` or `index.html` file returning a **403 Forbidden** header.
+* **Namespacing:** All core logic MUST reside in the `\CmsForNerd\` namespace.
 
-### 9. "Zero-Debt" UI & The Lab Aesthetic
+### 10. "Zero-Debt" UI & The Lab Aesthetic
 
-* **Native-First:** Avoid external frameworks (Bootstrap/Tailwind). Use CSS Grid, CSS Variables (`:root`), and Flexbox.
-* **Environment:** Optimized for the **Google Antigravity** development stack.
+* **Native-First:** Avoid external frameworks. Use CSS Grid, CSS Variables (`:root`), and Flexbox.
+* **AMP Styles:** Custom AMP CSS MUST be placed in `themes/[theme]/css/amp.css` and injected via `<style amp-custom>`.
 
-### 10. Educational Integrity & Compliance
+### 11. Educational Integrity & Compliance
 
 * **Instructional Comments:** Add "Laboratory-style" comments to explain "The Why" behind code choices.
 * **Verification:** All code must pass `phpstan` **Level 8** and `composer compliance`.
@@ -76,8 +70,7 @@ When generating or refactoring code for **CmsForNerd v3.5** and above, you **MUS
 
 ### 🚀 Verification Commands for the AI
 
-Before submitting code, the AI agent should "run" these checks mentally (or via CLI):
-
 1. **Style Check:** `vendor/bin/phpcs --standard=PSR12 [file_path]`
 2. **Logic Check:** `vendor/bin/phpstan analyse [file_path] --level=8`
-3. **Compliance Check:** `composer compliance`
+3. **AMP Check:** Use `amp-html` validator logic mentally on the `renderAmpLayout` output.
+4. **Compliance Check:** `composer compliance`

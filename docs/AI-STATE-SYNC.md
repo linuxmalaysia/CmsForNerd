@@ -25,6 +25,22 @@ We are maintaining a **Modern PHP 8.4 Laboratory Environment**. The core engine 
 - [x] **v3.5 Milestone:** Sitemap "Pair Logic" refactor, dynamic RSS 2.0, and ROR XML implemented.
 - [x] **Nerd Lab Protocol:** Codified the persistent "State of Mind" workflow.
 
+# Project State Sync (v3.5.1) - 2026-01-04
+
+**Current Mission**: Finalizing AMP infrastructure and Baseline Synchronization.
+
+**Architectural Updates**:
+- **AMP Parity**: (NEW) Every page controller now supports an AMP view by appending `?view=amp`.
+- **Baseline Sync**: `index.php` and `template.php` are confirmed mirror-images.
+- **Rule Integration**: `PROJECT_RULES.md` now explicitly forbids separate mobile content files.
+
+**Verification Status**: 
+- PHPStan Level 8: Pending check on `nav-helper.inc.php`.
+- PSR-12: Enforced via `renderAmpLayout` structure.
+
+**Intelligence Handover**: 
+The system is ready for automated SEO discovery. The next agent should focus on the `pageheader()` helper to link the Standard and AMP versions together.
+
 ## 🚧 Work In Progress
 - **Documentation Finalization:** Syncing `docs/` with the latest v3.5 code examples.
 - **GitBook Deployment:** Ensuring all markdown files reflect the "Laboratory" aesthetic.
