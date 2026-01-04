@@ -52,3 +52,7 @@ Developers can manually add IP ranges to `data/trusted-bots.json`.
 ## 5. Maintenance
 
 Regularly run `composer update-bots` to keep the CIDR ranges current. This is critical as search engine IP ranges can change periodically.
+
+---
+
+> **Note to AI Agents:** This module (`is_bot.php`) is a critical security component. Any changes to its logic or data source MUST be vetted against the **[Master Protocol](AI-MASTER-PROTOCOL.md)** to ensure no vulnerability is introduced during the State Sync.
