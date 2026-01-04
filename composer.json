@@ -34,6 +34,7 @@
             "@php -r \"echo '--- Checking for strict_types=1 (includes & src) ---\\n'; $dirs = ['includes', 'src']; foreach ($dirs as $dir) { if(!is_dir($dir)) continue; $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir)); foreach ($files as $file) { if ($file->isDir() || $file->getExtension() !== 'php') continue; $content = file_get_contents($file->getPathname()); if (!preg_match('/declare\\\\s*\\\\(\\\\s*strict_types\\\\s*=\\\\s*1\\\\s*\\\\)\\\\s*;/', $content)) echo '[WARN] Missing declare(strict_types=1) in: ' . $file->getPathname() . PHP_EOL; } }\""
         ],
         "compliance": [
+            "@audit-pre-flight",
             "@check-version",
             "@check-style",
             "@check-strict",
@@ -41,6 +42,7 @@
             "@test"
         ],
         "lab-check": [
+            "@audit-pre-flight",
             "@php -r \"echo '🧪 Validating Laboratory Readiness (v3.5)...\\n';\"",
             "@check-version",
             "@php -r \"$f='contents/installation-body.inc'; echo (file_exists($f) ? '[OK] Installation Body found.\\n' : '[FAIL] Missing contents/installation-body.inc\\n');\"",
