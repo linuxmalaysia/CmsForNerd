@@ -61,6 +61,7 @@
     - [x] sitemap_generator.php, turnstile.php, User.php
     - [x] CmsContext.php and other src/ files
 - [x] Expand Protocol for "External Reality Checks"
+    - [x] Implement `tools/audit-pre-flight.sh` and `composer audit-pre-flight`
     - [x] Add Git fetch/diff/log to `nerd-lab-protocol.md`
     - [x] Update `blog-state-sync.md` with VCS sync logic
 - [x] Update `CONTRIBUTING.md` with "State of Mind" guidelines
