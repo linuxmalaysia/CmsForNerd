@@ -8,9 +8,16 @@ This workflow defines the "State of Mind" and sequence of operations required to
 
 ## 1. Intelligence Audit (The "State of Mind")
 // turbo
-1. Read `docs/AI-STATE-SYNC.md` to understand the current architectural milestone.
-2. Review the latest `git log -n 10` and `HISTORY.md` to track recent granular commits.
-3. Consult `task.md` and `walkthrough.md` in the `.agent/brain/` directory for persistent context.
+1. **Git Reality Check:**
+    - Run `git fetch origin master` to sync remote metadata.
+    - Run `git log master..origin/master --oneline` to see what other devs have pushed.
+    - Run `git status` to identify local manual changes or untracked files.
+2. **Brain Audit:**
+    - Consult `task.md` and `walkthrough.md` in the `.agent/brain/` directory for persistent context.
+    - Match the `git log` against these records; if they differ, the "Environment Logic" has drifted.
+3. **Strategic Alignment:**
+    - Read `docs/AI-STATE-SYNC.md` to understand the current architectural milestone.
+    - Review `HISTORY.md` to track recent granular commits.
 
 ## 2. Structural Synchronization
 1. **Baseline Check:** Ensure `index.php` and `template.php` are logically identical. They are the "Single Source of Truth."

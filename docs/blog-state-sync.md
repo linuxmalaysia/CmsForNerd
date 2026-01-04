@@ -24,6 +24,15 @@ When a day starts, the agent reads this file and immediately knows exactly where
 ### 2. The `walkthrough.md`: The Narrative Record
 While `task.md` is for the "What," the [walkthrough.md](file:///.agent/brain/walkthrough.md) is for the "How" and "Result." It records every major achievement, the verification steps taken, and the current "State of Mind." It’s the story of the project's evolution.
 
+## The External Reality Check: Syncing with the VCS
+Persistent artifacts are powerful, but they aren't the only source of truth. A critical part of the sync is the **Git Reality Check**.
+
+Before trust is established, the agent must ask: *What happened in the physical world while I was away?*
+- **Remote Delta**: Fetching from `origin/master` to see what human teammates have committed.
+- **Local Drift**: Checking `git status` for manual tweaks or untracked files that haven't been recorded in the "Brain" yet.
+
+If the Git history and the Brain artifacts disagree, the agent's first job isn't to code—it's to reconcile the history.
+
 ## The Morning Ritual: The Nerd Lab Protocol
 We’ve codified this into the [/nerd-lab-protocol](file:///.agent/workflows/nerd-lab-protocol.md). This isn't just a list of steps; it's an **Intelligence Audit**.
 

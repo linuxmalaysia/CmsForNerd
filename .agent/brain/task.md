@@ -60,7 +60,11 @@
     - [x] is_bot.php, nav-helper.inc.php
     - [x] sitemap_generator.php, turnstile.php, User.php
     - [x] CmsContext.php and other src/ files
-- [/] Final composer lab-check verification
-    - [ ] Fix `CmsContextTest` (ArgumentCountError)
-    - [ ] Fix `global-control.inc.php` indentation
-    - [ ] Fix `bootstrap.php` brace placement
+- [x] Expand Protocol for "External Reality Checks"
+    - [x] Add Git fetch/diff to `nerd-lab-protocol.md`
+    - [x] Update `blog-state-sync.md` with VCS sync logic
+- [x] Final composer lab-check verification
+    - [x] Fix `CmsContextTest` (ArgumentCountError)
+    - [x] Fix `global-control.inc.php` indentation
+    - [x] Fix `bootstrap.php` brace placement
+- [x] Draft "Intelligence Audit & State Sync" blog post
