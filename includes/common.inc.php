@@ -31,15 +31,24 @@ function pageheader(CmsForNerd\CmsContext $ctx): void
 
     // [SEO] Page titles SHOULD be descriptive and dynamic.
     $title = htmlspecialchars($ctx->content['title'] ?? 'CMSForNerd', ENT_QUOTES, 'UTF-8');
-    print("<title>{$title}</title>");
+    print("<title>{$title}</title>\n");
+
+    /**
+     * [V3.5 AMP DISCOVERY] 
+     * EDUCATIONAL NOTE: This "Handshake" tells search engines that a mobile-optimized 
+     * AMP version exists. The Pager handles the actual view switching when the 
+     * '?view=amp' parameter is detected in the URL.
+     */
+    $ampUrl = htmlspecialchars($ctx->scriptName . '.php?view=amp', ENT_QUOTES, 'UTF-8');
+    print('    <link rel="amphtml" href="' . $ampUrl . '">' . "\n");
 
     // [THEME] Stylesheets SHOULD be imported via the configured cssPath.
-    print("<style type=\"text/css\" media=\"all\">@import \"{$ctx->cssPath}\";</style>");
+    print("    <style type=\"text/css\" media=\"all\">@import \"{$ctx->cssPath}\";</style>\n");
 
     // [SECURITY] Turnstile script MUST be loaded to protect forms.
     $nonce = htmlspecialchars($ctx->cspNonce, ENT_QUOTES, 'UTF-8');
-    $script = '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" ';
-    $script .= 'async defer nonce="' . $nonce . '"></script>';
+    $script = '    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" ';
+    $script .= 'async defer nonce="' . $nonce . '"></script>' . "\n";
     print($script);
 
     print("</head>\n");
