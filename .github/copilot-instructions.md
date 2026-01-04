@@ -7,6 +7,11 @@ This file gives concise, repo-specific guidance for using Google Gemini, GitHub 
 - **Goal:** Maintain the "Radically Simple" philosophy while ensuring 100% PSR-12 and PHP 8.4 compliance.
 - **Baseline:** Every logic change MUST be verified via `composer compliance`.
 
+## 🛡️ Pre-Flight Protocol
+Before generating code:
+1. **Mandatory:** Run `composer audit-pre-flight` to sync "Brain" state.
+2. **Check:** Verify `git status` for local drift.
+
 ## 🏗️ Architectural Core: "Pair Logic"
 1. **The Pair:** Public pages consist of a `.php` controller (Front Controller) and a `contents/*-body.inc` fragment (UI).
 2. **Bootstrapping:** All controllers MUST load `includes/bootstrap.php`.
