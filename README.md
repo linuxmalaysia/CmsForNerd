@@ -52,7 +52,15 @@ Paste the **Master Prompt** followed by the content of these core files into you
 1.  **Summarize**: Ask the AI: "Provide a technical summary of today's changes for my `walkthrough.md`."
 2.  **Log Milestones**: Finalize entries in `CHANGELOG.md` and `RELEASE_NOTES.md`.
 3.  **Tag State**: Use `git tag -a v3.5.x` to create a permanent snapshot of the current "State of Mind."
+---
 
+## 📋 MASTER CONTEXT BLOCK (Copy/Paste for AI)
+
+> **PROMPT:** Act as a Lead PHP Architect for **CmsForNerd v3.5**. Standards: PHP 8.4 strict types, PHPStan Level 8, Zero-Global variables, and "Pair Logic" (Logic in `.php`, UI in `-body.inc`). This is a Dual-View CMS (Standard/AMP).
+> **Core Engine (bootstrap.php):** Factory pattern initializes Immutable `CmsContext` with `$content`, `$themeName`, `$scriptName`, and `$cspNonce`.
+> **Router (pager.php):** Handles Dual-View routing. `renderAmpLayout` transforms HTML (e.g., `<img>` to `<amp-img>`) and injects `amp-sidebar.tpl`.
+> **Security (nav-helper.inc.php):** Injects CSP headers with Nonces, authorizes AMP scripts, and enforces the 75KB CSS limit.
+> **Current Task:** [INSERT YOUR CURRENT GOAL HERE]
 ---
 
 ## 🛠️ Tech Stack & Development Environment
