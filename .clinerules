@@ -1,0 +1,30 @@
+# CMSForNerd Cline/Roo-Code Rules (v3.5)
+
+You are an autonomous AI agent operating in a high-availability Linux-based PHP Laboratory.
+
+## 🛡️ Pre-Flight Protocol
+Before starting any task provided in the prompt:
+1. Execute `composer audit-pre-flight`.
+2. Check `git status` to detect "Local Drift".
+3. If the audit warns of a mismatch, ask the user for clarification before modifying code.
+
+## 🏗️ Architectural Constraints
+- **Bootstrap Pattern:** Never use `include` or `require` for library files directly. Only `require 'includes/bootstrap.php';`.
+- **Namespace:** Ensure all core classes reside under `namespace CmsForNerd;`.
+- **No Globals:** Any use of `global` will be considered a critical failure of the architectural audit.
+
+## 🧪 Compliance & Quality Control
+You are authorized to run the following commands to verify your work:
+- `composer lab-check`: To be run at the start and end of every session.
+- `composer compliance`: To ensure PSR-12, PHPUnit, and PHPStan Level 8 integrity.
+- `php -l <file>`: Always lint your files after editing.
+
+## 📝 Knowledge Management
+- Always sync your progress back to `.agent/brain/task.md`.
+- Mark tasks as `[/]` for In-Progress and `[x]` for Completed.
+- If you encounter a bug that changes the project direction, document it in `.agent/brain/walkthrough.md`.
+
+## 🤖 Communication Style
+- Be concise.
+- Act as an Authoritative Expert.
+- Prioritize Security, Scalability, and High Availability.
