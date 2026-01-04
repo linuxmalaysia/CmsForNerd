@@ -1,4 +1,31 @@
+# --- PHP Core & Dependencies ---
 vendor/
+composer.lock
+.php-cs-fixer.cache
 .phpunit.result.cache
 .phpunit.cache/
 .phpstan.cache/
+
+# --- Environment & Security ---
+.env
+.env.local
+.env.*.local
+*.log
+
+# --- IDE & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# --- Laboratory & OS Artifacts ---
+# Mengelakkan fail sesi atau dump data dari Proxmox/Container
+*.tmp
+*.bak
+*.old
+
+# --- AI & Agent Specific ---
+# Kita simpan .agent/brain/ tetapi abaikan fail sesi sementara jika ada
+.agent/tmp/
