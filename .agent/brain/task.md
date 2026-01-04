@@ -1,3 +1,55 @@
+# CmsForNerd v3.5.1 Task Tracker
+
+## [PHASE: ARCHITECTURE] - COMPLETED ✅
+
+* [x] **Zero-Global Refactor**: Removed `global` keywords; implemented `CmsContext`.
+* [x] **Baseline Sync**: Synchronized `index.php` and `template.php` logic.
+* [x] **Dual-View Pager**: Integrated `renderStandardLayout` and `renderAmpLayout` in `pager.php`.
+* [x] **Modular AMP Header**: Created `pageheader_amp()` in `nav-helper.inc.php`.
+
+## [PHASE: MOBILE MASTERY & UI] - IN PROGRESS 🏗️
+
+### 🌑 Module 7: Dark Mode Engineering (v3.5.1)
+
+* [ ] **CSS Variable Foundation**: Define laboratory color tokens (Background, Surface, Primary, Text) in `amp.css` and standard CSS.
+* [ ] **System-Level Detection**: Implement `@media (prefers-color-scheme: dark)` to ensure zero-JS dark mode activation.
+* [ ] **AMP Sidebar Toggle**:
+* [ ] Research `amp-bind` for a manual dark-mode toggle that persists without standard JS.
+* [ ] Add the "Laboratory Dimmer" icon to `amp-sidebar.tpl`.
+
+
+* [ ] **Accessibility Audit**: Verify contrast ratios for `#8e44ad` (Primary Purple) against dark backgrounds.
+
+### 🤖 Module 9: Automated Lab-Bench
+
+* [ ] **CI Pipeline**: Create `.github/workflows/compliance.yml`.
+* [ ] **Enforcement**: Configure GitHub Action to run `composer lab-check` (PHPStan Level 8) on every push.
+* [ ] **Reporting**: Setup automated feedback for PRs that violate PSR-12.
+
+## [PHASE: DOCUMENTATION] - IN PROGRESS 🏗️
+
+* [x] **Project Rules Update**: Integrated AMP Content Parity rules.
+* [x] **README Sync**: Added "State of Mind" Master Context Block and SoM Protocol.
+* [ ] **SOP Verification**: Run `composer compliance` on all new helpers.
+* [ ] **Discovery Logic**: Add `<link rel="amphtml">` to standard `pageheader()`.
+
+---
+
+# 🧠 State of Mind Persistence (Session v3.5.1)
+
+### 🌅 Next Session Morning Ritual
+
+1. **Manual Handshake**: Paste the **Master Context Block** from `README.md`.
+2. **Environment Check**: Run `composer lab-check` to confirm the baseline is still Level 8.
+3. **Objective**: Focus on **Module 7 (Dark Mode)** CSS variables.
+
+### 🌇 Last Session Snapshot (2026-01-05)
+
+* **Accomplishments**: Finalized v3.5.0 Release, pushed Tag v3.5.0, updated README with SoM Protocol, and cleaned up legacy theme backups.
+* **Mental Anchor**: The system is 100% compliant and clean. No ghost paths exist. The "State of Mind" protocol is now the official entry point.
+
+---
+
 # Task: Sync GitBook Documentation with v3.5
 
 - [x] Research & Audit

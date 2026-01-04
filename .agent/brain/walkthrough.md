@@ -1,3 +1,56 @@
+# 🏁 Walkthrough: Mobile Mastery & State of Mind (v3.5.0)
+
+I have completed the integration of the **AMP Dual-View Engine** and the formalization of the **"State of Mind" (SoM) Protocol**. This milestone moves CMSForNerd from a desktop-centric laboratory to a high-performance, mobile-validated environment with a robust human-AI synchronization workflow.
+
+## 🚀 Key Accomplishments (v3.5.0 Update)
+
+### 1. Dual-View Architecture (AMP Integration)
+
+---
+
+* **The Router**: Rebuilt `themes/CmsForNerd/pager.php` as a decision engine. It now detects `?view=amp` and routes the request through a specialized mobile pipeline while reusing the same `-body.inc` content fragments.
+* **Fragment Transformation**: Implemented an Output Buffer (OB) processor that dynamically swaps `<img>` tags for `<amp-img layout="responsive">` tags, satisfying strict AMP validation without manual content duplication.
+* **The Interactive Sidebar**: Created `themes/CmsForNerd/amp-sidebar.tpl`. This provides a zero-JavaScript mobile navigation experience using the `amp-sidebar` component, featuring active-page highlighting.
+
+### 2. Defensive Front-End Guardrails
+
+* **CSS Size Guard**: Integrated a file-size validator in `nav-helper.inc.php`. It monitors `amp.css` and injects an HTML warning if the code exceeds the strict 75KB AMP limit.
+* **CSP Nonce Propagation**: Hardened the security layer to ensure that the `amp-sidebar` script and the core AMP library are explicitly authorized via cryptographic nonces, preventing XSS even in mobile view.
+* **Z-Index Layering**: Resolved "Ghost Clicks" by establishing a strict stacking context for the hamburger menu and the sidebar overlay.
+
+### 3. "State of Mind" (SoM) Formalization
+
+---
+
+* **The Master Context Block**: Defined a "Golden Handshake" for manual AI sessions. This block includes the Master Prompt and the core architecture files (`bootstrap.php`, `pager.php`, `nav-helper.inc.php`) to instantly synchronize any LLM with the project’s strict standards.
+* **Manual Handshake Protocol**: Established the "Morning Ritual" (loading MVC context) and "Evening Snapshot" (generating walkthrough summaries) as standard operating procedures.
+* **Root README Update**: Successfully integrated the SoM protocol into the main `README.md` to ensure any contributor (human or AI) understands the entry requirements.
+
+### 4. Cleanup & Repository Hygiene
+
+* **Legacy Purge**: Successfully removed `themes/CmsForNerdOld-20260102` and verified that no hardcoded paths remain in the core logic.
+* **Versioning**: Finalized the `v3.5.0` milestone with an annotated Git tag and synchronized the `CHANGELOG.md` and `RELEASE_NOTES.md`.
+
+## 🛠️ Verification Results (v3.5.0)
+
+* **AMP Validation**: Passed via `amp-validator` CLI. All images and sidebar components are compliant.
+* **PHPStan Level 8**: Verified. The new Dual-View routing logic preserves strict type-safety and null-safety.
+* **Manual Sync Test**: Verified that the "Master Context Block" successfully allows a fresh AI instance to identify "Pair Logic" and "Context Factory" patterns without errors.
+
+---
+
+## 🔬 Architectural Deep-Dive: SoM Persistence
+
+**The Problem**: Manual AI chats often "forget" the project's strict architectural boundaries (e.g., trying to use `global` variables or standard HTML in an AMP view).
+**The Solution**: The **MVC (Minimum Viable Context)** approach. By providing the AI with the three core engine files at the start of every session, we force the LLM to stay within the "Laboratory Bounds."
+
+---
+
+> **Final Sync Check (2026-01-05):** Verified and committed the `v3.5.0` documentation suite. The "State of Mind" protocol is now the official gateway for all development sessions.
+> **Mental Anchor (Session End):** The mobile engine is interactive, the security headers are robust, and the AI synchronization protocol is finalized. The repository is in a "Clean & Green" state, ready for next task.
+
+---
+
 # 🏁 Walkthrough: GitBook Documentation Sync (v3.5)
 
 I have completed the total synchronization of the **CMSForNerd v3.5** documentation (`docs/` directory). Every manual, laboratory worksheet, and setup guide is now architecturally aligned with the latest PHP 8.4 codebase.
