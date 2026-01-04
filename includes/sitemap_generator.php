@@ -1,10 +1,12 @@
 <?php
 
 /**
- * Sitemap Generator Helper
- * * Scans the root directory for public PHP pages and generates metadata.
- * [LAB v3.4] Updated with strict return type shapes and defensive
- * handling for system functions (glob, filemtime).
+ * ==========================================================================
+ * FILE: includes/sitemap_generator.php
+ * ROLE: Sitemap Generator Helper (Educational Edition)
+ * ==========================================================================
+ * TRAINING NOTE: This script uses "Pair Logic." It scans the 'contents' 
+ * folder for body fragments and verifies a matching .php file exists.
  */
 
 declare(strict_types=1);
@@ -12,54 +14,49 @@ declare(strict_types=1);
 /**
  * @return array<int, array{file: string, url: string, lastmod: string, title: string}>
  */
-function get_site_pages(): array
+function get_detailed_site_pages(): array
 {
-    /** @var array<int, array{file: string, url: string, lastmod: string, title: string}> $pages */
     $pages = [];
-    $fragmentDir = __DIR__ . '/../contents/';
 
-    // [SECURITY] Verification of directory existence
-    if (!is_dir($fragmentDir)) {
+    // [PATH DISCOVERY] Get the absolute path to the project root
+    // We use realpath to resolve any strange Windows/Herd path issues
+    $rootDir = realpath(__DIR__ . '/../');
+    $fragmentDir = $rootDir . DIRECTORY_SEPARATOR . 'contents' . DIRECTORY_SEPARATOR;
+
+    // Safety check: If directory doesn't exist, stop here
+    if (!$rootDir || !is_dir($fragmentDir)) {
         return [];
     }
 
-    /**
-     * [ARCHITECTURE] PAIR LOGIC SCAN
-     * Instead of scanning for every PHP file, we scan the 'contents/' directory
-     * for Slave Fragments and verify their Master Controllers (.php) exist.
-     */
+    // [FILE DISCOVERY] Find all body fragments
     $fragments = glob($fragmentDir . '*-body.inc');
 
-    if ($fragments === false) {
+    if ($fragments === false || empty($fragments)) {
         return [];
     }
 
     foreach ($fragments as $file) {
+        // Extract the slug (e.g., 'lab-manual')
         $slug = str_replace('-body.inc', '', basename($file));
 
-        /**
-         * [SECURITY] RULE #8 COMPLIANCE
-         * Skip internal system fragments and error pages.
-         */
-        $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
+        // [SECURITY] Skip system files
+        $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer', 'sitemap-page'];
         if (in_array($slug, $exclude, true)) {
             continue;
         }
 
-        $masterFile = __DIR__ . '/../' . $slug . '.php';
+        // Check if the Master Controller exists
+        $masterFile = $rootDir . DIRECTORY_SEPARATOR . $slug . '.php';
 
         if (file_exists($masterFile)) {
-            $mTime = max(filemtime($masterFile), filemtime($file));
-            $lastModTimestamp = ($mTime === false) ? time() : $mTime;
-
-            // Pretty Title (Capitalized filename, replacing dashes with spaces)
-            $title = ucfirst(str_replace('-', ' ', $slug));
-
+            // Get latest modification date
+            $mTime = max((int)filemtime($masterFile), (int)filemtime($file));
+            
             $pages[] = [
                 'file'    => "$slug.php",
-                'url'     => htmlspecialchars("$slug.php", ENT_QUOTES, 'UTF-8'),
-                'lastmod' => date('Y-m-d', $lastModTimestamp),
-                'title'   => $title
+                'url'     => "$slug.php",
+                'lastmod' => date('Y-m-d', $mTime),
+                'title'   => ucfirst(str_replace(['-', '_'], ' ', $slug))
             ];
         }
     }
