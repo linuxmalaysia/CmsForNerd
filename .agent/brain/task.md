@@ -50,3 +50,7 @@
 - [x] Create `.agent/workflows/nerd-lab-protocol.md`
 - [x] Finalize State of Mind documentation
 - [x] Notify user of persistent state capture
+
+# Task: Security Documentation Refinement (v3.5)
+- [x] Fix dangerous permission instructions in `INSTALLATION.md`
+- [ ] Final commit and re-tag v3.5
