@@ -28,12 +28,30 @@ final class SecurityTest extends TestCase
      */
     public function testBotDetection(): void
     {
+        // Mock a trusted Googlebot IP to bypass Hybrid Intelligence "Trust but Verify"
+        $_SERVER['REMOTE_ADDR'] = '66.249.66.1';
+
         // Known Bots
-        $this->assertTrue(is_bot('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'));
-        $this->assertTrue(is_bot('Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)'));
+        $this->assertTrue(
+            is_bot('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'),
+            'Failed to detect Googlebot with mocked trusted IP'
+        );
+        $this->assertTrue(
+            is_bot('Mozilla/5.0 (compatible; Bingbot/2.0; +http://www.bing.com/bingbot.htm)'),
+            'Failed to detect Bingbot with mocked trusted IP'
+        );
 
         // Known Humans
-        $this->assertFalse(is_bot('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'));
-        $this->assertFalse(is_bot('Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'));
+        $this->assertFalse(
+            is_bot('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'),
+            'Human UA incorrectly flagged as bot'
+        );
+        $this->assertFalse(
+            is_bot('Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'),
+            'Mobile Human UA incorrectly flagged as bot'
+        );
+        
+        // Cleanup
+        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
     }
 }

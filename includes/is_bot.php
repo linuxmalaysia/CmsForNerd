@@ -15,12 +15,16 @@ declare(strict_types=1);
  */
 function is_bot(?string $userAgent = null): bool
 {
-    static $isBotResult = null;
-    if ($isBotResult !== null && $userAgent === null) {
-        return $isBotResult;
-    }
+    static $lastIp  = '';
+    static $lastUa  = '';
+    static $lastRes = null;
 
     $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+    $ua = $userAgent ?? $_SERVER['HTTP_USER_AGENT'] ?? '';
+
+    if ($lastRes !== null && $ip === $lastIp && $ua === $lastUa) {
+        return $lastRes;
+    }
 
     // 1. [FAST PATH] Localhost is never a bot
     if ($ip === '127.0.0.1' || $ip === '::1') {
@@ -39,11 +43,15 @@ function is_bot(?string $userAgent = null): bool
     // 3. [TRUST BUT VERIFY] If UA looks like a bot, check the IP
     if ($regexMatch) {
         if (is_trusted_bot_ip($ip)) {
-            return $isBotResult = true;
+            $lastIp  = $ip;
+            $lastUa  = $ua;
+            return $lastRes = true;
         }
     }
 
-    return $isBotResult = false;
+    $lastIp  = $ip;
+    $lastUa  = $ua;
+    return $lastRes = false;
 }
 
 /**
@@ -53,6 +61,7 @@ function is_trusted_bot_ip(string $ip): bool
 {
     $dataPath = dirname(__DIR__) . '/data/trusted-bots.json';
     if (!file_exists($dataPath)) {
+        error_log("BOT-INTEL: Missing database at $dataPath");
         return false;
     }
 
@@ -121,9 +130,12 @@ function ip_in_range(string $ip, string $range): bool
 
 /**
  * [AUTOMATION] Updates the trusted IP list from official sources.
+ *
+ * @return array<string, mixed>
  */
 function update_trusted_bot_ips(): array
 {
+    /** @var array<string, string> $sources */
     $sources = [
         'Google' => 'https://developers.google.com/search/apis/ipranges/googlebot.json',
         'Bing'   => 'https://www.bing.com/toolbox/bingbot.json'

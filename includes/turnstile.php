@@ -1,10 +1,11 @@
 <?php
 
 /**
- * [SECURITY] Cloudflare Turnstile Integration - v3.3
+ * [SECURITY] Cloudflare Turnstile Integration - v3.5
  *
  * This module blocks automated bots via Server-to-Server verification.
- * Verification is performed for all sensitive POST requests.
+ * It works in tandem with the Hybrid Bot Intelligence layer (is_bot.php)
+ * to provide a defense-in-depth strategy for the v3.5 Laboratory.
  *
  * Compliance: PHP 8.4, PSR-12, PSR-1 (Side-effect management)
  */
@@ -22,7 +23,8 @@ if (!defined('TURNSTILE_SECRET_KEY')) {
 
 /**
  * 2. [SECURITY] verifyTurnstile() performs a "Server-to-Server" check.
- * * @param string $token    The client response token.
+ *
+ * @param string $token    The client response token.
  * @param string $remoteIp The user's IP address.
  * @return bool
  */
@@ -34,7 +36,8 @@ function verifyTurnstile(string $token, string $remoteIp): bool
 
     $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
-    // [PHP 8.4] Using cURL for robust API communication
+    // [PHP 8.4] Using cURL for robust API communication.
+    // We use curl_setopt_array for better readability and bulk handling.
     $ch = curl_init($url);
     if (!$ch) {
         return false;
@@ -68,8 +71,9 @@ function verifyTurnstile(string $token, string $remoteIp): bool
 
 /**
  * 3. [LOGIC] Automated Verification Gateway
- * * To satisfy PSR-1 "Side Effects", we wrap the execution.
- * This gate ensures verification is active for all POST requests.
+ *
+ * To satisfy PSR-1 "Side Effects", we wrap the execution logic.
+ * This gate ensures verification is active for all sensitive POST requests.
  */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
     $userToken = (string) ($_POST['cf-turnstile-response'] ?? '');
