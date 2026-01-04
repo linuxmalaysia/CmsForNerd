@@ -20,6 +20,7 @@
         "squizlabs/php_codesniffer": "^3.11"
     },
     "scripts": {
+        "audit-pre-flight": "bash tools/audit-pre-flight.sh",
         "check-version": "@php -r \"if (PHP_VERSION_ID < 80400) { echo '[FAIL] PHP 8.4+ Required. Found: ' . PHP_VERSION . PHP_EOL; exit(1); } echo '[OK] PHP Version: ' . PHP_VERSION . PHP_EOL;\"",
         "check-style": "phpcs includes/ src/ index.php --ignore=vendor/*",
         "fix-style": "phpcbf includes/ src/ index.php --ignore=vendor/*",
