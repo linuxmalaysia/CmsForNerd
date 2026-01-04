@@ -37,7 +37,9 @@ All five laboratory modules were converted to Markdown and updated to v3.5 stand
 * **Release Readiness**: All internal guides (`sitemap-guide.md`, `csp-nonce.md`) are synchronized with the 2026 laboratory standards.
 * **Security Documentation**: Hardened `INSTALLATION.md` by replacing broad `chmod` commands with secure, granular permission instructions for Linux environments.
 * **Compliance Restoration**: Standardized 10+ PHP file headers to achieve "Zero-Error" PSR-12 status.
-* **State of Mind Documentation**: Published a new [blog post](../../docs/blog-state-sync.md) detailing the "Intelligence Audit & State Sync" protocol for AI-agentic workflows.
+* **Structural Bugfix**: Resolved `Fatal error` in `ror.php` by moving XML declarations inside the PHP block.
+* **Governance Expansion**: Updated `CONTRIBUTING.md` to include "State of Mind" guidelines for AI-assisted contributors.
+* **State of Mind Documentation**: Published a new [blog post](../../docs/blog-state-sync.md) detailing the "Internal vs. External" Reality Check protocol for VCS synchronization.
 
 ## 🛠️ Verification Results
 

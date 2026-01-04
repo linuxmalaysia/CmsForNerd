@@ -61,10 +61,11 @@
     - [x] sitemap_generator.php, turnstile.php, User.php
     - [x] CmsContext.php and other src/ files
 - [x] Expand Protocol for "External Reality Checks"
-    - [x] Add Git fetch/diff to `nerd-lab-protocol.md`
+    - [x] Add Git fetch/diff/log to `nerd-lab-protocol.md`
     - [x] Update `blog-state-sync.md` with VCS sync logic
+- [x] Update `CONTRIBUTING.md` with "State of Mind" guidelines
+- [x] Debug & Fix `ror.php` (Fatal error: strict_types)
 - [x] Final composer lab-check verification
     - [x] Fix `CmsContextTest` (ArgumentCountError)
     - [x] Fix `global-control.inc.php` indentation
     - [x] Fix `bootstrap.php` brace placement
-- [x] Draft "Intelligence Audit & State Sync" blog post
