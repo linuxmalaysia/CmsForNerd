@@ -9,6 +9,7 @@
 * [Template Guide](template-guide.md)
 * [Lab Manual](lab-manual.md)
 * [Sitemap & SEO Guide](sitemap-guide.md)
+* [Directory Security Guide](directory-security.md)
 * [AI-Assisted Dev Guide](ai-dev.md)
 
 ## 🧪 Laboratory Modules
@@ -33,5 +34,6 @@
 * [Modernization History](HISTORY.md)
 * [AI Ethics SOP](ai-sop.md)
 * [Project State Sync](AI-STATE-SYNC.md)
+* [Documentation Requirements](docs-requirements.md)
 * [Security Policy](security-policy.md)
 * [Sitemap](SITEMAP.md)
