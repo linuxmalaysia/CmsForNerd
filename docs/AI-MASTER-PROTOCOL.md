@@ -53,7 +53,18 @@ Whether you are Gemini, Copilot, or Cursor, you are part of a unified **Agentic 
 
 ---
 
-## 🚦 Core Commands Reference
+## 🌐 6. Connected Intelligence (The Ecosystem)
+
+This protocol serves as the central hub. It is legally bound to the following documents:
+
+*   **[AI-Assisted Development](ai-dev.md)**: Defines the roles of Gemini (Architect) and Antigravity (Agent).
+*   **[SOP: Responsible AI](ai-sop.md)**: Mandates the ethical and "Think First" rules of engagement.
+*   **[Project State Sync](AI-STATE-SYNC.md)**: The technical registry of v3.5 architectural decisions.
+*   **[Bot Intelligence](bot-intelligence.md)**: The security layer that guards our "State of Mind" from external noise.
+
+---
+
+## 🚦 7. Core Commands Reference
 
 | Command | Purpose |
 | --- | --- |

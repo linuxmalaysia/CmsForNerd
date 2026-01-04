@@ -19,6 +19,11 @@ Antigravity is the executioner. It handles the physical operations:
 * **Terminal Control:** Running `composer compliance` and `phpunit`.
 * **Git Mastery:** Handling staging and commits once code is verified.
 
+## 📜 Layer 3: The Master Protocol (The Handshake)
+The **[Nerd-Lab Master Protocol](AI-MASTER-PROTOCOL.md)** is the binding "Constitution" between the Architect (Gemini) and the Agent (Antigravity/Copilot).
+*   **Purpose**: To ensure State of Mind persistence and Zero-Error handovers.
+*   **Requirement**: All AI agents MUST execute the **Intelligence Audit** defined in this protocol before writing code.
+
 ## 🌐 The "Triple Threat" Discovery Strategy
 To ensure AI search engines (like Perplexity or ChatGPT) accurately categorize your CMS content, we use three layers:
 

@@ -7,16 +7,19 @@ To leverage AI agents (Gemini, Antigravity) to accelerate learning while maintai
 
 ## 🏛️ The Rules of Engagement
 
-### 1. The "Think First" Rule
+### 1. The Master Protocol
+*   **MUST:** Every session MUST begin with the **Intelligence Audit** and end with the **Wrap-up Protocol** as defined in **[AI-MASTER-PROTOCOL.md](AI-MASTER-PROTOCOL.md)**.
+
+### 2. The "Think First" Rule
 * **MUST:** Students **MUST** attempt to solve structural problems using the `SecurityUtils` or `CmsContext` source code for 10 minutes before prompting an AI.
 
-### 2. Verification & Auditing (Trust but Verify)
+### 3. Verification & Auditing (Trust but Verify)
 AI-generated code **MUST NOT** be merged until it passes the compliance suite:
 1. **Style:** `composer fix-style` (PSR-12 Check).
 2. **Logic:** `composer test` (Unit/Security Logic Check).
 3. **Audit:** `composer compliance` (Final "Green Bar" Status).
 
-### 3. Prohibited Actions
+### 4. Prohibited Actions
 * **DO NOT** copy-paste code you cannot explain line-by-line during lab reviews.
 * **DO NOT** use AI to bypass the logic-heavy "Break-Fix" challenges in the Final Exam.
 
