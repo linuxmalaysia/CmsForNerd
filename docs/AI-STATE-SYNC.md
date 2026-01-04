@@ -4,7 +4,8 @@
 We are maintaining a **Modern PHP 8.4 Laboratory Environment**. The core engine is fully refactored, and we are now focused on documentation synchronization, AI agent discovery, and architectural finalization.
 
 ## 🚧 Architectural Decisions (MUST BE MAINTAINED)
-1. **Git-Delta Awareness:** The agent MUST verify local vs. remote state at start-of-day via `git fetch` and `git log` before assuming the persistent "Brain" artifacts are absolute.
+1. **Strict Pre-Flight:** Mandates `composer audit-pre-flight` and `git status` checks.
+2. **Git-Delta Awareness:** The agent MUST verify local vs. remote state at start-of-day via `git fetch` and `git log` before assuming the persistent "Brain" artifacts are absolute.
 2. **Bootstrap Pattern:** Every root `.php` file is a Front Controller. It MUST NOT load library files directly. It MUST load `includes/bootstrap.php`.
 3. **Zero-Global Architecture:** (Critical v3.5 Law)
    - **NO** `global` keywords are allowed in Page Controllers or Functions.
