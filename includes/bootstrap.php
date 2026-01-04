@@ -1,13 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * CmsForNerd - Centralized Bootstrap (Laboratory Engine v3.5)
  * Compliance: PHP 8.4+, PSR-12, PHPStan Level 8
  * * SECURITY NOTE: This file manages error suppression and path abstraction
  * to prevent Information Disclosure (CWE-200).
  */
+
+declare(strict_types=1);
 
 // 1. [LAB] ERROR MANAGEMENT & PATH PROTECTION
 // In Laboratory mode, we hide absolute system paths from the browser.

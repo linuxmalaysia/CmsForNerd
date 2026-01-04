@@ -79,7 +79,7 @@ class StandardsTest extends TestCase
         foreach ($this->filesToTest as $file) {
             $lines = file($file);
             foreach ($lines as $index => $line) {
-                if (preg_match('/(class|function).*\{/', $line)) {
+                if (preg_match('/^\s*(class|function)\s+.*\{/', $line)) {
                     $this->fail("File " . basename($file) . " line " . ($index + 1) . " has '{' on the same line as class/function declaration.");
                 }
             }

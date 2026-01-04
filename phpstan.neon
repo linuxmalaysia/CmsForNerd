@@ -46,18 +46,6 @@ parameters:
         - themes
 
     # [SECURITY & ARCHITECTURE]
-    # We ignore specific patterns that are part of our intentional Laboratory design.
-    ignoreErrors:
-        # 1. Allow the global keyword ONLY in the bootstrap factory.
-        -
-            message: '#Global variable \$[a-zA-Z0-9_]+ is forbidden#'
-            path: includes/bootstrap.php
-
-        # 2. Prevent errors regarding dynamic theme inclusion.
-        -
-            message: '#Variable \$ctx might not be defined.#'
-            path: themes/*
-
-    # Helpful for debugging types during the "Nerd Training" phase.
-    checkMissingIterableValueType: true
-    checkGenericClassInNonGenericObjectType: false
+    # In Laboratory v3.5, we aim for Zero Global state. 
+    # The previously ignored patterns are now removed to enforce strictness.
+    ignoreErrors: []

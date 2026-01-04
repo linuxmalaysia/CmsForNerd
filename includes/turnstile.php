@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * [SECURITY] Cloudflare Turnstile Integration - v3.3
  *
@@ -10,6 +8,8 @@ declare(strict_types=1);
  *
  * Compliance: PHP 8.4, PSR-12, PSR-1 (Side-effect management)
  */
+
+declare(strict_types=1);
 
 namespace CmsForNerd;
 

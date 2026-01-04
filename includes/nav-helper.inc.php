@@ -1,11 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * CMSForNerd Auto-Sitemap Generator
  * Scans root for public pages and excludes system files.
  */
+
+declare(strict_types=1);
 
 if (!function_exists('get_site_pages')) {
     /**

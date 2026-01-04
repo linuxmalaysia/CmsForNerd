@@ -1,13 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * Sitemap Generator Helper
  * * Scans the root directory for public PHP pages and generates metadata.
  * [LAB v3.4] Updated with strict return type shapes and defensive
  * handling for system functions (glob, filemtime).
  */
+
+declare(strict_types=1);
 
 /**
  * @return array<int, array{file: string, url: string, lastmod: string, title: string}>
@@ -17,7 +17,7 @@ function get_site_pages(): array
     /** @var array<int, array{file: string, url: string, lastmod: string, title: string}> $pages */
     $pages = [];
     $fragmentDir = __DIR__ . '/../contents/';
-    
+
     // [SECURITY] Verification of directory existence
     if (!is_dir($fragmentDir)) {
         return [];
@@ -29,7 +29,7 @@ function get_site_pages(): array
      * for Slave Fragments and verify their Master Controllers (.php) exist.
      */
     $fragments = glob($fragmentDir . '*-body.inc');
-    
+
     if ($fragments === false) {
         return [];
     }

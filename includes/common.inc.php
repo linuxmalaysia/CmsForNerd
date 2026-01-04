@@ -1,11 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * CmsForNerd - Common UI Helpers
  * These functions handle the standard HTML structure for the laboratory CMS.
  */
+
+declare(strict_types=1);
 
 // [SEO/HTML5] pageheader() builds the REQUIRED top part of every HTML document.
 function pageheader(CmsForNerd\CmsContext $ctx): void

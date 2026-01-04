@@ -1,0 +1,59 @@
+ ------ ------------------ 
+  Line   includes\bootstr  
+         ap.php            
+ ------ ------------------ 
+         Ignored error     
+         pattern #Global   
+         variable          
+         \$[a-zA-Z0-9_]+   
+         is forbidden# in  
+         path              
+         D:\Users\LinuxMa  
+         laysia\CMSForNer  
+         d-Project\CmsFor  
+         Nerd\includes\bo  
+         otstrap.php was   
+         not matched in    
+         reported errors.  
+ ------ ------------------ 
+
+ ------ ------------------ 
+  Line   includes\global-  
+         control.inc.php   
+ ------ ------------------ 
+  :45    Function          
+         CmsForNerd\get_r  
+         untime_config()   
+         return type has   
+         no value type     
+         specified in      
+         iterable type     
+         array.            
+         🪪                
+         missingType.iter  
+         ableValue         
+         💡  See:          
+         https://phpstan.  
+         org/blog/solving  
+         -phpstan-no-valu  
+         e-type-specified  
+         -in-iterable-typ  
+         e                 
+ ------ ------------------ 
+
+ -- ---------------------- 
+     Error                 
+ -- ---------------------- 
+     Ignored error         
+     pattern #Variable     
+     \$ctx might not be    
+     defined.# in path     
+     D:\Users\LinuxMalays  
+     ia\CMSForNerd-Projec  
+     t\CmsForNerd\themes\  
+     * was not matched in  
+     reported errors.      
+ -- ---------------------- 
+
+ [ERROR] Found 3 errors   
+

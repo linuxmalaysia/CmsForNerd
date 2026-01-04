@@ -1,0 +1,26 @@
+
+FILE: ...:\Users\LinuxMalaysia\CMSForNerd-Project\CmsForNerd\includes\bootstrap.php
+--------------------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+--------------------------------------------------------------------------------
+ 1 | WARNING | A file should declare new symbols (classes, functions,
+   |         | constants, etc.) and cause no other side effects, or it should
+   |         | execute logic with side effects, but should not do both. The
+   |         | first symbol is defined on line 41 and the first side effect is
+   |         | on line 14.
+--------------------------------------------------------------------------------
+
+
+FILE: ...:\Users\LinuxMalaysia\CMSForNerd-Project\CmsForNerd\includes\turnstile.php
+--------------------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+--------------------------------------------------------------------------------
+ 1 | WARNING | A file should declare new symbols (classes, functions,
+   |         | constants, etc.) and cause no other side effects, or it should
+   |         | execute logic with side effects, but should not do both. The
+   |         | first symbol is defined on line 20 and the first side effect is
+   |         | on line 75.
+--------------------------------------------------------------------------------
+
+Time: 140ms; Memory: 8MB
+

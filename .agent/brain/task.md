@@ -51,6 +51,16 @@
 - [x] Finalize State of Mind documentation
 - [x] Notify user of persistent state capture
 
-# Task: Security Documentation Refinement (v3.5)
-- [x] Fix dangerous permission instructions in `INSTALLATION.md`
-- [ ] Final commit and re-tag v3.5
+# Task: Intelligence Audit & State Sync (v3.5)
+- [x] Restore "State of Mind" from persistent artifacts
+- [x] Identity PSR-12 compliance failures (File-level docblocks)
+- [x] Standardize headers (Docblock -> Declare)
+    - [x] index.php, template.php, bootstrap.php
+    - [x] SecurityUtils.php, common.inc.php, global-control.inc.php
+    - [x] is_bot.php, nav-helper.inc.php
+    - [x] sitemap_generator.php, turnstile.php, User.php
+    - [x] CmsContext.php and other src/ files
+- [/] Final composer lab-check verification
+    - [ ] Fix `CmsContextTest` (ArgumentCountError)
+    - [ ] Fix `global-control.inc.php` indentation
+    - [ ] Fix `bootstrap.php` brace placement

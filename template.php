@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * CmsForNerd v3.5 - Master Template Boilerplate
  * * This file serves as the "Master Controller" for the Lab v3 architecture.
@@ -15,6 +13,8 @@ declare(strict_types=1);
  * @copyright   2005 - 2026 Harisfazillah Jamel
  * @license     GPL-3.0-or-later
  */
+
+declare(strict_types=1);
 
 // 1. [PERFORMANCE] Enable GZIP and Output Buffering
 // ob_gzhandler compresses the HTML before sending it to the browser,

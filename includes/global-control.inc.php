@@ -1,14 +1,14 @@
 <?php
 
-declare(strict_types=1);
-
-namespace CmsForNerd;
-
 /**
  * CmsForNerd - Global Control Center
  * * This file handles security bootstrapping and environment configuration.
  * It follows PSR-12 standards by separating declarations from execution.
  */
+
+declare(strict_types=1);
+
+namespace CmsForNerd;
 
 /**
  * [SECURITY] boot_security
@@ -21,9 +21,9 @@ function boot_security(): void
 
     // Identify sensitive or technical file extensions/paths
     $isTechnical = str_ends_with($currentFile, '.inc') ||
-                   str_contains($currentPath, '/includes/') ||
-                   str_contains($currentPath, '/vendor/') ||
-                   str_contains($currentFile, '.php-old');
+        str_contains($currentPath, '/includes/') ||
+        str_contains($currentPath, '/vendor/') ||
+        str_contains($currentFile, '.php-old');
 
     if ($isTechnical) {
         header("X-Robots-Tag: noindex, nofollow, noarchive, nosnippet", true);
@@ -40,7 +40,7 @@ function boot_security(): void
  * [LOGIC] get_runtime_config
  * * Aggregates theme settings, pathing, and SEO metadata.
  * It provides a local scope for theme.php to inherit.
- * * @return array<string, string> The configuration map for the CMS (Key-Value strings).
+ * @return array<string, string> The configuration map for the CMS (Key-Value strings).
  */
 function get_runtime_config(): array
 {

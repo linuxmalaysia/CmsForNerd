@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * CmsForNerd v3.5 - Primary Front Controller (index.php)
  * * ROLE: The main entrance to the Laboratory.
@@ -13,6 +11,8 @@ declare(strict_types=1);
  * @copyright   2005 - 2026 Harisfazillah Jamel
  * @license     GPL-3.0-or-later
  */
+
+declare(strict_types=1);
 
 // 1. [PERFORMANCE] Enable GZIP and Output Buffering
 // Compresses data for faster delivery and allows header manipulation mid-script.

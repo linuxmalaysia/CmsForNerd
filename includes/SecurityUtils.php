@@ -1,15 +1,16 @@
 <?php
 
-declare(strict_types=1);
-
-namespace CmsForNerd;
-
 /**
  * [SECURITY] SecurityUtils - v3.5 Laboratory Standard.
  * * This class provides defensive programming utilities to protect the CMS core.
  * It combines path validation, XSS prevention, and CSP nonce generation.
  * * Compliance: PHP 8.4+, PSR-12, PHPStan Level 8.
  */
+
+declare(strict_types=1);
+
+namespace CmsForNerd;
+
 final class SecurityUtils
 {
     /**

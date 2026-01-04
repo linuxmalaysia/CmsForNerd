@@ -9,7 +9,13 @@ final class CmsContextTest extends TestCase
 {
     public function testCanBeCreatedWithDefaultValues(): void
     {
-        $ctx = new CmsContext();
+        $ctx = new CmsContext(
+            content: [],
+            themeName: 'CmsForNerd',
+            cssPath: 'themes/CmsForNerd/style.css',
+            dataFile: ['index'],
+            scriptName: 'index'
+        );
 
         $this->assertInstanceOf(CmsContext::class, $ctx);
         $this->assertSame([], $ctx->content);
@@ -20,7 +26,10 @@ final class CmsContextTest extends TestCase
     {
         $ctx = new CmsContext(
             content: ['title' => 'Test'],
-            themeName: 'MyTheme'
+            themeName: 'MyTheme',
+            cssPath: 'themes/MyTheme/custom.css',
+            dataFile: ['about'],
+            scriptName: 'about'
         );
 
         $this->assertSame(['title' => 'Test'], $ctx->content);

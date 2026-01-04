@@ -1,13 +1,14 @@
 <?php
 
-declare(strict_types=1);
-
-namespace CmsForNerd;
-
 /**
  * [EDUCATION] Legacy User Class - Used in Module 1 Lab.
  * Students are tasked to refactor this using PHP 8.4 Constructor Promotion.
  */
+
+declare(strict_types=1);
+
+namespace CmsForNerd;
+
 class User
 {
     public readonly string $username;

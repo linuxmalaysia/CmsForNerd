@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * [SEO/PERFORMANCE] is_bot() checks if the visitor is a search engine crawler.
  * Understanding bots is RECOMMENDED for:
@@ -10,6 +8,9 @@ declare(strict_types=1);
  *
  * The bot list SHOULD be updated regularly to reflect new search engines.
  */
+
+declare(strict_types=1);
+
 function is_bot(?string $userAgent = null): bool
 {
     // [PHP] $_SERVER['HTTP_USER_AGENT'] SHOULD be used to identify the visitor.

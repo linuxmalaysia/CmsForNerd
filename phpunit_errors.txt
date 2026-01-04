@@ -1,0 +1,18 @@
+PHPUnit 11.5.46 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.4.16
+Configuration: D:\Users\LinuxMalaysia\CMSForNerd-Project\CmsForNerd\phpunit.xml
+
+......F                                                             7 / 7 (100%)
+
+Time: 00:00.016, Memory: 8.00 MB
+
+There was 1 failure:
+
+1) CmsForNerd\Tests\StandardsTest::testBracePlacement
+File bootstrap.php line 76 has '{' on the same line as class/function declaration.
+
+D:\Users\LinuxMalaysia\CMSForNerd-Project\CmsForNerd\tests\StandardsTest.php:83
+
+FAILURES!
+Tests: 7, Assertions: 962, Failures: 1.
