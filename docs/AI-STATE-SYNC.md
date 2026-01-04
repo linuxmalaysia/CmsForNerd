@@ -4,28 +4,26 @@
 We are maintaining a **Modern PHP 8.4 Laboratory Environment**. The core engine is fully refactored, and we are now focused on documentation synchronization, AI agent discovery, and architectural finalization.
 
 ## 🚧 Architectural Decisions (MUST BE MAINTAINED)
-1. **Master Protocol Governance:** The agent MUST strictly adhere to **[AI-MASTER-PROTOCOL.md](AI-MASTER-PROTOCOL.md)** (Intelligence Audit & Session Wrap-up).
-2. **Strict Pre-Flight:** Mandates `composer audit-pre-flight` and `git status` checks (as enforced by the Protocol).
-2. **Git-Delta Awareness:** The agent MUST verify local vs. remote state at start-of-day via `git fetch` and `git log` before assuming the persistent "Brain" artifacts are absolute.
-2. **Bootstrap Pattern:** Every root `.php` file is a Front Controller. It MUST NOT load library files directly. It MUST load `includes/bootstrap.php`.
-3. **Zero-Global Architecture:** (Critical v3.5 Law)
+1. **Master Protocol Governance:** The agent MUST strictly adhere to **[AI-MASTER-PROTOCOL.md](AI-MASTER-PROTOCOL.md)**. This is the governing document for all AI-human synergy.
+2. **Intelligence Audit & Pre-Flight:** Mandates `composer audit-pre-flight` and `git status` check at every session start to prevent "Context Decay."
+3. **Git-Delta Awareness:** Verify local vs. remote state via `git fetch` and `git log` before trusting any local "Brain" artifacts.
+4. **Bootstrap Pattern:** Every root `.php` file is a Front Controller. It MUST NOT load library files directly. It MUST load `includes/bootstrap.php`.
+5. **Zero-Global Architecture:** (Critical v3.5 Law)
    - **NO** `global` keywords are allowed in Page Controllers or Functions.
-   - **ALL** core dependencies (`$themeName`, `$cssPath`, etc.) MUST be passed explicitly via Factory Methods (e.g., `createCmsContext(..., themeName: $themeName)`).
-4. **Namespace:** Everything core is under `namespace CmsForNerd;`.
-5. **Context Pattern:** Shared state is passed via the `CmsContext` object. Initialize via `createCmsContext()` factory.
-6. **PSR Compliance:** 
-   - **PSR-12:** Formatting enforced via `composer fix-style`.
+   - **ALL** core dependencies MUST be passed via `CmsContext` Factory Methods.
+6. **Namespace:** Everything core is under `namespace CmsForNerd;`.
+7. **Context Pattern:** Shared state is passed via the `CmsContext` object. Initialize via `createCmsContext()`.
+8. **PSR Compliance:** - **PSR-12:** Formatting enforced via `composer fix-style`.
    - **PSR-1:** Separation of concerns (Logic vs. Symbols).
-7. **Strict Typing:** `declare(strict_types=1);` is mandatory at the top of ALL PHP files.
-8. **Pair Logic:** Every public page MUST consist of a `.php` controller and a `contents/*-body.inc` fragment.
+9. **Strict Typing:** `declare(strict_types=1);` is mandatory at the top of ALL PHP files.
+10. **Pair Logic:** Every public page MUST consist of a `.php` controller and a `contents/*-body.inc` fragment.
 
 ## 🚦 Completed Refactors
 - [x] **Zero-Global v3.5:** Refactored `includes/bootstrap.php` and 30+ controllers to eliminate implicit Global State.
+- [x] **Master Protocol v3.5:** Formalized the "Intelligence Handshake" in `docs/AI-MASTER-PROTOCOL.md`.
 - [x] `CmsContext.php` namespaced with Property Hooks (PHP 8.4).
-- [x] **v3.4 Sync:** JSON-LD 2.0 and Theme normalization completed.
-- [x] **v3.5 Milestone:** Sitemap "Pair Logic" refactor, dynamic RSS 2.0 (`rss.php`), and ROR XML (`ror.php`) implemented.
-- [x] **AI Synergy:** Synchronized instructions for Google Gemini, Copilot, and Cursor.
-- [x] **Nerd Lab Protocol:** Codified the persistent "State of Mind" workflow in `.agent/workflows/nerd-lab-protocol.md`.
+- [x] **v3.5 Milestone:** Sitemap "Pair Logic" refactor, dynamic RSS 2.0, and ROR XML implemented.
+- [x] **Nerd Lab Protocol:** Codified the persistent "State of Mind" workflow.
 
 ## 🚧 Work In Progress
 - **Documentation Finalization:** Syncing `docs/` with the latest v3.5 code examples.
