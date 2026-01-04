@@ -7,8 +7,9 @@ To leverage AI agents (Gemini, Antigravity) to accelerate learning while maintai
 
 ## 🏛️ The Rules of Engagement
 
-### 1. The Master Protocol
-*   **MUST:** Every session MUST begin with the **Intelligence Audit** and end with the **Wrap-up Protocol** as defined in **[AI-MASTER-PROTOCOL.md](AI-MASTER-PROTOCOL.md)**.
+### 1. The Master Protocol (Session Management)
+* **MUST:** Every AI interaction MUST adhere to the **[AI-MASTER-PROTOCOL.md](AI-MASTER-PROTOCOL.md)**.
+* **MUST:** Sessions MUST begin with the **Intelligence Audit** (Morning Ritual) and conclude with the **Wrap-up Protocol** (Handover) to maintain the "State of Mind" persistence.
 
 ### 2. The "Think First" Rule
 * **MUST:** Students **MUST** attempt to solve structural problems using the `SecurityUtils` or `CmsContext` source code for 10 minutes before prompting an AI.
