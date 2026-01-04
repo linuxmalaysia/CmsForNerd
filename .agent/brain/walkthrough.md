@@ -45,6 +45,7 @@ All five laboratory modules were converted to Markdown and updated to v3.5 stand
 * **[NEW] `tools/audit-pre-flight.sh`**: Created a strict bash script to enforce state synchronization (Git Drift, Brain Artifacts, PHP 8.4 Env).
 * **Composer Integration**: Integrated `@audit-pre-flight` into `composer compliance` and `composer lab-check` for a Fail-Fast mechanism.
 * **Agent Protocol Update**: Mandated "Strict Pre-Flight" checks in `.cursorrules`, `.clinerules`, `.github/copilot-instructions.md`, and `docs/AI-STATE-SYNC.md`.
+* **Protocol Refinement**: Formalized the Master Protocol with a "Core Commands Reference" and clear "Session Wrap-up" checklist.
 
 ## 🛠️ Verification Results
 
