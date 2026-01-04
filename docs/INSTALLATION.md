@@ -40,12 +40,12 @@ Move the files to your web server's public directory. Ensure permissions follow 
 
 * **Linux (Debian/Ubuntu):** 
 ```bash
-# Set ownership to the web server user
-sudo chown -R www-data:www-data .
+# Set ownership to the web server user (example path)
+sudo chown -R www-data:www-data /var/www/html/
 
 # Secure permissions: Directories (755) and Files (644)
-sudo find . -type d -exec chmod 755 {} +
-sudo find . -type f -exec chmod 644 {} +
+sudo find /var/www/html/ -type d -exec chmod 755 {} +
+sudo find /var/www/html/ -type f -exec chmod 644 {} +
 ```
 > [!IMPORTANT]
 > Never use `chmod -R 777` or `755` on files. The commands above ensure that only directories are searchable/traversable and files are read-only for security, while remaining writable by the web server owner if needed.
