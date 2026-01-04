@@ -1,6 +1,6 @@
 <article class="lab-home">
     <header class="hero-section">
-        <h1>Welcome to CMSForNerd v3.4: The Secure Coding Laboratory</h1>
+        <h1>Welcome to CMSForNerd v3.5: The Secure Coding Laboratory</h1>
         <div class="runtime-status">
             <span class="badge php-version">PHP <?= phpversion() ?></span>
             <span class="badge status-strict">Strict Mode: Active</span>

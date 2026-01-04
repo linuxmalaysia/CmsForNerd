@@ -4,10 +4,8 @@
  * ==========================================================================
  * FILE: contents/footer.inc
  * ROLE: Global Footer Content & Navigation
- * VERSION: 3.9 (Fixing Red Background Inheritance)
+ * VERSION: 3.5.1 (Added AMP Dual-View Toggle)
  * ==========================================================================
- * [Inference] Explicitly setting background color to the lab variable
- * to override any unintended inheritance from the parent #footer container.
  */
 
 declare(strict_types=1);
@@ -42,6 +40,15 @@ declare(strict_types=1);
 
     <hr style="width: 60px; border: 0; border-top: 3px solid var(--lab-highlight, #8e44ad); margin: 25px auto; opacity: 0.6;">
 
+    <?php if (isset($ctx) && $ctx instanceof \CmsForNerd\CmsContext): ?>
+    <div style="margin-bottom: 20px;">
+        <a href="<?= htmlspecialchars($ctx->scriptName . '.php?view=amp') ?>" 
+           style="display: inline-block; padding: 5px 12px; border: 1px solid var(--lab-highlight, #8e44ad); border-radius: 4px; color: var(--lab-highlight, #8e44ad); text-decoration: none; font-size: 0.75rem; font-family: 'SF Mono', monospace; font-weight: bold;">
+           ⚡ SWITCH TO AMP MOBILE VIEW
+        </a>
+    </div>
+    <?php endif; ?>
+
     <div style="font-size: 0.85rem; line-height: 1.8;">
         <span style="opacity: 0.7;">CmsForNerd Infrastructure:</span> 
         <a href="https://www.linuxmalaysia.com" style="color: var(--lab-highlight, #8e44ad); text-decoration: none; font-weight: 600;">linuxmalaysia.com</a>
@@ -52,6 +59,6 @@ declare(strict_types=1);
     </div>
     
     <div style="font-family: 'SF Mono', monospace; font-size: 0.65rem; color: #94a3b8; margin-top: 30px; letter-spacing: 0.5px;">
-        [ REL: 3.5.0 ] | [ STD: RFC_9116 ] | [ ENV: PHP_8.4 ]
+        [ REL: 3.5.1 ] | [ STD: RFC_9116 ] | [ ENV: PHP_8.4 ] | [ VIEW: STANDARD ]
     </div>
 </div>

@@ -1,5 +1,5 @@
 <article class="template-guide">
-    <h1>🎨 CmsForNerd v3.4 Laboratory Guide</h1>
+    <h1>🎨 CmsForNerd v3.5 Laboratory Guide</h1>
     <p class="subtitle">Mastering the "Pair Logic" & Context Engine</p>
 
     <div class="intro-box">
@@ -90,7 +90,7 @@ $content['data'] = $pageName;</code></pre>
     </section>
 
     <section class="standards-box">
-        <h2>⚖️ Laboratory Standards (v3.4 Update)</h2>
+        <h2>⚖️ Laboratory Standards (v3.5 Update)</h2>
         <ul>
             <li><strong>MUST:</strong> Keep <code>declare(strict_types=1);</code> at the top of all <code>.php</code> files.</li>
             <li><strong>MUST NOT:</strong> Modify the Routing Logic or Theme Execution blocks in copied files.</li>
