@@ -41,3 +41,39 @@ Whether you are Gemini, Copilot, or Cursor, you are part of a unified **Agentic 
 
 1. **Cursor/Cline:** Save the content above into a file named `.agent/workflows/MASTER_PROTOCOL.md` (or referencing this file).
 2. **Every Session:** Simply tell the AI: *"Reference the Master Protocol and perform the Intelligence Audit to begin."*
+
+---
+
+# 🏁 The Nerd-Lab Session Wrap-up Protocol
+
+Before we disconnect and rest, the AI must ensure that the **"Brain"** is synced with the **"Code."** Follow these steps:
+
+### 1. The "Brain" Update (State Persistence)
+
+* [ ] **Sync `task.md`**: Mark all completed tasks with `[x]` and ensure current active tasks are marked with `[/]`. Add any new "next steps" discovered during this session.
+* [ ] **Update `walkthrough.md`**: Write a summary of *why* we made specific architectural choices today. Document any "gotchas" or bugs encountered for future reference.
+* [ ] **Milestone Check**: If a v3.5 milestone (e.g., Pair Logic, SEO Sync) was touched, update `docs/AI-STATE-SYNC.md`.
+
+### 2. The Physical Sync (VCS Hygiene)
+
+* [ ] **Atomic Commits**: Ensure every file changed has been committed individually with a clear message.
+* [ ] **Git Push**: Push the local state to the remote repository so the "Reality" is available for other developers.
+* [ ] **Git Log Summary**: Provide a quick summary of the last 3-5 commits made in this session as a "mental anchor."
+
+### 3. Technical Integrity (Zero-Error Verification)
+
+* [ ] **Run `composer compliance`**: Ensure the project is 100% PSR-12, PHP 8.4 strict, and PHPStan Level 8 compliant before leaving.
+* [ ] **Documentation Sync**: Check if any changes today impact the **GitBook** contents or **SEO/Sitemap** structures. Ensure comments are added to code for **PHP Education**.
+
+### 4. The Handover Note (State of Mind)
+
+* [ ] **The "Mental Anchor"**: Write a 2-sentence summary of exactly where your "mind" is.
+* *Example: "We finished the `CmsContext` property hooks for SEO, but we need to start on the `sitemap.php` logic next. The environment is clean and verified."*
+
+---
+
+### How to trigger this:
+
+Simply say to the AI:
+
+> **"Finalize the session. Execute the Wrap-up Protocol and update my State of Mind."**
