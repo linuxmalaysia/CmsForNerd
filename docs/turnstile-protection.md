@@ -6,7 +6,7 @@ The CMSForNerd v3.5 Laboratory integrates **Cloudflare Turnstile** to provide no
 
 *   **What**: A "Server-to-Server" verification gateway for sensitive POST requests.
 *   **Why**: Traditional CAPTCHAs are frustrating for users and easily broken by AI. Turnstile uses invisible challenges to prove "humanness" without friction.
-*   **Where**: Primary logic is in [includes/turnstile.php](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/includes/turnstile.php).
+*   **Where**: Primary logic is in [includes/turnstile.php](../includes/turnstile.php).
 *   **When**: 
     *   Triggered automatically for any incoming `POST` request that contains data.
     *   Required for login forms, contact forms, and content edits.
@@ -15,7 +15,7 @@ The CMSForNerd v3.5 Laboratory integrates **Cloudflare Turnstile** to provide no
 ## 2. Technical Architecture
 
 ### Integration Point
-In [includes/turnstile.php](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/includes/turnstile.php), the module listens globally for POST traffic:
+In [includes/turnstile.php](../includes/turnstile.php), the module listens globally for POST traffic:
 
 ```php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
@@ -45,11 +45,11 @@ if (!defined('TURNSTILE_SECRET_KEY')) {
 ## 4. Performance & Security
 
 1.  **Low Latency**: The `cURL` request is configured with a 2-second connection timeout to ensure site availability if Cloudflare is unreachable.
-2.  **Defense-in-Depth**: Turnstile works alongside [is_bot.php](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/includes/is_bot.php). While `is_bot` identifies legitimate crawlers for GET requests, Turnstile guards the writeable POST routes against malicious bots.
+2.  **Defense-in-Depth**: Turnstile works alongside [is_bot.php](../includes/is_bot.php). While `is_bot` identifies legitimate crawlers for GET requests, Turnstile guards the writeable POST routes against malicious bots.
 
 ## 5. Troubleshooting
 
 If you see "Security Check Failed":
 1.  Ensure the `TURNSTILE_SECRET_KEY` is correct.
 2.  Verify that your client-side form includes the `<div class="cf-turnstile"></div>` widget.
-3.  Check [includes/turnstile.php](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/includes/turnstile.php) for cURL error logs in your server log.
+3.  Check [includes/turnstile.php](../includes/turnstile.php) for cURL error logs in your server log.

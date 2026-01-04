@@ -6,7 +6,7 @@ To maintain a "Zero-Error" laboratory, we use a hybrid bot detection system. Thi
 
 *   **What**: A defense-in-depth module combining User-Agent regex with IP-based CIDR verification.
 *   **Why**: To distinguish between legitimate search engines (SEO) and malicious scrapers/spam bots. Malicious bots often spoof User-Agents, but they cannot spoof their IP source in the same way.
-*   **Where**: Located in [includes/is_bot.php](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/includes/is_bot.php).
+*   **Where**: Located in [includes/is_bot.php](../includes/is_bot.php).
 *   **When**: 
     *   Triggered whenever metadata or performance layers need to decide if they are serving a human or a crawler.
     *   Used in `block_datacenter_traffic()` to allow legitimate bots to pass while blocking institutional scrapers.
@@ -14,12 +14,12 @@ To maintain a "Zero-Error" laboratory, we use a hybrid bot detection system. Thi
 
 ## 2. Implementation: How it Works
 
-The logic flow in [is_bot.php](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/includes/is_bot.php) is designed for maximum speed:
+The logic flow in [is_bot.php](../includes/is_bot.php) is designed for maximum speed:
 
 1.  **Fast Path**: If the IP is `127.0.0.1`, it immediately returns `false` (Not a bot).
 2.  **Context-Aware Cache**: It stores the result of the last detection. If the IP and User-Agent haven't changed since the last call, it returns the cached result (0ms overhead).
 3.  **Pattern Match**: It checks the `HTTP_USER_AGENT` against known strings like `googlebot` or `bingbot`.
-4.  **CIDR Verification**: If the UA matches, it verifies the IP against [data/trusted-bots.json](file:///d:/Users/LinuxMalaysia/CMSForNerd-Project/CmsForNerd/data/trusted-bots.json).
+4.  **CIDR Verification**: If the UA matches, it verifies the IP against [data/trusted-bots.json](../data/trusted-bots.json).
 
 ## 3. Data Management
 
