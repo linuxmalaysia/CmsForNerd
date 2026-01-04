@@ -61,6 +61,22 @@ All five laboratory modules were converted to Markdown and updated to v3.5 stand
 * **Architecture Check**: All documentation now correctly references the `CmsContext` factory pattern (`createCmsContext()`).
 * **Environment Readiness**: Setup guides now include verified terminal commands for Debian/Ubuntu, AlmaLinux, and Windows (Laravel Herd).
 
+# Architectural Walkthrough: AMP Integration
+
+## The Problem
+Maintaining separate HTML files for AMP and Standard views violates the "Pair Logic" and increases technical debt.
+
+## The Solution: Fragment Transformation
+We utilize PHP's output buffering to treat the `-body.inc` fragment as a raw data stream.
+1. The Controller (`index.php`) initializes the `CmsContext`.
+2. The Pager detects `$_GET['view'] === 'amp'`.
+3. The Pager captures `pagecontent()` into a variable.
+4. `str_replace()` is used to swap `<img>` with `<amp-img>` to satisfy AMP validation while reusing the exact same source fragment.
+
+## Key Files
+- `includes/nav-helper.inc.php`: Houses the strict AMP <head> boilerplate.
+- `themes/CmsForNerd/pager.php`: The decision engine for view-switching.
+
 The documentation suite is now **100% synchronized** and ready for the v3.5 release milestone.
 
 > **Final Sync Check (2026-01-04):** Verified and committed `docs/AI-STATE-SYNC.md` and `docs/HISTORY.md` to ensure the repository reflects the exact "State of Mind" of the v3.5 release. Use `git log` to verify the commit `docs: sync AI state and history for v3.5 compliance`.
@@ -68,4 +84,5 @@ The documentation suite is now **100% synchronized** and ready for the v3.5 rele
 > **Mental Anchor (Session End):** We have fully formalized the "Intelligence Audit" ecosystem. The `master-protocol` is now the Single Source of Truth for agent behavior. The environment is clean, compliant (Level 8), and ready for future "happy flow."
 
 > **Final Sync Check (2026-01-04):** Verified and committed the consolidated Master Protocol ecosystem. The repository now reflects the exact "State of Mind" required for high-availability agentic development.
+
 

@@ -72,3 +72,16 @@
     - [x] Fix `CmsContextTest` (ArgumentCountError)
     - [x] Fix `global-control.inc.php` indentation
     - [x] Fix `bootstrap.php` brace placement
+# CmsForNerd v3.5 Task Tracker
+
+## [PHASE: ARCHITECTURE] - COMPLETED ✅
+- [x] **Zero-Global Refactor**: Removed `global` keywords; implemented `CmsContext`.
+- [x] **Baseline Sync**: Synchronized `index.php` and `template.php` logic.
+- [x] **Dual-View Pager**: Integrated `renderStandardLayout` and `renderAmpLayout` in `pager.php`.
+- [x] **Modular AMP Header**: Created `pageheader_amp()` in `nav-helper.inc.php`.
+
+## [PHASE: DOCUMENTATION] - IN PROGRESS 🏗️
+- [x] **Project Rules Update**: Integrated AMP Content Parity rules.
+- [ ] **SOP Verification**: Run `composer compliance` on all new helpers.
+- [ ] **Discovery Logic**: Add `<link rel="amphtml">` to standard `pageheader()`.
+
