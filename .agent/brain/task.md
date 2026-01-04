@@ -64,6 +64,7 @@
     - [x] Add Git fetch/diff/log to `nerd-lab-protocol.md`
     - [x] Update `blog-state-sync.md` with VCS sync logic
 - [x] Update `CONTRIBUTING.md` with "State of Mind" guidelines
+- [x] Sync `DIRECTORY_SECURITY.md` and `DOCS_REQUIREMENTS.md` to v3.5 and GitBook
 - [x] Debug & Fix `ror.php` (Fatal error: strict_types)
 - [x] Final composer lab-check verification
     - [x] Fix `CmsContextTest` (ArgumentCountError)

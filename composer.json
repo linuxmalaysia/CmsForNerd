@@ -48,6 +48,9 @@
             "@php -r \"echo '🚀 Running Full Compliance & Security Analysis...\\n';\"",
             "@compliance"
         ],
+        "update-bots": [
+            "@php -r \"require 'includes/is_bot.php'; echo '🚀 Updating Bot Intelligence...\\n'; print_r(update_trusted_bot_ips());\""
+        ],
         "post-install-cmd": [
             "@php -r \"echo 'Welcome to the CMSForNerd v3.5 Laboratory (Secure Engine Mode).\\nRun [composer lab-check] to verify setup and PHPStan analysis.\\n';\""
         ]
