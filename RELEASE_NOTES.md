@@ -1,8 +1,55 @@
+# 🚀 Release v3.5.0: The "Mobile Mastery" Milestone
+
+We are proud to announce **CMSForNerd v3.5**, a significant evolution in our educational mission. This release introduces a sophisticated **Dual-View Architecture**, allowing the laboratory to serve lightning-fast, interactive mobile experiences via **AMP (Accelerated Mobile Pages)** while maintaining a robust desktop environment.
+
+---
+
+## 🌟 What's New in v3.5?
+
+### 📱 Dual-View Architecture (Hybrid Delivery)
+
+* **AMP Mode Integration**: A dedicated mobile rendering engine in `pager.php` that transforms standard PHP content into validated AMP components.
+* **Interactive Sidebar**: Implementation of `amp-sidebar` for mobile navigation, featuring "Active State Highlighting" to improve user orientation.
+* **Automated Image Transformation**: The CMS now automatically buffers content and converts standard `<img>` tags into CLS-optimized `<amp-img>` tags with responsive layouts.
+
+### 🛠️ Defensive Front-End Engineering
+
+* **CSS Size Guard**: A new safety mechanism in `includes/nav-helper.inc.php` that monitors `amp.css` to ensure it never exceeds the strict 75KB AMP limit.
+* **Layered Stacking Context**: Optimized Z-index management to ensure mobile interactivity (burger menus and sidebars) remains responsive regardless of content complexity.
+* **Strict CSP Nonce Propagation**: Cryptographic nonces are now synchronized across the core AMP library and all individual component scripts to prevent "Silent Failures" in secured environments.
+
+### 🤖 Agentic Synchronization
+
+* **Agent Brain v2.0**: Updated `.agent/brain/` documentation and task tracking to allow AI coding partners (Gemini/Antigravity) to maintain a deep understanding of the project's dual-view state.
+* **Cross-Platform Parity**: Refined `includes/bootstrap.php` to ensure the "Mobile Mastery" suite performs identically across Linux and Windows development environments.
+
+---
+
+## 🧪 Educational Impact
+
+With v3.5, the curriculum expands into **Modern Mobile UX**:
+
+1. **AMP Standards**: Learning to build interactive UI without the weight of custom JavaScript.
+2. **Resource Budgeting**: Understanding the importance of the 75KB CSS limit and how to minify assets.
+3. **Stateful UI**: Using PHP logic to generate "Active" menu states in a stateless mobile environment.
+
+---
+
+## 📥 Installation & Upgrade
+
+### Upgrading from v3.4:
+
+1. **Templates**: Create `themes/CmsForNerd/amp-sidebar.tpl`.
+2. **Styles**: Add `themes/CmsForNerd/css/amp.css` for mobile styling.
+3. **Core Logic**: Update `includes/nav-helper.inc.php` and `themes/CmsForNerd/pager.php` to enable the Dual-View controller.
+
+---
+
+
+
 # 🚀 Release v3.4.0: The "Zero-Debt" Milestone
 
 We are proud to announce the release of **CMSForNerd v3.4**, a major leap forward in our mission to provide the ultimate learning environment for modern PHP engineering. This update moves beyond simple features, introducing **Static Analysis** and **Zero-Trust Security** as the new laboratory standards.
-
-
 
 ---
 

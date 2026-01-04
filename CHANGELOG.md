@@ -4,6 +4,29 @@ All notable changes to this project are documented in this file.
 Entries are grouped by date (most recent first).
 
 ---
+## [3.5.0] - 2026-01-05 (The "Mobile Mastery" Milestone)
+
+**"Dual-View Architecture & AMP Optimization."**
+
+### 🏗️ Architecture & Core Logic
+
+* **Dual-View Controller**: Implemented a mode-switching engine in `pager.php` that routes users between `standard` and `amp` layouts based on URL parameters.
+* **AMP Image Processor**: Added a real-time output buffer in the pager to transform standard `<img>` tags into valid `<amp-img>` tags with automatic aspect ratio handling.
+* **Enhanced Bootstrap**: Updated `includes/bootstrap.php` to support localized laboratory settings and environment-specific constants.
+
+### 📱 Theme & UI (Mobile First)
+
+* **Interactive Sidebar**: Created `themes/CmsForNerd/amp-sidebar.tpl` using the `amp-sidebar` component for zero-JS mobile navigation.
+* **Active Navigation**: Developed a PHP-driven highlighting system to visually mark the current page within the sidebar.
+* **Layout Hardening**: Added z-index management and "tap-fix" styles to ensure the mobile hamburger menu remains interactive on all devices.
+
+### 🛡️ Security & Performance
+
+* **CSP Nonce Synchronization**: Updated `includes/nav-helper.inc.php` to propagate unique nonces to all AMP-specific script tags.
+* **CSS Size Guard**: Integrated an automated check that validates `amp.css` against the 75,000-byte AMP limit during rendering.
+* **Strict Headers**: Hardened the Content Security Policy to explicitly allow the `cdn.ampproject.org` domain for scripts and connectivity.
+
+---
 
 ## [3.4.0] - 2026-01-01 (The "Zero-Debt" Milestone)
 **"Engineering Excellence & Static Analysis."**
