@@ -1,108 +1,101 @@
 # 🚀 CmsForNerd v3.5 (2026 Laboratory Edition)
 
-**CmsForNerd** is a Lightweight, Radically Simple, Database-Free PHP Laboratory CMS designed as a live learning environment for modern developers. Version 3.5 marks the final synchronization of **"Pair Logic"** and **AI-Agentic Workflows** within a flat-file architecture.
+**CmsForNerd** is a Lightweight, Radically Simple, Database-Free PHP Laboratory CMS designed as a live learning environment for modern developers. Version 3.5 marks the final synchronization of **"Pair Logic"**, **Mobile Mastery**, and **AI-Agentic Workflows**.
 
-**Current Version:** 3.5 (Bumping from 3.4 - Jan 2026)  
-**Changelog:** See [Modernization History](docs/HISTORY.md) for v3.5 Milestone notes.  
-**Primary Maintainer:** Harisfazillah Jamel  
+**Current Version:** 3.5 (Mobile Mastery Milestone)
+
+**Changelog:** See [Modernization History](https://www.google.com/search?q=docs/HISTORY.md) for v3.5 Milestone notes.
+
+**Primary Maintainer:** Harisfazillah Jamel
+
 **AI Architect:** Google Gemini & Google Antigravity
+
+---
+
+## 📱 AMP & Dual-View Architecture
+
+Version 3.5 introduces a high-performance **Dual-View** engine:
+
+* **AMP Hybrid Rendering**: Automatically detects `?view=amp` to serve Google-validated Accelerated Mobile Pages.
+* **Zero-JS Interactivity**: Implementation of `amp-sidebar` for lightning-fast mobile navigation without bloated scripts.
+* **Automated Validation**: Integrated output buffering that transforms standard `<img>` tags into CLS-optimized `<amp-img>` components.
+* **CSS Size Guard**: Automated monitoring to ensure mobile styles remain under the strict 75KB AMP threshold.
+
+---
+
+## 🧠 The "State of Mind" Protocol
+
+To maintain synchronization between the Human Architect and the AI Agent, the following "State of Mind" (SoM) handshake is **REQUIRED** for all laboratory sessions.
+
+### 🌅 Start of Day: The Handshake
+
+1. **Sync Context**: Review `.agent/brain/task.md` to identify the current "Mental State" of the project.
+2. **Verify Integrity**: Run `composer lab-check` to ensure the laboratory is "Green" before any new logic is injected.
+3. **Baseline Push**: Ensure all previous work is committed and tagged to prevent state-drift.
+
+### 🌇 End of Day: The Snapshot
+
+1. **Update Brain**: Update `.agent/brain/walkthrough.md` with the day's logic changes to prepare the AI for the next session.
+2. **Log Milestones**: Finalize entries in `CHANGELOG.md` and `RELEASE_NOTES.md`.
+3. **Tag State**: Use `git tag -a v3.5.x` to create a permanent snapshot of the current "State of Mind."
 
 ---
 
 ## 🛠️ Tech Stack & Development Environment
 
 ### Core Engine
-* **Language:** PHP 8.4+ (Enforced Strict Types & Constructor Property Promotion)
-* **Architecture:** "Pair Logic" (Immutable **CmsContext** Factory Pattern)
-* **Security:** Native Content Security Policy (CSP) with Nonce-tracking
-* **Server:** Nginx Latest (Recommended) or Apache 2.4+
-* **OS:** Windows 11 (Herd), Debian, AlmaLinux, or FreeBSD
+
+* **Language**: PHP 8.4+ (Enforced Strict Types & Constructor Property Promotion)
+* **Mobile Engine**: AMP ⚡ (Accelerated Mobile Pages HTML/CSS)
+* **Architecture**: "Pair Logic" (Immutable **CmsContext** Factory Pattern)
+* **Security**: Native Content Security Policy (CSP) with Nonce-tracking
 
 ### Professional Tooling
-* **IDE:** [Google Antigravity](https://deepmind.google/technologies/gemini/) (AI-native) or VS Code
-* **Static Analysis:** **PHPStan Level 8** (The Laboratory Gold Standard)
-* **Package Manager:** Composer 2.8+
-* **Testing & QA:** PHPUnit 11.5+ and PHP_CodeSniffer 3.11+ (PSR-12)
-* **Browser:** Mozilla Firefox (For strict CSP and network auditing)
-* **Tooling:** [setup-lab.sh](tools/setup-lab.sh) for Linux/macOS, [setup-lab.ps1](tools/setup-lab.ps1) for Windows
 
+* **IDE**: [Google Antigravity](https://deepmind.google/technologies/gemini/) (AI-native) or VS Code
+* **Static Analysis**: **PHPStan Level 8** (The Laboratory Gold Standard)
+* **Package Manager**: Composer 2.8+
+* **Testing & QA**: PHPUnit 11.5+ and PHP_CodeSniffer 3.11+ (PSR-12)
 
 ---
 
 ## 🚀 Installation & Laboratory Setup
 
 ### 🪟 Option 1: Microsoft Windows 11 (Nerd-Stack)
+
 1. Install [Laravel Herd](https://herd.laravel.com) and select **PHP 8.4**.
 2. Clone the repo into your Herd `sites` folder.
-3. Run `composer install` to initialize the Autoloader and Tooling.
-4. Run `composer lab-check` to verify the environment.
+3. Run `composer install` and `composer lab-check`.
 
 ### 🐧 Option 2: Linux (Debian/AlmaLinux)
+
 1. Use [Ondřej Surý's PPA](https://deb.sury.org/) or [Remi Repo](https://rpms.remirepo.net/).
 2. Install `php8.4-cli`, `php8.4-mbstring`, `php8.4-xml`, and `php8.4-zip`.
-3. Follow the [Linux Setup Guide](docs/linux-setup.md).
 
 ---
 
 ## 🤖 AI-Assisted Development
-CMSForNerd v3.5 is architected for co-authoring with AI Agents:
 
 1. **Google Gemini (The Architect)**: Use for planning logic and Level 8 PHPDoc refactoring.
 2. **Google Antigravity (The Agent)**: Use for secure file writes, static analysis audits, and Git management.
 3. **Workflow**: Describe changes → Review `implementation_plan.md` → Verify with `composer lab-check`.
-4. **Master Protocol**: Read the [Nerd-Lab Master Protocol](docs/AI-MASTER-PROTOCOL.md) to understand the "State of Mind" handshake.
-
-> **v3.5 Sync Tip:** Every `.php` controller MUST have a corresponding `-body.inc` fragment in the `contents/` directory.
-
----
-
-## 🧪 The Laboratory Curriculum (v3.5 Sync)
-
-Master backend engineering through our built-in modules:
-1. **Module 1-2**: Architecture, PSR-12, & PSR-4 Autoloading.
-2. **Module 3**: **Defensive Engineering** (Path Sanitization & CSP).
-3. **Module 4**: **Automated Testing** (PHPUnit 11.5+ Mastery).
-4. **Module 5**: **AI-Agentic Workflows** & Pair Logic.
-5. **Final Exam**: The "Break-Fix" Challenge (Repairing a live laboratory system).
-
-Start your journey in the [🎓 Lab Manual](docs/lab-manual.md).
 
 ---
 
 ## ⚖️ Standards (RFC 2119 & v3.5 Engineering)
 
 * **MUST**: Begin all files with `declare(strict_types=1);`.
-* **MUST NOT**: Use `global` variables; use the `createCmsContext()` factory.
-* **REQUIRED**: All new code **MUST** pass `composer compliance` (PHPStan Level 8).
-* **SHOULD**: Use Property Hooks for data validation where appropriate.
-* **MUST**: Follow the "Pair Logic" naming convention.
-
----
-
-### 🛠️ Laboratory Automation Tools
-
-To simplify the setup process for students and developers, we have provided automation scripts in the `tools/` directory.
-
-#### 🐧 For Linux & macOS
-```bash
-chmod +x tools/setup-lab.sh
-./tools/setup-lab.sh
-```
-
-#### 🪟 For Windows 11
-```powershell
-.\tools\setup-lab.ps1
-```
-
-#### 🌐 Web Environment Check
-After setting up the CLI, verify your web server configuration by visiting:
-`http://localhost/tools/sanity-check.php`
+* **MUST**: All mobile output **MUST** pass the `AMP Validator`.
+* **REQUIRED**: All code **MUST** pass `composer compliance` (PHPStan Level 8).
+* **MUST**: Follow the "State of Mind" handshake for every session.
+* **MUST**: Every `.php` controller MUST have a corresponding `-body.inc` fragment in the `contents/` directory.
 
 ---
 
 ### Credits
-* **Author:** Harisfazillah Jamel (LinuxMalaysia)
-* **Assistant:** Google Gemini & Google Antigravity (v3.5 "Pair Logic" Milestone)
-* **Website:** [linuxmalaysia.com](https://www.linuxmalaysia.com)
 
-*Modernization without loss of simplicity. Security without the bloat.*
+* **Author**: Harisfazillah Jamel (LinuxMalaysia)
+* **Assistant**: Google Gemini & Google Antigravity (v3.5 "Mobile Mastery" Milestone)
+* **Website**: [linuxmalaysia.com](https://www.linuxmalaysia.com)
+
+*Modernization without loss of simplicity. Mobile excellence without the bloat.*
