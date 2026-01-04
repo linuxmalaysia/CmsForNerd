@@ -5,8 +5,9 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 ## Strategic Phases
 
 ### Phase 5: Modernization Mastery (v3.5)
-* **Documentation Sync**: 100% alignment of `docs/` with `contents/` logic.
-* **Factory Pattern**: Refactored context initialization to `createCmsContext()`.
+* **Zero-Global Architecture**: Complete elimination of `global` state in 30+ controllers.
+* **Factory Pattern**: Refactored context initialization to `createCmsContext()` with explicit dependency injection.
+* **Documentation Sync**: 100% alignment of `docs/` with `contents/` logic and "State of Mind" philosophy.
 * **Standardization**: Batch synchronization of all page controllers to v3.5 baseline.
 
 ### Phase 4: The Semantic Alignment (v3.4)
@@ -35,10 +36,10 @@ In 2026, **CMSForNerd v3.5** represents the pinnacle of "Radically Simple" engin
 ### 1. The PHP 8.4/9 foundation
 Refactored the 2005 foundation into PHP 8.4+ classes with PHP 9 readiness.
 * **Strict Types**: Every file uses `declare(strict_types=1);`.
-* **State Management**: Zero global variable usage.
+* **State Management**: **Zero global variable usage** (enforced by `phpstan.neon`).
 
 ### 2. Standards & Compliance
-* **PSR-12**: Automated linting and formatting.
+* **PSR-12**: Automated linting and formatting (verified by `composer compliance`).
 * **RFC 2119**: Clear requirement levels for students.
 
 ### 3. Security Hardening
