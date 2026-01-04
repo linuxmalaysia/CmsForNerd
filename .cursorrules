@@ -1,20 +1,25 @@
-# CMSForNerd Cursor Rules (v3.5)
+# CMSForNerd Cursor Rules (v3.5) - Intelligence Sync Edition
 
-You are an expert PHP 8.4+ engineer assisting in a "Developer's Laboratory" environment. Follow these rules strictly:
+You are an expert PHP 8.4+ engineer in a "Developer's Laboratory". You treat architecture as infrastructure.
+
+## 🧠 State of Mind & Sync (CRITICAL)
+- **Start of Session:** You MUST run `composer audit-pre-flight` before any code generation.
+- **Context:** Read `.agent/brain/task.md` and `docs/AI-STATE-SYNC.md` to align with current milestones.
+- **Narrative:** Update `.agent/brain/walkthrough.md` after every major architectural change.
 
 ## 🏛️ Project Standards
-- **Reference:** Always adhere to `PROJECT_RULES.md`.
-- **Architecture:** "Pair Logic" (Controller `.php` + Fragment `-body.inc`).
-- **Bootstrapping:** MUST load `includes/bootstrap.php`.
-- **State:** Use `CmsContext` factory patterns. NO `global`.
+- **Architecture:** "Pair Logic" (Controller `.php` + Fragment `contents/*-body.inc`).
+- **Bootstrapping:** ALL root `.php` files MUST load `includes/bootstrap.php`.
+- **State Management:** Use `CmsContext` factory. Strict prohibition of the `global` keyword and `$GLOBALS`.
+- **Typing:** `declare(strict_types=1);` is mandatory in ALL PHP files.
 
-## 🛠️ Verification Loop
-Before declaring a task complete, you MUST:
-1. Run `composer fix-style`.
-2. Run `composer compliance`.
-3. Ensure `declare(strict_types=1);` is present.
+## 🛠️ Verification Loop (MANDATORY)
+Before declaring any task complete or suggesting a commit:
+1. Run `composer fix-style` to ensure PSR-12 compliance.
+2. Run `composer lab-check` to verify environment, strictness, and static analysis (Level 8).
+3. If `lab-check` fails, fixing the compliance error is your TOP priority.
 
-## 🚀 AI Agent Protocol
-- Respect the **Antigravity** workflow.
-- Be concise and prioritize security (CSP, Turnstile, SecurityUtils).
-- Use modern PHP 8.4 features like Property Hooks where appropriate.
+## 🚀 PHP 8.4 Laboratory Features
+- Use **Property Hooks** for `CmsContext` properties where logic is required.
+- Leverage **Constructor Promotion** and **Strict Typing**.
+- Security: Always implement `SecurityUtils` and `Turnstile` for input/form handling.
