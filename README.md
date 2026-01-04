@@ -39,6 +39,20 @@ To maintain synchronization between the Human Architect and the AI Agent, the fo
 2. **Log Milestones**: Finalize entries in `CHANGELOG.md` and `RELEASE_NOTES.md`.
 3. **Tag State**: Use `git tag -a v3.5.x` to create a permanent snapshot of the current "State of Mind."
 
+## 🧠 The "State of Mind" Protocol (Manual AI Sync)
+To maintain synchronization during manual AI chat sessions (Gemini/ChatGPT/Claude), follow this handshake to ensure the AI respects the laboratory's strict architectural boundaries.
+
+### 🌅 Start of Day: The Handshake
+Paste the **Master Prompt** followed by the content of these core files into your chat:
+* **The Master Prompt**: 
+    > "Act as a Lead PHP Architect for CmsForNerd v3.5. Standards: PHP 8.4 strict types, PHPStan Level 8, Zero-Global variables, 'Pair Logic' pattern. We are currently implementing [Goal from task.md]. Here is the system context:"
+* **System Context Files**: `bootstrap.php`, `pager.php`, and `nav-helper.inc.php`.
+
+### 🌇 End of Day: The Snapshot
+1.  **Summarize**: Ask the AI: "Provide a technical summary of today's changes for my `walkthrough.md`."
+2.  **Log Milestones**: Finalize entries in `CHANGELOG.md` and `RELEASE_NOTES.md`.
+3.  **Tag State**: Use `git tag -a v3.5.x` to create a permanent snapshot of the current "State of Mind."
+
 ---
 
 ## 🛠️ Tech Stack & Development Environment
