@@ -36,6 +36,7 @@
 * [Modernization History](HISTORY.md)
 * [AI Ethics SOP](ai-sop.md)
 * [Project State Sync](AI-STATE-SYNC.md)
+* [AI Master Protocol](AI-MASTER-PROTOCOL.md)
 * [State Sync Manifesto](blog-state-sync.md)
 * [Documentation Requirements](docs-requirements.md)
 * [Security Policy](security-policy.md)

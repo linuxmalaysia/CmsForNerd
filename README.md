@@ -50,6 +50,7 @@ CMSForNerd v3.5 is architected for co-authoring with AI Agents:
 1. **Google Gemini (The Architect)**: Use for planning logic and Level 8 PHPDoc refactoring.
 2. **Google Antigravity (The Agent)**: Use for secure file writes, static analysis audits, and Git management.
 3. **Workflow**: Describe changes → Review `implementation_plan.md` → Verify with `composer lab-check`.
+4. **Master Protocol**: Read the [Nerd-Lab Master Protocol](docs/AI-MASTER-PROTOCOL.md) to understand the "State of Mind" handshake.
 
 > **v3.5 Sync Tip:** Every `.php` controller MUST have a corresponding `-body.inc` fragment in the `contents/` directory.
 
