@@ -10,7 +10,7 @@ This workflow defines the "State of Mind" and sequence of operations required to
 // turbo
 1. Read `docs/AI-STATE-SYNC.md` to understand the current architectural milestone.
 2. Review the latest `git log -n 10` and `HISTORY.md` to track recent granular commits.
-3. Consult `task.md` and `walkthrough.md` in the `.gemini/antigravity/brain` directory for persistent context.
+3. Consult `task.md` and `walkthrough.md` in the `.agent/brain/` directory for persistent context.
 
 ## 2. Structural Synchronization
 1. **Baseline Check:** Ensure `index.php` and `template.php` are logically identical. They are the "Single Source of Truth."
