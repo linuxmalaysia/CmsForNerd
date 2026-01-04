@@ -28,10 +28,12 @@ While `task.md` is for the "What," the [walkthrough.md](file:///.agent/brain/wal
 Persistent artifacts are powerful, but they aren't the only source of truth. A critical part of the sync is the **Git Reality Check**.
 
 Before trust is established, the agent must ask: *What happened in the physical world while I was away?*
-- **Remote Delta**: Fetching from `origin/master` to see what human teammates have committed.
-- **Local Drift**: Checking `git status` for manual tweaks or untracked files that haven't been recorded in the "Brain" yet.
+- **Remote Delta**: Fetching from `origin/master` and running `git log master..origin/master --oneline` to see what human teammates have committed.
+- **Local Drift**: Checking `git status` for manual tweaks or untracked files.
+- **Structural Validation**: Using `git diff origin/master` to see the actual code changes line-by-line.
+- **The Ultimate Auditor**: Running `composer compliance` to see if the environment "feels" right before even trusting the documentation.
 
-If the Git history and the Brain artifacts disagree, the agent's first job isn't to code—it's to reconcile the history.
+If the Git history and the Brain artifacts disagree, the agent's first job isn't to code—it's to reconcile the history. The AI must bridge the gap between "Project Memory" and "Version Control Reality."
 
 ## The Morning Ritual: The Nerd Lab Protocol
 We’ve codified this into the [/nerd-lab-protocol](file:///.agent/workflows/nerd-lab-protocol.md). This isn't just a list of steps; it's an **Intelligence Audit**.
