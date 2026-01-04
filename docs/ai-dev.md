@@ -20,9 +20,13 @@ Antigravity is the executioner. It handles the physical operations:
 * **Git Mastery:** Handling staging and commits once code is verified.
 
 ## 📜 Layer 3: The Master Protocol (The Handshake)
-The **[Nerd-Lab Master Protocol](AI-MASTER-PROTOCOL.md)** is the binding "Constitution" between the Architect (Gemini) and the Agent (Antigravity/Copilot).
-*   **Purpose**: To ensure State of Mind persistence and Zero-Error handovers.
-*   **Requirement**: All AI agents MUST execute the **Intelligence Audit** defined in this protocol before writing code.
+The **[AI-MASTER-PROTOCOL.md](AI-MASTER-PROTOCOL.md)** is the binding "Constitution" between the Architect and the Agent. It prevents context decay and ensures that every AI session is a continuation of the last, rather than a restart.
+
+* **Intelligence Audit**: All agents MUST perform the "Morning Ritual" (Sync Chain) before modifying code.
+* **State Persistence**: Agents are responsible for updating `.agent/brain/` artifacts to preserve the project's "State of Mind."
+* **Zero-Error Handoff**: No session is complete until the **Wrap-up Protocol** is executed and verified.
+
+---
 
 ## 🌐 The "Triple Threat" Discovery Strategy
 To ensure AI search engines (like Perplexity or ChatGPT) accurately categorize your CMS content, we use three layers:
