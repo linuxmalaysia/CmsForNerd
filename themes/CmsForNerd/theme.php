@@ -1,15 +1,15 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * CmsForNerd - Default Theme Configuration
- * * This file is included within the scope of CmsForNerd\get_runtime_config().
+ * This file is included within the scope of CmsForNerd\get_runtime_config().
  * It inherits the $themeName variable from that function.
  *
  * @package linuxmalaysia/cmsfornerd
  * @version 3.5.0
  */
+
+declare(strict_types=1);
 
 // [SECURITY] Prevent direct access if not called through the bootstrap function
 if (!isset($themeName)) {

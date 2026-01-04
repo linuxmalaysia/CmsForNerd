@@ -1,13 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * CMSForNerd Semantic Auditor
  * Verifies Triple-Layer Metadata Compliance (Microdata, JSON-LD, RDF)
- * * Usage: php tools/audit-semantics.php [URL]
+ * Usage: php tools/audit-semantics.php [URL]
  * Example: php tools/audit-semantics.php http://cmsfornerd.test
  */
+
+declare(strict_types=1);
 
 // Determine the URL to audit - Defaulting to our Lab Port 8000
 $url = $argv[1] ?? 'http://localhost:8000';

@@ -59,7 +59,11 @@ $content['data'] = $pageName;
  */
 $ctx = createCmsContext(
     content: $content,
-    pageName: $pageName
+    pageName: $pageName,
+    themeName: $themeName,
+    cssPath: $cssPath,
+    dataFile: $dataFile,
+    nonce: $nonce
 );
 
 /**

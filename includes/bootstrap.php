@@ -34,20 +34,29 @@ $nonce = bin2hex(random_bytes(16));
  * Encapsulates CmsContext creation. This prevents "Undefined Variable" notices
  * and ensures immutable state management throughout the page lifecycle.
  *
+ * Factory Function: Create an Immutable CmsContext
+ *
  * @param array<string, mixed> $content
  * @param string $pageName
+ * @param string $themeName
+ * @param string $cssPath
+ * @param array<int, string> $dataFile
+ * @param string $nonce
  * @return \CmsForNerd\CmsContext
  */
-function createCmsContext(array $content, string $pageName): \CmsForNerd\CmsContext
-{
-    global $themeName, $cssPath, $dataFile, $nonce;
-
-    // Use null-coalescing to ensure no uninitialized property access
+function createCmsContext(
+    array $content,
+    string $pageName,
+    string $themeName,
+    string $cssPath,
+    array $dataFile,
+    string $nonce
+): \CmsForNerd\CmsContext {
     return new \CmsForNerd\CmsContext(
         content:    $content,
-        themeName:  $themeName ?? 'default',
-        cssPath:    $cssPath ?? 'themes/default/css/',
-        dataFile:   $dataFile ?? ['index'],
+        themeName:  $themeName,
+        cssPath:    $cssPath,
+        dataFile:   $dataFile,
         scriptName: $pageName,
         cspNonce:   $nonce
     );

@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace CmsForNerd\Tests;
+
 use PHPUnit\Framework\TestCase;
 use CmsForNerd\SecurityUtils;
 
@@ -18,9 +20,18 @@ final class SecurityTest extends TestCase
         $this->assertTrue(SecurityUtils::isValidPageName('my-page_123'));
 
         // Security checks
-        $this->assertFalse(SecurityUtils::isValidPageName('../etc/passwd'), 'Directory traversal should fail');
-        $this->assertFalse(SecurityUtils::isValidPageName('page.php'), 'Extensions should fail validation if not allowed');
-        $this->assertFalse(SecurityUtils::isValidPageName('page?id=1'), 'Query characters should fail');
+        $this->assertFalse(
+            SecurityUtils::isValidPageName('../etc/passwd'),
+            'Directory traversal should fail'
+        );
+        $this->assertFalse(
+            SecurityUtils::isValidPageName('page.php'),
+            'Extensions should fail validation if not allowed'
+        );
+        $this->assertFalse(
+            SecurityUtils::isValidPageName('page?id=1'),
+            'Query characters should fail'
+        );
     }
 
     /**
@@ -42,15 +53,14 @@ final class SecurityTest extends TestCase
         );
 
         // Known Humans
-        $this->assertFalse(
-            is_bot('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'),
-            'Human UA incorrectly flagged as bot'
-        );
-        $this->assertFalse(
-            is_bot('Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'),
-            'Mobile Human UA incorrectly flagged as bot'
-        );
-        
+        $humanUa = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) ' .
+                   'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+        $this->assertFalse(is_bot($humanUa), 'Human UA incorrectly flagged as bot');
+
+        $mobileUa = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) ' .
+                    'AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
+        $this->assertFalse(is_bot($mobileUa), 'Mobile Human UA incorrectly flagged as bot');
+
         // Cleanup
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
     }

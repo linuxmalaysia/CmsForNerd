@@ -69,7 +69,13 @@ if (ob_get_level() > 0) {
         .icon { font-size: 2rem; margin-bottom: 1rem; }
         h1 { margin: 0; font-family: var(--font-mono); font-size: 1.5rem; }
         p { color: #64748b; font-size: 0.9rem; margin: 1rem 0; }
-        code { font-family: var(--font-mono); background: var(--lab-bg); padding: 2px 5px; border-radius: 4px; font-size: 0.75rem; }
+        code { 
+            font-family: var(--font-mono); 
+            background: var(--lab-bg); 
+            padding: 2px 5px; 
+            border-radius: 4px; 
+            font-size: 0.75rem; 
+        }
         .back-link { 
             display: inline-block;
             margin-top: 1rem;

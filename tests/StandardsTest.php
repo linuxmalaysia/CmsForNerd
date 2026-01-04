@@ -18,7 +18,10 @@ class StandardsTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->filesToTest = glob(__DIR__ . '/../includes/*.php');
+        $this->filesToTest = array_merge(
+            glob(__DIR__ . '/../includes/*.php'),
+            glob(__DIR__ . '/../src/*.php')
+        );
     }
 
     /**
@@ -63,7 +66,8 @@ class StandardsTest extends TestCase
                     $this->assertEquals(
                         0,
                         $spaces % 4,
-                        "File " . basename($file) . " line " . ($index + 1) . " MUST use a multiple of 4 spaces (found $spaces)."
+                        "File " . basename($file) . " line " . ($index + 1) .
+                        " MUST use a multiple of 4 spaces (found $spaces)."
                     );
                 }
             }
@@ -80,7 +84,10 @@ class StandardsTest extends TestCase
             $lines = file($file);
             foreach ($lines as $index => $line) {
                 if (preg_match('/^\s*(class|function)\s+.*\{/', $line)) {
-                    $this->fail("File " . basename($file) . " line " . ($index + 1) . " has '{' on the same line as class/function declaration.");
+                    $this->fail(
+                        "File " . basename($file) . " line " . ($index + 1) .
+                        " has '{' on the same line as class/function declaration."
+                    );
                 }
             }
             $checked = true;

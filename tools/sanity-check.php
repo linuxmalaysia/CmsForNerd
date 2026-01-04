@@ -1,38 +1,69 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * CMSForNerd v3.5 - Web Environment Sanity Check (Secure Version)
  * Verifies Web Server configuration without exposing system paths.
+ * Supports both CLI and Browser viewing.
  */
 
+declare(strict_types=1);
+
 $requirements = [
-    'php_version' => PHP_VERSION_ID >= 80400,
-    'mbstring'    => extension_loaded('mbstring'),
-    'xml'         => extension_loaded('xml'),
-    'openssl'     => extension_loaded('openssl'),
-    'writable'    => is_writable('../contents/'),
+    'PHP Version (>=8.4)' => PHP_VERSION_ID >= 80400,
+    'cURL Extension' => extension_loaded('curl'),
+    'OpenSSL Extension' => extension_loaded('openssl'),
+    'MBString Extension' => extension_loaded('mbstring'),
+    'JSON Extension' => extension_loaded('json'),
+    'Data Directory Writable' => is_writable(__DIR__ . '/../data'),
 ];
 
+$isCli = PHP_SAPI === 'cli';
 $title = "🧪 CMSForNerd v3.5 Sanity Check";
+
+if ($isCli) {
+    echo "{$title}\n" . str_repeat("=", 40) . "\n";
+    foreach ($requirements as $label => $pass) {
+        echo ($pass ? "✅" : "❌") . " {$label}: " . ($pass ? "PASS" : "FAIL") . "\n";
+    }
+    echo str_repeat("-", 40) . "\n";
+    if (!in_array(false, $requirements, true)) {
+        echo "🎯 RESULT: System is Laboratory-Ready!\n";
+    } else {
+        echo "⚠️  RESULT: Fix missing requirements before proceeding.\n";
+    }
+    exit(in_array(false, $requirements, true) ? 1 : 0);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 2rem auto; padding: 0 1rem; background: #f4f4f9; }
-        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .status { font-weight: bold; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-left: 10px; }
+        body { font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif; 
+               line-height: 1.6; max-width: 800px; margin: 2rem auto; padding: 0 1rem; 
+               background: #f4f4f9; color: #333; }
+        .card { background: white; padding: 2rem; border-radius: 8px; 
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .status { font-weight: bold; padding: 4px 12px; border-radius: 20px; 
+                  font-size: 0.85rem; }
         .pass { background: #d4edda; color: #155724; }
         .fail { background: #f8d7da; color: #721c24; }
-        h1 { color: #333; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; }
-        .version-badge { background: #333; color: #fff; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: normal; }
+        h1 { color: #1a1a1a; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; 
+             display: flex; align-items: center; justify-content: space-between; }
+        .version-badge { background: #333; color: #fff; padding: 5px 12px; 
+                         border-radius: 20px; font-size: 0.85rem; font-weight: normal; }
         ul { list-style: none; padding: 0; }
-        li { margin-bottom: 15px; border-bottom: 1px solid #f9f9f9; padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
-        .footer { margin-top: 2rem; color: #777; font-size: 0.8rem; text-align: center; border-top: 1px solid #eee; padding-top: 1rem; }
+        li { margin-bottom: 15px; border-bottom: 1px solid #f9f9f9; padding-bottom: 10px; 
+             display: flex; justify-content: space-between; align-items: center; }
+        .verdict { margin-top: 2rem; padding: 1rem; border-radius: 6px; text-align: center; 
+                   font-weight: bold; }
+        .verdict-pass { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .verdict-fail { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .footer { margin-top: 2rem; color: #777; font-size: 0.8rem; text-align: center; 
+                  border-top: 1px solid #eee; padding-top: 1rem; }
     </style>
 </head>
 <body>
@@ -43,36 +74,24 @@ $title = "🧪 CMSForNerd v3.5 Sanity Check";
         </h1>
         
         <ul>
-            <li>
-                PHP 8.4+ Engine 
-                <span class="status <?php echo $requirements['php_version'] ? 'pass' : 'fail'; ?>">
-                    <?php echo $requirements['php_version'] ? 'READY' : 'OUTDATED'; ?>
-                </span>
-            </li>
-            <li>
-                MBString Extension 
-                <span class="status <?php echo $requirements['mbstring'] ? 'pass' : 'fail'; ?>">
-                    <?php echo $requirements['mbstring'] ? 'LOADED' : 'MISSING'; ?>
-                </span>
-            </li>
-            <li>
-                XML Extension 
-                <span class="status <?php echo $requirements['xml'] ? 'pass' : 'fail'; ?>">
-                    <?php echo $requirements['xml'] ? 'LOADED' : 'MISSING'; ?>
-                </span>
-            </li>
-            <li>
-                Content Directory Writable 
-                <span class="status <?php echo $requirements['writable'] ? 'pass' : 'fail'; ?>">
-                    <?php echo $requirements['writable'] ? 'YES' : 'NO'; ?>
-                </span>
-            </li>
+            <?php foreach ($requirements as $label => $pass) : ?>
+                <li>
+                    <?php echo htmlspecialchars($label); ?>
+                    <span class="status <?php echo $pass ? 'pass' : 'fail'; ?>">
+                        <?php echo $pass ? 'READY' : 'FIX REQUIRED'; ?>
+                    </span>
+                </li>
+            <?php endforeach; ?>
         </ul>
 
         <?php if (!in_array(false, $requirements, true)) : ?>
-            <p style="color: #155724; font-weight: bold; text-align: center;">✅ Your Web Server is fully optimized for the v3.5 Laboratory!</p>
+            <div class="verdict verdict-pass">
+                ✅ Your Web Server is fully optimized for the v3.5 Laboratory!
+            </div>
         <?php else : ?>
-            <p style="color: #721c24; font-weight: bold; text-align: center;">❌ Fix the red items above before proceeding.</p>
+            <div class="verdict verdict-fail">
+                ❌ Please fix the identified issues before proceeding.
+            </div>
         <?php endif; ?>
         
         <div class="footer">
