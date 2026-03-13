@@ -117,6 +117,7 @@
     - [x] Add Git fetch/diff/log to `nerd-lab-protocol.md`
     - [x] Update `blog-state-sync.md` with VCS sync logic
     - [x] **[NEW]** Refined & Formalized `docs/AI-MASTER-PROTOCOL.md` (v3.5)
+    - [x] Propagated Master Protocol references to `ai-dev.md`, `ai-sop.md`, `AI-STATE-SYNC.md`, and `bot-intelligence.md`
 - [x] Update `CONTRIBUTING.md` with "State of Mind" guidelines
 - [x] Sync `DIRECTORY_SECURITY.md` and `DOCS_REQUIREMENTS.md` to v3.5 and GitBook
 - [x] Debug & Fix `ror.php` (Fatal error: strict_types)
