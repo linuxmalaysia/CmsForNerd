@@ -109,6 +109,13 @@ All five laboratory modules were converted to Markdown and updated to v3.5 stand
 * **Protocol Refinement**: Formalized the Master Protocol with a "Core Commands Reference" and clear "Session Wrap-up" checklist.
 * **Connected Intelligence**: Established bidirectional linking between `AI-MASTER-PROTOCOL.md` and the entire documentation ecosystem.
 
+### 8. Testing Infrastructure Upgrade (Pest + PHPUnit)
+* **[NEW] Dual Executor Strategy**: Reconfigured `composer.json` to natively support simultaneous testing frameworks.
+* **Legacy Preservation**: The `composer test:phpunit` command isolates and executes only the original `CmsForNerd\Tests` namespace to guarantee exact backward compatibility.
+* **Modern Expansion**: The `composer test:pest` command natively wraps PHPUnit, executing the entirety of the suite (both legacy tests and new Pest `Feature`/`Unit` syntax tests) simultaneously.
+* **Compliance Integration**: Unified `composer compliance` to utilize the broad Pest test runner to validate the whole ecosystem.
+* **Artifact Cleanup**: Safely purged conflicting Laravel scaffolding (e.g., `tests/TestCase.php`).
+
 ## 🛠️ Verification Results
 
 * **Link Audit**: `SUMMARY.md` was exhaustively checked to ensure all sections are navigable.

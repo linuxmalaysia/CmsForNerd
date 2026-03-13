@@ -133,8 +133,14 @@
 - [x] **Dual-View Pager**: Integrated `renderStandardLayout` and `renderAmpLayout` in `pager.php`.
 - [x] **Modular AMP Header**: Created `pageheader_amp()` in `nav-helper.inc.php`.
 
+# Task: Dual Testing Implementation (PHPUnit + Pest)
+- [x] Configure `composer.json` for isolated testing environments (`test:phpunit`, `test:pest`)
+- [x] Uninstall Laravel leftover `TestCase` bindings from Pest configuration
+- [x] Apply Pest plugin bypass logic (`--filter CmsForNerd\\\\Tests`) for pure PHPUnit test retention
+
 ## [PHASE: DOCUMENTATION] - IN PROGRESS 🏗️
 - [x] **Project Rules Update**: Integrated AMP Content Parity rules.
 - [ ] **SOP Verification**: Run `composer compliance` on all new helpers.
 - [ ] **Discovery Logic**: Add `<link rel="amphtml">` to standard `pageheader()`.
+
 

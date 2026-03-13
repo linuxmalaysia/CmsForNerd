@@ -5,7 +5,7 @@
  * FILE: includes/sitemap_generator.php
  * ROLE: Sitemap Generator Helper (Educational Edition)
  * ==========================================================================
- * TRAINING NOTE: This script uses "Pair Logic." It scans the 'contents' 
+ * TRAINING NOTE: This script uses "Pair Logic." It scans the 'contents'
  * folder for body fragments and verifies a matching .php file exists.
  */
 
@@ -51,7 +51,7 @@ function get_detailed_site_pages(): array
         if (file_exists($masterFile)) {
             // Get latest modification date
             $mTime = max((int)filemtime($masterFile), (int)filemtime($file));
-            
+
             $pages[] = [
                 'file'    => "$slug.php",
                 'url'     => "$slug.php",

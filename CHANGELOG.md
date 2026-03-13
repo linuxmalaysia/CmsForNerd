@@ -4,15 +4,16 @@ All notable changes to this project are documented in this file.
 Entries are grouped by date (most recent first).
 
 ---
-## [3.5.0] - 2026-01-05 (The "Mobile Mastery" Milestone)
+## [3.5.0] - 2026-03-14 (The "Zero-Global & State Sync" Milestone)
 
-**"Dual-View Architecture & AMP Optimization."**
+**"Global-Free Architecture & Persistent AI Symbiosis."**
 
 ### 🏗️ Architecture & Core Logic
 
+* **Zero-Global Arch**: Completely eliminated the `global` keyword from all 30+ page controllers and the master `bootstrap.php` engine, opting exclusively for precise Dependency Injection via factory method (`createCmsContext`).
 * **Dual-View Controller**: Implemented a mode-switching engine in `pager.php` that routes users between `standard` and `amp` layouts based on URL parameters.
 * **AMP Image Processor**: Added a real-time output buffer in the pager to transform standard `<img>` tags into valid `<amp-img>` tags with automatic aspect ratio handling.
-* **Enhanced Bootstrap**: Updated `includes/bootstrap.php` to support localized laboratory settings and environment-specific constants.
+* **Enhanced Bootstrap**: Updated `includes/bootstrap.php` to support localized laboratory settings and environment-specific constants without bleeding scope.
 
 ### 📱 Theme & UI (Mobile First)
 

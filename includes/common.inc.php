@@ -34,9 +34,9 @@ function pageheader(CmsForNerd\CmsContext $ctx): void
     print("<title>{$title}</title>\n");
 
     /**
-     * [V3.5 AMP DISCOVERY] 
-     * EDUCATIONAL NOTE: This "Handshake" tells search engines that a mobile-optimized 
-     * AMP version exists. The Pager handles the actual view switching when the 
+     * [V3.5 AMP DISCOVERY]
+     * EDUCATIONAL NOTE: This "Handshake" tells search engines that a mobile-optimized
+     * AMP version exists. The Pager handles the actual view switching when the
      * '?view=amp' parameter is detected in the URL.
      */
     $ampUrl = htmlspecialchars($ctx->scriptName . '.php?view=amp', ENT_QUOTES, 'UTF-8');

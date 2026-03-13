@@ -60,8 +60,8 @@ if (!function_exists('pageheader_amp')) {
         // 1. Context Extraction
         $title = htmlspecialchars($ctx->content['title'] ?? 'Laboratory', ENT_QUOTES, 'UTF-8');
         $scriptName = $ctx->scriptName ?? 'index';
-        $canonicalUrl = $scriptName . '.php'; 
-        $nonce = $ctx->cspNonce ?? ''; 
+        $canonicalUrl = $scriptName . '.php';
+        $nonce = $ctx->cspNonce ?? '';
 
         ?>
         <meta charset="utf-8">
@@ -92,11 +92,11 @@ if (!function_exists('pageheader_amp')) {
         if (file_exists($ampCssPath)) {
             $fileSize = filesize($ampCssPath);
             $cssContent = file_get_contents($ampCssPath);
-            
+
             // Minification to maximize byte-budget
             $cssContent = preg_replace('!/\*.*?\*/!s', '', $cssContent); // Remove comments
             $cssContent = preg_replace('/\s+/', ' ', $cssContent);      // Collapse whitespace
-            
+
             // Safety check for AMP validator compliance
             if ($fileSize > 75000) {
                 echo "";

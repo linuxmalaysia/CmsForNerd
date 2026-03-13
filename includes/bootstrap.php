@@ -7,7 +7,9 @@
  * to prevent Information Disclosure (CWE-200).
  */
 
-declare(strict_types=1); //
+declare(strict_types=1);
+
+//
 
 // 1. [LAB] ERROR MANAGEMENT & PATH PROTECTION
 // In Laboratory mode, we hide absolute system paths from the browser.
@@ -25,7 +27,7 @@ require_once __DIR__ . '/common.inc.php'; //
 
 /**
  * [V3.5 AMP UPDATE] LOAD NAV HELPERS
- * We include this here so that pageheader_amp() is globally available 
+ * We include this here so that pageheader_amp() is globally available
  * to the Theme Pager.
  */
 require_once __DIR__ . '/nav-helper.inc.php';
@@ -38,7 +40,7 @@ $nonce = bin2hex(random_bytes(16)); //
 
 /**
  * 5. [LAB] GLOBAL CONTEXT FACTORY (Refactored for Theme Independence)
- * EDUCATIONAL NOTE: We use nullable types (?) and default values to allow 
+ * EDUCATIONAL NOTE: We use nullable types (?) and default values to allow
  * simple calls from controllers while maintaining theme-wide settings here.
  *
  * @param array<string, mixed> $content
