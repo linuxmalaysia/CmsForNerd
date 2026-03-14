@@ -137,6 +137,7 @@
 - [x] Configure `composer.json` for isolated testing environments (`test:phpunit`, `test:pest`)
 - [x] Uninstall Laravel leftover `TestCase` bindings from Pest configuration
 - [x] Apply Pest plugin bypass logic (`--filter CmsForNerd\\\\Tests`) for pure PHPUnit test retention
+- [x] Create `docs/testing-guide.md` and link it in `SUMMARY.md`
 
 ## [PHASE: DOCUMENTATION] - IN PROGRESS 🏗️
 - [x] **Project Rules Update**: Integrated AMP Content Parity rules.
