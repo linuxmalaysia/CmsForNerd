@@ -92,8 +92,39 @@ if (file_exists(__DIR__ . '/includes/is_bot.php')) {
 }
 
 /**
- * 7. [RENDER] Theme Dispatcher
- * Hands over control to the theme's pager.php to render the Lab_v3 UI.
+ * 7. [PWA / SPA] Fragment Hydration
+ * If a JavaScript router (Fetch/XHR) calls this URL, return purely the un-themed content fragment.
+ */
+$isAjax = (
+    !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+    strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'
+);
+
+if ($isAjax) {
+    header('Content-Type: text/html; charset=utf-8');
+
+    // We prioritize scriptName to maintain the 'index' -> 'index-body.inc' convention.
+    $bodyFile = __DIR__ . "/contents/" . $ctx->scriptName . "-body.inc";
+
+    if (file_exists($bodyFile)) {
+        readfile($bodyFile);
+    } else {
+        $fallbackFile = __DIR__ . "/contents/" . ($ctx->dataFile[0] ?? 'index') . "-body.inc";
+        if (file_exists($fallbackFile)) {
+            readfile($fallbackFile);
+        } else {
+            http_response_code(404);
+            echo "<div class='error-box'><strong>[LAB ERROR] Content File Missing</strong></div>";
+        }
+    }
+    // Flush and send to browser immediately for PWA hydration
+    ob_end_flush();
+    exit;
+}
+
+/**
+ * 8. [RENDER] Theme Dispatcher
+ * Hands over control to the theme's pager.php to render the full Lab_v3 UI.
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 if (file_exists($pagerPath)) {

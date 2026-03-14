@@ -142,6 +142,16 @@
 ## [PHASE: DOCUMENTATION] - IN PROGRESS 🏗️
 - [x] **Project Rules Update**: Integrated AMP Content Parity rules.
 - [ ] **SOP Verification**: Run `composer compliance` on all new helpers.
-- [ ] **Discovery Logic**: Add `<link rel="amphtml">` to standard `pageheader()`.
-
-
+## [PHASE: PWA TRANSITION] - IN PROGRESS 🚀
+- [x] **Phase 1: Manifest & Foundation**
+    - [x] Provide Laravel Herd HTTPS (`herd secure`) instructions to user
+    - [x] Create `manifest.json` and dummy icon assets (`192x192`, `512x512`)
+    - [x] Inject `<link rel="manifest">` into `includes/common.inc.php` and `themes/CmsForNerd/pager.php`
+- [x] **Phase 2: Service Worker & Offline Capability**
+    - [x] Create `sw.js` (Install & Fetch events)
+    - [x] Register `sw.js` via inline script in layout footer
+    - [x] Design and implement `offline.php` fallback page
+- [x] **Phase 3: SPA-Hybrid App Shell Architecture**
+    - [x] Modify `index.php` (Controller) to detect `HTTP_X_REQUESTED_WITH` (fetch/ajax)
+    - [x] Serve only `$dataFile` (`-body.inc`) fragment when PWA header is detected
+    - [x] Build vanilla JS History API Router to intercept link clicks and hydrate `<main>` avoiding full reload

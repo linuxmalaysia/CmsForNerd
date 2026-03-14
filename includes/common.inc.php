@@ -42,6 +42,10 @@ function pageheader(CmsForNerd\CmsContext $ctx): void
     $ampUrl = htmlspecialchars($ctx->scriptName . '.php?view=amp', ENT_QUOTES, 'UTF-8');
     print('    <link rel="amphtml" href="' . $ampUrl . '">' . "\n");
 
+    // [PWA FOUNDATION] Include Manifest and Theme Color for installability
+    print("    <link rel=\"manifest\" href=\"/manifest.json\">\n");
+    print("    <meta name=\"theme-color\" content=\"#0d6efd\">\n");
+
     // [THEME] Stylesheets SHOULD be imported via the configured cssPath.
     print("    <style type=\"text/css\" media=\"all\">@import \"{$ctx->cssPath}\";</style>\n");
 

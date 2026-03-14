@@ -62,6 +62,11 @@ function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
     <html ⚡ lang="en">
     <head>
         <?php pageheader_amp($ctx); ?>
+        
+        <!-- PWA Foundation -->
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#0d6efd">
+        
         <style amp-custom>
             /* Critical fix for Sidebar interaction */
             amp-sidebar { z-index: 99999 !important; }
