@@ -32,8 +32,6 @@ jobs:
 
       - name: 🚚 Install Dependencies (Cached)
         uses: ramsey/composer-install@v3
-        with:
-          dependency-type: dev
 
       - name: 🧪 Execute Laboratory Pre-flight (Audit)
         run: |
