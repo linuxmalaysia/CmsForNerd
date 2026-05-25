@@ -45,18 +45,7 @@ $content = [
  * 1. A query string is provided (e.g., index.php?about).
  * 2. No query string, in which case it defaults to 'index'.
  */
-$rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
-    default                          => 'index'
-};
-
-/**
- * [SECURITY] Path Traversal Prevention
- * Verification via SecurityUtils ensures $rawPage is a safe filename.
- */
-$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
-$page = $isValid ? $rawPage : 'index';
-$pageName = pathinfo($page, PATHINFO_FILENAME);
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName('index');
 
 // Link this controller to contents/[pageName]-body.inc
 $content['data'] = $pageName;

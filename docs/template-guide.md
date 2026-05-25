@@ -70,17 +70,13 @@ $content = [
 
 /**
  * 4. [LAB] ROUTING & SANITIZATION
- * The 'match' expression automatically detects the filename.
- * SecurityUtils::isValidPageName() prevents Path Traversal attacks.
+ * SecurityUtils::resolvePageName() prevents Path Traversal attacks
+ * and safely determines the requested page.
  */
-$rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
-    default                          => pathinfo(basename(__FILE__), PATHINFO_FILENAME)
-};
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName(
+    pathinfo(basename(__FILE__), PATHINFO_FILENAME)
+);
 
-$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
-$page = $isValid ? $rawPage : 'index';
-$pageName = pathinfo($page, PATHINFO_FILENAME);
 $content['data'] = $pageName;
 
 /**
