@@ -1,6 +1,5 @@
 {
     "name": "linuxmalaysia/cmsfornerd",
-    "version": "3.6.0",
     "description": "A flat-file CMS modernized for PHP 8.4 Laboratory environments (Hybrid Arch) v3.6.",
     "type": "project",
     "license": "GPL-3.0-or-later",
