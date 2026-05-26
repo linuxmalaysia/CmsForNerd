@@ -60,4 +60,25 @@ final class SecurityUtils
     {
         return base64_encode(random_bytes(16));
     }
+
+    /**
+     * [SECURITY] Resolve and validate the page name from the request.
+     * Prevents Path Traversal while providing a clean routing mechanism.
+     *
+     * @param string $defaultFallback The fallback page name if no query string is provided.
+     * @param string $invalidFallback The fallback page name if the resolved page name is invalid.
+     * @return string The validated and sanitized page name.
+     */
+    public static function resolvePageName(string $defaultFallback, string $invalidFallback = 'index'): string
+    {
+        $rawPage = match (true) {
+            !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
+            default                          => $defaultFallback
+        };
+
+        $isValid = self::isValidPageName($rawPage);
+        $page = $isValid ? $rawPage : $invalidFallback;
+
+        return pathinfo($page, PATHINFO_FILENAME);
+    }
 }

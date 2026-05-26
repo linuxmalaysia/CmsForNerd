@@ -44,19 +44,7 @@ $content = [
  * v3.5 uses the 'match' expression—a modern, strict alternative to 'switch'.
  * It ensures that we handle the query string or default to 'index' cleanly.
  */
-$rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
-    default                          => pathinfo(basename(__FILE__), PATHINFO_FILENAME)
-};
-
-/**
- * [SECURITY] Path Traversal Prevention
- * We use SecurityUtils to ensure a student or attacker cannot inject
- * strings like "../etc/passwd" to access sensitive system files.
- */
-$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
-$page = $isValid ? $rawPage : 'index';
-$pageName = pathinfo($page, PATHINFO_FILENAME);
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE__), PATHINFO_FILENAME));
 
 // This 'data' key tells the theme which -body.inc file to include.
 $content['data'] = $pageName;

@@ -23,12 +23,9 @@ In older PHP sites, every .php file was a separate entry point. In modern system
 Look at the routing logic in index.php. We use the PHP 8 `match` expression:
 
 (Example Logic)
-$rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => $_SERVER['QUERY_STRING'],
-    default => $scriptName
-};
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName($scriptName);
 
-* **Challenge:** Modify the logic to reject any query string that contains "../".
+* **Challenge:** Modify the logic in `SecurityUtils::resolvePageName()` to explicitly reject any query string that contains "../".
 * **Goal:** Master type-safe comparisons.
 
 ---

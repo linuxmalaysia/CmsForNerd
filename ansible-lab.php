@@ -27,14 +27,7 @@ $content = [
     'schemaType'  => "TechArticle"
 ];
 
-$rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
-    default                          => pathinfo(basename(__FILE__), PATHINFO_FILENAME)
-};
-
-$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
-$page = $isValid ? $rawPage : 'ansible-lab';
-$pageName = pathinfo($page, PATHINFO_FILENAME);
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE__), PATHINFO_FILENAME), 'ansible-lab');
 
 $content['data'] = $pageName;
 
