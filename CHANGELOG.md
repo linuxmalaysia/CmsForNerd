@@ -1,3 +1,17 @@
+## [3.6.0] - 2026-03-15
+
+### Added
+- **SECURITY.md**: Implemented formal security policy defining maintenance stance.
+- **PHP 8.4 Support**: Updated environment requirements to PHP 8.4.18.
+- **GPG Keyring**: Transitioned to trusted.gpg.d standard.
+
+### Changed
+- **Upstream Sync**: Fully merged core engine logic from upstream master.
+- **Dependencies**: Updated vendor baseline via Composer.
+
+### Fixed
+- **History Divergence**: Resolved legacy vendor conflicts via strategic reset.
+
 # CHANGELOG
 
 All notable changes to this project are documented in this file.
