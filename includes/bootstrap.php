@@ -119,10 +119,7 @@ if (file_exists(__DIR__ . '/turnstile.php')) {
 if (file_exists(__DIR__ . '/is_bot.php')) {
     require_once __DIR__ . '/is_bot.php';
     if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
-        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
-        exit;
+        serve_bot_text_mode($config);
     }
 }
 

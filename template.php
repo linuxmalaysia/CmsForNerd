@@ -67,6 +67,12 @@ $ctx = createCmsContext(
 );
 
 /**
+ * [LAB] BOT DETECTION
+ * If a search engine crawler is detected, we serve a lightweight text version
+ * to prioritize indexing over visual effects.
+ */
+
+/**
  * 6. [RENDER] Theme Dispatcher (The "Pager")
  * This locates the pager.php inside your active theme and executes the UI.
  */

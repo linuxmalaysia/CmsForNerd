@@ -201,3 +201,17 @@ function block_datacenter_traffic(string $token): void
         die("Data center traffic blocked. Institutional/Bot detected.");
     }
 }
+
+/**
+ * [SEO/AI] Serve a lightweight text version for bots.
+ *
+ * @param array<string, mixed> $config The runtime configuration.
+ * @return never
+ */
+function serve_bot_text_mode(array $config): void
+{
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
+    echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
+    exit;
+}
