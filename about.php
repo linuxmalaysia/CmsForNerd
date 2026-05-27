@@ -22,13 +22,13 @@ if (!ob_start("ob_gzhandler")) {
 }
 
 /**
- * 1. [LAB] BOOTSTRAP PHASE
+ * 2. [LAB] BOOTSTRAP PHASE
  * Loads the core engine, Composer dependencies, and security constants.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
 /**
- * 2. [SEO/AI] Page Metadata
+ * 3. [SEO/AI] Page Metadata
  * STUDENTS: Adjust these values whenever you create a new page.
  */
 $content = [
@@ -40,7 +40,7 @@ $content = [
 ];
 
 /**
- * 3. [LAB] ROUTING & SANITIZATION
+ * 4. [LAB] ROUTING & SANITIZATION
  * v3.5 uses the 'match' expression—a modern, strict alternative to 'switch'.
  * It ensures that we handle the query string or default to 'index' cleanly.
  */
@@ -50,7 +50,7 @@ $pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE_
 $content['data'] = $pageName;
 
 /**
- * 4. [MODERN PHP] CmsContext Initialization (Factory Method)
+ * 5. [MODERN PHP] CmsContext Initialization (Factory Method)
  * Instead of passing loose variables, we bundle everything into an
  * immutable CmsContext object for type-safe rendering.
  */
@@ -70,7 +70,7 @@ $ctx = createCmsContext(
  */
 
 /**
- * 5. [RENDER] Theme Dispatcher (The "Pager")
+ * 6. [RENDER] Theme Dispatcher (The "Pager")
  * This locates the pager.php inside your active theme and executes the UI.
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";

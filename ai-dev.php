@@ -20,13 +20,13 @@ if (!ob_start("ob_gzhandler")) {
 }
 
 /**
- * 1. [LAB] BOOTSTRAP PHASE
+ * 2. [LAB] BOOTSTRAP PHASE
  * Loads the core engine, Composer dependencies, and security constants.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
 /**
- * 2. [SEO/AI] Page Metadata
+ * 3. [SEO/AI] Page Metadata
  */
 $content = [
     'title'       => "AI-Assisted Development | CMSForNerd v3.5",
@@ -36,14 +36,14 @@ $content = [
 ];
 
 /**
- * 3. [LAB] ROUTING & SANITIZATION
+ * 4. [LAB] ROUTING & SANITIZATION
  */
 $pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE__), PATHINFO_FILENAME));
 
 $content['data'] = $pageName;
 
 /**
- * 4. [MODERN PHP] CmsContext Initialization (Factory Method)
+ * 5. [MODERN PHP] CmsContext Initialization (Factory Method)
  */
 $ctx = createCmsContext(
     content: $content,
@@ -59,7 +59,7 @@ $ctx = createCmsContext(
  */
 
 /**
- * 5. [RENDER] Theme Dispatcher
+ * 6. [RENDER] Theme Dispatcher
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 if (file_exists($pagerPath)) {
