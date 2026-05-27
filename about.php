@@ -64,30 +64,13 @@ $ctx = createCmsContext(
 );
 
 /**
- * 6. [SECURITY] Session & Bot Hardening
- * Integrates Cloudflare Turnstile (if configured) to prevent automated form abuse.
- */
-if (file_exists(__DIR__ . '/includes/turnstile.php')) {
-    require_once __DIR__ . '/includes/turnstile.php';
-}
-
-/**
  * [LAB] BOT DETECTION
  * If a search engine crawler is detected, we serve a lightweight text version
  * to prioritize indexing over visual effects.
  */
-if (file_exists(__DIR__ . '/includes/is_bot.php')) {
-    require_once __DIR__ . '/includes/is_bot.php';
-    if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
-        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
-        exit;
-    }
-}
 
 /**
- * 7. [RENDER] Theme Dispatcher (The "Pager")
+ * 6. [RENDER] Theme Dispatcher (The "Pager")
  * This locates the pager.php inside your active theme and executes the UI.
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";

@@ -86,24 +86,7 @@ $content['data'] = $pageName;
 $ctx = createCmsContext(content: $content, pageName: $pageName);
 
 /**
- * 6. [SECURITY] Session & Bot Hardening
- * Integrates Turnstile and Lite-Mode Bot Detection.
- */
-if (file_exists(__DIR__ . '/includes/turnstile.php')) {
-    require_once __DIR__ . '/includes/turnstile.php';
-}
-
-if (file_exists(__DIR__ . '/includes/is_bot.php')) {
-    require_once __DIR__ . '/includes/is_bot.php';
-    if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
-        exit;
-    }
-}
-
-/**
- * 7. [RENDER] Theme Dispatcher
+ * 6. [RENDER] Theme Dispatcher
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 if (file_exists($pagerPath)) {
