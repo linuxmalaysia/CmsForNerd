@@ -20,12 +20,12 @@ if (!ob_start("ob_gzhandler")) {
 }
 
 /**
- * 2. [LAB] BOOTSTRAP PHASE
+ * 1. [LAB] BOOTSTRAP PHASE
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
 /**
- * 3. [SEO/AI] Page Metadata
+ * 2. [SEO/AI] Page Metadata
  */
 $content = [
     'title'       => "Final Exam: Break-Fix Challenge - CMSForNerd v3.5",
@@ -35,14 +35,14 @@ $content = [
 ];
 
 /**
- * 4. [LAB] ROUTING & SANITIZATION
+ * 3. [LAB] ROUTING & SANITIZATION
  */
 $pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE__), PATHINFO_FILENAME));
 
 $content['data'] = $pageName;
 
 /**
- * 5. [MODERN PHP] CmsContext Initialization (Factory Method)
+ * 4. [MODERN PHP] CmsContext Initialization (Factory Method)
  */
 $ctx = createCmsContext(
     content: $content,
@@ -54,27 +54,11 @@ $ctx = createCmsContext(
 );
 
 /**
- * 6. [SECURITY] Session & Bot Hardening
- */
-if (file_exists(__DIR__ . '/includes/turnstile.php')) {
-    require_once __DIR__ . '/includes/turnstile.php';
-}
-
-/**
  * [LAB] BOT DETECTION
  */
-if (file_exists(__DIR__ . '/includes/is_bot.php')) {
-    require_once __DIR__ . '/includes/is_bot.php';
-    if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
-        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
-        exit;
-    }
-}
 
 /**
- * 7. [RENDER] Theme Dispatcher
+ * 5. [RENDER] Theme Dispatcher
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 if (file_exists($pagerPath)) {

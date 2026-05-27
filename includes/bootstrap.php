@@ -110,7 +110,24 @@ header("X-Frame-Options: DENY");
 $config = \CmsForNerd\get_runtime_config();
 
 /**
- * 8. [LAB] CENTRALIZED THEME CONFIGURATION
+ * 8. [SECURITY] Centralized Bot & Turnstile Hardening
+ */
+if (file_exists(__DIR__ . '/turnstile.php')) {
+    require_once __DIR__ . '/turnstile.php';
+}
+
+if (file_exists(__DIR__ . '/is_bot.php')) {
+    require_once __DIR__ . '/is_bot.php';
+    if (is_bot()) {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
+        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
+        exit;
+    }
+}
+
+/**
+ * 9. [LAB] CENTRALIZED THEME CONFIGURATION
  * We store these in the Registry for Zero-Global compliance.
  */
 \CmsForNerd\Registry::set('themeName', (string) ($config['THEMENAME'] ?? 'CmsForNerd'));
@@ -120,7 +137,7 @@ $config = \CmsForNerd\get_runtime_config();
 );
 \CmsForNerd\Registry::set('nonce', $nonce);
 
-// 9. [LAB] Routing Preparation
+// 10. [LAB] Routing Preparation
 $scriptName = basename($_SERVER['SCRIPT_NAME']);
 \CmsForNerd\Registry::set('dataFile', explode(".", $scriptName));
 
@@ -130,7 +147,7 @@ $cssPath   = (string) \CmsForNerd\Registry::get('cssPath');
 $dataFile  = (array) \CmsForNerd\Registry::get('dataFile');
 // $nonce is already set above
 
-// 10. [LAB] CLASS VERIFICATION
+// 11. [LAB] CLASS VERIFICATION
 if (!class_exists('\\CmsForNerd\\CmsContext')) {
     error_log("Critical: CmsContext class not found in " . __FILE__);
     die("Laboratory Engine Error: Core components missing.");

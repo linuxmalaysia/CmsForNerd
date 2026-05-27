@@ -21,13 +21,13 @@ if (!ob_start("ob_gzhandler")) {
 }
 
 /**
- * 2. [LAB] BOOTSTRAP PHASE
+ * 1. [LAB] BOOTSTRAP PHASE
  * Loads the environment, autoloader, and core Nerd-Stack functions.
  */
 require_once __DIR__ . '/includes/bootstrap.php';
 
 /**
- * 3. [SEO/AI] Page Metadata
+ * 2. [SEO/AI] Page Metadata
  * Custom values for the Homepage. In Lab v3, we use schemaType 'WebApplication'
  * for the root index to signify the CMS environment to search engines.
  */
@@ -40,7 +40,7 @@ $content = [
 ];
 
 /**
- * 4. [LAB] ROUTING & SANITIZATION
+ * 3. [LAB] ROUTING & SANITIZATION
  * The 'match' expression handles two scenarios:
  * 1. A query string is provided (e.g., index.php?about).
  * 2. No query string, in which case it defaults to 'index'.
@@ -51,7 +51,7 @@ $pageName = \CmsForNerd\SecurityUtils::resolvePageName('index');
 $content['data'] = $pageName;
 
 /**
- * 5. [MODERN PHP] CmsContext Initialization
+ * 4. [MODERN PHP] CmsContext Initialization
  * Creates the immutable $ctx object that carries our data into the theme.
  */
 $ctx = createCmsContext(
@@ -64,24 +64,7 @@ $ctx = createCmsContext(
 );
 
 /**
- * 6. [SECURITY] Hardening & Bot Detection
- */
-if (file_exists(__DIR__ . '/includes/turnstile.php')) {
-    require_once __DIR__ . '/includes/turnstile.php';
-}
-
-if (file_exists(__DIR__ . '/includes/is_bot.php')) {
-    require_once __DIR__ . '/includes/is_bot.php';
-    if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
-        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
-        exit;
-    }
-}
-
-/**
- * 7. [PWA / SPA] Fragment Hydration
+ * 5. [PWA / SPA] Fragment Hydration
  * If a JavaScript router (Fetch/XHR) calls this URL, return purely the un-themed content fragment.
  */
 $isAjax = (
@@ -112,7 +95,7 @@ if ($isAjax) {
 }
 
 /**
- * 8. [RENDER] Theme Dispatcher
+ * 6. [RENDER] Theme Dispatcher
  * Hands over control to the theme's pager.php to render the full Lab_v3 UI.
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";

@@ -9,15 +9,13 @@
 
 declare(strict_types=1);
 
-require_once 'includes/bootstrap.php';
-
-use CmsForNerd\CmsContext;
-
 if (!ob_start("ob_gzhandler")) {
     ob_start();
 }
 
 require_once __DIR__ . '/includes/bootstrap.php';
+
+use CmsForNerd\CmsContext;
 
 $content = [
     'title'       => "Ansible Laboratory Orchestration | CmsForNerd",
@@ -32,10 +30,6 @@ $pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE_
 $content['data'] = $pageName;
 
 $ctx = createCmsContext($content, $pageName);
-
-if (file_exists(__DIR__ . '/includes/turnstile.php')) {
-    require_once __DIR__ . '/includes/turnstile.php';
-}
 
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 if (file_exists($pagerPath)) {
