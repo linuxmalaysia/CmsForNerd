@@ -25,6 +25,18 @@ if (!ob_start("ob_gzhandler")) {
 require_once __DIR__ . '/includes/bootstrap.php';
 
 /**
+ * [SECURITY] Instructor Key Protection
+ * This page contains sensitive exam answers. Access is restricted to users
+ * who provide the correct 'instructor_key' via GET parameter.
+ */
+$instructorKey = (string) ($config['INSTRUCTOR_KEY'] ?? 'NERD-LAB-2025');
+if ((\CmsForNerd\Registry::get('instructor_mode') !== true) &&
+    (($_GET['key'] ?? '') !== $instructorKey)) {
+    http_response_code(403);
+    die("Access Denied: Instructor Key Required.");
+}
+
+/**
  * 3. [SEO/AI] Page Metadata
  */
 $content = [
