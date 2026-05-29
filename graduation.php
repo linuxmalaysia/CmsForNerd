@@ -25,6 +25,16 @@ if (!ob_start("ob_gzhandler")) {
 require_once __DIR__ . '/includes/bootstrap.php';
 
 /**
+ * [SECURITY] Graduation Access Control
+ * Only users who have completed the modules or provide a valid certificate ID
+ * should see this page. For this lab, we use a simple 'student_id' check.
+ */
+if (empty($_GET['student_id'])) {
+    http_response_code(403);
+    die("Access Denied: Student ID required for graduation certificate.");
+}
+
+/**
  * 3. [SEO/AI] Page Metadata
  */
 $content = [
