@@ -13,7 +13,7 @@ CmsForNerd is for small websites with static content. It is NOT intended for lar
 
 1. PHP VERSION: You MUST use PHP 8.4 or higher.
 2. EXTENSIONS: Your server MUST support cURL and OpenSSL for security features.
-3. COMPOSER: You SHOULD run `composer install` to initialize the project dependencies.
+3. COMPOSER: You MUST run `composer install` to initialize the project dependencies and `composer lab-check` to verify the environment.
 
 * Installation *
 

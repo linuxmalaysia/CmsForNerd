@@ -1,11 +1,11 @@
-# 🐧 Linux Environment Setup (v3.5)
+# 🐧 Linux Environment Setup (v4.0.0)
 
 Standardizing the PHP 8.4 installation across Linux distributions for the CMSForNerd Laboratory.
 
 ---
 
 ## ⚠️ Requirement Level (RFC 2119)
-Your server **MUST** run **PHP 8.4** or higher to support Property Hooks and the v3.5 engine logic.
+Your server **MUST** run **PHP 8.4** or higher to support Property Hooks and the v4.0.0 engine logic.
 
 ---
 

@@ -8,7 +8,7 @@
 ## 🎓 The Laboratory Docs
 
 * [📚 Laboratory Table of Contents](docs/SUMMARY.md)
-* [🧪 Module 1: Front Controller](docs/lab-module1.md)
+* [🧪 Module 1: Modern Architecture](docs/lab-module1.md)
 * [🛡️ Module 2: Security & Standards](docs/lab-module2.md)
 * [📦 Module 3: Context Object](docs/lab-module3.md)
 * [🤖 Module 4: Automated Testing](docs/lab-module4.md)

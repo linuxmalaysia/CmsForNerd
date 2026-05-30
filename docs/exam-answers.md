@@ -1,6 +1,6 @@
 # ✅ Final Exam Answer Key (Instructor Resource)
 
-This guide is intended for instructors to evaluate student performance in the **CMSForNerd v3.3** Laboratory.
+This guide is intended for instructors to evaluate student performance in the **CMSForNerd v4.0.0** Laboratory.
 
 ## Grading Checklist
 1. **PHP 8.4 Features:** Did the student use Property Hooks correctly? (No `return` keyword in arrow-style hooks).

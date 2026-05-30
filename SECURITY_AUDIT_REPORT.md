@@ -1,4 +1,4 @@
-# CmsForNerd Security Audit Report (v3.5)
+# CmsForNerd Security Audit Report (v4.0.0)
 
 ## 1. Enumeration Table
 
@@ -25,7 +25,7 @@
 | `ujian-form.php` | Turnstile Test | No | Guest | `$_POST` | Low | Protected by Turnstile. |
 
 ## 2. Executive Summary
-The CmsForNerd codebase is a well-structured educational platform utilizing modern PHP 8.4 features. It emphasizes a "Zero-Global" architecture and implements strong security headers (CSP, X-Frame-Options, etc.). However, it lacks a formal authentication/authorization layer, which is critical for sensitive pages like exam answers.
+The CmsForNerd codebase is a well-structured educational platform utilizing modern PHP 8.4 features. It emphasizes a **Zero-Global** architecture (via `Registry` and `CmsContext`) and implements strong security headers (CSP, X-Frame-Options, etc.). It has transitioned to a **Glassmorphism** visual layer in v4.0.0. However, it relies on simple key-based authorization rather than a formal RBAC system.
 
 ## 3. Critical Issues
 - **Authentication Bypass (Exam Answers):** The `exam-answers.php` file was publicly accessible, allowing anyone to view answers to the final exam.

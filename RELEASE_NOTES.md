@@ -1,3 +1,32 @@
+# 🚀 Release v4.0.0-alpha: The "High-Fidelity" Milestone
+
+We are proud to announce **CMSForNerd v4.0.0-alpha**, focusing on **High-Fidelity Glassmorphism** and **Zero-Global** architecture. This release marks the transition to a modern, database-free, immutable state engine for professional developer training.
+
+---
+
+## 🌟 What's New in v4.0.0-alpha?
+
+### 🧊 Glassmorphism Visual Layer
+* **Modern UI Tokenization**: Full implementation of glassmorphism CSS variables (`--lab-glass-bg`, `--lab-blur`).
+* **High-Fidelity Rendering**: Optimized contrast and saturation for professional developer dashboards.
+
+### 🛡️ Zero-Global Architecture (Phase 7)
+* **Total Elimination**: Removed the `global` keyword from the entire codebase.
+* **Registry Pattern**: Centralized state management via `\CmsForNerd\Registry`.
+* **Immutable Context**: Hardened `CmsContext` for absolute state predictability.
+
+### 🤖 Semantic Intelligence
+* **Automated Discovery**: Content sniffer that dynamically upgrades pages to `TechArticle` or `Course`.
+* **AI Protocol v2.0**: Updated master protocols for seamless AI-human synergy.
+
+---
+
+# 🚀 Release v3.6.0: The "Semantic Evolution" Milestone
+
+We are proud to announce **CMSForNerd v3.6**, which finalized the **Zero-Global** mandate and introduced automated semantic content detection.
+
+---
+
 # 🚀 Release v3.5.0: The "Mobile Mastery" Milestone
 
 We are proud to announce **CMSForNerd v3.5**, a significant evolution in our educational mission. This release introduces a sophisticated **Dual-View Architecture**, allowing the laboratory to serve lightning-fast, interactive mobile experiences via **AMP (Accelerated Mobile Pages)** while maintaining a robust desktop environment.

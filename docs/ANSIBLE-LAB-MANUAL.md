@@ -1,4 +1,4 @@
-# 🧪 CmsForNerd Ansible Laboratory Manual (v3.5.1)
+# 🧪 CmsForNerd Ansible Laboratory Manual (v4.0.0)
 # docs/ANSIBLE-LAB-MANUAL.md
 
 > **"From Zero to Production in One Command."**
@@ -83,4 +83,4 @@ Once the playbook completes, verify the "State of Mind" of your node:
 - **Nginx Not Starting?**: Check if another service is already using port 80.
 
 ---
-*Maintained by the CmsForNerd Engineering Team | v3.5.1 | 2026-03-26*
+*Maintained by the CmsForNerd Engineering Team | v4.0.0 | 2026-03-30*
