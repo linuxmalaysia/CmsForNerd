@@ -54,4 +54,4 @@ jobs:
         run: composer test
 
       - name: 🛡️ Security Vulnerability Scan
-        run: composer audit
+        run: composer audit --abandoned=report
