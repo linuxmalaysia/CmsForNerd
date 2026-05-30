@@ -7,11 +7,11 @@ This repository is a downstream implementation maintained by **Harisfazillah Jam
 
 We only provide support for the current master branch, which is regularly synchronised with the latest upstream stable releases.
 
-| Version   | Supported          | PHP Requirement | Architectural Note |
-| --------- | ------------------ | --------------- | ------------------ |
-| 4.0.0     | :white_check_mark: | >= 8.4          | Glassmorphism      |
-| 3.5.x - 3.6| :white_check_mark: | >= 8.4          | Zero-Global Arch   |
-| < 3.5     | :x:                | < 8.4           | End of Life        |
+| Version     | Supported          | PHP Requirement | Architectural Note |
+| ----------- | ------------------ | --------------- | ------------------ |
+| 4.0.0       | :white_check_mark: | >= 8.4          | Glassmorphism      |
+| 3.5.x - 3.6 | :white_check_mark: | >= 8.4          | Zero-Global Arch   |
+| < 3.5       | :x:                | < 8.4           | End of Life        |
 
 ## Front-End & PWA Security (v4.0.0+)
 
