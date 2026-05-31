@@ -1,4 +1,4 @@
-# 🚩 The Final Exam: Break-Fix Challenge (v3.5)
+# 🚩 The Final Exam: Break-Fix Challenge (v4.0.0)
 
 > **Scenario:** A "junior dev" has pushed code that violates our RFC 2119 standards and breaks PSR-12 compliance. To pass the "Certified Nerd" audit, you must repair these 5 failures.
 
@@ -75,6 +75,6 @@ The Content Security Policy is currently "Wide Open."
 
 ## ✅ Evaluation Criteria
 A student passes if they can run the following command and receive a perfectly clean report:
-`composer compliance`
+`composer lab-check`
 
 [🏁 Go to Graduation](graduation.md)

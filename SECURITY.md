@@ -7,18 +7,15 @@ This repository is a downstream implementation maintained by **Harisfazillah Jam
 
 We only provide support for the current master branch, which is regularly synchronised with the latest upstream stable releases.
 
-| Version   | Supported          | PHP Requirement | Architectural Note |
-| --------- | ------------------ | --------------- | ------------------ |
-| 3.5.x     | :white_check_mark: | >= 8.4          | PWA SPA-Hybrid     |
-| 3.0 - 3.4 | :warning:          | >= 8.3          | Legacy Mode        |
-| < 3.0     | :x:                | < 8.3           | End of Life        |
+| Version     | Supported          | PHP Requirement | Architectural Note |
+| ----------- | ------------------ | --------------- | ------------------ |
+| 4.0.0       | :white_check_mark: | >= 8.4          | Glassmorphism      |
+| 3.5.x - 3.6 | :white_check_mark: | >= 8.4          | Zero-Global Arch   |
+| < 3.5       | :x:                | < 8.4           | End of Life        |
 
-## Front-End & PWA Security (v3.5+)
+## Front-End & PWA Security (v4.0.0+)
 
-CMSForNerd v3.5 introduces a Progressive Web App (PWA) architecture. All Service Worker (`sw.js`) registrations strictly
-require **HTTPS**. The Vanilla JS History API Router (`assets/pwa/router.js`) processes layout hydrations seamlessly and
-is protected by strict Content Security Policy (CSP) nonces (injected via `includes/common.inc.php`) to prevent Cross-Site
-Scripting (XSS).
+CMSForNerd v4.0.0 maintains the Progressive Web App (PWA) architecture with a new **Glassmorphism** visual layer. All Service Worker (`sw.js`) registrations strictly require **HTTPS**. The system is protected by strict Content Security Policy (CSP) nonces (injected via `includes/bootstrap.php`) and uses a **Zero-Global** architecture via the `Registry` class to prevent state pollution and Cross-Site Scripting (XSS).
 
 ## Reporting a Vulnerability
 

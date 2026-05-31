@@ -1,9 +1,9 @@
-# CMSForNerd v3.5: 🛡️ Directory Security Lab Exercise
+# CMSForNerd v4.0.0: 🛡️ Directory Security Lab Exercise
 
 ## Step 4: Directory Browsing Protection
 
 ### The Threat
-If an attacker can browse `/includes/`, they can see all your PHP files, analyze your logic, and find vulnerabilities (Information Disclosure).
+If an attacker can browse `/includes/` or `/src/`, they can see all your PHP files, analyze your logic, and find vulnerabilities (Information Disclosure).
 
 ### Three-Layer Defense
 
@@ -13,12 +13,12 @@ Options -Indexes
 ```
 
 **Layer 2: index.html Files**
-- Located in: `includes/`, `tests/`, `themes/`, `contents/`, `images/`
+- Located in: `includes/`, `src/`, `tests/`, `themes/`, `contents/`, `images/`
 - Shows 403 error page instead of file listings
 
 **Layer 3: Nginx (Laravel Herd)**
 ```nginx
-location ~ ^/(includes|tests|vendor)/ {
+location ~ ^/(includes|src|tests|vendor)/ {
     deny all;
 }
 ```
@@ -30,4 +30,4 @@ location ~ ^/(includes|tests|vendor)/ {
 
 ### Files Created
 - `.htaccess` (8 security layers)
-- `index.html` templates in 5 directories
+- `index.html` templates in 6 directories

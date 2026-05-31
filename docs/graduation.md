@@ -1,6 +1,6 @@
-# 🎓 Graduation & Certification (v3.5)
+# 🎓 Graduation & Certification (v4.0.0)
 
-Congratulations! By reaching this stage, you have successfully transformed a legacy script into a secure, standards-compliant PHP 8.4 application.
+Congratulations! By reaching this stage, you have successfully transformed a legacy script into a secure, standards-compliant PHP 8.4 application, now featuring high-fidelity Glassmorphism and Zero-Global architecture.
 
 ---
 
@@ -23,9 +23,9 @@ To qualify for graduation, your project must pass the final **Compliance Audit**
 The CMS includes a built-in certificate generator. To issue your certificate:
 
 1. **Fix all 5 Challenges** in the [Final Exam](final-exam.md).
-2. Ensure `composer compliance` returns a perfect score.
+2. Ensure `composer lab-check` returns a perfect score.
 3. Access the graduation runner:  
-   `graduation.php?student=Your+Full+Name`
+   `graduation.php?student_id=Your_Student_ID`
 
 ### Printing Instructions
 The graduation page is optimized for physical printing. Press `Ctrl + P` in your browser to generate a high-quality certificate layout.

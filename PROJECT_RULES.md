@@ -1,6 +1,6 @@
-# 🚀 CMSForNerd Project Rules (Updated v3.6.0)
+# 🚀 CMSForNerd Project Rules (Updated v4.0.0)
 
-When generating or refactoring code for **CmsForNerd v3.6** and above, you **MUST** follow these rules:
+When generating or refactoring code for **CmsForNerd v4.0.0** and above, you **MUST** follow these rules:
 
 ### 1. The "Zero-Global" Mandate
 * **Absolute Compliance**: The `global` keyword and `$GLOBALS` array are **STRICTLY PROHIBITED** in all `includes/`, `src/`, and controller files.

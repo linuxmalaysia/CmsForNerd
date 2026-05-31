@@ -75,7 +75,7 @@ function verifyTurnstile(string $token, string $remoteIp): bool
  * To satisfy PSR-1 "Side Effects", we wrap the execution logic.
  * This gate ensures verification is active for all sensitive POST requests.
  */
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
     $userToken = (string) ($_POST['cf-turnstile-response'] ?? '');
     $userIp    = (string) ($_SERVER['REMOTE_ADDR'] ?? '');
 

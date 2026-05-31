@@ -1,6 +1,6 @@
 # 🏁 Guide: Testing Back/Forward Cache (bfcache)
 
-The CMSForNerd v3.5 laboratory environment utilizes an advanced Vanilla Javascript History API router. To ensure instantaneous navigation experiences, we implemented Back/Forward Cache (bfcache) optimizations (such as `AbortController` cancellation for pending network requests). 
+The CMSForNerd v4.0.0 laboratory environment utilizes an advanced Vanilla Javascript History API router. To ensure instantaneous navigation experiences, we implemented Back/Forward Cache (bfcache) optimizations (such as `AbortController` cancellation for pending network requests).
 
 As a developer or student, here is the protocol to verify that bfcache is actively working in your local environment.
 

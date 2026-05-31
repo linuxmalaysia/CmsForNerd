@@ -1,4 +1,4 @@
-# [DOC] CmsForNerd Ansible Configuration Guide (v3.6.0)
+# [DOC] CmsForNerd Ansible Configuration Guide (v4.0.0)
 
 ## Source: `docs/ANSIBLE-CONFIG-GUIDE.md`
 
@@ -98,4 +98,4 @@ In v3.6.0, we enforce a strict separation of concerns to ensure production-grade
 
 ---
 
-*Adopted for CmsForNerd Laboratory | v3.6.0 Automation Protocol | 2026-03-30*
+*Adopted for CmsForNerd Laboratory | v4.0.0 Automation Protocol | 2026-03-30*

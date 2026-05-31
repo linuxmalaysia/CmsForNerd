@@ -76,9 +76,9 @@ if (!function_exists('pageheader_amp')) {
     {
         // 1. Context Extraction
         $title = htmlspecialchars($ctx->content['title'] ?? 'Laboratory', ENT_QUOTES, 'UTF-8');
-        $scriptName = $ctx->scriptName ?? 'index';
+        $scriptName = $ctx->scriptName;
         $canonicalUrl = $scriptName . '.php';
-        $nonce = $ctx->cspNonce ?? '';
+        $nonce = $ctx->cspNonce;
 
         ?>
         <meta charset="utf-8">
@@ -132,7 +132,7 @@ if (!function_exists('pageheader_amp')) {
          * [CSS INJECTION & VALIDATION]
          * Inlines amp.css while enforcing the 75,000 byte limit.
          */
-        $theme = $ctx->themeName ?? 'CmsForNerd';
+        $theme = $ctx->themeName;
         $ampCssPath = dirname(__DIR__) . "/themes/{$theme}/css/amp.css";
 
         if (file_exists($ampCssPath)) {

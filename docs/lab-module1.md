@@ -1,4 +1,4 @@
-# 🧪 Lab Module 1: Modern Architecture (v3.5)
+# 🧪 Lab Module 1: Modern Architecture (v4.0.0)
 
 > **Topic:** Modern PHP 8.4+ Architecture & PHP 9 Readiness
 
@@ -107,7 +107,7 @@ Run these in your **Antigravity Terminal** to sync your progress:
 
 ```bash
 git add .
-git commit -m "Build v3.5: Completed Module 1 (Modern Architecture)"
+git commit -m "Build v4.0.0: Completed Module 1 (Modern Architecture)"
 git push origin master
 ```
 

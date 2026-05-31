@@ -1,6 +1,6 @@
-# 🎓 Lab Manual: The Developer’s Laboratory (v3.5)
+# 🎓 Lab Manual: The Developer’s Laboratory (v4.0.0)
 
-Welcome to the **v3.5 educational suite**. This CMS is designed to be a **transparent laboratory**. Every line of code is accessible, every architectural choice is documented, and every security feature is a lesson in professional standards.
+Welcome to the **v4.0.0 educational suite**. This CMS is designed to be a **transparent laboratory**. Every line of code is accessible, every architectural choice is documented, and every security feature is a lesson in professional standards.
 
 ---
 
@@ -12,8 +12,8 @@ In this module, you will explore the transition from procedural scripts to moder
 Observe how `declare(strict_types=1);` prevents the CMS from accepting incorrect data types, forcing developers to write predictable code.
 * **Worksheet:** [Module 1 Worksheet](lab-module1.md)
 
-### Exercise 1.2: The Context Pattern
-See how the `CmsContext` object replaces the "Global Variable" anti-pattern, teaching the principle of **Single Source of Truth**.
+### Exercise 1.2: The Context Pattern & Zero-Global
+See how the `Registry` class and `CmsContext` object replace the "Global Variable" anti-pattern, teaching the principle of **Single Source of Truth** and reaching 100% architectural compliance.
 
 ### Exercise 1.3: Property Hooks (PHP 8.4)
 Learn to use PHP 8.4 hooks to automate data validation within class properties, reducing boilerplate code.
@@ -52,7 +52,7 @@ Implement **Defense-in-Depth** by securing the file loader and configuring a **C
 ### Lab 3.2: CSP Nonces (2026 Best Practice)
 Learn to configure the Content Security Policy (CSP) with **cryptographic nonces** instead of dangerous `'unsafe-inline'` directives.
 * **Concept:** A nonce is a "number used once" - a random token that changes every page load.
-* **Implementation:** Review how `SecurityUtils::generateNonce()` creates cryptographically secure tokens.
+* **Implementation:** Review how `includes/bootstrap.php` creates cryptographically secure tokens.
 
 ### Module 3.5: Responsible Disclosure (RFC 9116)
 Understand how to communicate with security researchers using the `security.txt` standard.
@@ -104,14 +104,12 @@ The ultimate test of a modern backend engineer. Repair a broken system to prove 
 
 ---
 
-## 📝 The History of v3.5: A Modernization Case Study
+## 📝 The History of v4.0.0: A Modernization Case Study
 
-CMSForNerd v3.5 isn't just a version; it's a **Modernization Journey**.
-1. **Phase 1:** Refactored the 2005 foundation into PHP 8.4+ classes.
-2. **Phase 2:** Standardized UI with CSS Grid.
-3. **Phase 3:** Hardened perimeter with Cloudflare Turnstile and `SecurityUtils`.
-4. **Phase 4:** Automated workflow with PHPUnit and `PHP_CodeSniffer`.
-5. **Phase 5:** Integrated AI-native configuration (JSON-LD, CSP nonces) for 2026 standards.
+CMSForNerd v4.0.0 isn't just a version; it's a **Modernization Journey**.
+1. **Phase 1-5:** Refactored the 2005 foundation into PHP 8.4+ classes and hardened perimeter.
+2. **Phase 7:** Reached 100% Zero-Global compliance via `Registry.php`.
+3. **Phase 11:** Transitioned to **High-Fidelity Glassmorphism** visual layer.
 
 ---
 ### 🎓 Ready to Graduate?

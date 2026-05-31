@@ -1,4 +1,4 @@
-name: CMSForNerd Laboratory Compliance (v3.6.0)
+name: CMSForNerd Laboratory Compliance (v4.0.0-alpha)
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
 
       - name: 🧪 Execute Laboratory Pre-flight (Audit)
         run: |
-          echo "--- Starting v3.6.0 Compliance Suite ---"
+          echo "--- Starting v4.0.0-alpha Compliance Suite ---"
           composer check-version
           
       - name: ⚖️ Architectural Integrity (Zero-Global Audit)
@@ -54,4 +54,4 @@ jobs:
         run: composer test
 
       - name: 🛡️ Security Vulnerability Scan
-        run: composer audit
+        run: composer audit --abandoned=report

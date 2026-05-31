@@ -1,6 +1,6 @@
-# 📜 SOP: Responsible AI Usage in the Lab (v3.5)
+# 📜 SOP: Responsible AI Usage in the Lab (v4.0.0)
 
-Standard Operating Procedure for the CMSForNerd v3.5 Laboratory.
+Standard Operating Procedure for the CMSForNerd v4.0.0 Laboratory.
 
 ## 🎯 Objective
 To leverage AI agents (Gemini, Antigravity) to accelerate learning while maintaining individual coding integrity and **RFC 2119** compliance within the PHP 8.4 environment.
@@ -18,7 +18,7 @@ To leverage AI agents (Gemini, Antigravity) to accelerate learning while maintai
 AI-generated code **MUST NOT** be merged until it passes the compliance suite:
 1. **Style:** `composer fix-style` (PSR-12 Check).
 2. **Logic:** `composer test` (Unit/Security Logic Check).
-3. **Audit:** `composer compliance` (Final "Green Bar" Status).
+3. **Audit:** `composer lab-check` (Final "Green Bar" Status).
 
 ### 4. Prohibited Actions
 * **DO NOT** copy-paste code you cannot explain line-by-line during lab reviews.
