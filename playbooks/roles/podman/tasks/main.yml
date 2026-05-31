@@ -53,3 +53,12 @@
     - "/home/cmsfornerd/logs/nginx"
     - "/home/cmsfornerd/logs/php"
     - "/home/cmsfornerd/www"
+
+- name: Create Podman Pod for CmsForNerd
+  containers.podman.podman_pod:
+    name: cmsfornerd-pod
+    state: started
+    ports:
+      - "80:80"
+  become: true
+  become_user: cmsfornerd

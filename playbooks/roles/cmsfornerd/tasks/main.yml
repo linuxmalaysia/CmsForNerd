@@ -27,7 +27,7 @@
 - name: Install dependencies via Composer (inside a temporary container)
   containers.podman.podman_container:
     name: cmsfornerd-composer
-    image: docker.io/library/composer:latest
+    image: docker.io/library/composer:2.8
     state: started
     user: "1501:1501"
     volumes:

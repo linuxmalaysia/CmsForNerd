@@ -30,7 +30,7 @@
     state: started
     user: "1501:1501"
     restart_policy: always
-    network: host
+    pod: cmsfornerd-pod
     volumes:
       - "/home/cmsfornerd/config/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:Z"
       - "/home/cmsfornerd/www:/var/www/html:Z"
