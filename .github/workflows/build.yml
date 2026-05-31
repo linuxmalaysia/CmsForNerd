@@ -1,6 +1,7 @@
 name: Build
 permissions:
   contents: read
+  pull-requests: read
 on:
   push:
     branches:
@@ -11,6 +12,8 @@ jobs:
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,6 +22,8 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v7
         with:
           args: >
+            -Dsonar.organization=linuxmalaysia
+            -Dsonar.projectKey=linuxmalaysia_cmsfornerd
             -Dsonar.scanner.skipJreProvisioning=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
