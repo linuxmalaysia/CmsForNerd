@@ -3,8 +3,8 @@
   ansible.builtin.file:
     path: "{{ cms_deploy_path }}"
     state: directory
-    owner: 1501
-    group: 1501
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
     mode: '0700'
 
 - name: Clone CmsForNerd Official Repository
@@ -15,13 +15,13 @@
     force: true
     depth: 1
   become: true
-  become_user: cmsfornerd
+  become_user: "{{ podman_cms_user }}"
 
 - name: Set secure file ownership
   ansible.builtin.file:
     path: "{{ cms_deploy_path }}"
-    owner: 1501
-    group: 1501
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
     recurse: true
 
 - name: Install dependencies via Composer (inside a temporary container)
@@ -29,7 +29,7 @@
     name: cmsfornerd-composer
     image: docker.io/library/composer:2.8
     state: started
-    user: "1501:1501"
+    user: "{{ podman_cms_uid }}:{{ podman_cms_gid }}"
     volumes:
       - "{{ cms_deploy_path }}:/app:Z"
     command: install --ignore-platform-reqs --no-dev --optimize-autoloader
@@ -37,5 +37,7 @@
     rm: true
     security_opt:
       - no-new-privileges
+    cap_drop:
+      - all
   become: true
-  become_user: cmsfornerd
+  become_user: "{{ podman_cms_user }}"

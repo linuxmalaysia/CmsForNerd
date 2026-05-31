@@ -20,45 +20,46 @@
 
 - name: Ensure cmsfornerd group exists
   ansible.builtin.group:
-    name: cmsfornerd
-    gid: 1501
+    name: "{{ podman_cms_group }}"
+    gid: "{{ podman_cms_gid }}"
     state: present
 
 - name: Ensure cmsfornerd user exists
   ansible.builtin.user:
-    name: cmsfornerd
-    uid: 1501
-    group: cmsfornerd
+    name: "{{ podman_cms_user }}"
+    uid: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_group }}"
     shell: /bin/bash
     state: present
     create_home: true
 
 - name: Enable linger for cmsfornerd user
-  ansible.builtin.command: "loginctl enable-linger cmsfornerd"
+  ansible.builtin.command: "loginctl enable-linger {{ podman_cms_user }}"
   args:
-    creates: "/var/lib/systemd/linger/cmsfornerd"
+    creates: "/var/lib/systemd/linger/{{ podman_cms_user }}"
 
 - name: Ensure required directories exist for cmsfornerd user
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    owner: cmsfornerd
-    group: cmsfornerd
+    owner: "{{ podman_cms_user }}"
+    group: "{{ podman_cms_group }}"
     mode: '0700'
   loop:
-    - "/home/cmsfornerd/config"
-    - "/home/cmsfornerd/config/nginx"
-    - "/home/cmsfornerd/config/php"
-    - "/home/cmsfornerd/logs"
-    - "/home/cmsfornerd/logs/nginx"
-    - "/home/cmsfornerd/logs/php"
-    - "/home/cmsfornerd/www"
+    - "{{ podman_cms_home }}"
+    - "{{ podman_cms_config_path }}"
+    - "{{ podman_cms_config_path }}/nginx"
+    - "{{ podman_cms_config_path }}/php"
+    - "{{ podman_cms_logs_path }}"
+    - "{{ podman_cms_logs_path }}/nginx"
+    - "{{ podman_cms_logs_path }}/php"
+    - "{{ cms_deploy_path }}"
 
 - name: Create Podman Pod for CmsForNerd
   containers.podman.podman_pod:
-    name: cmsfornerd-pod
+    name: "{{ podman_cms_pod_name }}"
     state: started
     ports:
       - "80:80"
   become: true
-  become_user: cmsfornerd
+  become_user: "{{ podman_cms_user }}"
