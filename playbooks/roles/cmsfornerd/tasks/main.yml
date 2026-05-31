@@ -1,33 +1,38 @@
 ---
 - name: Ensure Target Directory Exists
-  file:
+  ansible.builtin.file:
     path: "{{ cms_deploy_path }}"
     state: directory
-    owner: "www-data"
-    group: "www-data"
+    owner: 1501
+    group: 1501
     mode: '0755'
-  when: ansible_os_family == 'Debian'
-
-- name: Ensure Target Directory Exists (RHEL)
-  file:
-    path: "{{ cms_deploy_path }}"
-    state: directory
-    owner: "nginx"
-    group: "nginx"
-    mode: '0755'
-  when: ansible_os_family == 'RedHat'
 
 - name: Clone CmsForNerd Official Repository
-  git:
+  ansible.builtin.git:
     repo: 'https://github.com/CMSForNerd/CmsForNerd.git'
     dest: "{{ cms_deploy_path }}"
     version: master
-    force: yes
-  notify: run composer install
+    force: true
+  become: true
+  become_user: cmsfornerd
 
-- name: Set secure file ownership map
-  file:
+- name: Set secure file ownership
+  ansible.builtin.file:
     path: "{{ cms_deploy_path }}"
-    owner: "{{ 'www-data' if ansible_os_family == 'Debian' else 'nginx' }}"
-    group: "{{ 'www-data' if ansible_os_family == 'Debian' else 'nginx' }}"
-    recurse: yes
+    owner: 1501
+    group: 1501
+    recurse: true
+
+- name: Install dependencies via Composer (inside a temporary container)
+  containers.podman.podman_container:
+    name: cmsfornerd-composer
+    image: composer:latest
+    state: started
+    user: "1501:1501"
+    volumes:
+      - "{{ cms_deploy_path }}:/app:Z"
+    command: install --ignore-platform-reqs
+    detach: false
+    rm: true
+  become: true
+  become_user: cmsfornerd

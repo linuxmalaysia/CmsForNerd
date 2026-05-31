@@ -1,7 +1,7 @@
 server {
     listen 80;
     server_name {{ cms_domain }};
-    root {{ cms_deploy_path }};
+    root /var/www/html;
     index index.php index.html;
 
     # Security: Block access to .git and .inc files
@@ -18,10 +18,10 @@ server {
     }
 
     location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:{{ php_fpm_sock }};
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
         include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
 
     # Optimization: Gzip settings

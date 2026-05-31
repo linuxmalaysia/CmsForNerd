@@ -1,0 +1,55 @@
+---
+- name: Ensure Podman is installed (Debian/Ubuntu)
+  ansible.builtin.apt:
+    name: podman
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure Podman is installed (RedHat/AlmaLinux)
+  ansible.builtin.dnf:
+    name: podman
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Allow rootless containers to bind to port 80
+  ansible.posix.sysctl:
+    name: net.ipv4.ip_unprivileged_port_start
+    value: '80'
+    state: present
+    sysctl_set: true
+
+- name: Ensure cmsfornerd group exists
+  ansible.builtin.group:
+    name: cmsfornerd
+    gid: 1501
+    state: present
+
+- name: Ensure cmsfornerd user exists
+  ansible.builtin.user:
+    name: cmsfornerd
+    uid: 1501
+    group: cmsfornerd
+    shell: /bin/bash
+    state: present
+    create_home: true
+
+- name: Enable linger for cmsfornerd user
+  ansible.builtin.command: "loginctl enable-linger cmsfornerd"
+  args:
+    creates: "/var/lib/systemd/linger/cmsfornerd"
+
+- name: Ensure required directories exist for cmsfornerd user
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: cmsfornerd
+    group: cmsfornerd
+    mode: '0755'
+  loop:
+    - "/home/cmsfornerd/config"
+    - "/home/cmsfornerd/config/nginx"
+    - "/home/cmsfornerd/config/php"
+    - "/home/cmsfornerd/logs"
+    - "/home/cmsfornerd/logs/nginx"
+    - "/home/cmsfornerd/logs/php"
+    - "/home/cmsfornerd/www"

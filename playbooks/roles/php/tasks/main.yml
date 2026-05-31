@@ -1,62 +1,39 @@
 ---
-- name: Install PHP 8.4-FPM and Core Extensions (Debian)
-  apt:
-    name:
-      - php8.4-fpm
-      - php8.4-cli
-      - php8.4-mbstring
-      - php8.4-xml
-      - php8.4-curl
-    state: present
-  when: ansible_os_family == 'Debian'
+- name: Deploy PHP Dockerfile
+  ansible.builtin.template:
+    src: Dockerfile.j2
+    dest: "/home/cmsfornerd/config/php/Dockerfile"
+    owner: 1501
+    group: 1501
+    mode: '0644'
 
-- name: Install PHP 8.4 Setup (RHEL/AlmaLinux)
-  dnf:
-    name:
-      - php-fpm
-      - php-cli
-      - php-mbstring
-      - php-xml
-    state: present
-  when: ansible_os_family == 'RedHat'
+- name: Deploy PHP-FPM Configuration for Podman
+  ansible.builtin.template:
+    src: www.conf.j2
+    dest: "/home/cmsfornerd/config/php/www.conf"
+    owner: 1501
+    group: 1501
+    mode: '0644'
 
-- name: Ensure PHP-FPM is running
-  service:
-    name: "{{ 'php8.4-fpm' if ansible_os_family == 'Debian' else 'php-fpm' }}"
+- name: Create Custom PHP-FPM Image with Extensions
+  containers.podman.podman_image:
+    name: cmsfornerd-php
+    path: "/home/cmsfornerd/config/php"
+    force: true
+  become: true
+  become_user: cmsfornerd
+
+- name: Run PHP-FPM Container
+  containers.podman.podman_container:
+    name: cmsfornerd-php
+    image: cmsfornerd-php
     state: started
-    enabled: yes
-
-- name: Configure PHP-FPM pool (Debian/Ubuntu)
-  lineinfile:
-    path: /etc/php/8.4/fpm/pool.d/www.conf
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-  loop:
-    - { regexp: '^user =', line: 'user = www-data' }
-    - { regexp: '^group =', line: 'group = www-data' }
-    - { regexp: '^listen =', line: 'listen = /run/php/php8.4-fpm.sock' }
-    - { regexp: '^listen.owner =', line: 'listen.owner = www-data' }
-    - { regexp: '^listen.group =', line: 'listen.group = www-data' }
-  when: ansible_os_family == 'Debian'
-  notify: restart php-fpm
-
-- name: Configure PHP-FPM pool (RedHat/AlmaLinux)
-  lineinfile:
-    path: /etc/php-fpm.d/www.conf
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-  loop:
-    - { regexp: '^user =', line: 'user = nginx' }
-    - { regexp: '^group =', line: 'group = nginx' }
-    - { regexp: '^listen =', line: 'listen = /run/php-fpm/www.sock' }
-    - { regexp: '^listen.owner =', line: 'listen.owner = nginx' }
-    - { regexp: '^listen.group =', line: 'listen.group = nginx' }
-  when: ansible_os_family == 'RedHat'
-  notify: restart php-fpm
-
-- name: Ensure Composer is globally accessible
-  shell: |
-    curl -sS https://getcomposer.org/installer | php
-    mv composer.phar /usr/local/bin/composer
-  args:
-    creates: /usr/local/bin/composer
+    user: "1501:1501"
+    restart_policy: always
+    network: host
+    volumes:
+      - "/home/cmsfornerd/config/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:Z"
+      - "/home/cmsfornerd/www:/var/www/html:Z"
+      - "/home/cmsfornerd/logs/php:/var/log/php-fpm:Z"
+  become: true
+  become_user: cmsfornerd
