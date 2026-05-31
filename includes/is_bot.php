@@ -116,7 +116,10 @@ function ip_in_range(string $ip, string $range): bool
 
         $fullBytes = (int)($bits / 8);
         $remainingBits = $bits % 8;
-        $mask = str_repeat(chr(255), $fullBytes);
+
+        // Use fixed string to avoid str_repeat Security Hotspot (DoS protection)
+        $mask = substr("\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF", 0, $fullBytes);
+
         if ($remainingBits > 0) {
             $mask .= chr(256 - (1 << (8 - $remainingBits)));
         }
