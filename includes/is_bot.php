@@ -112,18 +112,13 @@ function ip_in_range(string $ip, string $range): bool
             return false;
         }
 
-        $mask = "";
-        for ($i = 0; $i < 16; $i++) {
-            if ($bits >= 8) {
-                $mask .= chr(255);
-                $bits -= 8;
-            } elseif ($bits > 0) {
-                $mask .= chr(256 - (1 << (8 - $bits)));
-                $bits = 0;
-            } else {
-                $mask .= chr(0);
-            }
+        $fullBytes = (int)($bits / 8);
+        $remainingBits = $bits % 8;
+        $mask = str_repeat(chr(255), $fullBytes);
+        if ($remainingBits > 0) {
+            $mask .= chr(256 - (1 << (8 - $remainingBits)));
         }
+        $mask = str_pad($mask, 16, chr(0));
         return ($ipBin & $mask) === ($subnetBin & $mask);
     }
 }
