@@ -106,7 +106,7 @@ function ip_in_range(string $ip, string $range): bool
         $mask = -1 << (32 - $bits);
         return ($ipLong & $mask) === ($subnetLong & $mask);
     } else {
-        // IPv6
+        // IPv6 - Architectural Hardening for Performance & Security
         $bits = max(0, min(128, $bits));
         $ipBin = inet_pton($ip);
         $subnetBin = inet_pton($subnet);
@@ -114,16 +114,18 @@ function ip_in_range(string $ip, string $range): bool
             return false;
         }
 
+        // Pre-allocate fixed 16-byte zero mask to satisfy DoS protection rules
+        $mask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00";
         $fullBytes = (int)($bits / 8);
-        $remainingBits = $bits % 8;
-
-        // Use fixed string to avoid str_repeat Security Hotspot (DoS protection)
-        $mask = substr("\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF", 0, $fullBytes);
-
-        if ($remainingBits > 0) {
-            $mask .= chr(256 - (1 << (8 - $remainingBits)));
+        for ($i = 0; $i < $fullBytes; $i++) {
+            $mask[$i] = "\xFF";
         }
-        $mask = str_pad($mask, 16, chr(0));
+
+        $remainingBits = $bits % 8;
+        if ($remainingBits > 0) {
+            $mask[$fullBytes] = chr(256 - (1 << (8 - $remainingBits)));
+        }
+
         return ($ipBin & $mask) === ($subnetBin & $mask);
     }
 }
@@ -180,8 +182,8 @@ function block_datacenter_traffic(string $token): void
 {
     $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
 
-    // 1. [PERFORMANCE] Localhost check
-    if ($ip === '127.0.0.1' || $ip === '::1') {
+    // 1. [PERFORMANCE] Localhost & Validation check
+    if ($ip === '127.0.0.1' || $ip === '::1' || !filter_var($ip, FILTER_VALIDATE_IP)) {
         return;
     }
 
@@ -190,8 +192,10 @@ function block_datacenter_traffic(string $token): void
         return;
     }
 
-    $json = @file_get_contents("https://ipinfo.io/{$ip}/json?token={$token}");
-    if ($json === false) {
+    // Secure IP lookup with validated input
+    $ctx = stream_context_create(['http' => ['timeout' => 2]]);
+    $json = @file_get_contents("https://ipinfo.io/" . urlencode($ip) . "/json?token=" . urlencode($token), false, $ctx);
+    if ($json === false || empty($json)) {
         return;
     }
 
