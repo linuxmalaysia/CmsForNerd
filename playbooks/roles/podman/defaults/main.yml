@@ -1,0 +1,9 @@
+---
+podman_cms_user: cmsfornerd
+podman_cms_uid: 1501
+podman_cms_group: cmsfornerd
+podman_cms_gid: 1501
+podman_cms_home: "/home/{{ podman_cms_user }}"
+podman_cms_config_path: "{{ podman_cms_home }}/config"
+podman_cms_logs_path: "{{ podman_cms_home }}/logs"
+podman_cms_pod_name: cmsfornerd-pod

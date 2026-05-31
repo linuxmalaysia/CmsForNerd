@@ -1,56 +1,27 @@
 ---
-- name: Install Nginx (Debian)
-  apt:
-    name: nginx
-    state: present
-  when: ansible_os_family == 'Debian'
-
-- name: Install Nginx (RHEL/AlmaLinux)
-  dnf:
-    name: nginx
-    state: present
-  when: ansible_os_family == 'RedHat'
-
-- name: Ensure Nginx is enabled and running
-  service:
-    name: nginx
-    state: started
-    enabled: yes
-
-- name: Set Nginx config path (Debian/Ubuntu)
-  set_fact:
-    nginx_conf_path: "/etc/nginx/sites-available/cmsfornerd.conf"
-    nginx_link_path: "/etc/nginx/sites-enabled/cmsfornerd.conf"
-    php_fpm_sock: "/run/php/php8.4-fpm.sock"
-  when: ansible_os_family == 'Debian'
-
-- name: Set Nginx config path (RedHat/AlmaLinux)
-  set_fact:
-    nginx_conf_path: "/etc/nginx/conf.d/cmsfornerd.conf"
-    nginx_link_path: ""
-    php_fpm_sock: "/run/php-fpm/www.sock"
-  when: ansible_os_family == 'RedHat'
-
-- name: Deploy Nginx VHost Configuration
-  template:
+- name: Deploy Nginx Configuration for Podman
+  ansible.builtin.template:
     src: cmsfornerd.conf.j2
-    dest: "{{ nginx_conf_path }}"
-    owner: root
-    group: root
-    mode: '0644'
-  notify: reload nginx
+    dest: "{{ podman_cms_config_path }}/nginx/cmsfornerd.conf"
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0600'
 
-- name: Enable Nginx VHost (Debian/Ubuntu)
-  file:
-    src: "{{ nginx_conf_path }}"
-    dest: "{{ nginx_link_path }}"
-    state: link
-  when: ansible_os_family == 'Debian' and nginx_link_path != ""
-  notify: reload nginx
-
-- name: Remove default Nginx config
-  file:
-    path: /etc/nginx/sites-enabled/default
-    state: absent
-  when: ansible_os_family == 'Debian'
-  notify: reload nginx
+- name: Run Nginx Container
+  containers.podman.podman_container:
+    name: cmsfornerd-nginx
+    image: docker.io/library/nginx:1.27
+    state: started
+    user: "{{ podman_cms_uid }}:{{ podman_cms_gid }}"
+    restart_policy: always
+    pod: "{{ podman_cms_pod_name }}"
+    volumes:
+      - "{{ podman_cms_config_path }}/nginx/cmsfornerd.conf:/etc/nginx/conf.d/default.conf:Z,ro"
+      - "{{ cms_deploy_path }}:/var/www/html:Z"
+      - "{{ podman_cms_logs_path }}/nginx:/var/log/nginx:Z"
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - all
+  become: true
+  become_user: "{{ podman_cms_user }}"
