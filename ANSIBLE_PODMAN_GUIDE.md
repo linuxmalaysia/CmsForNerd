@@ -40,7 +40,7 @@ The Ansible automation performs the following steps:
 ## Post-Deployment Actions (For Humans)
 
 1.  **DNS/Hosts File**: Since the setup uses a dummy domain `cmsfornerd.local`, you need to add it to your local `/etc/hosts` (or `C:\Windows\System32\drivers\etc\hosts` on Windows) to access the site:
-    ```
+    ```text
     <your-server-ip> cmsfornerd.local
     ```
 

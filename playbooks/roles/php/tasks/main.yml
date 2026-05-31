@@ -5,7 +5,7 @@
     dest: "/home/cmsfornerd/config/php/Dockerfile"
     owner: 1501
     group: 1501
-    mode: '0644'
+    mode: '0600'
 
 - name: Deploy PHP-FPM Configuration for Podman
   ansible.builtin.template:
@@ -13,11 +13,11 @@
     dest: "/home/cmsfornerd/config/php/www.conf"
     owner: 1501
     group: 1501
-    mode: '0644'
+    mode: '0600'
 
 - name: Create Custom PHP-FPM Image with Extensions
   containers.podman.podman_image:
-    name: cmsfornerd-php
+    name: localhost/cmsfornerd-php
     path: "/home/cmsfornerd/config/php"
     force: true
   become: true
@@ -26,7 +26,7 @@
 - name: Run PHP-FPM Container
   containers.podman.podman_container:
     name: cmsfornerd-php
-    image: cmsfornerd-php
+    image: localhost/cmsfornerd-php
     state: started
     user: "1501:1501"
     restart_policy: always
@@ -35,5 +35,7 @@
       - "/home/cmsfornerd/config/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:Z"
       - "/home/cmsfornerd/www:/var/www/html:Z"
       - "/home/cmsfornerd/logs/php:/var/log/php-fpm:Z"
+    security_opt:
+      - no-new-privileges
   become: true
   become_user: cmsfornerd

@@ -5,12 +5,12 @@
     dest: "/home/cmsfornerd/config/nginx/cmsfornerd.conf"
     owner: 1501
     group: 1501
-    mode: '0644'
+    mode: '0600'
 
 - name: Run Nginx Container
   containers.podman.podman_container:
     name: cmsfornerd-nginx
-    image: nginx:latest
+    image: docker.io/library/nginx:latest
     state: started
     user: "1501:1501"
     restart_policy: always
@@ -19,5 +19,7 @@
       - "/home/cmsfornerd/config/nginx/cmsfornerd.conf:/etc/nginx/conf.d/default.conf:Z"
       - "/home/cmsfornerd/www:/var/www/html:Z"
       - "/home/cmsfornerd/logs/nginx:/var/log/nginx:Z"
+    security_opt:
+      - no-new-privileges
   become: true
   become_user: cmsfornerd

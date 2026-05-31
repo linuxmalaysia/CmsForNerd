@@ -44,7 +44,7 @@
     state: directory
     owner: cmsfornerd
     group: cmsfornerd
-    mode: '0755'
+    mode: '0700'
   loop:
     - "/home/cmsfornerd/config"
     - "/home/cmsfornerd/config/nginx"

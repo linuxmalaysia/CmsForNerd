@@ -5,7 +5,7 @@
     state: directory
     owner: 1501
     group: 1501
-    mode: '0755'
+    mode: '0700'
 
 - name: Clone CmsForNerd Official Repository
   ansible.builtin.git:
@@ -13,6 +13,7 @@
     dest: "{{ cms_deploy_path }}"
     version: master
     force: true
+    depth: 1
   become: true
   become_user: cmsfornerd
 
@@ -26,13 +27,15 @@
 - name: Install dependencies via Composer (inside a temporary container)
   containers.podman.podman_container:
     name: cmsfornerd-composer
-    image: composer:latest
+    image: docker.io/library/composer:latest
     state: started
     user: "1501:1501"
     volumes:
       - "{{ cms_deploy_path }}:/app:Z"
-    command: install --ignore-platform-reqs
+    command: install --ignore-platform-reqs --no-dev --optimize-autoloader
     detach: false
     rm: true
+    security_opt:
+      - no-new-privileges
   become: true
   become_user: cmsfornerd
