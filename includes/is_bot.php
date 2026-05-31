@@ -100,12 +100,14 @@ function ip_in_range(string $ip, string $range): bool
 
     if (!str_contains($ip, ':')) {
         // IPv4
+        $bits = max(0, min(32, $bits));
         $ipLong = ip2long($ip);
         $subnetLong = ip2long($subnet);
         $mask = -1 << (32 - $bits);
         return ($ipLong & $mask) === ($subnetLong & $mask);
     } else {
         // IPv6
+        $bits = max(0, min(128, $bits));
         $ipBin = inet_pton($ip);
         $subnetBin = inet_pton($subnet);
         if ($ipBin === false || $subnetBin === false) {
