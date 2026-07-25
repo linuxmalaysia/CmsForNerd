@@ -38,4 +38,3 @@ it('can be created with custom values', function (): void {
         ->and($ctx->schemaType)->toBe('TechArticle')
         ->and($ctx->cspNonce)->toBe('test-nonce');
 });
-

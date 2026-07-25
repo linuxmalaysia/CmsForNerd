@@ -114,17 +114,15 @@ function ip_in_range(string $ip, string $range): bool
             return false;
         }
 
-        // Pre-allocate fixed 16-byte zero mask to satisfy DoS protection rules
-        $mask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00";
-        $fullBytes = (int)($bits / 8);
-        for ($i = 0; $i < $fullBytes; $i++) {
-            $mask[$i] = "\xFF";
-        }
+        // Pre-allocate fixed 16-byte mask using fast native string repetition to prevent DoS vector
+        $fullBytes = $bits >> 3;
+        $remainingBits = $bits & 7;
 
-        $remainingBits = $bits % 8;
+        $mask = str_repeat("\xFF", $fullBytes);
         if ($remainingBits > 0) {
-            $mask[$fullBytes] = chr(256 - (1 << (8 - $remainingBits)));
+            $mask .= chr((0xFF00 >> $remainingBits) & 0xFF);
         }
+        $mask = str_pad($mask, 16, "\x00");
 
         return ($ipBin & $mask) === ($subnetBin & $mask);
     }

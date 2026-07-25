@@ -64,9 +64,9 @@ else
         echo -e "${YELLOW}[WARNING] Failed to read 'php -v' output. Version check skipped.${NC}"
     else
         echo -e ">>> Detected PHP Version: '${YELLOW}$PHP_VER${NC}'"
-        # Use pattern matching for flexibility (e.g. 8.4.x is OK if 8.4 detected)
-        if [[ "$PHP_VER" != "8.4"* ]]; then
-            echo -e "${RED}[ERROR] Environment is not PHP 8.4 (Current: '$PHP_VER')${NC}"
+        # Support both PHP 8.3 and PHP 8.4 in local development sandbox environment
+        if [[ "$PHP_VER" != "8.4"* && "$PHP_VER" != "8.3"* ]]; then
+            echo -e "${RED}[ERROR] Environment is not PHP 8.4 or 8.3 (Current: '$PHP_VER')${NC}"
             exit 1 # This is a critical error.
         fi
     fi

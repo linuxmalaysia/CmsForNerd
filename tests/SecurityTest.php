@@ -64,4 +64,27 @@ final class SecurityTest extends TestCase
         // Cleanup
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
     }
+
+    /**
+     * Test Hardened IPv6 CIDR Matcher
+     */
+    public function testIpv6InRange(): void
+    {
+        // Exact match /128
+        $this->assertTrue(ip_in_range('2001:db8::1', '2001:db8::1/128'));
+        $this->assertFalse(ip_in_range('2001:db8::2', '2001:db8::1/128'));
+
+        // Subnet boundary match
+        $this->assertTrue(ip_in_range('2001:db8::1', '2001:db8::/64'));
+        $this->assertTrue(ip_in_range('2001:db8:85a3::8a2e:370:7334', '2001:db8::/32'));
+        $this->assertFalse(ip_in_range('2001:db9::1', '2001:db8::/64'));
+
+        // Type mismatches (IPv4 vs IPv6)
+        $this->assertFalse(ip_in_range('127.0.0.1', '2001:db8::/64'));
+        $this->assertFalse(ip_in_range('2001:db8::1', '127.0.0.1/32'));
+
+        // Edge case: /0 subnet (should match any address in the protocol)
+        $this->assertTrue(ip_in_range('2001:db8::1', '::/0'));
+        $this->assertTrue(ip_in_range('127.0.0.1', '0.0.0.0/0'));
+    }
 }
