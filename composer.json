@@ -48,9 +48,9 @@
             "@audit-pre-flight",
             "@php -r \"echo '🧪 Validating Laboratory Readiness (v3.6)...\\n';\"",
             "@check-version",
-            "@php -r \"$f='contents/installation-body.inc'; echo (file_exists($f) ? '[OK] Installation Body found.\\n' : '[FAIL] Missing contents/installation-body.inc\\n');\"",
-            "@php -r \"$f='includes/bootstrap.php'; echo (file_exists($f) ? '[OK] Bootstrap Layer found.\\n' : '[FAIL] Missing includes/bootstrap.php\\n');\"",
-            "@php -r \"$f='src/CmsContext.php'; echo (file_exists($f) ? '[OK] CmsContext Core found.\\n' : '[FAIL] Missing src/CmsContext.php\\n');\"",
+            "@php -r \"\\$f='contents/installation-body.inc'; echo (file_exists(\\$f) ? '[OK] Installation Body found.\\n' : '[FAIL] Missing contents/installation-body.inc\\n');\"",
+            "@php -r \"\\$f='includes/bootstrap.php'; echo (file_exists(\\$f) ? '[OK] Bootstrap Layer found.\\n' : '[FAIL] Missing includes/bootstrap.php\\n');\"",
+            "@php -r \"\\$f='src/CmsContext.php'; echo (file_exists(\\$f) ? '[OK] CmsContext Core found.\\n' : '[FAIL] Missing src/CmsContext.php\\n');\"",
             "@php -r \"echo '🚀 Running Full Compliance & Security Analysis...\\n';\"",
             "@compliance"
         ],
