@@ -29,6 +29,7 @@
     --lab-purple: #8e44ad; /* Purple: "Nerd-Stack" Laboratory Accent */
     --lab-highlight: var(--lab-purple); /* Legacy Alias for v3.6 compatibility */
     --lab-success: #27ae60;   /* Green: Compliance and Passed Tests */
+    --lab-heading: var(--lab-primary);
 
     /* -- TYPOGRAPHY -- */
     --f-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -44,8 +45,33 @@
     --gap: 20px;
 }
 
+/* Force dark theme via class on root or HTML */
+.theme-dark, :root.theme-dark {
+    --lab-bg: #0f172a;
+    --lab-surface: #1e293b;
+    --lab-text: #f8fafc;
+    --lab-muted: #94a3b8;
+    --lab-border: #334155;
+    --lab-primary: #020617;
+    --lab-purple: #a855f7;
+    --lab-heading: #f8fafc;
+}
+
+/* Force light theme via class on root or HTML */
+.theme-light, :root.theme-light {
+    --lab-bg: #f8f9fa;
+    --lab-surface: #ffffff;
+    --lab-text: #1e293b;
+    --lab-muted: #64748b;
+    --lab-border: #e2e8f0;
+    --lab-primary: #0f172a;
+    --lab-purple: #8e44ad;
+    --lab-heading: var(--lab-primary);
+}
+
 @media (prefers-color-scheme: dark) {
-    :root {
+    /* Only apply system dark mode if light mode class is not explicitly present */
+    :root:not(.theme-light) {
         --lab-bg: #0f172a;        /* Deep slate background */
         --lab-surface: #1e293b;   /* Slightly lighter surface */
         --lab-text: #f8fafc;      /* Off-white text */
@@ -53,6 +79,7 @@
         --lab-border: #334155;    /* Slate 700 */
         --lab-primary: #020617;   /* Extra dark navy */
         --lab-purple: #a855f7; /* Lighter Purple for contrast */
+        --lab-heading: #f8fafc;
     }
 }
 
@@ -185,7 +212,7 @@ body {
 }
 
 .content-body h1, .content-body h2 {
-    color: var(--lab-primary);
+    color: var(--lab-heading);
     border-bottom: 1px solid var(--lab-border);
     padding-bottom: 10px;
 }

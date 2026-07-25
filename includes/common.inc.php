@@ -26,6 +26,19 @@ function pageheader(CmsForNerd\CmsContext $ctx): void
 
     print("<head>\n");
 
+    // [SECURITY] Inline theme initializer to prevent FOUC (Flash of Unstyled Content)
+    $nonce = htmlspecialchars($ctx->cspNonce, ENT_QUOTES, 'UTF-8');
+    print("    <script nonce=\"{$nonce}\">\n");
+    print("        (function() {\n");
+    print("            var t = localStorage.getItem('theme');\n");
+    print("            if (t === 'dark') {\n");
+    print("                document.documentElement.classList.add('theme-dark');\n");
+    print("            } else if (t === 'light') {\n");
+    print("                document.documentElement.classList.add('theme-light');\n");
+    print("            }\n");
+    print("        })();\n");
+    print("    </script>\n");
+
     // [STRUCTURE] common-headertag.inc MUST be included for CSP and Meta tags.
     include "contents/common-headertag.inc";
 
