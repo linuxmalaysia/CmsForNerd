@@ -30,9 +30,15 @@ function boot_security(): void
     }
 
     // Prevent direct browser execution of this specific file
-    if ($currentFile === 'global-control.inc.php') {
+    if ($currentFile === 'global-control.inc.php' || $currentFile === 'bootstrap.php') {
         http_response_code(403);
         die("Direct access forbidden.");
+    }
+
+    // [SECURITY] Prevent execution of .inc files via URL if not already caught
+    if (str_ends_with($currentFile, '.inc')) {
+        http_response_code(403);
+        die("Access to component fragments is restricted.");
     }
 }
 
@@ -63,9 +69,10 @@ function get_runtime_config(): array
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
 
     return [
-        'THEMENAME'   => $themeName,
+        'THEMENAME'      => $themeName,
         // Priority: Use $CSSPATH from theme.php if set, otherwise default to theme folder
-        'CSSPATH'     => (string) ($CSSPATH ?? "themes/$themeName/css/"),
-        'sitemap_url' => "$protocol://$host/sitemap.php"
+        'CSSPATH'        => (string) ($CSSPATH ?? "/themes/$themeName/css/"),
+        'sitemap_url'    => "$protocol://$host/sitemap.php",
+        'INSTRUCTOR_KEY' => (string) (getenv('CMS_INSTRUCTOR_KEY') ?: 'NERD-LAB-2025')
     ];
 }

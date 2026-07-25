@@ -8,6 +8,37 @@
     --lab-text: #2c3e50;
     --lab-muted: #7f8c8d;
     --lab-border: #ecf0f1;
+
+    /* -- PHASE 11: GLASSMORPISM TOKENS (v4.0 Concept) -- */
+    --lab-glass-bg: rgba(255, 255, 255, 0.1);
+    --lab-glass-border: rgba(255, 255, 255, 0.2);
+    --lab-blur: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --lab-purple: #a855f7;
+        --lab-bg: #121212;
+        --lab-text: #e0e0e0;
+        --lab-muted: #9e9e9e;
+        --lab-border: #333333;
+    }
+}
+
+body.theme-dark {
+    --lab-purple: #a855f7;
+    --lab-bg: #121212;
+    --lab-text: #e0e0e0;
+    --lab-muted: #9e9e9e;
+    --lab-border: #333333;
+}
+
+body.theme-light {
+    --lab-purple: #8e44ad;
+    --lab-bg: #ffffff;
+    --lab-text: #2c3e50;
+    --lab-muted: #7f8c8d;
+    --lab-border: #ecf0f1;
 }
 
 body {
@@ -22,7 +53,7 @@ body {
 
 /* Header & Navigation */
 .amp-header {
-    background: #fff;
+    background: var(--lab-bg);
     padding: 15px 20px;
     border-bottom: 2px solid var(--lab-purple);
     display: flex;
@@ -72,7 +103,7 @@ amp-img {
 footer {
     text-align: center;
     padding: 40px 20px;
-    background: #f9f9f9;
+    background: var(--lab-bg);
     border-top: 1px solid var(--lab-border);
     font-size: 0.85rem;
     color: var(--lab-muted);
@@ -103,7 +134,7 @@ footer a {
     border-radius: 8px;
 }
 .certificate {
-    background: white;
+    background: var(--lab-bg);
     border: 10px double var(--lab-purple);
     padding: 20px;
     text-align: center;
@@ -156,7 +187,7 @@ footer a {
 
 /* --- FIX: Header Layout for Sidebar Toggle --- */
 .amp-header {
-    background: #fff;
+    background: var(--lab-bg);
     padding: 10px 20px;
     border-bottom: 2px solid var(--lab-purple);
     display: flex;
@@ -164,6 +195,12 @@ footer a {
     align-items: center; /* Center items vertically */
     justify-content: flex-start;
     gap: 15px;
+
+    /* Phase 11: Glass-Surface (v4.0) */
+    background: var(--lab-glass-bg);
+    backdrop-filter: blur(var(--lab-blur));
+    -webkit-backdrop-filter: blur(var(--lab-blur));
+    border-bottom: 2px solid var(--lab-glass-border);
 }
 
 /* Reset the button styles for the hamburger menu */
@@ -182,7 +219,7 @@ footer a {
 /* --- NEW: Sidebar Specific Styles --- */
 amp-sidebar {
     width: 280px;
-    background-color: #ffffff;
+    background-color: var(--lab-bg);
     box-shadow: 5px 0 15px rgba(0,0,0,0.1);
     z-index: 9999; /* Ensure it floats above content */
 }

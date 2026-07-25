@@ -1,8 +1,8 @@
-# 🛠️ Installation Guide: CMSForNerd v3.5
+# 🛠️ Installation Guide: CMSForNerd v4.0.0 (Glassmorphism Edition)
 
 **CMSForNerd** is a lightweight, flat-file Content Management System geared towards developers and enthusiasts who want full control over their code. Unlike complex database-driven platforms, CMSForNerd stores all content in simple text files, making it incredibly fast, secure, and easy to backup—just copy the files!
 
-The v3.5 modernization ensures full **cross-platform compatibility** (Windows, Linux, Unix, FreeBSD) achieved through **AI-Assisted Coding** using **Google Antigravity**.
+The v4.0.0 modernization ensures full **cross-platform compatibility** (Windows, Linux, Unix, FreeBSD) achieved through **AI-Assisted Coding** using **Google Antigravity**, focusing on **High-Fidelity Glassmorphism** and **Zero-Global** architecture.
 
 ---
 
@@ -30,7 +30,7 @@ git clone https://github.com/CMSForNerd/CmsForNerd.git .
 ```
 
 ### 2. Dependency Setup
-Open your terminal in the root folder and run Composer. This step is crucial for the v3.5 PSR-4 Autoloader and technical tools:
+Open your terminal in the root folder and run Composer. This step is crucial for the v4.0.0 PSR-4 Autoloader and technical tools:
 ```bash
 composer install
 ```
@@ -63,11 +63,12 @@ CMSForNerd uses a unique **Pair Logic** architecture. To create a new page (e.g.
 
 ---
 
-## 🛡️ Security Features (v3.5)
+## 🛡️ Security Features (v4.0.0)
 
 The modernized framework ensures a "Bunker" security posture:
 
 * **Strict Typing:** `declare(strict_types=1);` is enforced on all core files.
+* **Zero-Global:** Uses `Registry` and `CmsContext` to eliminate the `global` keyword.
 * **Zero Directory Traversal:** Strict path validation via `SecurityUtils`.
 * **Bot Protection:** Built-in [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) support and bot detection.
 * **CSP Engine:** Automatic Nonce generation for every request to block XSS.
@@ -91,7 +92,7 @@ The modernized framework ensures a "Bunker" security posture:
 When building themes, always use the **Context Object** pattern. Avoid using global variables directly:
 
 ```php
-// Standard v3.5 Theme Inclusion (Context Pattern)
+// Standard v4.0.0 Theme Inclusion (Context Pattern)
 include "themes/{$ctx->themeName}/header.tpl";
 ```
 

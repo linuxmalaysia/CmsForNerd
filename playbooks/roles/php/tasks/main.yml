@@ -1,0 +1,43 @@
+---
+- name: Deploy PHP Dockerfile
+  ansible.builtin.template:
+    src: Dockerfile.j2
+    dest: "{{ podman_cms_config_path }}/php/Dockerfile"
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0600'
+
+- name: Deploy PHP-FPM Configuration for Podman
+  ansible.builtin.template:
+    src: www.conf.j2
+    dest: "{{ podman_cms_config_path }}/php/www.conf"
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0600'
+
+- name: Create Custom PHP-FPM Image with Extensions
+  containers.podman.podman_image:
+    name: localhost/cmsfornerd-php
+    path: "{{ podman_cms_config_path }}/php"
+    force: true
+  become: true
+  become_user: "{{ podman_cms_user }}"
+
+- name: Run PHP-FPM Container
+  containers.podman.podman_container:
+    name: cmsfornerd-php
+    image: localhost/cmsfornerd-php
+    state: started
+    user: "{{ podman_cms_uid }}:{{ podman_cms_gid }}"
+    restart_policy: always
+    pod: "{{ podman_cms_pod_name }}"
+    volumes:
+      - "{{ podman_cms_config_path }}/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:Z,ro"
+      - "{{ cms_deploy_path }}:/var/www/html:Z"
+      - "{{ podman_cms_logs_path }}/php:/var/log/php-fpm:Z"
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - all
+  become: true
+  become_user: "{{ podman_cms_user }}"

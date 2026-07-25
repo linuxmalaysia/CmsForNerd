@@ -26,6 +26,19 @@ function pageheader(CmsForNerd\CmsContext $ctx): void
 
     print("<head>\n");
 
+    // [SECURITY] Inline theme initializer to prevent FOUC (Flash of Unstyled Content)
+    $nonce = htmlspecialchars($ctx->cspNonce, ENT_QUOTES, 'UTF-8');
+    print("    <script nonce=\"{$nonce}\">\n");
+    print("        (function() {\n");
+    print("            var t = localStorage.getItem('theme');\n");
+    print("            if (t === 'dark') {\n");
+    print("                document.documentElement.classList.add('theme-dark');\n");
+    print("            } else if (t === 'light') {\n");
+    print("                document.documentElement.classList.add('theme-light');\n");
+    print("            }\n");
+    print("        })();\n");
+    print("    </script>\n");
+
     // [STRUCTURE] common-headertag.inc MUST be included for CSP and Meta tags.
     include "contents/common-headertag.inc";
 
@@ -47,7 +60,8 @@ function pageheader(CmsForNerd\CmsContext $ctx): void
     print("    <meta name=\"theme-color\" content=\"#0d6efd\">\n");
 
     // [THEME] Stylesheets SHOULD be imported via the configured cssPath.
-    print("    <style type=\"text/css\" media=\"all\">@import \"{$ctx->cssPath}\";</style>\n");
+    // Cache-busting: ?v=4.0.0 is used to force-refresh the Phase 11 Glassmorphism architecture.
+    print("    <style type=\"text/css\" media=\"all\">@import \"{$ctx->cssPath}?v=4.0.0\";</style>\n");
 
     // [SECURITY] Turnstile script MUST be loaded to protect forms.
     $nonce = htmlspecialchars($ctx->cspNonce, ENT_QUOTES, 'UTF-8');

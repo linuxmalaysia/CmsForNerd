@@ -1,0 +1,33 @@
+---
+- name: Master Deploy Orchestrator | CmsForNerd v4.0.0
+  hosts: all
+  become: true
+  vars:
+    php_version: "8.4"
+    cms_deploy_path: "/home/cmsfornerd/www"
+    cms_domain: "cmsfornerd.local"
+
+  pre_tasks:
+    - name: Ensure APT cache is updated (Debian)
+      ansible.builtin.apt:
+        update_cache: true
+      when: ansible_os_family == 'Debian'
+      changed_when: false
+
+    - name: Ensure DNF cache is updated (RedHat)
+      ansible.builtin.dnf:
+        update_cache: true
+      when: ansible_os_family == 'RedHat'
+      changed_when: false
+
+  roles:
+    - role: common
+      tags: ['foundation']
+    - role: podman
+      tags: ['podman', 'infrastructure']
+    - role: cmsfornerd
+      tags: ['cms', 'codebase']
+    - role: webserver
+      tags: ['nginx', 'containers']
+    - role: php
+      tags: ['php', 'containers']

@@ -44,19 +44,7 @@ $content = [
  * v3.5 uses the 'match' expression—a modern, strict alternative to 'switch'.
  * It ensures that we handle the query string or default to 'index' cleanly.
  */
-$rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
-    default                          => pathinfo(basename(__FILE__), PATHINFO_FILENAME)
-};
-
-/**
- * [SECURITY] Path Traversal Prevention
- * We use SecurityUtils to ensure a student or attacker cannot inject
- * strings like "../etc/passwd" to access sensitive system files.
- */
-$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
-$page = $isValid ? $rawPage : 'index';
-$pageName = pathinfo($page, PATHINFO_FILENAME);
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE__), PATHINFO_FILENAME));
 
 // This 'data' key tells the theme which -body.inc file to include.
 $content['data'] = $pageName;
@@ -76,30 +64,13 @@ $ctx = createCmsContext(
 );
 
 /**
- * 6. [SECURITY] Session & Bot Hardening
- * Integrates Cloudflare Turnstile (if configured) to prevent automated form abuse.
- */
-if (file_exists(__DIR__ . '/includes/turnstile.php')) {
-    require_once __DIR__ . '/includes/turnstile.php';
-}
-
-/**
  * [LAB] BOT DETECTION
  * If a search engine crawler is detected, we serve a lightweight text version
  * to prioritize indexing over visual effects.
  */
-if (file_exists(__DIR__ . '/includes/is_bot.php')) {
-    require_once __DIR__ . '/includes/is_bot.php';
-    if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
-        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
-        exit;
-    }
-}
 
 /**
- * 7. [RENDER] Theme Dispatcher (The "Pager")
+ * 6. [RENDER] Theme Dispatcher (The "Pager")
  * This locates the pager.php inside your active theme and executes the UI.
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";

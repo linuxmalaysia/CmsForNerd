@@ -1,6 +1,6 @@
-# 🪟 Windows Setup Guide: Laboratory Readiness (v3.5)
+# 🪟 Windows Setup Guide: Laboratory Readiness (v4.0.0)
 
-Professional toolchain configuration for the **CMSForNerd v3.5** Laboratory, prepared for PHP 8.4 and PHP 9.
+Professional toolchain configuration for the **CMSForNerd v4.0.0** Laboratory, prepared for PHP 8.4 and PHP 9.
 
 ---
 
@@ -61,7 +61,7 @@ To make the CMS run on the latest engines, we must install the modern dependenci
 
 To confirm your installation is perfect and follows the RFC 2119 "MUST" requirements:
 ```powershell
-composer compliance
+composer lab-check
 ```
 
 ---

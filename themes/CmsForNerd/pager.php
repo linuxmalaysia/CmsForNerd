@@ -30,6 +30,19 @@ function pager(CmsForNerd\CmsContext $ctx): void
  */
 function renderStandardLayout(CmsForNerd\CmsContext $ctx): void
 {
+    // [PWA / SPA] Hydration Interceptor
+    // If a JavaScript router calls ANY root controller, return only the content payload.
+    $isAjax = (
+        !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+        strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'
+    );
+    
+    if ($isAjax) {
+        header('Content-Type: text/html; charset=utf-8');
+        pagecontent($ctx);
+        return;
+    }
+
     pageheader($ctx);
     print("<body>");
     include "themes/{$ctx->themeName}/bodytop.tpl";
@@ -53,6 +66,7 @@ function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
             cssPath:    $ctx->cssPath,
             dataFile:   $ctx->dataFile,
             scriptName: $actualFile,
+            baseUrl:    $ctx->baseUrl,
             cspNonce:   $ctx->cspNonce
         );
     }
@@ -66,28 +80,15 @@ function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
         <!-- PWA Foundation -->
         <link rel="manifest" href="/manifest.json">
         <meta name="theme-color" content="#0d6efd">
-        
-        <style amp-custom>
-            /* Critical fix for Sidebar interaction */
-            amp-sidebar { z-index: 99999 !important; }
-            .hamburger-btn { 
-                background: none; 
-                border: none; 
-                font-size: 1.8rem; 
-                cursor: pointer; 
-                padding: 10px; 
-                margin-right: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #8e44ad;
-            }
-        </style>
+
     </head>
-    <body>
+    <body [class]="themeState">
+        <amp-state id="themeState">
+            <script type="application/json">""</script>
+        </amp-state>
         <?php include "themes/{$ctx->themeName}/amp-sidebar.tpl"; ?>
 
-        <header class="amp-header" style="background:#f8f9fa; padding:10px 15px; border-bottom:1px solid #ddd; display: flex; align-items: center;">
+        <header class="amp-header" style="background:var(--lab-bg); padding:10px 15px; border-bottom:1px solid var(--lab-border); display: flex; align-items: center;">
             
             <button class="hamburger-btn" 
                     on="tap:sidebar.toggle" 
@@ -95,11 +96,11 @@ function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
                     tabindex="0" 
                     aria-label="Open Navigation">☰</button>
             
-            <a href="index.php?view=amp" style="text-decoration:none; color:#8e44ad; font-weight:bold; flex-grow: 1;">
+            <a href="index.php?view=amp" style="text-decoration:none; color:var(--lab-purple); font-weight:bold; flex-grow: 1;">
                🏠 Laboratory Home
             </a>
             
-            <span style="font-family:monospace; font-size:0.7rem; color:#666;">
+            <span style="font-family:monospace; font-size:0.7rem; color:var(--lab-muted);">
                [ AMP ]
             </span>
         </header>
@@ -124,9 +125,9 @@ function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
             ?>
         </main>
 
-        <footer style="text-align:center; padding:30px; border-top:1px solid #eee; font-size:0.8rem; color:#888;">
+        <footer style="text-align:center; padding:30px; border-top:1px solid var(--lab-border); font-size:0.8rem; color:var(--lab-muted);">
             <p>&copy; <?= date('Y') ?> CmsForNerd v3.5 Laboratory</p>
-            <p><a href="<?= htmlspecialchars($ctx->scriptName) ?>.php">Switch to Standard Desktop View</a></p>
+            <p><a href="<?= htmlspecialchars($ctx->scriptName) ?>.php" style="color:var(--lab-purple);">Switch to Standard Desktop View</a></p>
         </footer>
     </body>
     </html>

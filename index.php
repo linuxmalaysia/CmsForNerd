@@ -45,18 +45,7 @@ $content = [
  * 1. A query string is provided (e.g., index.php?about).
  * 2. No query string, in which case it defaults to 'index'.
  */
-$rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
-    default                          => 'index'
-};
-
-/**
- * [SECURITY] Path Traversal Prevention
- * Verification via SecurityUtils ensures $rawPage is a safe filename.
- */
-$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
-$page = $isValid ? $rawPage : 'index';
-$pageName = pathinfo($page, PATHINFO_FILENAME);
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName('index');
 
 // Link this controller to contents/[pageName]-body.inc
 $content['data'] = $pageName;
@@ -75,24 +64,7 @@ $ctx = createCmsContext(
 );
 
 /**
- * 6. [SECURITY] Hardening & Bot Detection
- */
-if (file_exists(__DIR__ . '/includes/turnstile.php')) {
-    require_once __DIR__ . '/includes/turnstile.php';
-}
-
-if (file_exists(__DIR__ . '/includes/is_bot.php')) {
-    require_once __DIR__ . '/includes/is_bot.php';
-    if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
-        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
-        exit;
-    }
-}
-
-/**
- * 7. [PWA / SPA] Fragment Hydration
+ * 6. [PWA / SPA] Fragment Hydration
  * If a JavaScript router (Fetch/XHR) calls this URL, return purely the un-themed content fragment.
  */
 $isAjax = (
@@ -123,7 +95,7 @@ if ($isAjax) {
 }
 
 /**
- * 8. [RENDER] Theme Dispatcher
+ * 7. [RENDER] Theme Dispatcher
  * Hands over control to the theme's pager.php to render the full Lab_v3 UI.
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";

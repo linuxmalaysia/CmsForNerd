@@ -1,0 +1,6 @@
+---
+- name: Run composer install
+  ansible.builtin.command: composer install
+  args:
+    chdir: "{{ cms_deploy_path }}"
+  changed_when: true

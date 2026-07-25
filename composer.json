@@ -1,6 +1,6 @@
 {
     "name": "linuxmalaysia/cmsfornerd",
-    "description": "A flat-file CMS modernized for PHP 8.4 Laboratory environments (Hybrid Arch) v3.5.",
+    "description": "A flat-file CMS modernized for PHP 8.4 Laboratory environments (Hybrid Arch) v3.6.",
     "type": "project",
     "license": "GPL-3.0-or-later",
     "authors": [
@@ -27,14 +27,14 @@
         "fix-style": "phpcbf includes/ src/ index.php --ignore=vendor/*",
         "analyze": [
             "@php -r \"echo '--- Running PHPStan Static Analysis (Level 8) ---\\n';\"",
-            "vendor/bin/phpstan analyze"
+            "vendor/bin/phpstan analyze --memory-limit=512M"
         ],
         "test": "@test:pest",
         "test:phpunit": "vendor/bin/pest --colors=always --filter CmsForNerd\\\\Tests",
         "test:pest": "vendor/bin/pest --colors=always",
         "check-strict": [
-            "@php -r \"echo '--- Checking for Legacy Global Keyword (includes & src) ---\\n'; $dirs = ['includes', 'src']; $found = false; foreach ($dirs as $dir) { if(!is_dir($dir)) continue; $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir)); foreach ($files as $file) { if ($file->isDir() || $file->getExtension() !== 'php') continue; $content = file_get_contents($file->getPathname()); if (preg_match('/\\\\b(global\\\\s+\\\\$|\\\\$GLOBALS\\\\[)/', $content)) { echo '[FAIL] Global state detected in: ' . $file->getPathname() . PHP_EOL; $found = true; } } } if (!$found) echo '[OK] Architecture is Global-free.\\n';\"",
-            "@php -r \"echo '--- Checking for strict_types=1 (includes & src) ---\\n'; $dirs = ['includes', 'src']; foreach ($dirs as $dir) { if(!is_dir($dir)) continue; $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir)); foreach ($files as $file) { if ($file->isDir() || $file->getExtension() !== 'php') continue; $content = file_get_contents($file->getPathname()); if (!preg_match('/declare\\\\s*\\\\(\\\\s*strict_types\\\\s*=\\\\s*1\\\\s*\\\\)\\\\s*;/', $content)) echo '[WARN] Missing declare(strict_types=1) in: ' . $file->getPathname() . PHP_EOL; } }\""
+            "@php -r \"echo '--- Checking for Legacy Global Keyword (includes & src) ---\\n'; \\$dirs = ['includes', 'src']; \\$found = false; foreach (\\$dirs as \\$dir) { if(!is_dir(\\$dir)) continue; \\$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(\\$dir)); foreach (\\$files as \\$file) { if (\\$file->isDir() || \\$file->getExtension() !== 'php') continue; \\$content = file_get_contents(\\$file->getPathname()); if (preg_match('/\\\\b(global\\\\s+\\\\$|\\\\\\$GLOBALS\\\\[)/', \\$content)) { echo '[FAIL] Global state detected in: ' . \\$file->getPathname() . PHP_EOL; \\$found = true; } } } if (!\\$found) echo '[OK] Architecture is Global-free.\\n';\"",
+            "@php -r \"echo '--- Checking for strict_types=1 (includes & src) ---\\n'; \\$dirs = ['includes', 'src']; foreach (\\$dirs as \\$dir) { if(!is_dir(\\$dir)) continue; \\$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(\\$dir)); foreach (\\$files as \\$file) { if (\\$file->isDir() || \\$file->getExtension() !== 'php') continue; \\$content = file_get_contents(\\$file->getPathname()); if (!preg_match('/declare\\\\s*\\\\(\\\\s*strict_types\\\\s*=\\\\s*1\\\\s*\\\\)\\\\s*;/', \\$content)) echo '[WARN] Missing declare(strict_types=1) in: ' . \\$file->getPathname() . PHP_EOL; } }\""
         ],
         "compliance": [
             "@audit-pre-flight",
@@ -46,11 +46,11 @@
         ],
         "lab-check": [
             "@audit-pre-flight",
-            "@php -r \"echo '🧪 Validating Laboratory Readiness (v3.5)...\\n';\"",
+            "@php -r \"echo '🧪 Validating Laboratory Readiness (v3.6)...\\n';\"",
             "@check-version",
-            "@php -r \"$f='contents/installation-body.inc'; echo (file_exists($f) ? '[OK] Installation Body found.\\n' : '[FAIL] Missing contents/installation-body.inc\\n');\"",
-            "@php -r \"$f='includes/bootstrap.php'; echo (file_exists($f) ? '[OK] Bootstrap Layer found.\\n' : '[FAIL] Missing includes/bootstrap.php\\n');\"",
-            "@php -r \"$f='src/CmsContext.php'; echo (file_exists($f) ? '[OK] CmsContext Core found.\\n' : '[FAIL] Missing src/CmsContext.php\\n');\"",
+            "@php -r \"\\$f='contents/installation-body.inc'; echo (file_exists(\\$f) ? '[OK] Installation Body found.\\n' : '[FAIL] Missing contents/installation-body.inc\\n');\"",
+            "@php -r \"\\$f='includes/bootstrap.php'; echo (file_exists(\\$f) ? '[OK] Bootstrap Layer found.\\n' : '[FAIL] Missing includes/bootstrap.php\\n');\"",
+            "@php -r \"\\$f='src/CmsContext.php'; echo (file_exists(\\$f) ? '[OK] CmsContext Core found.\\n' : '[FAIL] Missing src/CmsContext.php\\n');\"",
             "@php -r \"echo '🚀 Running Full Compliance & Security Analysis...\\n';\"",
             "@compliance"
         ],
@@ -59,7 +59,7 @@
             "@php -r \"require 'includes/is_bot.php'; echo '🚀 Updating Bot Intelligence...\\n'; print_r(update_trusted_bot_ips());\""
         ],
         "post-install-cmd": [
-            "@php -r \"echo 'Welcome to the CMSForNerd v3.5 Laboratory (Secure Engine Mode).\\nRun [composer lab-check] to verify setup and PHPStan analysis.\\n';\""
+            "@php -r \"echo 'Welcome to the CMSForNerd v3.6 Laboratory (Secure Engine Mode).\\nRun [composer lab-check] to verify setup and PHPStan analysis.\\n';\""
         ]
     },
     "autoload": {

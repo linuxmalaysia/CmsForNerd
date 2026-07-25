@@ -1,8 +1,8 @@
-# 🎨 CmsForNerd v3.5 Laboratory Guide
+# 🎨 CmsForNerd v4.0.0 Laboratory Guide
 
 ### Mastering the "Pair Logic" & Context Engine
 
-The `template.php` file acts as the **Master Controller**. In v3.5, you don't need to write new PHP logic for every page. You simply duplicate the template and pair it with a content fragment.
+The `template.php` file acts as the **Master Controller**. In v4.0.0, you don't need to write new PHP logic for every page. You simply duplicate the template and pair it with a content fragment.
 
 ---
 
@@ -61,8 +61,8 @@ require_once __DIR__ . '/includes/bootstrap.php';
  * AI Crawlers use 'schemaType' to categorize your laboratory data.
  */
 $content = [
-    'title'       => "Service Lab | CmsForNerd v3.5",
-    'author'      => "Harisfaz Jamal",
+    'title'       => "Service Lab | CmsForNerd v4.0.0",
+    'author'      => "Harisfazillah Jamel",
     'description' => "Lab description here.",
     'keywords'    => "PHP 8.4, Lab, CMS",
     'schemaType'  => "WebPage" 
@@ -70,17 +70,13 @@ $content = [
 
 /**
  * 4. [LAB] ROUTING & SANITIZATION
- * The 'match' expression automatically detects the filename.
- * SecurityUtils::isValidPageName() prevents Path Traversal attacks.
+ * SecurityUtils::resolvePageName() prevents Path Traversal attacks
+ * and safely determines the requested page.
  */
-$rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
-    default                          => pathinfo(basename(__FILE__), PATHINFO_FILENAME)
-};
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName(
+    pathinfo(basename(__FILE__), PATHINFO_FILENAME)
+);
 
-$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
-$page = $isValid ? $rawPage : 'index';
-$pageName = pathinfo($page, PATHINFO_FILENAME);
 $content['data'] = $pageName;
 
 /**
@@ -90,24 +86,7 @@ $content['data'] = $pageName;
 $ctx = createCmsContext(content: $content, pageName: $pageName);
 
 /**
- * 6. [SECURITY] Session & Bot Hardening
- * Integrates Turnstile and Lite-Mode Bot Detection.
- */
-if (file_exists(__DIR__ . '/includes/turnstile.php')) {
-    require_once __DIR__ . '/includes/turnstile.php';
-}
-
-if (file_exists(__DIR__ . '/includes/is_bot.php')) {
-    require_once __DIR__ . '/includes/is_bot.php';
-    if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
-        exit;
-    }
-}
-
-/**
- * 7. [RENDER] Theme Dispatcher
+ * 6. [RENDER] Theme Dispatcher
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 if (file_exists($pagerPath)) {
@@ -128,7 +107,7 @@ Before moving to production, perform these three laboratory checks:
 
 ---
 
-## ⚖️ Laboratory Standards (v3.5 Update)
+## ⚖️ Laboratory Standards (v4.0.0 Update)
 
 * **MUST**: Keep `declare(strict_types=1);` at the top of all .php files.
 * **MUST NOT**: Modify the Routing Logic or Theme Execution blocks in copied files.

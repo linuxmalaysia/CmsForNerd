@@ -45,6 +45,23 @@ if (!function_exists('get_site_pages')) {
                 $pages[$file] = $label;
             }
         }
+
+        if (isset($pages['ansible-lab.php'])) {
+            $pages['ansible-lab.php'] = '🤖 Ansible Lab';
+        }
+
+        if (isset($pages['pwa-architecture.php'])) {
+            $pages['pwa-architecture.php'] = '📱 PWA Architecture';
+        }
+
+        if (isset($pages['amp-acceleration.php'])) {
+            $pages['amp-acceleration.php'] = '⚡ AMP Acceleration';
+        }
+
+        if (isset($pages['ui-kit.php'])) {
+            $pages['ui-kit.php'] = '🧪 UI Audit Kit';
+        }
+
         return $pages;
     }
 }
@@ -59,43 +76,80 @@ if (!function_exists('pageheader_amp')) {
     {
         // 1. Context Extraction
         $title = htmlspecialchars($ctx->content['title'] ?? 'Laboratory', ENT_QUOTES, 'UTF-8');
-        $scriptName = $ctx->scriptName ?? 'index';
+        $scriptName = $ctx->scriptName;
         $canonicalUrl = $scriptName . '.php';
-        $nonce = $ctx->cspNonce ?? '';
+        $nonce = $ctx->cspNonce;
 
         ?>
         <meta charset="utf-8">
         
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-<?= $nonce ?>' https://cdn.ampproject.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.ipinfo.io https://cdn.ampproject.org;">
+        <meta http-equiv="Content-Security-Policy" content="
+            default-src 'self'; 
+            script-src 'self' 'nonce-<?= $nonce ?>' https://cdn.ampproject.org blob:; 
+            child-src blob:; 
+            worker-src 'self' blob:; 
+            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+            img-src 'self' data: https:; 
+            font-src 'self' data: https://fonts.gstatic.com; 
+            connect-src 'self' https://*.ipinfo.io https://cdn.ampproject.org;">
 
         <link rel="dns-prefetch" href="https://cdn.ampproject.org">
         
         <script async src="https://cdn.ampproject.org/v0.js" nonce="<?= $nonce ?>"></script>
         
-        <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js" nonce="<?= $nonce ?>"></script>
+        <script async 
+                custom-element="amp-sidebar" 
+                src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js" 
+                nonce="<?= $nonce ?>"></script>
+        <script async 
+                custom-element="amp-bind" 
+                src="https://cdn.ampproject.org/v0/amp-bind-0.1.js" 
+                nonce="<?= $nonce ?>"></script>
         
         <title><?= $title ?></title>
         <link rel="canonical" href="<?= $canonicalUrl ?>">
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
         
-        <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-        <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+        <style amp-boilerplate>
+            body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
+            -moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
+            -ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
+            animation:-amp-start 8s steps(1,end) 0s 1 normal both}
+            @-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+            @-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+            @-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+            @-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+            @keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+        </style>
+        <noscript>
+            <style amp-boilerplate>
+                body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+            </style>
+        </noscript>
         
         <?php
         /**
          * [CSS INJECTION & VALIDATION]
          * Inlines amp.css while enforcing the 75,000 byte limit.
          */
-        $theme = $ctx->themeName ?? 'CmsForNerd';
+        $theme = $ctx->themeName;
         $ampCssPath = dirname(__DIR__) . "/themes/{$theme}/css/amp.css";
 
         if (file_exists($ampCssPath)) {
             $fileSize = filesize($ampCssPath);
-            $cssContent = file_get_contents($ampCssPath);
+            $rawContent = file_get_contents($ampCssPath);
+
+            // Safety check for file-IO failure
+            if ($rawContent === false) {
+                echo '<style amp-custom>body{font-family:sans-serif;padding:20px;color:#333}</style>';
+                return;
+            }
+
+            $cssContent = (string) $rawContent;
 
             // Minification to maximize byte-budget
-            $cssContent = preg_replace('!/\*.*?\*/!s', '', $cssContent); // Remove comments
-            $cssContent = preg_replace('/\s+/', ' ', $cssContent);      // Collapse whitespace
+            $cssContent = (string) preg_replace('!/\*.*?\*/!s', '', $cssContent); // Remove comments
+            $cssContent = (string) preg_replace('/\s+/', ' ', $cssContent);      // Collapse whitespace
 
             // Safety check for AMP validator compliance
             if ($fileSize > 75000) {

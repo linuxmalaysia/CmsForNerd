@@ -1,0 +1,44 @@
+---
+- name: Ensure UFW is installed (Debian/Ubuntu)
+  ansible.builtin.apt:
+    name: ufw
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure firewalld is installed (RHEL/AlmaLinux)
+  ansible.builtin.dnf:
+    name: firewalld
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Allow OpenSSH traffic (UFW)
+  community.general.ufw:
+    rule: allow
+    name: OpenSSH
+  when: ansible_os_family == 'Debian'
+
+- name: Allow HTTP/HTTPS traffic (UFW)
+  community.general.ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop:
+    - "80"
+    - "443"
+  when: ansible_os_family == 'Debian'
+
+- name: Enable Firewall (UFW)
+  community.general.ufw:
+    state: enabled
+  when: ansible_os_family == 'Debian'
+
+- name: Allow HTTP/HTTPS traffic (Firewalld)
+  ansible.posix.firewalld:
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: true
+  loop:
+    - http
+    - https
+  when: ansible_os_family == 'RedHat'

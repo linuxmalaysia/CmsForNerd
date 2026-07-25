@@ -20,7 +20,7 @@ Thank you for your interest in improving the CmsForNerd "Nerd Stack"!
 We embrace AI-agentic workflows. To ensure your AI stays synchronized with the "Nerd Stack" architecture:
 * **Persistent Brain**: Always check `.agent/brain/task.md` and `walkthrough.md` before starting.
 * **Git-Delta awareness**: Your agent MUST fetch and log remote changes to avoid architectural drift.
-* **Compliance**: All contributions must pass `composer compliance` (PSR-12 + PHPStan Level 8 + PHPUnit).
+* **Compliance**: All contributions must pass `composer lab-check` (PSR-12 + PHPStan Level 8 + PHPUnit).
 
 ## Security Reports
 Please do not report security vulnerabilities via GitHub issues. Refer to our `/.well-known/security.txt` for reporting procedures (RFC 9116).

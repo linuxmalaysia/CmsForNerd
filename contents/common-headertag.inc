@@ -15,23 +15,27 @@
 <meta name="robots" content="index, follow">
 
 <!-- Favicon - The small icon you see in the browser tab. -->
-<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 
 <!-- [SEMANTIC WEB] RDF Metadata - Machine-readable site classification for AI and search engines. -->
-<link rel="meta" type="application/rdf+xml" title="Site Metadata" href="labels.rdf">
+<link rel="meta" type="application/rdf+xml" title="Site Metadata" href="/labels.rdf">
 
 <!-- [AI/SEO] Schema.org Image for Rich Cards/Previews -->
-<meta itemprop="image" content="<?= $ctx->baseUrl ?>images/cmsfornerd-logo.png">
+<meta itemprop="image" content="<?= htmlspecialchars($ctx->baseUrl, ENT_QUOTES, 'UTF-8') ?>images/cmsfornerd-logo.png">
 <meta itemprop="description" content="<?= htmlspecialchars($ctx->content['description'] ?? 'A modern PHP 8.4+ educational CMS environment (v3.5).') ?>">
 
 <!-- [AI/SEO] JSON-LD Structured Data - 2025 gold standard for Google, Gemini, and ChatGPT. -->
 <script type="application/ld+json" nonce="<?= $ctx->cspNonce ?>">
 {
   "@context": "https://schema.org",
-  "@type": "<?= (strpos($ctx->content['title'] ?? '', 'Lab') !== false || strpos($ctx->content['title'] ?? '', 'Module') !== false) ? 'Course' : 'WebPage' ?>",
+  "@type": "<?= $ctx->schemaType ?>",
   "name": "<?= htmlspecialchars($ctx->content['title'] ?? 'CMSForNerd Laboratory') ?>",
   "description": "<?= htmlspecialchars($ctx->content['description'] ?? 'A modern PHP 8.4+ educational CMS environment.') ?>",
-  "url": "<?= htmlspecialchars($ctx->baseUrl . ($ctx->content['data'] ?? 'index.php')) ?>",
+  "url": "<?= htmlspecialchars($ctx->baseUrl . ($ctx->scriptName . '.php')) ?>",
+  <?php if ($ctx->schemaType === 'TechArticle'): ?>
+  "dependencies": "PHP 8.4, PSR-12, Composer",
+  "proficiencyLevel": "Intermediate",
+  <?php endif; ?>
   "provider": {
     "@type": "Organization",
     "name": "CMSForNerd Academy",
@@ -59,6 +63,6 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'nonce-<?= $ctx->cspNonce ?>' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://*.ipinfo.io;">
 
 <!-- RSS Feed & Sitemap Discovery -->
-<link rel="alternate" type="application/rss+xml" title="CmsForNerd SiteMap Feed" href="<?= $ctx->baseUrl ?>rss.php" />
-<link rel="alternate" type="application/rss+xml" title="CmsForNerd ROR Sitemap" href="<?= $ctx->baseUrl ?>ror.php" />
+<link rel="alternate" type="application/rss+xml" title="CmsForNerd SiteMap Feed" href="<?= htmlspecialchars($ctx->baseUrl, ENT_QUOTES, 'UTF-8') ?>rss.php" />
+<link rel="alternate" type="application/rss+xml" title="CmsForNerd ROR Sitemap" href="<?= htmlspecialchars($ctx->baseUrl, ENT_QUOTES, 'UTF-8') ?>ror.php" />
 <meta http-equiv="Content-Language" content="EN" />

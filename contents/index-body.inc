@@ -94,7 +94,7 @@
 <style>
     /* CSS maintained as per previous refinement for consistency */
     .lab-home { max-width: 1000px; margin: 0 auto; line-height: 1.6; font-family: var(--f-sans, sans-serif); }
-    .hero-section h1 { color: #2c3e50; border-bottom: 4px solid #8e44ad; padding-bottom: 10px; margin-bottom: 10px; }
+    .hero-section h1 { color: var(--lab-heading, #2c3e50); border-bottom: 4px solid var(--lab-purple, #8e44ad); padding-bottom: 10px; margin-bottom: 10px; }
     
     .runtime-status { margin-bottom: 25px; }
     .badge { display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: bold; margin-right: 5px; }
@@ -103,7 +103,7 @@
     .status-check { background: #f39c12; color: white; }
     .status-sec { background: #8e44ad; color: white; }
 
-    .intro-box { background: #f4f7f6; padding: 30px; border-radius: 12px; border-left: 6px solid #8e44ad; margin-bottom: 40px; }
+    .intro-box { background: var(--lab-surface, #f4f7f6); border: 1px solid var(--lab-border, #e2e8f0); color: var(--lab-text); padding: 30px; border-radius: 12px; border-left: 6px solid var(--lab-purple, #8e44ad); margin-bottom: 40px; }
     .quick-links { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
     
     .btn { padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; color: white; transition: all 0.2s ease; font-size: 0.9rem; }
@@ -114,8 +114,8 @@
     .btn:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 
     .grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; margin-bottom: 40px; }
-    .feature-card { background: white; border: 1px solid #e2e8f0; padding: 25px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-    .feature-card h3 { color: #2c3e50; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    .feature-card { background: var(--lab-surface, white); border: 1px solid var(--lab-border, #e2e8f0); color: var(--lab-text); padding: 25px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .feature-card h3 { color: var(--lab-heading, #2c3e50); margin-top: 0; border-bottom: 1px solid var(--lab-border, #eee); padding-bottom: 10px; }
     .feature-card ul { padding-left: 20px; }
     .feature-card li { margin-bottom: 8px; font-size: 0.95rem; }
 
@@ -125,7 +125,7 @@
     .step h4 { margin-bottom: 5px; color: #ecf0f1; }
     .step p { font-size: 0.85rem; color: #bdc3c7; }
 
-    .stack-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; }
-    .stack-table td { padding: 15px; border: 1px solid #eee; }
-    .stack-table tr td:first-child { background: #f9f9f9; width: 30%; font-weight: bold; color: #64748b; font-size: 0.9rem; }
+    .stack-table { width: 100%; border-collapse: collapse; background: var(--lab-surface, white); border-radius: 8px; overflow: hidden; border: 1px solid var(--lab-border, #e2e8f0); color: var(--lab-text); }
+    .stack-table td { padding: 15px; border: 1px solid var(--lab-border, #eee); }
+    .stack-table tr td:first-child { background: var(--lab-bg, #f9f9f9); width: 30%; font-weight: bold; color: var(--lab-muted, #64748b); font-size: 0.9rem; }
 </style>

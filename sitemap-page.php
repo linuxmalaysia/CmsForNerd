@@ -37,17 +37,7 @@ $content = [
 /**
  * 4. [LAB] ROUTING & SANITIZATION
  */
-$rawPage = match (true) {
-    !empty($_SERVER['QUERY_STRING']) => (string) $_SERVER['QUERY_STRING'],
-    default                          => pathinfo(basename(__FILE__), PATHINFO_FILENAME)
-};
-
-/**
- * [SECURITY] Path Traversal Prevention
- */
-$isValid = \CmsForNerd\SecurityUtils::isValidPageName($rawPage);
-$page = $isValid ? $rawPage : 'index';
-$pageName = pathinfo($page, PATHINFO_FILENAME);
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE__), PATHINFO_FILENAME));
 
 $content['data'] = $pageName;
 
@@ -64,27 +54,11 @@ $ctx = createCmsContext(
 );
 
 /**
- * 6. [SECURITY] Session & Bot Hardening
- */
-if (file_exists(__DIR__ . '/includes/turnstile.php')) {
-    require_once __DIR__ . '/includes/turnstile.php';
-}
-
-/**
  * [LAB] BOT DETECTION
  */
-if (file_exists(__DIR__ . '/includes/is_bot.php')) {
-    require_once __DIR__ . '/includes/is_bot.php';
-    if (is_bot()) {
-        header('Content-Type: text/plain; charset=utf-8');
-        echo "CmsForNerd v3.5 - Laboratory Text Mode\n";
-        echo "Sitemap: " . ($config['sitemap_url'] ?? '/sitemap.php');
-        exit;
-    }
-}
 
 /**
- * 7. [RENDER] Theme Dispatcher
+ * 6. [RENDER] Theme Dispatcher
  */
 $pagerPath = __DIR__ . "/themes/{$ctx->themeName}/pager.php";
 if (file_exists($pagerPath)) {
