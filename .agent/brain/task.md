@@ -45,3 +45,8 @@
 - [x] Global Variable Sync (--lab-purple Union) — **100% PARITY**
 - [x] Layout Restoration (#left/#right Sync) — **VERIFIED**
 - [x] Bootstrap "Glass Laboratory" section in `ui-kit.php` — **LIVE**
+
+## [x] Closed PR Re-integration Tasks (v3.6.1)
+
+- [x] Hardened IPv6 bitmask generation for DoS protection (PR #30)
+- [x] Consolidated Jules Job Resolutions - Code Quality Cleanup (PR #29)

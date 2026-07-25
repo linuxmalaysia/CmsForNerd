@@ -39,7 +39,7 @@
     --lab-glass-bg: rgba(255, 255, 255, 0.1);
     --lab-glass-border: rgba(255, 255, 255, 0.2);
     --lab-blur: 12px;
-    
+
     /* -- LAYOUT TOKENS -- */
     --radius: 12px;
     --gap: 20px;
@@ -131,7 +131,7 @@ body {
     background-color: var(--lab-primary);
     color: #ffffff;
     padding: 0;
-    
+
     /* Phase 11: Glass-Surface (v4.0) */
     background: var(--lab-glass-bg);
     backdrop-filter: blur(var(--lab-blur));
@@ -193,7 +193,7 @@ body {
     background: var(--lab-surface);
     border: 1px solid var(--lab-border);
     padding: 35px;
-    
+
     /* Phase 11: Glass-Surface (v4.0) */
     background: var(--lab-glass-bg);
     backdrop-filter: blur(var(--lab-blur));
