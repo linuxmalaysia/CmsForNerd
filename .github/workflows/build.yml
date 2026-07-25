@@ -12,6 +12,7 @@ jobs:
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
+    if: ${{ secrets.SONAR_TOKEN != '' }}
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
