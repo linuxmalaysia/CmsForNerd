@@ -31,6 +31,12 @@
     --lab-success: #27ae60;   /* Green: Compliance and Passed Tests */
     --lab-heading: var(--lab-primary);
 
+    /* -- ADAPTIVE SEMANTIC ALERTS -- */
+    --lab-info-bg: #e7f3ff;
+    --lab-warning-bg: #fffbea;
+    --lab-success-bg: #e8f5e9;
+    --lab-danger-bg: #fdf2f2;
+
     /* -- TYPOGRAPHY -- */
     --f-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --f-mono: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
@@ -55,6 +61,10 @@
     --lab-primary: #020617;
     --lab-purple: #a855f7;
     --lab-heading: #f8fafc;
+    --lab-info-bg: #0c1e35;
+    --lab-warning-bg: #2d2613;
+    --lab-success-bg: #0f2a1a;
+    --lab-danger-bg: #2f1717;
 }
 
 /* Force light theme via class on root or HTML */
@@ -67,6 +77,10 @@
     --lab-primary: #0f172a;
     --lab-purple: #8e44ad;
     --lab-heading: var(--lab-primary);
+    --lab-info-bg: #e7f3ff;
+    --lab-warning-bg: #fffbea;
+    --lab-success-bg: #e8f5e9;
+    --lab-danger-bg: #fdf2f2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -80,6 +94,10 @@
         --lab-primary: #020617;   /* Extra dark navy */
         --lab-purple: #a855f7; /* Lighter Purple for contrast */
         --lab-heading: #f8fafc;
+        --lab-info-bg: #0c1e35;
+        --lab-warning-bg: #2d2613;
+        --lab-success-bg: #0f2a1a;
+        --lab-danger-bg: #2f1717;
     }
 }
 
@@ -268,3 +286,136 @@ body {
         padding: 20px;
     }
 }
+
+/**
+ * [9. GLOBAL EDUCATION COMPONENT OVERRIDES FOR DARK MODE COMPATIBILITY]
+ * These rules ensure that all dynamic laboratory pages, modules, and setup guides
+ * are perfectly responsive and readable in Dark Mode, eliminating static hardcoded
+ * backgrounds (#fff, light-blues, light-yellows) in favor of adaptive design tokens.
+ */
+
+/* Setup Guide Override */
+#content .setup-guide { color: var(--lab-text); }
+#content .setup-guide h1 { color: var(--lab-purple); border-bottom: 2px solid var(--lab-border); }
+#content .setup-guide .subtitle { color: var(--lab-muted); }
+#content .setup-guide .guide-intro { background: var(--lab-info-bg); border-left: 5px solid var(--lab-purple); color: var(--lab-text); }
+#content .setup-guide h2 { color: var(--lab-heading); border-bottom: 1px solid var(--lab-border); }
+#content .setup-guide .tool-card { background: var(--lab-surface); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .setup-guide .tool-card h3 { color: var(--lab-purple); }
+#content .setup-guide .phase.reasoning { background: var(--lab-warning-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .setup-guide .phase.reasoning h2 { border-bottom-color: var(--lab-border); }
+#content .setup-guide .guide-footer { background: var(--lab-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+
+/* Welcome Kit Override */
+#content .welcome-kit { color: var(--lab-text); }
+#content .welcome-kit h1 { color: var(--lab-purple); border-bottom: 2px solid var(--lab-border); }
+#content .welcome-kit .kit-intro { background: var(--lab-info-bg); border-left: 5px solid var(--lab-purple); color: var(--lab-text); }
+#content .welcome-kit h2 { color: var(--lab-heading); border-bottom: 1px solid var(--lab-border); }
+#content .welcome-kit .stack-table th { background: var(--lab-bg); color: var(--lab-heading); }
+#content .welcome-kit .stack-table th, #content .welcome-kit .stack-table td { border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .welcome-kit .cmd-item { background: var(--lab-surface); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .welcome-kit .law { background: var(--lab-danger-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .welcome-kit .law h3 { color: var(--lab-heading); }
+#content .welcome-kit .path-to-cert { background: var(--lab-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .welcome-kit .welcome-btn { background: var(--lab-purple); color: #fff; }
+#content .welcome-kit .welcome-btn:hover { background: var(--lab-primary); }
+#content .welcome-kit .step { border-left: 3px solid var(--lab-purple); }
+#content .welcome-kit .quote { color: var(--lab-muted); }
+
+/* Lab Manual Override */
+#content .lab-manual { color: var(--lab-text); }
+#content .lab-manual h1 { color: var(--lab-purple); border-bottom: 2px solid var(--lab-border); }
+#content .lab-manual h2 { color: var(--lab-purple); border-left: 5px solid var(--lab-purple); }
+#content .lab-manual section { background: var(--lab-surface); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .lab-manual .intro { background: var(--lab-info-bg); border-left: 5px solid var(--lab-purple); color: var(--lab-text); }
+#content .lab-manual .exercise, #content .lab-manual .lab-box { background: var(--lab-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .graduation-cta { background: var(--lab-warning-bg); border: 2px solid var(--lab-border); color: var(--lab-text); }
+#content .graduation-cta h3 { color: var(--lab-heading); }
+#content .lab-manual .motto { color: var(--lab-muted); }
+#content .lab-manual hr { border-top: 2px dashed var(--lab-border); }
+
+/* Lab Worksheets & Final Exam Overrides */
+#content .lab-worksheet, #content .final-exam { color: var(--lab-text); }
+#content .lab-worksheet h1 { color: var(--lab-purple); }
+#content .lab-worksheet .subtitle { color: var(--lab-muted); }
+#content .lab-worksheet h2, #content .final-exam h2 { color: var(--lab-heading); border-bottom: 1px solid var(--lab-border); }
+#content .lab-worksheet .requirement-alert { background: var(--lab-warning-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .lab-worksheet .question-box { background: var(--lab-info-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .lab-worksheet .standards-summary { background: var(--lab-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .lab-worksheet .file-study { background: var(--lab-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .lab-worksheet .vulnerable-code { background: var(--lab-surface); border: 1px solid var(--lab-border); border-left: 5px solid #dc3545; color: var(--lab-text); }
+#content .lab-worksheet .secure-code { background: var(--lab-surface); border: 1px solid var(--lab-border); border-left: 5px solid #28a745; color: var(--lab-text); }
+#content .final-exam .exam-intro { background: var(--lab-bg); border-left: 5px solid #dc3545; color: var(--lab-text); }
+#content .final-exam .graduation-cta { background: var(--lab-warning-bg); border: 2px solid var(--lab-border); color: var(--lab-text); }
+#content .progress-nav { border-top: 2px solid var(--lab-border); }
+
+/* Modernization History Override */
+#content .modernization-history { color: var(--lab-text); }
+#content .modernization-history h1 { color: var(--lab-purple); border-bottom: 2px solid var(--lab-border); }
+#content .modernization-history h2 { color: var(--lab-purple); }
+#content .modernization-history .intro { background: var(--lab-info-bg); border-left: 4px solid var(--lab-purple); color: var(--lab-text); }
+#content .version-block { background: var(--lab-surface); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .version-block h2 { color: var(--lab-heading); }
+#content .history-footer { border-top: 1px solid var(--lab-border); color: var(--lab-muted); }
+
+/* About Page Override */
+#content .about-page { color: var(--lab-text); }
+#content .mission-card { background: var(--lab-info-bg); border-left: 6px solid var(--lab-purple); color: var(--lab-text); }
+#content .mission-card h2 { color: var(--lab-heading); }
+#content .architect-card { background: var(--lab-surface); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .role { color: var(--lab-purple); }
+#content .philosophy h2 { color: var(--lab-heading); }
+#content .philo-item h3 { color: var(--lab-purple); }
+#content .philo-item p { color: var(--lab-text); }
+#content .philosophy blockquote { background: var(--lab-bg); color: var(--lab-text); }
+#content .philosophy blockquote::before { color: var(--lab-border); }
+
+/* Hall of Fame Override */
+#content .hall-of-fame { color: var(--lab-text); }
+#content .contributor-card { background: var(--lab-surface); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .card-footer { background: var(--lab-bg); border-top: 1px solid var(--lab-border); color: var(--lab-muted); }
+#content .nomination-box { background: var(--lab-warning-bg); border: 2px dashed var(--lab-purple); color: var(--lab-text); }
+#content .nomination-box h3 { color: var(--lab-heading); }
+
+/* Ansible Lab Override */
+#content .lab-section { background: var(--lab-surface); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .proc-card { background: var(--lab-surface); border: 1px solid var(--lab-border); color: var(--lab-text); border-top: 5px solid var(--lab-purple); }
+#content .proc-card h3 { color: var(--lab-heading); }
+#content .proc-card ul { color: var(--lab-text); }
+#content .file-list li { border-bottom: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .cmd-table th { background: var(--lab-bg); border-bottom: 2px solid var(--lab-border); color: var(--lab-heading); }
+#content .cmd-table td { border-bottom: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .cmd-table td:last-child { color: var(--lab-text); background: var(--lab-bg); }
+
+/* AI Dev Override */
+#content .ai-dev-guide { color: var(--lab-text); }
+#content .ai-dev-guide .guide-header h1 { color: var(--lab-purple); border-bottom: 3px solid var(--lab-purple); }
+#content .ai-dev-guide .subtitle { color: var(--lab-muted); }
+#content .ai-dev-guide .intro-box { background: var(--lab-info-bg); border-left: 5px solid var(--lab-purple); color: var(--lab-text); }
+#content .workflow-card { background: var(--lab-surface); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .workflow-card h2 { color: var(--lab-heading); }
+#content .workflow-card .role { color: var(--lab-purple); }
+#content .threat-card { background: var(--lab-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .standards-warning { background: var(--lab-warning-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .ai-dev-guide .footer-nav { border-top: 1px solid var(--lab-border); }
+
+/* AI SOP Override */
+#content .ai-sop { color: var(--lab-text); }
+#content .ai-sop h1 { color: var(--lab-purple); border-bottom: 2px solid var(--lab-border); }
+#content .ai-sop h2 { color: var(--lab-heading); }
+#content .sop-header { background: var(--lab-info-bg); border-left: 5px solid var(--lab-purple); color: var(--lab-text); }
+#content .rule-box { background: var(--lab-warning-bg); border-left: 5px solid var(--lab-purple); color: var(--lab-text); }
+#content .workflow { background: var(--lab-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .warning-box { background: var(--lab-danger-bg); border: 2px solid var(--lab-purple); color: var(--lab-text); }
+#content .instructor-note { background: var(--lab-success-bg); border-left: 5px solid var(--lab-success); color: var(--lab-text); }
+#content .ai-sop .footer-nav { border-top: 1px solid var(--lab-border); }
+
+/* Security Policy Override */
+#content .security-policy { color: var(--lab-text); }
+#content .security-policy h1 { color: var(--lab-purple); border-bottom: 3px solid var(--lab-purple); }
+#content .security-policy h2 { color: var(--lab-heading); }
+#content .security-policy .intro { background: var(--lab-warning-bg); border-left: 5px solid var(--lab-purple); color: var(--lab-text); }
+#content .security-policy .requirements-box { background: var(--lab-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .security-policy .commit-card { background: var(--lab-success-bg); border: 1px solid var(--lab-border); color: var(--lab-text); }
+#content .security-policy .commit-card h3 { color: var(--lab-success); }
+#content .security-policy .footer-nav { border-top: 1px solid var(--lab-border); }
