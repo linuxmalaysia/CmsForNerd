@@ -58,7 +58,6 @@ All files and logs are written directly to host directories to ensure high avail
 | `/opt/cmsfornerd/nginx` | `/etc/nginx/conf.d` | Custom, read-only Nginx routing and block rules |
 | `/opt/cmsfornerd/php-fpm` | `/usr/local/etc/php-fpm.d` | Hardened PHP-FPM pool configuration |
 | `/opt/cmsfornerd/codes` | `/var/www/html` | Main CmsForNerd codebase (writable by PHP, read-only by Nginx)|
-| `/opt/cmdfornerd` | Symlink to `/opt/cmsfornerd` | Provides multi-path compatibility for secondary validation engines |
 
 ---
 
