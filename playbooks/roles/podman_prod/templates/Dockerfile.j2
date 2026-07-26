@@ -1,0 +1,10 @@
+FROM php:{{ php_version }}-fpm
+
+# Install system dependencies and clean up cache to minimize image size
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    git \
+    unzip \
+    && docker-php-ext-install curl \
+    && rm -rf /var/lib/apt/lists/*

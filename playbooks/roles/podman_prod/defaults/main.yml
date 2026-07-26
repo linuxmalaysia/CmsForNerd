@@ -1,0 +1,18 @@
+---
+# Defaults for podman_prod role
+podman_cms_user: dsom-admin
+podman_cms_uid: 2001
+podman_cms_group: dsom-admin
+podman_cms_gid: 2001
+
+project_path: /opt/cmsfornerd
+bunkerweb_path: "{{ project_path }}/bunkerweb"
+nginx_path: "{{ project_path }}/nginx"
+php_fpm_path: "{{ project_path }}/php-fpm"
+codes_path: "{{ project_path }}/codes"
+
+php_version: "8.5"
+cms_domain: "cmsfornerd.local"
+compose_project_name: "cmsfornerd"
+bunkerweb_image: "docker.io/bunkerity/bunkerweb:1.5.8"
+nginx_image: "docker.io/library/nginx:1.27"
