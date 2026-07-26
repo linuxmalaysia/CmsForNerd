@@ -49,7 +49,7 @@ We are proud to announce **CMSForNerd v3.5**, a significant evolution in our edu
 
 ### 🤖 Agentic Synchronization
 
-* **Agent Brain v2.0**: Updated `.agent/brain/` documentation and task tracking to allow AI coding partners (Gemini/Antigravity) to maintain a deep understanding of the project's dual-view state.
+* **Agent Brain v2.0**: Updated `.agents/brain/` documentation and task tracking to allow AI coding partners (Gemini/Antigravity) to maintain a deep understanding of the project's dual-view state.
 * **Cross-Platform Parity**: Refined `includes/bootstrap.php` to ensure the "Mobile Mastery" suite performs identically across Linux and Windows development environments.
 
 ---

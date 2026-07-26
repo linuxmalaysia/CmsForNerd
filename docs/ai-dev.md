@@ -23,7 +23,7 @@ Antigravity is the executioner. It handles the physical operations:
 The **[AI-MASTER-PROTOCOL.md](AI-MASTER-PROTOCOL.md)** is the binding "Constitution" between the Architect and the Agent. It prevents context decay and ensures that every AI session is a continuation of the last, rather than a restart.
 
 * **Intelligence Audit**: All agents MUST perform the "Morning Ritual" (Sync Chain) before modifying code.
-* **State Persistence**: Agents are responsible for updating `.agent/brain/` artifacts to preserve the project's "State of Mind."
+* **State Persistence**: Agents are responsible for updating `.agents/brain/` artifacts to preserve the project's "State of Mind."
 * **Zero-Error Handoff**: No session is complete until the **Wrap-up Protocol** is executed and verified.
 
 ---

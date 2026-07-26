@@ -88,7 +88,7 @@ Entries are grouped by date (most recent first).
 
 ### 🧠 Cognitive Sync
 
-- **Brain Artifacts**: Synchronized all `.agent/brain/` artifacts with the latest session intelligence.
+- **Brain Artifacts**: Synchronized all `.agents/brain/` artifacts with the latest session intelligence.
 - **Release Baseline**: Established `v3.5.9` as the official "Nerd-Lab" baseline for the end of March 2026.
 
 ---
