@@ -9,6 +9,7 @@
 * [Template Guide](template-guide.md)
 * [Lab Manual](lab-manual.md)
 * [Sitemap & SEO Guide](sitemap-guide.md)
+* [XSS & Host Protection Guide](xss-protection-guide.md)
 * [Testing Guide (Pest + PHPUnit)](testing-guide.md)
 * [Testing bfcache Optimization (PWA)](bfcache-testing-guide.md)
 * [Directory Security Guide](directory-security.md)
@@ -43,3 +44,8 @@
 * [Documentation Requirements](docs-requirements.md)
 * [Security Policy](security-policy.md)
 * [Sitemap](SITEMAP.md)
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

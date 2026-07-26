@@ -19,6 +19,7 @@
 * [⚙️ Installation Guide](technical-resources/installation-guide.md)
 * [🎨 Theme Development](docs/template-guide.md)
 * [🛡️ Security Policy](docs/security-policy.md)
+* [🛡️ XSS & Host Protection](docs/xss-protection-guide.md)
 
 ## 🏁 Certification
 
@@ -29,3 +30,8 @@
 
 * [📂 GitHub Repository](https://github.com/CMSForNerd/CmsForNerd)
 * [📜 PHP 8.4 Official Docs](https://www.php.net/releases/8.4/en.php)
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

@@ -69,7 +69,7 @@
 - [x] Synchronise root `AGENTS.md` with current OKF timestamp `2026-07-27T12:00:00Z`
 - [x] Run compliance suite `composer lab-check` — **DONE**
 
-## [ ] Module 14: Dark Mode Component Accessibility Contrast Fix (v4.1.2)
+## [x] Module 14: Dark Mode Component Accessibility Contrast Fix (v4.1.2)
 
 - [x] Design and define adaptive CSS custom variables inside `themes/CmsForNerd/style.css`
 - [x] Create high-specificity CSS override rules prefixed with `#content` in `style.css`
@@ -77,7 +77,16 @@
 - [x] Inject DSOM and Author signature headers
 - [x] Run compliance test suite and verify 100% success
 
+## [x] Module 15: Security Hardening & Documentation Sync (v4.1.3)
+
+- [x] Centralise Host Header calculations into `SecurityUtils::getSafeBaseUrl()` to mitigate Host Header attacks
+- [x] Centralise page/file discovery into `SecurityUtils::discoverPages()` to resolve duplication across components
+- [x] Secure dynamic XML sitemaps, RSS feeds, and Student Certificate pages against XSS using `SecurityUtils::escapeHtml()`
+- [x] Implement rigorous boundary validation tests inside `tests/SecurityTest.php`
+- [x] Produce dynamic sitemap and security protection guides under `docs/` Palace
+- [x] Perform EOD Ritual including workspace memory synchronization and sovereign signature injection
+
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
