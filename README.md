@@ -33,13 +33,13 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 ### 🌅 Start of Day: The Handshake
 
-1. **Sync Context**: Review `.agent/brain/task.md` to identify the current "Mental State" of the project.
+1. **Sync Context**: Review `.agents/brain/task.md` to identify the current "Mental State" of the project.
 2. **Verify Integrity**: Run `composer lab-check` to ensure the laboratory is "Green" before any new logic is injected.
 3. **Baseline Push**: Ensure all previous work is committed and tagged to prevent state-drift.
 
 ### 🌇 End of Day: The Snapshot
 
-1. **Update Brain**: Update `.agent/brain/walkthrough.md` with the day's logic changes to prepare for the next session.
+1. **Update Brain**: Update `.agents/brain/walkthrough.md` with the day's logic changes to prepare for the next session.
 2. **Log Milestones**: Finalize entries in `CHANGELOG.md`.
 3. **Tag State**: Use `git tag -a v3.6.0` to create a permanent snapshot of the current "State of Mind."
 

@@ -50,3 +50,14 @@
 
 - [x] Hardened IPv6 bitmask generation for DoS protection (PR #30)
 - [x] Consolidated Jules Job Resolutions - Code Quality Cleanup (PR #29)
+
+## [/] Module 12: Deep State of Mind (DSOM) Integration (v4.1.0)
+
+- [/] Migrate `.agent` singular workspace to `.agents` plural
+- [/] Copy and integrate DSOM core rulebook (`AGENTS.md`)
+- [/] Copy and deploy all 25 Sovereign AI Agent Skills in `.agents/skills/`
+- [/] Copy and configure spatial memory (Sovereign Markdown Palace Wings & Registry)
+- [/] Copy and deploy the DSOM tools suite in `tools/`
+- [/] Overwrite and merge `tools/audit-pre-flight.sh` to include both PHP 8.4/8.3 checks and DSOM validations
+- [/] Update all references of `.agent` to `.agents` in configurations, rules, and documentations
+- [ ] Verify the workspace structure and execute `composer lab-check`
