@@ -62,9 +62,22 @@
 - [x] Update all references of `.agent` to `.agents` in configurations, rules, and documentations
 - [x] Verify the workspace structure and execute `composer lab-check`
 
-## [ ] Module 13: Dual Agent Registry Gateway (v4.1.1)
+## [x] Module 13: Dual Agent Registry Gateway (v4.1.1)
 
 - [x] Append Rule 23 "Dual Agent Registry (Root Gateway Mandate)" to `.agents/AGENTS.md`
 - [x] Format rule text to strictly respect the 140-character line length limit
 - [x] Synchronise root `AGENTS.md` with current OKF timestamp `2026-07-27T12:00:00Z`
 - [x] Run compliance suite `composer lab-check` — **DONE**
+
+## [ ] Module 14: Dark Mode Component Accessibility Contrast Fix (v4.1.2)
+
+- [x] Design and define adaptive CSS custom variables inside `themes/CmsForNerd/style.css`
+- [x] Create high-specificity CSS override rules prefixed with `#content` in `style.css`
+- [x] Verify that subpage elements (exercises, boxes, alerts) render with proper contrast in dark mode
+- [x] Inject DSOM and Author signature headers
+- [x] Run compliance test suite and verify 100% success
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
