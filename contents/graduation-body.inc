@@ -19,7 +19,7 @@
                         <div class="cert-award">
                             <p>This certifies that</p>
                             <div class="student-name">
-                                <?= htmlspecialchars($_GET['student'] ?? '[Your Name Here]') ?>
+                                <?= htmlspecialchars((string) ($_GET['student'] ?? '[Your Name Here]'), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
                             </div>
                         </div>
 
@@ -58,7 +58,7 @@
 
                         <div class="footer-meta">
                             <p>Verification Date: <?= date('F j, Y') ?></p>
-                            <p class="digital-sig">SHA-256 ID: <?= hash('sha256', ($_GET['student'] ?? 'anon') . date('Y-m-d')) ?></p>
+                            <p class="digital-sig">SHA-256 ID: <?= htmlspecialchars(hash('sha256', (string) ($_GET['student'] ?? 'anon') . date('Y-m-d')), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></p>
                         </div>
                     </div>
                 </div>

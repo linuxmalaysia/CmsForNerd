@@ -52,6 +52,66 @@ final class SecurityUtils
     }
 
     /**
+     * [SECURITY] Get safe sanitized base URL to prevent Host Header injection / XSS.
+     * @return string The safe Base URL with a trailing slash.
+     */
+    public static function getSafeBaseUrl(): string
+    {
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+        $host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
+        $host     = preg_replace('/[^a-zA-Z0-9\-.:]/', '', $host);
+
+        $scriptPath = $_SERVER['SCRIPT_NAME'] ?? '';
+        $dirPath  = str_replace('\\', '/', dirname($scriptPath));
+
+        return rtrim($protocol . $host . $dirPath, '/') . '/';
+    }
+
+    /**
+     * [SECURITY] Scan contents directory and discover valid paired pages.
+     * Centralized to prevent SonarCloud Code Duplication.
+     *
+     * @param string $fragmentDir Absolute path to contents directory.
+     * @param string $rootDir Absolute path to project root directory.
+     * @return array<int, array{slug: string, title: string, mtime: int, filemtime: int}>
+     */
+    public static function discoverPages(string $fragmentDir, string $rootDir): array
+    {
+        $pages = [];
+
+        if (is_dir($fragmentDir)) {
+            $rawFragments = glob($fragmentDir . '*-body.inc');
+            $fragments = is_array($rawFragments) ? $rawFragments : [];
+
+            foreach ($fragments as $file) {
+                $slug = str_replace('-body.inc', '', basename($file));
+
+                // Exclusion list
+                $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
+                if (in_array($slug, $exclude, true)) {
+                    continue;
+                }
+
+                $masterFile = $rootDir . '/' . $slug . '.php';
+
+                if (file_exists($masterFile)) {
+                    $mTime = max(filemtime($masterFile), filemtime($file));
+                    $title = ucfirst(str_replace('-', ' ', $slug));
+
+                    $pages[] = [
+                        'slug'      => $slug,
+                        'title'     => $title,
+                        'mtime'     => (int) $mTime,
+                        'filemtime' => (int) filemtime($file),
+                    ];
+                }
+            }
+        }
+
+        return $pages;
+    }
+
+    /**
      * [SECURITY] Generate a Content Security Policy (CSP) Nonce.
      * MUST be used for inline scripts to comply with v3.3+ safety protocols.
      * * @return string A base64 encoded random 16-byte string.
