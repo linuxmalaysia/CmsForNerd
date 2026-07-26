@@ -95,13 +95,6 @@
     - "{{ php_fpm_path }}"
     - "{{ codes_path }}"
 
-- name: Create compatible symlink /opt/cmdfornerd to /opt/cmsfornerd
-  ansible.builtin.file:
-    src: "{{ project_path }}"
-    dest: /opt/cmdfornerd
-    state: link
-    force: true
-
 # Clone or Copy codebase (Storage Sovereignty)
 - name: Clone CmsForNerd Official Repository into codes path
   ansible.builtin.git:
