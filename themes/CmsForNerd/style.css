@@ -43,6 +43,17 @@
     /* -- LAYOUT TOKENS -- */
     --radius: 12px;
     --gap: 20px;
+
+    /* -- ADAPTIVE COMPONENT TOKENS (v4.0.0 High Contrast Parity) -- */
+    --lab-section-bg: #ffffff;
+    --lab-box-bg: #f9f9f9;
+    --lab-alert-bg: #e6f7ff;
+    --lab-warning-bg: #fff3cd;
+    --lab-vulnerable-bg: #ffffff;
+    --lab-secure-bg: #ffffff;
+    --lab-cta-bg: #fffbeb;
+    --lab-code-bg: #2d2d2d;
+    --lab-code-text: #ccc;
 }
 
 /* Force dark theme via class on root or HTML */
@@ -55,6 +66,17 @@
     --lab-primary: #020617;
     --lab-purple: #a855f7;
     --lab-heading: #f8fafc;
+
+    /* -- ADAPTIVE COMPONENT TOKENS FOR DARK THEME -- */
+    --lab-section-bg: #1e293b;
+    --lab-box-bg: #0f172a;
+    --lab-alert-bg: #032b45;
+    --lab-warning-bg: #40300a;
+    --lab-vulnerable-bg: #2d1316;
+    --lab-secure-bg: #0d2818;
+    --lab-cta-bg: #2a2408;
+    --lab-code-bg: #0d1117;
+    --lab-code-text: #f0f6fc;
 }
 
 /* Force light theme via class on root or HTML */
@@ -67,6 +89,17 @@
     --lab-primary: #0f172a;
     --lab-purple: #8e44ad;
     --lab-heading: var(--lab-primary);
+
+    /* -- ADAPTIVE COMPONENT TOKENS FOR LIGHT THEME -- */
+    --lab-section-bg: #ffffff;
+    --lab-box-bg: #f9f9f9;
+    --lab-alert-bg: #e6f7ff;
+    --lab-warning-bg: #fff3cd;
+    --lab-vulnerable-bg: #ffffff;
+    --lab-secure-bg: #ffffff;
+    --lab-cta-bg: #fffbeb;
+    --lab-code-bg: #2d2d2d;
+    --lab-code-text: #ccc;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -80,6 +113,17 @@
         --lab-primary: #020617;   /* Extra dark navy */
         --lab-purple: #a855f7; /* Lighter Purple for contrast */
         --lab-heading: #f8fafc;
+
+        /* -- ADAPTIVE COMPONENT TOKENS FOR PREFER DARK -- */
+        --lab-section-bg: #1e293b;
+        --lab-box-bg: #0f172a;
+        --lab-alert-bg: #032b45;
+        --lab-warning-bg: #40300a;
+        --lab-vulnerable-bg: #2d1316;
+        --lab-secure-bg: #0d2818;
+        --lab-cta-bg: #2a2408;
+        --lab-code-bg: #0d1117;
+        --lab-code-text: #f0f6fc;
     }
 }
 
@@ -215,6 +259,75 @@ body {
     color: var(--lab-heading);
     border-bottom: 1px solid var(--lab-border);
     padding-bottom: 10px;
+}
+
+/**
+ * [9. HIGH SPECIFICITY ADAPTIVE OVERRIDES]
+ * Resolves dark theme readability on legacy body templates with hardcoded colors.
+ */
+#content section,
+#content .module,
+#content .lab-section,
+#content .version-block {
+    background-color: var(--lab-section-bg) !important;
+    color: var(--lab-text) !important;
+    border-color: var(--lab-border) !important;
+}
+
+#content .exercise,
+#content .lab-box,
+#content .cmd-item,
+#content .proc-card,
+#content .tool-card,
+#content .architect-card,
+#content .threat-card {
+    background-color: var(--lab-box-bg) !important;
+    color: var(--lab-text) !important;
+    border-color: var(--lab-border) !important;
+}
+
+#content .intro,
+#content .kit-intro,
+#content .guide-intro,
+#content .intro-box {
+    background-color: var(--lab-alert-bg) !important;
+    color: var(--lab-text) !important;
+}
+
+#content .question-box,
+#content .standards-warning,
+#content .rule-box,
+#content .warning-box,
+#content .requirement-alert,
+#content .next-steps,
+#content .grading-rubric,
+#content .template-guide .security-check {
+    background-color: var(--lab-warning-bg) !important;
+    color: var(--lab-text) !important;
+}
+
+#content .vulnerable-code {
+    background-color: var(--lab-vulnerable-bg) !important;
+    color: var(--lab-text) !important;
+}
+
+#content .secure-code {
+    background-color: var(--lab-secure-bg) !important;
+    color: var(--lab-text) !important;
+}
+
+#content .graduation-cta {
+    background-color: var(--lab-cta-bg) !important;
+    color: var(--lab-text) !important;
+}
+
+#content .code-block,
+#content .terminal-block,
+#content .console-output,
+#content .code-snippet,
+#content .code-example {
+    background-color: var(--lab-code-bg) !important;
+    color: var(--lab-code-text) !important;
 }
 
 /**

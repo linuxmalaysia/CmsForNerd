@@ -78,3 +78,21 @@
 - **DSOM Tooling Suite**: Deployed high-fidelity scripts (`eod-palace.sh`, `git-ritual.sh`, etc.) to the `tools/` directory.
 - **Unified Validation**: Overwrote and merged `tools/audit-pre-flight.sh` to support PHP 8.4/8.3 alongside DSOM intelligence audits.
 - **Verification Audit**: Successfully verified the Pluralized Workspace and ran `composer lab-check` with all passing results.
+
+---
+
+## Module 14: Dark Mode Component Accessibility Contrast Fix (v4.1.2)
+
+### Accomplishments — 2026-07-26
+
+- **Adaptive CSS custom variables**: Designed and implemented semantic custom properties mapping layout components
+  (exercises, alerts, boxes, panels) to respective light and dark theme background colors.
+- **High-specificity overrides**: Added CSS overrides prefixed with `#content` in `themes/CmsForNerd/style.css` to
+  ensure legacy page templates and embedded custom containers smoothly transition to correct high-contrast dark backgrounds.
+- **Visual Verification**: Built a Playwright automation script to programmatically toggle Dark Mode and capture screenshots,
+  verifying perfect legibility and complete UI compliance with 0 regressions.
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
