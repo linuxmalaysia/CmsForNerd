@@ -128,8 +128,8 @@ fi
 
 # 6. Check task.md Integrity (Task Decay)
 echo -e "\n${YELLOW}Step 6: Checking task.md Integrity...${NC}"
-IN_PROGRESS=$(grep -c "\[/\]" "$BRAIN_DIR/task.md" || echo "0") # Tasks in progress
-TODO=$(grep -c "\[ \]" "$BRAIN_DIR/task.md" || echo "0") # Tasks not started
+IN_PROGRESS=$(grep "\[/\]" "$BRAIN_DIR/task.md" | wc -l) # Tasks in progress
+TODO=$(grep "\[ \]" "$BRAIN_DIR/task.md" | wc -l) # Tasks not started
 
 echo -e ">>> Task Status: ${GREEN}$IN_PROGRESS In-Progress${NC}, ${YELLOW}$TODO Pending${NC}"
 
