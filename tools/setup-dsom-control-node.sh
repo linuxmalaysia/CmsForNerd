@@ -3,7 +3,7 @@
 # ==============================================================================
 # Protocol    : Deep State of Mind (DSOM) For My AI
 # Author      : Harisfazillah Jamel (LinuxMalaysia)
-# Timestamp   : 2026-07-12
+# Timestamp   : 2026-07-26
 # License     : GNU General Public License v3.0
 # Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
 # ==============================================================================
@@ -85,7 +85,7 @@ echo -e "\n${YELLOW}[Step 3] Installing Ansible...${NC}"
 dnf install -y --quiet epel-release 2>/dev/null || true
 dnf install -y --quiet ansible 2>/dev/null || {
     echo -e "${YELLOW}[INFO] DNF install unavailable, falling back to pip...${NC}"
-    pip3 install ansible --quiet
+    pip3 install --only-binary=:all: ansible --quiet
 }
 
 ANSIBLE_VER=$(ansible --version | head -1)

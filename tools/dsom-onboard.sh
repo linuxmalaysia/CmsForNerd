@@ -3,7 +3,7 @@
 # ==============================================================================
 # Protocol    : Deep State of Mind (DSOM) For My AI
 # Author      : Harisfazillah Jamel (LinuxMalaysia)
-# Timestamp   : 2026-07-12
+# Timestamp   : 2026-07-26
 # License     : GNU General Public License v3.0
 # Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
 # ==============================================================================
@@ -48,9 +48,9 @@ PLAYBOOK_FILE="$PLAYBOOK_DIR/onboard-dsom.yml"
 
 # Get raw playbook from GitHub
 if command -v curl &> /dev/null; then
-    curl -sS -L "https://raw.githubusercontent.com/linuxmalaysia/deep-state-of-mind-for-my-ai/main/playbooks/dsom/onboard-dsom.yml" -o "$PLAYBOOK_FILE"
+    curl -sS -L --proto-redir =https "https://raw.githubusercontent.com/linuxmalaysia/deep-state-of-mind-for-my-ai/main/playbooks/dsom/onboard-dsom.yml" -o "$PLAYBOOK_FILE"
 elif command -v wget &> /dev/null; then
-    wget -qO "$PLAYBOOK_FILE" "https://raw.githubusercontent.com/linuxmalaysia/deep-state-of-mind-for-my-ai/main/playbooks/dsom/onboard-dsom.yml"
+    wget --https-only -qO "$PLAYBOOK_FILE" "https://raw.githubusercontent.com/linuxmalaysia/deep-state-of-mind-for-my-ai/main/playbooks/dsom/onboard-dsom.yml"
 else
     echo "ERROR: curl or wget is required to download the playbook."
     exit 1
