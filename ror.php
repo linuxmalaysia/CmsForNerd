@@ -22,8 +22,13 @@ while (ob_get_level()) {
 // 2. [EDUCATION] Auto-URL Detection
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
 $host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
+// Sanitize host to prevent HTTP Host Header attacks / injection
+$host     = preg_replace('/[^a-zA-Z0-9\-.:]/', '', $host);
 $dirPath  = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
 $baseUrl  = rtrim($protocol . $host . $dirPath, '/') . '/';
+
+// Helper function to escape XML output
+$esc = fn(string $val): string => htmlspecialchars($val, ENT_XML1 | ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 
 // 3. [SECURITY] Hardened Headers
 header("Content-Type: application/xml; charset=utf-8");
@@ -33,13 +38,14 @@ header("X-Content-Type-Options: nosniff");
 echo '<rss version="2.0" xmlns:ror="http://www.rorweb.com/0.1/">' . PHP_EOL;
 echo '  <channel>' . PHP_EOL;
 echo '    <title>ROR Sitemap for CMSForNerd Laboratory v3.5</title>' . PHP_EOL;
-echo '    <link>' . $baseUrl . 'index.php</link>' . PHP_EOL;
+echo '    <link>' . $esc($baseUrl . 'index.php') . '</link>' . PHP_EOL;
 
 // 5. [ITEM SCAN]
 $fragmentDir = __DIR__ . '/contents/';
 
 if (is_dir($fragmentDir)) {
-    $fragments = glob($fragmentDir . '*-body.inc');
+    $rawFragments = glob($fragmentDir . '*-body.inc');
+    $fragments = is_array($rawFragments) ? $rawFragments : [];
 
     foreach ($fragments as $file) {
         $slug = str_replace('-body.inc', '', basename($file));
@@ -55,10 +61,10 @@ if (is_dir($fragmentDir)) {
             $title = ucfirst(str_replace('-', ' ', $slug));
 
             echo '    <item>' . PHP_EOL;
-            echo '      <link>' . $baseUrl . $slug . '.php</link>' . PHP_EOL;
-            echo '      <title>' . $title . '</title>' . PHP_EOL;
+            echo '      <link>' . $esc($baseUrl . $slug . '.php') . '</link>' . PHP_EOL;
+            echo '      <title>' . $esc($title) . '</title>' . PHP_EOL;
             echo '      <ror:type>resource</ror:type>' . PHP_EOL;
-            echo '      <ror:updated>' . date('Y-m-d', filemtime($file)) . '</ror:updated>' . PHP_EOL;
+            echo '      <ror:updated>' . date('Y-m-d', (int) filemtime($file)) . '</ror:updated>' . PHP_EOL;
             echo '    </item>' . PHP_EOL;
         }
     }

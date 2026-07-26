@@ -28,8 +28,13 @@ while (ob_get_level()) {
  */
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
 $host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
+// Sanitize host to prevent HTTP Host Header attacks / injection
+$host     = preg_replace('/[^a-zA-Z0-9\-.:]/', '', $host);
 $dirPath  = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
 $baseUrl  = rtrim($protocol . $host . $dirPath, '/') . '/';
+
+// Helper function to escape XML output
+$esc = fn(string $val): string => htmlspecialchars($val, ENT_XML1 | ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 
 /**
  * 3. [SECURITY] HARDENED HEADERS
@@ -65,7 +70,7 @@ echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
  * The root index.php is the first 'specimen' to be indexed.
  */
 echo "  <url>" . PHP_EOL;
-echo "    <loc>{$baseUrl}index.php</loc>" . PHP_EOL;
+echo "    <loc>" . $esc($baseUrl . 'index.php') . "</loc>" . PHP_EOL;
 echo "    <priority>1.0</priority>" . PHP_EOL;
 echo "  </url>" . PHP_EOL;
 
@@ -77,7 +82,8 @@ $fragmentDir = __DIR__ . '/contents/';
 
 if (is_dir($fragmentDir)) {
     // Look for all Slave Fragments
-    $fragments = glob($fragmentDir . '*-body.inc');
+    $rawFragments = glob($fragmentDir . '*-body.inc');
+    $fragments = is_array($rawFragments) ? $rawFragments : [];
 
     foreach ($fragments as $file) {
         /**
@@ -108,10 +114,10 @@ if (is_dir($fragmentDir)) {
              * and the content (-body.inc) for SEO accuracy.
              */
             $mTime = max(filemtime($masterFile), filemtime($file));
-            $isoDate = date("c", $mTime); // ISO 8601 format
+            $isoDate = date("c", (int) $mTime); // ISO 8601 format
 
             echo "  <url>" . PHP_EOL;
-            echo "    <loc>{$baseUrl}{$slug}.php</loc>" . PHP_EOL;
+            echo "    <loc>" . $esc($baseUrl . $slug . '.php') . "</loc>" . PHP_EOL;
             echo "    <lastmod>{$isoDate}</lastmod>" . PHP_EOL;
             echo "    <priority>0.8</priority>" . PHP_EOL;
             echo "  </url>" . PHP_EOL;
