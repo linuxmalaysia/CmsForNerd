@@ -36,37 +36,20 @@ echo '    <lastBuildDate>' . date(DATE_RSS) . '</lastBuildDate>' . PHP_EOL;
 echo '    <atom:link href="' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl) . 'rss.php" rel="self" type="application/rss+xml" />' . PHP_EOL;
 
 // 5. [AUTOMATION] The Scanning Engine (Pair Logic)
-$fragmentDir = __DIR__ . '/contents/';
+$pages = \CmsForNerd\SecurityUtils::discoverPages(__DIR__ . '/contents/', __DIR__);
 
-if (is_dir($fragmentDir)) {
-    $rawFragments = glob($fragmentDir . '*-body.inc');
-    $fragments = is_array($rawFragments) ? $rawFragments : [];
+foreach ($pages as $page) {
+    $slug    = $page['slug'];
+    $title   = $page['title'];
+    $pubDate = date(DATE_RSS, $page['mtime']);
 
-    foreach ($fragments as $file) {
-        $slug = str_replace('-body.inc', '', basename($file));
-        
-        // Exclusion list (Rules compliance)
-        $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
-        if (in_array($slug, $exclude, true)) {
-            continue;
-        }
-
-        $masterFile = __DIR__ . '/' . $slug . '.php';
-
-        if (file_exists($masterFile)) {
-            $mTime = max(filemtime($masterFile), filemtime($file));
-            $pubDate = date(DATE_RSS, (int) $mTime);
-            $title = ucfirst(str_replace('-', ' ', $slug));
-
-            echo '    <item>' . PHP_EOL;
-            echo '      <title>' . \CmsForNerd\SecurityUtils::escapeHtml($title) . '</title>' . PHP_EOL;
-            echo '      <link>' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug) . '.php</link>' . PHP_EOL;
-            echo '      <description>Updates for the ' . \CmsForNerd\SecurityUtils::escapeHtml($title) . ' module in the v3.5 Laboratory.</description>' . PHP_EOL;
-            echo '      <guid isPermaLink="true">' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug) . '.php</guid>' . PHP_EOL;
-            echo '      <pubDate>' . $pubDate . '</pubDate>' . PHP_EOL;
-            echo '    </item>' . PHP_EOL;
-        }
-    }
+    echo '    <item>' . PHP_EOL;
+    echo '      <title>' . \CmsForNerd\SecurityUtils::escapeHtml($title) . '</title>' . PHP_EOL;
+    echo '      <link>' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug) . '.php</link>' . PHP_EOL;
+    echo '      <description>Updates for the ' . \CmsForNerd\SecurityUtils::escapeHtml($title) . ' module in the v3.5 Laboratory.</description>' . PHP_EOL;
+    echo '      <guid isPermaLink="true">' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug) . '.php</guid>' . PHP_EOL;
+    echo '      <pubDate>' . $pubDate . '</pubDate>' . PHP_EOL;
+    echo '    </item>' . PHP_EOL;
 }
 
 echo '  </channel>' . PHP_EOL;

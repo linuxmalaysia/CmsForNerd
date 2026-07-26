@@ -34,33 +34,19 @@ echo '    <title>ROR Sitemap for CMSForNerd Laboratory v3.5</title>' . PHP_EOL;
 echo '    <link>' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . 'index.php') . '</link>' . PHP_EOL;
 
 // 5. [ITEM SCAN]
-$fragmentDir = __DIR__ . '/contents/';
+$pages = \CmsForNerd\SecurityUtils::discoverPages(__DIR__ . '/contents/', __DIR__);
 
-if (is_dir($fragmentDir)) {
-    $rawFragments = glob($fragmentDir . '*-body.inc');
-    $fragments = is_array($rawFragments) ? $rawFragments : [];
+foreach ($pages as $page) {
+    $slug    = $page['slug'];
+    $title   = $page['title'];
+    $updated = date('Y-m-d', $page['filemtime']);
 
-    foreach ($fragments as $file) {
-        $slug = str_replace('-body.inc', '', basename($file));
-        
-        $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
-        if (in_array($slug, $exclude, true)) {
-            continue;
-        }
-
-        $masterFile = __DIR__ . '/' . $slug . '.php';
-
-        if (file_exists($masterFile)) {
-            $title = ucfirst(str_replace('-', ' ', $slug));
-
-            echo '    <item>' . PHP_EOL;
-            echo '      <link>' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug . '.php') . '</link>' . PHP_EOL;
-            echo '      <title>' . \CmsForNerd\SecurityUtils::escapeHtml($title) . '</title>' . PHP_EOL;
-            echo '      <ror:type>resource</ror:type>' . PHP_EOL;
-            echo '      <ror:updated>' . date('Y-m-d', (int) filemtime($file)) . '</ror:updated>' . PHP_EOL;
-            echo '    </item>' . PHP_EOL;
-        }
-    }
+    echo '    <item>' . PHP_EOL;
+    echo '      <link>' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug . '.php') . '</link>' . PHP_EOL;
+    echo '      <title>' . \CmsForNerd\SecurityUtils::escapeHtml($title) . '</title>' . PHP_EOL;
+    echo '      <ror:type>resource</ror:type>' . PHP_EOL;
+    echo '      <ror:updated>' . $updated . '</ror:updated>' . PHP_EOL;
+    echo '    </item>' . PHP_EOL;
 }
 
 echo '  </channel>' . PHP_EOL;

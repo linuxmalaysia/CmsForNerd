@@ -71,51 +71,17 @@ echo "  </url>" . PHP_EOL;
  * 6. [AUTOMATION] THE SCANNING ENGINE
  * Scans the laboratory contents directory for valid page pairs.
  */
-$fragmentDir = __DIR__ . '/contents/';
+$pages = \CmsForNerd\SecurityUtils::discoverPages(__DIR__ . '/contents/', __DIR__);
 
-if (is_dir($fragmentDir)) {
-    // Look for all Slave Fragments
-    $rawFragments = glob($fragmentDir . '*-body.inc');
-    $fragments = is_array($rawFragments) ? $rawFragments : [];
+foreach ($pages as $page) {
+    $slug    = $page['slug'];
+    $isoDate = date("c", $page['mtime']);
 
-    foreach ($fragments as $file) {
-        /**
-         * [EDUCATION] SLUG EXTRACTION
-         * Extracting the page name (e.g., 'about') from 'about-body.inc'.
-         */
-        $slug = str_replace('-body.inc', '', basename($file));
-
-        /**
-         * [SECURITY] RULE #8 COMPLIANCE
-         * Prevent sensitive system files or error pages from being indexed.
-         */
-        $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
-        if (in_array($slug, $exclude, true)) {
-            continue;
-        }
-
-        /**
-         * [SECURITY] PAIR LOGIC VERIFICATION
-         * Only index the page if the Master Controller (.php) exists in the root.
-         */
-        $masterFile = __DIR__ . '/' . $slug . '.php';
-
-        if (file_exists($masterFile)) {
-            /**
-             * [LAB] DATE SYNCHRONIZATION
-             * We find the NEWEST modification date between the logic (.php)
-             * and the content (-body.inc) for SEO accuracy.
-             */
-            $mTime = max(filemtime($masterFile), filemtime($file));
-            $isoDate = date("c", (int) $mTime); // ISO 8601 format
-
-            echo "  <url>" . PHP_EOL;
-            echo "    <loc>" . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug . '.php') . "</loc>" . PHP_EOL;
-            echo "    <lastmod>{$isoDate}</lastmod>" . PHP_EOL;
-            echo "    <priority>0.8</priority>" . PHP_EOL;
-            echo "  </url>" . PHP_EOL;
-        }
-    }
+    echo "  <url>" . PHP_EOL;
+    echo "    <loc>" . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug . '.php') . "</loc>" . PHP_EOL;
+    echo "    <lastmod>{$isoDate}</lastmod>" . PHP_EOL;
+    echo "    <priority>0.8</priority>" . PHP_EOL;
+    echo "  </url>" . PHP_EOL;
 }
 
 // 7. [XML END]

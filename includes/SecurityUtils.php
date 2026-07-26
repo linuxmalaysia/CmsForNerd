@@ -68,6 +68,50 @@ final class SecurityUtils
     }
 
     /**
+     * [SECURITY] Scan contents directory and discover valid paired pages.
+     * Centralized to prevent SonarCloud Code Duplication.
+     *
+     * @param string $fragmentDir Absolute path to contents directory.
+     * @param string $rootDir Absolute path to project root directory.
+     * @return array<int, array{slug: string, title: string, mtime: int, filemtime: int}>
+     */
+    public static function discoverPages(string $fragmentDir, string $rootDir): array
+    {
+        $pages = [];
+
+        if (is_dir($fragmentDir)) {
+            $rawFragments = glob($fragmentDir . '*-body.inc');
+            $fragments = is_array($rawFragments) ? $rawFragments : [];
+
+            foreach ($fragments as $file) {
+                $slug = str_replace('-body.inc', '', basename($file));
+
+                // Exclusion list
+                $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
+                if (in_array($slug, $exclude, true)) {
+                    continue;
+                }
+
+                $masterFile = $rootDir . '/' . $slug . '.php';
+
+                if (file_exists($masterFile)) {
+                    $mTime = max(filemtime($masterFile), filemtime($file));
+                    $title = ucfirst(str_replace('-', ' ', $slug));
+
+                    $pages[] = [
+                        'slug'      => $slug,
+                        'title'     => $title,
+                        'mtime'     => (int) $mTime,
+                        'filemtime' => (int) filemtime($file),
+                    ];
+                }
+            }
+        }
+
+        return $pages;
+    }
+
+    /**
      * [SECURITY] Generate a Content Security Policy (CSP) Nonce.
      * MUST be used for inline scripts to comply with v3.3+ safety protocols.
      * * @return string A base64 encoded random 16-byte string.
