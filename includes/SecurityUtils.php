@@ -52,6 +52,22 @@ final class SecurityUtils
     }
 
     /**
+     * [SECURITY] Get safe sanitized base URL to prevent Host Header injection / XSS.
+     * @return string The safe Base URL with a trailing slash.
+     */
+    public static function getSafeBaseUrl(): string
+    {
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+        $host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
+        $host     = preg_replace('/[^a-zA-Z0-9\-.:]/', '', $host);
+
+        $scriptPath = $_SERVER['SCRIPT_NAME'] ?? '';
+        $dirPath  = str_replace('\\', '/', dirname($scriptPath));
+
+        return rtrim($protocol . $host . $dirPath, '/') . '/';
+    }
+
+    /**
      * [SECURITY] Generate a Content Security Policy (CSP) Nonce.
      * MUST be used for inline scripts to comply with v3.3+ safety protocols.
      * * @return string A base64 encoded random 16-byte string.

@@ -16,15 +16,8 @@ while (ob_get_level()) {
 }
 
 // 2. [EDUCATION] Auto-URL Detection
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
-$host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
-// Sanitize host to prevent HTTP Host Header attacks / injection
-$host     = preg_replace('/[^a-zA-Z0-9\-.:]/', '', $host);
-$dirPath  = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
-$baseUrl  = rtrim($protocol . $host . $dirPath, '/') . '/';
-
-// Helper function to escape XML output
-$esc = fn(string $val): string => htmlspecialchars($val, ENT_XML1 | ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+require_once __DIR__ . '/vendor/autoload.php';
+$baseUrl = \CmsForNerd\SecurityUtils::getSafeBaseUrl();
 
 // 3. [SECURITY] Hardened Headers
 header("Content-Type: application/rss+xml; charset=utf-8");
@@ -36,11 +29,11 @@ echo '<?xml version="1.0" encoding="UTF-8" ?>' . PHP_EOL;
 echo '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">' . PHP_EOL;
 echo '  <channel>' . PHP_EOL;
 echo '    <title>CMSForNerd Laboratory v3.5</title>' . PHP_EOL;
-echo '    <link>' . $esc($baseUrl) . 'index.php</link>' . PHP_EOL;
+echo '    <link>' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl) . 'index.php</link>' . PHP_EOL;
 echo '    <description>Modern PHP 8.4+ educational CMS environment.</description>' . PHP_EOL;
 echo '    <language>en-us</language>' . PHP_EOL;
 echo '    <lastBuildDate>' . date(DATE_RSS) . '</lastBuildDate>' . PHP_EOL;
-echo '    <atom:link href="' . $esc($baseUrl) . 'rss.php" rel="self" type="application/rss+xml" />' . PHP_EOL;
+echo '    <atom:link href="' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl) . 'rss.php" rel="self" type="application/rss+xml" />' . PHP_EOL;
 
 // 5. [AUTOMATION] The Scanning Engine (Pair Logic)
 $fragmentDir = __DIR__ . '/contents/';
@@ -66,10 +59,10 @@ if (is_dir($fragmentDir)) {
             $title = ucfirst(str_replace('-', ' ', $slug));
 
             echo '    <item>' . PHP_EOL;
-            echo '      <title>' . $esc($title) . '</title>' . PHP_EOL;
-            echo '      <link>' . $esc($baseUrl . $slug) . '.php</link>' . PHP_EOL;
-            echo '      <description>Updates for the ' . $esc($title) . ' module in the v3.5 Laboratory.</description>' . PHP_EOL;
-            echo '      <guid isPermaLink="true">' . $esc($baseUrl . $slug) . '.php</guid>' . PHP_EOL;
+            echo '      <title>' . \CmsForNerd\SecurityUtils::escapeHtml($title) . '</title>' . PHP_EOL;
+            echo '      <link>' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug) . '.php</link>' . PHP_EOL;
+            echo '      <description>Updates for the ' . \CmsForNerd\SecurityUtils::escapeHtml($title) . ' module in the v3.5 Laboratory.</description>' . PHP_EOL;
+            echo '      <guid isPermaLink="true">' . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug) . '.php</guid>' . PHP_EOL;
             echo '      <pubDate>' . $pubDate . '</pubDate>' . PHP_EOL;
             echo '    </item>' . PHP_EOL;
         }
