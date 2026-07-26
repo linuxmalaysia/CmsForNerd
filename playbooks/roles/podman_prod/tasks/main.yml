@@ -13,6 +13,24 @@
       - ansible_version.full is version('2.16', '>=')
     fail_msg: "Ansible version must be 2.16 or higher. Found: {{ ansible_version.full }}"
 
+- name: "Sovereign Gate | Verify Identity Standard UID"
+  ansible.builtin.assert:
+    that:
+      - podman_cms_uid == 2001
+    fail_msg: "Identity Standard violation: podman_cms_uid must be strictly 2001! Found: {{ podman_cms_uid }}"
+
+- name: "Sovereign Gate | Verify Identity Standard GID"
+  ansible.builtin.assert:
+    that:
+      - podman_cms_gid == 2001
+    fail_msg: "Identity Standard violation: podman_cms_gid must be strictly 2001! Found: {{ podman_cms_gid }}"
+
+- name: "Sovereign Gate | Verify Identity Standard User"
+  ansible.builtin.assert:
+    that:
+      - podman_cms_user == 'dsom-admin'
+    fail_msg: "Identity Standard violation: unprivileged user must be 'dsom-admin'! Found: {{ podman_cms_user }}"
+
 # Foundation OS Provisioning (Sudo Lock)
 - name: Ensure Podman is installed (Debian/Ubuntu)
   ansible.builtin.apt:
@@ -67,7 +85,7 @@
     state: directory
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
-    mode: '0755'
+    mode: '0700'
   loop:
     - "{{ project_path }}"
     - "{{ bunkerweb_path }}"
@@ -128,7 +146,7 @@
     dest: "{{ nginx_path }}/default.conf"
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
-    mode: '0644'
+    mode: '0600'
 
 - name: Template PHP-FPM www.conf pool configuration
   ansible.builtin.template:
@@ -136,7 +154,7 @@
     dest: "{{ php_fpm_path }}/www.conf"
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
-    mode: '0644'
+    mode: '0600'
 
 - name: Template PHP-FPM custom Dockerfile for PHP 8.5
   ansible.builtin.template:
@@ -144,7 +162,7 @@
     dest: "{{ php_fpm_path }}/Dockerfile"
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
-    mode: '0644'
+    mode: '0600'
 
 - name: Template Podman-Compose docker-compose.yml
   ansible.builtin.template:
@@ -152,7 +170,7 @@
     dest: "{{ project_path }}/docker-compose.yml"
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
-    mode: '0644'
+    mode: '0600'
 
 # Container Build and Start
 - name: Build custom PHP 8.5 image as dsom-admin user
@@ -179,7 +197,7 @@
     state: directory
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
-    mode: '0755'
+    mode: '0700'
 
 - name: Template Systemd user service for Podman-Compose Autostart
   ansible.builtin.template:
@@ -187,7 +205,7 @@
     dest: "/home/{{ podman_cms_user }}/.config/systemd/user/cmsfornerd-pod.service"
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
-    mode: '0644'
+    mode: '0600'
 
 - name: Enable cmsfornerd systemd user service
   ansible.builtin.systemd:

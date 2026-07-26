@@ -46,29 +46,8 @@ fi
 # -----------------------------------------------------------------------------
 # 2. SOVEREIGN GATE
 # -----------------------------------------------------------------------------
-echo -e "\n${YELLOW}[2/3] Validating Sovereign Gate...${NC}"
-
-# Verify hosts inventory exists
-if [ ! -f "inventory/hosts.prod.yml" ]; then
-    echo -e "${RED}[FAIL] Production inventory file 'inventory/hosts.prod.yml' is missing!${NC}"
-    exit 1
-fi
-echo -e "${GREEN}[OK] Production inventory hosts.prod.yml exists.${NC}"
-
-# Verify required target identities inside inventory
-if ! grep -q "podman_cms_uid: 2001" inventory/hosts.prod.yml; then
-    echo -e "${RED}[FAIL] Identity Standard violation: podman_cms_uid must be strictly 2001!${NC}"
-    exit 1
-fi
-if ! grep -q "podman_cms_gid: 2001" inventory/hosts.prod.yml; then
-    echo -e "${RED}[FAIL] Identity Standard violation: podman_cms_gid must be strictly 2001!${NC}"
-    exit 1
-fi
-if ! grep -q "dsom-admin" inventory/hosts.prod.yml; then
-    echo -e "${RED}[FAIL] Identity Standard violation: unprivileged user must be 'dsom-admin'!${NC}"
-    exit 1
-fi
-echo -e "${GREEN}[OK] Identity mapping standard (dsom-admin:2001:2001) verified in inventory.${NC}"
+echo -e "\n${YELLOW}[2/3] Preparing Sovereign Gate...${NC}"
+echo -e "${GREEN}[OK] Sovereign Gate verification delegated directly to Ansible built-in assertion engine.${NC}"
 
 # -----------------------------------------------------------------------------
 # 3. SUDO LOCK
