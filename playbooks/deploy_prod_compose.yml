@@ -1,0 +1,27 @@
+---
+- name: Production Deploy Orchestrator (Podman-Compose & BunkerWeb) | CmsForNerd v4.1.0
+  hosts: all
+  become: true
+  vars:
+    php_version: "8.5"
+    project_path: "/opt/cmsfornerd"
+    cms_domain: "cmsfornerd.local"
+
+  pre_tasks:
+    - name: Ensure APT cache is updated (Debian/Ubuntu)
+      ansible.builtin.apt:
+        update_cache: true
+      when: ansible_os_family == 'Debian'
+      changed_when: false
+
+    - name: Ensure DNF cache is updated (RedHat/AlmaLinux)
+      ansible.builtin.dnf:
+        update_cache: true
+      when: ansible_os_family == 'RedHat'
+      changed_when: false
+
+  roles:
+    - role: common
+      tags: ['foundation', 'security']
+    - role: podman_prod
+      tags: ['podman_prod', 'containers', 'production']

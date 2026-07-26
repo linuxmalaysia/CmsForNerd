@@ -1,0 +1,201 @@
+---
+# Pre-flight OS check (Sovereign Gate)
+- name: "Sovereign Gate | Verify Target Operating System"
+  ansible.builtin.assert:
+    that:
+      - ansible_os_family in ['Debian', 'RedHat']
+      - ansible_distribution_version is version('20.04', '>=')
+    fail_msg: "Target OS must be Ubuntu 20.04+ or RedHat/AlmaLinux equivalent. Found: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+- name: "Sovereign Gate | Verify Ansible Version"
+  ansible.builtin.assert:
+    that:
+      - ansible_version.full is version('2.16', '>=')
+    fail_msg: "Ansible version must be 2.16 or higher. Found: {{ ansible_version.full }}"
+
+# Foundation OS Provisioning (Sudo Lock)
+- name: Ensure Podman is installed (Debian/Ubuntu)
+  ansible.builtin.apt:
+    name:
+      - podman
+      - podman-compose
+      - git
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure Podman is installed (RedHat/AlmaLinux)
+  ansible.builtin.dnf:
+    name:
+      - podman
+      - podman-compose
+      - git
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Allow rootless containers to bind to privileged ports 80 and 443
+  ansible.posix.sysctl:
+    name: net.ipv4.ip_unprivileged_port_start
+    value: '80'
+    state: present
+    sysctl_set: true
+
+# Identity Standard: UID:GID 2001:2001
+- name: Ensure dsom-admin group exists on the host
+  ansible.builtin.group:
+    name: "{{ podman_cms_group }}"
+    gid: "{{ podman_cms_gid }}"
+    state: present
+
+- name: Ensure dsom-admin user exists on the host
+  ansible.builtin.user:
+    name: "{{ podman_cms_user }}"
+    uid: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_group }}"
+    shell: /bin/bash
+    state: present
+    create_home: true
+
+- name: Enable systemd linger for dsom-admin user
+  ansible.builtin.command: "loginctl enable-linger {{ podman_cms_user }}"
+  args:
+    creates: "/var/lib/systemd/linger/{{ podman_cms_user }}"
+
+# Directory Sovereignty
+- name: Ensure root /opt/cmsfornerd and subdirectories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0755'
+  loop:
+    - "{{ project_path }}"
+    - "{{ bunkerweb_path }}"
+    - "{{ bunkerweb_path }}/data"
+    - "{{ bunkerweb_path }}/configs"
+    - "{{ nginx_path }}"
+    - "{{ php_fpm_path }}"
+    - "{{ codes_path }}"
+
+- name: Create compatible symlink /opt/cmdfornerd to /opt/cmsfornerd
+  ansible.builtin.file:
+    src: "{{ project_path }}"
+    dest: /opt/cmdfornerd
+    state: link
+    force: true
+
+# Clone or Copy codebase (Storage Sovereignty)
+- name: Clone CmsForNerd Official Repository into codes path
+  ansible.builtin.git:
+    repo: 'https://github.com/CMSForNerd/CmsForNerd.git'
+    dest: "{{ codes_path }}"
+    version: master
+    force: true
+    depth: 1
+  become: true
+  become_user: "{{ podman_cms_user }}"
+
+- name: Ensure perfect ownership of the codebase
+  ansible.builtin.file:
+    path: "{{ codes_path }}"
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    recurse: true
+
+# Dependency management
+- name: Run Composer Install inside a rootless container
+  containers.podman.podman_container:
+    name: cmsfornerd-composer-prod
+    image: docker.io/library/composer:2.8
+    state: started
+    user: "{{ podman_cms_uid }}:{{ podman_cms_gid }}"
+    volumes:
+      - "{{ codes_path }}:/app:Z"
+    command: install --ignore-platform-reqs --no-dev --optimize-autoloader
+    detach: false
+    rm: true
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - all
+  become: true
+  become_user: "{{ podman_cms_user }}"
+
+# Templating configurations
+- name: Template Nginx configuration as a volume
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: "{{ nginx_path }}/default.conf"
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0644'
+
+- name: Template PHP-FPM www.conf pool configuration
+  ansible.builtin.template:
+    src: www.conf.j2
+    dest: "{{ php_fpm_path }}/www.conf"
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0644'
+
+- name: Template PHP-FPM custom Dockerfile for PHP 8.5
+  ansible.builtin.template:
+    src: Dockerfile.j2
+    dest: "{{ php_fpm_path }}/Dockerfile"
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0644'
+
+- name: Template Podman-Compose docker-compose.yml
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: "{{ project_path }}/docker-compose.yml"
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0644'
+
+# Container Build and Start
+- name: Build custom PHP 8.5 image as dsom-admin user
+  containers.podman.podman_image:
+    name: localhost/cmsfornerd-php
+    tag: "{{ php_version }}"
+    path: "{{ php_fpm_path }}"
+    force: true
+  become: true
+  become_user: "{{ podman_cms_user }}"
+
+- name: Start production stack using podman-compose
+  ansible.builtin.command: "podman-compose -p {{ compose_project_name }} up -d"
+  args:
+    chdir: "{{ project_path }}"
+  become: true
+  become_user: "{{ podman_cms_user }}"
+  changed_when: true
+
+# High Availability (Systemd user service integration)
+- name: Create systemd user config directory for dsom-admin
+  ansible.builtin.file:
+    path: "/home/{{ podman_cms_user }}/.config/systemd/user"
+    state: directory
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0755'
+
+- name: Template Systemd user service for Podman-Compose Autostart
+  ansible.builtin.template:
+    src: cmsfornerd-pod.service.j2
+    dest: "/home/{{ podman_cms_user }}/.config/systemd/user/cmsfornerd-pod.service"
+    owner: "{{ podman_cms_uid }}"
+    group: "{{ podman_cms_gid }}"
+    mode: '0644'
+
+- name: Enable cmsfornerd systemd user service
+  ansible.builtin.systemd:
+    name: cmsfornerd-pod
+    scope: user
+    enabled: true
+    daemon_reload: true
+  become: true
+  become_user: "{{ podman_cms_user }}"
+  environment:
+    XDG_RUNTIME_DIR: "/run/user/{{ podman_cms_uid }}"

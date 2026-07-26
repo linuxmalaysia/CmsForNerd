@@ -1,0 +1,13 @@
+[Unit]
+Description=CmsForNerd Podman Compose Production Stack
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory={{ project_path }}
+ExecStart=/usr/bin/podman-compose -p {{ compose_project_name }} up
+ExecStop=/usr/bin/podman-compose -p {{ compose_project_name }} down
+Restart=always
+
+[Install]
+WantedBy=default.target
