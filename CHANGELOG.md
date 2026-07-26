@@ -19,6 +19,31 @@ Entries are grouped by date (most recent first).
 
 ---
 
+## [4.0.0] - 2026-07-26 (Production Stable)
+
+### 🐳 Containerization & Orchestration
+
+- **Rootless Podman Automation**: Introduced secure Ansible playbooks for zero-downtime, rootless container deployment (Nginx & PHP-FPM 8.4).
+- **System Hardening**: Configured unprivileged host port-binding (`sysctl`), SELinux mapping (`:Z`), and automatic firewall routing (UFW/Firewalld).
+- **Orchestration Docs**: Deployed comprehensive deployment guide (`ANSIBLE_PODMAN_GUIDE.md`) to streamline rapid environment spin-ups.
+
+### 🎨 Design & Accessibility
+
+- **Adaptive Dark Mode Contrast**: Implemented responsive CSS overrides and custom variables (`--lab-info-bg`, `--lab-warning-bg`, etc.) globally.
+- **Contrast Remediation**: Permanently fixed white-text-on-white-background legibility bugs in all laboratory guidelines and manuals.
+
+### 🛡️ Security & Core Engine
+
+- **Centralized Page Routing**: Extracted redundant request routing logic to `SecurityUtils::resolvePageName` for centralized defense.
+- **Robust IPv6 Anti-DoS**: Hardened trusted bot-detection systems by implementing secure IPv6 bitmask logic for IP address verification.
+
+### 🛠️ Quality Control & CI/CD
+
+- **Fault-Tolerant CI/CD**: Hardened GitHub Actions checks to bypass SonarCloud gracefully when token credentials are not present.
+- **Vendor Isolation**: Optimized static analysis (`phpcs` and `phpstan` rulesets) to strictly ignore `/vendor/` dependencies.
+
+---
+
 ## [4.0.0-alpha] - 2026-03-30 (High-Fidelity & Zero-Debt)
 
 ### 🎨 Glassmorphism & UI

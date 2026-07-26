@@ -4,13 +4,15 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ## Strategic Phases
 
-### Phase 11: Automated Trust & Theme v4.0 (Glassmorphism)
+### Phase 11: Automated Trust, Theme v4.0 & Orchestration
 
 - **CI/CD Intelligence**: Implemented GitHub Actions for absolute compliance enforcement (Digital Sentry).
-- **High-Fidelity Visuals**: Successfully integrated Glassmorphism tokens (--lab-glass-bg, --lab-blur) across both Standard and AMP architectures.
+- **High-Fidelity Visuals**: Successfully integrated Glassmorphism tokens (--lab-glass-bg, --lab-blur) across both Standard and AMP views.
 - **Global Variable Union**: Synchronized all color tokens to `--lab-purple`, achieving 100% parity between core CSS and the UI Audit Kit.
 - **Cache-Busting Sentinel**: Implemented CSS versioning (?v=4.0.0) to force high-fidelity rendering across all laboratory interfaces.
-- **Documentation Modernization**: Conducted a global audit and update of all project documentation to reflect v4.0.0 standards and architectural sovereignty.
+- **Rootless Container Orchestration**: Deployed production-grade Ansible playbooks and Dockerfiles for rootless Podman deployment.
+- **Adaptive Dark Mode Contrast**: Implemented adaptive CSS custom variables ensuring perfect contrast globally across all documentation.
+- **Centralized Security checks**: Restructured request routing logic under `SecurityUtils::resolvePageName` to eliminate duplicates.
 
 ### Phase 7: Semantic Evolution & Zero-Global (v3.6.0)
 
@@ -41,6 +43,23 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 - **AI Readiness**: Modernized metadata layer with JSON-LD and Schema.org.
 - **Theme Correction**: Standardized theme paths to `themes/CmsForNerd`.
 - **Security Auditor**: Introduction of semantic audit tools for students.
+
+## [4.0.0] - 2026-07-26 (Production Stable)
+
+**"Zero-Global Architecture with Containerized Orchestration & High-Contrast Design"**
+
+### 🐳 Rootless Container Orchestration
+- **Ansible & Podman Core**: Created secure container recipes supporting user namespace mapping and host port binding optimizations.
+- **Enterprise Linux Support**: Tailored playbooks to run seamlessly on modern Enterprise Linux (AlmaLinux) and Debian/Ubuntu systems.
+
+### 🎨 High-Contrast Adaptive Dark Mode
+- **Accessibility Parity**: Resolved white-text-on-white-background readability issues globally with targeted, high-specificity overrides.
+- **Adaptive Variables**: Bound alerts and info panels to adaptive CSS properties (`--lab-info-bg`, `--lab-warning-bg`, etc.).
+
+### 🛡️ Core Hardening & CI/CD Resilience
+- **Centralized Routing**: Streamlined directory routing into `SecurityUtils::resolvePageName` to centralize path security.
+- **IPv6 Security**: Hardened bot-detection algorithms with robust IPv6 bitmask operations.
+- **CI/CD Resiliency**: Ensured GitHub Actions pipelines gracefully handle missing tokens or specific environment parameters.
 
 ---
 
