@@ -64,3 +64,17 @@
 
 - **OS-Level Detection**: Implemented `@media (prefers-color-scheme: dark)` standard.
 - **Manual Toggle**: Deployed `<amp-state id="themeState">` for zero-JS user-driven theme switching.
+
+---
+
+## Module 12: Deep State of Mind (DSOM) Integration (v4.1.0)
+
+### Accomplishments — 2026-07-26
+
+- **Workspace Pluralisation**: Successfully migrated the `.agent` workspace to `.agents` across configurations and guidelines.
+- **Sovereign Rulebook**: Integrated the core rulebook (`AGENTS.md`) and verified Open Knowledge Format (OKF) compliance.
+- **Sovereign Agent Skills**: Deployed all 25 OKF-compliant skills in `.agents/skills/`.
+- **Spatial Memory Framework**: Configured the Sovereign Markdown Palace Wings and Registry under `.agents/brain/`.
+- **DSOM Tooling Suite**: Deployed high-fidelity scripts (`eod-palace.sh`, `git-ritual.sh`, etc.) to the `tools/` directory.
+- **Unified Validation**: Overwrote and merged `tools/audit-pre-flight.sh` to support PHP 8.4/8.3 alongside DSOM intelligence audits.
+- **Verification Audit**: Successfully verified the Pluralized Workspace and ran `composer lab-check` with all passing results.

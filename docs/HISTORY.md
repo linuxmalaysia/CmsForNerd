@@ -4,6 +4,15 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ## Strategic Phases
 
+### Phase 12: Deep State of Mind (DSOM) Integration
+
+- **Workspace Pluralisation**: Successfully migrated the `.agent` singular workspace to `.agents` plural.
+- **Sovereign Rulebook**: Integrated the core rulebook (`AGENTS.md`) enforcing Zero-Global memory, Open Knowledge Format (OKF), and Sovereign Signatures.
+- **Sovereign Agent Skills**: Deployed all 25 OKF-compliant sovereign skills inside `.agents/skills/`.
+- **Spatial Memory Framework**: Configured the Sovereign Markdown Palace Wings and Registry under `.agents/brain/`.
+- **DSOM Tooling Suite**: Deployed high-fidelity scripts (`eod-palace.sh`, `git-ritual.sh`, etc.) to the `tools/` directory.
+- **Unified Validation**: Overwrote and merged `tools/audit-pre-flight.sh` to include both PHP 8.4/8.3 environment checks and DSOM validations.
+
 ### Phase 11: Automated Trust, Theme v4.0 & Orchestration
 
 - **CI/CD Intelligence**: Implemented GitHub Actions for absolute compliance enforcement (Digital Sentry).
@@ -43,6 +52,21 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 - **AI Readiness**: Modernized metadata layer with JSON-LD and Schema.org.
 - **Theme Correction**: Standardized theme paths to `themes/CmsForNerd`.
 - **Security Auditor**: Introduction of semantic audit tools for students.
+
+## [4.1.0] - 2026-07-26 (Deep State of Mind Integration)
+
+**"Full Integration of DSOM Sovereign Cognitive Architecture & Pluralised Workspace Tooling"**
+
+### 🧠 Workspace & Core Rulebook
+- **Pluralised Workspace**: Successfully migrated `.agent` singular references to `.agents` plural.
+- **Sovereign Rulebook**: Integrated OKF v0.1 compliant `AGENTS.md` and 25 Sovereign Agent Skills.
+- **Palace Wings & Registry**: Mapped spatial memory hierarchy under `.agents/brain/wings/`.
+
+### 🛠️ Hybrid-Sovereign Validation
+- **Unified Pre-flight**: Overwrote and merged `tools/audit-pre-flight.sh` to check PHP 8.4/8.3 constraints and DSOM validations.
+- **Sovereign Tooling Suite**: Deployed robust automation scripts (`eod-palace.sh`, `git-ritual.sh`, etc.).
+
+---
 
 ## [4.0.0] - 2026-07-26 (Production Stable)
 

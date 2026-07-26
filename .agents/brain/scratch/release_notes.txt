@@ -1,0 +1,14 @@
+🚀 CMSForNerd v4.1.0 Release — Deep State of Mind Integration
+
+This release fully integrates the Deep State of Mind (DSOM) Sovereign Cognitive Architecture and pluralises the workspace tooling.
+
+### 🧠 Deep State of Mind (DSOM) Core
+- **Workspace Pluralisation**: Successfully migrated the `.agent` singular workspace to `.agents` plural.
+- **Sovereign Rulebook**: Integrated the core rulebook (`AGENTS.md`) enforcing Zero-Global memory, Open Knowledge Format (OKF), and Sovereign Signatures.
+- **Sovereign Agent Skills**: Deployed all 25 OKF-compliant sovereign skills inside `.agents/skills/`.
+- **Spatial Memory Framework**: Configured the Sovereign Markdown Palace Wings and Registry under `.agents/brain/`.
+
+### 🛠️ Tooling & Validation Suite
+- **DSOM Tooling Suite**: Deployed high-fidelity scripts (`eod-palace.sh`, `git-ritual.sh`, etc.) to the `tools/` directory.
+- **Unified Validation**: Overwrote and merged `tools/audit-pre-flight.sh` to include both PHP 8.4/8.3 environment checks and DSOM validations.
+- **Quality Assurance**: Verified structural and syntactic correctness of the repository using `composer lab-check` passing Level 8 analysis.

@@ -1,10 +1,10 @@
-# 🚀 CmsForNerd v4.0.0 (2026 Glassmorphism & Orchestration Edition)
+# 🚀 CmsForNerd v4.1.0 (2026 Deep State of Mind Edition)
 
 **CmsForNerd** is a Lightweight, Radically Simple, Database-Free PHP Laboratory CMS designed as a live learning
-environment for modern developers. Version 4.0 features **High-Fidelity Glassmorphism**, **Zero-Global** architecture,
-**Automated Compliance Validation**, and professional **Rootless Container Orchestration**.
+environment for modern developers. Version 4.1 features the **Deep State of Mind (DSOM) Cognitive Architecture**,
+**Zero-Global** architecture, **Automated Compliance Validation**, and professional **Rootless Container Orchestration**.
 
-**Current Version:** 4.0.0 (Production Stable)
+**Current Version:** 4.1.0 (Production Stable)
 
 **Changelog:** See [CHANGELOG.md](CHANGELOG.md) for latest release details.
 
