@@ -4,7 +4,7 @@ type: documentation
 title: "The Core AI Rulebook (DSOM)"
 description: "OKF-compliant documentation for AGENTS.md."
 resource: "file:///.agents/AGENTS.md"
-timestamp: 2026-07-26T21:59:00Z
+timestamp: 2026-07-27T12:00:00Z
 ---
 # The Core AI Rulebook (DSOM)
 
@@ -92,10 +92,16 @@ Welcome to the Sovereign AI Agent Workspace. You are a Cognitive Digital Twin op
     `ansible-playbook` for infrastructure, `uv run` for Python, `npm run` for Web, and `pandoc` for documentation. For Windows-only
     environments lacking a dedicated Linux jumphost, the AI must explicitly mandate **WSL2 (Ubuntu/AlmaLinux)** as the local Control
     Node / Execution Bridge.
-23. **The AGENTS.md Parity & Sync Mandate:** The AI and human operators must strictly maintain parity and keep both `AGENTS.md` (at the
-    repository root) and `.agents/AGENTS.md` synchronized and up to date. The root `AGENTS.md` serves as a routing gateway notifying
-    external AI agents (like Google Jules) to read `.agents/AGENTS.md` and explore `.agents/brain/` files, while `.agents/AGENTS.md`
-    contains the full cognitive ruleset. Keeping both updated ensures effective workspace alignment.
+23. **Dual Agent Registry (Root Gateway Mandate):** Every DSOM project must maintain two synchronised `AGENTS.md` files:
+    - **`AGENTS.md` (root):** A lightweight OKF-compliant gateway file placed at the repository root for discovery by platform agents
+      (Google Jules, Cursor, GitHub Copilot). It must summarise the DSOM protocol, list the 3-step Mechanical Boot Sequence, the 5-step
+      Knowledge-First Discovery Flow, and explicitly redirect agents to `.agents/AGENTS.md` and `.agents/brain/`. This file can describe
+      the agents or tools in your codebase, such as what they do, how to interact with them, or any input and output conventions. Jules
+      and other AI agents use this file to better understand your code and generate more relevant plans and completions.
+    - **`.agents/AGENTS.md` (full rulebook):** The Sovereign Constitution containing all operational laws, persona, and procedural
+      protocols.
+    Whenever `.agents/AGENTS.md` is updated with a new rule or structural change, the root `AGENTS.md` must be reviewed and
+    synchronised to reflect the change. Both files must carry current OKF `timestamp` values.
 
 ## Cognitive Engine Protocols (Boot & Discovery)
 

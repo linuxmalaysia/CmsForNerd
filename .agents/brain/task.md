@@ -61,3 +61,10 @@
 - [x] Overwrite and merge `tools/audit-pre-flight.sh` to include both PHP 8.4/8.3 checks and DSOM validations
 - [x] Update all references of `.agent` to `.agents` in configurations, rules, and documentations
 - [x] Verify the workspace structure and execute `composer lab-check`
+
+## [ ] Module 13: Dual Agent Registry Gateway (v4.1.1)
+
+- [x] Append Rule 23 "Dual Agent Registry (Root Gateway Mandate)" to `.agents/AGENTS.md`
+- [x] Format rule text to strictly respect the 140-character line length limit
+- [x] Synchronise root `AGENTS.md` with current OKF timestamp `2026-07-27T12:00:00Z`
+- [x] Run compliance suite `composer lab-check` — **DONE**
