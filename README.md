@@ -1,10 +1,10 @@
-# 🚀 CmsForNerd v4.0.0-alpha (2026 Glassmorphism Edition)
+# 🚀 CmsForNerd v4.0.0 (2026 Glassmorphism & Orchestration Edition)
 
 **CmsForNerd** is a Lightweight, Radically Simple, Database-Free PHP Laboratory CMS designed as a live learning
-environment for modern developers. Version 4.0 marks the transition to **High-Fidelity Glassmorphism**, **Zero-Global** architecture, and
-**Automated Phase 11 Compliance**.
+environment for modern developers. Version 4.0 features **High-Fidelity Glassmorphism**, **Zero-Global** architecture,
+**Automated Compliance Validation**, and professional **Rootless Container Orchestration**.
 
-**Current Version:** 4.0.0-alpha (Visual Fidelity Milestone)
+**Current Version:** 4.0.0 (Production Stable)
 
 **Changelog:** See [CHANGELOG.md](CHANGELOG.md) for latest release details.
 
@@ -86,6 +86,11 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 1. Use [Ondřej Surý's PPA](https://deb.sury.org/) or [Remi Repo](https://rpms.remirepo.net/).
 2. Install `php8.4-cli`, `php8.4-mbstring`, `php8.4-xml`, and `php8.4-zip`.
+
+### 🐳 Option 3: Rootless Container Orchestration (Ansible & Podman)
+
+1. Deploys CmsForNerd securely within rootless containers (Nginx + PHP-FPM 8.4).
+2. See the comprehensive [Ansible-Podman Deployment Guide](ANSIBLE_PODMAN_GUIDE.md) for automated setups on target hosts.
 
 ---
 
