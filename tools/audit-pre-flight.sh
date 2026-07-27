@@ -1,17 +1,9 @@
 #!/bin/bash
 
 # ==============================================================================
-# Protocol    : Deep State of Mind (DSOM) For My AI
+# Protocol    : Deep State of Mind (DSOM) For My AI Protocol (v5.0 - CMSForNerd Hybrid)
 # Author      : Harisfazillah Jamel (LinuxMalaysia)
 # Timestamp   : 2026-07-27
-# License     : GNU General Public License v3.0
-# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
-# ==============================================================================
-
-# ==============================================================================
-# Protocol    : Deep State of Mind (DSOM) For My AI (v5.0 - CMSForNerd Hybrid)
-# Author      : Harisfazillah Jamel (LinuxMalaysia)
-# Timestamp   : 2026-07-12
 # License     : GNU General Public License v3.0
 # Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
 # Purpose     : Ensure AI State of Mind is synced with Physical Reality (Git, PHP, Ansible)
