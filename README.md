@@ -16,7 +16,7 @@ environment for modern developers. Version 4.1 features the **Deep State of Mind
 
 ## 📱 AMP & Dual-View Architecture
 
-Version 4.0.0 maintains the high-performance **Dual-View** engine:
+Version 4.1.0 maintains the high-performance **Dual-View** engine:
 
 - **AMP Hybrid Rendering**: Automatically detects `?view=amp` to serve Google-validated Accelerated Mobile Pages.
 - **Zero-JS Interactivity**: Implementation of `amp-sidebar` for lightning-fast mobile navigation.
@@ -41,13 +41,13 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 1. **Update Brain**: Update `.agents/brain/walkthrough.md` with the day's logic changes to prepare for the next session.
 2. **Log Milestones**: Finalize entries in `CHANGELOG.md`.
-3. **Tag State**: Use `git tag -a v3.6.0` to create a permanent snapshot of the current "State of Mind."
+3. **Tag State**: Use `git tag -a v4.1.0` to create a permanent snapshot of the current "State of Mind."
 
 ---
 
 ## 📋 MASTER CONTEXT BLOCK (Copy/Paste for AI)
 
-> **PROMPT:** Act as a Lead PHP Architect for **CmsForNerd v4.0.0**. Standards: PHP 8.4 strict types, PHPStan Level 8,
+> **PROMPT:** Act as a Lead PHP Architect for **CmsForNerd v4.1.0**. Standards: PHP 8.4 strict types, PHPStan Level 8,
 > Zero-Global variables (via `Registry`), and "Pair Logic" (Logic in `.php`, UI in `-body.inc`). This is a Dual-View CMS
 > (Standard/AMP).
 > **Core Engine (bootstrap.php):** Initializes Immutable `CmsContext` with automated `schemaType` detection.
@@ -89,7 +89,7 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 ### 🐳 Option 3: Rootless Container Orchestration (Ansible & Podman)
 
-1. Deploys CmsForNerd securely within rootless containers (Nginx + PHP-FPM 8.4).
+1. Deploys CmsForNerd within rootless containers (Nginx + PHP-FPM 8.4), offering rootless isolation benefits but requiring host-policy trade-offs (such as sysctl port-binding permissions).
 2. See the comprehensive [Ansible-Podman Deployment Guide](ANSIBLE_PODMAN_GUIDE.md) for automated setups on target hosts.
 
 ---
@@ -102,7 +102,7 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 ---
 
-### ⚖️ Standards (RFC 2119 & v4.0.0 Engineering)
+### ⚖️ Standards (RFC 2119 & v4.1.0 Engineering)
 
 - **MUST**: Begin all files with `declare(strict_types=1);`.
 - **MUST**: All mobile output **MUST** pass the `AMP Validator`.
@@ -119,3 +119,8 @@ handshake is **REQUIRED** for all laboratory sessions.
 - **Website**: [linuxmalaysia.com](https://www.linuxmalaysia.com)
 
 *Modernization without loss of simplicity. Mobile excellence without the bloat.*
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
