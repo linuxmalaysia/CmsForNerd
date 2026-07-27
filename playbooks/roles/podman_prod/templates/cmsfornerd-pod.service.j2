@@ -5,8 +5,8 @@ After=network-online.target
 [Service]
 Type=simple
 WorkingDirectory={{ project_path }}
-ExecStart=/usr/bin/podman-compose -p {{ compose_project_name }} up
-ExecStop=/usr/bin/podman-compose -p {{ compose_project_name }} down
+ExecStart=/usr/bin/podman-compose -f compose.yml -p {{ compose_project_name }} up
+ExecStop=/usr/bin/podman-compose -f compose.yml -p {{ compose_project_name }} down
 Restart=always
 
 [Install]

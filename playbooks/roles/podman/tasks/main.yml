@@ -1,15 +1,41 @@
 ---
-- name: Ensure Podman is installed (Debian/Ubuntu)
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-27
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+- name: Ensure Podman 5 and associated tools are installed (Debian/Ubuntu)
   ansible.builtin.apt:
-    name: podman
+    name:
+      - podman
+      - podman-compose
+      - git
+      - uidmap
+      - dbus-user-session
+      - catatonit
     state: present
   when: ansible_os_family == 'Debian'
 
-- name: Ensure Podman is installed (RedHat/AlmaLinux)
+- name: Ensure Podman and associated tools are installed (RedHat/AlmaLinux)
   ansible.builtin.dnf:
-    name: podman
+    name:
+      - podman
+      - podman-compose
+      - git
     state: present
   when: ansible_os_family == 'RedHat'
+
+- name: Register Podman version
+  ansible.builtin.command: "podman --version"
+  register: podman_version_output
+  changed_when: false
+
+- name: Display Podman version
+  ansible.builtin.debug:
+    msg: "Detected Podman Version: {{ podman_version_output.stdout }}"
 
 - name: Allow rootless containers to bind to port 80
   ansible.posix.sysctl:

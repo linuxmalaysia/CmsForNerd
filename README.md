@@ -91,6 +91,7 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 1. Deploys CmsForNerd within rootless containers (Nginx + PHP-FPM 8.4), offering rootless isolation benefits but requiring host-policy trade-offs (such as sysctl port-binding permissions).
 2. See the comprehensive [Ansible-Podman Deployment Guide](ANSIBLE_PODMAN_GUIDE.md) for automated setups on target hosts.
+3. Learn how to set up Google Jules on Ubuntu 26.04 in our [Google Jules Ubuntu 26.04 Setup Guide](docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md).
 
 ---
 
