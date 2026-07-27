@@ -1,3 +1,11 @@
+---
+okf_version: 0.1
+type: documentation
+title: "Sovereign Laboratory Index"
+description: "Detailed mapping of all laboratory manuals, modules, environments, graduation files, and records."
+resource: "file:///docs/SUMMARY.md"
+timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
+---
 # Summary
 # CMSForNerd Laboratory (v4.0.0-alpha)
 
@@ -47,5 +55,5 @@
 
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

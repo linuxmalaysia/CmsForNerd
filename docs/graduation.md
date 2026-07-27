@@ -4,7 +4,7 @@ type: documentation
 title: "Graduation & Certification (v4.0.0)"
 description: "Student graduation guidelines and secure certification engine standards."
 resource: "file:///docs/graduation.md"
-timestamp: 2026-07-27T12:00:00Z
+timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 ---
 # 🎓 Graduation & Certification (v4.0.0)
 
@@ -39,9 +39,8 @@ The CMS includes a built-in, secure certificate generator. To issue your certifi
 
 ### Certificate Security Enforcement
 To ensure maximum safety against Cross-Site Scripting (XSS) and code injection through URL parameters:
-* **Strict Parameter Escaping**: The `student` parameter is safely escaped using `htmlspecialchars($student, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')`.
-* **Dynamic Certificate Signatures**: Verification signatures are generated with a secure SHA-256 hash using the escaped student name and
-  the current server date, preventing tampering and forge requests.
+* **Strict Parameter Escaping**: The `student` parameter is safely escaped using the canonical `SecurityUtils::escapeHtml()` helper.
+* **Certificate Checksum**: A SHA-256 checksum is generated using the student name and the current server date to provide an integrity checksum of the certificate data. Note that this plain SHA-256 hash does not prevent tampering or forgery since it does not use a server-held secret key.
 
 ### Printing Instructions
 The graduation page is optimized for physical printing. Press `Ctrl + P` in your browser to generate a high-quality certificate layout.
@@ -60,5 +59,5 @@ Graduation is just the beginning. As a "Modernized Nerd," you are now ready to:
 
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

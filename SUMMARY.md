@@ -1,3 +1,11 @@
+---
+okf_version: 0.1
+type: documentation
+title: "Table of Contents"
+description: "Sovereign index mapping laboratory modules, technical resources, and certification."
+resource: "file:///SUMMARY.md"
+timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
+---
 # Table of contents
 
 * [👋 Welcome & Overview](README.md)
@@ -33,5 +41,5 @@
 
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

@@ -42,7 +42,7 @@ header("X-Frame-Options: DENY");           // Prevents clickjacking
  * Since this is XML, we disable all external resources (scripts, styles, etc.)
  * to prevent any form of XSS or injection.
  */
-header("Content-Security-Policy: default-src 'none'; style-src 'self';");
+header("Content-Security-Policy: default-src 'none'; style-src 'none';");
 
 /**
  * [SECURITY] CACHE CONTROL

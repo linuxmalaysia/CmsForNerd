@@ -4,7 +4,7 @@ type: documentation
 title: "Cross-Site Scripting (XSS) & Host Header Injection Protection Guide"
 description: "Sovereign guide to the XSS and Host Header defense architecture in CMSForNerd v4.0.0."
 resource: "file:///docs/xss-protection-guide.md"
-timestamp: 2026-07-27T12:00:00Z
+timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 topics: [security, xss, host-header, dynamic-xml]
 ---
 # 🛡️ XSS & Host Header Injection Protection Guide
@@ -23,9 +23,9 @@ To prevent common vulnerabilities and eliminate SonarCloud code duplication, cor
 ### 1. Host Header Injection Defense
 Attackers often spoof the `Host` HTTP request header to inject arbitrary values into dynamic links, resulting in password reset poisonings or
 XSS.
-* **Solution**: `SecurityUtils::getSafeBaseUrl()` calculates and sanitizes `$_SERVER['HTTP_HOST']`. It removes any character outside the safe
-  regex pattern `/[^a-zA-Z0-9\-.:]/` and constructs a safe, predictable Base URL.
-* **Usage**: Used consistently in `rss.php` and `sitemap.php` to calculate canonical links safely.
+* **Solution**: `SecurityUtils::getSafeBaseUrl()` validates `$_SERVER['HTTP_HOST']` against an explicit allowlist of trusted hosts (e.g.,
+  `localhost`, `127.0.0.1`, `::1`, `cmsfornerd.test`) and rejects any untrusted Host headers to construct a safe, predictable Base URL.
+* **Usage**: Used consistently in `rss.php` and `sitemap.php` to calculate canonical links safely, rejecting untrusted requests immediately.
 
 ### 2. Centralized Page Discovery
 * **Solution**: `SecurityUtils::discoverPages()` scans the laboratory content folder (`contents/`) for paired file structures, ensuring that only
@@ -54,7 +54,7 @@ while (ob_get_level()) {
 ### B. Restrictive Content Security Policies (CSP)
 For standalone XML files (like `sitemap.php`), we deliver a strict Content Security Policy to ensure browsers disable all scripts and styling:
 ```http
-Content-Security-Policy: default-src 'none'; style-src 'self';
+Content-Security-Policy: default-src 'none'; style-src 'none';
 ```
 
 ### C. Pure Encoding Declarations
@@ -71,8 +71,9 @@ header("X-Content-Type-Options: nosniff");
 
 On the graduation certificate generator (`graduation.php`), students supply their names via the `student` parameter.
 * **Vulnerability**: An unescaped query string parameter is a direct path to Reflected XSS.
-* **Mitigation**: The certificate view (`contents/graduation-body.inc`) passes all dynamic parameters through the `htmlspecialchars` function
-  with `ENT_QUOTES | ENT_SUBSTITUTE` UTF-8 constraints, and uses a SHA-256 hash of the student ID to sign certificates cryptographically.
+* **Mitigation**: The certificate view (`contents/graduation-body.inc`) passes all dynamic parameters through the canonical
+  `SecurityUtils::escapeHtml()` helper, and displays a SHA-256 checksum of the student ID. Note that this plain SHA-256 hash provides
+  only an integrity checksum of the certificate data rather than an anti-forgery cryptographic signature, as it does not use a server-held secret.
 
 ---
 
@@ -82,5 +83,5 @@ On the graduation certificate generator (`graduation.php`), students supply thei
 - [Directory Security Guide](directory-security.md)
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

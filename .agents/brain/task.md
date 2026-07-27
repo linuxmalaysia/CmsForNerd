@@ -1,3 +1,11 @@
+---
+okf_version: 0.1
+type: documentation
+title: "CMSForNerd Tasks Management"
+description: "Active registry tracking the implementation state of all development and compliance modules."
+resource: "file:///.agents/brain/task.md"
+timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
+---
 # CMSForNerd v3.5 & v3.6 Task Management
 
 ## [x] Module 8: PWA & CSP Master Stabilization (v3.5.1)
@@ -88,5 +96,5 @@
 
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
