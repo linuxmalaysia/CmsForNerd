@@ -19,19 +19,35 @@ Entries are grouped by date (most recent first).
 
 ---
 
+## [4.1.3] - 2026-07-27 (Feed Sitemaps & Certificate Hardening)
+
+### 🛡️ Security Hardening
+- **Dynamic XSS Mitigation**: Fully escaped standalone sitemaps, RSS feeds, and student certificate parameter outputs against XSS.
+- **Host Header Poisoning Defense**: Centralised host-header base URL resolution into `SecurityUtils::getSafeBaseUrl()` to remove injection.
+- **Centralised Page Scanning**: Created `SecurityUtils::discoverPages()` to parse content fragments, resolving logic duplication.
+- **Restrictive CSP Headers**: Deployed robust default Content Security Policies for standalone sitemap generators.
+
+### 🧪 Validation & Automated Testing
+- **Security Unit Testing**: Added targeted test cases in `tests/SecurityTest.php` verifying traversal block lists and IPv6 bitmasks.
+- **Compliance Audit**: Validated codebase readiness via `composer lab-check` yielding zero static analysis errors.
+
+### 📘 Documentation Sync
+- **Palace Protection Guide**: Created `docs/xss-protection-guide.md` tracking all secure practices.
+- **Sitemap & SEO Updates**: Revised sitemap manuals to document dynamic paired page logic and host security controls.
+
 ## [4.1.0] - 2026-07-26 (Deep State of Mind Integration)
 
 ### 🧠 Deep State of Mind (DSOM) Core
 
-- **Workspace Pluralisation**: Successfully migrated the `.agent` singular workspace to `.agents` plural.
-- **Sovereign Rulebook**: Integrated the core rulebook (`AGENTS.md`) enforcing Zero-Global memory, Open Knowledge Format (OKF), and Sovereign Signatures.
+- **Workspace Pluralisation**: Successfully migrated the `.agent` workspace to `.agents` plural.
+- **Sovereign Rulebook**: Integrated the core rulebook (`AGENTS.md`) enforcing Zero-Global memory, OKF, and Sovereign Signatures.
 - **Sovereign Agent Skills**: Deployed all 25 OKF-compliant sovereign skills inside `.agents/skills/`.
 - **Spatial Memory Framework**: Configured the Sovereign Markdown Palace Wings and Registry under `.agents/brain/`.
 
 ### 🛠️ Tooling & Validation Suite
 
 - **DSOM Tooling Suite**: Deployed high-fidelity scripts (`eod-palace.sh`, `git-ritual.sh`, etc.) to the `tools/` directory.
-- **Unified Validation**: Overwrote and merged `tools/audit-pre-flight.sh` to include both PHP 8.4/8.3 environment checks and DSOM validations.
+- **Unified Validation**: Overwrote and merged `tools/audit-pre-flight.sh` to include both PHP 8.4/8.3 environment checks and DSOM.
 - **Quality Assurance**: Verified structural and syntactic correctness of the repository using `composer lab-check` passing Level 8 analysis.
 
 ## [4.0.0] - 2026-07-26 (Production Stable)
@@ -248,3 +264,8 @@ Entries are grouped by date (most recent first).
 ## [1.0.0] - 2005-01-10 (The Original Foundation)
 
 - **Initial Release**: A radically simple, flat-file CMS built for PHP 4.
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

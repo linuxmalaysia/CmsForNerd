@@ -92,7 +92,25 @@
 - **Visual Verification**: Built a Playwright automation script to programmatically toggle Dark Mode and capture screenshots,
   verifying perfect legibility and complete UI compliance with 0 regressions.
 
+---
+
+## 🏁 Session Anchor: 2026-07-27 — Security Hardening & Documentation Sync (v4.1.3)
+
+### Accomplishments
+- **Dynamic XSS Prevention**: Fully secured standalone XML sitemaps, RSS feeds, and the student graduation page against Reflected XSS.
+- **Host Header Injection Mitigation**: Centralised and sanitized dynamic `$_SERVER['HTTP_HOST']` parsing into `SecurityUtils::getSafeBaseUrl()`.
+- **Logic Centralisation**: Reduced SonarCloud duplication from sitemap/feed scripts into `SecurityUtils::discoverPages()`.
+- **Validation Unit Testing**: Added automated unit tests validating traversal block lists, bot spoof detection, and IPv6 bitmasks.
+- **Cognitive Documentation Suite**: Developed a detailed protection guide (`docs/xss-protection-guide.md`) mapping these changes.
+
+### Why
+- Standalone generation scripts must run securely, independently of core layouts, with strict Content Security Policies.
+- Centralizing core calculations enforces "Zero-Debt" software standards and protects dynamic links from malicious Host injection.
+
+### Mental Anchor
+> The security hardening suite is fully implemented, verified, and thoroughly documented. The system passes `composer lab-check` with a perfect score.
+
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

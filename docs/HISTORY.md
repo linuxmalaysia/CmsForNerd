@@ -4,6 +4,13 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ## Strategic Phases
 
+### Phase 13: Security Hardening & Duplication Cleanups
+
+- **Sitemap & Feed Sanitization**: Secured dynamically generated XML and RSS payloads against cross-site scripting (XSS).
+- **Host Header Injection Protection**: Centralized host header parsing into `SecurityUtils::getSafeBaseUrl()` using dynamic safe filter boundaries.
+- **Logic Centralization**: Centralized directory file scanner and pairing in `SecurityUtils::discoverPages()` to eliminate duplication.
+- **Unit Verification Suite**: Expanded `tests/SecurityTest.php` with robust directory validation and bot detection rules.
+
 ### Phase 12: Deep State of Mind (DSOM) Integration
 
 - **Workspace Pluralisation**: Successfully migrated the `.agent` singular workspace to `.agents` plural.
@@ -37,7 +44,7 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 - **UI Audit Laboratory**: Bootstrapped `ui-kit.php` for technical theme and contrast verification.
 - **AMP Acceleration Documentation**: Implemented `amp-acceleration.php` detailing dual-view logic.
 - **Workbox Integration**: Migrated vanilla Service Worker to Google Workbox v6 for optimized caching.
-- **Path Sovereignty**: Enforced absolute URI resolution (`baseUrl`) site-wide for subdirectory support.
+- **Path Sovereignty**: Enforced absolute URI resolution (`baseUrl`) site-site-wide for subdirectory support.
 
 ### Phase 5: Modernization Mastery (v3.5.1)
 
@@ -52,6 +59,21 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 - **AI Readiness**: Modernized metadata layer with JSON-LD and Schema.org.
 - **Theme Correction**: Standardized theme paths to `themes/CmsForNerd`.
 - **Security Auditor**: Introduction of semantic audit tools for students.
+
+## [4.1.3] - 2026-07-27 (Sitemaps & Certificate Hardening against XSS)
+
+**"Complete Security Hardening of Feeds, Sitemaps, and Graduation Certificates"**
+
+### 🛡️ Secure Dynamic Output Generation
+- **Reflected XSS Remediation**: Secured standalone RSS feeds (`rss.php`), standing sitemaps (`sitemap.php`), and student graduation certificates (`graduation.php` / `contents/graduation-body.inc`) with precise escaping via `SecurityUtils::escapeHtml()`.
+- **Host Header Poisoning Protection**: Centralized and sanitized `$_SERVER['HTTP_HOST']` calculation within `SecurityUtils::getSafeBaseUrl()` to guarantee safe URL generation.
+- **Centralized Page discovery**: Streamlined logic scanning for page pairs under `SecurityUtils::discoverPages()`, preventing SonarCloud warnings and code duplication.
+- **Defensive CSP Headers**: Deployed strict Content Security Policy headers for dynamic standalone XML generation.
+
+### 🧪 Static Analysis & Unit Verification
+- **Verification Tests**: Built automated tests in `tests/SecurityTest.php` to analyze directory traversal boundaries, bot detection trust models, and IPv6 bitmasks.
+
+---
 
 ## [4.1.0] - 2026-07-26 (Deep State of Mind Integration)
 
@@ -77,7 +99,7 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 - **Enterprise Linux Support**: Tailored playbooks to run seamlessly on modern Enterprise Linux (AlmaLinux) and Debian/Ubuntu systems.
 
 ### 🎨 High-Contrast Adaptive Dark Mode
-- **Accessibility Parity**: Resolved white-text-on-white-background readability issues globally with targeted, high-specificity overrides.
+- **Accessibility Parity**: Resolved white-text-on-white-background legibility issues globally with targeted, high-specificity overrides.
 - **Adaptive Variables**: Bound alerts and info panels to adaptive CSS properties (`--lab-info-bg`, `--lab-warning-bg`, etc.).
 
 ### 🛡️ Core Hardening & CI/CD Resilience
@@ -127,3 +149,8 @@ Refactored the 2005 foundation into PHP 8.4+ classes with PHP 9 readiness.
 ---
 
 > "Modernization without loss of simplicity." — *Harisfazillah Jamel & Google Gemini, 2026.*
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
