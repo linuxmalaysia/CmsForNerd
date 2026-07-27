@@ -12,6 +12,16 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ## Strategic Phases
 
+### Phase 14: Podman 5+ Native Migration & Google Jules Setup
+
+- **Ubuntu 26.04 Standardisation**: Integrated support for Ubuntu 26.04 (Plucky Puffin), the first stable OS natively shipping
+  with Podman 5.x.
+- **Pure Podman Migration**: Renamed and migrated all legacy Dockerfile and docker-compose assets to Podman-native Containerfile and
+  compose.yml configurations.
+- **Asynchronous Jules Guide**: Penned a comprehensive, OKF-compliant guide detailing how to setup and run Google Jules asynchronously
+  with Podman 5.
+- **Systemd & HA Recovery**: Patched systemd user service and playbooks to enforce non-docker, daemon-independent containers.
+
 ### Phase 13: Security Hardening & Duplication Cleanups
 
 - **Sitemap & Feed Sanitization**: Secured dynamically generated XML and RSS payloads against cross-site scripting (XSS).
@@ -80,6 +90,23 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ### 🧪 Static Analysis & Unit Verification
 - **Verification Tests**: Built automated tests in `tests/SecurityTest.php` to analyze directory traversal boundaries, bot detection trust models, and IPv6 bitmasks.
+
+---
+
+## [4.1.4] - 2026-07-27 (Planned Handover Date) (Podman 5 Native Migration & Google Jules Ubuntu 26.04 Setup)
+
+**"Complete Podman 5 Migration & Google Jules Ubuntu 26.04 Deployment Blueprint"**
+
+### 🐳 Pure Podman 5 Engine & Configurations
+- **Pure Naming Standard**: Fully migrated Dockerfile definitions to native `Containerfile` and Docker-Compose to `compose.yml` across both
+  staging and production playbooks.
+- **Podman 5+ Supporting Suite**: Upgraded Debian/Ubuntu package specifications to install `uidmap`, `dbus-user-session`, and `catatonit`
+  natively on Ubuntu 26.04.
+- **Version Detection Assertion**: Integrated automated version printing (`podman --version`) into the playbook infrastructure.
+
+### 🤖 Google Jules Setup Guide
+- **Sovereign Guidebook**: Authored `docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md` detailing unprivileged setups, lingering settings, and
+  Cloud SDK integrations.
 
 ---
 

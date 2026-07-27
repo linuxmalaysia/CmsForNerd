@@ -91,6 +91,7 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 1. Deploys CmsForNerd securely within rootless containers (Nginx + PHP-FPM 8.4).
 2. See the comprehensive [Ansible-Podman Deployment Guide](ANSIBLE_PODMAN_GUIDE.md) for automated setups on target hosts.
+3. Learn how to set up Google Jules on Ubuntu 26.04 in our [Google Jules Ubuntu 26.04 Setup Guide](docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md).
 
 ---
 
@@ -119,3 +120,8 @@ handshake is **REQUIRED** for all laboratory sessions.
 - **Website**: [linuxmalaysia.com](https://www.linuxmalaysia.com)
 
 *Modernization without loss of simplicity. Mobile excellence without the bloat.*
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

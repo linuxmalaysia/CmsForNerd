@@ -1,4 +1,12 @@
 ---
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-27
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
 # Pre-flight OS check (Sovereign Gate)
 - name: "Sovereign Gate | Verify Target Operating System"
   ansible.builtin.assert:
@@ -32,16 +40,19 @@
     fail_msg: "Identity Standard violation: unprivileged user must be 'dsom-admin'! Found: {{ podman_cms_user }}"
 
 # Foundation OS Provisioning (Sudo Lock)
-- name: Ensure Podman is installed (Debian/Ubuntu)
+- name: Ensure Podman 5 and associated tools are installed (Debian/Ubuntu)
   ansible.builtin.apt:
     name:
       - podman
       - podman-compose
       - git
+      - uidmap
+      - dbus-user-session
+      - catatonit
     state: present
   when: ansible_os_family == 'Debian'
 
-- name: Ensure Podman is installed (RedHat/AlmaLinux)
+- name: Ensure Podman and associated tools are installed (RedHat/AlmaLinux)
   ansible.builtin.dnf:
     name:
       - podman
@@ -49,6 +60,15 @@
       - git
     state: present
   when: ansible_os_family == 'RedHat'
+
+- name: Register Podman version
+  ansible.builtin.command: "podman --version"
+  register: podman_version_output
+  changed_when: false
+
+- name: Display Podman version
+  ansible.builtin.debug:
+    msg: "Detected Podman Version: {{ podman_version_output.stdout }}"
 
 - name: Allow rootless containers to bind to privileged ports 80 and 443
   ansible.posix.sysctl:
@@ -149,18 +169,18 @@
     group: "{{ podman_cms_gid }}"
     mode: '0600'
 
-- name: Template PHP-FPM custom Dockerfile for PHP 8.5
+- name: Template PHP-FPM custom Containerfile for PHP 8.5
   ansible.builtin.template:
-    src: Dockerfile.j2
-    dest: "{{ php_fpm_path }}/Dockerfile"
+    src: Containerfile.j2
+    dest: "{{ php_fpm_path }}/Containerfile"
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
     mode: '0600'
 
-- name: Template Podman-Compose docker-compose.yml
+- name: Template Podman-Compose compose.yml
   ansible.builtin.template:
-    src: docker-compose.yml.j2
-    dest: "{{ project_path }}/docker-compose.yml"
+    src: compose.yml.j2
+    dest: "{{ project_path }}/compose.yml"
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
     mode: '0600'
@@ -176,7 +196,7 @@
   become_user: "{{ podman_cms_user }}"
 
 - name: Start production stack using podman-compose
-  ansible.builtin.command: "podman-compose -p {{ compose_project_name }} up -d"
+  ansible.builtin.command: "podman-compose -f compose.yml -p {{ compose_project_name }} up -d"
   args:
     chdir: "{{ project_path }}"
   become: true
