@@ -1,3 +1,11 @@
+---
+okf_version: 0.1
+type: documentation
+title: "Project Changelog"
+description: "Sovereign log tracking all features, fixes, and architectural upgrades in CMSForNerd."
+resource: "file:///CHANGELOG.md"
+timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
+---
 ## [3.6.0] - 2026-03-15
 
 ### Added
@@ -19,7 +27,7 @@ Entries are grouped by date (most recent first).
 
 ---
 
-## [4.1.3] - 2026-07-27 (Feed Sitemaps & Certificate Hardening)
+## [4.1.3] - 2026-07-27 (Planned Handover Date) (Feed Sitemaps & Certificate Hardening)
 
 ### 🛡️ Security Hardening
 - **Dynamic XSS Mitigation**: Fully escaped standalone sitemaps, RSS feeds, and student certificate parameter outputs against XSS.
@@ -267,5 +275,5 @@ Entries are grouped by date (most recent first).
 
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

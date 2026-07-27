@@ -47,7 +47,7 @@ $content = [
 /**
  * 4. [LAB] ROUTING & SANITIZATION
  */
-$pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE__), PATHINFO_FILENAME));
+$pageName = \CmsForNerd\SecurityUtils::resolvePageName(pathinfo(basename(__FILE__), PATHINFO_FILENAME), 'graduation');
 
 $content['data'] = $pageName;
 

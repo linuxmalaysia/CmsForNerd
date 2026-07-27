@@ -4,7 +4,7 @@ type: documentation
 title: "Sitemap & Discovery Guide"
 description: "Educational guide for dynamic sitemap and discovery pair logic with XSS protection."
 resource: "file:///docs/sitemap-guide.md"
-timestamp: 2026-07-27T12:00:00Z
+timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 ---
 # 🗺️ Sitemap & Discovery (v4.0.0)
 
@@ -24,13 +24,13 @@ To avoid code duplication (and SonarCloud warnings), file pairing and scanning l
 `CmsForNerd\SecurityUtils::discoverPages()`. It scans the `contents/` folder for valid page pairs, skipping private/system files.
 
 ### Host Header Injection Protection
-To prevent Host Header injection attacks, `_SERVER['HTTP_HOST']` detection is fully centralized and sanitized within the
-`SecurityUtils::getSafeBaseUrl()` method.
+To prevent Host Header injection attacks, `_SERVER['HTTP_HOST']` detection and trusted-host validation are fully centralized and sanitized within
+the `SecurityUtils::getSafeBaseUrl()` method. Any untrusted Host headers will be rejected.
 
 ### Defensive XML Content Security Policy
 XML Sitemaps (`sitemap.php`) are locked down with a strict CSP header:
 ```http
-Content-Security-Policy: default-src 'none'; style-src 'self';
+Content-Security-Policy: default-src 'none'; style-src 'none';
 ```
 This blocks all external resources and dynamically loaded scripts, eliminating potential browser-level XML/HTML cross-site scripting (XSS).
 
@@ -48,5 +48,5 @@ CmsForNerd v4.0.0 generates two types of sitemaps:
 
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-26*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
