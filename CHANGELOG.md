@@ -6,20 +6,6 @@ description: "Sovereign log tracking all features, fixes, and architectural upgr
 resource: "file:///CHANGELOG.md"
 timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 ---
-## [3.6.0] - 2026-03-15
-
-### Added
-- **SECURITY.md**: Implemented formal security policy defining maintenance stance.
-- **PHP 8.4 Support**: Updated environment requirements to PHP 8.4.18.
-- **GPG Keyring**: Transitioned to trusted.gpg.d standard.
-
-### Changed
-- **Upstream Sync**: Fully merged core engine logic from upstream master.
-- **Dependencies**: Updated vendor baseline via Composer.
-
-### Fixed
-- **History Divergence**: Resolved legacy vendor conflicts via strategic reset.
-
 # CHANGELOG
 
 All notable changes to this project are documented in this file.
@@ -43,7 +29,9 @@ Entries are grouped by date (most recent first).
 - **Palace Protection Guide**: Created `docs/xss-protection-guide.md` tracking all secure practices.
 - **Sitemap & SEO Updates**: Revised sitemap manuals to document dynamic paired page logic and host security controls.
 
-## [4.1.0] - 2026-07-26 (Deep State of Mind Integration)
+## [4.1.0] - 2026-07-26
+
+**Deep State of Mind Integration**
 
 ### 🧠 Deep State of Mind (DSOM) Core
 
@@ -63,7 +51,7 @@ Entries are grouped by date (most recent first).
 ### 🐳 Containerization & Orchestration
 
 - **Rootless Podman Automation**: Introduced secure Ansible playbooks for zero-downtime, rootless container deployment (Nginx & PHP-FPM 8.4).
-- **System Hardening**: Configured unprivileged host port-binding (`sysctl`), SELinux mapping (`:Z`), and automatic firewall routing (UFW/Firewalld).
+- **Rootless Port-Binding Configuration**: Configured unprivileged host port-binding via sysctl (enabling unprivileged host-wide binding to port 80), SELinux mapping (`:Z`), and automatic firewall routing (UFW/Firewalld).
 - **Orchestration Docs**: Deployed comprehensive deployment guide (`ANSIBLE_PODMAN_GUIDE.md`) to streamline rapid environment spin-ups.
 
 ### 🎨 Design & Accessibility
@@ -118,6 +106,20 @@ Entries are grouped by date (most recent first).
 - **Type-Safety Hardening**: Resolved surgical typing regressions in `includes/nav-helper.inc.php` to maintain absolute
   PHPStan Level 8 compliance.
 - **PHPStan Optimization**: Increased static analysis memory limit to `512M` to prevent crashes during laboratory audits.
+
+## [3.6.0] - 2026-03-15
+
+### Added
+- **SECURITY.md**: Implemented formal security policy defining maintenance stance.
+- **PHP 8.4 Support**: Updated environment requirements to PHP 8.4.18.
+- **GPG Keyring**: Transitioned to trusted.gpg.d standard.
+
+### Changed
+- **Upstream Sync**: Fully merged core engine logic from upstream master.
+- **Dependencies**: Updated vendor baseline via Composer.
+
+### Fixed
+- **History Divergence**: Resolved legacy vendor conflicts via strategic reset.
 
 ---
 

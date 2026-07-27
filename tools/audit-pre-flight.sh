@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # ==============================================================================
-# Protocol    : Deep State of Mind (DSOM) For My AI (v5.0 - CMSForNerd Hybrid)
+# Protocol    : Deep State of Mind (DSOM) For My AI Protocol (v5.0 - CMSForNerd Hybrid)
 # Author      : Harisfazillah Jamel (LinuxMalaysia)
-# Timestamp   : 2026-07-12
+# Timestamp   : 2026-07-27
 # License     : GNU General Public License v3.0
 # Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
 # Purpose     : Ensure AI State of Mind is synced with Physical Reality (Git, PHP, Ansible)
@@ -74,9 +74,9 @@ else
         echo -e "${YELLOW}[WARNING] Failed to read 'php -v' output. Version check skipped.${NC}"
     else
         echo -e ">>> Detected PHP Version: '${YELLOW}$PHP_VER${NC}'"
-        # Support both PHP 8.3 and PHP 8.4 in local development sandbox environment
-        if [[ "$PHP_VER" != "8.4"* && "$PHP_VER" != "8.3"* ]]; then
-            echo -e "${RED}[ERROR] Environment is not PHP 8.4 or 8.3 (Current: '$PHP_VER')${NC}"
+        # Support only PHP 8.4+ in local development sandbox environment
+        if [[ "$PHP_VER" != "8.4"* ]]; then
+            echo -e "${RED}[ERROR] Environment is not PHP 8.4+ (Current: '$PHP_VER')${NC}"
             exit 1 # This is a critical error.
         else
             echo -e "${GREEN}[PASS] PHP version is compliant ($PHP_VER).${NC}"
@@ -128,7 +128,7 @@ fi
 
 # 6. Check task.md Integrity (Task Decay)
 echo -e "\n${YELLOW}Step 6: Checking task.md Integrity...${NC}"
-IN_PROGRESS=$(grep "\[/\]" "$BRAIN_DIR/task.md" | wc -l) # Tasks in progress
+IN_PROGRESS=$(grep "\[ / \]" "$BRAIN_DIR/task.md" | wc -l) # Tasks in progress
 TODO=$(grep "\[ \]" "$BRAIN_DIR/task.md" | wc -l) # Tasks not started
 
 echo -e ">>> Task Status: ${GREEN}$IN_PROGRESS In-Progress${NC}, ${YELLOW}$TODO Pending${NC}"

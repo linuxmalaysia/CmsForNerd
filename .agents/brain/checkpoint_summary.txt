@@ -14,7 +14,7 @@
 ## 3. MEMORY CORE & PARAMETERS
 - **Core Rules Asserted:** Zero-Global Architecture, Spatial Memory Palace, Open Knowledge Format, and Sovereign Signatures.
 - **Critical File Dependencies:** `.agents/AGENTS.md`, `includes/SecurityUtils.php`, `.agents/brain/task.md`, `CHANGELOG.md`.
-- **Key Constraints:** PHP 8.4/8.3 environment compatibility, strict 140-character line-length in documentation.
+- **Key Constraints:** PHP 8.4+ environment compatibility, strict 120-character line-length in documentation.
 
 ## 4. NEXT ACTION QUEUE
 - [x] Check git log for achievements in the last 48 hours (XSS & Host Header injection protections).
