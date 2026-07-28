@@ -6,9 +6,9 @@ description: "Sovereign log of development walkthroughs, accomplishments, and me
 resource: "file:///.agents/brain/walkthrough.md"
 timestamp: "2026-07-26T12:00:00Z"
 ---
-# Walkthrough: Semantic Evolution & Zero-Global Architecture (v4.1.3)
+# Walkthrough: Semantic Evolution & Zero-Global Architecture (v4.1.4)
 
-### Modification Date: 2026-07-27
+### Modification Date: 2026-07-27 (v4.1.3 is marked as historical)
 
 ## 🚀 Key Accomplishments (v3.6.0)
 

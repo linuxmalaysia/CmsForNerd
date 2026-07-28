@@ -1,3 +1,9 @@
+---
+okf_version: 0.1
+type: documentation
+title: "Production Podman-Compose & BunkerWeb Deployment Guide"
+timestamp: "2026-07-27T12:00:00Z"
+---
 # 🛡️ CmsForNerd Production Podman-Compose & BunkerWeb Deployment Guide (v4.1.0)
 # docs/ANSIBLE-PODMAN-COMPOSE-DEPLOYMENT.md
 
@@ -69,9 +75,9 @@ The local/remote orchestration wrapper script `tools/deploy-prod.sh` strictly en
    `composer lab-check` static analysis suite (PHPStan Level 8) on the source files to ensure no broken code is compiled or pushed.
 2. **Sovereign Gate**: Scans the inventory to guarantee that the unprivileged target is exactly configured as `dsom-admin:2001:2001`,
    rejecting execution if unauthorized identities or permissions are found.
-3. **Sudo Lock**: Ensures all root privilege escalation (`become: true` in Ansible) is eliminated at the play level and strictly scoped
-   to explicit host-foundation tasks (setting up OS-level packages, Sysctl, and systemd service creation), while user-space tasks run
-   with unprivileged user-space escalation or without privilege escalation.
+3. **Sudo Lock**: Ensures all root privilege escalation (`become: true` in Ansible) or targetting root is eliminated at the play level
+   and is strictly removed except for necessary host-foundation tasks. All Podman/container orchestration tasks are fully unprivileged and
+   run without any root become/escalation.
 
 ---
 

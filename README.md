@@ -1,3 +1,9 @@
+---
+okf_version: 0.1
+type: documentation
+title: "CMSForNerd Readme"
+timestamp: "2026-07-27T12:00:00Z"
+---
 # 🚀 CmsForNerd v4.1.0 (2026 Deep State of Mind Edition)
 
 **CmsForNerd** is a Lightweight, Radically Simple, Database-Free PHP Laboratory CMS designed as a live learning
@@ -41,7 +47,7 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 1. **Update Brain**: Update `.agents/brain/walkthrough.md` with the day's logic changes to prepare for the next session.
 2. **Log Milestones**: Finalize entries in `CHANGELOG.md`.
-3. **Tag State**: Check whether the `v4.1.0` tag already exists and verify that it references the intended commit before creating it; only create the annotated tag (e.g., `git tag -a v4.1.0`) when absent, and report or handle a mismatched existing tag without overwriting it.
+3. **Tag State**: Check whether the `v4.1.4` tag already exists and verify that it references the intended commit before creating it; only create the annotated tag (e.g., `git tag -a v4.1.4`) when absent, and report or handle a mismatched existing tag without overwriting it.
 
 ---
 

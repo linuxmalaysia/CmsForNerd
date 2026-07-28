@@ -21,7 +21,7 @@ codes_path: "{{ project_path }}/codes"
 
 php_version: "8.5"
 cms_domain: "cmsfornerd.local"
-cms_git_version: "v4.1.0"
+cms_git_version: "master"
 compose_project_name: "cmsfornerd"
 bunkerweb_image: "docker.io/bunkerity/bunkerweb:1.5.8"
 nginx_image: "docker.io/library/nginx:1.27"

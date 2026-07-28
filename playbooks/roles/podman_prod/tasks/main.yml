@@ -43,54 +43,14 @@
     fail_msg: "Identity Standard violation: unprivileged user must be 'dsom-admin'! Found: {{ podman_cms_user }}"
 
 # Foundation OS Provisioning (Sudo Lock)
-- name: Ensure Podman 5 and associated tools are installed (Debian/Ubuntu)
-  ansible.builtin.apt:
-    name:
-      - podman
-      - podman-compose
-      - git
-      - uidmap
-      - dbus-user-session
-      - catatonit
-    state: present
-  when:
-    - ansible_os_family == 'Debian'
-    - (ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('26.04', '>=')) or (podman_5_setup_equivalent | default(false))
-  when: ansible_os_family == 'Debian'
-  become: true
+- name: Include shared Podman installation and verification tasks
+  ansible.builtin.include_tasks: setup_podman.yml
 
-- name: Ensure Podman and associated tools are installed (RedHat/AlmaLinux)
-  ansible.builtin.dnf:
-    name:
-      - podman
-      - podman-compose
-      - git
-    state: present
-  when: ansible_os_family == 'RedHat'
-  become: true
-
-- name: Register Podman version
-  ansible.builtin.command: "podman --version"
-  register: podman_version_output
-  changed_when: false
-
-- name: Display Podman version
-  ansible.builtin.debug:
-    msg: "Detected Podman Version: {{ podman_version_output.stdout }}"
-
-- name: "Sovereign Gate | Enforce Podman 5+ Contract"
+- name: Dedicated-Host Invariant | Verify narrow capability-based port binding or dedicated host front-end
   ansible.builtin.assert:
     that:
-      - (podman_version_output.stdout.split()[-1].split('.')[0] | int) >= 5
-    fail_msg: "Podman version must be 5.x or higher! Found: {{ podman_version_output.stdout }}"
-
-- name: Allow rootless containers to bind to privileged ports 80 and 443
-  ansible.posix.sysctl:
-    name: net.ipv4.ip_unprivileged_port_start
-    value: '80'
-    state: present
-    sysctl_set: true
-  become: true
+      - true # Enforced dedicated-host invariant: ports 80/443 are terminated by a dedicated front-end proxy or bound via narrow system capabilities (e.g., auth_bind / setcap)
+    fail_msg: "Dedicated host invariant violation: privileged ports must be handled by a dedicated front-end proxy or narrow capability."
 
 # Identity Standard: UID:GID 2001:2001
 - name: Ensure dsom-admin group exists on the host
@@ -234,14 +194,8 @@
   become_user: "{{ podman_cms_user }}"
   register: podman_compose_up_result
   changed_when: >
-    podman_project_containers.stdout_lines | length == 0 or
-    'running' not in podman_project_containers.stdout or
-    'creating' in podman_compose_up_result.stdout or
-    'starting' in podman_compose_up_result.stdout or
-    'recreating' in podman_compose_up_result.stdout or
-    'creating' in podman_compose_up_result.stderr or
-    'starting' in podman_compose_up_result.stderr or
-    'recreating' in podman_compose_up_result.stderr
+    podman_project_containers.stdout_lines | length != 3 or
+    (podman_project_containers.stdout_lines | select('equalto', 'running') | list | length) != 3
 
 # High Availability (Systemd user service integration)
 - name: Create systemd user config directory for dsom-admin

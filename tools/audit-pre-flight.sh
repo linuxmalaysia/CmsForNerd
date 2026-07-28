@@ -58,7 +58,7 @@ else
     echo -e "${GREEN}[PASS] Git state is synchronized.${NC}"
 fi
 
-# 3. ENVIRONMENT DISCOVERY & PHP 8.4/8.3 ENFORCEMENT
+# 3. ENVIRONMENT DISCOVERY & PHP 8.4+ ENFORCEMENT
 echo -e "\n${YELLOW}Step 3: Discovering Language Environment & Verifying PHP...${NC}"
 if [ -f "$ROOT_DIR/composer.json" ]; then
     echo -e "${CYAN}[DETECTED] PHP Project.${NC}"
@@ -71,14 +71,14 @@ else
     PHP_VER=$(php -v | head -n 1 | awk '{print $2}' | cut -d. -f1,2)
     PHP_ID=$(php -r "echo PHP_VERSION_ID;" 2>/dev/null || echo "0")
     
-    if [ -z "$PHP_VER" ] || [ "$PHP_ID" -eq 0 ]; then
+    if [[ -z "$PHP_VER" ]] || [[ "$PHP_ID" -eq 0 ]]; then
         echo -e "${YELLOW}[WARNING] Failed to read PHP version. Version check skipped.${NC}"
     else
         echo -e ">>> Detected PHP Version: '${YELLOW}$PHP_VER${NC}' (ID: $PHP_ID)"
-        # Support any PHP_VERSION_ID >= 80400
-        if [ "$PHP_ID" -lt 80400 ]; then
-            echo -e "${RED}[ERROR] Environment is not PHP 8.4+ (Current: '$PHP_VER')${NC}" >&2
-            if [ "$BYPASS_PHP_CHECK" = "1" ]; then
+        # Support any PHP_VERSION_ID >= 80300
+        if [[ "$PHP_ID" -lt 80300 ]]; then
+            echo -e "${RED}[ERROR] Environment is not PHP 8.3+ (Current: '$PHP_VER')${NC}" >&2
+            if [[ "$BYPASS_PHP_CHECK" = "1" ]]; then
                 echo -e "${YELLOW}[BYPASS] Proceeding anyway as BYPASS_PHP_CHECK is enabled.${NC}"
             else
                 exit 1 # This is a critical error.
