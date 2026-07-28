@@ -2,19 +2,28 @@ version: '3.8'
 
 services:
   bunkerweb:
-    # Explicitly configured Standalone/CLI Mode for BunkerWeb (HTTP-only)
+    # Production TLS & Termination Design:
+    # Under standard HTTP-only operation, an upstream load balancer, Cloud Workstations proxy,
+    # or other infrastructure component is responsible for HTTPS termination, forwarding clean
+    # HTTP requests on port 80 to BunkerWeb, which receives HTTP on port 8080 and does not terminate TLS itself.
+    # To secure the environment natively, we configure BunkerWeb to terminate SSL/TLS directly using
+    # automatic self-signed certificate generation (GENERATE_SELF_SIGNED_SSL=yes) listening on port 8443
+    # and mapping it to the physical host port 443.
     image: "{{ bunkerweb_image }}"
     container_name: cms-bunkerweb
     ports:
       - "80:8080"
+      - "443:8443"
     environment:
       - SERVER_NAME={{ cms_domain }}
       - USE_REVERSE_PROXY=yes
       - REVERSE_PROXY_URL_1=/
       - REVERSE_PROXY_HOST_1=http://cms-nginx:80
       - LISTEN_HTTP=yes
-      - LISTEN_HTTPS=no
-      - HTTPS_PORT=
+      - LISTEN_HTTPS=yes
+      - HTTPS_PORT=8443
+      - GENERATE_SELF_SIGNED_SSL=yes
+      - SELF_SIGNED_SSL_EXPIRY=365
       - MULTISITE=no
       - USE_BUNKERNET=no
       - USE_RECON=no

@@ -152,7 +152,20 @@ Google Jules reads this repository's `AGENTS.md` and `.agents/AGENTS.md` ruleset
 ```bash
 # Verify or install system PHP 8.4 and Composer on Ubuntu 26.04:
 sudo apt install -y php-cli php-xml php-mbstring php-curl php-zip unzip
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+# Programmatically verify and install Composer securely
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+actual_sig=$(php -r "echo hash_file('sha384', 'composer-setup.php');")
+expected_sig=$(curl -sS https://composer.github.io/installer.sig)
+
+if [ "$actual_sig" != "$expected_sig" ]; then
+    echo "ERROR: Invalid installer signature!"
+    rm composer-setup.php
+    exit 1
+fi
+
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+rm composer-setup.php
 
 # Install development dependencies:
 composer install
@@ -181,21 +194,32 @@ resource "google_workstations_workstation_config" "jules_default" {
   workstation_cluster_id = "jules-cluster"
   location               = "us-central1"
 
-  # Specify VM configurations matching Ubuntu 24.04/26.04 standard workstation images
+  # Specify VM configurations matching standard predefined or custom workstation images
   container {
-    image = "us-central1-docker.pkg.dev/cloud-workstations-images/predefined/ubuntu-26-04:latest"
+    image = "us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss:latest" # Valid predefined image
+    # Or use a custom Ubuntu 26.04 base image: "docker.io/library/ubuntu:26.04"
   }
 }
 ```
 
 ### 6.2. Using Google Cloud CLI
-Alternatively, run the following `gcloud` command to create or update the workstation configuration template on-the-fly:
+Alternatively, run the following `gcloud` command workflow to ensure idempotence by describing the configuration first and then using configs update on reruns:
 
 ```bash
-gcloud workstations configs create jules-ubuntu-26-04 \
-  --cluster=jules-cluster \
-  --location=us-central1 \
-  --container-image="us-central1-docker.pkg.dev/cloud-workstations-images/predefined/ubuntu-26-04:latest"
+# Check if the workstation configuration already exists
+if gcloud workstations configs describe jules-ubuntu-26-04 --cluster=jules-cluster --location=us-central1 &>/dev/null; then
+  # Update existing workstation configuration on rerun
+  gcloud workstations configs update jules-ubuntu-26-04 \
+    --cluster=jules-cluster \
+    --location=us-central1 \
+    --container-image="us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss:latest"
+else
+  # Create new workstation configuration first
+  gcloud workstations configs create jules-ubuntu-26-04 \
+    --cluster=jules-cluster \
+    --location=us-central1 \
+    --container-image="us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss:latest"
+fi
 ```
 
 ---
