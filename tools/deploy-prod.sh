@@ -66,13 +66,11 @@ python3 tools/validate-inventory.py "$@"
 echo -e "\n${YELLOW}[3/3] Enforcing Sudo Lock...${NC}"
 echo -e "${YELLOW}[+] Verifying playbook and roles configurations...${NC}"
 
-# Verify that play-level become is not set to true/yes/on in deploy_prod_compose.yml
-become_count=$(grep -E -i -c "^[[:space:]]{2}become:[[:space:]]*(true|yes|on)" playbooks/deploy_prod_compose.yml || true)
-if [ "$become_count" -gt 0 ]; then
-    echo -e "${RED}[FAIL] Sudo Lock violation: Play-level root privilege escalation (become: true) detected in playbooks/deploy_prod_compose.yml.${NC}"
+# YAML-aware validation: check for play-level become in deploy_prod_compose.yml
+python3 tools/validate-playbook-become.py playbooks/deploy_prod_compose.yml || {
+    echo -e "${RED}[FAIL] Sudo Lock validation failed!${NC}"
     exit 1
-fi
-echo -e "${GREEN}[OK] Verified that play-level root privilege escalation is disabled.${NC}"
+}
 
 # Perform Ansible syntax check
 ansible-playbook --syntax-check playbooks/deploy_prod_compose.yml -i inventory/hosts.prod.yml || {

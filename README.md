@@ -4,13 +4,13 @@ type: documentation
 title: "CMSForNerd Readme"
 timestamp: "2026-07-27T12:00:00Z"
 ---
-# 🚀 CmsForNerd v4.1.0 (2026 Deep State of Mind Edition)
+# 🚀 CmsForNerd v4.1.4 (2026 Deep State of Mind Edition)
 
 **CmsForNerd** is a Lightweight, Radically Simple, Database-Free PHP Laboratory CMS designed as a live learning
 environment for modern developers. Version 4.1 features the **Deep State of Mind (DSOM) Cognitive Architecture**,
 **Zero-Global** architecture, **Automated Compliance Validation**, and professional **Rootless Container Orchestration**.
 
-**Current Version:** 4.1.0 (Production Stable)
+**Current Version:** 4.1.4 (Production Stable)
 
 **Changelog:** See [CHANGELOG.md](CHANGELOG.md) for latest release details.
 
@@ -53,7 +53,7 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 ## 📋 MASTER CONTEXT BLOCK (Copy/Paste for AI)
 
-> **PROMPT:** Act as a Lead PHP Architect for **CmsForNerd v4.1.0**. Standards: PHP 8.4 strict types, PHPStan Level 8,
+> **PROMPT:** Act as a Lead PHP Architect for **CmsForNerd v4.1.4**. Standards: PHP 8.4 strict types, PHPStan Level 8,
 > Zero-Global variables (via `Registry`), and "Pair Logic" (Logic in `.php`, UI in `-body.inc`). This is a Dual-View CMS
 > (Standard/AMP).
 > **Core Engine (bootstrap.php):** Initializes Immutable `CmsContext` with automated `schemaType` detection.

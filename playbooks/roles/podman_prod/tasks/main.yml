@@ -46,11 +46,16 @@
 - name: Include shared Podman installation and verification tasks
   ansible.builtin.include_tasks: setup_podman.yml
 
-- name: Dedicated-Host Invariant | Verify narrow capability-based port binding or dedicated host front-end
+- name: Read unprivileged port start value
+  ansible.builtin.command: sysctl -n net.ipv4.ip_unprivileged_port_start
+  register: unprivileged_port_start
+  changed_when: false
+
+- name: Dedicated-Host Invariant | Verify rootless binding of privileged ports 80/443
   ansible.builtin.assert:
     that:
-      - true # Enforced dedicated-host invariant: ports 80/443 are terminated by a dedicated front-end proxy or bound via narrow system capabilities (e.g., auth_bind / setcap)
-    fail_msg: "Dedicated host invariant violation: privileged ports must be handled by a dedicated front-end proxy or narrow capability."
+      - unprivileged_port_start.stdout | int <= 443
+    fail_msg: "Dedicated host invariant violation: privileged ports must be handled by a dedicated front-end proxy or narrow capability. Current net.ipv4.ip_unprivileged_port_start={{ unprivileged_port_start.stdout }} must be <= 443 for rootless port binding."
 
 # Identity Standard: UID:GID 2001:2001
 - name: Ensure dsom-admin group exists on the host

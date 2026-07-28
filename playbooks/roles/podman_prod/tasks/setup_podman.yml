@@ -18,7 +18,7 @@
     state: present
   when:
     - ansible_os_family == 'Debian'
-    - (ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('24.04', '>=')) or (podman_5_setup_equivalent | default(false))
+    - (ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('24.04', '>=')) or (ansible_distribution == 'Debian' and ansible_distribution_major_version | int >= 13) or (podman_5_setup_equivalent | default(false))
   become: true
 
 - name: Ensure Podman and associated tools are installed (RedHat/AlmaLinux)
