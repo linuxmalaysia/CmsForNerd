@@ -130,7 +130,7 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 **"Zero-Global Architecture with Containerized Orchestration & High-Contrast Design"**
 
 ### 🐳 Rootless Container Orchestration
-- **Ansible & Podman Core**: Created secure container recipes supporting user namespace mapping and unprivileged host-wide port 80 binding policy changes and their permissions implications.
+- **Ansible & Podman Core**: Created secure container recipes supporting user namespace mapping and unprivileged host-wide port 80 binding policy changes and their security implications.
 - **Enterprise Linux Support**: Tailored playbooks to run seamlessly on modern Enterprise Linux (AlmaLinux) and Debian/Ubuntu systems.
 
 ### 🎨 High-Contrast Adaptive Dark Mode
