@@ -8,7 +8,8 @@
 # ==============================================================================
 import sys
 import json
-import re
+import os
+import shutil
 
 required = {
     "podman_cms_user": "dsom-admin",
@@ -17,17 +18,24 @@ required = {
     "podman_cms_gid": "2001"
 }
 
+def is_safe_path(filepath):
+    """
+    Validates that the file path does not escape the current workspace directory (project root),
+    preventing path traversal vulnerabilities (SonarCloud S2083).
+    """
+    abs_filepath = os.path.abspath(filepath)
+    base_dir = os.path.abspath(os.getcwd())
+    return abs_filepath.startswith(base_dir + os.path.sep) or abs_filepath == base_dir
+
 def load_vars_from_file(filepath):
     """
-    Parse variables from a JSON or simple YAML-like file.
-    
-    Parameters:
-        filepath: Path to the variables file.
-    
-    Returns:
-        A dictionary of parsed variables, or an empty dictionary if the file
-        cannot be read or parsed.
+    Loads and parses variables from a YAML or JSON file safely.
+    Uses JSON parsing if JSON, otherwise line-by-line parsing for YAML.
     """
+    if not is_safe_path(filepath):
+        print(f"Warning: Access denied to path '{filepath}' (must reside within the project root).")
+        return {}
+
     try:
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
@@ -39,62 +47,79 @@ def load_vars_from_file(filepath):
                 line = line.strip()
                 if not line or line.startswith("#") or line.startswith("---"):
                     continue
-                # Match key: value or key: "value" or key: 'value'
-                match = re.match(r"^([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*\"?([^\s\"\n\']+)\"?", line)
-                if match:
-                    parsed[match.group(1)] = match.group(2)
+                if ":" in line:
+                    k, v = line.split(":", 1)
+                    k = k.strip()
+                    v = v.strip().strip("\"").strip("'")
+                    if k.isidentifier():
+                        parsed[k] = v
             return parsed
     except Exception as e:
         print(f"Warning: Failed to load extra-vars file {filepath}: {e}")
         return {}
 
+def parse_key_value_string(s):
+    """
+    Parses space-separated or comma-separated key=value pairs into a dictionary safely.
+    Uses split-based parsing to avoid ReDoS (Regular Expression Denial of Service) risks.
+    """
+    parsed = {}
+    parts = s.replace(",", " ").split()
+    for part in parts:
+        if "=" in part:
+            k, v = part.split("=", 1)
+            k = k.strip()
+            v = v.strip().strip("\"").strip("'")
+            if k.isidentifier():
+                parsed[k] = v
+    return parsed
+
 def main(args):
-    """
-    Validate inventory variables and reject conflicting identity overrides.
-    
-    Parameters:
-    	args (list): Command-line arguments containing optional `-e` or `--extra-vars` overrides.
-    
-    Exits:
-    	1: If no inventory variables are loaded or an identity value conflicts with the required mapping.
-    	0: If the loaded identity values satisfy the required mapping.
-    """
     effective_vars = {}
     ansible_success = False
 
     # 1. Start by running ansible-inventory
     try:
         import subprocess
-        cmd = ["ansible-inventory", "-i", "inventory/hosts.prod.yml", "--list"]
-        res = subprocess.run(cmd, capture_output=True, text=True)
-        if res.returncode == 0:
-            data = json.loads(res.stdout)
-            all_vars = data.get("all", {}).get("vars", {})
-            for k, v in all_vars.items():
-                effective_vars[k] = str(v)
-
-            # Check specific groups or host variables
-            _meta = data.get("_meta", {})
-            hostvars = _meta.get("hostvars", {})
-            for host, hvars in hostvars.items():
-                for k, v in hvars.items():
+        ansible_bin = shutil.which("ansible-inventory")
+        if ansible_bin:
+            cmd = [ansible_bin, "-i", "inventory/hosts.prod.yml", "--list"]
+            res = subprocess.run(cmd, capture_output=True, text=True)
+            if res.returncode == 0:
+                data = json.loads(res.stdout)
+                all_vars = data.get("all", {}).get("vars", {})
+                for k, v in all_vars.items():
                     effective_vars[k] = str(v)
-            ansible_success = True
+
+                # Check specific groups or host variables
+                _meta = data.get("_meta", {})
+                hostvars = _meta.get("hostvars", {})
+                for host, hvars in hostvars.items():
+                    for k, v in hvars.items():
+                        effective_vars[k] = str(v)
+                ansible_success = True
+            else:
+                print(f"Warning: ansible-inventory returned non-zero status: {res.stderr.strip()}")
         else:
-            print(f"Warning: ansible-inventory returned non-zero status: {res.stderr.strip()}")
+            print("Warning: ansible-inventory executable not found in system PATH.")
     except Exception as e:
         print(f"Warning: ansible-inventory failed to execute: {e}")
 
-    # 2. Fallback to parsing inventory file with regex if ansible-inventory failed
+    # 2. Fallback to parsing inventory file with line-by-line parsing if ansible-inventory failed
     if not ansible_success:
         print("Attempting fallback YAML parsing of inventory/hosts.prod.yml...")
         try:
             with open("inventory/hosts.prod.yml", "r", encoding="utf-8") as f:
-                content = f.read()
-                for k in required:
-                    match = re.search(rf"{k}:\s*\"?([^\s\"\n\']+)\"?", content)
-                    if match:
-                        effective_vars[k] = match.group(1)
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith("#") or line.startswith("---"):
+                        continue
+                    if ":" in line:
+                        k, v = line.split(":", 1)
+                        k = k.strip()
+                        v = v.strip().strip("\"").strip("'")
+                        if k in required:
+                            effective_vars[k] = v
         except Exception as fallback_err:
             print(f"Error: Fallback YAML parsing of inventory/hosts.prod.yml failed: {fallback_err}")
 
@@ -124,10 +149,9 @@ def main(args):
             except Exception as parse_err:
                 print(f"Warning: Failed to parse JSON extra-vars: {parse_err}")
         else:
-            pairs = re.findall(r"([a-zA-Z_][a-zA-Z0-9_]*)=([^=\s]+)", evar)
-            for k, v in pairs:
-                v = v.strip("\"").strip("'")
-                effective_vars[k] = v
+            file_vars = parse_key_value_string(evar)
+            for k, v in file_vars.items():
+                effective_vars[k] = str(v)
 
     # Fail if effective_vars is completely empty
     if not effective_vars:

@@ -150,8 +150,6 @@ jules auth set-key <your-api-key>
 Google Jules reads this repository's `AGENTS.md` and `.agents/AGENTS.md` rulesets. To verify any adjustments to playbooks or files, ensure the environment has PHP 8.4+, Composer, and dependencies installed:
 
 ```bash
-set -euo pipefail
-
 # Verify or install system PHP 8.4 and Composer on Ubuntu 26.04:
 sudo apt install -y php-cli php-xml php-mbstring php-curl php-zip unzip
 
@@ -166,11 +164,7 @@ if [ "$actual_sig" != "$expected_sig" ]; then
     exit 1
 fi
 
-if ! sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer; then
-    echo "ERROR: Composer installation failed!"
-    rm composer-setup.php
-    exit 1
-fi
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 rm composer-setup.php
 
 # Install development dependencies:
@@ -202,7 +196,7 @@ resource "google_workstations_workstation_config" "jules_default" {
 
   # Specify VM configurations matching standard predefined or custom workstation images
   container {
-    image = "us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss@sha256:b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c" # Valid predefined image
+    image = "us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss:latest" # Valid predefined image
     # Or use a custom Ubuntu 26.04 base image: "docker.io/library/ubuntu:26.04"
   }
 }
@@ -213,18 +207,18 @@ Alternatively, run the following `gcloud` command workflow to ensure idempotence
 
 ```bash
 # Check if the workstation configuration already exists
-if gcloud workstations configs describe jules-ubuntu-26-04 --cluster=jules-cluster --region=us-central1 &>/dev/null; then
+if gcloud workstations configs describe jules-ubuntu-26-04 --cluster=jules-cluster --location=us-central1 &>/dev/null; then
   # Update existing workstation configuration on rerun
   gcloud workstations configs update jules-ubuntu-26-04 \
     --cluster=jules-cluster \
-    --region=us-central1 \
-    --container-predefined-image="us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss@sha256:b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
+    --location=us-central1 \
+    --container-image="us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss:latest"
 else
   # Create new workstation configuration first
   gcloud workstations configs create jules-ubuntu-26-04 \
     --cluster=jules-cluster \
-    --region=us-central1 \
-    --container-predefined-image="us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss@sha256:b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"
+    --location=us-central1 \
+    --container-image="us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss:latest"
 fi
 ```
 

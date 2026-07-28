@@ -37,7 +37,7 @@ This closet tracks the **Universal Ledger** — the `CHANGELOG.md` and `HISTORY.
 | v9.8.0 | 2026-04-08 | 19-node hardened Elasticsearch/Kibana fabric released. |
 | **Palace v1.0** | 2026-04-08 | Sovereign Markdown Palace integrated. `palace-sync` v1.0 launched. |
 | **v10.0.0** | 2026-04-08 | **DSOM Automation Encyclopedia.** 18 HOWTO guides released. |
-| **v4.0.0** | 2026-07-26 | **Production Stable (Version Reset).** Rootless Podman Automation, Adaptive Dark Mode Contrast, Centralized Page Routing, Fault-Tolerant CI/CD. |
+| **v4.0.0-reset** | 2026-07-26 | **Production Stable [Version Reset].** Rootless Podman Automation, Adaptive Dark Mode Contrast, Centralized Page Routing, Fault-Tolerant CI/CD. |
 | **v4.1.0** | 2026-07-26 | **DSOM Integration & Pluralisation.** Workspace pluralized, 25 skills deployed, tools suite updated. |
 
 ## ⚠️ Ledger Law

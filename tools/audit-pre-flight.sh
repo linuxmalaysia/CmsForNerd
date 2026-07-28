@@ -58,8 +58,7 @@ else
     echo -e "${GREEN}[PASS] Git state is synchronized.${NC}"
 fi
 
-# 3. ENVIRONMENT DISCOVERY & PHP 8.3+ ENFORCEMENT
-# Enforces PHP 8.3+ requirement (PHP_VERSION_ID >= 80300)
+# 3. ENVIRONMENT DISCOVERY & PHP 8.4+ ENFORCEMENT
 echo -e "\n${YELLOW}Step 3: Discovering Language Environment & Verifying PHP...${NC}"
 if [ -f "$ROOT_DIR/composer.json" ]; then
     echo -e "${CYAN}[DETECTED] PHP Project.${NC}"
