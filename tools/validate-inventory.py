@@ -19,8 +19,14 @@ required = {
 
 def load_vars_from_file(filepath):
     """
-    Loads and parses variables from a YAML or JSON file.
-    Uses JSON parsing if JSON, otherwise line-by-line regex parsing for YAML.
+    Parse variables from a JSON or simple YAML-like file.
+    
+    Parameters:
+        filepath: Path to the variables file.
+    
+    Returns:
+        A dictionary of parsed variables, or an empty dictionary if the file
+        cannot be read or parsed.
     """
     try:
         with open(filepath, "r", encoding="utf-8") as f:
@@ -43,6 +49,16 @@ def load_vars_from_file(filepath):
         return {}
 
 def main(args):
+    """
+    Validate inventory variables and reject conflicting identity overrides.
+    
+    Parameters:
+    	args (list): Command-line arguments containing optional `-e` or `--extra-vars` overrides.
+    
+    Exits:
+    	1: If no inventory variables are loaded or an identity value conflicts with the required mapping.
+    	0: If the loaded identity values satisfy the required mapping.
+    """
     effective_vars = {}
     ansible_success = False
 
