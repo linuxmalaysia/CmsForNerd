@@ -18,9 +18,9 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
   with Podman 5.x.
 - **Pure Podman Migration**: Renamed and migrated all legacy Dockerfile and docker-compose assets to Podman-native Containerfile and
   compose.yml configurations.
-- **Asynchronous Jules Guide**: Penned a comprehensive, OKF-compliant guide detailing how to setup and run Google Jules asynchronously
+- **Asynchronous Jules Guide**: Penned a comprehensive, OKF-compliant guide detailing how to set up and run Google Jules asynchronously
   with Podman 5.
-- **Systemd & HA Recovery**: Patched systemd user service and playbooks to enforce non-docker, daemon-independent containers.
+- **Systemd & HA Recovery**: Patched systemd user service and playbooks to enforce non-Docker, daemon-independent containers.
 
 ### Phase 13: Security Hardening & Duplication Cleanups
 
@@ -102,7 +102,7 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
   staging and production playbooks.
 - **Podman 5+ Supporting Suite**: Upgraded Debian/Ubuntu package specifications to install `uidmap`, `dbus-user-session`, and `catatonit`
   natively on Ubuntu 26.04.
-- **Version Detection Assertion**: Integrated automated version printing (`podman --version`) into the playbook infrastructure.
+- **Version Reporting**: Integrated automated version printing (`podman --version`) into the playbook infrastructure.
 
 ### 🤖 Google Jules Setup Guide
 - **Sovereign Guidebook**: Authored `docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md` detailing unprivileged setups, lingering settings, and

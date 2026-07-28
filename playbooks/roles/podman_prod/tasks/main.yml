@@ -53,6 +53,9 @@
       - dbus-user-session
       - catatonit
     state: present
+  when:
+    - ansible_os_family == 'Debian'
+    - (ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('26.04', '>=')) or (podman_5_setup_equivalent | default(false))
   when: ansible_os_family == 'Debian'
   become: true
 
@@ -74,6 +77,12 @@
 - name: Display Podman version
   ansible.builtin.debug:
     msg: "Detected Podman Version: {{ podman_version_output.stdout }}"
+
+- name: "Sovereign Gate | Enforce Podman 5+ Contract"
+  ansible.builtin.assert:
+    that:
+      - (podman_version_output.stdout.split()[-1].split('.')[0] | int) >= 5
+    fail_msg: "Podman version must be 5.x or higher! Found: {{ podman_version_output.stdout }}"
 
 - name: Allow rootless containers to bind to privileged ports 80 and 443
   ansible.posix.sysctl:
@@ -209,13 +218,30 @@
   become: true
   become_user: "{{ podman_cms_user }}"
 
+- name: "Reconciliation Check | Verify status of containers in the compose project"
+  ansible.builtin.command: "podman ps -a --filter label=io.podman.compose.project={{ compose_project_name }} --format {% raw %}'{{.State}}'{% endraw %}"
+  register: podman_project_containers
+  changed_when: false
+  become: true
+  become_user: "{{ podman_cms_user }}"
+  ignore_errors: true
+
 - name: Start production stack using podman-compose
   ansible.builtin.command: "podman-compose -f compose.yml -p {{ compose_project_name }} up -d"
   args:
     chdir: "{{ project_path }}"
   become: true
   become_user: "{{ podman_cms_user }}"
-  changed_when: true
+  register: podman_compose_up_result
+  changed_when: >
+    podman_project_containers.stdout_lines | length == 0 or
+    'running' not in podman_project_containers.stdout or
+    'creating' in podman_compose_up_result.stdout or
+    'starting' in podman_compose_up_result.stdout or
+    'recreating' in podman_compose_up_result.stdout or
+    'creating' in podman_compose_up_result.stderr or
+    'starting' in podman_compose_up_result.stderr or
+    'recreating' in podman_compose_up_result.stderr
 
 # High Availability (Systemd user service integration)
 - name: Create systemd user config directory for dsom-admin

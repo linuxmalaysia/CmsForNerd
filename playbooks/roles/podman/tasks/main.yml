@@ -17,7 +17,9 @@
       - dbus-user-session
       - catatonit
     state: present
-  when: ansible_os_family == 'Debian'
+  when:
+    - ansible_os_family == 'Debian'
+    - (ansible_distribution == 'Ubuntu' and ansible_distribution_version is version('26.04', '>=')) or (podman_5_setup_equivalent | default(false))
 
 - name: Ensure Podman and associated tools are installed (RedHat/AlmaLinux)
   ansible.builtin.dnf:
@@ -36,6 +38,12 @@
 - name: Display Podman version
   ansible.builtin.debug:
     msg: "Detected Podman Version: {{ podman_version_output.stdout }}"
+
+- name: "Sovereign Gate | Enforce Podman 5+ Contract"
+  ansible.builtin.assert:
+    that:
+      - (podman_version_output.stdout.split()[-1].split('.')[0] | int) >= 5
+    fail_msg: "Podman version must be 5.x or higher! Found: {{ podman_version_output.stdout }}"
 
 - name: Allow rootless containers to bind to port 80
   ansible.posix.sysctl:

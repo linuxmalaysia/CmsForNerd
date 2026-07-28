@@ -4,12 +4,14 @@ type: documentation
 title: "Google Jules Setup on Ubuntu 26.04 with Podman 5+"
 description: "Comprehensive setup and configuration guide for Google Jules with Podman 5 on Ubuntu 26.04."
 resource: "file:///docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md"
-timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
+timestamp: "2026-07-27T12:00:00Z"
 ---
 # 🤖 Google Jules Setup Guide on Ubuntu 26.04 with Podman 5+
 
+*Planned Handover Date: 2026-07-27*
+
 This document serves as the official handbook for setting up the Google Jules asynchronous coding agent on an unprivileged, hardened
-**Ubuntu 26.04 (Plucky Puffin)** environment utilizing native **Podman version 5 and above**.
+**Ubuntu 26.04 (Resolute Raccoon)** environment utilising native **Podman version 5 and above**.
 
 ---
 
@@ -26,7 +28,7 @@ asynchronous workspace VMs and secure containers, targeting Ubuntu 26.04 as the 
   Running Podman 5 on those releases requires third-party repositories, experimental PPAs, or complex compilation from source, which
   compromises digital sovereignty and environment stability.
 - **Default Netavark & Aardvark-DNS**: Podman 5 fully transitions the rootless network backend to `netavark` and `aardvark-dns`, completely
-  retiring CNI plugins. Ubuntu 26.04 provides this stabilized networking configuration out of the box.
+  retiring CNI plugins. Ubuntu 26.04 provides this stabilised networking configuration out of the box.
 
 ---
 
@@ -37,7 +39,7 @@ To provision an Ubuntu 26.04 server for Google Jules with Podman 5+, run the fol
 ### Step 2.1: Update APT Repositories
 Update the local package manager registry to fetch the official stable releases:
 ```bash
-sudo apt update && sudo apt upgrade -y
+sudo apt update
 ```
 
 ### Step 2.2: Install Podman 5 and Supporting Tooling
@@ -134,17 +136,66 @@ systemctl --user stop cmsfornerd-pod
 Google Jules works as an asynchronous developer agent by interacting directly with the Git repository.
 
 ### Step 5.1: Install Google Jules CLI Tools
-If running local integrations, authenticate Google Jules via Google Cloud CLI:
+Install the Google Jules CLI tool via npm and authenticate using the CLI onboarding flow:
 ```bash
-gcloud auth login
-gcloud auth application-default login
+npm install -g @google/jules
+jules login
+```
+Or configure your authentication via API key if preferred:
+```bash
+jules auth set-key <your-api-key>
 ```
 
 ### Step 5.2: Configure the Digital Sovereignty Gateway
-Google Jules reads this repository's `AGENTS.md` and `.agents/AGENTS.md` rulesets. Any adjustments to playbooks or files must align
-with the Deep State of Mind (DSOM) standard. Always verify changes using:
+Google Jules reads this repository's `AGENTS.md` and `.agents/AGENTS.md` rulesets. To verify any adjustments to playbooks or files, ensure the environment has PHP 8.4+, Composer, and dependencies installed:
+
+```bash
+# Verify or install system PHP 8.4 and Composer on Ubuntu 26.04:
+sudo apt install -y php-cli php-xml php-mbstring php-curl php-zip unzip
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install development dependencies:
+composer install
+
+# Verify changes using the validation pipeline:
+composer lab-check
+```
+
+If validating within an already prepared development environment, you can directly run:
 ```bash
 composer lab-check
+```
+
+---
+
+## 6. Permanent Provisioning via Google Cloud Workstations
+
+To permanently configure the Google Cloud / Jules asynchronous coding sessions to deploy **Ubuntu 26.04+** and **Podman 5+**, you must define these specifications inside your Google Cloud Workstation configuration template.
+
+### 6.1. Using Terraform
+Apply the following Terraform resource definition to provision workstation environments that are natively built with the required operating system and container runtime:
+
+```hcl
+resource "google_workstations_workstation_config" "jules_default" {
+  workstation_config_id  = "jules-ubuntu-26-04"
+  workstation_cluster_id = "jules-cluster"
+  location               = "us-central1"
+
+  # Specify VM configurations matching Ubuntu 24.04/26.04 standard workstation images
+  container {
+    image = "us-central1-docker.pkg.dev/cloud-workstations-images/predefined/ubuntu-26-04:latest"
+  }
+}
+```
+
+### 6.2. Using Google Cloud CLI
+Alternatively, run the following `gcloud` command to create or update the workstation configuration template on-the-fly:
+
+```bash
+gcloud workstations configs create jules-ubuntu-26-04 \
+  --cluster=jules-cluster \
+  --location=us-central1 \
+  --container-image="us-central1-docker.pkg.dev/cloud-workstations-images/predefined/ubuntu-26-04:latest"
 ```
 
 ---

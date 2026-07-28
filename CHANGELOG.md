@@ -20,7 +20,7 @@ Entries are grouped by date (most recent first).
   staging and production playbooks.
 - **Podman 5+ Supporting Suite**: Upgraded Debian/Ubuntu package specifications to install `uidmap`, `dbus-user-session`, and `catatonit`
   natively on Ubuntu 26.04.
-- **Version Detection Assertion**: Integrated automated version printing (`podman --version`) into the playbook infrastructure.
+- **Version Reporting**: Integrated automated version printing (`podman --version`) into the playbook infrastructure.
 
 ### 🤖 Google Jules Setup Guide
 - **Sovereign Guidebook**: Authored `docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md` detailing unprivileged setups, lingering settings, and
