@@ -41,7 +41,7 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 1. **Update Brain**: Update `.agents/brain/walkthrough.md` with the day's logic changes to prepare for the next session.
 2. **Log Milestones**: Finalize entries in `CHANGELOG.md`.
-3. **Tag State**: Use `git tag -a v4.1.0` to create a permanent snapshot of the current "State of Mind."
+3. **Tag State**: Check whether the `v4.1.0` tag already exists and verify that it references the intended commit before creating it; only create the annotated tag (e.g., `git tag -a v4.1.0`) when absent, and report or handle a mismatched existing tag without overwriting it.
 
 ---
 
@@ -89,7 +89,7 @@ handshake is **REQUIRED** for all laboratory sessions.
 
 ### 🐳 Option 3: Rootless Container Orchestration (Ansible & Podman)
 
-1. Deploys CmsForNerd within rootless containers (Nginx + PHP-FPM 8.4), offering rootless isolation benefits but requiring host-policy trade-offs (such as sysctl port-binding permissions).
+1. Deploys CmsForNerd within rootless containers (Nginx + PHP-FPM 8.4), offering rootless isolation benefits but requiring host-policy trade-offs (specifically, setting `net.ipv4.ip_unprivileged_port_start=80` changes host-wide port-binding policy for all unprivileged processes on the system, not just CmsForNerd).
 2. See the comprehensive [Ansible-Podman Deployment Guide](ANSIBLE_PODMAN_GUIDE.md) for automated setups on target hosts.
 3. Learn how to set up Google Jules on Ubuntu 26.04 in our [Google Jules Ubuntu 26.04 Setup Guide](docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md).
 
