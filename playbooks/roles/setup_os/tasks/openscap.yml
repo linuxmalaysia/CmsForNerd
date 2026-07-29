@@ -1,0 +1,174 @@
+---
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-27
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+# OpenSCAP Audit & Automated Hardening Role for Debian/Ubuntu and RHEL targets
+# Downloads the latest ComplianceAsCode rules dynamically and audits/hardens.
+
+- name: "OpenSCAP | Install OpenSCAP scanner and dependencies (Debian/Ubuntu)"
+  ansible.builtin.apt:
+    name:
+      - openscap-utils
+      - libopenscap8
+      - unzip
+      - wget
+      - curl
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: "OpenSCAP | Install OpenSCAP scanner and dependencies (RedHat/Alma/Rocky)"
+  ansible.builtin.dnf:
+    name:
+      - openscap
+      - openscap-utils
+      - unzip
+      - wget
+      - curl
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: "OpenSCAP | Create Audit Report Directory"
+  ansible.builtin.file:
+    path: "/opt/report/openscap"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: "OpenSCAP | Download pinned SCAP Security Guide"
+  ansible.builtin.get_url:
+    url: "https://github.com/ComplianceAsCode/content/releases/download/v{{ openscap_content_version }}/scap-security-guide-{{ openscap_content_version }}.zip"
+    dest: "/opt/report/openscap/scap-security-guide-{{ openscap_content_version }}.zip"
+    checksum: "{{ openscap_content_checksum if openscap_content_checksum else omit }}"
+    mode: '0644'
+
+- name: "OpenSCAP | Unzip SCAP Security Guide"
+  ansible.builtin.unarchive:
+    src: "/opt/report/openscap/scap-security-guide-{{ openscap_content_version }}.zip"
+    dest: "/opt/report/openscap"
+    remote_src: yes
+    creates: "/opt/report/openscap/scap-security-guide-{{ openscap_content_version }}"
+
+- name: "OpenSCAP | Set Guide XML Path Variable"
+  ansible.builtin.set_fact:
+    scap_guide_dir: "/opt/report/openscap/scap-security-guide-{{ openscap_content_version }}"
+    scap_ubuntu_xml: "/opt/report/openscap/scap-security-guide-{{ openscap_content_version }}/ssg-ubuntu2404-ds.xml"
+    scap_rhel_xml: "/opt/report/openscap/scap-security-guide-{{ openscap_content_version }}/ssg-almalinux9-ds.xml"
+
+# Dynamic selection of CIS profile based on OS Family and Distribution
+- name: "OpenSCAP | Run CIS Level 2 Evaluation (Ubuntu)"
+  ansible.builtin.command: >
+    oscap xccdf eval
+    --profile xccdf_org.ssgproject.content_profile_cis_level2_server
+    --fetch-remote-resources
+    --results /opt/report/openscap/ssg-results-ubuntu2404.xml
+    --report /opt/report/openscap/ssg-results-ubuntu2404.html
+    {{ scap_ubuntu_xml }}
+  when: ansible_distribution == 'Ubuntu'
+  register: openscap_ubuntu_eval
+  changed_when: true
+  failed_when: openscap_ubuntu_eval.rc not in [0, 2]
+
+- name: "OpenSCAP | Set Ubuntu evaluation status"
+  ansible.builtin.set_fact:
+    openscap_ubuntu_status: "{{ 'compliant' if openscap_ubuntu_eval.rc == 0 else 'non-compliant' if openscap_ubuntu_eval.rc == 2 else 'failed' }}"
+  when: ansible_distribution == 'Ubuntu'
+
+- name: "OpenSCAP | Run CIS Level 2 Evaluation (RHEL/AlmaLinux)"
+  ansible.builtin.command: >
+    oscap xccdf eval
+    --profile xccdf_org.ssgproject.content_profile_cis
+    --fetch-remote-resources
+    --results /opt/report/openscap/ssg-results-almalinux.xml
+    --report /opt/report/openscap/ssg-results-almalinux.html
+    {{ scap_rhel_xml }}
+  when: ansible_os_family == 'RedHat'
+  register: openscap_rhel_eval
+  changed_when: true
+  failed_when: openscap_rhel_eval.rc not in [0, 2]
+
+- name: "OpenSCAP | Set RHEL evaluation status"
+  ansible.builtin.set_fact:
+    openscap_rhel_status: "{{ 'compliant' if openscap_rhel_eval.rc == 0 else 'non-compliant' if openscap_rhel_eval.rc == 2 else 'failed' }}"
+  when: ansible_os_family == 'RedHat'
+
+# Generate Remediation bash script
+- name: "OpenSCAP | Generate remediation script (Ubuntu)"
+  ansible.builtin.command: >
+    oscap xccdf generate fix
+    --profile xccdf_org.ssgproject.content_profile_cis_level2_server
+    --fix-type bash
+    --output /opt/report/openscap/remediate-noble-latest.sh
+    {{ scap_ubuntu_xml }}
+  when: ansible_distribution == 'Ubuntu'
+  changed_when: true
+
+- name: "OpenSCAP | Generate remediation script (RHEL/AlmaLinux)"
+  ansible.builtin.command: >
+    oscap xccdf generate fix
+    --profile xccdf_org.ssgproject.content_profile_cis
+    --fix-type bash
+    --output /opt/report/openscap/remediate-rhel-latest.sh
+    {{ scap_rhel_xml }}
+  when: ansible_os_family == 'RedHat'
+  changed_when: true
+
+# Automatically execute the remediation/hardening script to apply compliance
+- name: "OpenSCAP | Apply Hardening Remediation script (Ubuntu)"
+  ansible.builtin.shell: bash /opt/report/openscap/remediate-noble-latest.sh
+  when: ansible_distribution == 'Ubuntu'
+  register: openscap_ubuntu_remediation
+  changed_when: true
+  failed_when: openscap_ubuntu_remediation.rc != 0
+
+- name: "OpenSCAP | Set Ubuntu remediation status"
+  ansible.builtin.set_fact:
+    openscap_ubuntu_remediation_status: "{{ 'success' if openscap_ubuntu_remediation.rc == 0 else 'failed' }}"
+  when: ansible_distribution == 'Ubuntu' and openscap_ubuntu_remediation is defined
+  ignore_errors: yes
+
+- name: "OpenSCAP | Apply Hardening Remediation script (RHEL/AlmaLinux)"
+  ansible.builtin.shell: bash /opt/report/openscap/remediate-rhel-latest.sh
+  when: ansible_os_family == 'RedHat'
+  register: openscap_rhel_remediation
+  changed_when: true
+  failed_when: openscap_rhel_remediation.rc != 0
+
+- name: "OpenSCAP | Set RHEL remediation status"
+  ansible.builtin.set_fact:
+    openscap_rhel_remediation_status: "{{ 'success' if openscap_rhel_remediation.rc == 0 else 'failed' }}"
+  when: ansible_os_family == 'RedHat' and openscap_rhel_remediation is defined
+  ignore_errors: yes
+
+# Perform OVAL Vulnerability Assessment Scan
+- name: "OpenSCAP | Download OVAL Security Definitions"
+  ansible.builtin.get_url:
+    url: "https://security-metadata.canonical.com/oval/com.ubuntu.{{ ansible_distribution_release }}.usn.oval.xml.bz2"
+    dest: "/opt/report/openscap/com.ubuntu.{{ ansible_distribution_release }}.usn.oval.xml.bz2"
+    mode: '0644'
+  when: ansible_distribution == 'Ubuntu'
+
+- name: "OpenSCAP | Decompress OVAL XML"
+  ansible.builtin.shell: "bzip2 -d -f /opt/report/openscap/com.ubuntu.{{ ansible_distribution_release }}.usn.oval.xml.bz2"
+  args:
+    creates: "/opt/report/openscap/com.ubuntu.{{ ansible_distribution_release }}.usn.oval.xml"
+  when: ansible_distribution == 'Ubuntu'
+
+- name: "OpenSCAP | Run OVAL Evaluation (Ubuntu)"
+  ansible.builtin.command: >
+    oscap oval eval
+    --report /opt/report/openscap/oval-{{ ansible_distribution_release }}.html
+    /opt/report/openscap/com.ubuntu.{{ ansible_distribution_release }}.usn.oval.xml
+  when: ansible_distribution == 'Ubuntu'
+  register: oval_eval_result
+  changed_when: true
+  failed_when: oval_eval_result.rc not in [0, 2]
+
+- name: "OpenSCAP | Set OVAL evaluation status"
+  ansible.builtin.set_fact:
+    oval_eval_status: "{{ 'compliant' if oval_eval_result.rc == 0 else 'non-compliant' if oval_eval_result.rc == 2 else 'failed' }}"
+  when: ansible_distribution == 'Ubuntu' and oval_eval_result is defined

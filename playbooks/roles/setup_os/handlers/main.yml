@@ -1,0 +1,68 @@
+---
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-29
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-29
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-27
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+- name: reload sysctl
+  ansible.builtin.command: "{{ 'service procps force-reload' if ansible_os_family == 'Debian' else 'sysctl --system' }}"
+  become: true
+
+- name: Restart Chrony
+  ansible.builtin.service:
+    name: "{{ 'chrony' if ansible_os_family == 'Debian' else 'chronyd' }}"
+    state: restarted
+  become: true
+
+- name: Restart Sysstat
+  ansible.builtin.service:
+    name: sysstat
+    state: restarted
+  become: true
+
+- name: Restart Rsyslog
+  ansible.builtin.service:
+    name: rsyslog
+    state: restarted
+  become: true
+
+- name: Restart Fail2Ban
+  ansible.builtin.service:
+    name: fail2ban
+    state: restarted
+  become: true
+
+- name: Reload Auditd Rules
+  ansible.builtin.command: augenrules --load
+  ignore_errors: true
+  become: true
+
+- name: Restart Unattended-Upgrades
+  ansible.builtin.service:
+    name: unattended-upgrades
+    state: restarted
+  become: true
+
+- name: restart ssh
+  ansible.builtin.service:
+    name: "{{ 'ssh' if ansible_os_family == 'Debian' else 'sshd' }}"
+    state: restarted
+  become: true

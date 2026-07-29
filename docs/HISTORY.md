@@ -12,6 +12,13 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ## Strategic Phases
 
+### Phase 15: DSOM Node Bootstrap & OpenSCAP Compliance Hardening
+
+- **Dual-Play Transition Playbook**: Developed `playbooks/bootstrap_node.yml` to orchestrate secure rootful user provisioning and baseline setup.
+- **Dynamic SCAP Content Retrieval**: Implemented auto-download of the latest ComplianceAsCode definitions.
+- **CIS Level 2 Auditing and OVAL Scanning**: Configured multi-platform compliance auditing for Ubuntu 24.04 and RHEL family.
+- **Unified Compliance reporting**: Set up automatic extraction of Lynis and OpenSCAP compliance scores to build a unified report.
+
 ### Phase 14: Podman 5+ Native Migration & Google Jules Setup
 
 - **Ubuntu 26.04 Standardisation**: Integrated support for Ubuntu 26.04 (Plucky Puffin), the first stable OS natively shipping
@@ -92,6 +99,19 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 - **Verification Tests**: Built automated tests in `tests/SecurityTest.php` to analyze directory traversal boundaries, bot detection trust models, and IPv6 bitmasks.
 
 ---
+
+## [4.1.5] - 2026-07-27 (Planned Handover Date) (DSOM Node Bootstrap & OpenSCAP Compliance Hardening)
+
+**"Automated Node Identity Bootstrapping & Dynamic OpenSCAP Compliance Hardening"**
+
+### 🚀 Dual-Play Bootstrapping & OS Baseline
+- **Orchestrated Host Provisioning**: Created the secure transition playbook `playbooks/bootstrap_node.yml` deploying unprivileged `dsom-admin:2001:2001` identity mapping.
+- **Sanitized Inventory Example**: Implemented `inventory/hosts.example.yml` with private IP boundaries and localhost configurations.
+
+### 🛡️ Dynamic OpenSCAP CIS Level 2 Evaluation
+- **On-Demand Content Fetching**: Tasks to fetch and unzip the latest ComplianceAsCode guides dynamically.
+- **OVAL & CIS Scanner**: Automated multi-OS CIS Level 2 audits, Canonical OVAL vulnerability scans, and automatic bash remediation.
+- **Integrated Audit Ledger**: Formulated tasks inside `playbooks/roles/setup_os/tasks/reporting.yml` to compile a unified report mapping Lynis and OpenSCAP compliance metrics.
 
 ## [4.1.4] - 2026-07-27 (Planned Handover Date) (Podman 5 Native Migration & Google Jules Ubuntu 26.04 Setup)
 

@@ -13,6 +13,19 @@ Entries are grouped by date (most recent first).
 
 ---
 
+## [4.1.5] - 2026-07-27 (Planned Handover Date) (DSOM Node Bootstrap & OpenSCAP Compliance Hardening)
+
+### 🚀 DSOM Node Bootstrap & OS Baseline Playbook
+- **Dual-Play Identity Bootstrapping**: Implemented a transition playbook `playbooks/bootstrap_node.yml` that handles Rootful identity bootstrap (Play 1) followed by Sovereign OS Baseline configuration (Play 2).
+- **Sanitized Inventory Blueprint**: Created `inventory/hosts.example.yml` using `localhost` and private IP mappings to securely share configurations without leaking actual server coordinates.
+
+### 🛡️ Dynamic OpenSCAP Auditing & Remediation
+- **Latest SCAP Security Guide Retrieval**: Integrated tasks to query and download the latest SCAP guide ZIP dynamically via the GitHub API.
+- **CIS Level 2 Auditing**: Configured automatic `oscap xccdf eval` against CIS Level 2 Server profile for Ubuntu 24.04 and RHEL/AlmaLinux systems.
+- **OVAL Vulnerability Scanning**: Implemented system patch verification using Canonical's official OVAL streams.
+- **Auto-Hardening Remediation**: Automatically generates and executes OpenSCAP-native bash remediation scripts to harden the target VM or node.
+- **Unified Security Compliance Report**: Generates a unified report `SECURITY_AUDIT_REPORT.md` compiling both Lynis hardening index and OpenSCAP compliance scores.
+
 ## [4.1.4] - 2026-07-27 (Planned Handover Date) (Podman 5 Native Migration & Google Jules Ubuntu 26.04 Setup)
 
 ### 🐳 Pure Podman 5 Engine & Configurations
