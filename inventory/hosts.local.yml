@@ -1,0 +1,12 @@
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+  vars:
+    env: local
+    cms_domain: cmsfornerd.local
+    podman_cms_user: dsom-admin
+    podman_cms_uid: 2001
+    podman_cms_group: dsom-admin
+    podman_cms_gid: 2001
+    project_path: /opt/cmsfornerd

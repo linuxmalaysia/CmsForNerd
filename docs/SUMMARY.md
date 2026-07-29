@@ -46,6 +46,7 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 
 ## 🏛️ Project Records
 * [Modernization History](HISTORY.md)
+* [Infrastructure Deployment Report](DEPLOYMENT_REPORT.md)
 * [AI Ethics SOP](ai-sop.md)
 * [Project State Sync](AI-STATE-SYNC.md)
 * [AI Master Protocol](AI-MASTER-PROTOCOL.md)
