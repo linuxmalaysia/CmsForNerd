@@ -105,6 +105,7 @@
     path: /etc/sysctl.conf
     regexp: '^(\s*[a-zA-Z].*?=\s*.*)$'
     replace: '# \1  # DSOM: overridden by Sovereign Tuning'
+    before: '# BEGIN ANSIBLE MANAGED BLOCK \(DSOM SOVEREIGN TUNING\)'
 
 - name: "Foundation | Inject DSOM Optimised tuning directly into /etc/sysctl.conf"
   ansible.builtin.blockinfile:
@@ -114,7 +115,7 @@
     create: yes
   notify: reload sysctl
 
-- name: "Foundation | Disable Transparent Huge Pages (THP)"
+- name: "Foundation | Disable Transparent Huge Pages (THP) at runtime"
   ansible.builtin.shell: |
     if [ -f /sys/kernel/mm/transparent_hugepage/enabled ]; then
       echo never > /sys/kernel/mm/transparent_hugepage/enabled
@@ -124,6 +125,31 @@
     fi
   ignore_errors: true
   changed_when: false
+
+- name: "Foundation | Create systemd service to persist THP disable across reboots"
+  ansible.builtin.copy:
+    content: |
+      [Unit]
+      Description=Disable Transparent Huge Pages (THP)
+      DefaultDependencies=no
+      After=sysinit.target local-fs.target
+      Before=basic.target
+
+      [Service]
+      Type=oneshot
+      ExecStart=/bin/sh -c 'if [ -f /sys/kernel/mm/transparent_hugepage/enabled ]; then echo never > /sys/kernel/mm/transparent_hugepage/enabled; fi'
+      ExecStart=/bin/sh -c 'if [ -f /sys/kernel/mm/transparent_hugepage/defrag ]; then echo never > /sys/kernel/mm/transparent_hugepage/defrag; fi'
+
+      [Install]
+      WantedBy=basic.target
+    dest: /etc/systemd/system/disable-thp.service
+    mode: '0644'
+
+- name: "Foundation | Enable THP disable service"
+  ansible.builtin.systemd:
+    name: disable-thp.service
+    enabled: yes
+    daemon_reload: yes
 
 # --- [ PHASE 4: INFRASTRUCTURE MANAGEMENT ] ---
 - name: "Management | Install Management Toolchain"
@@ -282,7 +308,7 @@
     state: started
     enabled: yes
   loop:
-    - "chrony"
+    - "{{ 'chrony' if ansible_os_family == 'Debian' else 'chronyd' }}"
     - "sysstat"
     - "rsyslog"
     - "{{ 'acct' if ansible_os_family == 'Debian' else 'psacct' }}"
@@ -459,7 +485,7 @@
 
 - name: "Persistence | Update DSOM Configuration File with Compliance"
   ansible.builtin.blockinfile:
-    path: /etc/um-elastic-soc.conf
+    path: /etc/cmsfornerd-soc.conf
     marker: "# {mark} ANSIBLE MANAGED COMPLIANCE DATA"
     create: yes
     block: |

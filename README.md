@@ -99,11 +99,11 @@ handshake is **REQUIRED** for all laboratory sessions.
 2. See the comprehensive [Ansible-Podman Deployment Guide](ANSIBLE_PODMAN_GUIDE.md) for automated setups on target hosts.
 3. Learn how to set up Google Jules on Ubuntu 26.04 in our [Google Jules Ubuntu 26.04 Setup Guide](docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md).
 
-### 🚀 Option 4: DSOM Node Bootstrap & OpenSCAP Hardening
+### 🚀 Option 4: DSOM Node Bootstrap & OpenSCAP Hardening (Unreleased - Planned v4.1.5)
 
 1. Use our secure, sanitized dual-play bootstrapping playbook to provision a new server, VM, or node with target unprivileged identity standard (`dsom-admin:2001:2001`) and lingering.
 2. The `setup_os` role automatically handles essential software updates, kernel hardware-aware optimizations, and full security auditing via Lynis and OpenSCAP.
-3. OpenSCAP dynamically downloads latest SCAP guide, performs CIS Level 2 audits, runs USN OVAL scans, and automatically executes remediation scripts to secure and harden the underlying OS.
+3. OpenSCAP downloads a pinned, versioned SCAP guide with checksum validation, performs CIS Level 2 audits, runs USN OVAL scans, and automatically executes remediation scripts to secure and harden the underlying OS.
 4. Execute via:
    ```bash
    ansible-playbook -i inventory/hosts.example.yml playbooks/bootstrap_node.yml

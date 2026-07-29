@@ -90,7 +90,6 @@
             - id_dsom_ed25519.pub
           paths:
             - "~/.ssh/"
-      ignore_errors: yes
 
     - name: "Verify | Check dsom-admin Identity"
       ansible.builtin.command: id {{ sovereign_owner }}

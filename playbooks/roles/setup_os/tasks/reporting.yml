@@ -48,6 +48,13 @@
 - name: "Reporting | Template Unified Security Compliance Report"
   ansible.builtin.copy:
     content: |
+      ---
+      okf_version: 0.1
+      type: report
+      title: "Sovereign OS Security Hardening & Compliance Report"
+      description: "Security audit and compliance report for {{ inventory_hostname }}"
+      timestamp: "{{ lookup('pipe', 'date -u +\"%Y-%m-%dT%H:%M:%SZ\"') }}"
+      ---
       # Sovereign OS Security Hardening & Compliance Report
 
       ## System Overview
@@ -72,7 +79,28 @@
       - **SSH Server Hardening**: Configured (AllowTcpForwarding=no, MaxAuthTries=3, MaxSessions=2)
       - **Compiler Constraints**: Restrictive Root-Only Execution Applied
       - **Network Sysctl Tuning**: Kernel DDoS protections and BBR congestion control configured
-      - **Compliance Benchmarks**: Completed CIS Level 2 Evaluation and OVAL vulnerability audit
+      - **OpenSCAP Evaluation Status**:
+        {% if ansible_distribution == 'Ubuntu' and openscap_ubuntu_status is defined %}
+        {{ openscap_ubuntu_status }}
+        {% elif ansible_os_family == 'RedHat' and openscap_rhel_status is defined %}
+        {{ openscap_rhel_status }}
+        {% else %}
+        Not executed
+        {% endif %}
+      - **OpenSCAP Remediation Status**:
+        {% if ansible_distribution == 'Ubuntu' and openscap_ubuntu_remediation_status is defined %}
+        {{ openscap_ubuntu_remediation_status }}
+        {% elif ansible_os_family == 'RedHat' and openscap_rhel_remediation_status is defined %}
+        {{ openscap_rhel_remediation_status }}
+        {% else %}
+        Not executed
+        {% endif %}
+      - **OVAL Vulnerability Scan**:
+        {% if ansible_distribution == 'Ubuntu' and oval_eval_status is defined %}
+        {{ oval_eval_status }}
+        {% else %}
+        Not applicable for RedHat-family hosts
+        {% endif %}
 
       ---
       *Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | {{ lookup('pipe', 'date "+%Y-%m-%d"') }}*
