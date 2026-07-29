@@ -28,6 +28,9 @@ services:
       - USE_BUNKERNET=no
       - USE_RECON=no
       - SEND_ANONYMOUS_REPORT=no
+      - USE_ANTIBOT=captcha
+      - USE_LIMIT_REQ=yes
+      - LIMIT_REQ_RATE=10r/s
     volumes:
       - "{{ bunkerweb_path }}/data:/var/lib/bunkerweb:Z"
       - "{{ bunkerweb_path }}/configs:/etc/bunkerweb:Z"
