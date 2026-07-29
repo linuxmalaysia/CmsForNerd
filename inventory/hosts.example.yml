@@ -1,0 +1,27 @@
+---
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-27
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+# Example inventory hosts file for local and private network configurations
+# All actual IP addresses, specific hostnames and credentials have been sanitized
+all:
+  children:
+    staging:
+      hosts:
+        localhost:
+          ansible_connection: local
+        node-private-01:
+          ansible_host: 10.0.0.10
+          ansible_user: dsom-admin
+      vars:
+        env: staging
+        cms_domain: cmsfornerd.local
+        podman_cms_user: dsom-admin
+        podman_cms_uid: 2001
+        podman_cms_group: dsom-admin
+        podman_cms_gid: 2001
+        project_path: /opt/cmsfornerd

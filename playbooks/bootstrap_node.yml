@@ -1,0 +1,153 @@
+---
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-29
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-29
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+# ==============================================================================
+# [TOOL] DSOM Node Bootstrapper (v1.0)
+#
+# Logic: Dual-Play transition for secure identity bootstrapping across clusters.
+# Play 1: Rootful Bootstrap (Target Initial User -> dsom-admin creation)
+# Play 2: Sovereign Preparation (Target dsom-admin -> Full Configuration)
+# ==============================================================================
+
+# --- [ PLAY 1: IDENTITY BOOTSTRAP (ROOTFUL) ] ---
+- name: "DSOM | Bootstrap Node Identity"
+  hosts: "{{ target_host | default('all') }}"
+  tags: [ bootstrap, setup ]
+  become: true
+  vars:
+    sovereign_owner: "dsom-admin"
+    dsom_group: "dsom-admin"
+
+  tasks:
+    - name: "Control Node | Ensure Ansible Controller has SSH Key"
+      ansible.builtin.user:
+        name: "{{ lookup('env', 'USER') }}"
+        generate_ssh_key: yes
+        ssh_key_type: ed25519
+        ssh_key_bits: 256
+        ssh_key_file: .ssh/id_dsom_ed25519
+      delegate_to: localhost
+      become: false
+      run_once: true
+
+    - name: "Bootstrap | Check All Groups"
+      ansible.builtin.getent:
+        database: group
+        split: ':'
+
+    - name: "Bootstrap | Create DSOM Group (GID 2001)"
+      ansible.builtin.group:
+        name: "{{ dsom_group }}"
+        gid: 2001
+        state: present
+      when: ansible_facts.getent_group[dsom_group] is not defined
+
+    - name: "Bootstrap | Create dsom-admin User (UID 2001)"
+      ansible.builtin.user:
+        name: "{{ sovereign_owner }}"
+        uid: 2001
+        group: "{{ dsom_group }}"
+        shell: /bin/bash
+        create_home: yes
+        password: "{{ sovereign_password | default(omit) }}"
+        update_password: on_create
+        state: present
+
+    - name: "Bootstrap | Configure Sudoers NOPASSWD for dsom-admin"
+      ansible.builtin.copy:
+        content: "{{ sovereign_owner }} ALL=(ALL) NOPASSWD:ALL\n"
+        dest: "/etc/sudoers.d/{{ sovereign_owner }}"
+        mode: '0440'
+        validate: /usr/sbin/visudo -cf %s
+
+    - name: "Bootstrap | Enable Systemd Linger (Persistence)"
+      ansible.builtin.command:
+        cmd: "loginctl enable-linger {{ sovereign_owner }}"
+        creates: "/var/lib/systemd/linger/{{ sovereign_owner }}"
+      ignore_errors: true
+
+    - name: "Bootstrap | Authorize Control Node SSH Key"
+      ansible.posix.authorized_key:
+        user: "{{ sovereign_owner }}"
+        state: present
+        key: "{{ lookup('file', item) }}"
+      with_first_found:
+        - files:
+            - id_dsom_ed25519.pub
+          paths:
+            - "~/.ssh/"
+      ignore_errors: yes
+
+    - name: "Verify | Check dsom-admin Identity"
+      ansible.builtin.command: id {{ sovereign_owner }}
+      register: dsom_id_check
+      changed_when: false
+
+    - name: "Verify | Check Sudo Access"
+      ansible.builtin.shell: "sudo -u {{ sovereign_owner }} sudo -v"
+      register: dsom_sudo_check
+      changed_when: false
+
+    - name: "Verify | Identity Handshake Report"
+      ansible.builtin.debug:
+        msg:
+          - "Bootstrap Identity Verified for {{ sovereign_owner }}"
+          - "ID: {{ dsom_id_check.stdout }}"
+          - "Sudo: {{ 'VALIDATED' if dsom_sudo_check.rc == 0 else 'FAILED' }}"
+
+
+# --- [ PLAY 2: OS BASELINE (SOVEREIGN) ] ---
+- name: "DSOM | Apply OS Baseline"
+  hosts: "{{ target_host | default('all') }}"
+  tags: [ fabric, config ]
+  remote_user: "dsom-admin"
+  become: true # Uses NOPASSWD sudo from Play 1
+
+  tasks:
+    - name: "Provisioning | Detect OS Distribution"
+      ansible.builtin.setup:
+        filter: ansible_distribution*
+
+    - name: "Provisioning | OS Compliance Check"
+      ansible.builtin.assert:
+        that:
+          - (ansible_facts['os_family'] == "Debian") or (ansible_facts['os_family'] == "RedHat")
+        fail_msg: "FATAL: DSOM requires Debian/Ubuntu or RHEL/Alma/Rocky/Oracle."
+
+    - name: "Provisioning | Create DSOM Persistence Root"
+      ansible.builtin.file:
+        path: "{{ dsom_root | default('/opt/cmsfornerd') }}"
+        state: directory
+        owner: "dsom-admin"
+        group: "dsom-admin"
+        mode: '0750'
+
+    - name: "Provisioning | Create DSOM configuration reference"
+      ansible.builtin.copy:
+        content: "dsom_root={{ dsom_root | default('/opt/cmsfornerd') }}\n"
+        dest: /etc/cmsfornerd-soc.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: "OS Tuning | Apply setup_os Role"
+      ansible.builtin.include_role:
+        name: setup_os
+
+    - name: "Verification | System Tuning Completed"
+      ansible.builtin.debug:
+        msg: "Sovereign baseline applied to {{ inventory_hostname }} via {{ ansible_user_id }}"

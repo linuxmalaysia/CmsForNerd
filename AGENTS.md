@@ -63,6 +63,7 @@ embedded in `.agents/AGENTS.md` include:
 | **Sovereign Signatures** | Every markdown or readable script modified by an AI must be processed via `dsom-signature-injector`. |
 | **Ansible Legacy** | Modular executors: `ansible-playbook`, `uv run`, `npm run`, or `pandoc` — governed by strict idempotency. |
 | **Command-First Architecture** | Prose instructions are converted into exact, executable, byte-capped terminal invocations. |
+| **Session End Consolidation**| Review past memories, git log, and details of this task to record the completed work in `.agents/brain/task.md` and `.agents/brain/walkthrough.md`, and then end the session with EOD and check `git status` for any uncommitted changes to be committed and pushed. |
 
 ---
 

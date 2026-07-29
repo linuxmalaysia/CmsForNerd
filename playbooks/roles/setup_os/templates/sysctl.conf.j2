@@ -1,0 +1,109 @@
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-27
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+# DSOM Hardware-Aware Kernel Tuning & Security Hardening
+# Managed by Ansible - DO NOT EDIT MANUALLY
+{% set mem_mb = ansible_memtotal_mb | default(1024) | int %}
+{% set cpu_cores = ansible_processor_vcpus | default(1) | int %}
+
+# --- 1. General System Resource Limits ---
+vm.max_map_count = 262144
+# fs.file-max scaled to 10% of RAM dynamically (e.g. 32GB RAM = ~3.2M handles)
+fs.file-max = {{ (mem_mb * 100) | int }}
+fs.inotify.max_user_watches = 524288
+kernel.pid_max = 65536
+
+# --- 2. Memory Management (Swapping & Dirty Pages) ---
+vm.swappiness = 1
+vm.overcommit_memory = 1
+# min_free_kbytes scaled to 1% of RAM, capped at 1GB to prevent OOM panics
+{% set min_free = (mem_mb * 10.24) | int %}
+vm.min_free_kbytes = {{ min_free if min_free < 1048576 else 1048576 }}
+vm.vfs_cache_pressure = 200
+
+{% if mem_mb >= 32000 %}
+# Heavy I/O Tuning for >= 32GB RAM nodes (Elastic Data Nodes)
+# Absolute bytes prevent I/O stalls on massive memory systems
+vm.dirty_bytes = 629145600
+vm.dirty_background_bytes = 314572800
+{% else %}
+# Standard I/O Tuning for smaller nodes
+vm.dirty_ratio = 15
+vm.dirty_background_ratio = 5
+{% endif %}
+
+# Remote Storage Write Performance (SUSE KB 1583239384308)
+vm.dirty_writeback_centisecs = 3000
+vm.dirty_expire_centisecs = 18000
+
+# --- 3. Network Buffer and Memory Tuning ---
+{% if mem_mb >= 64000 %}
+# Extreme buffers for >= 64GB massive data nodes (Elasticsearch SIEM)
+net.core.rmem_max = 134217728
+net.core.wmem_max = 134217728
+net.ipv4.tcp_rmem = 4096 87380 67108864
+net.ipv4.tcp_wmem = 4096 65536 67108864
+{% elif mem_mb >= 32000 %}
+# 16MB buffers for high capacity nodes
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 12582912 16777216
+net.ipv4.tcp_wmem = 4096 12582912 16777216
+{% else %}
+# 8MB buffers for standard nodes
+net.core.rmem_max = 8388608
+net.core.wmem_max = 8388608
+net.ipv4.tcp_rmem = 4096 4194304 8388608
+net.ipv4.tcp_wmem = 4096 4194304 8388608
+{% endif %}
+
+# --- 4. TCP Connection Management and Queueing ---
+{% if mem_mb >= 32000 %}
+net.core.netdev_max_backlog = 262144
+net.ipv4.tcp_max_syn_backlog = 262144
+net.core.somaxconn = 262144
+{% else %}
+net.core.netdev_max_backlog = 32768
+net.ipv4.tcp_max_syn_backlog = 32768
+net.core.somaxconn = 65535
+{% endif %}
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_fin_timeout = 30
+net.ipv4.tcp_max_tw_buckets = 400000
+net.ipv4.tcp_max_orphans = 60000
+net.ipv4.ip_local_port_range = 1024 65535
+
+# Set retries to 2 for Elasticsearch internal resilience (per Sovereign Review)
+net.ipv4.tcp_syn_retries = 2
+net.ipv4.tcp_synack_retries = 2
+
+# --- 5. TCP Congestion Control & Performance Optimizations ---
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+net.ipv4.tcp_mtu_probing = 1
+net.ipv4.tcp_notsent_lowat = 16384
+net.ipv4.tcp_fastopen = 3
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_window_scaling = 1
+
+# --- 6. Security Hardening (General Server Best Practices) ---
+net.ipv4.tcp_syncookies = 1
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+net.ipv4.conf.all.log_martians = 1
+net.ipv4.conf.default.log_martians = 1
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+net.ipv4.conf.all.secure_redirects = 0
+net.ipv4.conf.default.secure_redirects = 0
+net.ipv4.ip_forward = 0
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0

@@ -102,6 +102,11 @@ Welcome to the Sovereign AI Agent Workspace. You are a Cognitive Digital Twin op
       protocols.
     Whenever `.agents/AGENTS.md` is updated with a new rule or structural change, the root `AGENTS.md` must be reviewed and
     synchronised to reflect the change. Both files must carry current OKF `timestamp` values.
+24. **Session End & Memory Consolidation Mandate:** At the end of every operational session, the AI agent must review past memories,
+    git log, and details of the active task to explicitly record all completed work within `.agents/brain/task.md` and
+    `.agents/brain/walkthrough.md`. The session must be concluded by running the End-of-Day (EOD) ritual and executing `git status` to
+    verify and ensure that all modified files and artifacts are properly staged, committed, and pushed without leaving uncommitted files
+    behind.
 
 ## Cognitive Engine Protocols (Boot & Discovery)
 

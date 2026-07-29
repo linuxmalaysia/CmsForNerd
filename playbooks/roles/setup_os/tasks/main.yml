@@ -1,0 +1,475 @@
+---
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-29
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-29
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-29
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-29
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-27
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+
+# --- [ PHASE 1: SYSTEM UPDATES ] ---
+- name: "Foundation | Update OS package cache and upgrade (Debian/Ubuntu)"
+  ansible.builtin.apt:
+    update_cache: yes
+    upgrade: dist
+    cache_valid_time: 3600
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+    NEEDRESTART_MODE: a
+  when: ansible_facts['os_family'] == "Debian"
+  tags: ["foundation-update", "os-update"]
+
+- name: "Foundation | Autoremove unused packages (Debian/Ubuntu)"
+  ansible.builtin.apt:
+    autoremove: yes
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+    NEEDRESTART_MODE: a
+  when: ansible_facts['os_family'] == "Debian"
+  tags: ["foundation-update", "os-update"]
+
+- name: "Foundation | Update OS package cache and upgrade (RHEL/Alma/Rocky)"
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+    update_cache: yes
+  when: ansible_facts['os_family'] == "RedHat"
+  tags: ["foundation-update", "os-update"]
+
+# --- [ PHASE 2: TOOLCHAIN ] ---
+- name: "Foundation | Install essential DSOM diagnostic and management tools"
+  ansible.builtin.package:
+    name:
+      - git
+      - tree
+      - "{{ 'netcat-openbsd' if ansible_facts['os_family'] == 'Debian' else 'nc' }}"
+      - acl
+      - curl
+      - htop
+      - vim
+      - rsync
+      - tcpdump
+      - sshpass
+    state: present
+
+# --- [ PHASE 3: KERNEL HARDENING ] ---
+- name: "Foundation | Remove old DSOM sysctl drop-ins"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /etc/sysctl.d/99-dsom-performance.conf
+    - /etc/sysctl.d/99-zz-dsom-performance.conf
+
+- name: "Foundation | Ensure /etc/sysctl.conf exists"
+  ansible.builtin.file:
+    path: /etc/sysctl.conf
+    state: touch
+    modification_time: preserve
+    access_time: preserve
+
+- name: "Foundation | Comment out existing active sysctl settings to prevent conflicts"
+  ansible.builtin.replace:
+    path: /etc/sysctl.conf
+    regexp: '^(\s*[a-zA-Z].*?=\s*.*)$'
+    replace: '# \1  # DSOM: overridden by Sovereign Tuning'
+
+- name: "Foundation | Inject DSOM Optimised tuning directly into /etc/sysctl.conf"
+  ansible.builtin.blockinfile:
+    path: /etc/sysctl.conf
+    block: "{{ lookup('template', 'sysctl.conf.j2') }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (DSOM SOVEREIGN TUNING)"
+    create: yes
+  notify: reload sysctl
+
+- name: "Foundation | Disable Transparent Huge Pages (THP)"
+  ansible.builtin.shell: |
+    if [ -f /sys/kernel/mm/transparent_hugepage/enabled ]; then
+      echo never > /sys/kernel/mm/transparent_hugepage/enabled
+    fi
+    if [ -f /sys/kernel/mm/transparent_hugepage/defrag ]; then
+      echo never > /sys/kernel/mm/transparent_hugepage/defrag
+    fi
+  ignore_errors: true
+  changed_when: false
+
+# --- [ PHASE 4: INFRASTRUCTURE MANAGEMENT ] ---
+- name: "Management | Install Management Toolchain"
+  ansible.builtin.package:
+    name:
+      - "etckeeper"
+      - "chrony"
+      - "sysstat"
+      - "rsyslog"
+      - "{{ 'acct' if ansible_os_family == 'Debian' else 'psacct' }}"
+      - "fail2ban"
+    state: present
+
+- name: "Management | Configure etckeeper Git Identity"
+  ansible.builtin.git_config:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    scope: global
+  loop:
+    - { name: 'user.email', value: 'linuxmalaysia@songketmail.org' }
+    - { name: 'user.name', value: 'Harisfazillah Jamel' }
+
+- name: "Management | Set Timezone to Asia/Kuala_Lumpur"
+  community.general.timezone:
+    name: "Asia/Kuala_Lumpur"
+
+- name: "Management | Configure Chrony (NTP Anchors)"
+  ansible.builtin.blockinfile:
+    path: "{{ '/etc/chrony/chrony.conf' if ansible_os_family == 'Debian' else '/etc/chrony.conf' }}"
+    marker: "# {mark} ANSIBLE MANAGED NTP ANCHORS"
+    insertafter: '^pool '
+    block: |
+      server ntp1.sirim.my iburst prefer
+      server ntp2.sirim.my iburst
+      server time.unisza.edu.my iburst
+      server time1.google.com iburst
+      server time2.google.com iburst
+      server time3.google.com iburst
+      server time4.google.com iburst
+  notify: Restart Chrony
+
+- name: "Management | Enable Sysstat Monitoring (Ubuntu)"
+  ansible.builtin.lineinfile:
+    path: /etc/default/sysstat
+    regexp: '^ENABLED='
+    line: 'ENABLED="true"'
+  when: ansible_distribution == "Ubuntu"
+  notify: Restart Sysstat
+
+- name: "Management | Configure Rsyslog High Precision Timestamps"
+  ansible.builtin.replace:
+    path: /etc/rsyslog.conf
+    regexp: '^(\$ActionFileDefaultTemplate)'
+    replace: '#$ActionFileDefaultTemplate'
+  notify: Restart Rsyslog
+  ignore_errors: true
+
+- name: "Management | Configure Fail2Ban (jail.local)"
+  ansible.builtin.copy:
+    src: /etc/fail2ban/jail.conf
+    dest: /etc/fail2ban/jail.local
+    remote_src: yes
+    force: no
+  notify: Restart Fail2Ban
+  ignore_errors: true
+
+# --- [ PHASE 5: AUTOMATED UPDATES ] ---
+- name: "Security | Install Automated Update Tools"
+  ansible.builtin.package:
+    name: "{{ 'unattended-upgrades' if ansible_os_family == 'Debian' else 'dnf-automatic' }}"
+    state: present
+
+- name: "Security | Configure Automated Upgrades (Ubuntu)"
+  ansible.builtin.copy:
+    content: |
+      APT::Periodic::Update-Package-Lists "1";
+      APT::Periodic::Download-Upgradeable-Packages "1";
+      APT::Periodic::Unattended-Upgrade "1";
+      APT::Periodic::AutocleanInterval "7";
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+    mode: '0644'
+  when: ansible_distribution == "Ubuntu"
+  notify: Restart Unattended-Upgrades
+
+- name: "Security | Configure dnf-automatic (RHEL)"
+  ansible.builtin.lineinfile:
+    path: /etc/dnf/automatic.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  loop:
+    - { regexp: '^upgrade_type =', line: 'upgrade_type = security' }
+    - { regexp: '^apply_updates =', line: 'apply_updates = yes' }
+  when: ansible_os_family == "RedHat"
+
+- name: "Security | Enable Automated Update Services"
+  ansible.builtin.service:
+    name: "{{ 'unattended-upgrades' if ansible_os_family == 'Debian' else 'dnf-automatic.timer' }}"
+    state: started
+    enabled: yes
+
+# --- [ PHASE 6: SECURITY AUDIT & INTRUSION DETECTION ] ---
+- name: "Security | Install Audit Toolchain"
+  ansible.builtin.package:
+    name:
+      - "rkhunter"
+      - "lynis"
+      - "aide"
+    state: present
+
+- name: "Security | Configure RKHunter (Standardized)"
+  ansible.builtin.copy:
+    content: |
+      # DSOM Sovereign RKHunter Baseline
+      UPDATE_MIRRORS=0
+      MIRRORS_MODE=0
+      ENABLE_TESTS=ALL
+      WEB_CMD=""
+    dest: /etc/rkhunter.conf.local
+    mode: '0644'
+  when: ansible_os_family == "Debian"
+
+- name: "Security | Enable RKHunter Daily Cron (Ubuntu)"
+  ansible.builtin.lineinfile:
+    path: /etc/default/rkhunter
+    regexp: '^CRON_DAILY_RUN='
+    line: 'CRON_DAILY_RUN="true"'
+  when: ansible_distribution == "Ubuntu"
+
+- name: "Security | Initialize RKHunter Database"
+  ansible.builtin.command: "{{ item }}"
+  loop:
+    - "rkhunter --update"
+    - "rkhunter --propupd"
+  changed_when: true
+  ignore_errors: yes
+
+- name: "Security | Deploy Sovereign Lynis Profile"
+  ansible.builtin.copy:
+    content: |
+      # DSOM Sovereign Lynis Profile
+      show_tool_tips=no
+    dest: /etc/lynis/custom.prf
+    mode: '0644'
+
+- name: "Security | Schedule Lynis Daily Audit"
+  ansible.builtin.cron:
+    name: "Lynis Daily Audit"
+    minute: "32"
+    hour: "3"
+    user: root
+    job: "/usr/sbin/lynis audit system --profile /etc/lynis/custom.prf --cronjob"
+
+- name: "Management | Enable and Start Infrastructure Services"
+  ansible.builtin.service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - "chrony"
+    - "sysstat"
+    - "rsyslog"
+    - "{{ 'acct' if ansible_os_family == 'Debian' else 'psacct' }}"
+    - "fail2ban"
+  ignore_errors: true
+
+# --- [ PHASE 7: EXTENDED HARDENING ] ---
+- name: "Hardening | Install Auditd"
+  ansible.builtin.package:
+    name: "auditd"
+    state: present
+
+- name: "Security | Install APT Hardening Tools (Debian)"
+  ansible.builtin.apt:
+    name:
+      - apt-listchanges
+      - apt-show-versions
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: "Security | Configure Auditd Baseline Rules"
+  ansible.builtin.copy:
+    content: |
+      -w /etc/passwd -p wa -k identity
+      -w /etc/group -p wa -k identity
+      -w /etc/shadow -p wa -k identity
+      -w /etc/sudoers -p wa -k actions
+    dest: /etc/audit/rules.d/dsom-baseline.rules
+    mode: '0640'
+  notify: Reload Auditd Rules
+  ignore_errors: true
+
+- name: "Hardening | Deploy Legal Banners"
+  ansible.builtin.copy:
+    content: |
+      *************************************************************************
+      *                         DSOM SOVEREIGN FABRIC                         *
+      *                 UNAUTHORIZED ACCESS IS PROHIBITED                     *
+      *************************************************************************
+    dest: "{{ item }}"
+    mode: '0644'
+  loop:
+    - /etc/issue
+    - /etc/issue.net
+
+- name: "Hardening | Lockdown SSH Configuration"
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    validate: '/usr/sbin/sshd -t -f %s'
+  loop:
+    - { regexp: '^#?AllowTcpForwarding', line: 'AllowTcpForwarding no' }
+    - { regexp: '^#?MaxAuthTries', line: 'MaxAuthTries 3' }
+    - { regexp: '^#?MaxSessions', line: 'MaxSessions 2' }
+    - { regexp: '^#?LogLevel', line: 'LogLevel VERBOSE' }
+    - { regexp: '^#?ClientAliveCountMax', line: 'ClientAliveCountMax 2' }
+    - { regexp: '^#?TCPKeepAlive', line: 'TCPKeepAlive no' }
+    - { regexp: '^#?X11Forwarding', line: 'X11Forwarding no' }
+    - { regexp: '^#?AllowAgentForwarding', line: 'AllowAgentForwarding no' }
+  notify: restart ssh
+
+- name: "Hardening | Check Compiler Existence"
+  ansible.builtin.stat:
+    path: "{{ item }}"
+  loop: "{{ compiler_list }}"
+  register: compiler_stats
+
+- name: "Hardening | Restrict Compiler Access (Root-Only)"
+  ansible.builtin.file:
+    path: "{{ item.item }}"
+    mode: '0700'
+    owner: root
+    group: root
+  loop: "{{ compiler_stats.results }}"
+  when: item.stat.exists
+  ignore_errors: yes
+
+- name: "Hardening | Identity Protection (UMASK & Hashing)"
+  ansible.builtin.lineinfile:
+    path: /etc/login.defs
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  loop:
+    - { regexp: '^UMASK', line: 'UMASK 027' }
+    - { regexp: '^SHA_CRYPT_MIN_ROUNDS', line: 'SHA_CRYPT_MIN_ROUNDS 50000' }
+    - { regexp: '^SHA_CRYPT_MAX_ROUNDS', line: 'SHA_CRYPT_MAX_ROUNDS 50000' }
+
+- name: "Hardening | Disable Core Dumps (limits.conf)"
+  ansible.builtin.lineinfile:
+    path: /etc/security/limits.conf
+    regexp: '^\*.*hard.*core'
+    line: '* hard core 0'
+    state: present
+
+- name: "Hardening | Restrict Home Directory Permissions"
+  ansible.builtin.command: "find /home -mindepth 1 -maxdepth 1 -type d -exec chmod 750 {} +"
+  changed_when: false
+  ignore_errors: true
+
+- name: "Hardening | Sanitize Postfix Banner"
+  ansible.builtin.lineinfile:
+    path: /etc/postfix/main.cf
+    regexp: '^smtpd_banner ='
+    line: 'smtpd_banner = $myhostname ESMTP'
+  when: ansible_distribution == "Ubuntu"
+  ignore_errors: yes
+
+- name: "Hardening | Blacklist Uncommon Protocols & USB Storage"
+  ansible.builtin.copy:
+    content: |
+      install dccp /bin/true
+      install sctp /bin/true
+      install rds /bin/true
+      install tipc /bin/true
+      install usb-storage /bin/true
+    dest: /etc/modprobe.d/dsom-hardened.conf
+    mode: '0644'
+
+# --- [ PHASE 8: NETWORK FIREWALL ] ---
+- name: "Security | Install Firewall (UFW/Firewalld)"
+  ansible.builtin.package:
+    name: "{{ 'ufw' if ansible_os_family == 'Debian' else 'firewalld' }}"
+    state: present
+
+- name: "Security | Setup UFW Logging File (Debian)"
+  ansible.builtin.file:
+    path: /var/log/ufw.log
+    state: touch
+    owner: syslog
+    group: adm
+    mode: '0640'
+  when: ansible_os_family == 'Debian'
+  ignore_errors: true
+
+- name: "Security | Configure UFW Rules (Debian)"
+  ansible.builtin.shell: |
+    ufw allow in ssh comment 'allow ssh in'
+    ufw allow out ssh comment 'allow ssh out'
+    ufw logging on
+    ufw --force enable
+  when: ansible_os_family == 'Debian'
+  register: ufw_result
+  changed_when: "'Skipped' not in ufw_result.stdout"
+  ignore_errors: true
+
+- name: "Security | Enable Firewalld Service (RHEL)"
+  ansible.builtin.service:
+    name: firewalld
+    state: started
+    enabled: yes
+  when: ansible_os_family == 'RedHat'
+
+- name: "Security | Configure Firewalld Rules (RHEL)"
+  ansible.builtin.shell: |
+    firewall-cmd --permanent --add-service=ssh
+    firewall-cmd --reload
+  when: ansible_os_family == 'RedHat'
+  register: firewalld_result
+  changed_when: false
+  ignore_errors: true
+
+- name: "Security | Run Final Lynis Audit"
+  ansible.builtin.command: "lynis audit system --profile /etc/lynis/custom.prf --cronjob"
+  changed_when: true
+  ignore_errors: yes
+
+- name: "Verification | Extract Lynis Hardening Index"
+  ansible.builtin.shell: "grep '^hardening_index=' /var/log/lynis-report.dat | cut -d= -f2"
+  register: lynis_score
+  changed_when: false
+  ignore_errors: yes
+
+- name: "Persistence | Update DSOM Configuration File with Compliance"
+  ansible.builtin.blockinfile:
+    path: /etc/um-elastic-soc.conf
+    marker: "# {mark} ANSIBLE MANAGED COMPLIANCE DATA"
+    create: yes
+    block: |
+      [compliance]
+      os_distro={{ ansible_distribution }} {{ ansible_distribution_version }}
+      lynis_score={{ lynis_score.stdout | default('N/A', true) }}
+  ignore_errors: true
+
+- name: "Sovereign | Run OpenSCAP Security Auditing and Hardening Tasks"
+  ansible.builtin.include_tasks: openscap.yml
+
+- name: "Reporting | Compile Lynis and OpenSCAP Security Audit Report"
+  ansible.builtin.include_tasks: reporting.yml
