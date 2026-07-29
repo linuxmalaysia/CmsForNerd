@@ -96,7 +96,7 @@ handshake is **REQUIRED** for all laboratory sessions.
 ### 🐳 Option 3: Rootless Container Orchestration (Ansible & Podman)
 
 1. Deploys CmsForNerd within rootless containers (Nginx + PHP-FPM 8.4), offering rootless isolation benefits but requiring host-policy trade-offs (specifically, setting `net.ipv4.ip_unprivileged_port_start=80` changes host-wide port-binding policy for all unprivileged processes on the system, not just CmsForNerd).
-2. See the comprehensive [Ansible-Podman Deployment Guide](ANSIBLE_PODMAN_GUIDE.md) for automated setups on target hosts.
+2. See the comprehensive [Ansible-Podman Deployment Guide](docs/ANSIBLE_PODMAN_GUIDE.md) for automated setups on target hosts.
 3. Learn how to set up Google Jules on Ubuntu 26.04 in our [Google Jules Ubuntu 26.04 Setup Guide](docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md).
 
 ### 🚀 Option 4: DSOM Node Bootstrap & OpenSCAP Hardening (Unreleased - Planned v4.1.5)

@@ -107,6 +107,14 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 - [x] Define session end and memory consolidation protocol (Rule 24) in root `AGENTS.md` and `.agents/AGENTS.md`
 - [x] Run EOD Ritual (synchronization of tasks, walkthroughs, changelogs, and histories)
 
+## [x] Module 17: Root Workspace Cleanliness Mandate (v4.1.6)
+
+- [x] Clean up repository root by moving non-related markdown files into `docs/` Palace
+- [x] Retain critical entry points and core configuration files at the repository root (`README.md`, `CHANGELOG.md`, `SUMMARY.md`, `AGENTS.md`, `SECURITY.md`, `CONTRIBUTING.md`)
+- [x] Clean up duplicate, identical uppercase files in `docs/` (`docs/DIRECTORY_SECURITY.md`, `docs/DOCS_REQUIREMENTS.md`) to maintain strict workspace cleanliness
+- [x] Update all internal documentation and sitemap links to point to new `docs/` locations
+- [x] Verify workspace integrity and execute End-of-Day memory consolidation protocol
+
 
 ---
 *Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*

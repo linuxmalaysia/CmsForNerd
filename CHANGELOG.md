@@ -13,6 +13,16 @@ Entries are grouped by date (most recent first).
 
 ---
 
+## [4.1.6] - 2026-07-29 (Root Workspace Cleanliness Mandate)
+
+### 🧹 Root Workspace Cleanliness
+- **Workspace Organization**: Cleaned up the repository root directory by moving all unrelated markdown documentation files into the `docs/` folder to maintain a pristine project root.
+- **Critical Entry Points**: Retained only core configuration files and critical entry-point documents (`README.md`, `CHANGELOG.md`, `SUMMARY.md`, `AGENTS.md`, `SECURITY.md`, `CONTRIBUTING.md`) in the root.
+- **Duplicate Removal**: Deleted duplicate identical uppercase files (`DIRECTORY_SECURITY.md`, `DOCS_REQUIREMENTS.md`) inside `docs/` to eliminate redundancy and maintain a single source of truth.
+- **Reference Updates**: Updated all internal documentation and sitemap links across `README.md` and `SUMMARY.md` to map cleanly to their new paths inside the `docs/` Palace.
+- **EOD Memory Consolidation**: Completed End-of-Day procedures including active task tracking, walkthrough updates, and episodic record preservation.
+
+
 ## [4.1.5] - 2026-07-27 (Planned Handover Date) (DSOM Node Bootstrap & OpenSCAP Compliance Hardening)
 
 ### 🚀 DSOM Node Bootstrap & OS Baseline Playbook

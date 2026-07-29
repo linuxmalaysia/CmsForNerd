@@ -12,6 +12,13 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ## Strategic Phases
 
+### Phase 16: Root Workspace Cleanliness Mandate (v4.1.6)
+
+- **Repository Root Cleanup**: Cleaned up the repository root directory by moving all unrelated markdown files to the `docs/` Palace.
+- **Critical Entry Points**: Retained only core configuration files and critical entry-point documents (`README.md`, `CHANGELOG.md`, `SUMMARY.md`, `AGENTS.md`, `SECURITY.md`, `CONTRIBUTING.md`) in the root.
+- **Duplicate Removal**: Deleted duplicate identical uppercase files (`DIRECTORY_SECURITY.md`, `DOCS_REQUIREMENTS.md`) inside `docs/` to eliminate redundancy and maintain a single source of truth.
+- **Reference Updates**: Updated all internal documentation and sitemap links across `README.md` and `SUMMARY.md` to map cleanly to their new paths inside the `docs/` Palace.
+
 ### Phase 15: DSOM Node Bootstrap & OpenSCAP Compliance Hardening
 
 - **Dual-Play Transition Playbook**: Developed `playbooks/bootstrap_node.yml` to orchestrate secure rootful user provisioning and baseline setup.
@@ -84,6 +91,19 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 - **AI Readiness**: Modernized metadata layer with JSON-LD and Schema.org.
 - **Theme Correction**: Standardized theme paths to `themes/CmsForNerd`.
 - **Security Auditor**: Introduction of semantic audit tools for students.
+
+## [4.1.6] - 2026-07-29 (Root Workspace Cleanliness Mandate)
+
+**"Complete Repository Root Cleanup & Reference Synchronization"**
+
+### 🧹 Root Workspace Cleanliness
+- **Workspace Organization**: Cleaned up the repository root directory by moving all unrelated markdown documentation files into the `docs/` folder to maintain a pristine project root.
+- **Critical Entry Points**: Retained only core configuration files and critical entry-point documents (`README.md`, `CHANGELOG.md`, `SUMMARY.md`, `AGENTS.md`, `SECURITY.md`, `CONTRIBUTING.md`) in the root.
+- **Duplicate Removal**: Deleted duplicate identical uppercase files (`DIRECTORY_SECURITY.md`, `DOCS_REQUIREMENTS.md`) inside `docs/` to eliminate redundancy and maintain a single source of truth.
+- **Reference Updates**: Updated all internal documentation and sitemap links across `README.md` and `SUMMARY.md` to map cleanly to their new paths inside the `docs/` Palace.
+- **EOD Memory Consolidation**: Completed End-of-Day procedures including active task tracking, walkthrough updates, and episodic record preservation.
+
+---
 
 ## [4.1.3] - 2026-07-27 (Planned Handover Date) (Sitemaps & Certificate Hardening against XSS)
 
