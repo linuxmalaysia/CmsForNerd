@@ -118,7 +118,6 @@
     name: cmsfornerd-composer-prod
     image: docker.io/library/composer:2.8
     state: started
-    user: "{{ podman_cms_uid }}:{{ podman_cms_gid }}"
     volumes:
       - "{{ codes_path }}:/app:Z"
     command: install --ignore-platform-reqs --no-dev --optimize-autoloader
@@ -170,11 +169,7 @@
 
 # Container Build and Start
 - name: Build custom PHP 8.5 image as dsom-admin user
-  containers.podman.podman_image:
-    name: localhost/cmsfornerd-php
-    tag: "{{ php_version }}"
-    path: "{{ php_fpm_path }}"
-    force: true
+  ansible.builtin.command: "podman build --security-opt seccomp=unconfined -t localhost/cmsfornerd-php:{{ php_version }} {{ php_fpm_path }}"
   become: true
   become_user: "{{ podman_cms_user }}"
 
