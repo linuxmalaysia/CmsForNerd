@@ -1,3 +1,12 @@
+---
+okf_version: 0.1
+type: documentation
+title: "CmsForNerd Infrastructure Deployment Report"
+description: "Deployment report detailing the CmsForNerd application stack deployment under rootless Podman on Ubuntu."
+resource: "file:///docs/DEPLOYMENT_REPORT.md"
+timestamp: 2026-07-29T00:00:00Z
+---
+
 # CmsForNerd Infrastructure Deployment Report
 
 ## 1. Deployment Overview & Topology
@@ -23,15 +32,16 @@ The infrastructure utilizes three containerized services running in a cohesive u
     sudo -u dsom-admin podman unshare chown -R 101:101 /opt/cmsfornerd/bunkerweb/configs /opt/cmsfornerd/bunkerweb/data
     ```
     This securely maps UID 101 inside the container to the correct relative subuid offsets on the host filesystem.
+*   **Important Note:** Any backup, cleanup, or host-side automation accessing the remapped `/opt/cmsfornerd/bunkerweb/configs` and `/opt/cmsfornerd/bunkerweb/data` directories must run through the same `podman unshare` namespace (e.g., `sudo -u dsom-admin podman unshare <command>`) or use an explicitly configured compensating ACL/group policy to avoid permission conflicts with the remapped UIDs.
 
 ---
 
 ## 3. Findings & Improvement Recommendations
 
 ### A. Performance Optimization Findings
-1.  **OPcache & JIT Compilation:**
-    *   *Finding:* The PHP-FPM container currently runs with default development settings. Production performance can be dramatically accelerated by enabling OPcache and configuring preloading for core CMS utility classes.
-    *   *Recommendation:* Inject an custom `opcache.ini` configuration containing:
+1.  **OPcache Configuration:**
+    *   *Finding:* The PHP-FPM container currently runs with default development settings. Production performance can be dramatically accelerated by enabling OPcache for bytecode caching.
+    *   *Recommendation:* Inject a custom `opcache.ini` configuration containing:
         ```ini
         opcache.enable=1
         opcache.memory_consumption=128
@@ -39,9 +49,9 @@ The infrastructure utilizes three containerized services running in a cohesive u
         opcache.max_accelerated_files=4000
         opcache.revalidate_freq=60
         ```
-2.  **FastCGI Buffering & Keepalive:**
+2.  **FastCGI Buffering:**
     *   *Finding:* Large dynamic page payloads can lead to upstream disk-buffering bottlenecks inside Nginx.
-    *   *Recommendation:* Enhance the upstream Nginx template configuration to leverage FastCGI keepalives and configure optimal buffer sizes:
+    *   *Recommendation:* Enhance the upstream Nginx template configuration to configure optimal buffer sizes:
         ```nginx
         fastcgi_buffers 16 16k;
         fastcgi_buffer_size 32k;
@@ -52,13 +62,12 @@ The infrastructure utilizes three containerized services running in a cohesive u
     *   *Finding:* Subuid limits on the host (`/etc/subuid` and `/etc/subgid`) must be audited to ensure that they are scoped narrowly and do not overlap with other unprivileged accounts.
     *   *Recommendation:* Configure `/etc/subuid` to allocate exactly 65536 subuids per unprivileged user, establishing a strict security boundary.
 2.  **BunkerWeb Hardening Configurations:**
-    *   *Finding:* BunkerWeb is running in default mode.
-    *   *Recommendation:* Inject standard security variables in `compose.yml` to enable automatic ModSecurity rule blocks, rate-limiting, and bad bot blocking:
+    *   *Finding:* BunkerWeb 1.5.8 runs with ModSecurity enabled by default and uses self-signed SSL/TLS (AUTO_LETS_ENCRYPT=no is implicit). Additional hardening features like antibot protection and rate-limiting are available but not yet configured.
+    *   *Recommendation:* Inject additional security variables in `compose.yml` to enable bad bot blocking and rate-limiting:
         ```yaml
         environment:
-          - AUTO_LETS_ENCRYPT=no
-          - USE_MODSECURITY=yes
           - USE_ANTIBOT=captcha
+          - USE_LIMIT_REQ=yes
           - LIMIT_REQ_RATE=10r/s
         ```
 

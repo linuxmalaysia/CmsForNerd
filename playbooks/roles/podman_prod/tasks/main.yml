@@ -168,10 +168,29 @@
   become: true
 
 # Container Build and Start
+- name: Check if PHP Containerfile exists
+  ansible.builtin.stat:
+    path: "{{ php_fpm_path }}/Containerfile"
+  register: containerfile_stat
+  become: true
+
+- name: Inspect existing PHP image
+  ansible.builtin.command: "podman inspect localhost/cmsfornerd-php:{{ php_version }}"
+  register: image_inspect
+  failed_when: false
+  changed_when: false
+  become: true
+  become_user: "{{ podman_cms_user }}"
+
 - name: Build custom PHP 8.5 image as dsom-admin user
   ansible.builtin.command: "podman build --security-opt seccomp=unconfined -t localhost/cmsfornerd-php:{{ php_version }} {{ php_fpm_path }}"
   become: true
   become_user: "{{ podman_cms_user }}"
+  when: >
+    image_inspect.rc != 0 or
+    containerfile_stat.stat.mtime > ((image_inspect.stdout | from_json)[0].Created | to_datetime('%Y-%m-%dT%H:%M:%S.%f%z')).timestamp()
+  register: build_result
+  changed_when: build_result.changed | default(false)
 
 - name: "Reconciliation Check | Verify status of containers in the compose project"
   ansible.builtin.command: "podman ps -a --filter label=io.podman.compose.project={{ compose_project_name }} --format {% raw %}'{{.State}}'{% endraw %}"
