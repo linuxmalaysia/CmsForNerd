@@ -9,6 +9,7 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 # Table of contents
 
 * [👋 Welcome & Overview](README.md)
+* [🤖 LLM Context Index](.llms/index.md)
 * [📜 Architecture Requirements (RFC 2119)](docs/docs-requirements.md)
 * [🛠️ Project Rules (For AI Agents)](docs/PROJECT_RULES.md)
 * [🕒 Changelog](CHANGELOG.md)

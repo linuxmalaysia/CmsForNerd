@@ -154,7 +154,21 @@ timestamp: "2026-07-26T12:00:00Z"
 
 ### Mental Anchor
 > The root directory is clean, and all moved documentation references have been updated and verified.
+## 🏁 Session Anchor: 2026-07-30 — Omni-Documentation & LLM Indexing (v4.1.7)
 
+### Accomplishments
+- **LLM Crawling Standards (`llms.txt`)**: Authored `llms.txt` in the root directory following the standard on llms-txt.org to facilitate intelligent LLM indexing and prompt parsing of the repository.
+- **Onboarding Navigation Gateway (`START-HERE.md`)**: Designed and deployed `START-HERE.md` at the root directory, documenting the 12 critical Entry Points of the platform spanning architectural rules, deployment playbooks, and routing files.
+- **MkDocs Compilation Config (`mkdocs.yml`)**: Designed and verified `mkdocs.yml` at the root directory, establishing robust hierarchy indexing for all 50+ documentation guides.
+- **Sovereign Index Breakdown (`.llms/index.md`)**: Created `.llms/index.md` providing an in-depth breakdown of standard and advanced practices including PHP 8.4 strict types, PHPStan Level 8, Zero-Global variables (`Registry`), and Pair Logic layout rules.
+- **Digital Signatures**: Processed all created and modified files (.md, .sh, .ps1, .yml, .yaml) via `dsom-signature-injector` to append/prepend DSOM digital sovereignty and ownership headers.
+
+### Why
+- Providing dedicated indexing structures like `llms.txt` and `START-HERE.md` eliminates cognitive discovery latency and enables AI agents (like Google Jules) to instantly understand project standards and file mappings.
+- Clean compilation configuration (`mkdocs.yml`) supports beautiful static document building.
+
+### Mental Anchor
+> The project has comprehensive directory and LLM indexing mapping, with all files fully signed and passing 100% test suites and style audits.
 
 ---
 *Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*

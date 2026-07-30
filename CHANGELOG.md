@@ -13,6 +13,16 @@ Entries are grouped by date (most recent first).
 
 ---
 
+## [4.1.7] - 2026-07-30 (Omni-Documentation & LLM Indexing)
+
+### 🤖 LLM & Cognitive Agent Indexing
+- **LLM Crawl Standard (`llms.txt`)**: Integrated `llms.txt` at the repository root containing architectural guidelines, standards, and structured references to optimise LLM indexing.
+- **Onboarding Roadmap (`START-HERE.md`)**: Created `START-HERE.md` at the repository root mapping the 12 critical entry points of the project to facilitate developer and agent onboarding.
+- **Sovereign Directory Breakdown (`.llms/index.md`)**: Created `.llms/index.md` specifying deep state flow details, immutability, Zero-Global architecture, and Pair Logic layout specifications.
+- **MkDocs Integration (`mkdocs.yml`)**: Designed and verified `mkdocs.yml` mapping out navigation hierarchy for over 50 documentation pages.
+- **Digital Signatures**: Processed all modified/created configuration and documentation files (.md, .sh, .ps1, .yml, .yaml) via `dsom-signature-injector` to append/prepend digital signatures.
+
+
 ## [4.1.6] - 2026-07-29 (Root Workspace Cleanliness Mandate)
 
 ### 🧹 Root Workspace Cleanliness
