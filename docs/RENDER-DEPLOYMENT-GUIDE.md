@@ -23,7 +23,13 @@ Because Render does not offer a native, out-of-the-box PHP runtime, our architec
 
 The infrastructure is explicitly bound to the following regional and temporal configurations:
 - **Region**: `singapore` (The closest ultra-low-latency region in Southeast Asia).
-- **Timezone**: `Asia/Kuala_Lumpur` (Passed dynamically as the `TZ` environment variable to ensure time synchronization).
+- **Timezone**: `Asia/Kuala_Lumpur` (Configured via the `TZ` environment variable for system timezone setting).
+
+**PHP Timezone Configuration**: For PHP applications, the `TZ` environment variable alone is not sufficient. Ensure PHP's timezone is explicitly set using one of these methods:
+- Add `date.timezone = "Asia/Kuala_Lumpur"` to your `php.ini` configuration file, or
+- Call `date_default_timezone_set('Asia/Kuala_Lumpur')` in your application bootstrap code.
+
+This ensures consistent timezone handling across both system and PHP runtime environments.
 
 ---
 

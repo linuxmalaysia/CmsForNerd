@@ -10,11 +10,25 @@
 # Standards: PHP 8.4, Apache, Composer 2.x
 # =============================================================================
 
-FROM composer:2.8 AS builder
+FROM php:8.4-apache AS builder
+
+# Install required system libraries and PHP extensions in builder stage
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libzip-dev \
+    unzip \
+    git \
+    && docker-php-ext-install zip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Composer
+COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
+
 WORKDIR /app
 COPY composer.json composer.lock ./
-# Install production dependencies only, ignoring platform requirements during build
-RUN composer install --no-dev --no-scripts --no-progress --ignore-platform-reqs
+
+# Validate platform requirements and install production dependencies
+RUN composer check-platform-reqs && \
+    composer install --no-dev --no-scripts --no-progress --optimize-autoloader --no-interaction
 
 FROM php:8.4-apache
 
@@ -28,20 +42,27 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Enable Apache mod_rewrite and mod_headers for routing and .htaccess security headers
 RUN a2enmod rewrite headers
 
-# Configure Apache to allow .htaccess overrides on the DocumentRoot
-RUN sed -ri -e 's!AllowOverride None!AllowOverride All!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+# Configure Apache to allow .htaccess overrides specifically for /var/www/html
+RUN cat <<'EOF' > /etc/apache2/conf-available/document-root-override.conf
+<Directory /var/www/html>
+    AllowOverride All
+    Require all granted
+</Directory>
+EOF
+
+RUN a2enconf document-root-override
 
 # Set active working directory
 WORKDIR /var/www/html
 
-# Copy vendor dependencies from the composer builder stage
+# Copy vendor dependencies from the composer builder stage (owned by root)
 COPY --from=builder /app/vendor /var/www/html/vendor
 
-# Copy the application source code
+# Copy the application source code (owned by root)
 COPY . /var/www/html/
 
-# Ensure web server has proper ownership over all copied files
-RUN chown -R www-data:www-data /var/www/html
+# Only grant www-data ownership to directories that need runtime write access
+RUN chown -R www-data:www-data /var/www/html/data
 
 # Expose standard web port
 EXPOSE 80
