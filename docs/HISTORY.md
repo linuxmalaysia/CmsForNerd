@@ -94,7 +94,7 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ## [4.1.6] - 2026-07-29 (Root Workspace Cleanliness Mandate)
 
-**"Complete Repository Root Cleanup & Reference Synchronization"**
+**"Complete Repository Root Cleanup & Reference Synchronisation"**
 
 ### 🧹 Root Workspace Cleanliness
 - **Workspace Organization**: Cleaned up the repository root directory by moving all unrelated markdown documentation files into the `docs/` folder to maintain a pristine project root.
