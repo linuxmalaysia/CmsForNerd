@@ -137,6 +137,24 @@ timestamp: "2026-07-26T12:00:00Z"
 ### Mental Anchor
 > The dual-play node bootstrapper and OpenSCAP auditing system are fully integrated, signed with DSOM digital signatures, and passing code style validations.
 
+---
+
+## 🏁 Session Anchor: 2026-07-29 — Root Workspace Cleanliness Mandate (v4.1.6)
+
+### Accomplishments
+- **Repository Root Cleanup**: Cleaned up the root directory of the repository by moving non-related markdown files into the `docs/` Palace.
+- **Entry Points Preserved**: Retained only core configuration files (e.g., `.gitignore`, `ansible.cfg`) and critical entry point documents (`README.md`, `CHANGELOG.md`, `SUMMARY.md`, `AGENTS.md`, `SECURITY.md`, `CONTRIBUTING.md`) at the repository root.
+- **Duplicate Cleanups**: Cleaned up duplicate identical files (`docs/DIRECTORY_SECURITY.md`, `docs/DOCS_REQUIREMENTS.md`) inside the `docs/` directory to maintain strict documentation hygiene.
+- **Internal Reference Updates**: Updated internal markdown links and references in `README.md` and `SUMMARY.md` to cleanly point to the moved file locations inside `docs/`.
+- **EOD Memory Consolidation**: Executed EOD memory consolidation to ensure absolute continuity.
+
+### Why
+- Root workspace cleanliness prevents clutter, enhances repository discoverability, and isolates core configuration from miscellaneous documentation.
+- Removing duplicate documentation eliminates source-of-truth divergence and maintains clean static site outputs.
+
+### Mental Anchor
+> The root directory is clean, and all moved documentation references have been updated and verified.
+
 
 ---
 *Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
