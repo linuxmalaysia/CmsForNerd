@@ -27,7 +27,7 @@ linking to all 12 major Entry Points of the platform, enabling instant orientati
 | **7** | **Procedural Skill Entry Point** | [`docs/governance/AI-SKILL-ARCHITECTURE.md`](docs/governance/AI-SKILL-ARCHITECTURE.md) | Structuring of standard operating procedures in `.agents/skills/`. |
 | **8** | **Sovereign Knowledge Entry Point**| [`docs/governance/LLM-WIKI-ADOPTION.md`](docs/governance/LLM-WIKI-ADOPTION.md) | Guidelines for Knowledge Compounding and LLM-Wiki workflows. |
 | **9** | **Security & Audit Entry Point** | [`docs/governance/GITOPS-AIOPS-ANSIBLE-STRATEGY.md`](docs/governance/GITOPS-AIOPS-ANSIBLE-STRATEGY.md) | Hardening, OpenSCAP auditing, and host compliance. |
-| **10** | **Infrastructure Orchestration** | [`playbooks/deploy_prod_compose.yml`](playbooks/deploy_prod_compose.yml) | Ansible playbooks for rootless Podman 5 production stack. |
+| **10** | **Infrastructure Orchestration** | [`playbooks/deploy_prod_compose.yml`](playbooks/deploy_prod_compose.yml) <br> [`docs/RENDER-DEPLOYMENT-GUIDE.md`](docs/RENDER-DEPLOYMENT-GUIDE.md) | Ansible playbooks for rootless Podman 5, and Render Cloud Deployment Guide. |
 | **11** | **Local Development Setup** | [`technical-resources/installation-guide.md`](technical-resources/installation-guide.md) | PHP 8.4 runtime config, local composer setup, server execution. |
 | **12** | **Core Routing & Theme** | [`themes/CmsForNerd/pager.php`](themes/CmsForNerd/pager.php) | Central routing, Standard vs AMP view, layout controller. |
 
