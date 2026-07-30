@@ -22,7 +22,7 @@ linking to all 12 major Entry Points of the platform, enabling instant orientati
 | **2** | **Cognitive Entry Point** | [`.agents/AGENTS.md`](.agents/AGENTS.md) | Full AI Constitution, operational laws, rules, and persona DNA. |
 | **3** | **Master Onboarding Map** | [`START-HERE.md`](START-HERE.md) | This index — the global directory and subsystem topological map. |
 | **4** | **Daily Operations Entry Point** | [`docs/HOWTO-PALACE-ONBOARDING.md`](docs/HOWTO-PALACE-ONBOARDING.md) | Guided walk of the Sovereign Markdown Palace Wings and Halls. |
-| **5** | **Legacy Upgrade Entry Point** | [`docs/HOWTO-UPGRADE-LEGACY-DSOM.md`](docs/HOWTO-UPGRADE-LEGACY-DSOM.md) | Protocols to port and modernize legacy PHP setups to v4+. |
+| **5** | **Legacy Upgrade Entry Point** | [`docs/HOWTO-UPGRADE-LEGACY-DSOM.md`](docs/HOWTO-UPGRADE-LEGACY-DSOM.md) | Protocols to port and modernise legacy PHP setups to v4+. |
 | **6** | **Subagent Swarm Entry Point** | [`docs/governance/MULTI-AGENT-PROTOCOLS.md`](docs/governance/MULTI-AGENT-PROTOCOLS.md) | Orchestration protocols for multi-agent workflows. |
 | **7** | **Procedural Skill Entry Point** | [`docs/governance/AI-SKILL-ARCHITECTURE.md`](docs/governance/AI-SKILL-ARCHITECTURE.md) | Structuring of standard operating procedures in `.agents/skills/`. |
 | **8** | **Sovereign Knowledge Entry Point**| [`docs/governance/LLM-WIKI-ADOPTION.md`](docs/governance/LLM-WIKI-ADOPTION.md) | Guidelines for Knowledge Compounding and LLM-Wiki workflows. |
@@ -30,6 +30,20 @@ linking to all 12 major Entry Points of the platform, enabling instant orientati
 | **10** | **Infrastructure Orchestration** | [`playbooks/deploy_prod_compose.yml`](playbooks/deploy_prod_compose.yml) | Ansible playbooks for rootless Podman 5 production stack. |
 | **11** | **Local Development Setup** | [`technical-resources/installation-guide.md`](technical-resources/installation-guide.md) | PHP 8.4 runtime config, local composer setup, server execution. |
 | **12** | **Core Routing & Theme** | [`themes/CmsForNerd/pager.php`](themes/CmsForNerd/pager.php) | Central routing, Standard vs AMP view, layout controller. |
+
+---
+
+## 🧠 AI Agent Boot Sequence
+
+For AI agents and cognitive assistants initialising in this environment, the following reading order is required:
+
+1. **[`.agents/AGENTS.md`](.agents/AGENTS.md)** — AI Constitution, operational laws, rules, and persona DNA
+2. **[`.agents/brain/task.md`](.agents/brain/task.md)** — Current mental state and active task tracking
+3. **[`.agents/brain/walkthrough.md`](.agents/brain/walkthrough.md)** — Episodic memory and session accomplishments
+4. **[`.agents/brain/palace_registry.md`](.agents/brain/palace_registry.md)** — Sovereign Markdown Palace spatial memory registry
+5. **[`.agents/brain/active_context_manifest.md`](.agents/brain/active_context_manifest.md)** — Active context manifest for current working state
+6. **[`docs/AI-STATE-SYNC.md`](docs/AI-STATE-SYNC.md)** — AI state synchronisation protocols and handshake procedures
+7. **[`START-HERE.md`](START-HERE.md)** — This master onboarding map (you are here)
 
 ---
 
@@ -49,6 +63,7 @@ linking to all 12 major Entry Points of the platform, enabling instant orientati
 - **`.agents/skills/`:** Reusable, executable SOP directories providing specialized tools to automation scripts.
 
 ### 3. Documentation (The Sovereign Markdown Palace)
+- **`.llms/index.md`:** Comprehensive AI agent context index for LLM parsing and NotebookLM indexing.
 - **`docs/`:** Master directory containing guides, tutorials, and security checklists.
 - **`docs/governance/`:** Rigid theoretical frameworks establishing absolute operational sovereignty.
 

@@ -15,6 +15,7 @@ theme:
 nav:
   - Welcome & Overview: README.md
   - Master Onboarding Map: START-HERE.md
+  - LLM Context Index: .llms/index.md
   - Project Rules: docs/PROJECT_RULES.md
   - Architecture Requirements: docs/docs-requirements.md
   - Changelog: CHANGELOG.md

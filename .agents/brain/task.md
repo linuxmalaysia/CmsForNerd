@@ -120,7 +120,7 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 - [x] Design and deploy `START-HERE.md` outlining the 12 platform Entry Points
 - [x] Create complete Material theme `mkdocs.yml` navigation structure for 50+ documentation pages
 - [x] Design `.llms/index.md` providing an in-depth breakdown of CmsForNerd v4.1.0 engine design patterns (PHP 8.4, PHPStan Level 8, Zero-Global, Pair Logic, and Dual-View routing)
-- [x] Process all modified/created configuration and documentation files via `dsom-signature-injector`
+- [x] Process all modified/created configuration and documentation files (.md, .sh, .ps1, .yml, .yaml) via `dsom-signature-injector`
 - [x] Verify all files and run local test suite (Pest, PHPCS, PHPStan Level 8) with 100% success rate
 
 

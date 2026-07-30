@@ -161,7 +161,7 @@ timestamp: "2026-07-26T12:00:00Z"
 - **Onboarding Navigation Gateway (`START-HERE.md`)**: Designed and deployed `START-HERE.md` at the root directory, documenting the 12 critical Entry Points of the platform spanning architectural rules, deployment playbooks, and routing files.
 - **MkDocs Compilation Config (`mkdocs.yml`)**: Designed and verified `mkdocs.yml` at the root directory, establishing robust hierarchy indexing for all 50+ documentation guides.
 - **Sovereign Index Breakdown (`.llms/index.md`)**: Created `.llms/index.md` providing an in-depth breakdown of standard and advanced practices including PHP 8.4 strict types, PHPStan Level 8, Zero-Global variables (`Registry`), and Pair Logic layout rules.
-- **Digital Signatures**: Processed all created and modified files via `dsom-signature-injector` to append/prepend DSOM digital sovereignty and ownership headers.
+- **Digital Signatures**: Processed all created and modified files (.md, .sh, .ps1, .yml, .yaml) via `dsom-signature-injector` to append/prepend DSOM digital sovereignty and ownership headers.
 
 ### Why
 - Providing dedicated indexing structures like `llms.txt` and `START-HERE.md` eliminates cognitive discovery latency and enables AI agents (like Google Jules) to instantly understand project standards and file mappings.

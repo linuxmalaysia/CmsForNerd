@@ -9,7 +9,7 @@ timestamp: 2026-07-27T12:00:00Z
 ---
 # 🤖 .llms/index: Comprehensive AI Agent Context Index
 
-This document is optimized for parsing by LLMs, cognitive agents, and NotebookLM indexing. It provides a technical
+This document is optimised for parsing by LLMs, cognitive agents, and NotebookLM indexing. It provides a technical
 breakdown of the core engine, standard practices, file mappings, and architectural standards of CmsForNerd v4.1.0.
 
 ---
@@ -21,8 +21,9 @@ breakdown of the core engine, standard practices, file mappings, and architectur
   ```php
   declare(strict_types=1);
   ```
-- No implicit type conversions are tolerated.
-- Fully compatible with the upcoming PHP 9.x specifications.
+- Strict typing applies to scalar type declarations at function/method call and return sites within the declaring file. The `declare(strict_types=1)` directive is file-scoped and affects type checking for calls made from that file.
+- Note: PHP's strict_types mode still permits implicit int-to-float coercion (widening) as an exception even in strict mode.
+- Expected to be compatible with the upcoming PHP 9.x specifications, subject to PHP 9.x specifications being finalised.
 
 ### 2. PHPStan Level 8 Enforcement
 - The static analysis suite is run at the strict **Level 8** criteria.
