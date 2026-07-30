@@ -1,0 +1,56 @@
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-30
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+site_name: CmsForNerd Laboratory
+site_url: https://cmsfornerd.test/
+site_description: Flat-file PHP laboratory CMS with Digital Sovereignty (DSOM) protocols.
+site_author: Harisfazillah Jamel (LinuxMalaysia)
+theme:
+  name: material
+
+nav:
+  - Welcome & Overview: README.md
+  - Master Onboarding Map: START-HERE.md
+  - Project Rules: docs/PROJECT_RULES.md
+  - Architecture Requirements: docs/docs-requirements.md
+  - Changelog: CHANGELOG.md
+  - Laboratory Manuals:
+      - Student Welcome Kit: docs/welcome-kit.md
+      - Installation Guide: docs/INSTALLATION.md
+      - Template & Theme Guide: docs/template-guide.md
+      - Main Lab Manual: docs/lab-manual.md
+      - Sitemap & SEO Guide: docs/sitemap-guide.md
+      - XSS & Host Protection Guide: docs/xss-protection-guide.md
+      - Testing Guide: docs/testing-guide.md
+      - bfcache Testing Guide: docs/bfcache-testing-guide.md
+      - Directory Security Guide: docs/directory-security.md
+      - Bot Intelligence Guide: docs/bot-intelligence.md
+      - Turnstile Protection Guide: docs/turnstile-protection.md
+      - AI-Assisted Dev Guide: docs/ai-dev.md
+  - Laboratory Modules:
+      - Module 1 - Modern Architecture: docs/lab-module1.md
+      - Module 2 - Standards (PSR-12): docs/lab-module2.md
+      - Module 3 - Defensive Engineering: docs/lab-module3.md
+      - Module 4 - Automated Testing: docs/lab-module4.md
+      - Module 5 - Coverage & QA: docs/lab-module5.md
+  - Environment Setup:
+      - Linux Setup: docs/linux-setup.md
+      - Windows Setup: docs/windows-setup.md
+      - Google Jules on Ubuntu 26.04: docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md
+  - Graduation:
+      - Final Exam Challenge: docs/final-exam.md
+      - Claim Your Certificate: docs/graduation.md
+      - Hall of Fame: docs/hall-of-fame.md
+  - Project Records & Governance:
+      - Modernisation History: docs/HISTORY.md
+      - Infrastructure Deployment Report: docs/DEPLOYMENT_REPORT.md
+      - AI Ethics SOP: docs/ai-sop.md
+      - Project State Sync: docs/AI-STATE-SYNC.md
+      - AI Master Protocol: docs/AI-MASTER-PROTOCOL.md
+      - State Sync Manifesto: docs/blog-state-sync.md
+      - Security Policy: docs/security-policy.md
+      - Sitemap: docs/SITEMAP.md
