@@ -1,12 +1,12 @@
 # ==============================================================================
 # Protocol    : Deep State of Mind (DSOM) For My AI
 # Author      : Harisfazillah Jamel (LinuxMalaysia)
-# Timestamp   : 2026-07-30
+# Timestamp   : 2026-07-31
 # License     : GNU General Public License v3.0
 # Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
 # ==============================================================================
 # =============================================================================
-# CmsForNerd v4.1.0 - Containerfile for Render Production Deployments
+# CmsForNerd v4.1.0 - Dockerfile for Render Production Deployments
 # Standards: PHP 8.4, Apache, Composer 2.x
 # =============================================================================
 
