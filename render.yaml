@@ -1,7 +1,7 @@
 # ==============================================================================
-# Protocol    : Deep State of Mind (DSOM) For My AI
+# Protocol    : Deep State of Mind (DSOM) For My AI Protocol
 # Author      : Harisfazillah Jamel (LinuxMalaysia)
-# Timestamp   : 2026-07-30
+# Timestamp   : 2026-07-31
 # License     : GNU General Public License v3.0
 # Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
 # ==============================================================================
@@ -16,7 +16,7 @@ services:
     runtime: docker
     plan: starter
     region: singapore
-    dockerfilePath: Containerfile
+    dockerfilePath: Dockerfile
     envVars:
       - key: TZ
         value: Asia/Kuala_Lumpur
