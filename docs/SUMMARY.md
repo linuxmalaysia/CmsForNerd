@@ -36,6 +36,7 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 * [Linux Environment](linux-setup.md)
 * [Windows Environment](windows-setup.md)
 * [Google Jules on Ubuntu 26.04](HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md)
+* [Render Deployment Guide](RENDER-DEPLOYMENT-GUIDE.md)
 
 ## 🎓 Graduation
 * [Final Exam Challenge](final-exam.md)

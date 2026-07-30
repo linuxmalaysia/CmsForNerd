@@ -49,6 +49,7 @@
 - [playbooks/deploy_prod_compose.yml](playbooks/deploy_prod_compose.yml): Production deployment playbook.
 - [docs/ANSIBLE_PODMAN_GUIDE.md](docs/ANSIBLE_PODMAN_GUIDE.md): Orchestration guide using Podman 5.
 - [docs/SECURITY_AUDIT_REPORT.md](docs/SECURITY_AUDIT_REPORT.md): OpenSCAP compliance report.
+- [docs/RENDER-DEPLOYMENT-GUIDE.md](docs/RENDER-DEPLOYMENT-GUIDE.md): Render Blueprint and custom Containerfile Deployment Guide.
 
 ---
 *Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27*

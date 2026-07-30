@@ -13,6 +13,14 @@ Entries are grouped by date (most recent first).
 
 ---
 
+## [4.1.8] - 2026-07-30 (Render Cloud Blueprint Specification)
+
+### 🚀 Render Blueprint & Containerization
+- **Blueprint Spec (`render.yaml`)**: Implemented the official Render Blueprint specification at the root of the repository. Bound to Singapore (`singapore`) region with `Asia/Kuala_Lumpur` timezone environment configuration.
+- **Secure Secret Handling (`sync: false`)**: Configured secret fields (`APP_SECRET`, `ADMIN_PASSWORD`) with `sync: false` to securely prompt administrators during deployment, keeping critical passwords out of Git/GitHub history.
+- **Custom PHP 8.4 Apache Container (`Containerfile`)**: Engineered a lightweight, multi-stage custom Apache/PHP 8.4 `Containerfile` enabling dynamic mod_rewrite, security headers, and `.htaccess` overrides.
+- **Multi-Layer Documentation**: Created a comprehensive guide `docs/RENDER-DEPLOYMENT-GUIDE.md` and registered it in `SUMMARY.md`, `mkdocs.yml`, `START-HERE.md`, and `llms.txt`.
+
 ## [4.1.7] - 2026-07-30 (Omni-Documentation & LLM Indexing)
 
 ### 🤖 LLM & Cognitive Agent Indexing

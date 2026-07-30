@@ -6,9 +6,28 @@ description: "Sovereign log of development walkthroughs, accomplishments, and me
 resource: "file:///.agents/brain/walkthrough.md"
 timestamp: "2026-07-26T12:00:00Z"
 ---
-# Walkthrough: Semantic Evolution & Zero-Global Architecture (v4.1.4)
+# Walkthrough: Render Cloud Blueprint Specification (v4.1.8)
 
-### Modification Date: 2026-07-27 (v4.1.3 is marked as historical)
+### Modification Date: 2026-07-30 (v4.1.7 is marked as historical)
+
+## 🏁 Session Anchor: 2026-07-30 — Render Cloud Blueprint Specification (v4.1.8)
+
+### Accomplishments
+- **Blueprint Spec (`render.yaml`)**: Designed and implemented the official Render Blueprint specification at the root of the repository. Bound to Singapore (`singapore`) region with `Asia/Kuala_Lumpur` timezone environment configuration.
+- **Secure Secret Handling (`sync: false`)**: Configured secret fields (`APP_SECRET`, `ADMIN_PASSWORD`) with `sync: false` to securely prompt administrators during deployment, keeping critical passwords out of Git/GitHub history.
+- **Custom PHP 8.4 Apache Container (`Containerfile`)**: Engineered a lightweight, multi-stage custom Apache/PHP 8.4 `Containerfile` enabling dynamic mod_rewrite, security headers, and `.htaccess` overrides.
+- **Multi-Layer Documentation**: Created a comprehensive guide `docs/RENDER-DEPLOYMENT-GUIDE.md` and registered it in `SUMMARY.md`, `mkdocs.yml`, `START-HERE.md`, and `llms.txt`.
+- **EOD Ritual & Compliance**: Run full compliance validation suite `composer lab-check` passing with zero style, static analysis, or test errors.
+
+### Why
+- Standardizing cloud deployment via Render's official IaC format enables rapid, reproducible container orchestration.
+- Singapore region offers ultra-low latency, and timezone synchronization via environment variables matches local timezone requirements.
+- Prompting for secrets dynamically at the dashboard level prevents leaking production credentials to Git/GitHub repositories.
+
+### Mental Anchor
+> The cloud blueprint and containerization setup are fully integrated, signed, registered across all navigation layers, and successfully validated.
+
+---
 
 ## 🚀 Key Accomplishments (v3.6.0)
 

@@ -12,6 +12,13 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 
 ## Strategic Phases
 
+### Phase 17: Render Cloud Blueprint Specification (v4.1.8)
+
+- **Blueprint Spec (`render.yaml`)**: Designed and implemented the official Render Blueprint specification at the root of the repository. Bound to Singapore (`singapore`) region with `Asia/Kuala_Lumpur` timezone environment configuration.
+- **Secure Secret Handling (`sync: false`)**: Configured secret fields (`APP_SECRET`, `ADMIN_PASSWORD`) with `sync: false` to securely prompt administrators during deployment, keeping critical passwords out of Git/GitHub history.
+- **Custom PHP 8.4 Apache Container (`Containerfile`)**: Engineered a lightweight, multi-stage custom Apache/PHP 8.4 `Containerfile` enabling dynamic mod_rewrite, security headers, and `.htaccess` overrides.
+- **Multi-Layer Documentation**: Created a comprehensive guide `docs/RENDER-DEPLOYMENT-GUIDE.md` and registered it in `SUMMARY.md`, `mkdocs.yml`, `START-HERE.md`, and `llms.txt`.
+
 ### Phase 16: Root Workspace Cleanliness Mandate (v4.1.6)
 
 - **Repository Root Cleanup**: Cleaned up the repository root directory by moving all unrelated markdown files to the `docs/` Palace.
@@ -91,6 +98,16 @@ Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a mod
 - **AI Readiness**: Modernized metadata layer with JSON-LD and Schema.org.
 - **Theme Correction**: Standardized theme paths to `themes/CmsForNerd`.
 - **Security Auditor**: Introduction of semantic audit tools for students.
+
+## [4.1.8] - 2026-07-30 (Render Cloud Blueprint Specification)
+
+**"Official Render Blueprint Infrastructure Setup with Secure Multi-Stage Containerization"**
+
+### 🚀 Render Blueprint & Containerization
+- **Blueprint Spec (`render.yaml`)**: Implemented the official Render Blueprint specification at the root of the repository. Bound to Singapore (`singapore`) region with `Asia/Kuala_Lumpur` timezone environment configuration.
+- **Secure Secret Handling (`sync: false`)**: Configured secret fields (`APP_SECRET`, `ADMIN_PASSWORD`) with `sync: false` to securely prompt administrators during deployment, keeping critical passwords out of Git/GitHub history.
+- **Custom PHP 8.4 Apache Container (`Containerfile`)**: Engineered a lightweight, multi-stage custom Apache/PHP 8.4 `Containerfile` enabling dynamic mod_rewrite, security headers, and `.htaccess` overrides.
+- **Multi-Layer Documentation**: Created a comprehensive guide `docs/RENDER-DEPLOYMENT-GUIDE.md` and registered it in `SUMMARY.md`, `mkdocs.yml`, `START-HERE.md`, and `llms.txt`.
 
 ## [4.1.6] - 2026-07-29 (Root Workspace Cleanliness Mandate)
 

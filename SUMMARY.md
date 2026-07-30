@@ -30,6 +30,7 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 * [🛡️ Security Policy](docs/security-policy.md)
 * [🛡️ XSS & Host Protection](docs/xss-protection-guide.md)
 * [🤖 Google Jules Ubuntu 26.04 Setup Guide](docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md)
+* [🚀 Render Deployment Guide](docs/RENDER-DEPLOYMENT-GUIDE.md)
 
 ## 🏁 Certification
 
