@@ -42,7 +42,7 @@ Options -Indexes
 # If you later add file upload capability, this prevents code execution
 # (Directory is not allowed in .htaccess files and causes 500 errors).
 <IfModule mod_rewrite.c>
-    RewriteRule "^uploads/.*\.php(/|$)" - [F,NC]
+    RewriteRule "^uploads/.*\.php" - [F,NC]
 </IfModule>
 
 # =============================================================================
