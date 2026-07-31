@@ -149,13 +149,18 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 - [x] Process all modified documents via `dsom-signature-injector` and verify OKF v0.1 compliance.
 - [x] Execute standard development checks to ensure 100% test pass rate and clean static analysis.
 
-## [x] Module 22: Context Re-learning & Windows Shell Compliance (v4.2.1)
+## [x] Module 23: PR Bot Synergy & Cross-Platform Scripting Governance (v4.2.2)
 
-- [x] Re-orient AI Cognitive Twin memory using the 3-step Mechanical Boot Sequence and DSOM Spatial Memory.
-- [x] Resolve Windows PowerShell escaping syntax errors in `composer.json` (`check-strict` and `lab-check` inline PHP scripts).
-- [x] Run `composer lab-check` compliance suite — **100% PASS** (158 tests, 2333 assertions).
+- [x] Codify Rule 25 (Branching, PR & Bot Review Integration Mandate) in `.agents/AGENTS.md` and `AGENTS.md`.
+- [x] Codify Rule 26 (Cross-Platform Standalone Scripting Mandate) in `.agents/AGENTS.md` and `AGENTS.md`.
+- [x] Refactor inline `composer.json` scripts into dedicated PHP script files (`tools/check-legacy-global.php` & `tools/check-strict-types.php`).
+- [x] Author end-to-end governance guide `docs/governance/SOP-PULL-REQUEST-BOT-SYNERGY.md` covering GitHub (`gh`) and GitLab (`glab`) PR workflows.
+- [x] Map SOP across `SUMMARY.md`, `mkdocs.yml`, `llms.txt`, and `START-HERE.md` (Entry Point 13).
+- [x] Prune all temporary feature branches to maintain a clean workspace with `master` as sole branch.
+- [x] Run `composer lab-check` compliance suite — **100% PASS** (201 tests, 2450 assertions).
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-01*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
+
 
