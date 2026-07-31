@@ -93,6 +93,23 @@ final class SonarConfigurationTest extends TestCase
         );
     }
 
+    public function testSonarPropertiesDockerAndContainerfileExclusionsAppearExactlyOnce(): void
+    {
+        $content = file_get_contents($this->sonarPropertiesPath);
+        $exclusions = $this->extractExclusionList($content, 'sonar.exclusions');
+
+        $this->assertSame(
+            1,
+            count(array_filter($exclusions, static fn (string $entry): bool => $entry === '**/Dockerfile')),
+            'The **/Dockerfile exclusion must appear exactly once.'
+        );
+        $this->assertSame(
+            1,
+            count(array_filter($exclusions, static fn (string $entry): bool => $entry === '**/Containerfile')),
+            'The **/Containerfile exclusion must appear exactly once.'
+        );
+    }
+
     public function testSonarPropertiesPhpExclusionsUnaffected(): void
     {
         $content = file_get_contents($this->sonarPropertiesPath);
