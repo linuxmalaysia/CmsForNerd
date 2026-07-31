@@ -32,7 +32,7 @@ require_once __DIR__ . '/includes/bootstrap.php';
  * for the root index to signify the CMS environment to search engines.
  */
 $content = [
-    'title'       => "CmsForNerd v3.5 | The Developer’s Laboratory",
+    'title'       => "CMSForNerd v4.2.0: The Secure Coding Laboratory",
     'author'      => "Harisfazillah Jamel",
     'description' => "A lightweight flat-file CMS modernized for PHP 8.4+ and strict security standards.",
     'keywords'    => "PHP 8.4, Flat-file CMS, Security Laboratory, Zero-Debt CSS, PSR-12",
