@@ -137,6 +137,29 @@ final class DockerBuildTest extends TestCase
         $this->assertMatchesRegularExpression('/^EXPOSE 80$/m', $content);
     }
 
+    public function testDockerfileExposesBothPort80AndPort8080(): void
+    {
+        $content = file_get_contents($this->dockerfilePath);
+
+        $this->assertMatchesRegularExpression(
+            '/^EXPOSE 80\nEXPOSE 8080$/m',
+            $content,
+            'Port 80 must be exposed alongside the pre-existing unprivileged port 8080, in that order, so both ' .
+            'the PHPUnit DockerBuildTest expectations and the existing Apache "Listen 8080" configuration are satisfied.'
+        );
+    }
+
+    public function testContainerfileExposesBothPort80AndPort8080(): void
+    {
+        $content = file_get_contents($this->containerfilePath);
+
+        $this->assertMatchesRegularExpression(
+            '/^EXPOSE 80\nEXPOSE 8080$/m',
+            $content,
+            'Containerfile must expose the same ports as Dockerfile for local Podman workflows to stay in sync.'
+        );
+    }
+
     public function testDockerfileAndContainerfileAreFunctionallyIdentical(): void
     {
         $dockerfileContent = file_get_contents($this->dockerfilePath);
@@ -240,6 +263,46 @@ final class DockerBuildTest extends TestCase
             count($entries),
             count(array_unique($entries)),
             '.dockerignore should not contain duplicate patterns.'
+        );
+    }
+
+    /**
+     * Regression guard for the "Deduplicate header comments in .dockerignore"
+     * fix: the decorative banner separator lines in the header block
+     * previously repeated the exact same string, which is disallowed by the
+     * project's "no duplicate lines" rule.
+     */
+    public function testDockerignoreHeaderBannerLinesAreNotDuplicated(): void
+    {
+        $lines = file($this->dockerignorePath, FILE_IGNORE_NEW_LINES);
+        $headerLines = array_slice($lines, 0, 10);
+
+        $bannerLines = array_values(array_filter(
+            $headerLines,
+            static fn (string $line): bool => (bool) preg_match('/^#[=\-]+$/', trim($line))
+        ));
+
+        $this->assertGreaterThanOrEqual(
+            2,
+            count($bannerLines),
+            'Expected at least two decorative banner separator lines in the .dockerignore header.'
+        );
+        $this->assertSame(
+            count($bannerLines),
+            count(array_unique($bannerLines)),
+            'Decorative header banner separator lines must not be exact duplicates of one another.'
+        );
+    }
+
+    public function testDockerignoreHeaderUsesDashSeparatorBetweenMetadataAndPurposeBlocks(): void
+    {
+        $content = file_get_contents($this->dockerignorePath);
+
+        $this->assertStringContainsString(
+            '# ------------------------------------------------------------------------------',
+            $content,
+            'The metadata block and the purpose block must be divided by a dash separator rather than ' .
+            'a duplicate of the equals-sign banner used elsewhere in the header.'
         );
     }
 }
