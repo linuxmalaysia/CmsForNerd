@@ -9,7 +9,7 @@ timestamp: 2026-07-30T12:00:00Z
 ---
 # Render Blueprint Deployment Guide
 
-This guide describes how to deploy **CmsForNerd** onto Render using Infrastructure as Code (IaC) via the `render.yaml` Blueprint specification and a custom, high-performance container configuration with co-existing `Dockerfile` and `Containerfile` files.
+This guide describes how to deploy **CmsForNerd** onto Render (view our [Live Demo](https://cmsfornerd.onrender.com/index.php) or access via our [Context7 MCP & LLM standard link](https://context7.com/cmsfornerd/cmsfornerd/llms.txt?tokens=10000)) using Infrastructure as Code (IaC) via the `render.yaml` Blueprint specification and a custom, high-performance container configuration with co-existing `Dockerfile` and `Containerfile` files.
 
 ---
 
