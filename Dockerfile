@@ -42,9 +42,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Enable Apache mod_rewrite and mod_headers for routing and .htaccess security headers
 RUN a2enmod rewrite headers
 
-# Configure Apache to listen on unprivileged port 8080 instead of 80
+# Configure Apache to listen on unprivileged port 8080
 RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf && \
-    sed -i 's/<VirtualHost \*:80>/<VirtualHost *:8080>/' /etc/apache2/sites-available/000-default.conf
+    sed -i 's/:80>/:8080>/' /etc/apache2/sites-available/000-default.conf
 
 # Configure Apache to allow .htaccess overrides specifically for /var/www/html
 RUN cat <<'EOF' > /etc/apache2/conf-available/document-root-override.conf
@@ -56,34 +56,24 @@ EOF
 
 RUN a2enconf document-root-override
 
+# Create and configure directories for non-root Apache operation
+RUN mkdir -p /var/run/apache2 /var/lock/apache2 /var/log/apache2 && \
+    chown -R www-data:www-data /var/run/apache2 /var/lock/apache2 /var/log/apache2
+
 # Set active working directory
 WORKDIR /var/www/html
 
 # Copy vendor dependencies from the composer builder stage
-COPY --from=builder --chown=www-data:www-data /app/vendor /var/www/html/vendor
+COPY --from=builder /app/vendor /var/www/html/vendor
 
-# Copy application source files explicitly (allow-list approach)
-COPY --chown=www-data:www-data composer.json composer.lock .htaccess /var/www/html/
-COPY --chown=www-data:www-data *.php /var/www/html/
-COPY --chown=www-data:www-data *.html /var/www/html/
-COPY --chown=www-data:www-data *.js /var/www/html/
-COPY --chown=www-data:www-data *.ico /var/www/html/
-COPY --chown=www-data:www-data *.xml /var/www/html/
-COPY --chown=www-data:www-data *.rdf /var/www/html/
-COPY --chown=www-data:www-data *.json /var/www/html/
-COPY --chown=www-data:www-data *.txt /var/www/html/
-COPY --chown=www-data:www-data robots.txt /var/www/html/
-COPY --chown=www-data:www-data src /var/www/html/src
-COPY --chown=www-data:www-data includes /var/www/html/includes
-COPY --chown=www-data:www-data data /var/www/html/data
-COPY --chown=www-data:www-data assets /var/www/html/assets
-COPY --chown=www-data:www-data images /var/www/html/images
-COPY --chown=www-data:www-data contents /var/www/html/contents
-COPY --chown=www-data:www-data themes /var/www/html/themes
-COPY --chown=www-data:www-data .well-known /var/www/html/.well-known
+# Copy application files (runtime-required content only via .dockerignore exclusions)
+COPY . /var/www/html
 
-# Switch to non-root user for runtime
+# Grant www-data ownership to the entire application directory and writable data directory
+RUN chown -R www-data:www-data /var/www/html
+
+# Switch to non-root user
 USER www-data
 
-# Expose unprivileged port
+# Expose unprivileged web port
 EXPOSE 8080
