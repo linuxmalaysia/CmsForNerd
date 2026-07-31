@@ -2,20 +2,22 @@
 okf_version: 0.1
 type: documentation
 title: "Render Deployment Guide"
-description: "Comprehensive guide for deploying CmsForNerd to Render using Blueprint specification and custom Containerfiles."
+description: "Comprehensive guide for deploying CmsForNerd to Render using Blueprint specification and custom Dockerfile/Containerfiles."
 resource: "file:///docs/RENDER-DEPLOYMENT-GUIDE.md"
 topics: [render, deploy, blueprint, container, setup]
 timestamp: 2026-07-30T12:00:00Z
 ---
 # Render Blueprint Deployment Guide
 
-This guide describes how to deploy **CmsForNerd** onto Render using Infrastructure as Code (IaC) via the `render.yaml` Blueprint specification and a custom, high-performance `Containerfile` containerizer.
+This guide describes how to deploy **CmsForNerd** onto Render using Infrastructure as Code (IaC) via the `render.yaml` Blueprint specification and a custom, high-performance container configuration with co-existing `Dockerfile` and `Containerfile` files.
 
 ---
 
 ## 🏛️ Architecture Overview
 
 Because Render does not offer a native, out-of-the-box PHP runtime, our architecture containerizes the application using a secure, multi-stage **PHP 8.4 Apache** image with the **Composer** build process fully automated inside the container. This approach ensures a lean, secure, and production-ready image.
+
+> **Co-existence & Cloud Compatibility**: To guarantee absolute compatibility across local native Podman environments (which natively utilize `Containerfile`) and cloud-based Docker/Render build stages (which expect `Dockerfile`), we maintain duplicate/synced configurations for both at the repository root. In `render.yaml`, the service is explicitly directed via `dockerfilePath: Dockerfile`.
 
 ---
 
@@ -48,7 +50,7 @@ Instead, they are configured with `sync: false` in `render.yaml`. This forces th
 3. **Secret Handshake**: The Render interface will automatically detect `render.yaml` and prompt you to input the values for:
    - `APP_SECRET`
    - `ADMIN_PASSWORD`
-4. **Deploy**: Render will build the custom `Containerfile`, configure Apache with mod_rewrite enabled, respect `.htaccess` security controls, and launch the web service.
+4. **Deploy**: Render will build using the custom `Dockerfile`, configure Apache with mod_rewrite enabled, respect `.htaccess` security controls, and launch the web service.
 
 ---
 *Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-30*
