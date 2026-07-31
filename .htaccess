@@ -12,13 +12,16 @@ Options -Indexes
 # 2. PROTECT SENSITIVE DIRECTORIES
 # =============================================================================
 # Deny access to includes, tests, vendor, and hidden files
-<DirectoryMatch "^\.|\/\.">
-    Require all denied
-</DirectoryMatch>
+# (DirectoryMatch is not allowed in .htaccess files and causes 500 errors).
+<IfModule mod_rewrite.c>
+    RewriteEngine On
 
-<DirectoryMatch "^/(includes|tests|vendor|\.vscode|\.well-known)">
-    Require all denied
-</DirectoryMatch>
+    # Block access to hidden files and directories (starting with a dot) except .well-known
+    RewriteRule "(^|/)\.(?!well-known/)" - [F]
+
+    # Block access to sensitive directories
+    RewriteRule "^(includes|tests|vendor|\.vscode)(/|$)" - [F]
+</IfModule>
 
 # Exception: Allow .well-known/security.txt (RFC 9116 requirement)
 <Files "security.txt">
@@ -37,12 +40,10 @@ Options -Indexes
 # 4. PREVENT PHP EXECUTION IN UPLOAD DIRECTORIES
 # =============================================================================
 # If you later add file upload capability, this prevents code execution
-<Directory "*/uploads/*">
-    php_flag engine off
-    <FilesMatch "\.php$">
-        Require all denied
-    </FilesMatch>
-</Directory>
+# (Directory is not allowed in .htaccess files and causes 500 errors).
+<IfModule mod_rewrite.c>
+    RewriteRule "^uploads/.*\.php$" - [F]
+</IfModule>
 
 # =============================================================================
 # 5. SECURITY HEADERS

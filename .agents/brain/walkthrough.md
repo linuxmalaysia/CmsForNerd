@@ -189,6 +189,23 @@ timestamp: "2026-07-26T12:00:00Z"
 ### Mental Anchor
 > The project has comprehensive directory and LLM indexing mapping, with all files fully signed and passing 100% test suites and style audits.
 
+## 🏁 Session Anchor: 2026-07-31 — Apache .htaccess & Docker Alignment (v4.1.9)
+
+### Accomplishments
+- **Apache .htaccess Compliance**: Completely removed incompatible `<DirectoryMatch>` and `<Directory>` tags from `.htaccess`, which were causing 500 Internal Server Errors on Render. Replaced them with secure `mod_rewrite` Rules under `<IfModule mod_rewrite.c>`.
+- **Dockerfile & Containerfile Parity**: Updated both Docker build manifests to satisfy PHPUnit test assertions. This includes limiting `chown` recursively to only `/var/www/html/data` (best-practice defense in depth) and exposing both port 80 and port 8080.
+- **Sonar Exclusions Synchronization**: Synced the local `sonar-project.properties` exclusions list with the GitHub Actions workflow definition file `.github/workflows/build.yml`.
+- **Dockerignore Deduplication**: Replaced duplicate separator comments in `.dockerignore` to pass the uniqueness check.
+- **Local Lab Check Success**: Ran all Pest PHP unit/feature tests, PHPStan Level 8 static analysis, and PHP_CodeSniffer with 100% compliance.
+
+### Why
+- Apache strictly forbids `<Directory>` and `<DirectoryMatch>` directives within directory-level configurations (`.htaccess`), resulting in immediate 500 errors. Using `RewriteRule` achieves identical directory isolation goals legally inside `.htaccess`.
+- Synchronizing build and analysis metadata prevents project quality regression and maintains 100% passing status on CI checks.
+
+### Mental Anchor
+> The web server deployment configuration is fully secure and compatible with both Render cloud environment and local Pest PHP testing assertions. All tests pass with 100% success.
+
+
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

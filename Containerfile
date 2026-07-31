@@ -70,10 +70,11 @@ COPY --from=builder /app/vendor /var/www/html/vendor
 COPY . /var/www/html
 
 # Grant www-data ownership to the entire application directory and writable data directory
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html/data
 
 # Switch to non-root user
 USER www-data
 
 # Expose unprivileged web port
+EXPOSE 80
 EXPOSE 8080
