@@ -4,7 +4,7 @@ type: documentation
 title: "The Core AI Rulebook (DSOM)"
 description: "OKF-compliant documentation for AGENTS.md."
 resource: "file:///.agents/AGENTS.md"
-timestamp: 2026-07-27T12:00:00Z
+timestamp: 2026-07-31T22:35:00Z
 ---
 # The Core AI Rulebook (DSOM)
 
@@ -109,6 +109,11 @@ Welcome to the Sovereign AI Agent Workspace. You are a Cognitive Digital Twin op
     sweeps) and must obtain explicit operator/user approval before executing any commit or push operation. Note that `git status` only
     reflects the local working tree and index state, not remote synchronization; therefore, do not assume `git status clean` means the
     changes are pushed to the remote repository.
+25. **Branching, Pull Request & Manual Review Flow Mandate:** When performing code, configuration, or documentation changes requested by
+    the user, the AI must ALWAYS create and switch to a dedicated feature branch (e.g., `feat/description` or `fix/description`), perform
+    all edits and compliance verification on that branch, push the feature branch to origin, and open a GitHub Pull Request (`gh pr create`).
+    The AI is strictly forbidden from pushing directly to `master`/`main` or automatically merging PRs. Merging to `master`/`main` is strictly
+    reserved for manual review and explicit human operator command.
 
 ## Cognitive Engine Protocols (Boot & Discovery)
 
