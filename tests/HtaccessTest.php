@@ -226,6 +226,8 @@ final class HtaccessTest extends TestCase
         $this->assertStringContainsString('ErrorDocument 403', $this->content);
         $this->assertStringContainsString('ErrorDocument 404', $this->content);
         $this->assertStringContainsString('ErrorDocument 500', $this->content);
+    }
+
     public function testHtaccessDoesNotUseDirectoryMatchTag(): void
     {
         $this->assertStringNotContainsString(
@@ -303,7 +305,7 @@ final class HtaccessTest extends TestCase
         );
     }
 
-    public function testHtaccessRetainsSecurityTxtException(): void
+    public function testHtaccessRetainsSecurityTxtExceptionRegex(): void
     {
         $this->assertMatchesRegularExpression(
             '/<Files "security\.txt">\s*\n\s*Require all granted\s*\n<\/Files>/',

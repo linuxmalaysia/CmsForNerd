@@ -46,6 +46,10 @@ This registry serves as the index (Open Knowledge Format (OKF) v0.1 compliant) f
   *Path:* `hall_facts/room_tooling/closet.md`
   *Context:* Full toolchain evolution from `reanimate.sh` v1.4 (2026-01-08) to `palace-sync` v1.0 (2026-04-08).
 
+- **Room: `room_jules_knowledge`** *(NEW — Added 2026-07-31)*
+  *Path:* `hall_facts/room_jules_knowledge/closet.md`
+  *Context:* Comprehensive repository rules, operational memories, and DevOps guidelines for the Jules Cognitive Twin.
+
 ---
 
 ### Wing: `wing_dsom_core` → `hall_events`
@@ -91,6 +95,13 @@ This registry serves as the index (Open Knowledge Format (OKF) v0.1 compliant) f
 | Brain files (task/walkthrough) | `hall_events/room_brain_artifacts` |
 | Version history | `hall_events/room_ledger` |
 | PDF/GitBook/misc | `hall_discoveries/room_uncategorised` |
+| Repository rules & memories | `hall_facts/room_jules_knowledge` |
 
 ---
-*Last Human Audit: 2026-04-08 | Backfill Complete | Protocol Version: Palace v1.0 | Rooms: 8*
+*Last Full Audit: 2026-04-08 | Last Registration: 2026-07-31 (room_jules_knowledge) | Backfill Complete | Protocol Version: Palace v1.0 | Rooms: 9*
+*Last Human Audit: 2026-04-08 | Latest Room Registration: 2026-07-31 (room_jules_knowledge) | Backfill Complete | Protocol Version: Palace v1.0 | Rooms: 9*
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
