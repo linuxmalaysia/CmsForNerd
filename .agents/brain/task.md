@@ -136,7 +136,7 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 
 - [x] Fix `.htaccess` syntax errors by removing `<DirectoryMatch>` and `<Directory>` tags, replacing them with compliant `mod_rewrite` rules.
 - [x] Align `Dockerfile` and `Containerfile` with PHPUnit DockerBuildTest requirements (exposing port 80 and chowning only `/var/www/html/data`).
-- [x] Synchronize `sonar-project.properties` exclusions with `.github/workflows/build.yml`.
+- [x] Synchronise `sonar-project.properties` exclusions with `.github/workflows/build.yml`.
 - [x] Deduplicate header comments in `.dockerignore` to satisfy unique line constraints.
 - [x] Verify compliance using `composer lab-check` with 100% test passing rate.
 
