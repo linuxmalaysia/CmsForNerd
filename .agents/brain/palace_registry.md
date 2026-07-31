@@ -98,7 +98,7 @@ This registry serves as the index (Open Knowledge Format (OKF) v0.1 compliant) f
 | Repository rules & memories | `hall_facts/room_jules_knowledge` |
 
 ---
-*Last Human Audit: 2026-04-08 | Backfill Complete | Protocol Version: Palace v1.0 | Rooms: 9*
+*Last Human Audit: 2026-04-08 | Latest Room Registration: 2026-07-31 (room_jules_knowledge) | Backfill Complete | Protocol Version: Palace v1.0 | Rooms: 9*
 
 
 ---

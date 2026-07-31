@@ -45,7 +45,7 @@ This closet serves as the sovereign persistent memory database for the AI Cognit
 
 15. **Playbook Assertions:** The Ansible playbooks enforce the Podman 5+ contract via assertions on the parsed major version after running 'podman --version' and restrict package installation to Ubuntu 24.04+ (or when explicitly configured with 'podman_5_setup_equivalent').
 
-16. **CMS Minimum Requirements:** CmsForNerd is a flat-file PHP laboratory CMS that requires PHP 8.3+.
+16. **CMS Minimum Requirements:** CmsForNerd is a flat-file PHP laboratory CMS that requires PHP 8.4+.
 
 17. **BunkerWeb SSL/TLS Termination:** BunkerWeb is configured in production (playbooks/roles/podman_prod/templates/compose.yml.j2) to terminate SSL/TLS directly using native self-signed certificate generation (GENERATE_SELF_SIGNED_SSL=yes and LISTEN_HTTPS=yes on port 8443) with host port 443 mapped to 8443.
 
