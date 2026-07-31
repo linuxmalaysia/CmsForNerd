@@ -16,3 +16,22 @@ render.yaml
 phpstan.neon
 phpunit.xml
 phpcs.xml
+# Environment files
+.env
+.env.*
+.env.local
+.env.*.local
+# Composer auth credentials
+auth.json
+# Private keys
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+id_dsa
+id_ecdsa
+id_ed25519
+# Certificates
+*.crt
+*.pfx
+*.p12

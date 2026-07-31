@@ -5,7 +5,7 @@ title: "Render Deployment Guide"
 description: "Comprehensive guide for deploying CmsForNerd to Render using Blueprint specification and custom Dockerfile/Containerfiles."
 resource: "file:///docs/RENDER-DEPLOYMENT-GUIDE.md"
 topics: [render, deploy, blueprint, container, setup]
-timestamp: 2026-07-31T12:00:00Z
+timestamp: 2026-07-30T12:00:00Z
 ---
 # Render Blueprint Deployment Guide
 
@@ -53,5 +53,5 @@ Instead, they are configured with `sync: false` in `render.yaml`. This forces th
 4. **Deploy**: Render will build using the custom `Dockerfile`, configure Apache with mod_rewrite enabled, respect `.htaccess` security controls, and launch the web service.
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-30*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*
