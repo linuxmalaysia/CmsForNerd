@@ -1,3 +1,10 @@
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI Protocol
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-31
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
 name: Build
 permissions:
   contents: read
@@ -27,6 +34,7 @@ jobs:
             -Dsonar.organization=linuxmalaysia
             -Dsonar.projectKey=linuxmalaysia_CmsForNerd
             -Dsonar.scanner.skipJreProvisioning=true
+            -Dsonar.exclusions=**/Dockerfile,**/Containerfile,**/*.css,**/*.js,**/*.html,**/*.xml,**/*.txt,**/LICENSE,**/README.md,**/.git/**,tests/**
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
