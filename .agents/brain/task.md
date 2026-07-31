@@ -132,7 +132,15 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 - [x] Produce and sync the comprehensive deployment guide (`docs/RENDER-DEPLOYMENT-GUIDE.md`) across navigation maps
 - [x] Run local compliance audit and test suite yielding 100% success rate
 
+## [x] Module 20: Apache .htaccess & Docker Alignment (v4.1.9)
+
+- [x] Fix `.htaccess` syntax errors by removing `<DirectoryMatch>` and `<Directory>` tags, replacing them with compliant `mod_rewrite` rules.
+- [x] Align `Dockerfile` and `Containerfile` with PHPUnit DockerBuildTest requirements (exposing port 80 and chowning only `/var/www/html/data`).
+- [x] Synchronise `sonar-project.properties` exclusions with `.github/workflows/build.yml`.
+- [x] Deduplicate header comments in `.dockerignore` to satisfy unique line constraints.
+- [x] Verify compliance using `composer lab-check` with 100% test passing rate.
+
 
 ---
-*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-30*
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

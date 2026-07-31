@@ -137,6 +137,19 @@ final class DockerBuildTest extends TestCase
         $this->assertMatchesRegularExpression('/^EXPOSE 80$/m', $content);
     }
 
+    public function testDockerfileExposesBothStandardAndLegacyPorts(): void
+    {
+        $content = file_get_contents($this->dockerfilePath);
+
+        preg_match_all('/^EXPOSE (\d+)$/m', $content, $matches);
+
+        $this->assertSame(
+            ['80', '8080'],
+            $matches[1],
+            'Regression guard: adding EXPOSE 80 must not remove the pre-existing EXPOSE 8080 that Apache is configured to listen on inside the container.'
+        );
+    }
+
     public function testDockerfileAndContainerfileAreFunctionallyIdentical(): void
     {
         $dockerfileContent = file_get_contents($this->dockerfilePath);
@@ -243,6 +256,24 @@ final class DockerBuildTest extends TestCase
         );
     }
 
+    public function testDockerignoreHeaderBannerSeparatorLinesAreNotVerbatimDuplicates(): void
+    {
+        $lines = file($this->dockerignorePath, FILE_IGNORE_NEW_LINES);
+        $headerBannerLines = array_slice($lines, 0, 10);
+
+        $separatorLines = array_values(array_filter(
+            $headerBannerLines,
+            static fn (string $line): bool => (bool) preg_match('/^#\s*[=\-]+$/', trim($line))
+        ));
+
+        $this->assertNotEmpty($separatorLines, 'Expected the DSOM header banner to contain at least one comment separator line.');
+        $this->assertSame(
+            count($separatorLines),
+            count(array_unique($separatorLines)),
+            'Regression guard: the header banner previously repeated an identical "# ====...." separator line twice, ' .
+            'which failed the file-wide duplicate-entry check.'
+        );
+    }
     public function testDockerignoreHeaderSeparatorLinesAreNotIdentical(): void
     {
         // Regression guard: the header banner previously repeated the exact

@@ -57,6 +57,30 @@ final class SonarConfigurationTest extends TestCase
         }
     }
 
+    public function testSonarPropertiesExclusionsMatchExactExpectedSetAndOrder(): void
+    {
+        $content = file_get_contents($this->sonarPropertiesPath);
+        $exclusions = $this->extractExclusionList($content, 'sonar.exclusions');
+
+        $this->assertSame(
+            [
+                '**/Dockerfile',
+                '**/Containerfile',
+                '**/*.css',
+                '**/*.js',
+                '**/*.html',
+                '**/*.xml',
+                '**/*.txt',
+                '**/LICENSE',
+                '**/README.md',
+                '**/.git/**',
+                'tests/**',
+            ],
+            $exclusions,
+            'sonar.exclusions must contain exactly the Docker-aligned exclusion list, with Dockerfile/Containerfile leading the pre-existing entries.'
+        );
+    }
+
     public function testSonarPropertiesHasNoDuplicateExclusionEntries(): void
     {
         $content = file_get_contents($this->sonarPropertiesPath);
