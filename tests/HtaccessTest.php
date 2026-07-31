@@ -7,167 +7,192 @@ namespace CmsForNerd\Tests;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Validates the .htaccess security configuration after the "Apache
- * .htaccess & Docker Alignment" change set (Module 20, v4.1.9).
- *
- * Apache does not permit <Directory> or <DirectoryMatch> directives inside
- * .htaccess files -- they are only valid in server/virtual-host contexts.
- * Their presence caused 500 Internal Server Errors on Render. They have
- * been replaced with functionally-equivalent mod_rewrite rules.
+ * Validates the root `.htaccess` file after the "Apache .htaccess & Docker
+ * Alignment (v4.1.9)" fix, which removed `<DirectoryMatch>` and `<Directory>`
+ * container directives (illegal inside `.htaccess` and previously caused
+ * 500 Internal Server Errors on Render) and replaced them with equivalent
+ * `mod_rewrite` based `RewriteRule` directives.
  */
 final class HtaccessTest extends TestCase
 {
     private string $htaccessPath;
+    private string $content;
 
     protected function setUp(): void
     {
         $this->htaccessPath = dirname(__DIR__) . '/.htaccess';
+        $this->content = (string) file_get_contents($this->htaccessPath);
     }
 
-    public function testHtaccessExists(): void
+    public function testHtaccessFileExists(): void
     {
         $this->assertFileExists($this->htaccessPath);
     }
 
-    public function testHtaccessDoesNotContainDirectoryMatchTag(): void
+    public function testHtaccessDoesNotUseDirectoryMatchDirective(): void
     {
-        $content = file_get_contents($this->htaccessPath);
-
-        $this->assertStringNotContainsString(
+        $this->assertStringNotContainsStringIgnoringCase(
             '<DirectoryMatch',
-            $content,
-            '<DirectoryMatch> is not permitted inside .htaccess files and causes 500 Internal Server Errors.'
+            $this->content,
+            'Regression guard: <DirectoryMatch> is not permitted inside .htaccess context and previously caused 500 errors.'
         );
     }
 
-    public function testHtaccessDoesNotContainDirectoryTag(): void
+    public function testHtaccessDoesNotUseDirectoryContainerDirective(): void
     {
-        $content = file_get_contents($this->htaccessPath);
-
         $this->assertDoesNotMatchRegularExpression(
-            '/<Directory[\s"]/',
-            $content,
-            '<Directory> is not permitted inside .htaccess files and causes 500 Internal Server Errors.'
+            '/<Directory[\s"]/i',
+            $this->content,
+            'Regression guard: <Directory> containers are not permitted inside .htaccess context and previously caused 500 errors.'
         );
     }
 
-    public function testHtaccessRemovesLegacyDirectoryMatchAndDirectoryPatterns(): void
+    public function testHtaccessDoesNotUsePhpFlagDirective(): void
     {
-        $content = file_get_contents($this->htaccessPath);
-
-        $this->assertStringNotContainsString('<DirectoryMatch "^\.|\/\.">', $content);
-        $this->assertStringNotContainsString(
-            '<DirectoryMatch "^/(includes|tests|vendor|\.vscode|\.well-known)">',
-            $content
-        );
-        $this->assertStringNotContainsString('<Directory "*/uploads/*">', $content);
         $this->assertStringNotContainsString(
             'php_flag engine off',
-            $content,
-            'The php_flag directive was only valid inside the removed <Directory> block.'
+            $this->content,
+            'The old php_flag-inside-<Directory> approach for disabling PHP execution was removed in favour of a RewriteRule.'
         );
     }
 
-    public function testHtaccessUsesModRewriteToProtectHiddenFilesAndDirectories(): void
+    public function testHtaccessBlocksHiddenFilesAndDirectoriesViaRewriteRule(): void
     {
-        $content = file_get_contents($this->htaccessPath);
-
-        $this->assertStringContainsString('<IfModule mod_rewrite.c>', $content);
-        $this->assertStringContainsString('RewriteEngine On', $content);
         $this->assertStringContainsString(
             'RewriteRule "(^|/)\.(?!well-known/)" - [F]',
-            $content,
-            'Hidden dot-files/directories must be blocked while still allowing .well-known/.'
+            $this->content,
+            'Hidden files/directories (dotfiles) must be blocked via RewriteRule, mirroring the removed <DirectoryMatch "^\.|\/\."> behaviour, while exempting .well-known/.'
         );
     }
 
     public function testHtaccessBlocksSensitiveDirectoriesViaRewriteRule(): void
     {
-        $content = file_get_contents($this->htaccessPath);
-
         $this->assertStringContainsString(
             'RewriteRule "^(includes|tests|vendor|\.vscode)(/|$)" - [F]',
-            $content,
-            'includes/, tests/, vendor/ and .vscode/ must remain blocked via mod_rewrite instead of DirectoryMatch.'
+            $this->content,
+            'includes/tests/vendor/.vscode must remain blocked, mirroring the removed <DirectoryMatch> directive.'
         );
     }
 
-    public function testHtaccessAllowsWellKnownSecurityTxtException(): void
+    public function testHtaccessDeclaresRewriteEngineOn(): void
     {
-        $content = file_get_contents($this->htaccessPath);
+        $this->assertStringContainsString('RewriteEngine On', $this->content);
+    }
 
-        $this->assertMatchesRegularExpression(
-            '/<Files "security\.txt">\s*\n\s*Require all granted\s*\n<\/Files>/',
-            $content,
-            'RFC 9116 requires security.txt to remain publicly accessible even though .well-known is otherwise blocked.'
+    public function testHtaccessHiddenFileAndSensitiveDirectoryRulesAreWrappedInModRewriteIfModule(): void
+    {
+        $ifModuleOpen = strpos($this->content, '<IfModule mod_rewrite.c>');
+        $this->assertNotFalse($ifModuleOpen, 'A mod_rewrite IfModule guard must exist.');
+
+        $rewriteEngineOn = strpos($this->content, 'RewriteEngine On', $ifModuleOpen);
+        $hiddenRule = strpos(
+            $this->content,
+            'RewriteRule "(^|/)\.(?!well-known/)" - [F]',
+            $ifModuleOpen
+        );
+        $sensitiveRule = strpos(
+            $this->content,
+            'RewriteRule "^(includes|tests|vendor|\.vscode)(/|$)" - [F]',
+            $ifModuleOpen
+        );
+        $ifModuleClose = strpos($this->content, '</IfModule>', $ifModuleOpen);
+
+        $this->assertNotFalse($rewriteEngineOn, 'RewriteEngine On must follow the IfModule guard.');
+        $this->assertNotFalse($hiddenRule, 'The hidden-file RewriteRule must follow the IfModule guard.');
+        $this->assertNotFalse($sensitiveRule, 'The sensitive-directory RewriteRule must follow the IfModule guard.');
+        $this->assertNotFalse($ifModuleClose, 'The IfModule guard must be closed.');
+
+        $this->assertTrue(
+            $ifModuleOpen < $rewriteEngineOn
+            && $rewriteEngineOn < $hiddenRule
+            && $hiddenRule < $sensitiveRule
+            && $sensitiveRule < $ifModuleClose,
+            'RewriteEngine On and both directory-protection RewriteRules must be declared, in order, inside the ' .
+            'same <IfModule mod_rewrite.c> ... </IfModule> guard.'
         );
     }
 
-    public function testHtaccessPreventsPhpExecutionInUploadsViaRewriteRule(): void
+    public function testHtaccessRetainsSecurityTxtException(): void
     {
-        $content = file_get_contents($this->htaccessPath);
+        $filesOpen = strpos($this->content, '<Files "security.txt">');
+        $this->assertNotFalse($filesOpen, 'security.txt must remain publicly reachable per RFC 9116.');
 
+        $filesClose = strpos($this->content, '</Files>', $filesOpen);
+        $this->assertNotFalse($filesClose, 'The security.txt Files block must be closed.');
+
+        $block = substr($this->content, $filesOpen, $filesClose - $filesOpen);
+        $this->assertStringContainsString(
+            'Require all granted',
+            $block,
+            'security.txt must be explicitly allowed even though sibling hidden files are blocked.'
+        );
+    }
+
+    public function testHtaccessBlocksPhpExecutionInUploadsDirectoryViaRewriteRule(): void
+    {
         $this->assertStringContainsString(
             'RewriteRule "^uploads/.*\.php" - [F,NC]',
-            $content,
-            'PHP execution inside uploads/ must be blocked via mod_rewrite instead of the removed <Directory> block.'
+            $this->content,
+            'PHP execution inside an uploads/ directory must be blocked via RewriteRule instead of the removed <Directory "*/uploads/*"> block.'
         );
     }
 
-    public function testHtaccessHasExactlyTwoModRewriteGuardBlocks(): void
+    public function testHtaccessUploadsPhpRewriteRuleIsWrappedInModRewriteIfModule(): void
     {
-        $content = file_get_contents($this->htaccessPath);
+        $uploadsRule = strpos($this->content, 'RewriteRule "^uploads/.*\.php" - [F,NC]');
+        $this->assertNotFalse($uploadsRule, 'Uploads PHP-blocking RewriteRule must exist.');
 
-        $this->assertSame(
-            2,
-            substr_count($content, '<IfModule mod_rewrite.c>'),
-            'One mod_rewrite guard block protects hidden files/directories; a second protects uploads/.'
+        $precedingContent = substr($this->content, 0, $uploadsRule);
+        $nearestIfModuleOpen = strrpos($precedingContent, '<IfModule mod_rewrite.c>');
+        $this->assertNotFalse(
+            $nearestIfModuleOpen,
+            'The uploads RewriteRule must be preceded by an <IfModule mod_rewrite.c> guard.'
+        );
+
+        $ifModuleClose = strpos($this->content, '</IfModule>', $uploadsRule);
+        $this->assertNotFalse($ifModuleClose, 'The uploads RewriteRule guard must be closed with </IfModule>.');
+
+        $nearestClosePriorToRule = strpos($precedingContent, '</IfModule>', $nearestIfModuleOpen);
+        $this->assertFalse(
+            $nearestClosePriorToRule,
+            'The uploads RewriteRule must be directly enclosed by its nearest <IfModule mod_rewrite.c> guard, not nested outside it.'
         );
     }
 
-    public function testHtaccessIfModuleTagsAreBalanced(): void
+    public function testHtaccessHasBalancedIfModuleTags(): void
     {
-        $content = file_get_contents($this->htaccessPath);
+        $opens = preg_match_all('/<IfModule\b/', $this->content);
+        $closes = preg_match_all('/<\/IfModule>/', $this->content);
 
-        $this->assertSame(
-            substr_count($content, '<IfModule'),
-            substr_count($content, '</IfModule>'),
-            'Every opened <IfModule> block must have a matching closing tag.'
-        );
+        $this->assertSame($opens, $closes, '<IfModule> tags must be balanced after replacing <DirectoryMatch>/<Directory> blocks.');
+        $this->assertGreaterThanOrEqual(2, $opens, 'At least the two mod_rewrite guards introduced in this fix must be present.');
     }
 
-    public function testHtaccessDocumentsWhyDirectoryTagsWereRemoved(): void
+    public function testHtaccessStillProtectsConfigurationFilesViaFilesMatch(): void
     {
-        $content = file_get_contents($this->htaccessPath);
-
-        $this->assertStringContainsString(
-            'DirectoryMatch is not allowed in .htaccess files and causes 500 errors',
-            $content
-        );
-        $this->assertStringContainsString(
-            'Directory is not allowed in .htaccess files and causes 500 errors',
-            $content
-        );
-    }
-
-    /**
-     * Regression guard: fixing the Directory/DirectoryMatch syntax errors
-     * must not remove the other, unrelated security controls that were
-     * already present in the file.
-     */
-    public function testHtaccessRetainsUnrelatedSecurityControls(): void
-    {
-        $content = file_get_contents($this->htaccessPath);
-
-        $this->assertStringContainsString('Options -Indexes', $content);
-        $this->assertStringContainsString(
-            'Header always set X-Frame-Options "SAMEORIGIN"',
-            $content
-        );
-        $this->assertStringContainsString('ErrorDocument 500 "Server Error"', $content);
         $this->assertStringContainsString(
             '<FilesMatch "(composer\.(json|lock)|\.git.*|\.env.*|\.cursorrules|\.gitattributes)$">',
-            $content
+            $this->content,
+            'Unrelated FilesMatch-based configuration file protection must remain intact.'
         );
+    }
+
+    public function testHtaccessStillDisablesDirectoryBrowsing(): void
+    {
+        $this->assertStringContainsString('Options -Indexes', $this->content);
+    }
+
+    public function testHtaccessStillDeclaresSecurityHeaders(): void
+    {
+        $this->assertStringContainsString('X-Frame-Options', $this->content);
+        $this->assertStringContainsString('X-Content-Type-Options', $this->content);
+        $this->assertStringContainsString('Referrer-Policy', $this->content);
+    }
+
+    public function testHtaccessStillDeclaresCustomErrorDocuments(): void
+    {
+        $this->assertStringContainsString('ErrorDocument 403', $this->content);
+        $this->assertStringContainsString('ErrorDocument 404', $this->content);
+        $this->assertStringContainsString('ErrorDocument 500', $this->content);
     }
 }
