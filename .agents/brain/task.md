@@ -141,6 +141,14 @@ timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
 - [x] Verify compliance using `composer lab-check` with 100% test passing rate.
 
 
+
+## [x] Module 21: Live Demo Site & MCP Access Documentation (v4.2.0)
+
+- [x] Document the production live demo site (`https://cmsfornerd.onrender.com/index.php`) in `README.md`, `START-HERE.md`, and `docs/RENDER-DEPLOYMENT-GUIDE.md`.
+- [x] Register the public Context7 MCP and LLM crawler link (`https://context7.com/cmsfornerd/cmsfornerd/llms.txt?tokens=10000`) in `README.md`, `START-HERE.md`, `.llms/index.md`, and `llms.txt`.
+- [x] Process all modified documents via `dsom-signature-injector` and verify OKF v0.1 compliance.
+- [x] Execute standard development checks to ensure 100% test pass rate and clean static analysis.
+
 ---
 *Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

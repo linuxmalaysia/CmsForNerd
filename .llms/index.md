@@ -9,6 +9,10 @@ timestamp: 2026-07-27T12:00:00Z
 ---
 # 🤖 .llms/index: Comprehensive AI Agent Context Index
 
+**Live Demo URL:** [CmsForNerd Live Demo](https://cmsfornerd.onrender.com/index.php)
+
+**MCP Standard Index Context (Token Capped):** [Context7 MCP & LLM standard link](https://context7.com/cmsfornerd/cmsfornerd/llms.txt?tokens=10000)
+
 This document is optimised for parsing by LLMs, cognitive agents, and NotebookLM indexing. It provides a technical
 breakdown of the core engine, standard practices, file mappings, and architectural standards of CmsForNerd v4.1.0.
 

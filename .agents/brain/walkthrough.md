@@ -8,6 +8,20 @@ timestamp: "2026-07-26T12:00:00Z"
 ---
 # Walkthrough: Render Cloud Blueprint Specification (v4.1.8)
 
+## 🏁 Session Anchor: 2026-07-31 — Live Demo Site & MCP Access Documentation (v4.2.0)
+
+### Accomplishments
+- **Production Live Demo Link**: Added reference links to the official production live demo site (https://cmsfornerd.onrender.com/index.php) in the introductory and deployment sections of all key project documents, including README.md, START-HERE.md, and docs/RENDER-DEPLOYMENT-GUIDE.md.
+- **Context7 MCP & LLM Crawler Access**: Formally registered the dedicated LLM indexing reference link (https://context7.com/cmsfornerd/cmsfornerd/llms.txt?tokens=10000) within README.md, START-HERE.md, .llms/index.md, and llms.txt.
+- **EOD Ritual & Signature Verification**: Verified all edited documentation and ran signature validation. Running local check (PSR-12 style checking, PHPStan Level 8, and Pest PHP unit tests) returns a perfect 100% pass rate.
+
+### Why
+- Integrating direct, standard links to the live environment and the public Context7 MCP endpoint reduces cognitive onboarding friction and enables automated crawls to index the latest state-of-mind ruleset.
+
+### Mental Anchor
+> The production live demo and MCP crawl standard links are successfully published and fully documented across all five major topology and navigation hubs of the platform.
+
+
 ### Modification Date: 2026-07-30 (v4.1.7 is marked as historical)
 
 ## 🏁 Session Anchor: 2026-07-30 — Render Cloud Blueprint Specification (v4.1.8)
