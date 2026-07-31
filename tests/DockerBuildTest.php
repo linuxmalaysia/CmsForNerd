@@ -242,4 +242,65 @@ final class DockerBuildTest extends TestCase
             '.dockerignore should not contain duplicate patterns.'
         );
     }
+
+    public function testDockerignoreHeaderSeparatorLinesAreNotIdentical(): void
+    {
+        // Regression guard: the header banner previously repeated the exact
+        // same "====...====" separator line twice, which violated the
+        // uniqueness constraint enforced by testDockerignoreHasNoDuplicateEntries().
+        $entries = $this->getDockerignoreEntries();
+        $separatorLines = array_values(array_filter(
+            $entries,
+            static fn (string $line): bool => (bool) preg_match('/^#\s*[=-]{10,}$/', $line)
+        ));
+
+        $this->assertSame(
+            count($separatorLines),
+            count(array_unique($separatorLines)),
+            'Header banner separator comment lines must not be byte-for-byte duplicates of one another.'
+        );
+    }
+
+    public function testDockerfileExposesBothPort80AndPort8080(): void
+    {
+        $content = file_get_contents($this->dockerfilePath);
+
+        $this->assertMatchesRegularExpression(
+            '/^EXPOSE 80$/m',
+            $content,
+            'Port 80 must be documented as exposed for Render/Docker runtime compatibility.'
+        );
+        $this->assertMatchesRegularExpression(
+            '/^EXPOSE 8080$/m',
+            $content,
+            'Port 8080 must remain exposed, since Apache is configured to listen on the unprivileged port 8080.'
+        );
+
+        $exposeCount = preg_match_all('/^EXPOSE /m', $content);
+        $this->assertSame(2, $exposeCount, 'Exactly two EXPOSE directives (80 and 8080) are expected.');
+    }
+
+    public function testContainerfileGrantsWriteAccessOnlyToDataDirectory(): void
+    {
+        $content = file_get_contents($this->containerfilePath);
+
+        $this->assertMatchesRegularExpression(
+            '/^RUN chown -R www-data:www-data \/var\/www\/html\/data$/m',
+            $content,
+            'Containerfile must mirror the Dockerfile: only the runtime data directory should be chowned to www-data.'
+        );
+        $this->assertDoesNotMatchRegularExpression(
+            '/chown -R www-data:www-data \/var\/www\/html\s*$/m',
+            $content,
+            'Containerfile must not grant ownership recursively across the entire webroot.'
+        );
+    }
+
+    public function testContainerfileExposesBothPort80AndPort8080(): void
+    {
+        $content = file_get_contents($this->containerfilePath);
+
+        $this->assertMatchesRegularExpression('/^EXPOSE 80$/m', $content);
+        $this->assertMatchesRegularExpression('/^EXPOSE 8080$/m', $content);
+    }
 }
