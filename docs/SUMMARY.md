@@ -1,3 +1,11 @@
+---
+okf_version: 0.1
+type: documentation
+title: "Sovereign Laboratory Index"
+description: "Detailed mapping of all laboratory manuals, modules, environments, graduation files, and records."
+resource: "file:///docs/SUMMARY.md"
+timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
+---
 # Summary
 # CMSForNerd Laboratory (v4.0.0-alpha)
 
@@ -9,6 +17,7 @@
 * [Template Guide](template-guide.md)
 * [Lab Manual](lab-manual.md)
 * [Sitemap & SEO Guide](sitemap-guide.md)
+* [XSS & Host Protection Guide](xss-protection-guide.md)
 * [Testing Guide (Pest + PHPUnit)](testing-guide.md)
 * [Testing bfcache Optimization (PWA)](bfcache-testing-guide.md)
 * [Directory Security Guide](directory-security.md)
@@ -26,6 +35,8 @@
 ## 🐧 Environment Setup
 * [Linux Environment](linux-setup.md)
 * [Windows Environment](windows-setup.md)
+* [Google Jules on Ubuntu 26.04](HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md)
+* [Render Deployment Guide](RENDER-DEPLOYMENT-GUIDE.md)
 
 ## 🎓 Graduation
 * [Final Exam Challenge](final-exam.md)
@@ -36,6 +47,7 @@
 
 ## 🏛️ Project Records
 * [Modernization History](HISTORY.md)
+* [Infrastructure Deployment Report](DEPLOYMENT_REPORT.md)
 * [AI Ethics SOP](ai-sop.md)
 * [Project State Sync](AI-STATE-SYNC.md)
 * [AI Master Protocol](AI-MASTER-PROTOCOL.md)
@@ -43,3 +55,8 @@
 * [Documentation Requirements](docs-requirements.md)
 * [Security Policy](security-policy.md)
 * [Sitemap](SITEMAP.md)
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

@@ -1,0 +1,28 @@
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI Protocol
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-30
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+# =============================================================================
+# CmsForNerd v4.1.0 - Render Blueprint Specification (render.yaml)
+# Standards: https://render.com/docs/blueprint-spec
+# =============================================================================
+
+services:
+  - type: web
+    name: cmsfornerd
+    runtime: docker
+    plan: starter
+    region: singapore
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: TZ
+        value: Asia/Kuala_Lumpur
+      - key: APP_SECRET
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: BYPASS_PHP_CHECK
+        value: "1"

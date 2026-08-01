@@ -8,10 +8,10 @@ For **CMSForNerd v4.0.0**, we've solved this with a rigorous protocol called the
 AI agents are brilliant but ephemeral. Every time a new conversation starts, they "wake up" in a vacuum. Even with a codebase to read, they often miss the "Why" behind recent changes or the "In-Progress" threads that aren't yet committed.
 
 ## The Solution: Persistent "Brain" Artifacts
-In the CMSForNerd laboratory, we don't just write code; we cultivate a persistent state. We use a dedicated directory, `.agent/brain/`, to store the project's living memory.
+In the CMSForNerd laboratory, we don't just write code; we cultivate a persistent state. We use a dedicated directory, `.agents/brain/`, to store the project's living memory.
 
 ### 1. The `task.md`: Our Shared Objective
-Instead of relying on the agent's internal memory, we maintain a [task.md](file:///.agent/brain/task.md). This file is a granular checklist of every planned, in-progress, and completed subtask. 
+Instead of relying on the agent's internal memory, we maintain a [task.md](file:///.agents/brain/task.md). This file is a granular checklist of every planned, in-progress, and completed subtask.
 
 **Example from CMSForNerd:**
 ```markdown
@@ -22,7 +22,7 @@ Instead of relying on the agent's internal memory, we maintain a [task.md](file:
 When a day starts, the agent reads this file and immediately knows exactly where the "cutting edge" of the work lies.
 
 ### 2. The `walkthrough.md`: The Narrative Record
-While `task.md` is for the "What," the [walkthrough.md](file:///.agent/brain/walkthrough.md) is for the "How" and "Result." It records every major achievement, the verification steps taken, and the current "State of Mind." It’s the story of the project's evolution.
+While `task.md` is for the "What," the [walkthrough.md](file:///.agents/brain/walkthrough.md) is for the "How" and "Result." It records every major achievement, the verification steps taken, and the current "State of Mind." It’s the story of the project's evolution.
 
 ## The External Reality Check: Syncing with the VCS
 Persistent artifacts are powerful, but they aren't the only source of truth. A critical part of the sync is the **Git Reality Check**.
@@ -36,10 +36,10 @@ Before trust is established, the agent must ask: *What happened in the physical 
 If the Git history and the Brain artifacts disagree, the agent's first job isn't to code—it's to reconcile the history. The AI must bridge the gap between "Project Memory" and "Version Control Reality."
 
 ## The Morning Ritual: The Nerd Lab Protocol
-We’ve codified this into the [/nerd-lab-protocol](file:///.agent/workflows/nerd-lab-protocol.md). This isn't just a list of steps; it's an **Intelligence Audit**.
+We’ve codified this into the [/nerd-lab-protocol](file:///.agents/workflows/nerd-lab-protocol.md). This isn't just a list of steps; it's an **Intelligence Audit**.
 
 1. **State Audit**: Reading `docs/AI-STATE-SYNC.md` to re-align with the v4.0.0 architectural milestones (like Pair Logic).
-2. **Context Restoration**: Reviewing the `.agent/brain/` artifacts to pick up the thread.
+2. **Context Restoration**: Reviewing the `.agents/brain/` artifacts to pick up the thread.
 3. **Verification Loop**: Running `composer lab-check` to ensure the environment is still in a "Zero-Error" state before a single line of new code is written.
 
 ## Why It Matters: "Zero-Error" Reliability

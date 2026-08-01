@@ -1,0 +1,16 @@
+[Unit]
+Description=CmsForNerd Podman Compose Production Stack
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory={{ project_path }}
+ExecStart=/usr/bin/podman-compose -f compose.yml -p {{ compose_project_name }} up
+ExecStop=/usr/bin/podman-compose -f compose.yml -p {{ compose_project_name }} down
+Restart=always
+
+[Install]
+WantedBy=default.target
+
+# Note: Ensure lingering is enabled for {{ podman_cms_user }} via 'loginctl enable-linger {{ podman_cms_user }}'
+# so the user systemd manager starts at boot and persists without active logins.

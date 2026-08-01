@@ -1,0 +1,81 @@
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-30
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ------------------------------------------------------------------------------
+# CmsForNerd v4.1.0 - Docker Build Context Exclusions
+# Purpose: Exclude dev/build/CI/doc artifacts from production container image
+# =============================================================================
+
+# Version control and CI/CD
+.git
+.github
+.gitattributes
+.gitignore
+
+# Development tools and agent configs
+.agents
+.codex
+.llms
+.vscode
+.editorconfig
+.cursorrules
+.clinerules
+.markdownlint.json
+.markdownlintignore
+.whitesource
+
+# Testing and quality tools
+.phpunit.cache
+tests
+phpstan.neon
+phpunit.xml
+phpcs.xml
+phpcs_output*.txt
+phpstan_errors.txt
+phpunit_errors.txt
+test_output.txt
+lab-check-results.txt
+
+# Deployment and infrastructure configs
+playbooks
+inventory
+ansible.cfg
+deploy.yml
+static-build.yml
+render.yaml
+sonar-project.properties
+Dockerfile
+Containerfile
+
+# Documentation
+docs
+*.md
+SUMMARY.md
+mkdocs.yml
+.gitbook.yaml
+llms.txt
+
+# Build artifacts and dependencies (vendor is built in multi-stage)
+vendor
+technical-resources
+tools
+
+# Logs and temporary files
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Composer auth credentials
+auth.json
+
+# Private keys and certificates
+*.pem
+*.key
+*.crt
+*.p12
+id_rsa*

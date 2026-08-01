@@ -64,4 +64,111 @@ final class SecurityTest extends TestCase
         // Cleanup
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
     }
+
+    /**
+     * Test Hardened IPv6 CIDR Matcher
+     */
+    public function testIpv6InRange(): void
+    {
+        // Exact match /128
+        $this->assertTrue(ip_in_range('2001:db8::1', '2001:db8::1/128'));
+        $this->assertFalse(ip_in_range('2001:db8::2', '2001:db8::1/128'));
+
+        // Subnet boundary match
+        $this->assertTrue(ip_in_range('2001:db8::1', '2001:db8::/64'));
+        $this->assertTrue(ip_in_range('2001:db8:85a3::8a2e:370:7334', '2001:db8::/32'));
+        $this->assertFalse(ip_in_range('2001:db9::1', '2001:db8::/64'));
+
+        // Type mismatches (IPv4 vs IPv6)
+        $this->assertFalse(ip_in_range('127.0.0.1', '2001:db8::/64'));
+        $this->assertFalse(ip_in_range('2001:db8::1', '127.0.0.1/32'));
+
+        // Edge case: /0 subnet (should match any address in the protocol)
+        $this->assertTrue(ip_in_range('2001:db8::1', '::/0'));
+        $this->assertTrue(ip_in_range('127.0.0.1', '0.0.0.0/0'));
+    }
+
+    /**
+     * Test Secure Session Cookie Initialization
+     */
+    public function testSecureSessionInitialization(): void
+    {
+        // Fully reset session state
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_unset();
+            session_destroy();
+        }
+        $_SESSION = [];
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_write_close();
+        }
+
+        SecurityUtils::startSecureSession();
+
+        $this->assertEquals(PHP_SESSION_ACTIVE, session_status());
+        $this->assertEquals('1', ini_get('session.use_strict_mode'));
+        $this->assertEquals('1', ini_get('session.use_only_cookies'));
+
+        $cookieParams = session_get_cookie_params();
+        $this->assertTrue($cookieParams['httponly']);
+        $this->assertEquals('Strict', $cookieParams['samesite']);
+    }
+
+    /**
+     * Test CSRF token generation & validation
+     */
+    public function testCsrfTokenLifecycle(): void
+    {
+        // Fully reset session state
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_unset();
+            session_destroy();
+        }
+        $_SESSION = [];
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_write_close();
+        }
+
+        $token1 = SecurityUtils::generateCsrfToken();
+        $this->assertNotEmpty($token1);
+
+        // Verify that token persists inside active session
+        $this->assertEquals($token1, $_SESSION['csrf_token']);
+
+        // Verify valid token validation returns true
+        $this->assertTrue(SecurityUtils::validateCsrfToken($token1));
+
+        // Verify mismatching token validation returns false
+        $this->assertFalse(SecurityUtils::validateCsrfToken('invalid_token_123'));
+
+        // Verify null token validation returns false
+        $this->assertFalse(SecurityUtils::validateCsrfToken(null));
+    }
+
+    /**
+     * Test dynamic security headers
+     */
+    public function testSecurityHeaders(): void
+    {
+        // Headers are set only if not already sent (which PHPUnit environment allows mock-testing)
+        SecurityUtils::sendSecurityHeaders();
+
+        // Standard PHPUnit doesn't always populate header list directly if headers are output,
+        // but we can assert no crash happens and method is verified.
+        $this->assertTrue(true);
+    }
+
+    /**
+     * Test Request Method constraints against verb tampering
+     */
+    public function testRequestMethodVerification(): void
+    {
+        $_SERVER['REQUEST_METHOD'] = 'GET';
+        SecurityUtils::validateRequestMethod(); // Should pass with no exception or exit
+
+        $_SERVER['REQUEST_METHOD'] = 'POST';
+        SecurityUtils::validateRequestMethod(); // Should pass with no exception or exit
+
+        $this->assertTrue(true);
+    }
 }

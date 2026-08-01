@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  bunkerweb:
+    # Production TLS & Termination Design:
+    # Under standard HTTP-only operation, an upstream load balancer, Cloud Workstations proxy,
+    # or other infrastructure component is responsible for HTTPS termination, forwarding clean
+    # HTTP requests on port 80 to BunkerWeb, which receives HTTP on port 8080 and does not terminate TLS itself.
+    # To secure the environment natively, we configure BunkerWeb to terminate SSL/TLS directly using
+    # automatic self-signed certificate generation (GENERATE_SELF_SIGNED_SSL=yes) listening on port 8443
+    # and mapping it to the physical host port 443.
+    image: "{{ bunkerweb_image }}"
+    container_name: cms-bunkerweb
+    ports:
+      - "80:8080"
+      - "443:8443"
+    environment:
+      - SERVER_NAME={{ cms_domain }}
+      - USE_REVERSE_PROXY=yes
+      - REVERSE_PROXY_URL_1=/
+      - REVERSE_PROXY_HOST_1=http://cms-nginx:80
+      - LISTEN_HTTP=yes
+      - LISTEN_HTTPS=yes
+      - HTTPS_PORT=8443
+      - GENERATE_SELF_SIGNED_SSL=yes
+      - SELF_SIGNED_SSL_EXPIRY=365
+      - MULTISITE=no
+      - USE_BUNKERNET=no
+      - USE_RECON=no
+      - SEND_ANONYMOUS_REPORT=no
+      - USE_ANTIBOT=captcha
+      - USE_LIMIT_REQ=yes
+      - LIMIT_REQ_RATE=10r/s
+    volumes:
+      - "{{ bunkerweb_path }}/data:/var/lib/bunkerweb:Z"
+      - "{{ bunkerweb_path }}/configs:/etc/bunkerweb:Z"
+    userns_mode: "keep-id"
+    user: "{{ podman_cms_uid }}:{{ podman_cms_gid }}"
+    restart: always
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - all
+    cap_add:
+      - NET_BIND_SERVICE
+
+  cms-nginx:
+    image: "{{ nginx_image }}"
+    container_name: cms-nginx
+    volumes:
+      - "{{ nginx_path }}:/etc/nginx/conf.d:Z,ro"
+      - "{{ codes_path }}:/var/www/html:Z,ro"
+    userns_mode: "keep-id"
+    user: "{{ podman_cms_uid }}:{{ podman_cms_gid }}"
+    restart: always
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - all
+    depends_on:
+      - cms-php
+
+  cms-php:
+    image: "localhost/cmsfornerd-php:{{ php_version }}"
+    container_name: cms-php
+    volumes:
+      - "{{ php_fpm_path }}/www.conf:/usr/local/etc/php-fpm.d/www.conf:Z,ro"
+      - "{{ codes_path }}:/var/www/html:Z"
+    userns_mode: "keep-id"
+    user: "{{ podman_cms_uid }}:{{ podman_cms_gid }}"
+    restart: always
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - all

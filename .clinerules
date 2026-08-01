@@ -20,9 +20,9 @@ You are authorized to run the following commands to verify your work:
 - `php -l <file>`: Always lint your files after editing.
 
 ## 📝 Knowledge Management
-- Always sync your progress back to `.agent/brain/task.md`.
+- Always sync your progress back to `.agents/brain/task.md`.
 - Mark tasks as `[/]` for In-Progress and `[x]` for Completed.
-- If you encounter a bug that changes the project direction, document it in `.agent/brain/walkthrough.md`.
+- If you encounter a bug that changes the project direction, document it in `.agents/brain/walkthrough.md`.
 
 ## 🤖 Communication Style
 - Be concise.

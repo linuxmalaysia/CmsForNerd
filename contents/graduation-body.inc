@@ -19,7 +19,7 @@
                         <div class="cert-award">
                             <p>This certifies that</p>
                             <div class="student-name">
-                                <?= htmlspecialchars($_GET['student'] ?? '[Your Name Here]') ?>
+                                <?= \CmsForNerd\SecurityUtils::escapeHtml((string) ($_GET['student'] ?? '[Your Name Here]')) ?>
                             </div>
                         </div>
 
@@ -58,7 +58,7 @@
 
                         <div class="footer-meta">
                             <p>Verification Date: <?= date('F j, Y') ?></p>
-                            <p class="digital-sig">SHA-256 ID: <?= hash('sha256', ($_GET['student'] ?? 'anon') . date('Y-m-d')) ?></p>
+                            <p class="digital-sig">SHA-256 ID: <?= \CmsForNerd\SecurityUtils::escapeHtml(hash('sha256', (string) ($_GET['student'] ?? 'anon') . date('Y-m-d'))) ?></p>
                         </div>
                     </div>
                 </div>

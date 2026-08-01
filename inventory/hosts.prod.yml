@@ -1,0 +1,15 @@
+all:
+  children:
+    production:
+      hosts:
+        cms-prod-01:
+          ansible_host: 192.168.20.10
+          ansible_user: dsom-admin
+      vars:
+        env: production
+        cms_domain: cmsfornerd.local
+        podman_cms_user: dsom-admin
+        podman_cms_uid: 2001
+        podman_cms_group: dsom-admin
+        podman_cms_gid: 2001
+        project_path: /opt/cmsfornerd

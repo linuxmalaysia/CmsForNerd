@@ -26,10 +26,8 @@ while (ob_get_level()) {
  * Manually calculates the Base URL to ensure compatibility across
  * localhost, development domains (.test), and production servers.
  */
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
-$host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
-$dirPath  = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
-$baseUrl  = rtrim($protocol . $host . $dirPath, '/') . '/';
+require_once __DIR__ . '/vendor/autoload.php';
+$baseUrl = \CmsForNerd\SecurityUtils::getSafeBaseUrl();
 
 /**
  * 3. [SECURITY] HARDENED HEADERS
@@ -44,7 +42,7 @@ header("X-Frame-Options: DENY");           // Prevents clickjacking
  * Since this is XML, we disable all external resources (scripts, styles, etc.)
  * to prevent any form of XSS or injection.
  */
-header("Content-Security-Policy: default-src 'none'; style-src 'self';");
+header("Content-Security-Policy: default-src 'none'; style-src 'none';");
 
 /**
  * [SECURITY] CACHE CONTROL
@@ -65,7 +63,7 @@ echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
  * The root index.php is the first 'specimen' to be indexed.
  */
 echo "  <url>" . PHP_EOL;
-echo "    <loc>{$baseUrl}index.php</loc>" . PHP_EOL;
+echo "    <loc>" . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . 'index.php') . "</loc>" . PHP_EOL;
 echo "    <priority>1.0</priority>" . PHP_EOL;
 echo "  </url>" . PHP_EOL;
 
@@ -73,50 +71,17 @@ echo "  </url>" . PHP_EOL;
  * 6. [AUTOMATION] THE SCANNING ENGINE
  * Scans the laboratory contents directory for valid page pairs.
  */
-$fragmentDir = __DIR__ . '/contents/';
+$pages = \CmsForNerd\SecurityUtils::discoverPages(__DIR__ . '/contents/', __DIR__);
 
-if (is_dir($fragmentDir)) {
-    // Look for all Slave Fragments
-    $fragments = glob($fragmentDir . '*-body.inc');
+foreach ($pages as $page) {
+    $slug    = $page['slug'];
+    $isoDate = date("c", $page['mtime']);
 
-    foreach ($fragments as $file) {
-        /**
-         * [EDUCATION] SLUG EXTRACTION
-         * Extracting the page name (e.g., 'about') from 'about-body.inc'.
-         */
-        $slug = str_replace('-body.inc', '', basename($file));
-
-        /**
-         * [SECURITY] RULE #8 COMPLIANCE
-         * Prevent sensitive system files or error pages from being indexed.
-         */
-        $exclude = ['index', 'sitemap', 'empty', '403', '404', 'header', 'footer'];
-        if (in_array($slug, $exclude, true)) {
-            continue;
-        }
-
-        /**
-         * [SECURITY] PAIR LOGIC VERIFICATION
-         * Only index the page if the Master Controller (.php) exists in the root.
-         */
-        $masterFile = __DIR__ . '/' . $slug . '.php';
-
-        if (file_exists($masterFile)) {
-            /**
-             * [LAB] DATE SYNCHRONIZATION
-             * We find the NEWEST modification date between the logic (.php)
-             * and the content (-body.inc) for SEO accuracy.
-             */
-            $mTime = max(filemtime($masterFile), filemtime($file));
-            $isoDate = date("c", $mTime); // ISO 8601 format
-
-            echo "  <url>" . PHP_EOL;
-            echo "    <loc>{$baseUrl}{$slug}.php</loc>" . PHP_EOL;
-            echo "    <lastmod>{$isoDate}</lastmod>" . PHP_EOL;
-            echo "    <priority>0.8</priority>" . PHP_EOL;
-            echo "  </url>" . PHP_EOL;
-        }
-    }
+    echo "  <url>" . PHP_EOL;
+    echo "    <loc>" . \CmsForNerd\SecurityUtils::escapeHtml($baseUrl . $slug . '.php') . "</loc>" . PHP_EOL;
+    echo "    <lastmod>{$isoDate}</lastmod>" . PHP_EOL;
+    echo "    <priority>0.8</priority>" . PHP_EOL;
+    echo "  </url>" . PHP_EOL;
 }
 
 // 7. [XML END]

@@ -4,24 +4,37 @@
  * ==========================================================================
  * FILE: themes/CmsForNerd/pager.php
  * ROLE: The "Master Pair" / Layout Controller (Dual-View Edition)
- * VERSION: 3.5.8 (Interactive Sidebar & Tap Fix)
+ * VERSION: 4.2.3 (Interactive Sidebar, Tap Fix & Dynamic Static Caching)
  * ==========================================================================
  */
 
 declare(strict_types=1);
 
 /**
- * [STRUCTURE] The main entry point for the theme.
- * @param CmsForNerd\CmsContext $ctx - The immutable context object.
+ * Renders the requested standard or AMP page layout.
+ *
+ * The `view` query parameter selects AMP rendering; all other values use the standard layout.
+ *
+ * @param CmsForNerd\CmsContext $ctx The immutable rendering context.
  */
 function pager(CmsForNerd\CmsContext $ctx): void
 {
     $viewMode = $_GET['view'] ?? 'standard';
 
+    // [PERFORMANCE] Start static page cache interception
+    if (class_exists('\\CmsForNerd\\PerformanceUtils')) {
+        \CmsForNerd\PerformanceUtils::startPageCache($ctx->scriptName, $viewMode);
+    }
+
     if ($viewMode === 'amp') {
         renderAmpLayout($ctx);
     } else {
         renderStandardLayout($ctx);
+    }
+
+    // [PERFORMANCE] Capture output buffer and persist cache file
+    if (class_exists('\\CmsForNerd\\PerformanceUtils')) {
+        \CmsForNerd\PerformanceUtils::endPageCache($ctx->scriptName, $viewMode);
     }
 }
 
@@ -36,7 +49,7 @@ function renderStandardLayout(CmsForNerd\CmsContext $ctx): void
         !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
         strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'
     );
-    
+
     if ($isAjax) {
         header('Content-Type: text/html; charset=utf-8');
         pagecontent($ctx);
@@ -58,7 +71,7 @@ function renderStandardLayout(CmsForNerd\CmsContext $ctx): void
 function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
 {
     $actualFile = basename($_SERVER['SCRIPT_NAME'], '.php');
-    
+
     if ($ctx->scriptName !== $actualFile) {
         $ctx = new \CmsForNerd\CmsContext(
             content:    $ctx->content,
@@ -88,7 +101,10 @@ function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
         </amp-state>
         <?php include "themes/{$ctx->themeName}/amp-sidebar.tpl"; ?>
 
-        <header class="amp-header" style="background:var(--lab-bg); padding:10px 15px; border-bottom:1px solid var(--lab-border); display: flex; align-items: center;">
+        <header class="amp-header"
+                style="background:var(--lab-bg); padding:10px 15px;
+                       border-bottom:1px solid var(--lab-border);
+                       display: flex; align-items: center;">
             
             <button class="hamburger-btn" 
                     on="tap:sidebar.toggle" 
@@ -96,7 +112,9 @@ function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
                     tabindex="0" 
                     aria-label="Open Navigation">☰</button>
             
-            <a href="index.php?view=amp" style="text-decoration:none; color:var(--lab-purple); font-weight:bold; flex-grow: 1;">
+            <a href="index.php?view=amp"
+               style="text-decoration:none; color:var(--lab-purple);
+                      font-weight:bold; flex-grow: 1;">
                🏠 Laboratory Home
             </a>
             
@@ -106,28 +124,33 @@ function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
         </header>
 
         <main style="padding:20px;">
-            <?php 
+            <?php
             ob_start();
             pagecontent($ctx);
             $rawHtml = (string) ob_get_clean();
-            
+
             // Transform images for AMP
             $cleanHtml = str_replace(
-                '<img', 
-                '<amp-img width="600" height="400" layout="responsive"', 
+                '<img',
+                '<amp-img width="600" height="400" layout="responsive"',
                 $rawHtml
-            ); 
-            
+            );
+
             // Remove illegal body styles
             $cleanHtml = preg_replace('/<style\b[^>]*>(.*?)<\/style>/is', '', $cleanHtml);
 
-            echo $cleanHtml; 
+            echo $cleanHtml;
             ?>
         </main>
 
-        <footer style="text-align:center; padding:30px; border-top:1px solid var(--lab-border); font-size:0.8rem; color:var(--lab-muted);">
-            <p>&copy; <?= date('Y') ?> CmsForNerd v3.5 Laboratory</p>
-            <p><a href="<?= htmlspecialchars($ctx->scriptName) ?>.php" style="color:var(--lab-purple);">Switch to Standard Desktop View</a></p>
+        <footer style="text-align:center; padding:30px;
+                       border-top:1px solid var(--lab-border);
+                       font-size:0.8rem; color:var(--lab-muted);">
+            <p>&copy; <?= date('Y') ?> CmsForNerd v4.2.0 Laboratory</p>
+            <p><a href="<?= htmlspecialchars($ctx->scriptName) ?>.php"
+                  style="color:var(--lab-purple);">
+               Switch to Standard Desktop View
+            </a></p>
         </footer>
     </body>
     </html>

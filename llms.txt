@@ -1,0 +1,60 @@
+# CmsForNerd v4.1.0
+
+- **Live Demo:** [https://cmsfornerd.onrender.com/index.php](https://cmsfornerd.onrender.com/index.php)
+- **MCP standard crawler Access:** [https://context7.com/cmsfornerd/cmsfornerd/llms.txt?tokens=10000](https://context7.com/cmsfornerd/cmsfornerd/llms.txt?tokens=10000)
+
+> CmsForNerd is a hardened, flat-file PHP laboratory CMS targeting PHP 8.4+ strict types, PHPStan Level 8
+> static analysis, Zero-Global variables (via Registry), and "Pair Logic" (Logic in `.php` files, UI in
+> `-body.inc` files). It supports Dual-View rendering (Standard with hybrid-SPA AJAX routing and AMP via
+> `?view=amp`) controlled by `themes/CmsForNerd/pager.php`.
+
+## Architectural Standards
+
+- **PHP 8.4+ & Strict Types:** The codebase enforces strict types (`declare(strict_types=1);`) and modern features.
+- **PHPStan Level 8:** Absolute type safety with strict static analysis across the entire application.
+- **Zero-Global Architecture:** Prohibits `global` and `$GLOBALS`. All state is stored in `\CmsForNerd\Registry`.
+- **Pair Logic Pattern:** Separates business logic (e.g., `graduation.php`) from UI fragments (`graduation-body.inc`).
+- **Dual-View & AMP:** Centralized routing in `pager.php` with automated AMP transformation.
+
+## Core Directories
+
+- [README.md](README.md): Master introduction to the project.
+- [SUMMARY.md](SUMMARY.md): Table of Contents for GitBook documentation.
+- [docs/SUMMARY.md](docs/SUMMARY.md): Complete laboratory documentation index.
+- [.llms/index.md](.llms/index.md): Expanded directory indexing all 50+ documentation pages.
+
+## Essential AI & DSOM Entry Points
+
+- [AGENTS.md](AGENTS.md): Lightweight root gateway for platform agents.
+- [.agents/AGENTS.md](.agents/AGENTS.md): Core rulebook and sovereign constitution.
+- [START-HERE.md](START-HERE.md): Onboarding blueprint with 12 defined Entry Points.
+- [docs/governance/AI-INITIALIZATION-SEQUENCE.md](docs/governance/AI-INITIALIZATION-SEQUENCE.md): The 5-step Mechanical Boot Sequence.
+- [docs/governance/SOP-KNOWLEDGE-FIRST-DISCOVERY.md](docs/governance/SOP-KNOWLEDGE-FIRST-DISCOVERY.md): Discovery protocols.
+- [docs/governance/SOP-PULL-REQUEST-BOT-SYNERGY.md](docs/governance/SOP-PULL-REQUEST-BOT-SYNERGY.md): End-to-End Pull Request & Bot Synergy SOP (GitHub & GitLab).
+
+## Laboratory Modules
+
+- [docs/lab-module1.md](docs/lab-module1.md): Module 1 - Modern Architecture.
+- [docs/lab-module2.md](docs/lab-module2.md): Module 2 - Security & Standards (PSR-12).
+- [docs/lab-module3.md](docs/lab-module3.md): Module 3 - Defensive Engineering & Context Object.
+- [docs/lab-module4.md](docs/lab-module4.md): Module 4 - Automated Testing (Pest & PHPUnit).
+- [docs/lab-module5.md](docs/lab-module5.md): Module 5 - Coverage & QA.
+
+## Technical Guides
+
+- [technical-resources/installation-guide.md](technical-resources/installation-guide.md): Environment installation.
+- [docs/template-guide.md](docs/template-guide.md): Theme and pager development.
+- [docs/security-policy.md](docs/security-policy.md): In-depth security guidelines.
+- [docs/xss-protection-guide.md](docs/xss-protection-guide.md): XSS & Host Header protection mechanism.
+- [docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md](docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md): Setup VM environment.
+
+## Infrastructure & Automation
+
+- [playbooks/deploy_prod_compose.yml](playbooks/deploy_prod_compose.yml): Production deployment playbook.
+- [docs/ANSIBLE_PODMAN_GUIDE.md](docs/ANSIBLE_PODMAN_GUIDE.md): Orchestration guide using Podman 5.
+- [docs/SECURITY_AUDIT_REPORT.md](docs/SECURITY_AUDIT_REPORT.md): OpenSCAP compliance report.
+- [docs/RENDER-DEPLOYMENT-GUIDE.md](docs/RENDER-DEPLOYMENT-GUIDE.md): Render Blueprint and custom Containerfile Deployment Guide.
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

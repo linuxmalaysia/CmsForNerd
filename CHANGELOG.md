@@ -1,21 +1,129 @@
-## [3.6.0] - 2026-03-15
-
-### Added
-- **SECURITY.md**: Implemented formal security policy defining maintenance stance.
-- **PHP 8.4 Support**: Updated environment requirements to PHP 8.4.18.
-- **GPG Keyring**: Transitioned to trusted.gpg.d standard.
-
-### Changed
-- **Upstream Sync**: Fully merged core engine logic from upstream master.
-- **Dependencies**: Updated vendor baseline via Composer.
-
-### Fixed
-- **History Divergence**: Resolved legacy vendor conflicts via strategic reset.
-
+---
+okf_version: 0.1
+type: documentation
+title: "Project Changelog"
+description: "Sovereign log tracking all features, fixes, and architectural upgrades in CMSForNerd."
+resource: "file:///CHANGELOG.md"
+timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
+---
 # CHANGELOG
 
 All notable changes to this project are documented in this file.
 Entries are grouped by date (most recent first).
+
+---
+
+## [4.1.8] - 2026-07-30 (Render Cloud Blueprint Specification)
+
+### 🚀 Render Blueprint & Containerization
+- **Blueprint Spec (`render.yaml`)**: Implemented the official Render Blueprint specification at the root of the repository. Bound to Singapore (`singapore`) region with `Asia/Kuala_Lumpur` timezone environment configuration.
+- **Secure Secret Handling (`sync: false`)**: Configured secret fields (`APP_SECRET`, `ADMIN_PASSWORD`) with `sync: false` to securely prompt administrators during deployment, keeping critical passwords out of Git/GitHub history.
+- **Custom PHP 8.4 Apache Container (`Containerfile`)**: Engineered a lightweight, multi-stage custom Apache/PHP 8.4 `Containerfile` enabling dynamic mod_rewrite, security headers, and `.htaccess` overrides.
+- **Multi-Layer Documentation**: Created a comprehensive guide `docs/RENDER-DEPLOYMENT-GUIDE.md` and registered it in `SUMMARY.md`, `mkdocs.yml`, `START-HERE.md`, and `llms.txt`.
+
+## [4.1.7] - 2026-07-30 (Omni-Documentation & LLM Indexing)
+
+### 🤖 LLM & Cognitive Agent Indexing
+- **LLM Crawl Standard (`llms.txt`)**: Integrated `llms.txt` at the repository root containing architectural guidelines, standards, and structured references to optimise LLM indexing.
+- **Onboarding Roadmap (`START-HERE.md`)**: Created `START-HERE.md` at the repository root mapping the 12 critical entry points of the project to facilitate developer and agent onboarding.
+- **Sovereign Directory Breakdown (`.llms/index.md`)**: Created `.llms/index.md` specifying deep state flow details, immutability, Zero-Global architecture, and Pair Logic layout specifications.
+- **MkDocs Integration (`mkdocs.yml`)**: Designed and verified `mkdocs.yml` mapping out navigation hierarchy for over 50 documentation pages.
+- **Digital Signatures**: Processed all modified/created configuration and documentation files (.md, .sh, .ps1, .yml, .yaml) via `dsom-signature-injector` to append/prepend digital signatures.
+
+
+## [4.1.6] - 2026-07-29 (Root Workspace Cleanliness Mandate)
+
+### 🧹 Root Workspace Cleanliness
+- **Workspace Organization**: Cleaned up the repository root directory by moving all unrelated markdown documentation files into the `docs/` folder to maintain a pristine project root.
+- **Critical Entry Points**: Retained only core configuration files and critical entry-point documents (`README.md`, `CHANGELOG.md`, `SUMMARY.md`, `AGENTS.md`, `SECURITY.md`, `CONTRIBUTING.md`) in the root.
+- **Duplicate Removal**: Deleted duplicate identical uppercase files (`DIRECTORY_SECURITY.md`, `DOCS_REQUIREMENTS.md`) inside `docs/` to eliminate redundancy and maintain a single source of truth.
+- **Reference Updates**: Updated all internal documentation and sitemap links across `README.md` and `SUMMARY.md` to map cleanly to their new paths inside the `docs/` Palace.
+- **EOD Memory Consolidation**: Completed End-of-Day procedures including active task tracking, walkthrough updates, and episodic record preservation.
+
+
+## [4.1.5] - 2026-07-27 (Planned Handover Date) (DSOM Node Bootstrap & OpenSCAP Compliance Hardening)
+
+### 🚀 DSOM Node Bootstrap & OS Baseline Playbook
+- **Dual-Play Identity Bootstrapping**: Implemented a transition playbook `playbooks/bootstrap_node.yml` that handles Rootful identity bootstrap (Play 1) followed by Sovereign OS Baseline configuration (Play 2).
+- **Sanitized Inventory Blueprint**: Created `inventory/hosts.example.yml` using `localhost` and private IP mappings to securely share configurations without leaking actual server coordinates.
+
+### 🛡️ Dynamic OpenSCAP Auditing & Remediation
+- **Latest SCAP Security Guide Retrieval**: Integrated tasks to query and download the latest SCAP guide ZIP dynamically via the GitHub API.
+- **CIS Level 2 Auditing**: Configured automatic `oscap xccdf eval` against CIS Level 2 Server profile for Ubuntu 24.04 and RHEL/AlmaLinux systems.
+- **OVAL Vulnerability Scanning**: Implemented system patch verification using Canonical's official OVAL streams.
+- **Auto-Hardening Remediation**: Automatically generates and executes OpenSCAP-native bash remediation scripts to harden the target VM or node.
+- **Unified Security Compliance Report**: Generates a unified report `SECURITY_AUDIT_REPORT.md` compiling both Lynis hardening index and OpenSCAP compliance scores.
+
+## [4.1.4] - 2026-07-27 (Planned Handover Date) (Podman 5 Native Migration & Google Jules Ubuntu 26.04 Setup)
+
+### 🐳 Pure Podman 5 Engine & Configurations
+- **Pure Naming Standard**: Fully migrated Dockerfile definitions to native `Containerfile` and Docker-Compose to `compose.yml` across both
+  staging and production playbooks.
+- **Podman 5+ Supporting Suite**: Upgraded Debian/Ubuntu package specifications to install `uidmap`, `dbus-user-session`, and `catatonit`
+  natively on Ubuntu 26.04.
+- **Version Reporting**: Integrated automated version printing (`podman --version`) into the playbook infrastructure.
+
+### 🤖 Google Jules Setup Guide
+- **Sovereign Guidebook**: Authored `docs/HOWTO-SETUP-GOOGLE-JULES-UBUNTU-26-04.md` detailing unprivileged setups, lingering settings, and
+  Cloud SDK integrations.
+
+---
+
+## [4.1.3] - 2026-07-27 (Planned Handover Date) (Feed Sitemaps & Certificate Hardening)
+
+### 🛡️ Security Hardening
+- **Dynamic XSS Mitigation**: Fully escaped standalone sitemaps, RSS feeds, and student certificate parameter outputs against XSS.
+- **Host Header Poisoning Defense**: Centralised host-header base URL resolution into `SecurityUtils::getSafeBaseUrl()` to remove injection.
+- **Centralised Page Scanning**: Created `SecurityUtils::discoverPages()` to parse content fragments, resolving logic duplication.
+- **Restrictive CSP Headers**: Deployed robust default Content Security Policies for standalone sitemap generators.
+
+### 🧪 Validation & Automated Testing
+- **Security Unit Testing**: Added targeted test cases in `tests/SecurityTest.php` verifying traversal block lists and IPv6 bitmasks.
+- **Compliance Audit**: Validated codebase readiness via `composer lab-check` yielding zero static analysis errors.
+
+### 📘 Documentation Sync
+- **Palace Protection Guide**: Created `docs/xss-protection-guide.md` tracking all secure practices.
+- **Sitemap & SEO Updates**: Revised sitemap manuals to document dynamic paired page logic and host security controls.
+
+## [4.1.0] - 2026-07-26
+
+**Deep State of Mind Integration**
+
+### 🧠 Deep State of Mind (DSOM) Core
+
+- **Workspace Pluralisation**: Successfully migrated the `.agent` workspace to `.agents` plural.
+- **Sovereign Rulebook**: Integrated the core rulebook (`AGENTS.md`) enforcing Zero-Global memory, OKF, and Sovereign Signatures.
+- **Sovereign Agent Skills**: Deployed all 25 OKF-compliant sovereign skills inside `.agents/skills/`.
+- **Spatial Memory Framework**: Configured the Sovereign Markdown Palace Wings and Registry under `.agents/brain/`.
+
+### 🛠️ Tooling & Validation Suite
+
+- **DSOM Tooling Suite**: Deployed high-fidelity scripts (`eod-palace.sh`, `git-ritual.sh`, etc.) to the `tools/` directory.
+- **Unified Validation**: Overwrote and merged `tools/audit-pre-flight.sh` to include both PHP 8.4/8.3 environment checks and DSOM.
+- **Quality Assurance**: Verified structural and syntactic correctness of the repository using `composer lab-check` passing Level 8 analysis.
+
+## [4.0.0] - 2026-07-26 (Production Stable)
+
+### 🐳 Containerization & Orchestration
+
+- **Rootless Podman Automation**: Introduced secure Ansible playbooks for zero-downtime, rootless container deployment (Nginx & PHP-FPM 8.4).
+- **Rootless Port-Binding Configuration**: Configured unprivileged host port-binding via sysctl (enabling unprivileged host-wide binding to port 80), SELinux mapping (`:Z`), and automatic firewall routing (UFW/Firewalld).
+- **Orchestration Docs**: Deployed comprehensive deployment guide (`ANSIBLE_PODMAN_GUIDE.md`) to streamline rapid environment spin-ups.
+
+### 🎨 Design & Accessibility
+
+- **Adaptive Dark Mode Contrast**: Implemented responsive CSS overrides and custom variables (`--lab-info-bg`, `--lab-warning-bg`, etc.) globally.
+- **Contrast Remediation**: Permanently fixed white-text-on-white-background legibility bugs in all laboratory guidelines and manuals.
+
+### 🛡️ Security & Core Engine
+
+- **Centralized Page Routing**: Extracted redundant request routing logic to `SecurityUtils::resolvePageName` for centralized defense.
+- **Robust IPv6 Anti-DoS**: Hardened trusted bot-detection systems by implementing secure IPv6 bitmask logic for IP address verification.
+
+### 🛠️ Quality Control & CI/CD
+
+- **Fault-Tolerant CI/CD**: Hardened GitHub Actions checks to bypass SonarCloud gracefully when token credentials are not present.
+- **Vendor Isolation**: Optimized static analysis (`phpcs` and `phpstan` rulesets) to strictly ignore `/vendor/` dependencies.
 
 ---
 
@@ -55,6 +163,20 @@ Entries are grouped by date (most recent first).
   PHPStan Level 8 compliance.
 - **PHPStan Optimization**: Increased static analysis memory limit to `512M` to prevent crashes during laboratory audits.
 
+## [3.6.0] - 2026-03-15
+
+### Added
+- **SECURITY.md**: Implemented formal security policy defining maintenance stance.
+- **PHP 8.4 Support**: Updated environment requirements to PHP 8.4.18.
+- **GPG Keyring**: Transitioned to trusted.gpg.d standard.
+
+### Changed
+- **Upstream Sync**: Fully merged core engine logic from upstream master.
+- **Dependencies**: Updated vendor baseline via Composer.
+
+### Fixed
+- **History Divergence**: Resolved legacy vendor conflicts via strategic reset.
+
 ---
 
 ## [3.5.9] - 2026-03-30 (EOD Stabilization & Tagging)
@@ -63,7 +185,7 @@ Entries are grouped by date (most recent first).
 
 ### 🧠 Cognitive Sync
 
-- **Brain Artifacts**: Synchronized all `.agent/brain/` artifacts with the latest session intelligence.
+- **Brain Artifacts**: Synchronized all `.agents/brain/` artifacts with the latest session intelligence.
 - **Release Baseline**: Established `v3.5.9` as the official "Nerd-Lab" baseline for the end of March 2026.
 
 ---
@@ -208,3 +330,8 @@ Entries are grouped by date (most recent first).
 ## [1.0.0] - 2005-01-10 (The Original Foundation)
 
 - **Initial Release**: A radically simple, flat-file CMS built for PHP 4.
+
+
+---
+*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-27 (Planned Handover Date)*
+*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

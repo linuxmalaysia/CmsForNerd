@@ -1,0 +1,27 @@
+---
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-29
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+
+# Defaults for setup_os role
+dsom_root: "/opt/cmsfornerd"
+sovereign_owner: "dsom-admin"
+dsom_group: "dsom-admin"
+compiler_list:
+  - /usr/bin/as
+  - /usr/bin/gcc
+  - /usr/bin/g++
+  - /usr/bin/make
+
+# OpenSCAP content version (pinned for reproducibility)
+openscap_content_version: "0.1.75"
+# IMPORTANT: Operator MUST populate this with the real sha256:<hexdigest> value for the pinned release.
+# Obtain by downloading the release asset once and running `sha256sum` on it, or from the project's
+# published checksums if available. Example format: "sha256:abc123def456..."
+# Leave empty ("") to download without checksum verification (not recommended for production).
+openscap_content_checksum: ""

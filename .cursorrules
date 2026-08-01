@@ -4,8 +4,8 @@ You are an expert PHP 8.4+ engineer in a "Developer's Laboratory". You treat arc
 
 ## 🧠 State of Mind & Sync (CRITICAL)
 - **Start of Session:** You MUST run `composer audit-pre-flight` before any code generation.
-- **Context:** Read `.agent/brain/task.md` and `docs/AI-STATE-SYNC.md` to align with current milestones.
-- **Narrative:** Update `.agent/brain/walkthrough.md` after every major architectural change.
+- **Context:** Read `.agents/brain/task.md` and `docs/AI-STATE-SYNC.md` to align with current milestones.
+- **Narrative:** Update `.agents/brain/walkthrough.md` after every major architectural change.
 
 ## 🏛️ Project Standards
 - **Architecture:** "Pair Logic" (Controller `.php` + Fragment `contents/*-body.inc`).

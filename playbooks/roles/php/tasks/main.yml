@@ -1,8 +1,16 @@
 ---
-- name: Deploy PHP Dockerfile
+
+# ==============================================================================
+# Protocol    : Deep State of Mind (DSOM) For My AI
+# Author      : Harisfazillah Jamel (LinuxMalaysia)
+# Timestamp   : 2026-07-27
+# License     : GNU General Public License v3.0
+# Standard    : UK English | DBP-standard Bahasa Melayu Malaysia (Piawai)
+# ==============================================================================
+- name: Deploy PHP Containerfile
   ansible.builtin.template:
-    src: Dockerfile.j2
-    dest: "{{ podman_cms_config_path }}/php/Dockerfile"
+    src: Containerfile.j2
+    dest: "{{ podman_cms_config_path }}/php/Containerfile"
     owner: "{{ podman_cms_uid }}"
     group: "{{ podman_cms_gid }}"
     mode: '0600'
