@@ -37,8 +37,10 @@ final class PerformanceUtils
      */
     public static function getCacheFilePath(string $pageName, string $view = 'standard'): string
     {
-        $safeName = preg_replace('/[^a-zA-Z0-9_\-]/', '', $pageName) ?: 'index';
-        $safeView = preg_replace('/[^a-zA-Z0-9_\-]/', '', $view) ?: 'standard';
+        $safeName = preg_replace('/[^a-zA-Z0-9_\-]/', '', $pageName);
+        $safeName = ($safeName !== null && $safeName !== '') ? $safeName : 'index';
+        $safeView = preg_replace('/[^a-zA-Z0-9_\-]/', '', $view);
+        $safeView = ($safeView !== null && $safeView !== '') ? $safeView : 'standard';
         return self::getCacheDir() . '/page_' . $safeName . '_' . $safeView . '.html';
     }
 
@@ -54,29 +56,48 @@ final class PerformanceUtils
             return false;
         }
 
-        // Avoid caching AJAX requests as full pages (one line to pass 4-space indent rule)
-        $isAjax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');
+        // Avoid caching AJAX requests as full pages
+        $isAjax = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+                   strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest');
         if ($isAjax) {
             return false;
         }
 
         // Avoid caching if there is an active session indicating custom state
         if (session_status() === PHP_SESSION_ACTIVE && !empty($_SESSION)) {
-            // Keep CSRF and session_created_at as exceptions (don't prevent caching just for CSRF)
-            $keys = array_keys($_SESSION);
-            $cleanSession = true;
-            foreach ($keys as $key) {
-                if ($key !== 'csrf_token' && $key !== 'session_created_at') {
-                    $cleanSession = false;
-                    break;
-                }
-            }
-            if (!$cleanSession) {
-                return false;
-            }
+            return false;
         }
 
         return true;
+    }
+
+    /**
+     * Recursively determines the latest modification time of files in a directory.
+     *
+     * @param string $dir The directory path to scan.
+     * @return int The latest modification timestamp found in the directory.
+     */
+    private static function getDirectoryMaxMTime(string $dir): int
+    {
+        $maxMTime = 0;
+        if (!is_dir($dir)) {
+            return $maxMTime;
+        }
+
+        $items = glob($dir . '/*');
+        if (!is_array($items)) {
+            return $maxMTime;
+        }
+
+        foreach ($items as $item) {
+            if (is_file($item)) {
+                $maxMTime = max($maxMTime, (int) filemtime($item));
+            } elseif (is_dir($item)) {
+                $maxMTime = max($maxMTime, self::getDirectoryMaxMTime($item));
+            }
+        }
+
+        return $maxMTime;
     }
 
     /**
@@ -94,36 +115,30 @@ final class PerformanceUtils
         $maxMTime = 0;
         $rootDir = dirname(__DIR__);
 
-        // Scan contents directory
+        // Scan contents directory recursively
         $contentsDir = $rootDir . '/contents';
-        if (is_dir($contentsDir)) {
-            $files = glob($contentsDir . '/*');
-            if (is_array($files)) {
-                foreach ($files as $file) {
-                    if (is_file($file)) {
-                        $maxMTime = max($maxMTime, (int) filemtime($file));
-                    }
-                }
-            }
-        }
+        $maxMTime = max($maxMTime, self::getDirectoryMaxMTime($contentsDir));
 
-        // Scan theme directory
+        // Scan theme directory recursively
         $themeDir = $rootDir . '/themes/CmsForNerd';
-        if (is_dir($themeDir)) {
-            $files = glob($themeDir . '/*');
-            if (is_array($files)) {
-                foreach ($files as $file) {
-                    if (is_file($file)) {
-                        $maxMTime = max($maxMTime, (int) filemtime($file));
-                    }
-                }
-            }
-        }
+        $maxMTime = max($maxMTime, self::getDirectoryMaxMTime($themeDir));
 
-        // Include SecurityUtils and bootstrap changes
+        // Include bootstrap changes
         $bootstrapFile = $rootDir . '/includes/bootstrap.php';
         if (file_exists($bootstrapFile)) {
             $maxMTime = max($maxMTime, (int) filemtime($bootstrapFile));
+        }
+
+        // Include SecurityUtils changes
+        $securityUtilsFile = $rootDir . '/includes/SecurityUtils.php';
+        if (file_exists($securityUtilsFile)) {
+            $maxMTime = max($maxMTime, (int) filemtime($securityUtilsFile));
+        }
+
+        // Include PerformanceUtils changes
+        $performanceUtilsFile = $rootDir . '/src/PerformanceUtils.php';
+        if (file_exists($performanceUtilsFile)) {
+            $maxMTime = max($maxMTime, (int) filemtime($performanceUtilsFile));
         }
 
         return $maxMTime;
@@ -202,7 +217,13 @@ final class PerformanceUtils
         $ifNoneMatch = $_SERVER['HTTP_IF_NONE_MATCH'] ?? '';
         $ifModifiedSince = $_SERVER['HTTP_IF_MODIFIED_SINCE'] ?? '';
 
-        if (trim($ifNoneMatch) === $etag || trim($ifModifiedSince) === gmdate('D, d M Y H:i:s', $mtime) . ' GMT') {
+        // If-None-Match takes precedence when present; only fall back to If-Modified-Since when no ETag validation is requested
+        if (!empty($ifNoneMatch)) {
+            if (trim($ifNoneMatch) === $etag) {
+                http_response_code(304);
+                exit;
+            }
+        } elseif (!empty($ifModifiedSince) && trim($ifModifiedSince) === gmdate('D, d M Y H:i:s', $mtime) . ' GMT') {
             http_response_code(304);
             exit;
         }

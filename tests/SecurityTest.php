@@ -93,9 +93,14 @@ final class SecurityTest extends TestCase
      */
     public function testSecureSessionInitialization(): void
     {
-        // Destroy active session if any
+        // Fully reset session state
         if (session_status() === PHP_SESSION_ACTIVE) {
+            session_unset();
             session_destroy();
+        }
+        $_SESSION = [];
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_write_close();
         }
 
         SecurityUtils::startSecureSession();
@@ -114,8 +119,14 @@ final class SecurityTest extends TestCase
      */
     public function testCsrfTokenLifecycle(): void
     {
+        // Fully reset session state
         if (session_status() === PHP_SESSION_ACTIVE) {
+            session_unset();
             session_destroy();
+        }
+        $_SESSION = [];
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_write_close();
         }
 
         $token1 = SecurityUtils::generateCsrfToken();

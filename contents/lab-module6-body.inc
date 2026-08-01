@@ -28,7 +28,7 @@
         <ul>
             <li>Enable <code>session.use_strict_mode</code> to prevent session fixation.</li>
             <li>Enable <code>session.use_only_cookies</code> to block URL-based session IDs.</li>
-            <li>Set <code>cookie_httponly = true</code> and <code>cookie_secure = true</code> (dynamically over HTTPS).</li>
+            <li>Set <code>session.cookie_httponly = true</code> and <code>session.cookie_secure = true</code> (dynamically over HTTPS).</li>
             <li>Enforce <code>SameSite = Strict</code> on session cookies.</li>
         </ul>
     </section>
@@ -40,7 +40,7 @@
             <h3>Exercise: Implement & Verify CSRF Handshake</h3>
             <ol>
                 <li>Inject a hidden input containing a cryptographically secure token: <code>SecurityUtils::generateCsrfToken()</code>.</li>
-                <li>Verify and enforce token matching on POST submission: <code>SecurityUtils::validateCsrfToken($_POST['csrf_token'])</code>.</li>
+                <li>Verify and enforce token matching on POST submission: <code>SecurityUtils::validateCsrfToken($_POST['csrf_token'] ?? null)</code>.</li>
                 <li>Try submitting a POST request to <code>ujian-form.php</code> without the CSRF token and verify it gets rejected with an error!</li>
             </ol>
         </div>
@@ -59,7 +59,7 @@
 
     <section class="step">
         <h2>✅ Step 4: Metadata Cache & Conditional HTTP</h2>
-        <p>Instead of scanning the disk on every page load to discover pages, the system stores discovered page structures in <code>discovered_pages.json</code>. Furthermore, handling <code>304 Not Modified</code> conditional requests based on ETags ensures clients don't redownload unchanged pages.</p>
+        <p>Instead of scanning the disk on every page load to discover pages, the system stores discovered page structures in <code>discovered_pages.json</code>. Furthermore, handling <code>304 Not Modified</code> conditional requests based on ETags (with precedence over Last-Modified) ensures clients don't redownload unchanged pages.</p>
         <p><strong>Task:</strong> Run the complete laboratory compliance suite to ensure 100% test success:</p>
         <div class="terminal-block">
             <code>composer lab-check</code>
@@ -83,7 +83,7 @@
 
 <style>
 .lab-worksheet h1 { color: #8a2be2; margin-bottom: 0.1rem; }
-.lab-worksheet .subtitle { font-size: 1.2rem; color: #777; margin-bottom: 2rem; }
+.lab-worksheet .subtitle { font-size: 1.2rem; color: #666; margin-bottom: 2rem; }
 .lab-worksheet .requirement-alert { background: #fee7e7; border: 1px solid #fad2d2; color: #a94442; padding: 1rem; border-radius: 4px; margin-bottom: 2rem; }
 .lab-worksheet h2 { color: #333; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; margin-top: 2rem; }
 .lab-worksheet .intro { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-left: 5px solid #8a2be2; margin-bottom: 2rem; }

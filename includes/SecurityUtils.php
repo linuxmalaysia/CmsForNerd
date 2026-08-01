@@ -171,6 +171,30 @@ final class SecurityUtils
     }
 
     /**
+     * Determines if the current request is using HTTPS, with trusted proxy support.
+     *
+     * @return bool True if HTTPS is detected directly or via trusted proxy headers.
+     */
+    private static function isHttpsRequest(): bool
+    {
+        // Direct HTTPS detection
+        if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+            return true;
+        }
+
+        // Trust X-Forwarded-Proto only from trusted proxies
+        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+            $trustedProxies = ['127.0.0.1', '::1'];
+            $remoteAddr = $_SERVER['REMOTE_ADDR'] ?? '';
+            if (in_array($remoteAddr, $trustedProxies, true)) {
+                return $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https';
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Starts or resumes a hardened session with secure cookie attributes and periodic session ID regeneration.
      */
     public static function startSecureSession(): void
@@ -180,8 +204,13 @@ final class SecurityUtils
             ini_set('session.use_strict_mode', '1');
             ini_set('session.use_only_cookies', '1');
 
-            // Determine if HTTPS is active (all on one single line to pass 4-space indent rule)
-            $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+            // Determine if HTTPS is active
+            $isHttps = self::isHttpsRequest();
+
+            // Default to true in production when no direct HTTPS detection
+            if (!$isHttps && !isset($_SERVER['HTTPS']) && !isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+                $isHttps = true;
+            }
 
             // Set session cookie parameters securely
             $cookieParams = [
@@ -252,8 +281,7 @@ final class SecurityUtils
         header("Permissions-Policy: camera=(), microphone=(), geolocation=(), midi=(), payment=()");
 
         // Only set HSTS if using HTTPS to avoid breaking localhost development or standard HTTP setups
-        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
-        if ($isHttps) {
+        if (self::isHttpsRequest()) {
             header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload");
         }
     }
