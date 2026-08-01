@@ -172,6 +172,30 @@ final class SecurityUtils
     }
 
     /**
+     * Determines if the current request is using HTTPS, with trusted proxy support.
+     *
+     * @return bool True if HTTPS is detected directly or via trusted proxy headers.
+     */
+    private static function isHttpsRequest(): bool
+    {
+        // Direct HTTPS detection
+        if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+            return true;
+        }
+
+        // Trust X-Forwarded-Proto only from trusted proxies
+        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
+            $trustedProxies = ['127.0.0.1', '::1'];
+            $remoteAddr = $_SERVER['REMOTE_ADDR'] ?? '';
+            if (in_array($remoteAddr, $trustedProxies, true)) {
+                return $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https';
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Starts or resumes a hardened session with secure cookie attributes and periodic session ID regeneration.
      */
     public static function startSecureSession(): void
