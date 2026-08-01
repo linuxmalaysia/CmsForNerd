@@ -4,7 +4,7 @@ type: documentation
 title: "Project Changelog"
 description: "Sovereign log tracking all features, fixes, and architectural upgrades in CMSForNerd."
 resource: "file:///CHANGELOG.md"
-timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
+timestamp: "2026-08-01T17:45:00Z"
 ---
 # CHANGELOG
 
@@ -12,6 +12,53 @@ All notable changes to this project are documented in this file.
 Entries are grouped by date (most recent first).
 
 ---
+
+## [4.2.4] - 2026-08-01 (HTML Microdata Structural Integration)
+
+### 🏷️ SEO & Semantic Web
+- **Semantic HTML Microdata**: Integrated `itemscope` and `itemtype` microdata attributes on dynamic AMP layout views (`pager.php`), utility portals (`offline.php`, `ujian-form.php`, `tools/sanity-check.php`), and static templates.
+- **Privacy Metadata Coverage**: Covered all subdirectory privacy placeholder files (`index.php`/`index.html`) across 14 directories with paired microdata semantic attributes.
+- **Compliance Unit Tests**: Deployed `testHtmlMicrodataPresence` in `tests/SecurityTest.php` to validate microdata presence, and synchronized all existing unit test compliance assertions to the active `2026-08-01` log timestamp.
+- **SonarCloud Optimization**: Synced exclusions in `sonar-project.properties` and GHA build workflows to exclude unit tests and directory privacy files from false positive duplication metrics.
+
+## [4.2.3] - 2026-08-01 (OWASP Top 10 Hardening & PHP Site Performance)
+
+### 🛡️ Security Hardening
+- **Secure Sessions**: Configured secure session controls in `SecurityUtils` with `SameSite = Strict`, `HttpOnly`, dynamic HTTPS `Secure` transport flag detection, and 30-minute periodic session ID regeneration to thwart fixation attacks.
+- **CSRF Token Handshake**: Implemented timing-safe CSRF token lifecycle checking protecting all POST input forms.
+- **OWASP Secure HTTP Headers**: Integrated dynamic response headers (HSTS, CSP, Referrer-Policy, Permissions-Policy, XSS-Protection, X-Frame-Options) and restricted unallowed HTTP methods (PUT, DELETE, OPTIONS).
+- **Bot-Trap Defense**: Hardened `ujian-form.php` form with CSRF validation.
+
+### ⚡ Site Performance & Caching
+- **Zero-Dependency Page Cache**: Engineered `PerformanceUtils.php` implementing server-side page caching with smart modification-time invalidation checks.
+- **Metadata Cache & Conditional Requests**: Cached scanned directory page lists inside `discovered_pages.json` and integrated browser conditional checks (`ETag`/`304`) to save bandwidth.
+- **Worksheet Upgrade**: Deployed a brand-new styled interactive worksheet `lab-module6.php` and its body fragment.
+
+## [4.2.2] - 2026-08-01 (PR Bot Synergy & Cross-Platform Scripting Governance)
+
+### ⚙️ Governance & PR Workflow
+- **Rule 25 & 26 Codification**: Formally added Rule 25 (PR & Bot Review Integration) and Rule 26 (Cross-Platform Standalone Scripting Mandate) in `AGENTS.md` and `.agents/AGENTS.md`.
+- **Standalone Script Decoupling**: Refactored inline `composer.json` JSON/PowerShell script wrappers into standalone PHP tools (`tools/check-legacy-global.php` and `tools/check-strict-types.php`).
+- **Standard Operating Procedure (SOP)**: Deployed `docs/governance/SOP-PULL-REQUEST-BOT-SYNERGY.md` outlining dual-platform workflows (GitHub/GitLab) and mapped it across `SUMMARY.md`, `mkdocs.yml`, `llms.txt`, and `START-HERE.md`.
+
+## [4.2.1] - 2026-08-01 (Context Re-learning & Windows Shell Compliance)
+
+### 🐛 Compatibility Fixes
+- **PowerShell Escaping**: Refactored double-quotes and backslash characters in `composer.json` script hooks to restore compatibility across Windows PowerShell/CMD, Linux Bash, and macOS Zsh environments.
+- **Cognitive Twin Re-Orientation**: Restored cognitive coherence using the 3-step Mechanical Boot Sequence and Spatial Memory Palace tracking.
+
+## [4.2.0] - 2026-07-31 (Live Demo Site & MCP Access Documentation)
+
+### 🌐 Live Deployment & LLM Access
+- **Production Live Demo**: Integrated and verified reference links to the official production live demo site (`https://cmsfornerd.onrender.com/index.php`) in `README.md`, `START-HERE.md`, and `docs/RENDER-DEPLOYMENT-GUIDE.md`.
+- **Context7 MCP Crawler**: Registered the official Context7 MCP crawler link (`https://context7.com/cmsfornerd/cmsfornerd/llms.txt?tokens=10000`) in `README.md`, `START-HERE.md`, `.llms/index.md`, and `llms.txt` to enable cognitive agent crawling.
+
+## [4.1.9] - 2026-07-31 (Apache .htaccess & Docker Alignment)
+
+### 🐋 Web Server & Container Alignment
+- **Apache Rewrite Rules**: Removed incompatible directory configuration tags (`<DirectoryMatch>`, `<Directory>`) from `.htaccess` and replaced them with standard `mod_rewrite` rules to resolve 500 Internal Server Errors on Render.
+- **Docker/Podman Port Expositions**: Exposed port 80 and chowned files specifically under `/var/www/html/data` inside `Dockerfile` and `Containerfile` to pass `DockerBuildTest` compliance.
+- **Dockerignore Cleanup**: Removed duplicate separating comments in `.dockerignore` to satisfy uniqueness checks.
 
 ## [4.1.8] - 2026-07-30 (Render Cloud Blueprint Specification)
 

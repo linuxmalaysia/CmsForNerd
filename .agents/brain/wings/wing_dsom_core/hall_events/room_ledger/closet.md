@@ -3,7 +3,7 @@ okf_version: 0.1
 type: history_log
 title: Project Ledger
 description: Distilled knowledge for Project Ledger
-timestamp: 2026-06-19T14:00:00Z
+timestamp: 2026-08-01T17:45:00Z
 ---
 # 🚪 Closet: Room Ledger (The Universal Record)
 
@@ -16,7 +16,7 @@ This closet tracks the **Universal Ledger** — the `CHANGELOG.md` and `HISTORY.
 | File | Purpose | Standard |
 |---|---|---|
 | `CHANGELOG.md` | Version-by-version technical release notes | Keep a Changelog + SemVer |
-| `HISTORY.md` | Narrative chronological ledger of all major milestones | DSOM Protocol |
+| `docs/HISTORY.md` | Narrative chronological ledger of all major milestones | DSOM Protocol |
 
 ## 🗓️ Key Version Milestones
 
@@ -39,6 +39,13 @@ This closet tracks the **Universal Ledger** — the `CHANGELOG.md` and `HISTORY.
 | **v10.0.0** | 2026-04-08 | **DSOM Automation Encyclopedia.** 18 HOWTO guides released. |
 | **v4.0.0-reset** | 2026-07-26 | **Production Stable [Version Reset].** Rootless Podman Automation, Adaptive Dark Mode Contrast, Centralized Page Routing, Fault-Tolerant CI/CD. |
 | **v4.1.0** | 2026-07-26 | **DSOM Integration & Pluralisation.** Workspace pluralized, 25 skills deployed, tools suite updated. |
+| **v4.1.8** | 2026-07-30 | **Render Cloud Blueprint.** IaC render.yaml blueprint and custom multi-stage PHP 8.4 container stack. |
+| **v4.1.9** | 2026-07-31 | **Apache Rewrite Rules & Docker.** Compliant mod_rewrite in .htaccess and aligned Docker/Podman chowns. |
+| **v4.2.0** | 2026-07-31 | **Production Live Demo & MCP.** Published live demo site and registered Context7 MCP LLM crawler endpoint. |
+| **v4.2.1** | 2026-08-01 | **Windows PowerShell Fixes.** Corrected composer script escaping syntax for CMD/PowerShell cross-platform parity. |
+| **v4.2.2** | 2026-08-01 | **PR Bot Synergy & Standalone CLI.** Codified Rule 25/26 and refactored composer into standalone PHP scripts. |
+| **v4.2.3** | 2026-08-01 | **OWASP Security Hardening & Cache.** Deployed secure sessions, CSRF token handshake, and static page cache. |
+| **v4.2.4** | 2026-08-01 | **Semantic HTML Microdata.** Integrated Schema.org microdata across standard/AMP/offline/privacy templates. |
 
 ## ⚠️ Ledger Law
 > **"The Ledger is the Single Source of Truth for versioning."**
