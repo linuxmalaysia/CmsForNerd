@@ -101,9 +101,10 @@ function createCmsContext(
     );
 }
 
-// 6. [LAB] SET SECURITY HEADERS
-header("X-Content-Type-Options: nosniff");
-header("X-Frame-Options: DENY");
+// 6. [LAB] SET SECURITY HEADERS & INTRODUCE OWASP COMPLIANCE
+\CmsForNerd\SecurityUtils::validateRequestMethod();
+\CmsForNerd\SecurityUtils::sendSecurityHeaders();
+\CmsForNerd\SecurityUtils::startSecureSession();
 
 // 7. [LAB] Initialization Phase
 \CmsForNerd\boot_security();

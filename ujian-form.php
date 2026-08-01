@@ -3,10 +3,21 @@
 declare(strict_types=1);
 
 /**
- * [LAB] Turnstile Bot Trap Verification
+ * [LAB] Turnstile Bot Trap Verification with CSRF Hardening
  */
 
 require_once __DIR__ . '/includes/bootstrap.php';
+
+// Generate CSRF token for the form session
+$csrfToken = \CmsForNerd\SecurityUtils::generateCsrfToken();
+
+$csrfValid = true;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $submittedToken = $_POST['csrf_token'] ?? '';
+    if (!\CmsForNerd\SecurityUtils::validateCsrfToken($submittedToken)) {
+        $csrfValid = false;
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -23,10 +34,13 @@ require_once __DIR__ . '/includes/bootstrap.php';
 </head>
 <body>
     <div class="box">
-        <h2>🧪 Turnstile Bot-Trap Test</h2>
-        <p>Submit this form to test if <code>includes/turnstile.php</code> correctly validates your request.</p>
+        <h2>🧪 Turnstile Bot-Trap Test & CSRF Validation</h2>
+        <p>Submit this form to test if <code>includes/turnstile.php</code> and CSRF defenses validate your request.</p>
         
         <form method="POST">
+            <!-- OWASP CSRF mitigation -->
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
+
             <input type="text" name="test_data" placeholder="Enter some text" required>
             <br><br>
             <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
@@ -35,9 +49,15 @@ require_once __DIR__ . '/includes/bootstrap.php';
         </form>
 
         <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
-            <div class="status">
-                <strong>[PASS]</strong> If you see this, the Turnstile server-to-server check was successful!
-            </div>
+            <?php if ($csrfValid) : ?>
+                <div class="status">
+                    <strong>[PASS]</strong> If you see this, the Turnstile and CSRF validation checks were successful!
+                </div>
+            <?php else : ?>
+                <div class="status" style="border-left-color: #dc3545; background: #f8d7da; color: #721c24;">
+                    <strong>[FAIL]</strong> CSRF Validation failed. The request was securely blocked.
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </body>

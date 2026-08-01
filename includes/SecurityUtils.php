@@ -1,8 +1,8 @@
 <?php
 
 /**
- * [SECURITY] SecurityUtils - v3.5 Laboratory Standard.
- * * This class provides defensive programming utilities to protect the CMS core.
+ * [SECURITY] SecurityUtils - v4.2.3 Laboratory Standard.
+ * This class provides defensive programming utilities to protect the CMS core.
  * It combines path validation, XSS prevention, and CSP nonce generation.
  * * Compliance: PHP 8.4+, PSR-12, PHPStan Level 8.
  */
@@ -85,6 +85,23 @@ final class SecurityUtils
      */
     public static function discoverPages(string $fragmentDir, string $rootDir): array
     {
+        // Delegate to PerformanceUtils for caching if available
+        if (class_exists('\\CmsForNerd\\PerformanceUtils')) {
+            return PerformanceUtils::getCachedDiscoveredPages($fragmentDir, $rootDir);
+        }
+
+        return self::directDiscoverPages($fragmentDir, $rootDir);
+    }
+
+    /**
+     * [SECURITY] Directly scan contents directory (no caching fallback).
+     *
+     * @param string $fragmentDir Absolute path to contents directory.
+     * @param string $rootDir Absolute path to project root directory.
+     * @return array<int, array{slug: string, title: string, mtime: int, filemtime: int}>
+     */
+    public static function directDiscoverPages(string $fragmentDir, string $rootDir): array
+    {
         $pages = [];
 
         if (is_dir($fragmentDir)) {
@@ -144,9 +161,109 @@ final class SecurityUtils
             default                          => $defaultFallback
         };
 
+        // Extra LFI defense: Reject any pages containing path separators or dot-dots
+        if (str_contains($rawPage, '/') || str_contains($rawPage, '\\') || str_contains($rawPage, '..')) {
+            $rawPage = $invalidFallback;
+        }
+
         $isValid = self::isValidPageName($rawPage);
         $page = $isValid ? $rawPage : $invalidFallback;
 
         return pathinfo($page, PATHINFO_FILENAME);
+    }
+
+    /**
+     * [SECURITY] Starts a secure PHP session enforcing OWASP best practices.
+     */
+    public static function startSecureSession(): void
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            // Configure PHP session settings to prevent session hijacking & fixation
+            ini_set('session.use_strict_mode', '1');
+            ini_set('session.use_only_cookies', '1');
+
+            // Determine if HTTPS is active (all on one single line to pass 4-space indent rule)
+            $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+
+            // Set session cookie parameters securely
+            $cookieParams = [
+                'lifetime' => 0,
+                'path' => '/',
+                'domain' => '',
+                'secure' => $isHttps,
+                'httponly' => true,
+                'samesite' => 'Strict'
+            ];
+
+            session_set_cookie_params($cookieParams);
+            session_start();
+        }
+
+        // Periodic Session ID Regeneration to mitigate session fixation attacks
+        if (!isset($_SESSION['session_created_at'])) {
+            $_SESSION['session_created_at'] = time();
+        } elseif (time() - $_SESSION['session_created_at'] > 1800) {
+            session_regenerate_id(true);
+            $_SESSION['session_created_at'] = time();
+        }
+    }
+
+    /**
+     * [SECURITY] Generates a CSRF token and registers it in the active session.
+     */
+    public static function generateCsrfToken(): string
+    {
+        self::startSecureSession();
+        if (empty($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+        return (string) $_SESSION['csrf_token'];
+    }
+
+    /**
+     * [SECURITY] Validates a given CSRF token against the session.
+     */
+    public static function validateCsrfToken(?string $token): bool
+    {
+        self::startSecureSession();
+        if ($token === null || empty($_SESSION['csrf_token'])) {
+            return false;
+        }
+        return hash_equals($_SESSION['csrf_token'], $token);
+    }
+
+    /**
+     * [SECURITY] Send recommended OWASP security headers.
+     */
+    public static function sendSecurityHeaders(): void
+    {
+        if (headers_sent()) {
+            return;
+        }
+        header("X-Content-Type-Options: nosniff");
+        header("X-Frame-Options: DENY");
+        header("X-XSS-Protection: 1; mode=block");
+        header("Referrer-Policy: strict-origin-when-cross-origin");
+        header("Permissions-Policy: camera=(), microphone=(), geolocation=(), midi=(), payment=()");
+
+        // Only set HSTS if using HTTPS to avoid breaking localhost development or standard HTTP setups
+        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+        if ($isHttps) {
+            header("Strict-Transport-Security: max-age=31536000; includeSubDomains; preload");
+        }
+    }
+
+    /**
+     * [SECURITY] Restrict unallowed HTTP request methods to mitigate Verb Tampering.
+     */
+    public static function validateRequestMethod(): void
+    {
+        $allowedMethods = ['GET', 'POST', 'HEAD'];
+        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+        if (!in_array($method, $allowedMethods, true)) {
+            http_response_code(405);
+            header("Allow: " . implode(', ', $allowedMethods));
+            die("HTTP Method Not Allowed");
+        }
     }
 }

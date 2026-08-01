@@ -4,7 +4,7 @@
  * ==========================================================================
  * FILE: themes/CmsForNerd/pager.php
  * ROLE: The "Master Pair" / Layout Controller (Dual-View Edition)
- * VERSION: 3.5.8 (Interactive Sidebar & Tap Fix)
+ * VERSION: 4.2.3 (Interactive Sidebar, Tap Fix & Dynamic Static Caching)
  * ==========================================================================
  */
 
@@ -18,10 +18,20 @@ function pager(CmsForNerd\CmsContext $ctx): void
 {
     $viewMode = $_GET['view'] ?? 'standard';
 
+    // [PERFORMANCE] Start static page cache interception
+    if (class_exists('\\CmsForNerd\\PerformanceUtils')) {
+        \CmsForNerd\PerformanceUtils::startPageCache($ctx->scriptName, $viewMode);
+    }
+
     if ($viewMode === 'amp') {
         renderAmpLayout($ctx);
     } else {
         renderStandardLayout($ctx);
+    }
+
+    // [PERFORMANCE] Capture output buffer and persist cache file
+    if (class_exists('\\CmsForNerd\\PerformanceUtils')) {
+        \CmsForNerd\PerformanceUtils::endPageCache($ctx->scriptName, $viewMode);
     }
 }
 

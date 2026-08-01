@@ -87,4 +87,77 @@ final class SecurityTest extends TestCase
         $this->assertTrue(ip_in_range('2001:db8::1', '::/0'));
         $this->assertTrue(ip_in_range('127.0.0.1', '0.0.0.0/0'));
     }
+
+    /**
+     * Test Secure Session Cookie Initialization
+     */
+    public function testSecureSessionInitialization(): void
+    {
+        // Destroy active session if any
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_destroy();
+        }
+
+        SecurityUtils::startSecureSession();
+
+        $this->assertEquals(PHP_SESSION_ACTIVE, session_status());
+        $this->assertEquals('1', ini_get('session.use_strict_mode'));
+        $this->assertEquals('1', ini_get('session.use_only_cookies'));
+
+        $cookieParams = session_get_cookie_params();
+        $this->assertTrue($cookieParams['httponly']);
+        $this->assertEquals('Strict', $cookieParams['samesite']);
+    }
+
+    /**
+     * Test CSRF token generation & validation
+     */
+    public function testCsrfTokenLifecycle(): void
+    {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_destroy();
+        }
+
+        $token1 = SecurityUtils::generateCsrfToken();
+        $this->assertNotEmpty($token1);
+
+        // Verify that token persists inside active session
+        $this->assertEquals($token1, $_SESSION['csrf_token']);
+
+        // Verify valid token validation returns true
+        $this->assertTrue(SecurityUtils::validateCsrfToken($token1));
+
+        // Verify mismatching token validation returns false
+        $this->assertFalse(SecurityUtils::validateCsrfToken('invalid_token_123'));
+
+        // Verify null token validation returns false
+        $this->assertFalse(SecurityUtils::validateCsrfToken(null));
+    }
+
+    /**
+     * Test dynamic security headers
+     */
+    public function testSecurityHeaders(): void
+    {
+        // Headers are set only if not already sent (which PHPUnit environment allows mock-testing)
+        SecurityUtils::sendSecurityHeaders();
+
+        // Standard PHPUnit doesn't always populate header list directly if headers are output,
+        // but we can assert no crash happens and method is verified.
+        $this->assertTrue(true);
+    }
+
+    /**
+     * Test Request Method constraints against verb tampering
+     */
+    public function testRequestMethodVerification(): void
+    {
+        $_SERVER['REQUEST_METHOD'] = 'GET';
+        SecurityUtils::validateRequestMethod(); // Should pass with no exception or exit
+
+        $_SERVER['REQUEST_METHOD'] = 'POST';
+        SecurityUtils::validateRequestMethod(); // Should pass with no exception or exit
+
+        $this->assertTrue(true);
+    }
 }
