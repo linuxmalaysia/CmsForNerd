@@ -4,13 +4,45 @@ type: documentation
 title: "Modernization History"
 description: "Sovereign log tracking the strategic phases and release milestones of CMSForNerd."
 resource: "file:///docs/HISTORY.md"
-timestamp: "2026-07-27T12:00:00Z (Planned Handover Date)"
+timestamp: "2026-08-01T17:45:00Z"
 ---
 # 📜 Modernization History
 
 Tracking the evolution of **CMSForNerd** from a legacy flat-file system to a modern educational powerhouse.
 
 ## Strategic Phases
+
+### Phase 23: HTML Microdata Structural Integration (v4.2.4)
+
+- **Semantic HTML Microdata**: Upgraded standard template layouts, the dynamic AMP view (`pager.php`), standalone/utility interfaces (`offline.php`, `ujian-form.php`, `sanity-check.php`), and standard fallback scripts with Schema.org compliant `itemscope` and `itemtype` microdata attributes.
+- **Privacy Metadata Coverage**: Automated the placement of paired microdata properties across all subdirectory privacy files, protecting index files across 14 directories from crawler confusion.
+- **Compliance Integration**: Created explicit microdata presence unit tests under `tests/SecurityTest.php` and synchronized compliance assertions to enforce consistent static analysis results.
+
+### Phase 22: OWASP Top 10 Hardening & Site Performance (v4.2.3)
+
+- **Secure Session Transport**: Hardened the session lifecycle in `SecurityUtils::startSecureSession()` with explicit cookie flags (SameSite=Strict, HttpOnly, dynamic HTTPS detection) and periodic ID rotation.
+- **CSRF Token Verification**: Implemented timing-safe token matches to defend all POST input fields from CSRF hijacking.
+- **OWASP Secure HTTP Headers**: Configured rigid security headers (HSTS, CSP, Referrer-Policy, Permissions-Policy, X-Frame-Options) and restricted unallowed HTTP methods at the routing layer.
+- **Zero-Dependency Static Page Caching**: Developed server-side GZIP output buffering and static page caches in `PerformanceUtils.php` with smart invalidation logic, as well as metadata directory scan caching to optimize response times.
+
+### Phase 21: PR Bot Synergy & Scripting Governance (v4.2.2)
+
+- **Standard Operating Procedure (SOP)**: Deployed `docs/governance/SOP-PULL-REQUEST-BOT-SYNERGY.md` laying down strict guidelines for GitLab and GitHub PR workflows, bot-review wait-states, and clean single-branch workspace topologies.
+- **Cross-Platform Scripting Decoupling**: Codified Rule 25 and 26 to restrict inline scripts from `composer.json`, refactoring configuration tools into dedicated, independent PHP script controllers (`tools/check-legacy-global.php` and `tools/check-strict-types.php`).
+
+### Phase 20: Windows Shell & Context Re-learning (v4.2.1)
+
+- **PowerShell Escaping Alignment**: Refactored complex inline double-quotes and backslash characters inside `composer.json` to prevent parsing failures across Windows CMD, PowerShell, Linux Bash, and macOS Zsh shells.
+- **Cognitive Twin Re-Anchoring**: Performed systematic memory orientation using the 3-step Mechanical Boot Sequence to synchronize spatial knowledge files.
+
+### Phase 19: Live Demo & Context7 MCP (v4.2.0)
+
+- **Universal Accessibility Map**: Integrated references to the official live production URL (`https://cmsfornerd.onrender.com/index.php`) and the Context7 MCP crawler link (`https://context7.com/cmsfornerd/cmsfornerd/llms.txt?tokens=10000`) across all documentation landing zones.
+
+### Phase 18: Apache .htaccess & Docker Alignment (v4.1.9)
+
+- **Apache Rewrite Rules Compliance**: Removed forbidden `<DirectoryMatch>` and `<Directory>` tags inside directory-level configuration files (`.htaccess`), replacing them with secure rewrite rules to bypass 500 errors on Apache/Render.
+- **Docker/Podman Expositions**: Aligned container build files with strict Pest PHP testing rules by restricting chown permissions strictly to data directory limits.
 
 ### Phase 17: Render Cloud Blueprint Specification (v4.1.8)
 
