@@ -75,7 +75,7 @@ final class BrainMemoryTest extends TestCase
     public function testTaskMdFooterSignatureIsUpdated(): void
     {
         $this->assertStringContainsString(
-            '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*',
+            '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-01*',
             $this->taskContent
         );
     }
@@ -121,7 +121,7 @@ final class BrainMemoryTest extends TestCase
     public function testWalkthroughMdFooterSignatureIsUpdated(): void
     {
         $this->assertStringContainsString(
-            '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*',
+            '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-01*',
             $this->walkthroughContent
         );
     }

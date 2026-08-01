@@ -34,7 +34,7 @@ if (ob_get_level() > 0) {
 // Using inline CSS to keep it self-contained for training purposes.
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
     <meta charset="utf-8">
     <title>403 Forbidden</title>

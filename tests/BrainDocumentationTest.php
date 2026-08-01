@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 final class BrainDocumentationTest extends TestCase
 {
     private const FOOTER_TIMESTAMP_LINE
-        = '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*';
+        = '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-01*';
 
     private const FOOTER_STANDARD_LINE
         = '*Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*';
