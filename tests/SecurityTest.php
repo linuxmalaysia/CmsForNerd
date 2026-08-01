@@ -171,4 +171,28 @@ final class SecurityTest extends TestCase
 
         $this->assertTrue(true);
     }
+
+    /**
+     * Test HTML Microdata (itemscope and itemtype) presence on all major HTML outputs
+     */
+    public function testHtmlMicrodataPresence(): void
+    {
+        $filesToTest = [
+            dirname(__DIR__) . '/offline.php',
+            dirname(__DIR__) . '/ujian-form.php',
+            dirname(__DIR__) . '/tools/sanity-check.php',
+            dirname(__DIR__) . '/index.html',
+            dirname(__DIR__) . '/themes/CmsForNerd/pager.php',
+            dirname(__DIR__) . '/includes/common.inc.php',
+        ];
+
+        foreach ($filesToTest as $file) {
+            $this->assertFileExists($file);
+            $content = (string) file_get_contents($file);
+
+            // We want to make sure 'itemscope' and 'itemtype' are paired together on the html elements
+            $this->assertStringContainsString('itemscope', $content, "File " . basename($file) . " must contain 'itemscope' microdata attribute.");
+            $this->assertStringContainsString('itemtype=', $content, "File " . basename($file) . " must contain 'itemtype' microdata attribute.");
+        }
+    }
 }

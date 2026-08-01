@@ -65,7 +65,18 @@ final class PerformanceUtils
 
         // Avoid caching if there is an active session indicating custom state
         if (session_status() === PHP_SESSION_ACTIVE && !empty($_SESSION)) {
-            return false;
+            // Keep CSRF and session_created_at as exceptions (don't prevent caching just for CSRF)
+            $keys = array_keys($_SESSION);
+            $cleanSession = true;
+            foreach ($keys as $key) {
+                if ($key !== 'csrf_token' && $key !== 'session_created_at') {
+                    $cleanSession = false;
+                    break;
+                }
+            }
+            if (!$cleanSession) {
+                return false;
+            }
         }
 
         return true;
@@ -115,15 +126,33 @@ final class PerformanceUtils
         $maxMTime = 0;
         $rootDir = dirname(__DIR__);
 
-        // Scan contents directory recursively
+        // Scan contents directory
         $contentsDir = $rootDir . '/contents';
-        $maxMTime = max($maxMTime, self::getDirectoryMaxMTime($contentsDir));
+        if (is_dir($contentsDir)) {
+            $files = glob($contentsDir . '/*');
+            if (is_array($files)) {
+                foreach ($files as $file) {
+                    if (is_file($file)) {
+                        $maxMTime = max($maxMTime, (int) filemtime($file));
+                    }
+                }
+            }
+        }
 
-        // Scan theme directory recursively
+        // Scan theme directory
         $themeDir = $rootDir . '/themes/CmsForNerd';
-        $maxMTime = max($maxMTime, self::getDirectoryMaxMTime($themeDir));
+        if (is_dir($themeDir)) {
+            $files = glob($themeDir . '/*');
+            if (is_array($files)) {
+                foreach ($files as $file) {
+                    if (is_file($file)) {
+                        $maxMTime = max($maxMTime, (int) filemtime($file));
+                    }
+                }
+            }
+        }
 
-        // Include bootstrap changes
+        // Include SecurityUtils and bootstrap changes
         $bootstrapFile = $rootDir . '/includes/bootstrap.php';
         if (file_exists($bootstrapFile)) {
             $maxMTime = max($maxMTime, (int) filemtime($bootstrapFile));

@@ -22,7 +22,7 @@ final class LiveDemoMcpDocumentationTest extends TestCase
     private const CONTEXT7_MCP_URL = 'https://context7.com/cmsfornerd/cmsfornerd/llms.txt?tokens=10000';
 
     private const FOOTER_TIMESTAMP_LINE
-        = '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*';
+        = '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-01*';
 
     private string $taskPath;
     private string $walkthroughPath;
