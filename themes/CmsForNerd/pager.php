@@ -86,7 +86,7 @@ function renderAmpLayout(CmsForNerd\CmsContext $ctx): void
 
     ?>
     <!doctype html>
-    <html ⚡ lang="en">
+    <html ⚡ lang="en" itemscope itemtype="https://schema.org/<?= htmlspecialchars($ctx->schemaType, ENT_QUOTES, 'UTF-8') ?>">
     <head>
         <?php pageheader_amp($ctx); ?>
         

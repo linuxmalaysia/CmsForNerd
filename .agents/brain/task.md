@@ -176,6 +176,15 @@ timestamp: "2026-08-01T14:00:00Z"
 - [x] Add brand-new styled worksheet page for Module 6 (`lab-module6.php` and `contents/lab-module6-body.inc`).
 - [x] Run local compliance audit suite yielding 100% success rate (209 tests passed, 3091 assertions).
 
+## [x] Module 25: HTML Microdata Structural Integration (v4.2.4)
+
+- [x] Integrate `itemscope` and `itemtype` microdata attributes on dynamic AMP layout view.
+- [x] Integrate standard microdata attributes on all static views, redirectors, and offline fallback interfaces.
+- [x] Update all directory-privacy templates across subdirectories with paired itemscope and itemtype attributes.
+- [x] Add automated unit testing suite validating microdata presence on all HTML outputs.
+- [x] Sync compliance date assertions across 5 core test suites with the active `2026-08-01` log timestamp.
+- [x] Run local compliance audits ensuring 100% test success (206 tests, 3121 assertions passing).
+
 ---
 *Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-01*
 *Standard: UK English | DBP-standard Bahasa Melayu Malaysia (Piawai) | GNU General Public License v3.0*

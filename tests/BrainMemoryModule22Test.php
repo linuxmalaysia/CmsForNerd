@@ -20,7 +20,7 @@ final class BrainMemoryModule22Test extends TestCase
     private const MODULE_22_HEADING = '## [x] Module 22: Context Re-learning & Windows Shell Compliance (v4.2.1)';
 
     private const FOOTER_TIMESTAMP_LINE
-        = '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31*';
+        = '*Deep State of Mind (DSOM) For My AI Protocol | Harisfazillah Jamel (LinuxMalaysia) | 2026-08-01*';
 
     private string $taskPath;
     private string $taskContent;

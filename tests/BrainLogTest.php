@@ -69,7 +69,7 @@ final class BrainLogTest extends TestCase
     public function testTaskLogFooterTimestampMatchesLatestSession(): void
     {
         $this->assertStringContainsString(
-            'Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31',
+            'Harisfazillah Jamel (LinuxMalaysia) | 2026-08-01',
             $this->taskContent,
             'The DSOM footer timestamp must reflect the date of the latest recorded session.'
         );
@@ -105,7 +105,7 @@ final class BrainLogTest extends TestCase
     public function testWalkthroughLogFooterTimestampMatchesLatestSession(): void
     {
         $this->assertStringContainsString(
-            'Harisfazillah Jamel (LinuxMalaysia) | 2026-07-31',
+            'Harisfazillah Jamel (LinuxMalaysia) | 2026-08-01',
             $this->walkthroughContent,
             'The DSOM footer timestamp must reflect the date of the latest recorded session.'
         );
